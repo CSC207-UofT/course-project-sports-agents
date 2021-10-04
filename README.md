@@ -1,6 +1,20 @@
-## Replace this README.md!
+## Sports Agents Application
 
-This is a standard README.md file for you to replace. You'll want to include your own content here!
+The Sports Agents Application provides a way for users to  
+access statistics about sports and compare players and teams. 
+It has data across several sports.
 
-MD (Markdown) files use [Markdown formatting](https://guides.github.com/features/mastering-markdown/): 
-these look very much like .txt files, so you can write them in a very similar way.
+Specifications: 
+Users can upload data on sports players and sports teams either
+manually through the command line, through a file, or by 
+accessing data from the web via an API (possibly). This data 
+includes player and team scores and rankings over time, team 
+composition, player goals/points scored, and team scores at each 
+game. Users will be able to examine their uploaded data through 
+statistics about each player and team. They can compare players 
+and teams against each other. The application can generate 
+predictions for players and hypothetical teams, and different
+users can compare hypothetical teams against each other 
+(a fantasty sports-style tournament). All data and generated 
+statistics can be exported.
+The application will extend to multiple sports, which are TBD.

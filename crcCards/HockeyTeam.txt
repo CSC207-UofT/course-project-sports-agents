@@ -1,0 +1,10 @@
+Class name: HockeyTeam
+Parent class: Team
+Subclasses:
+
+Responsibilities:
+* Store total number of games, wins, losses, and ties
+* Getters and setters for above
+
+Collaborators:
+* HockeyPlayer

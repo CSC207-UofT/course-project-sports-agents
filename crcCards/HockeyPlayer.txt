@@ -1,0 +1,11 @@
+Class name: HockeyPlayer
+Parent name: Player
+Subclasses:
+
+Responsibilities:
+* Stores the games they played in, number of total games
+* Per season, store total goals and total points scored
+* Getters and setters for above
+
+Collaborators:
+* HockeyTeam

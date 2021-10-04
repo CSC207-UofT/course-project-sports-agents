@@ -1,0 +1,8 @@
+Class name: Team
+Parent class: None
+Subclasses: HockeyTeam
+
+Responsibilities:
+* Store players who are on the team
+
+Collaborators:

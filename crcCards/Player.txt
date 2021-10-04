@@ -1,0 +1,10 @@
+Class name: Player
+Parent class: None
+Subclasses: HockeyPlayer
+
+Responsibilities:
+* Stores player name, age, team, role on team
+* Getters and setters for above
+
+Collaborators:
+
