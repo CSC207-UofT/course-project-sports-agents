@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Team {
+public abstract class Team {
     private String name;
     private String homeCity;
     private ArrayList<Player> players;
