@@ -1,10 +1,14 @@
 import java.util.ArrayList;
 
 public class TeamManager {
-    private ArrayList<HockeyTeam> teams;
+    private ArrayList<Team> teams;
 
     public TeamManager(){
-        teams = new ArrayList<HockeyTeam>();
+        //teams = (ArrayList<Team>) new ArrayList<HockeyTeam>();
+    }
+
+    public TeamManager(ArrayList<Team> teams){
+        this.teams = teams;
     }
 
     public ArrayList<Team> getTeams(){

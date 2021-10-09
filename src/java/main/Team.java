@@ -26,15 +26,15 @@ public abstract class Team {
         return players;
     }
 
-    public void setPlayers(List<Player> players){
+    public void setPlayers(ArrayList<Player> players){
         this.players = players;
     }
 
-    public ArrayList<Integer> getGamesPlayed(){
+    public ArrayList<Integer> getPlayedGames(){
         return playedGames;
     }
     
-    public void setPlayers(ArrayList<Integer> playerGames){
-        this.playedGames = playerGames;
+    public void setPlayedGames(ArrayList<Integer> playedGames){
+        this.playedGames = playedGames;
     }
 }
