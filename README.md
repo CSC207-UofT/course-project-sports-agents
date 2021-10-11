@@ -13,8 +13,7 @@ composition, player goals/points scored, and team scores at each
 game. Users will be able to examine their uploaded data through 
 statistics about each player and team. They can compare players 
 and teams against each other. The application can generate 
-predictions for players and hypothetical teams, and different
-users can compare hypothetical teams against each other 
-(a fantasty sports-style tournament). All data and generated 
-statistics can be exported.
+predictions for players and hypothetical teams. Additionally, the
+user of the app can add members to the app. The user then can make
+bets on the matches on the behalf of the members.
 The application will extend to multiple sports, which are TBD.
