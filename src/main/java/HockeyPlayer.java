@@ -1,4 +1,3 @@
-
 /**
  * This class represents a hockey player.
  */
