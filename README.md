@@ -15,5 +15,7 @@ statistics about each player and team. They can compare players
 and teams against each other. The application can generate 
 predictions for players and hypothetical teams. Additionally, the
 user of the app can add members to the app. The user then can make
-bets on the matches on the behalf of the members.
+bets on the matches on the behalf of the members. Then each member
+will have a history, outlining which matches they were able to predict
+correctly.
 The application will extend to multiple sports, which are TBD.
