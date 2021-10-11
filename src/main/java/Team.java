@@ -4,7 +4,7 @@ public abstract class Team {
     private String name;
     private String homeCity;
     private ArrayList<Player> players;
-    private ArrayList<Integer> playedGames;
+    private ArrayList<Game> playedGames;
 
     /**
      * Get name
@@ -58,7 +58,7 @@ public abstract class Team {
      * Get played games
      * @return playedGames
      */
-    public ArrayList<Integer> getPlayedGames(){
+    public ArrayList<Game> getPlayedGames(){
         return playedGames;
     }
     
@@ -66,7 +66,7 @@ public abstract class Team {
      * Set played games
      * @param playedGames
      */
-    public void setPlayedGames(ArrayList<Integer> playedGames){
+    public void setPlayedGames(ArrayList<Game> playedGames){
         this.playedGames = playedGames;
     }
 }
