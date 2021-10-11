@@ -11,8 +11,7 @@ public class HockeyPlayerTest {
     }
 
     @After
-    public void tearDown() {
-    }
+    public void tearDown() {}
 
     @Test(timeout = 50)
     public void TestTeamSetterandGetter() {

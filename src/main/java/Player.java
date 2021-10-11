@@ -18,7 +18,7 @@ public abstract class Player {
     public Player() {}
 
     /**
-     * Set this player's name
+     * Record this player's name
      * @param name the name of the player
      */
     public void setName(String name) {
@@ -34,7 +34,7 @@ public abstract class Player {
     }
 
     /**
-     * Set this player's age
+     * Record this player's age
      * @param age the player's age
      */
     public void setAge(int age) {
@@ -50,7 +50,7 @@ public abstract class Player {
     }
 
     /**
-     * Set this player's nationality
+     * Record this player's nationality
      * @param nationality the player's nationality
      */
     public void setNationality(String nationality) {

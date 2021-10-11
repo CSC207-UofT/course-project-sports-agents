@@ -19,7 +19,7 @@ public class HockeyPlayer extends Player {
     public HockeyPlayer() {}
 
     /**
-     * Set the player's position
+     * Record the player's position
      * @param position player's position on team
      */
     public void setPosition(String position) {
@@ -34,10 +34,19 @@ public class HockeyPlayer extends Player {
         return this.position;
     }
 
+
+    /**
+     * Record this player's team
+     * @param team player's team
+     */
     public void setTeam(String team) {
         this.team = team;
     }
 
+    /**
+     * Return this player's team
+     * @return player's team
+     */
     public String getTeam() {
         return this.team;
     }

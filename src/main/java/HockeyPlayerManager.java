@@ -5,10 +5,10 @@ import java.util.ArrayList;
  */
 
 public class HockeyPlayerManager {
-    private ArrayList<HockeyPlayer> players;
+    private ArrayList<HockeyPlayer> hockeyplayers;
 
     public HockeyPlayerManager() {
-        this.players = new ArrayList<>();
+        this.hockeyplayers = new ArrayList<>();
     }
 
     /**
@@ -21,7 +21,7 @@ public class HockeyPlayerManager {
      */
     public void addHockeyPlayer(String name, int age, String nationality, String position, String team) {
         HockeyPlayer player = new HockeyPlayer(name, age, nationality, position, team);
-        players.add(player);
+        hockeyplayers.add(player);
     }
 
     /**
@@ -29,7 +29,7 @@ public class HockeyPlayerManager {
      * @param player hockey player to be added
      */
     public void addHockeyPlayer(HockeyPlayer player) {
-        players.add(player);
+        hockeyplayers.add(player);
     }
 
 
@@ -38,6 +38,6 @@ public class HockeyPlayerManager {
      * @return players
      */
     public ArrayList<HockeyPlayer> getHockeyPlayers() {
-        return this.players;
+        return this.hockeyplayers;
     }
 }
