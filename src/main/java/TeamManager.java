@@ -28,16 +28,37 @@ public class TeamManager {
 
     /**
      * Adds a new team
+     * @param type Hockey, Tennis
+     * @param name
+     * @param homeCity
+     * @param players
+     * @param playedGames
      * @param totalGamesPlayed
      * @param wins
      * @param losses
      * @param ties
      */
-    public void createTeam(int totalGamesPlayed, int wins, int losses, int ties){
-        teams.add(new HockeyTeam(totalGamesPlayed, wins, losses, ties));
+    public void createTeam(String type, String name, String homeCity, ArrayList<Player> players, ArrayList<Game> playedGames, int totalGamesPlayed, int wins, int losses, int ties){
+        type = type.toLowerCase();
+        switch(type){
+            case("hockey"):
+                teams.add(new HockeyTeam(name, homeCity, players, playedGames, totalGamesPlayed, wins, losses, ties));
+            case("tennis"):
+                teams.add(new TennisTeam(name, homeCity, players, playedGames, totalGamesPlayed, wins, losses, ties));
+        }
     }
 
-    public void recordTeams(){
-
+    /**
+     * Finds a team with the requested name
+     * @param teamName
+     * @return If team exists returns the team, otherwise returns null
+     */
+    public Team findTeamWithName(String teamName){
+        for(Team t : teams){
+            if(t.getName() == teamName){
+                return t;
+            }
+        }
+        return null;
     }
 }
