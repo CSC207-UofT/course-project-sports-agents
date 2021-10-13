@@ -10,10 +10,15 @@ public class SportsApp {
         System.out.println("stats_player <player_name>: get available data on a player of your choosing");
         System.out.println("stats_team <team_name>: get available data on a team of your choosing");
         System.out.println("Enter 'quit' to exit the program");
+        // TODO: figure out how you want the arguments to be written, i.e. with "" or not
+        // TODO: add the commands for the comparer
+        // TODO: change the CRC cards
+        // TODO: clarify that the members are users
 
         Scanner inputScanner = new Scanner(System.in);
         String input = "";
 //        commandManager = new CommandManager();
+        // TODO: Implement a catch statement
         while (!input.equals("quit")) {
             input = inputScanner.nextLine();
 
