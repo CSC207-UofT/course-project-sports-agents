@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * This class represents a hockey player.
  */
@@ -15,15 +17,16 @@ public class HockeyPlayer extends Player {
      * @param name player's name
      * @param age player's age
      * @param nationality player's nationality
+     * @param matches matches the player has participated in for the season
      * @param position player's position
      * @param team player's team
      * @param goals player's number of goals
      * @param assists player's number of assists
      * @param points player's number of points
      */
-    public HockeyPlayer(String name, int age, String nationality, String position, String team, int goals,
-                        int assists, int points) {
-        super(name, age, nationality);
+    public HockeyPlayer(String name, int age, String nationality, ArrayList<Match> matches, String position,
+                        String team, int goals, int assists, int points) {
+        super(name, age, nationality, matches);
         this.position = position;
         this.team = team;
         this.goals = goals;
@@ -33,16 +36,27 @@ public class HockeyPlayer extends Player {
 
 
     /**
-     * Create a Hockey Player with 0 points
+     * Create a Hockey Player with 0 points and 0 matches
      * @param name Player's name
      * @param age Player's age
      * @param nationality Player's nationality
      */
     public HockeyPlayer(String name, int age, String nationality) {
-        super(name, age, nationality);
+        super(name, age, nationality, new ArrayList<>());
         this.goals = 0;
         this.assists = 0;
         this.points = 0;
+    }
+
+
+    /**
+     * Return a string representation of this hockey player
+     * @return hockey player in string representation
+     */
+    @Override
+    public String toString() {
+        String partOne = super.toString();
+        return partOne + "\nGoals: " + this.goals + "\nAssists: " + this.assists + "\nPoints: " + this.points;
     }
 
 
@@ -89,12 +103,13 @@ public class HockeyPlayer extends Player {
         this.points = this.goals + this.assists;
     }
 
+
     /**
      * Increase the player's number of goals by 1 when the player has shot a goal
      * Update points accordingly
      */
-    public void addGoal() {
-        this.goals = this.goals + 1;
+    public void setGoals(int goals) {
+        this.goals = goals;
         this.updatePoints();
     }
 
@@ -103,8 +118,8 @@ public class HockeyPlayer extends Player {
      * Increase the player's number of assists by 1 when the player has made an assist
      * Update points accordingly
      */
-    public void addAssist() {
-        this.assists = this.assists + 1;
+    public void setAssists(int assists) {
+        this.assists = assists;
         this.updatePoints();
     }
 
