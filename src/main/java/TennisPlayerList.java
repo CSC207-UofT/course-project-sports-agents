@@ -51,9 +51,9 @@ public class TennisPlayerList {
             reader.readLine();
             while ((line = reader.readLine()) != null) {
                 String[] playerData = line.split(",");
-                TennisPlayer winner = helperFindTennisPlayer(tennisPlayers, playerData[WINNER_NAME],
+                TennisPlayer winner = FindTennisPlayer(tennisPlayers, playerData[WINNER_NAME],
                         Integer.parseInt(playerData[WINNER_AGE]), playerData[WINNER_NATIONALITY]);
-                TennisPlayer loser = helperFindTennisPlayer(tennisPlayers, playerData[LOSER_NAME],
+                TennisPlayer loser = FindTennisPlayer(tennisPlayers, playerData[LOSER_NAME],
                         Integer.parseInt(playerData[LOSER_AGE]), playerData[LOSER_NATIONALITY]);
                 updateWinner(playerData, winner);
                 updateLoser(playerData, loser);
@@ -65,7 +65,7 @@ public class TennisPlayerList {
     }
 
     /**
-     * This is a helper function for generatePlayerList; it updates a tennis player's sets won and lost, and games
+     * This is a helper method for generatePlayerList; it updates a tennis player's sets won and lost, and games
      * won and lost
      * @param playerData an array containing the player's data
      * @param winner the winner in a match as specified in <file> of generatePlayerList
@@ -79,7 +79,7 @@ public class TennisPlayerList {
 
 
     /**
-     * This is a helper function for generatePlayerList; it updates a tennis player's sets won and lost, and games
+     * This is a helper method for generatePlayerList; it updates a tennis player's sets won and lost, and games
      * won and lost
      * @param playerData an array containing the player's data
      * @param loser the loser in a match as specified in <file> of generatePlayerList
@@ -93,7 +93,7 @@ public class TennisPlayerList {
 
 
     /**
-     * This is a helper function for generatePlayerList; if a tennis player with the given name, age, and nationality
+     * This is a helper method for generatePlayerList; if a tennis player with the given name, age, and nationality
      * is already in the list of tennis players, that tennis player is found and returned. If that tennis player is
      * not in the list of tennis players, that player is added to the list and returned.
      * @param players list of tennis players
@@ -102,8 +102,7 @@ public class TennisPlayerList {
      * @param nationality tennis player's nationality
      * @return a Tennis player from players if the player is there, or a new Tennis player if the player is not there
      */
-    private TennisPlayer helperFindTennisPlayer(ArrayList<TennisPlayer> players, String name, int age,
-                                                String nationality) {
+    private TennisPlayer FindTennisPlayer(ArrayList<TennisPlayer> players, String name, int age, String nationality) {
         TennisPlayer newPlayer = new TennisPlayer(name, age, nationality);
         for (TennisPlayer player : players) {
             if (player.equals(newPlayer)) {
@@ -113,7 +112,6 @@ public class TennisPlayerList {
         players.add(newPlayer);
         return newPlayer;
     }
-
 
 
     /**
