@@ -7,4 +7,4 @@ Responsibilities:
 * Getters and setters for above
 
 Collaborators:
-* HockeyPlayer
+* player.HockeyPlayer

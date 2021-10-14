@@ -1,5 +1,5 @@
-Class name: HockeyPlayer
-Parent name: Player
+Class name: player.HockeyPlayer
+Parent name: player.HockeyPlayer
 Subclasses:
 
 Responsibilities:
