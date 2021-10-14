@@ -1,10 +1,15 @@
+package player;
+
+import commands.*;
+import player.*;
+
 import java.util.*;
 
 /**
  * A class for comparing two or more players based on a specific statistic in a specific season.
  */
 
-public class PlayerStatComparer {
+public class PlayerStatComparer implements Command {
     protected String[] playerNames;
     protected String stat;
     protected String season;
@@ -15,7 +20,7 @@ public class PlayerStatComparer {
         this.season = season;
     }
 
-    public StringBuilder compare() throws Exception {
+    public String execute() throws Exception {
 
         // Throw exception for a list of statistics that are invalid for comparison
         List<String> invalidStats = Arrays.asList( "name", "season", "team", "skater shoots","position");
@@ -24,13 +29,13 @@ public class PlayerStatComparer {
         }
 
         PlayerList p = new PlayerList();
-        HashMap<String, List<Player>> playerMap = p.getPlayerMap();
-        List<Player> listDemandedPlayers = new ArrayList<>();
+        HashMap<String, List<HockeyPlayer>> playerMap = p.getPlayerMap();
+        List<HockeyPlayer> listDemandedPlayers = new ArrayList<>();
 
         for (String season: playerMap.keySet()){ // loop through the season and add demanded Player object to the list of
                                                     // demanded players.
             if (season.equals(this.season)){
-                for (Player playerInfo: playerMap.get(season)){
+                for (HockeyPlayer playerInfo: playerMap.get(season)){
                     if (Arrays.asList(this.playerNames).contains(playerInfo.name)){
                         listDemandedPlayers.add(playerInfo);
                     }
@@ -46,7 +51,7 @@ public class PlayerStatComparer {
         StringBuilder compareToReturn = new StringBuilder("From min to max:\n");
         List<Integer> listDemandedStats = new ArrayList<>();
 
-        for (Player player: listDemandedPlayers) {
+        for (HockeyPlayer player: listDemandedPlayers) {
             listDemandedStats.add(Integer.valueOf(player.getStat(this.stat)));
         }
         Collections.sort(listDemandedStats);
@@ -56,7 +61,7 @@ public class PlayerStatComparer {
                     append(listDemandedStats.get(j)).append(this.stat).append('\n');
         }
 
-        return compareToReturn;
+        return compareToReturn.toString();
 
 
         }

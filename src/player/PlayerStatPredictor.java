@@ -1,9 +1,13 @@
+package player;
+
+import commands.*;
+
 import java.util.*;
 
 /**
  * Predict a player's performance in season 2021-2022 in a given statistic.
  */
-public class PlayerStatPredictor {
+public class PlayerStatPredictor implements Command {
     protected String playerName;
     protected String stat;
 
@@ -12,7 +16,7 @@ public class PlayerStatPredictor {
         this.stat = stat;
     }
 
-    public String predict() throws Exception {
+    public String execute() throws Exception {
         // Throw exception for a list of statistics that are invalid for comparison
         List<String> invalidStats = Arrays.asList( "name", "season", "team", "skater shoots","position");
         if (invalidStats.contains(this.stat)){
@@ -20,11 +24,11 @@ public class PlayerStatPredictor {
         }
 
         PlayerList p = new PlayerList();
-        HashMap<String, List<Player>> playerMap = p.getPlayerMap();
-        List<Player> listDemandedInfo = new ArrayList<>(); // list of Player objects of a specific player for each season
+        HashMap<String, List<HockeyPlayer>> playerMap = p.getPlayerMap();
+        List<HockeyPlayer> listDemandedInfo = new ArrayList<>(); // list of Player objects of a specific player for each season
 
         for (String season: playerMap.keySet()){
-            for (Player playerInfo : playerMap.get(season)){
+            for (HockeyPlayer playerInfo : playerMap.get(season)){
                 if (playerInfo.name.equals(this.playerName)){
                     listDemandedInfo.add(playerInfo);
                 }
@@ -32,7 +36,7 @@ public class PlayerStatPredictor {
         }
         List<Integer> xAxis = new ArrayList<>(); // x-axis of the graph = seasons
         List<Integer> yAxis = new ArrayList<>(); //y-axis of the graph = demanded stat
-        for (Player demandStat: listDemandedInfo){
+        for (HockeyPlayer demandStat: listDemandedInfo){
             xAxis.add(Integer.valueOf(demandStat.season));
             yAxis.add(Integer.valueOf(demandStat.getStat(this.stat)));
         }

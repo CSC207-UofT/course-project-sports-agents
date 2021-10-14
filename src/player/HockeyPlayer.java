@@ -1,10 +1,11 @@
+package player;
 
 import java.util.HashMap;
 import java.util.Map;
 /**
  * A player Class.
  */
-public class Player {
+public class HockeyPlayer {
     protected String name;
     protected String season;
     protected String team;
@@ -17,9 +18,9 @@ public class Player {
     protected String shots;
     protected String shootingPercentage;
 
-    public Player(String name, String season, String team, String skaterShoots, String position,
-                  String gamesPlayed, String goals, String assists, String points, String shots,
-                  String shootingPercentage) {
+    public HockeyPlayer(String name, String season, String team, String skaterShoots, String position,
+                        String gamesPlayed, String goals, String assists, String points, String shots,
+                        String shootingPercentage) {
         this.name = name;
         this.season = season;
         this.team = team;

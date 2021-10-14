@@ -1,3 +1,7 @@
+package player;
+
+import player.*;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -7,7 +11,7 @@ import java.util.*;
  * Read csv file and create a hash map where the key is the season and the value is a list of players objects.
  */
 public class PlayerList {
-    private HashMap<String, List<Player>> playerMap = new HashMap<>();
+    private HashMap<String, List<HockeyPlayer>> playerMap = new HashMap<>();
 
     public PlayerList() {
         String line = "";
@@ -24,7 +28,7 @@ public class PlayerList {
                 String[] playerInfo = line.split(splitBy);
                 for (String season: seasons){
                     if (playerInfo[1].equals(season)){ //adding Player object to the corresponding season
-                        this.playerMap.get(season).add(new Player(playerInfo[0], playerInfo[1],
+                        this.playerMap.get(season).add(new HockeyPlayer(playerInfo[0], playerInfo[1],
                                 playerInfo[2], playerInfo[3], playerInfo[4], playerInfo[5], playerInfo[6],
                                 playerInfo[7], playerInfo[8], playerInfo[9], playerInfo[10]));
                     }
@@ -37,7 +41,7 @@ public class PlayerList {
 
     }
 
-    public HashMap<String, List<Player>> getPlayerMap() {
+    public HashMap<String, List<HockeyPlayer>> getPlayerMap() {
         return this.playerMap;
     }
 }
