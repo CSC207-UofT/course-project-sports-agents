@@ -29,4 +29,24 @@ public class TennisPlayerTest {
         assertEquals(3, player.getGamesLost());
     }
 
+    @Test(timeout = 50)
+    public void TestUpdateSetsWonAndLost() {
+        player.setSetsWon(6);
+        player.setSetsLost(3);
+        player.updateSetsWon(2);
+        player.updateSetsLost(4);
+        assertEquals(8, player.getSetsWon());
+        assertEquals(7, player.getSetsLost());
+    }
+
+    @Test(timeout = 50)
+    public void TestUpdateGamesWonAndLost() {
+        player.setGamesWon(10);
+        player.setGamesLost(2);
+        player.updateGamesWon(4);
+        player.updateGamesLost(3);
+        assertEquals(14, player.getGamesWon());
+        assertEquals(5, player.getGamesLost());
+    }
+
 }

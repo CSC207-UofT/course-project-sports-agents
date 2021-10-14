@@ -15,15 +15,14 @@ public class TennisPlayer extends Player {
      * @param name player's name
      * @param age player's age
      * @param nationality player's nationality
-     * @param rounds the name of all the tournament rounds this player participated in for a specific tournament
      * @param setsWon number of sets won by player
      * @param setsLost number of sets lost by player
      * @param gamesWon number of games won by player
      * @param gamesLost number of games lost by player
      */
-    public TennisPlayer(String name, int age, String nationality, ArrayList<Match> rounds, int setsWon, int setsLost,
+    public TennisPlayer(String name, int age, String nationality, int setsWon, int setsLost,
                         int gamesWon, int gamesLost) {
-        super(name, age, nationality, rounds);
+        super(name, age, nationality);
         this.setsWon = setsWon;
         this.setsLost = setsLost;
         this.gamesWon = gamesWon;
@@ -52,7 +51,16 @@ public class TennisPlayer extends Player {
      * @param setsWon number of sets won
      */
     public void setSetsWon(int setsWon) {
-        this.setsWon = setsWon;
+        this.setsWon = this.setsWon + setsWon;
+    }
+
+
+    /**
+     * Update the number of sets won by this player
+     * @param sets number of new sets won by player
+     */
+    public void updateSetsWon(int sets) {
+        this.setsWon = this.setsWon + sets;
     }
 
 
@@ -64,6 +72,14 @@ public class TennisPlayer extends Player {
         return this.setsWon;
     }
 
+
+    /**
+     * Update the number of sets lost by this player
+     * @param sets number of new sets lost by this player
+     */
+    public void updateSetsLost(int sets) {
+        this.setsLost = this.setsLost + sets;
+    }
 
     /**
      * Record the number of sets lost by this player
@@ -84,6 +100,15 @@ public class TennisPlayer extends Player {
 
 
     /**
+     * Update the number of games won by this player
+     * @param games number of new games won by this player
+     */
+    public void updateGamesWon(int games) {
+        this.gamesWon = this.gamesWon + games;
+    }
+
+
+    /**
      * Record the number of games won by this player
      * @param gamesWon number of games won
      */
@@ -98,6 +123,15 @@ public class TennisPlayer extends Player {
      */
     public int getGamesWon() {
         return this.gamesWon;
+    }
+
+
+    /**
+     * Update the number of games lost by this player
+     * @param games number of new games lost by this player
+     */
+    public void updateGamesLost(int games) {
+        this.gamesLost = this.gamesLost + games;
     }
 
 

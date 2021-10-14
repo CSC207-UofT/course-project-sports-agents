@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * This is an abstract class for any future players that need to be added.
@@ -8,34 +9,18 @@ public abstract class Player {
     private final String name;
     private int age;
     private final String nationality;
-    private ArrayList<Match> matches;
 
 
     /**
-     * Construct a Player with name, age, nationality, and matches they have participated in
+     * Construct a Player with name, age, and nationality
      * @param name Player's name
      * @param age Player's age
      * @param nationality Player's nationality
-     */
-    public Player(String name, int age, String nationality, ArrayList<Match> matches) {
-        this.name = name;
-        this.age = age;
-        this.nationality = nationality;
-        this.matches = matches;
-    }
-
-
-    /**
-     * Construct a player who has not participated in any matches
-     * @param name player's name
-     * @param age player's age
-     * @param nationality player's nationality
      */
     public Player(String name, int age, String nationality) {
         this.name = name;
         this.age = age;
         this.nationality = nationality;
-        this.matches = new ArrayList<>();
     }
 
 
@@ -86,12 +71,27 @@ public abstract class Player {
 
 
     /**
-     * Record the matches this player has participated in
-     * @param matches player's matches
+     * Compare two players to check if they are equal
+     * @param obj another player
+     * @return true if the two players are the same, and false otherwise
      */
-    public void setMatches(ArrayList<Match> matches) {
-        this.matches = matches;
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (this.getClass() != obj.getClass()) {
+            return false;
+        }
+        Player other = (Player) obj;
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        } else if (!Objects.equals(this.nationality, other.nationality)) {
+            return false;
+        } else return this.age == other.age;
     }
-
 }
 

@@ -17,16 +17,15 @@ public class HockeyPlayer extends Player {
      * @param name player's name
      * @param age player's age
      * @param nationality player's nationality
-     * @param matches matches the player has participated in for the season
      * @param position player's position
      * @param team player's team
      * @param goals player's number of goals
      * @param assists player's number of assists
      * @param points player's number of points
      */
-    public HockeyPlayer(String name, int age, String nationality, ArrayList<Match> matches, String position,
-                        String team, int goals, int assists, int points) {
-        super(name, age, nationality, matches);
+    public HockeyPlayer(String name, int age, String nationality, String position, String team, int goals,
+                        int assists, int points) {
+        super(name, age, nationality);
         this.position = position;
         this.team = team;
         this.goals = goals;
@@ -42,7 +41,7 @@ public class HockeyPlayer extends Player {
      * @param nationality Player's nationality
      */
     public HockeyPlayer(String name, int age, String nationality) {
-        super(name, age, nationality, new ArrayList<>());
+        super(name, age, nationality);
         this.goals = 0;
         this.assists = 0;
         this.points = 0;

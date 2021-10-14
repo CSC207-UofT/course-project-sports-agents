@@ -1,0 +1,40 @@
+winner_name,winner_age,winner_nationality,loser_name,loser_age,loser_nationality,winner_sets_won,loser_sets_won,winner_games_won,loser_games_won
+Grigor Dimitrov,30,Bulgarian,Kei Nishikori,31,Japanese,2,1,14,11
+Grigor Dimitrov,30,Bulgarian,Milos Raonic,30,Canadian,2,0,13,8
+Kei Nishikori,31,Japanese,Stan Wawrinka,36,Swiss,2,0,13,9
+Milos Raonic,30,Canadian,Rafael Nadal,35,Spanish,2,1,16,13
+Stan Wawrinka,36,Swiss,Kyle Edmund,26,British,2,1,18,15
+Kei Nishikori,31,Japanese,Jordan Thompson,27,Australian,2,0,12,2
+Grigor Dimitrov,30,Bulgarian,Dominic Thiem,28,Austrian,2,1,16,12
+Milos Raonic,30,Canadian,Diego Schwartzman,29,Argentine,2,0,12,5
+Stan Wawrinka,36,Swiss,Viktor Troicki,35,Serbian,2,0,13,10
+Kei Nishikori,31,Japanese,Jared Donaldson,25,American,2,1,16,13
+Dominic Thiem,28,Austrian,Sam Groth,33,Australian,2,0,13,9
+Rafael Nadal,35,Spanish,Mischa Zverev,34,German,2,0,12,2
+Kyle Edmund,26,British,Lucas Pouille,27,French,2,0,9,4
+Grigor Dimitrov,30,Bulgarian,Nicolas Mahut,39,French,2,0,12,6
+Jordan Thompson,27,Australian,David Ferrer,39,Spanish,2,1,18,16
+Rafael Nadal,35,Spanish,Alexandr Dolgopolov,32,Ukranian,2,0,12,6
+Lucas Pouille,27,French,Gilles Simon,36,French,2,0,14,12
+Grigor Dimitrov,30,Bulgarian,Steve Johnson,31,American,2,0,12,5
+David Ferrer,39,Spanish,Bernard Tomic,28,Australian,2,0,13,8
+Jared Donaldson,25,American,Gilles Muller,38,Luxembourg,2,0,12,8
+Kyle Edmund,26,British,Ernesto Escobedo,25,American,2,0,14,12
+Sam Groth,33,Australian,Pierre-Hugues Herbert,30,French,2,1,18,15
+Nicolas Mahut,39,French,Stephane Robert,41,French,2,1,16,13
+Diego Schwartzman,29,Argentine,Sam Querrey,34,American,2,0,12,6
+Jordan Thompson,27,Australian,Elias Ymer,25,Swedish,2,0,12,5
+Viktor Troicki,35,Serbian,Yoshihito Nishioka,26,Japanese,2,0,13,9
+Mischa Zverev,34,German,Alex de Minaur,22,Australian,2,0,12,6
+Yoshihito Nishioka,26,Japanese,Tim Smyczek,33,American,2,0,13,9
+Jared Donaldson,27,Australian,John-Patrick Smith,32,Australian,2,1,17,14
+Alex de Minaur,22,Australian,Frances Tiafoe,23,American,2,1,18,15
+Ernesto Escobedo,25,American,Ivan Dodig,36,Croatian,2,1,18,13
+Alex de Minaur,22,Australian,Mikhail Kukushkin,33,Kazakhstani,2,0,13,10
+Ivan Dodig,36,Croatian,Ryan Harrison,29,American,2,1,16,14
+Yoshihito Nishioka,26,Japanese,Go Soeda,37,Japanese,2,1,12,12
+Jared Donaldson,27,Australian,Rajeev Ram,37,American,2,0,12,6
+Frances Tiafoe,23,American,Andrew Whittington,28,Australian,2,0,13,9
+Tim Smyczek,33,American,Bjorn Fratangelo,28,American,2,1,16,11
+John-Patrick Smith,32,Australian,Stefan Kozlov,23,American,2,0,12,5
+Ernesto Escobedo,25,American,Tobias Kamke,35,German,2,0,12,7
