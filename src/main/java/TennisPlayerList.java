@@ -10,7 +10,7 @@ import java.util.Objects;
  * and store that data as a value in a HashMap with the name of the tournament as a key.
  */
 public class TennisPlayerList {
-    private static HashMap<String, ArrayList<TennisPlayer>> competitionToPlayers;
+    private final HashMap<String, ArrayList<TennisPlayer>> competitionToPlayers;
     static final int WINNER_NAME = 0;
     static final int WINNER_AGE = 1;
     static final int WINNER_NATIONALITY = 2;
@@ -63,6 +63,18 @@ public class TennisPlayerList {
         }
         return tennisPlayers;
     }
+
+
+    /**
+     * Add a new tournament to this map with the data found in file
+     * @param competition the name of the new tournament
+     * @param file a .csv file containing the player data
+     */
+    public void addTournament(String competition, FileReader file) {
+        ArrayList<TennisPlayer> newPlayers = generatePlayerList(file);
+        competitionToPlayers.put(competition, newPlayers);
+    }
+
 
     /**
      * This is a helper method for generatePlayerList; it updates a tennis player's sets won and lost, and games
@@ -149,14 +161,16 @@ public class TennisPlayerList {
      * @throws Exception if the tennis player or competition are not found
      */
     public String findTennisPlayer(String competition, String name) throws Exception {
-        if (containsPlayer(competition, name)) {
+        if (!(competitionToPlayers.containsKey(competition))) {
+            throw new Exception("Competition not found!");
+        } else if (containsPlayer(competition, name)) {
             for (TennisPlayer player : competitionToPlayers.get(competition)) {
                 if (Objects.equals(player.getName(), name)) {
                     return player.toString();
                 }
             }
         }
-        throw new Exception("Player or Competition not found!");
+        throw new Exception("Player not found!");
     }
 
 
@@ -170,9 +184,9 @@ public class TennisPlayerList {
         TennisPlayer winner = new TennisPlayer("NAME", 100, "NATIONALITY");
         ArrayList<TennisPlayer> competitionPlayers = competitionToPlayers.get(competition);
         for (TennisPlayer player : competitionPlayers) {
-            if (player.getSetsWon() > maxSets) {
+            if ((player.getSetsWon() - player.getSetsLost()) > maxSets) {
                 winner = player;
-                maxSets = player.getSetsWon();
+                maxSets = player.getSetsWon() - player.getSetsLost();
             }
         }
         return winner.toString();
