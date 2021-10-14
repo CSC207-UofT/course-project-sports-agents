@@ -10,7 +10,7 @@ public class TeamStatManager {
      * @param teamName
      * @return If team exists returns total games played, otherwise returns -1
      */
-    public float getTotalGamesPlayed(String teamName){
+    public int getTotalGamesPlayed(String teamName){
         Team team = teamManager.findTeamWithName(teamName);
         if(team != null){
             return team.getTotalGamesPlayed();
@@ -23,7 +23,7 @@ public class TeamStatManager {
      * @param teamName
      * @return If team exists returns number of wins, otherwise returns -1
      */
-    public float getWins(String teamName){
+    public int getWins(String teamName){
         Team team = teamManager.findTeamWithName(teamName);
         if(team != null){
             return team.getWins();
@@ -36,7 +36,7 @@ public class TeamStatManager {
      * @param teamName
      * @return If team exists returns number of losses, otherwise returns -1
      */
-    public float getLosses(String teamName){
+    public int getLosses(String teamName){
         Team team = teamManager.findTeamWithName(teamName);
         if(team != null){
             return team.getLosses();
@@ -49,7 +49,7 @@ public class TeamStatManager {
      * @param teamName
      * @return If team exists returns number of ties, otherwise returns -1
      */
-    public float getTies(String teamName){
+    public int getTies(String teamName){
         Team team = teamManager.findTeamWithName(teamName);
         if(team != null){
             return team.getTies();
@@ -65,7 +65,10 @@ public class TeamStatManager {
     public float getWinRate(String teamName){
         Team team = teamManager.findTeamWithName(teamName);
         if(team != null){
-            return team.getWins() / team.getTotalGamesPlayed() * 100;
+            if(team.getTotalGamesPlayed() == 0){
+                return 0;
+            }
+            return (float) team.getWins() / team.getTotalGamesPlayed() * 100;
         }
         return -1;
     }
@@ -78,7 +81,10 @@ public class TeamStatManager {
     public float getLossRate(String teamName){
         Team team = teamManager.findTeamWithName(teamName);
         if(team != null){
-            return team.getLosses() / team.getTotalGamesPlayed() * 100;
+            if(team.getTotalGamesPlayed() == 0){
+                return 0;
+            }
+            return (float) team.getLosses() / team.getTotalGamesPlayed() * 100; 
         }
         return -1;
     }
