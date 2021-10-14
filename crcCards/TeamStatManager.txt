@@ -1,0 +1,11 @@
+Class name: TeamStatManager
+Parent class: None
+Subclasses: None
+Layer: Use Case
+
+Responsibilities:
+* Find or compute statistics about a given Team
+
+Collaborators:
+* TeamManager
+* Team

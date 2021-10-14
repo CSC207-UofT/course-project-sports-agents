@@ -1,8 +1,11 @@
-Class name: Team
+Class name: Team (Abstract)
 Parent class: None
-Subclasses: HockeyTeam
+Subclasses: HockeyTeam, TennisTeam
+Layer: Entity
 
 Responsibilities:
-* Store players who are on the team
+* Store a team's name, home city, players, Games they played or are playing in, team's total number of games, wins, losses, and ties
+* Getters and Setters for the data above
 
 Collaborators:
+* 

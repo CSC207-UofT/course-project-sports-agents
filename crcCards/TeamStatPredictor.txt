@@ -1,0 +1,10 @@
+Class name: TeamStatPredictor
+Parent class: None
+Subclasses: None
+Layer: Use Case
+
+Responsibilities:
+* Given a Team has a past record for a statistic, predict their future performance on that statistic
+
+Collaborators:
+* TeamStatManager

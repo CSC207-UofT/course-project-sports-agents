@@ -1,0 +1,11 @@
+Class name: TeamManager
+Parent class: None
+Subclasses: None
+Layer: Use Case
+
+Responsibilities:
+* Store Teams, with getter
+* Create new teams
+
+Collaborators:
+* Team
