@@ -1,7 +1,7 @@
 package commands;
 
-public interface Command {
+public interface Command throws Exception{
 
-    public String execute() throws Exception;
+    public String execute();
 
 }
