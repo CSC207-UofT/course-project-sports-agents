@@ -7,19 +7,22 @@ import java.util.*;
 /**
  * Predict a player's performance in season 2021-2022 in a given statistic.
  */
-public class PlayerStatPredictor implements Command {
-    protected String playerName;
-    protected String stat;
+public class PlayerStatPredictor implements Command{
 
-    public PlayerStatPredictor(String playerName, String stat) {
-        this.playerName = playerName;
-        this.stat = stat;
-    }
+    /**
+     *
+     * @param arguments is a list of strings where ["player name", "stat"]
+     * @return the prediction of the stat based on the past data.
+     * @throws Exception when the player name is not found or the demanded stat is invalid.
+     */
+    @Override
+    public String execute(ArrayList<String> arguments) throws Exception {
+        String playerName = arguments.get(0);
+        String stat = arguments.get(1);
 
-    public String execute() throws Exception {
         // Throw exception for a list of statistics that are invalid for comparison
         List<String> invalidStats = Arrays.asList( "name", "season", "team", "skater shoots","position");
-        if (invalidStats.contains(this.stat)){
+        if (invalidStats.contains(stat)){
             throw new Exception("Invalid statistic for comparison!");
         }
 
@@ -29,16 +32,19 @@ public class PlayerStatPredictor implements Command {
 
         for (String season: playerMap.keySet()){
             for (HockeyPlayer playerInfo : playerMap.get(season)){
-                if (playerInfo.name.equals(this.playerName)){
+                if (playerInfo.name.equals(playerName)){
                     listDemandedInfo.add(playerInfo);
                 }
             }
         }
         List<Integer> xAxis = new ArrayList<>(); // x-axis of the graph = seasons
-        List<Integer> yAxis = new ArrayList<>(); //y-axis of the graph = demanded stat
+        List<Double> yAxis = new ArrayList<>(); //y-axis of the graph = demanded stat
+        HashMap<String, Integer> mappingSeasonToInt = new HashMap<>(Map.of("20162017", 1,
+                "20172018", 2, "20182019", 3, "20192020", 4, "20202021",5));
+
         for (HockeyPlayer demandStat: listDemandedInfo){
-            xAxis.add(Integer.valueOf(demandStat.season));
-            yAxis.add(Integer.valueOf(demandStat.getStat(this.stat)));
+            xAxis.add(mappingSeasonToInt.get(demandStat.season));
+            yAxis.add(Math.log10(Integer.parseInt(demandStat.getStat(stat))));
         }
         // plot a graph
         // ...
@@ -64,9 +70,8 @@ public class PlayerStatPredictor implements Command {
         double r = Math.pow(10, m);
         double a = Math.pow(10, b);
 
-        return "Predicted " + this.stat + ": " + a*Math.pow(r, 20202021);
+        return "Predicted " + stat + " approximately in season 2021-2022: " + (int)(a*Math.pow(r, 6));
 
     }
-
 
 }
