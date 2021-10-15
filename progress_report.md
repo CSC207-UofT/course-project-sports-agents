@@ -45,7 +45,7 @@ and other player-focused stat classes, like predictor, and comparer.
 Samuel started working on the TeamStatManager (to allow the user to
 get statistical data for teams), TeamStatComparer (to allow the user
 to compare statistical data for teams), TeamStatPredictor, and Team
-classes. Vishali focused on working on the Player and Team classes,
+classes. Vishali focused on working on the Player classes,
 which will store the necessary data to make statistical
 manipulations possible. Finally, Jack started working on the Match class,
 so that the user can make games and have the members make bets on them.
