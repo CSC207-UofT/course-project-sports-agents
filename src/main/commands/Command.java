@@ -9,6 +9,6 @@ public interface Command {
      * @return the output of processing the command
      * @throws Exception if the command is invalid
      */
-    public String execute(String[] command) throws Exception;
+    public String execute(String[] arguments) throws Exception;
 
 }
