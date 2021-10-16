@@ -1,11 +1,11 @@
-Class name: TeamStatManager
+Class name: commannds.TeamStatManager
 Parent class: None
 Subclasses: None
 Layer: Use Case
 
 Responsibilities:
-* Find or compute statistics about a given Team
+* Find or compute statistics about a given Team.Team
 
 Collaborators:
-* TeamManager
-* Team
+* Team.TeamManager
+* Team.Team

@@ -2,11 +2,10 @@ package SportsApp;
 
 import commands.Command;
 import member.MemberManager;
-import player.PlayerStatManager;
+import commannds.PlayerStatManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.List;
 
 public class commandManager {

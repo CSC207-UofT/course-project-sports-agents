@@ -1,6 +1,5 @@
+import Player.TennisPlayerList;
 import org.junit.*;
-
-import java.io.File;
 
 import static org.junit.Assert.*;
 

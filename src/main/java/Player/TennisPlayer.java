@@ -1,4 +1,6 @@
-import java.util.ArrayList;
+package Player;
+
+import Player.Player;
 
 /**
  * This class represents a tennis player.

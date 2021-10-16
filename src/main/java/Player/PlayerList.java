@@ -1,6 +1,4 @@
-package player;
-
-import player.*;
+package Player;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -27,7 +25,7 @@ public class PlayerList {
             while((line = br.readLine()) != null) {
                 String[] playerInfo = line.split(splitBy);
                 for (String season: seasons){
-                    if (playerInfo[1].equals(season)){ //adding Player object to the corresponding season
+                    if (playerInfo[1].equals(season)){ //adding player.Player object to the corresponding season
                         this.playerMap.get(season).add(new HockeyPlayer(playerInfo[0], playerInfo[1],
                                 playerInfo[2], playerInfo[3], playerInfo[4], playerInfo[5], playerInfo[6],
                                 playerInfo[7], playerInfo[8], playerInfo[9], playerInfo[10]));

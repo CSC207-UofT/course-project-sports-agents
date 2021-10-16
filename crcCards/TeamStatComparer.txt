@@ -1,4 +1,4 @@
-Class name: TeamStatComparer
+Class name: commannds.TeamStatComparer
 Parent class: None
 Subclasses: None
 Layer: Use Case
@@ -7,4 +7,4 @@ Responsibilities:
 * Compare two or more Teams on a given statistic
 
 Collaborators:
-* TeamStatManager
+* commannds.TeamStatManager

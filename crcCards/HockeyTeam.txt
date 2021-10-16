@@ -1,5 +1,5 @@
-Class name: HockeyTeam
-Parent class: Team
+Class name: Team.HockeyTeam
+Parent class: Team.Team
 Subclasses: None
 Layer: Entity
 

@@ -1,9 +1,9 @@
-Class name: player.HockeyPlayer
+Class name: Player.HockeyPlayer
 Parent class: None
-Subclasses: player.HockeyPlayer
+Subclasses: Player.HockeyPlayer
 
 Responsibilities:
-* Stores player name, age, team, role on team
+* Stores Player name, age, team, role on team
 * Getters and setters for above
 
 Collaborators:

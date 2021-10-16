@@ -7,7 +7,7 @@ The report should include:
 * and a brief summary of what each group member has been working on and plans to work on next.
 
 #### Brief summary of our specification:
-As mentioned in the specification, a user should be able to import/export data for a sports team/player
+As mentioned in the specification, a user should be able to import/export data for a sports team/Player
 and be able to retrieve within the app. Additionally, based on the data, the app should be able to 
 predict the outcome of a match. The user should also be able to create matches and members, who 
 can bet on the matches and attempt to predict the outcome of the match themselves; the app will track
@@ -26,11 +26,11 @@ will also make a prediction on the behalf of another member of the fantasy leagu
 #### Brief summary of the skeleton program
 Our skeleton program can add a member to their fantasy league. The user can also create matches, on which the members
 can bet and attempt to guess the outcome of the match. Finally, our skeleton program can retrieve the statistics and the
-data on a player and a team based on the name, which is passed as an argument in the CLI. 
+data on a Player and a team based on the name, which is passed as an argument in the CLI. 
 
 
 ####Open questions: 
-How should we implement data retrieval for the team/player statistics? Should the data be already stored in the app, 
+How should we implement data retrieval for the team/Player statistics? Should the data be already stored in the app, 
 or retrieved from a file or retrieved online using an API?
 Would it be possible for us to submit a .csv file with our program? Are there any particular restrictions about API
 usage for the assignment?
@@ -68,11 +68,11 @@ a section of a project in order to create our skeleton project.
 Karim started working on the CommandManager as well as the main method.
 Isaiah began working on the Member class to allow the main user to add
 members to their list. Nazanin began implementing the PlayerStatManager,
-and other player-focused stat classes, like predictor, and comparer.
-Samuel started working on the TeamStatManager (to allow the user to
-get statistical data for teams), TeamStatComparer (to allow the user
-to compare statistical data for teams), TeamStatPredictor, and Team
-classes. Vishali focused on working on the Player classes,
+and other Player-focused stat classes, like predictor, and comparer.
+Samuel started working on the commannds.TeamStatManager (to allow the user to
+get statistical data for teams), commannds.TeamStatComparer (to allow the user
+to compare statistical data for teams), commannds.TeamStatPredictor, and Team.Team
+classes. Vishali focused on working on the Player.Player classes,
 which will store the necessary data to make statistical
 manipulations possible. Finally, Jack started working on the Match class,
 so that the user can make games and have the members make bets on them.

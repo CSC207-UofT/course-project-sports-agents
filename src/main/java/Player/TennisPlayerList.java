@@ -1,3 +1,7 @@
+package Player;
+
+import Player.TennisPlayer;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -145,6 +149,6 @@ public class TennisPlayerList {
                 }
             }
         }
-        throw new Exception("Player not found!");
+        throw new Exception("player.Player not found!");
     }
 }

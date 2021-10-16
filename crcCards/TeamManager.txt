@@ -1,4 +1,4 @@
-Class name: TeamManager
+Class name: Team.TeamManager
 Parent class: None
 Subclasses: None
 Layer: Use Case
@@ -9,4 +9,4 @@ Responsibilities:
 * Find a team from all of the teams
 
 Collaborators:
-* Team
+* Team.Team

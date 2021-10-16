@@ -1,6 +1,6 @@
-Class name: Team (Abstract)
+Class name: Team.Team (Abstract)
 Parent class: None
-Subclasses: HockeyTeam, TennisTeam
+Subclasses: Team.HockeyTeam, Team.TennisTeam
 Layer: Entity
 
 Responsibilities:

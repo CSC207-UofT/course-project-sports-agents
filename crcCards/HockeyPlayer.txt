@@ -1,5 +1,5 @@
-Class name: player.HockeyPlayer
-Parent name: player.HockeyPlayer
+Class name: Player.HockeyPlayer
+Parent name: Player.HockeyPlayer
 Subclasses:
 
 Responsibilities:
@@ -8,4 +8,4 @@ Responsibilities:
 * Getters and setters for above
 
 Collaborators:
-* HockeyTeam
+* Team.HockeyTeam

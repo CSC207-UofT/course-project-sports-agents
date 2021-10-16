@@ -1,3 +1,5 @@
+package Player;
+
 import java.util.Objects;
 
 /**
@@ -9,8 +11,8 @@ public abstract class Player {
 
 
     /**
-     * Construct a Player with name
-     * @param name Player's name
+     * Construct a player.Player with name
+     * @param name player.Player's name
      */
     public Player(String name) {
         this.name = name;

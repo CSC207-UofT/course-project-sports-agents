@@ -1,5 +1,7 @@
-package player;
+package commannds;
 
+import Player.HockeyPlayer;
+import Player.PlayerList;
 import commands.*;
 
 import java.util.*;
@@ -28,7 +30,7 @@ public class PlayerStatPredictor implements Command{
 
         PlayerList p = new PlayerList();
         HashMap<String, List<HockeyPlayer>> playerMap = p.getPlayerMap();
-        List<HockeyPlayer> listDemandedInfo = new ArrayList<>(); // list of Player objects of a specific player for each season
+        List<HockeyPlayer> listDemandedInfo = new ArrayList<>(); // list of player.Player objects of a specific player for each season
 
         for (String season: playerMap.keySet()){
             for (HockeyPlayer playerInfo : playerMap.get(season)){

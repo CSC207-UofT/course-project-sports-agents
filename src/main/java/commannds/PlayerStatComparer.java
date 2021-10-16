@@ -1,7 +1,9 @@
-package player;
+package commannds;
 
+import Player.GetStatsComparator;
+import Player.HockeyPlayer;
+import Player.PlayerList;
 import commands.*;
-import player.*;
 
 import java.util.*;
 
@@ -35,7 +37,7 @@ public class PlayerStatComparer implements Command {
         HashMap<String, List<HockeyPlayer>> playerMap = p.getPlayerMap();
         List<HockeyPlayer> listDemandedPlayers = new ArrayList<>();
 
-        for (String season: playerMap.keySet()){ // loop through the season and add demanded Player object to the list of
+        for (String season: playerMap.keySet()){ // loop through the season and add demanded player.Player object to the list of
                                                     // demanded players.
             if (season.equals(demandedSeason)){
                 for (HockeyPlayer playerInfo: playerMap.get(season)){

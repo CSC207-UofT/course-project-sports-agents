@@ -1,3 +1,7 @@
+package Team;
+
+import Player.Player;
+
 import java.util.ArrayList;
 
 public abstract class Team {
