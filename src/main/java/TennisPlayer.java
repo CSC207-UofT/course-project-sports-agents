@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class TennisPlayer extends Player {
     private int age;
-    private String country;
+    private final String country;
     private int aces;
     private int doubleFaults;
     private int servePoints;

@@ -12,6 +12,13 @@ public class TennisPlayerStatManager implements Command {
 
     public TennisPlayerStatManager() {}
 
+
+    /**
+     * Return the specified stat for the specified player, who participated in the specified competition
+     * @param arguments a list in the format [player name, stat, competition]
+     * @return the specified stat of the player
+     * @throws Exception if the competition or player could not be found
+     */
     @Override
     public String execute(ArrayList<String> arguments) throws Exception {
         String neededName = arguments.get(PLAYER_NAME);

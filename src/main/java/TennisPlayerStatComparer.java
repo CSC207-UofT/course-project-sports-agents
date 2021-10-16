@@ -13,6 +13,16 @@ public class TennisPlayerStatComparer implements Command {
 
     public TennisPlayerStatComparer() {}
 
+
+    /**
+     * Return the player with the highest specified stat (e.g. aces, double faults, first serves, serve points,
+     * and break points saved)
+     * @param arguments a list in the format: [player one, player two, stat, competition]
+     * @return the player with the higher stat, reported as maximum, and the player with the lower stat, reported
+     * as minimum
+     * @throws Exception if the players cannot be found, the competition cannot be found, or the specified stat cannot
+     * be compared
+     */
     @Override
     public String execute(ArrayList<String> arguments) throws Exception {
         String playerOneName = arguments.get(PLAYER_ONE);
@@ -42,6 +52,10 @@ public class TennisPlayerStatComparer implements Command {
 
         if (neededPlayers.size() < 2) {
             throw new Exception("Could not find all players!");
+        }
+
+        if (neededStat.equals("name") | neededStat.equals("country")) {
+            throw new Exception("Cannot compare those values!");
         }
 
         int playerOneStat = Integer.parseInt(neededPlayers.get(PLAYER_ONE).getNeededStat(neededStat));
