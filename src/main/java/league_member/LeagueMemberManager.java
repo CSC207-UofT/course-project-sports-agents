@@ -69,7 +69,7 @@ public class LeagueMemberManager implements Command {
         String team2name = arguments.get(3);
         // TODO: Verify that the given teams exist
 
-        Match createdMatch = new Match(matchName, team1Name, team2name);
+        Match createdMatch = new Match(team1Name, team2name);
         this.MatchMap.put(matchName, createdMatch);
         return "New " + createdMatch + " successfully created.";
     }
@@ -92,7 +92,7 @@ public class LeagueMemberManager implements Command {
         Match targetMatch = this.MatchMap.get(matchName);
 
         String favoredTeamName = arguments.get(3);
-        targetMatch.recordBet(bettingLeagueMember, favoredTeamName);
+        targetMatch.addBet(bettingLeagueMember, favoredTeamName);
         return memberName + " has successfully placed a bet that " +
                 favoredTeamName + " will win " + matchName;
     }

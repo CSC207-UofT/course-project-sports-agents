@@ -1,6 +1,7 @@
 package league_member;
 
 public class LeagueMember {
+    // TODO: need to make LeagueMember hashable; I think you can use the name attribute in order to hash it properly
     private final String name;
     private int correctBets;
     private int incorrectBets;

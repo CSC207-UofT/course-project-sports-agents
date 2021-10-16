@@ -1,17 +1,18 @@
 package match;
 
-import java.lang.reflect.Member;
+import league_member.LeagueMember;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
 
 public class Match {
-    private HashMap<Member, String> Bets;
-    private final String matchName, teamA, teamB;
+    // TODO: Need to make the Member class hashable or find a different implementation
+    private HashMap<LeagueMember, String> bets;
+    private final String teamA, teamB;
     private int scoreA, scoreB;
 
-    public Match(String matchName, String teamA, String teamB) {
-        this.matchName = matchName;
+    public Match(String teamA, String teamB) {
         this.teamA = teamA;
         this.teamB = teamB;
         this.scoreA = 0;
@@ -52,10 +53,10 @@ public class Match {
     }
 
 
-    public Boolean AddBet(Member m, String team){
+    public Boolean addBet(LeagueMember m, String team){
         /* Bet includes a member name and their team they bet on */
         if (team.equals(this.teamA)||team.equals(this.teamB)) {
-            this.Bets.put(m, team);
+            this.bets.put(m, team);
             return true;
         }
         return false;
@@ -63,15 +64,15 @@ public class Match {
 
     }
 
-    public HashMap<Member, String> getBets() {
-        return this.Bets;
+    public HashMap<LeagueMember, String> getBets() {
+        return this.bets;
     }
 
 
-    public ArrayList<Member> getBetWinners() {
-        ArrayList<Member> winners = new ArrayList<Member>();
-        for (Member m : this.Bets.keySet()) {
-            if (this.Bets.get(m).equals(getWinningTeam())) {
+    public ArrayList<LeagueMember> getBetWinners() {
+        ArrayList<LeagueMember> winners = new ArrayList<LeagueMember>();
+        for (LeagueMember m : this.bets.keySet()) {
+            if (this.bets.get(m).equals(getWinningTeam())) {
                 winners.add(m);
             }
         }
@@ -80,6 +81,18 @@ public class Match {
 
     public int getNumBetWinners() {
         return getBetWinners().size();
+    }
+
+    public void resolve(String winner) {
+        // TODO: Make sure to check that the winner is valid, i.e. it's either team a or team b, also can be a tie
+        for (HashMap.Entry<LeagueMember, String> set: bets.entrySet()) {
+            if (set.getValue().equals(winner)) {
+                set.getKey().recordCorrectBet();
+            }
+            else {
+                set.getKey().recordIncorrectBet();
+            }
+        }
     }
 
 
