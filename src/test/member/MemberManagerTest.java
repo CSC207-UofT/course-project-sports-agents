@@ -13,7 +13,7 @@ public class MemberManagerTest {
         m = new MemberManager();
     }
 
-    // TODO: Break up these tests?
+    // TODO: Break up these tests. Most rely on multiple methods.
 
     @Test
     public void testAddMember() {
@@ -28,6 +28,11 @@ public class MemberManagerTest {
         } catch (Exception e) {
             assertEquals(e.getMessage(), "Paul Gries is already an existing Member!");
         }
+
+        String[] memberInfoCommand = {"member_info", "Paul Gries"};
+        assertEquals(m.execute(memberInfoCommand),
+                "Member Paul Gries with 0 correct bet(s) and " +
+                        "0 incorrect bet(s)");
     }
 
     @Test
@@ -48,15 +53,9 @@ public class MemberManagerTest {
 
     @Test
     public void testBet() {
-        String[] addMemberCommand = {"add_member", "Paul Gries"};
-        assertEquals(m.execute(addMemberCommand),
-                "New Member Paul Gries with 0 correct bet(s) and " +
-                        "0 incorrect bet(s) successfully added.");
+        testAddMember();
 
-        String[] createMatchCommand = {"create_match", "Superb Owl",
-                "Ravens", "Owls"};
-        assertEquals(m.execute(createMatchCommand),
-                "New Match Superb Owl successfully created.");
+        testCreateMatch();
 
         String[] betCommand = {"bet", "Paul Gries",
                 "Superb Owl", "Owls"};
@@ -96,21 +95,7 @@ public class MemberManagerTest {
 
     @Test
     public void testResolveMatch() {
-        String[] addMemberCommand = {"add_member", "Paul Gries"};
-        assertEquals(m.execute(addMemberCommand),
-                "New Member Paul Gries with 0 correct bet(s) and " +
-                        "0 incorrect bet(s) successfully added.");
-
-        String[] createMatchCommand = {"create_match", "Superb Owl",
-                "Ravens", "Owls"};
-        assertEquals(m.execute(createMatchCommand),
-                "New Match Superb Owl successfully created.");
-
-        String[] betCommand = {"bet", "Paul Gries",
-                "Superb Owl", "Owls"};
-        assertEquals(m.execute(betCommand),
-                "Paul Gries has successfully placed a bet that " +
-                        "Owls will win Superb Owl");
+        testBet();
 
         String[] resolveMatchCommand = {"resolve_match", "Superb Owl", "Owls"};
         assertEquals(m.execute(resolveMatchCommand),
@@ -123,5 +108,10 @@ public class MemberManagerTest {
         } catch (Exception e) {
             assertEquals(e.getMessage(), "Superb Owl is not an existing Match!");
         }
+
+        String[] memberInfoCommand = {"member_info", "Paul Gries"};
+        assertEquals(m.execute(memberInfoCommand),
+                "Member Paul Gries with 1 correct bet(s) and " +
+                        "0 incorrect bet(s)");
     }
 }

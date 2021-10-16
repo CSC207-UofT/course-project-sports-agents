@@ -23,6 +23,7 @@ public class MemberManager implements Command {
             case "create_match" -> createMatch(arguments);
             case "bet" -> bet(arguments);
             case "resolve_match" -> resolveMatch(arguments);
+            case "member_info" -> memberInfo(arguments);
             default -> throw new Exception("Invalid Command provided!");
         };
     }
@@ -104,6 +105,19 @@ public class MemberManager implements Command {
         this.MatchMap.remove(matchName);
         return matchName + " was successfully resolved with " +
                 winningTeam + " as the victors.";
+    }
+
+    /**
+     * Return information on a given Member
+     * @param arguments String array for form {"member_info", <member name>}
+     * @return a string representation of the member
+     * @throws Exception if the Member does not exist
+     */
+    private String memberInfo(String[] arguments) throws Exception {
+        String memberName = arguments[1];
+        verifyMember(memberName);
+        Member targetMember = this.MemberMap.get(memberName);
+        return targetMember.toString();
     }
 
     /**
