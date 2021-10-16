@@ -1,5 +1,4 @@
-package league_member;
-
+import league_member.LeagueMember;
 import org.junit.Before;
 import org.junit.Test;
 
