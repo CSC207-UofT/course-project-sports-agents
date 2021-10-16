@@ -1,25 +1,32 @@
 package SportsApp;
 
+import commands.Command;
+import member.MemberManager;
+import player.PlayerStatManager;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.List;
 
 public class commandManager {
 
-    private static final HashMap<String, Command> commandDictionairy;
+    private static final HashMap<String, Command> commandDictionary = new HashMap<String, Command>();
 
-//    commandDictionairy.put("stats_m", new TeamStatsManager());
-    public String execute(String input) {
+    static {
+        commandDictionary.put("stats_player", new PlayerStatManager());
+        commandDictionary.put("member_manager", new MemberManager());
+    }
+    public String execute(String input) throws Exception {
         if (input.equals("")) {
             return "";
         }
-        ArrayList<String> splited = parse(input);
-        String command_keyword = splited.get(0);
+        ArrayList<String> split_input = parse(input);
+        String command_keyword = split_input.get(0);
 
-        Command command = commandDictionairy.get(command_keyword);
-        String output = command.execute(splited.get(1));
-
-        return output;
+        Command command = commandDictionary.get(command_keyword);
+        ArrayList<String> arguments = (ArrayList<String>) split_input.subList(1, split_input.size());
+        return command.execute(arguments);
     }
 
     private ArrayList<String> parse(String input) {
