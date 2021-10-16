@@ -1,7 +1,7 @@
 package commands;
 
 import Team.Team;
-import Team.TeamManager
+import Team.TeamManager;
 
 public class TeamStatManager {
     TeamManager teamManager;
