@@ -14,39 +14,37 @@ public class TennisPlayerTest {
     public void tearDown() {}
 
     @Test(timeout = 50)
-    public void TestSetsWonAndLost() {
-        player.setSetsWon(2);
-        player.setSetsLost(1);
-        assertEquals(2, player.getSetsWon());
-        assertEquals(1, player.getSetsLost());
+    public void TestAcesSetterAndGetter() {
+        player.setAces(2);
+        player.updateAces(4);
+        assertEquals(6, player.getAces());
     }
 
     @Test(timeout = 50)
-    public void TestGamesWonAndLost() {
-        player.setGamesWon(6);
-        player.setGamesLost(3);
-        assertEquals(6, player.getGamesWon());
-        assertEquals(3, player.getGamesLost());
+    public void TestDoubleFaultsSetterAndGetter() {
+        player.setDoubleFaults(3);
+        player.updateDoubleFaults(10);
+        assertEquals(13, player.getDoubleFaults());
     }
 
     @Test(timeout = 50)
-    public void TestUpdateSetsWonAndLost() {
-        player.setSetsWon(6);
-        player.setSetsLost(3);
-        player.updateSetsWon(2);
-        player.updateSetsLost(4);
-        assertEquals(8, player.getSetsWon());
-        assertEquals(7, player.getSetsLost());
+    public void TestServePointsSetterAndGetter() {
+        player.setServePoints(8);
+        player.updateServePoints(10);
+        assertEquals(18, player.getServePoints());
     }
 
     @Test(timeout = 50)
-    public void TestUpdateGamesWonAndLost() {
-        player.setGamesWon(10);
-        player.setGamesLost(2);
-        player.updateGamesWon(4);
-        player.updateGamesLost(3);
-        assertEquals(14, player.getGamesWon());
-        assertEquals(5, player.getGamesLost());
+    public void TestFirstServesSetterAndGetter() {
+        player.setFirstServes(4);
+        player.updateFirstServes(10);
+        assertEquals(14, player.getFirstServes());
     }
 
+    @Test(timeout = 50)
+    public void TestBreakPointsSetterAndGetter() {
+        player.setBreakPointsSaved(2);
+        player.updateBreakPointsSaved(3);
+        assertEquals(5, player.getBreakPointsSaved());
+    }
 }

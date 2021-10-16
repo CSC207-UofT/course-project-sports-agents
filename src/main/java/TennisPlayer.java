@@ -5,28 +5,34 @@ import java.util.ArrayList;
  */
 
 public class TennisPlayer extends Player {
-    private int setsWon;
-    private int setsLost;
-    private int gamesWon;
-    private int gamesLost;
+    private int age;
+    private String country;
+    private int aces;
+    private int doubleFaults;
+    private int servePoints;
+    private int firstServes;
+    private int breakPointsSaved;
 
     /**
      * Construct a tennis player with the following information specified
      * @param name player's name
      * @param age player's age
-     * @param nationality player's nationality
-     * @param setsWon number of sets won by player
-     * @param setsLost number of sets lost by player
-     * @param gamesWon number of games won by player
-     * @param gamesLost number of games lost by player
+     * @param country IOC code for this player's country
+     * @param aces number of aces made by this player
+     * @param servePoints number of serve points won by this player
+     * @param firstServes number of first serves made by this player
+     * @param breakPointsSaved number of break points saved
      */
-    public TennisPlayer(String name, int age, String nationality, int setsWon, int setsLost,
-                        int gamesWon, int gamesLost) {
-        super(name, age, nationality);
-        this.setsWon = setsWon;
-        this.setsLost = setsLost;
-        this.gamesWon = gamesWon;
-        this.gamesLost = gamesLost;
+    public TennisPlayer(String name, int age, String country, int aces, int doubleFaults,
+                        int servePoints, int firstServes, int breakPointsSaved) {
+        super(name);
+        this.age = age;
+        this.country = country;
+        this.aces = aces;
+        this.doubleFaults = doubleFaults;
+        this.servePoints = servePoints;
+        this.firstServes = firstServes;
+        this.breakPointsSaved = breakPointsSaved;
     }
 
 
@@ -35,121 +41,179 @@ public class TennisPlayer extends Player {
      * and 0 games won and lost
      * @param name player's name
      * @param age player's age
-     * @param nationality player's nationality
+     * @param country player's country
      */
-    public TennisPlayer(String name, int age, String nationality) {
-        super(name, age, nationality);
-        this.setsWon = 0;
-        this.setsLost = 0;
-        this.gamesWon = 0;
-        this.gamesLost = 0;
+    public TennisPlayer(String name, int age, String country) {
+        super(name);
+        this.age = age;
+        this.country = country;
+        this.aces = 0;
+        this.doubleFaults = 0;
+        this.servePoints = 0;
+        this.firstServes = 0;
+        this.breakPointsSaved = 0;
     }
 
 
     /**
-     * Record the number of sets won by this player
-     * @param setsWon number of sets won
+     * Record this player's age
+     * @param age the player's age
      */
-    public void setSetsWon(int setsWon) {
-        this.setsWon = this.setsWon + setsWon;
+    public void setAge(int age) {
+        this.age = age;
     }
 
 
     /**
-     * Update the number of sets won by this player
-     * @param sets number of new sets won by player
+     * Return this player's age
+     * @return player's age
      */
-    public void updateSetsWon(int sets) {
-        this.setsWon = this.setsWon + sets;
+    public int getAge() {
+        return this.age;
     }
 
 
     /**
-     * Return the number of sets won by this player
-     * @return number of sets won
+     * Return this player's country
+     * @return player's country
      */
-    public int getSetsWon() {
-        return this.setsWon;
+    public String getCountry() {
+        return this.country;
     }
 
 
     /**
-     * Update the number of sets lost by this player
-     * @param sets number of new sets lost by this player
+     * Record the number of aces made by this player
+     * @param aces number of aces made
      */
-    public void updateSetsLost(int sets) {
-        this.setsLost = this.setsLost + sets;
-    }
-
-    /**
-     * Record the number of sets lost by this player
-     * @param setsLost number of sets lost
-     */
-    public void setSetsLost(int setsLost) {
-        this.setsLost = setsLost;
+    public void setAces(int aces) {
+        this.aces = aces;
     }
 
 
     /**
-     * Return the number of sets lost by this player
-     * @return number of sets lost
+     * Update the number of aces made by this player
+     * @param aces number of new aces made by player
      */
-    public int getSetsLost() {
-        return this.setsLost;
+    public void updateAces(int aces) {
+        this.aces = this.aces + aces;
     }
 
 
     /**
-     * Update the number of games won by this player
-     * @param games number of new games won by this player
+     * Return the number of aces made by this player
+     * @return number of aces made
      */
-    public void updateGamesWon(int games) {
-        this.gamesWon = this.gamesWon + games;
+    public int getAces() {
+        return this.aces;
     }
 
 
     /**
-     * Record the number of games won by this player
-     * @param gamesWon number of games won
+     * Record the number of double faults by this player
+     * @param doubleFaults number of double faults made by this player
      */
-    public void setGamesWon(int gamesWon) {
-        this.gamesWon = gamesWon;
+    public void setDoubleFaults(int doubleFaults) {
+        this.doubleFaults = doubleFaults;
     }
 
 
     /**
-     * Return the number of games won by this player
-     * @return number of games won
+     * Update the number of double faults made by this player
+     * @param doubleFaults number of new double faults made by this player
      */
-    public int getGamesWon() {
-        return this.gamesWon;
+    public void updateDoubleFaults(int doubleFaults) {
+        this.doubleFaults = this.doubleFaults + doubleFaults;
     }
 
 
     /**
-     * Update the number of games lost by this player
-     * @param games number of new games lost by this player
+     * Return the number of double faults made by this player
+     * @return number of double faults made
      */
-    public void updateGamesLost(int games) {
-        this.gamesLost = this.gamesLost + games;
+    public int getDoubleFaults() {
+        return this.doubleFaults;
     }
 
 
     /**
-     * Record the number of games lost by this player
-     * @param gamesLost number of games lost
+     * Record the number of serve points won by this player
+     * @param servePoints number of serve points
      */
-    public void setGamesLost(int gamesLost) {
-        this.gamesLost = gamesLost;
+    public void setServePoints(int servePoints) {
+        this.servePoints = servePoints;
     }
 
 
     /**
-     * Return the number of games lost by this player
-     * @return number of games lost
+     * Update the number of serve points won by this player
+     * @param servePoints number of new serve points won by this player
      */
-    public int getGamesLost() {
-        return this.gamesLost;
+    public void updateServePoints(int servePoints) {
+        this.servePoints = this.servePoints + servePoints;
+    }
+
+
+    /**
+     * Return the number of serve points won by this player
+     * @return number of serve points won
+     */
+    public int getServePoints() {
+        return this.servePoints;
+    }
+
+
+    /**
+     * Record the number of first serves by this player
+     * @param firstServes number of first serves
+     */
+    public void setFirstServes(int firstServes) {
+        this.firstServes = firstServes;
+    }
+
+
+    /**
+     * Update the number of first serves made by this player
+     * @param firstServes number of first serves made by this player
+     */
+    public void updateFirstServes(int firstServes) {
+        this.firstServes = this.firstServes + firstServes;
+    }
+
+
+    /**
+     * Return the number of first serves by this player
+     * @return number of first serves made
+     */
+    public int getFirstServes() {
+        return this.firstServes;
+    }
+
+
+    /**
+     * Record the number of break points saved by this player
+     * @param breakPointsSaved number of break points saved
+     */
+    public void setBreakPointsSaved(int breakPointsSaved) {
+        this.breakPointsSaved = breakPointsSaved;
+    }
+
+
+    /**
+     * Update the number of break points saved by this player
+     * @param breakPointsSaved number of new break points saved
+     */
+    public void updateBreakPointsSaved(int breakPointsSaved) {
+        this.breakPointsSaved = this.breakPointsSaved + breakPointsSaved;
+    }
+
+
+    /**
+     * Return the number of break points saved by this player
+     * @return number of break points saved
+     */
+    public int getBreakPointsSaved() {
+        return this.breakPointsSaved;
     }
 
 
@@ -160,8 +224,34 @@ public class TennisPlayer extends Player {
     @Override
     public String toString() {
         String partOne = super.toString();
-        return partOne + "\nSets Won: " + this.setsWon + "\nSets Lost: " + this.setsLost +
-                "\nGames Won: " + this.gamesWon + "\nGames Lost: " + this.gamesLost;
+        return partOne + "\nAge: " + this.age + "\nNationality: " + this.country + "\nAces: " + this.aces +
+                "\nDouble Faults: " + this.doubleFaults + "\nServe Points: " + this.servePoints +
+                "\nFirst Serves: " + this.firstServes + "\nBreak Points Saved: " + this.breakPointsSaved;
+    }
+
+
+    /**
+     * Return the given stat, assuming the given stat is a possible stat associated with a tennis player.
+     * @param stat stat that needs to be reported (possible stats include aces, dauble faults, serve points,
+     *             first serves, age, and country
+     * @return the needed stat of the player (as a string)
+     */
+    public String getNeededStat(String stat) {
+        switch (stat) {
+            case "aces":
+                return String.valueOf(this.aces);
+            case "double faults":
+                return String.valueOf(this.doubleFaults);
+            case "serve points":
+                return String.valueOf(this.servePoints);
+            case "first serves":
+                return String.valueOf(this.firstServes);
+            case "break points saved":
+                return String.valueOf(this.breakPointsSaved);
+            case "age":
+                return String.valueOf(this.age);
+        }
+        return this.country;
     }
 
 }

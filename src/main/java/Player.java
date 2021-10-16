@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -7,20 +6,14 @@ import java.util.Objects;
 
 public abstract class Player {
     private final String name;
-    private int age;
-    private final String nationality;
 
 
     /**
-     * Construct a Player with name, age, and nationality
+     * Construct a Player with name
      * @param name Player's name
-     * @param age Player's age
-     * @param nationality Player's nationality
      */
-    public Player(String name, int age, String nationality) {
+    public Player(String name) {
         this.name = name;
-        this.age = age;
-        this.nationality = nationality;
     }
 
 
@@ -30,7 +23,7 @@ public abstract class Player {
      */
     @Override
     public String toString() {
-        return "Name: " + this.name + "\nAge: " + this.age + "\nNationality: " + this.nationality;
+        return "Name: " + this.name;
     }
 
 
@@ -42,32 +35,6 @@ public abstract class Player {
         return this.name;
     }
 
-
-    /**
-     * Record this player's age
-     * @param age the player's age
-     */
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-
-    /**
-     * Return this player's age
-     * @return player's age
-     */
-    public int getAge() {
-        return this.age;
-    }
-
-    
-    /**
-     * Return this player's nationality
-     * @return player's nationality
-     */
-    public String getNationality() {
-        return this.nationality;
-    }
 
 
     /**
@@ -87,11 +54,7 @@ public abstract class Player {
             return false;
         }
         Player other = (Player) obj;
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        } else if (!Objects.equals(this.nationality, other.nationality)) {
-            return false;
-        } else return this.age == other.age;
+        return Objects.equals(this.name, other.name);
     }
 }
 
