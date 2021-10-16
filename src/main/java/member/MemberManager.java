@@ -1,6 +1,8 @@
 package member;
 
 import commands.*;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MemberManager implements Command {
@@ -17,15 +19,21 @@ public class MemberManager implements Command {
         this.MatchMap = new HashMap<String, Match>();
     }
 
-    public String execute(String[] arguments) throws Exception {
-        return switch (arguments[0]) {
-            case "add_member" -> addMember(arguments);
-            case "create_match" -> createMatch(arguments);
-            case "bet" -> bet(arguments);
-            case "resolve_match" -> resolveMatch(arguments);
-            case "member_info" -> memberInfo(arguments);
-            default -> throw new Exception("Invalid Command provided!");
-        };
+    public String execute(ArrayList<String> arguments) throws Exception {
+        switch (arguments.get(0)) {
+            case "add_member":
+                return addMember(arguments);
+            case "create_match":
+                return createMatch(arguments);
+            case "bet":
+                return bet(arguments);
+            case "resolve_match":
+                return resolveMatch(arguments);
+            case "member_info":
+                return memberInfo(arguments);
+            default:
+                throw new Exception("Invalid Command provided!");
+        }
     }
 
     /**
@@ -34,8 +42,8 @@ public class MemberManager implements Command {
      * @return a confirmation if the Member was added
      * @throws Exception if a Member with the same name already exists
      */
-    private String addMember(String[] arguments) throws Exception {
-        String memberName = arguments[1];
+    private String addMember(ArrayList<String> arguments) throws Exception {
+        String memberName = arguments.get(1);
         if (this.MemberMap.containsKey(memberName)) {
             throw new Exception(memberName + " is already an existing Member!");
         }
@@ -51,13 +59,13 @@ public class MemberManager implements Command {
      * @return a confirmation if the Match was created
      * @throws Exception if a Match with the same name already exists
      */
-    private String createMatch(String[] arguments) throws Exception {
-        String matchName = arguments[1];
+    private String createMatch(ArrayList<String> arguments) throws Exception {
+        String matchName = arguments.get(1);
         if (this.MatchMap.containsKey(matchName)) {
             throw new Exception(matchName + " is already an existing Match!");
         }
-        String team1Name = arguments[2];
-        String team2name = arguments[3];
+        String team1Name = arguments.get(2);
+        String team2name = arguments.get(3);
         // TODO: Verify that the given teams exist
 
         Match createdMatch = new Match(matchName, team1Name, team2name);
@@ -73,16 +81,16 @@ public class MemberManager implements Command {
      * @throws Exception if the Member does not exist, the Match does not
      * exist, or the team is not competing in the Match
      */
-    private String bet(String[] arguments) throws Exception {
-        String memberName = arguments[1];
+    private String bet(ArrayList<String> arguments) throws Exception {
+        String memberName = arguments.get(1);
         verifyMember(memberName);
         Member bettingMember = this.MemberMap.get(memberName);
 
-        String matchName = arguments[2];
+        String matchName = arguments.get(2);
         verifyMatch(matchName);
         Match targetMatch = this.MatchMap.get(matchName);
 
-        String favoredTeamName = arguments[3];
+        String favoredTeamName = arguments.get(3);
         targetMatch.recordBet(bettingMember, favoredTeamName);
         return memberName + " has successfully placed a bet that " +
                 favoredTeamName + " will win " + matchName;
@@ -95,12 +103,12 @@ public class MemberManager implements Command {
      * @return a confirmation if the Match's outcome is resolved
      * @throws Exception if the Match does not exist
      */
-    private String resolveMatch(String[] arguments) throws Exception {
-        String matchName = arguments[1];
+    private String resolveMatch(ArrayList<String> arguments) throws Exception {
+        String matchName = arguments.get(1);
         verifyMatch(matchName);
         Match targetMatch = this.MatchMap.get(matchName);
 
-        String winningTeam = arguments[2];
+        String winningTeam = arguments.get(2);
         targetMatch.resolve(winningTeam);
         this.MatchMap.remove(matchName);
         return matchName + " was successfully resolved with " +
@@ -113,8 +121,8 @@ public class MemberManager implements Command {
      * @return a string representation of the member
      * @throws Exception if the Member does not exist
      */
-    private String memberInfo(String[] arguments) throws Exception {
-        String memberName = arguments[1];
+    private String memberInfo(ArrayList<String> arguments) throws Exception {
+        String memberName = arguments.get(1);
         verifyMember(memberName);
         Member targetMember = this.MemberMap.get(memberName);
         return targetMember.toString();
