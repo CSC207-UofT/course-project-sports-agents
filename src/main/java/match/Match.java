@@ -17,6 +17,7 @@ public class Match {
         this.teamB = teamB;
         this.scoreA = 0;
         this.scoreB = 0;
+        bets = new HashMap<LeagueMember, String>();
     }
 
     public String getTeamA() {

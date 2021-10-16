@@ -24,7 +24,10 @@ public class commandManager {
         String command_keyword = split_input.get(0);
 
         Command command = commandDictionary.get(command_keyword);
-        ArrayList<String> arguments = (ArrayList<String>) split_input.subList(1, split_input.size());
+        ArrayList<String> arguments = new ArrayList<String>();
+        for (int i = 1; i<split_input.size(); i++) {
+            arguments.add(split_input.get(i));
+        }
         return command.execute(arguments);
     }
 
