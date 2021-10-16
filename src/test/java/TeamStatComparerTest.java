@@ -4,9 +4,12 @@ import Team.Team;
 import commands.TeamStatComparer;
 import commands.TeamStatManager;
 import org.junit.*;
+import static org.junit.Assert.*;
 import Player.Player;
+import match.Match;
+import Team.HockeyTeam;
+import Team.TeamManager;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 public class TeamStatComparerTest {
     private TeamStatComparer tsc;
@@ -14,7 +17,7 @@ public class TeamStatComparerTest {
     @Before
     public void setUp() throws Exception {
         ArrayList<Player> p = new ArrayList<Player>();
-        ArrayList<Game> g  = new ArrayList<Game>();
+        ArrayList<Match> g  = new ArrayList<Match>();
         HockeyTeam t1 = new HockeyTeam("name", "city", p, g, 0, 0, 0, 0);
         HockeyTeam t2 = new HockeyTeam("name1", "city1", p, g, 3, 1, 1, 1);
         ArrayList<Team> t = new ArrayList<Team>();

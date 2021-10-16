@@ -1,6 +1,7 @@
 package Team;
 
 import Player.Player;
+import match.Match;
 
 import java.util.ArrayList;
 
@@ -8,7 +9,7 @@ public abstract class Team {
     private String name;
     private String homeCity;
     private ArrayList<Player> players;
-    private ArrayList<Game> playedGames;
+    private ArrayList<Match> playedGames;
     private int totalGamesPlayed;
     private int wins;
     private int losses;
@@ -23,7 +24,7 @@ public abstract class Team {
         this.ties = 0;
     }
 
-    public Team(String name, String homeCity, ArrayList<Player> players, ArrayList<Game> playedGames, int totalGamesPlayed, int wins, int losses, int ties){
+    public Team(String name, String homeCity, ArrayList<Player> players, ArrayList<Match> playedGames, int totalGamesPlayed, int wins, int losses, int ties){
         this.name = name;
         this.homeCity = homeCity;
         this.players = players;
@@ -86,7 +87,7 @@ public abstract class Team {
      * Get played games
      * @return playedGames
      */
-    public ArrayList<Game> getPlayedGames(){
+    public ArrayList<Match> getPlayedGames(){
         return playedGames;
     }
     
@@ -94,7 +95,7 @@ public abstract class Team {
      * Set played games
      * @param playedGames
      */
-    public void setPlayedGames(ArrayList<Game> playedGames){
+    public void setPlayedGames(ArrayList<Match> playedGames){
         this.playedGames = playedGames;
     }
 

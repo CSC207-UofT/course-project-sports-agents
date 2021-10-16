@@ -1,10 +1,13 @@
 import java.util.ArrayList;
 
 import Team.Team;
+import match.Match;
 import org.junit.*;
 import Player.Player;
+import Team.HockeyTeam;
+import Team.TeamManager;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
 public class TeamManagerTest {
     private TeamManager tm;
@@ -12,7 +15,7 @@ public class TeamManagerTest {
     @Before
     public void setUp() throws Exception {
         ArrayList<Player> p = new ArrayList<Player>();
-        ArrayList<Game> g  = new ArrayList<Game>();
+        ArrayList<Match> g  = new ArrayList<Match>();
         HockeyTeam t1 = new HockeyTeam("name", "city", p, g, 0, 0, 0, 0);
         HockeyTeam t2 = new HockeyTeam("name1", "city1", p, g, 1, 1, 1, 1);
         ArrayList<Team> t = new ArrayList<Team>();
@@ -24,7 +27,7 @@ public class TeamManagerTest {
     @Test(timeout = 50)
     public void testGetTeams(){
         ArrayList<Player> p = new ArrayList<Player>();
-        ArrayList<Game> g  = new ArrayList<Game>();
+        ArrayList<Match> g  = new ArrayList<Match>();
         HockeyTeam t1 = new HockeyTeam("name", "city", p, g, 0, 0, 0, 0);
         HockeyTeam t2 = new HockeyTeam("name1", "city1", p, g, 1, 1, 1, 1);
         ArrayList<Team> t = new ArrayList<Team>();
@@ -49,7 +52,7 @@ public class TeamManagerTest {
     @Test(timeout = 50)
     public void testCreateTeam(){
         ArrayList<Player> p = new ArrayList<Player>();
-        ArrayList<Game> g  = new ArrayList<Game>();
+        ArrayList<Match> g  = new ArrayList<Match>();
         Team t = new HockeyTeam("hi", "hello", p, g, 5, 5, 5, 5);
         tm.createTeam("hockey", "hi", "hello", p, g, 5, 5, 5, 5);
         assertEquals(t.getName(), tm.getTeams().get(2).getName());

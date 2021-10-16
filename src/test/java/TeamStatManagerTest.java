@@ -2,10 +2,15 @@ import java.util.ArrayList;
 
 import Team.Team;
 import commands.TeamStatManager;
+import match.Match;
 import org.junit.*;
 import Player.Player;
+import Team.HockeyTeam;
+import Team.TeamManager;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.*;
+import static org.junit.Assert.*;
+
 
 public class TeamStatManagerTest {
     private TeamStatManager tsm;
@@ -13,7 +18,7 @@ public class TeamStatManagerTest {
     @Before
     public void setUp() throws Exception {
         ArrayList<Player> p = new ArrayList<Player>();
-        ArrayList<Game> g  = new ArrayList<Game>();
+        ArrayList<Match> g  = new ArrayList<Match>();
         HockeyTeam t1 = new HockeyTeam("name", "city", p, g, 0, 0, 0, 0);
         HockeyTeam t2 = new HockeyTeam("name1", "city1", p, g, 3, 1, 1, 1);
         ArrayList<Team> t = new ArrayList<Team>();

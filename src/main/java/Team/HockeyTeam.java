@@ -1,7 +1,7 @@
 package Team;
 
 import Player.Player;
-import Team.Team;
+import match.Match;
 
 import java.util.ArrayList;
 
@@ -10,7 +10,7 @@ public class HockeyTeam extends Team {
         super();
     }
 
-    public HockeyTeam(String name, String homeCity, ArrayList<Player> players, ArrayList<Game> playedGames, int totalGamesPlayed, int wins, int losses, int ties){
+    public HockeyTeam(String name, String homeCity, ArrayList<Player> players, ArrayList<Match> playedGames, int totalGamesPlayed, int wins, int losses, int ties){
         super(name, homeCity, players, playedGames, totalGamesPlayed, wins, losses, ties);
     }
 }

@@ -3,8 +3,9 @@ import java.util.ArrayList;
 import Team.Team;
 import org.junit.*;
 import Player.Player;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
+import match.Match;
+import Team.HockeyTeam;
 
 public class TeamTest {
     private Team t;
@@ -12,7 +13,7 @@ public class TeamTest {
     @Before
     public void setUp() throws Exception {
         ArrayList<Player> p = new ArrayList<Player>();
-        ArrayList<Game> g  = new ArrayList<Game>();
+        ArrayList<Match> g  = new ArrayList<Match>();
         t = new HockeyTeam("name", "city", p, g, 0, 0, 0, 0);
     }
 

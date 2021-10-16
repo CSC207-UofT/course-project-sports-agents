@@ -1,7 +1,7 @@
 package Team;
 
 import Player.Player;
-import Team.Team;
+import match.Match;
 
 import java.util.ArrayList;
 
@@ -43,7 +43,7 @@ public class TeamManager {
      * @param losses
      * @param ties
      */
-    public void createTeam(String type, String name, String homeCity, ArrayList<Player> players, ArrayList<Game> playedGames, int totalGamesPlayed, int wins, int losses, int ties){
+    public void createTeam(String type, String name, String homeCity, ArrayList<Player> players, ArrayList<Match> playedGames, int totalGamesPlayed, int wins, int losses, int ties){
         type = type.toLowerCase();
         switch(type){
             case("hockey"):
