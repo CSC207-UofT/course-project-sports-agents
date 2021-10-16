@@ -24,7 +24,6 @@ public class TennisPlayerListTest {
     @Test(timeout = 50)
     public void TestFalseContainsPlayer() {
         assertFalse(tennisPlayerList.containsPlayer("Doha", "Serena Williams"));
-        System.out.println(new File("Sample_Data_2019.csv").getAbsolutePath());
     }
 
     @Test(timeout = 100)
