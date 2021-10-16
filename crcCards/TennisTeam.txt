@@ -1,4 +1,4 @@
-Class name: HockeyTeam
+Class name: TennisTeam
 Parent class: Team
 Subclasses: None
 Layer: Entity
