@@ -2,8 +2,8 @@ package commands;
 
 import java.util.ArrayList;
 
-public interface Command throws Exception{
+public interface Command {
 
-    public String execute(ArrayList<String> arguments);
+    public String execute(ArrayList<String> arguments) throws Exception;
 
 }

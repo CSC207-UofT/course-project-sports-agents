@@ -10,21 +10,24 @@ import java.util.*;
  */
 
 public class PlayerStatComparer implements Command {
-    protected String[] playerNames;
-    protected String stat;
-    protected String season;
 
-    public PlayerStatComparer(String[] playerNames, String stat, String season) {
-        this.playerNames = playerNames;
-        this.stat = stat;
-        this.season = season;
-    }
 
-    public String execute() throws Exception {
+    public PlayerStatComparer() {}
+    /**
+     *
+     * @param arguments is a list of strings where ["player name 1", "player name2", ..., "stat", "season"]
+     * @return the comparison between 2 or more player names based on the given stat in the given season.
+     * @throws Exception when one or more player names is not found or the demanded stat is invalid.
+     */
+    @Override
+    public String execute(ArrayList<String> arguments) throws Exception {
+        List<String> playerNames = arguments.subList(0, arguments.size() - 2);
+        String stat = arguments.get(arguments.size() - 2);
+        String demandedSeason = arguments.get(arguments.size() - 1);
 
         // Throw exception for a list of statistics that are invalid for comparison
         List<String> invalidStats = Arrays.asList( "name", "season", "team", "skater shoots","position");
-        if (invalidStats.contains(this.stat)){
+        if (invalidStats.contains(stat)){
             throw new Exception("Invalid statistic for comparison!");
         }
 
@@ -34,9 +37,9 @@ public class PlayerStatComparer implements Command {
 
         for (String season: playerMap.keySet()){ // loop through the season and add demanded Player object to the list of
                                                     // demanded players.
-            if (season.equals(this.season)){
+            if (season.equals(demandedSeason)){
                 for (HockeyPlayer playerInfo: playerMap.get(season)){
-                    if (Arrays.asList(this.playerNames).contains(playerInfo.name)){
+                    if (playerNames.contains(playerInfo.name)){
                         listDemandedPlayers.add(playerInfo);
                     }
 
@@ -45,25 +48,26 @@ public class PlayerStatComparer implements Command {
         }
 
         // throw exception if one or more players were not found.
-        if (listDemandedPlayers.size() < this.playerNames.length) {
+        if (listDemandedPlayers.size() < playerNames.size()) {
             throw new Exception("One or more players not found!");}
 
         StringBuilder compareToReturn = new StringBuilder("From min to max:\n");
         List<Integer> listDemandedStats = new ArrayList<>();
 
         for (HockeyPlayer player: listDemandedPlayers) {
-            listDemandedStats.add(Integer.valueOf(player.getStat(this.stat)));
+            listDemandedStats.add(Integer.valueOf(player.getStat(stat)));
         }
         Collections.sort(listDemandedStats);
-        listDemandedPlayers.sort(new GetStatsComparator(this.stat));
+        listDemandedPlayers.sort(new GetStatsComparator(stat));
         for(int j = 0; j < listDemandedPlayers.size(); ++j) {
-            compareToReturn.append(listDemandedPlayers.get(j)).append(": ").
-                    append(listDemandedStats.get(j)).append(this.stat).append('\n');
+            compareToReturn.append(listDemandedPlayers.get(j).name).append(": ").
+                    append(listDemandedStats.get(j)).append(stat).append('\n');
         }
 
         return compareToReturn.toString();
 
 
         }
-    }
+
+}
 
