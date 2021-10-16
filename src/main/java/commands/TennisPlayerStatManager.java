@@ -1,4 +1,4 @@
-package commannds;
+package commands;
 
 import Player.TennisPlayer;
 import Player.TennisPlayerList;

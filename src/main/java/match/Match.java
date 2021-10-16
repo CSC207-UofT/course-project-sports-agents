@@ -1,17 +1,17 @@
 package match;
 
+import java.lang.reflect.Member;
 import java.util.ArrayList;
 import java.util.HashMap;
-import member.Member;
 
 
-
-public abstract class Match {
+public class Match {
     private HashMap<Member, String> Bets;
-    private String teamA, teamB;
+    private final String matchName, teamA, teamB;
     private int scoreA, scoreB;
 
-    public Match(String teamA, String teamB) {
+    public Match(String matchName, String teamA, String teamB) {
+        this.matchName = matchName;
         this.teamA = teamA;
         this.teamB = teamB;
         this.scoreA = 0;

@@ -1,8 +1,8 @@
 package SportsApp;
 
 import commands.Command;
-import member.MemberManager;
-import commannds.PlayerStatManager;
+import league_member.LeagueMemberManager;
+import commands.PlayerStatManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,7 +14,7 @@ public class commandManager {
 
     static {
         commandDictionary.put("stats_player", new PlayerStatManager());
-        commandDictionary.put("member_manager", new MemberManager());
+        commandDictionary.put("member_manager", new LeagueMemberManager());
     }
     public String execute(String input) throws Exception {
         if (input.equals("")) {

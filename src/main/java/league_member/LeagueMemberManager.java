@@ -1,21 +1,22 @@
-package member;
+package league_member;
 
-import commands.*;
+import commands.Command;
+import match.Match;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class MemberManager implements Command {
+public class LeagueMemberManager implements Command {
     // MemberMap stores the Members of the fantasy league
-    public HashMap<String, Member> MemberMap;
+    public HashMap<String, LeagueMember> MemberMap;
     // GameMap stores the ongoing Games of the fantasy league
     public HashMap<String, Match> MatchMap;
 
     /**
      * Create a new MemberManager with no Members and no Games
      */
-    public MemberManager() {
-        this.MemberMap = new HashMap<String, Member>();
+    public LeagueMemberManager() {
+        this.MemberMap = new HashMap<String, LeagueMember>();
         this.MatchMap = new HashMap<String, Match>();
     }
 
@@ -47,9 +48,9 @@ public class MemberManager implements Command {
         if (this.MemberMap.containsKey(memberName)) {
             throw new Exception(memberName + " is already an existing Member!");
         }
-        Member addedMember = new Member(memberName);
-        this.MemberMap.put(memberName, addedMember);
-        return "New " + addedMember + " successfully added.";
+        LeagueMember addedLeagueMember = new LeagueMember(memberName);
+        this.MemberMap.put(memberName, addedLeagueMember);
+        return "New " + addedLeagueMember + " successfully added.";
     }
 
     /**
@@ -84,14 +85,14 @@ public class MemberManager implements Command {
     private String bet(ArrayList<String> arguments) throws Exception {
         String memberName = arguments.get(1);
         verifyMember(memberName);
-        Member bettingMember = this.MemberMap.get(memberName);
+        LeagueMember bettingLeagueMember = this.MemberMap.get(memberName);
 
         String matchName = arguments.get(2);
         verifyMatch(matchName);
         Match targetMatch = this.MatchMap.get(matchName);
 
         String favoredTeamName = arguments.get(3);
-        targetMatch.recordBet(bettingMember, favoredTeamName);
+        targetMatch.recordBet(bettingLeagueMember, favoredTeamName);
         return memberName + " has successfully placed a bet that " +
                 favoredTeamName + " will win " + matchName;
     }
@@ -124,8 +125,8 @@ public class MemberManager implements Command {
     private String memberInfo(ArrayList<String> arguments) throws Exception {
         String memberName = arguments.get(1);
         verifyMember(memberName);
-        Member targetMember = this.MemberMap.get(memberName);
-        return targetMember.toString();
+        LeagueMember targetLeagueMember = this.MemberMap.get(memberName);
+        return targetLeagueMember.toString();
     }
 
     /**

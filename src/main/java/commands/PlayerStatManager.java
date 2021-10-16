@@ -1,8 +1,7 @@
-package commannds;
+package commands;
 
 import Player.HockeyPlayer;
 import Player.PlayerList;
-import commands.*;
 
 import java.util.*;
 

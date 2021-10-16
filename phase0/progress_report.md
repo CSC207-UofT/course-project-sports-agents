@@ -4,14 +4,14 @@ The report should include:
 * a brief summary of your specification, CRC model, scenario walk-through, and skeleton program,
 * open questions your group is struggling with,
 * what has worked well so far with your design,
-* and a brief summary of what each group member has been working on and plans to work on next.
+* and a brief summary of what each group league_member has been working on and plans to work on next.
 
 #### Brief summary of our specification:
 As mentioned in the specification, a user should be able to import/export data for a sports team/Player
 and be able to retrieve within the app. Additionally, based on the data, the app should be able to 
 predict the outcome of a match. The user should also be able to create matches and members, who 
 can bet on the matches and attempt to predict the outcome of the match themselves; the app will track
-how well a member can predict a match.
+how well a league_member can predict a match.
 
 #### Brief summary of our CRC Model:
 The CRC model classifies the classes to entities, use cases, controller and presenters, and user interface based
@@ -21,10 +21,10 @@ relationships between the classes. This allows our development to be more struct
 #### Brief summary of our scenario walk through
 After importing the data, the user will use the commands available in the app to compare two teams and decide which team
 will win in the upcoming match. The user will create the match in the system and make a prediction for it. The user
-will also make a prediction on the behalf of another member of the fantasy league. 
+will also make a prediction on the behalf of another league_member of the fantasy league. 
 
 #### Brief summary of the skeleton program
-Our skeleton program can add a member to their fantasy league. The user can also create matches, on which the members
+Our skeleton program can add a league_member to their fantasy league. The user can also create matches, on which the members
 can bet and attempt to guess the outcome of the match. Finally, our skeleton program can retrieve the statistics and the
 data on a Player and a team based on the name, which is passed as an argument in the CLI. 
 
@@ -56,7 +56,7 @@ command interface, which allows different kind of classes with completely differ
 It gives us a lot of flexibility and doesn't require us to write an abstract parent class, which would most-likely be
 too general to be truly useful. 
 
-####Brief summary of what each group member has been working on: 
+####Brief summary of what each group league_member has been working on: 
 We have all been working on the CRC cards as well as example use cases
 for our application. We have been working on these together during our
 meetings, as well as separately throughout the week. If someone had an
@@ -69,9 +69,9 @@ Karim started working on the CommandManager as well as the main method.
 Isaiah began working on the Member class to allow the main user to add
 members to their list. Nazanin began implementing the PlayerStatManager,
 and other Player-focused stat classes, like predictor, and comparer.
-Samuel started working on the commannds.TeamStatManager (to allow the user to
-get statistical data for teams), commannds.TeamStatComparer (to allow the user
-to compare statistical data for teams), commannds.TeamStatPredictor, and Team.Team
+Samuel started working on the commands.TeamStatManager (to allow the user to
+get statistical data for teams), commands.TeamStatComparer (to allow the user
+to compare statistical data for teams), commands.TeamStatPredictor, and Team.Team
 classes. Vishali focused on working on the Player.Player classes,
 which will store the necessary data to make statistical
 manipulations possible. Finally, Jack started working on the Match class,

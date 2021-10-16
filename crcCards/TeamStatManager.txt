@@ -1,4 +1,4 @@
-Class name: commannds.TeamStatManager
+Class name: commands.TeamStatManager
 Parent class: None
 Subclasses: None
 Layer: Use Case

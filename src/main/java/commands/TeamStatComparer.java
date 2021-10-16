@@ -1,4 +1,4 @@
-package commannds;
+package commands;
 
 public class TeamStatComparer {
     private TeamStatManager teamStatManager;

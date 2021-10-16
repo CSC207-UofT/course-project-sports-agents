@@ -1,17 +1,17 @@
 User inputs request for stat to UI -> (String input eg Wayne Gretsky Average Goals) ->
 Parser class parses -> (Player.HockeyPlayer or Team.Team, statistic wanted) ->
-commannds.PlayerStatManager returns stat -> (stat) ->
+commands.PlayerStatManager returns stat -> (stat) ->
 Parser converts stat to String (String Output)
 UserInterface displays String -> User receives response
 
 User inputs request for comparison to UI -> (String input eg Wayne Gretsky Player.HockeyPlayer B Average Goals) ->
 Parser class parses -> (Player.HockeyPlayer or Team.Team 1, Player.HockeyPlayer or Team.Team 2, statistic wanted) ->
-ComparisonStatManager compares stats via commannds.PlayerStatManager -> (stat) ->
+ComparisonStatManager compares stats via commands.PlayerStatManager -> (stat) ->
 Parser converts stat to String (String Output)
 UserInterface displays String -> User receives response
 
 User inputs request for progress to UI -> (String input eg Wayne Gretsky Average Goals Over Time) ->
 Parser class parses -> (Player.HockeyPlayer or Team.Team 1, statistic wanted) ->
-ProgressStatManager compares stats via commannds.PlayerStatManager -> (stat) ->
+ProgressStatManager compares stats via commands.PlayerStatManager -> (stat) ->
 Parser converts stat to String (String Output)
 UserInterface displays String -> User receives response

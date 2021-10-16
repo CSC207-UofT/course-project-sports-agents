@@ -18,7 +18,7 @@ provide the user with a holistic prediction.
 Additionally, the user of the app can add members to the app; these members are part of the fantasy 
 betting league of the user, who is the manager of said league. The user
 then can make bets on upcoming matches on the behalf of the members. Each
-member will have a history, outlining which matches they were able to 
+league_member will have a history, outlining which matches they were able to 
 predict correctly. This will allow the league to have a ranking, and members can compete with each other
 using the app. The aforementioned matches will be added by the user of the app.
 The application will extend to multiple sports, such as tennis, hockey, as well as other sports.

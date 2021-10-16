@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 import Team.Team;
-import commannds.TeamStatManager;
+import commands.TeamStatManager;
 import org.junit.*;
 import Player.Player;
 

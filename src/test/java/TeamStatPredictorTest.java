@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
 import Team.Team;
-import commannds.TeamStatComparer;
-import commannds.TeamStatManager;
-import commannds.TeamStatPredictor;
+import commands.TeamStatComparer;
+import commands.TeamStatManager;
+import commands.TeamStatPredictor;
 import org.junit.*;
 import Player.Player;
 

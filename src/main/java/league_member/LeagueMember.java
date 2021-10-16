@@ -1,6 +1,6 @@
-package member;
+package league_member;
 
-public class Member {
+public class LeagueMember {
     private final String name;
     private int correctBets;
     private int incorrectBets;
@@ -9,7 +9,7 @@ public class Member {
      * Create a new Member with no bet history
      * @param name Member's name
      */
-    public Member(String name) {
+    public LeagueMember(String name) {
         this.name = name;
         this.correctBets = 0;
         this.incorrectBets = 0;
@@ -77,8 +77,8 @@ public class Member {
             return false;
         }
 
-        Member otherMember = (Member) other;
-        return this.name.equals(otherMember.name);
+        LeagueMember otherLeagueMember = (LeagueMember) other;
+        return this.name.equals(otherLeagueMember.name);
     }
 
     /**

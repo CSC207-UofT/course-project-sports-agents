@@ -1,4 +1,4 @@
-import commannds.TennisPlayerStatComparer;
+import commands.TennisPlayerStatComparer;
 import org.junit.*;
 
 import java.util.ArrayList;

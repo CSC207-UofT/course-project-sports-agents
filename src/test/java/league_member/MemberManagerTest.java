@@ -1,4 +1,4 @@
-package member;
+package league_member;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -6,11 +6,11 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class MemberManagerTest {
-    private MemberManager m;
+    private LeagueMemberManager m;
 
     @Before
     public void setUp() throws Exception {
-        m = new MemberManager();
+        m = new LeagueMemberManager();
     }
 
     // TODO: Break up these tests. Most rely on multiple methods.
