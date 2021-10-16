@@ -1,3 +1,5 @@
+package SportsApp;
+
 import java.util.Scanner;
 
 public class SportsApp {
@@ -17,7 +19,7 @@ public class SportsApp {
 
         Scanner inputScanner = new Scanner(System.in);
         String input = "";
-//        commandManager = new CommandManager();
+//        Interface.commandManager = new CommandManager();
         // TODO: Implement a catch statement
         while (!input.equals("quit")) {
             input = inputScanner.nextLine();
