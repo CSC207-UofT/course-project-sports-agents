@@ -44,13 +44,13 @@ public class HockeyPlayer {
     }
 
     public Map<String, String> mapStats() {
-        Map<String, String> listAllSats = new HashMap<>(Map.of("name",
+        Map<String, String> listAllStats = new HashMap<>(Map.of("name",
                 this.name, "season", this.season, "team", this.team,
                 "skater shoots", this.skaterShoots, "position", this.position,
                 "games played", this.gamesPlayed, "goals", this.goals, "assists",
                 this.assists, "points", this.points, "shots", this.shots));
-        listAllSats.put("shooting percentage", this.shootingPercentage);
-        return listAllSats;
+        listAllStats.put("shooting percentage", this.shootingPercentage);
+        return listAllStats;
     }
 
     public String toString() {
