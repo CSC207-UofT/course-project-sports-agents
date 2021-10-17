@@ -1,6 +1,6 @@
-package Team;
+package team;
 
-import Player.Player;
+import player.Player;
 import match.Match;
 
 import java.util.ArrayList;

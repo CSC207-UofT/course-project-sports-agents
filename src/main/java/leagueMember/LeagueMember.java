@@ -1,4 +1,4 @@
-package league_member;
+package leagueMember;
 
 public class LeagueMember {
     private final String name;

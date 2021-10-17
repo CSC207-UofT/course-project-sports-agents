@@ -1,6 +1,4 @@
-package Player;
-
-import Player.TennisPlayer;
+package player;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

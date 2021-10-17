@@ -1,6 +1,4 @@
-package Player;
-
-import Player.Player;
+package player;
 
 /**
  * This class represents a tennis player.

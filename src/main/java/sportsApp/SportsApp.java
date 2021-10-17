@@ -1,4 +1,4 @@
-package SportsApp;
+package sportsApp;
 
 import java.util.Scanner;
 

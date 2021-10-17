@@ -1,11 +1,13 @@
+package team;
+
 import java.util.ArrayList;
 
-import Team.Team;
+import team.Team;
 import org.junit.*;
-import Player.Player;
+import player.Player;
 import static org.junit.Assert.*;
 import match.Match;
-import Team.HockeyTeam;
+import team.HockeyTeam;
 
 public class TeamTest {
     private Team t;

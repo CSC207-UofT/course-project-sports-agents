@@ -1,14 +1,15 @@
+package commands;
+
 import java.util.ArrayList;
 
-import Team.Team;
+import team.Team;
 import commands.TeamStatManager;
 import match.Match;
 import org.junit.*;
-import Player.Player;
-import Team.HockeyTeam;
-import Team.TeamManager;
+import player.Player;
+import team.HockeyTeam;
+import team.TeamManager;
 
-import org.junit.*;
 import static org.junit.Assert.*;
 
 

@@ -1,15 +1,16 @@
+package team;
+
 import java.util.ArrayList;
 
-import Team.Team;
+import team.Team;
 import commands.TeamStatComparer;
 import commands.TeamStatManager;
 import commands.TeamStatPredictor;
 import org.junit.*;
-import static org.junit.Assert.*;
-import Player.Player;
+import player.Player;
 import match.Match;
-import Team.HockeyTeam;
-import Team.TeamManager;
+import team.HockeyTeam;
+import team.TeamManager;
 
 public class TeamStatPredictorTest {
     TeamStatPredictor tsp;

@@ -1,4 +1,6 @@
-import Player.TennisPlayer;
+package player;
+
+import player.TennisPlayer;
 import org.junit.*;
 
 import static org.junit.Assert.*;

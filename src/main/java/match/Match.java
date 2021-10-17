@@ -1,6 +1,6 @@
 package match;
 
-import league_member.LeagueMember;
+import leagueMember.LeagueMember;
 
 import java.util.ArrayList;
 

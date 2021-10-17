@@ -1,4 +1,5 @@
-import commands.LeagueMemberManager;
+package commands;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -6,7 +7,7 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
-public class MemberManagerTest {
+public class LeagueMemberManagerTest {
     private LeagueMemberManager m;
 
     @Before

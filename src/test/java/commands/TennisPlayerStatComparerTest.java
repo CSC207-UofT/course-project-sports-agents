@@ -1,3 +1,5 @@
+package commands;
+
 import commands.TennisPlayerStatComparer;
 import org.junit.*;
 

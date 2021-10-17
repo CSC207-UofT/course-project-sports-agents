@@ -1,10 +1,11 @@
-import league_member.LeagueMember;
+package leagueMember;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class MemberTest {
+public class LeagueMemberTest {
     private LeagueMember leagueMember1;
 
     @Before

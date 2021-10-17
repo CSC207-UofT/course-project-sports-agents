@@ -1,7 +1,7 @@
 package commands;
 
-import Player.TennisPlayer;
-import Player.TennisPlayerList;
+import player.TennisPlayer;
+import player.TennisPlayerList;
 
 import java.util.ArrayList;
 import java.util.HashMap;
