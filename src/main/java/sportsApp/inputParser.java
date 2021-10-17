@@ -1,7 +1,6 @@
-package SportsApp;
+package sportsApp;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class inputParser {
 

@@ -42,4 +42,20 @@ The third command,
 is passed from the command line to the `MemberManager`'s `execute`
 method. The `execute` method calls the private `bet` method to have the
 `Match` for Semifinal 1 record `Member` Paul Gries bet the Blue team will win.
-The conformation message is passed back to the user.Adde
+The conformation message is passed back to the user.
+
+The fourth command,
+`member_manager resolve_match "Semifinal 1" "Blue team"`,
+is passed from the command line to the `MemberManager`'s `execute`
+method. The `execute` method calls the private `resolveMatch` 
+method to have the
+`Match` for Semifinal 1 update players on the outcome of their bet.
+The `MemberManager` drops the `Match`, as it is over.
+The conformation message is passed back to the user.
+
+The fifth command,
+`member_manager member_info "Paul Gries"`,
+is passed from the command line to the `MemberManager`'s `execute`
+method. The `execute` method calls the private `memberInfo`
+method to find the `Member` Paul Gries and summarize his betting
+history, which is passed back to the user.
