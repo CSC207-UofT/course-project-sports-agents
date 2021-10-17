@@ -7,33 +7,82 @@ The report should include:
 * and a brief summary of what each group leagueMember has been working on and plans to work on next.
 
 #### Brief summary of our specification:
-As mentioned in the specification, a user should be able to import/export data for a sports team/player
-and be able to retrieve within the app. Additionally, based on the data, the app should be able to 
-predict the outcome of a match. The user should also be able to create matches and members, who 
-can bet on the matches and attempt to predict the outcome of the match themselves; the app will track
-how well a leagueMember can predict a match.
+The sports app allows players to import and export statistics about 
+a team and player, alongside being able to query, compare, and  
+manipulate that 
+data from within the app. Based on the data, the app can generate
+mathematical predictions regarding the teams' and players' future 
+performances. 
+
+The user should also be able to run a fantasy league based on
+the data about the loaded teams and players. They can schedule matches,
+add members (their friends) to the league, 
+have the members bet on the outcome of matches,
+and evaluate how well each member is doing at predicting matches.
 
 #### Brief summary of our CRC Model:
-The CRC model classifies the classes to entities, use cases, controller and presenters, and user interface based
-on the specifications. It contains the classes we think we will need so far and their responsibilities, as well as the 
-relationships between the classes. This allows our development to be more structured and straightforward.
+Our CRC model places most forms of data storage, the teams and players,
+ as entities. Each sport has its own class of teams and players,
+inheriting from an abstract Team and Player class.
+Other entities collect these basic units of data so they
+can be more easily searched. 
+
+Statistics are computed by use case classes,
+which generally handle a related set of functions (such as computing
+statistics about team, 
+comparing statistics for 2 or more players,
+or processing all betting and member actions). 
+Currently, each sport has its own use cases related to its statistics;
+this will likely change in the future to an Abstract class for each
+group of statistics with each sport extending those classes to 
+calculate statistics specific to that sport.
+
+The Framework and Drivers are relatively simple currently, with
+the `SportsApp` class handling input and output then passing it to
+the `CommandManager` class to be sent to the appropriate use case.
+
 
 #### Brief summary of our scenario walk through
-After importing the data, the user will use the commands available in the app to compare two teams and decide which team
-will win in the upcoming match. The user will create the match in the system and make a prediction for it. The user
-will also make a prediction on the behalf of another leagueMember of the fantasy league. 
+The user can query a pre-loaded Hockey dataset for a 
+statistic about a player. This involves the 
+`PlayerStatisticManager` use case manipulating a `PlayerList`
+to search for the `Player` of interest.
+
+Over 5 commands, the user can create an upcoming `Match`, 
+add a `LeagueMember` to their fantasy league, 
+record that `LeagueMember`'s bet on the `Match`,
+resolve the `Match` and award correct and incorrect bets,
+and view the `LeagueMember`'s new post-bet information. This involves 
+the `LeagueMemberManager` manipulating `Match`s and `LeagueMember`s.
 
 #### Brief summary of the skeleton program
-Our skeleton program can add a leagueMember to their fantasy league. The user can also create matches, on which the members
-can bet and attempt to guess the outcome of the match. Finally, our skeleton program can retrieve the statistics and the
-data on a player and a team based on the name, which is passed as an argument in the CLI. 
+Our skeleton program can currently perform the above functions.
+It contains code to compute statistics for Hockey Teams,
+Tennis Players, and Tennis Teams, but this has not been tested
+because the current class relationships could be clarified
+(likely with inheritance added).
 
 
 ####Open questions: 
 How should we implement data retrieval for the team/player statistics? Should the data be already stored in the app, 
 or retrieved from a file or retrieved online using an API?
+
 Would it be possible for us to submit a .csv file with our program? Are there any particular restrictions about API
 usage for the assignment?
+
+How should use cases and entities for each sport be implemented? Should we use
+abstract classes for both, creating a identically structured dependecy 
+tree of classes for each sport?
+
+How should we handle multiple seasons? Players can store multiple seasons
+of data in multiple parameters or as items in a map, but teams
+ with a different composition in each season are extremely complex to
+work with.
+
+Where do we go from here regarding the fantasy league aspect?
+Should League Members be able to log in? Should we customize
+the experience for each Member, for instance by letting them
+select their favorite teams?
 
 
 ####What has worked well so far: 
@@ -49,6 +98,11 @@ asking questions really easy; if someone had a question/problem, they could ask 
 back to them and answer their question. So, collectively, our group is happy with how we have been communicating and 
 planning our program. 
 
+We have had lots of success with encapsulating code. Each person wrote their
+own code and communicated with each other only about the method signatures 
+and return types, but we were able to create a largely functional program with
+little work in combining the parts of code together.
+
 In terms of the code itself, we think that our class structure has been working really well, in particular the structure
 of our teams and players classes. This type of implementation allows us to integrate different kinds of sports into the
 app, which might have completely different statistics available. We are also happy that we were able to implement a
@@ -56,7 +110,7 @@ command interface, which allows different kind of classes with completely differ
 It gives us a lot of flexibility and doesn't require us to write an abstract parent class, which would most-likely be
 too general to be truly useful. 
 
-####Brief summary of what each group leagueMember has been working on: 
+####Brief summary of what each group member has been working on: 
 We have all been working on the CRC cards as well as example use cases
 for our application. We have been working on these together during our
 meetings, as well as separately throughout the week. If someone had an
@@ -66,7 +120,7 @@ through texting.
 After our second meeting on Friday 8th October, we assigned each person
 a section of a project in order to create our skeleton project.
 Karim started working on the CommandManager as well as the main method.
-Isaiah began working on the Member class to allow the main user to add
+Isaiah began working on the LeagueMember and LeagueMemberManager class to allow the main user to add
 members to their list. Nazanin began implementing the PlayerStatManager,
 and other player-focused stat classes, like predictor, and comparer.
 Samuel started working on the commands.TeamStatManager (to allow the user to
@@ -76,5 +130,5 @@ classes. Vishali focused on working on the player.player classes,
 which will store the necessary data to make statistical
 manipulations possible. Finally, Jack started working on the Match class,
 so that the user can make games and have the members make bets on them.
-We will be writing our implementations for these completely and merge the later
+We wrote our implementations for these completely and merged them later
 to find any errors and incoherency.

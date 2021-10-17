@@ -26,36 +26,36 @@ As above, the first command,
 is passed from the
 command line to `sportsApp` to 
 `CommandManager` which parses it and chooses a relevant use case -
-here, the `MemberManager` - and calls its `execute` method.
+here, the `LeagueMemberManager` - and calls its `execute` method.
 The `execute` method calls the private `createMatch` method to create
-and store a new `Match` object in the `MemberManager`, then passes back
+and store a new `Match` object in the `LeagueMemberManager`, then passes back
 a conformation message up to `CommandManager` to `sportsApp` to the user.
 
 The second command, `member_manager add_member "Paul Gries"`, is 
-passed to the `MemberManager`'s `execute` method exactly as described
+passed to the `LeagueMemberManager`'s `execute` method exactly as described
 above. The `execute` method calls the private `addMember` method to
-create and store a new `Member` object in the `MemberManager`,
+create and store a new `LeagueMember` object in the `LeagueMemberManager`,
 then passes a conformation message to the user as described above.
 
 The third command,
 `member_manager bet "Paul Gries" "Semifinal 1" "Blue team"`, 
-is passed from the command line to the `MemberManager`'s `execute`
+is passed from the command line to the `LeagueMemberManager`'s `execute`
 method. The `execute` method calls the private `bet` method to have the
-`Match` for Semifinal 1 record `Member` Paul Gries bet the Blue team will win.
+`Match` for Semifinal 1 record `LeagueMember` Paul Gries bet the Blue team will win.
 The conformation message is passed back to the user.
 
 The fourth command,
 `member_manager resolve_match "Semifinal 1" "Blue team"`,
-is passed from the command line to the `MemberManager`'s `execute`
+is passed from the command line to the `LeagueMemberManager`'s `execute`
 method. The `execute` method calls the private `resolveMatch` 
 method to have the
 `Match` for Semifinal 1 update players on the outcome of their bet.
-The `MemberManager` drops the `Match`, as it is over.
+The `LeagueMemberManager` drops the `Match`, as it is over.
 The conformation message is passed back to the user.
 
 The fifth command,
 `member_manager member_info "Paul Gries"`,
-is passed from the command line to the `MemberManager`'s `execute`
+is passed from the command line to the `LeagueMemberManager`'s `execute`
 method. The `execute` method calls the private `memberInfo`
-method to find the `Member` Paul Gries and summarize his betting
+method to find the `LeagueMember` Paul Gries and summarize his betting
 history, which is passed back to the user.
