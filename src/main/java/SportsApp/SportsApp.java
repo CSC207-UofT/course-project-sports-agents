@@ -12,7 +12,7 @@ public class SportsApp {
         System.out.println("member_manager bet \"member_name\" \"match_name\" \"winner_name\": make a bet on a match on the behalf of a player");
         System.out.println("stats_player \"player_name\" \"stat\" \"seasons\": get available data on a player of your choosing");
         System.out.println("Examples of available players: Auston Matthews, Brad Marchand, Kirill Kaprizov");
-        System.out.println("Examples of available statistics: games played, assists, shots");
+        System.out.println("Examples of available statistics: games played, assists, shots, all stats");
         System.out.println("Example of a season: 20202021");
         System.out.println("Example of a command: stats_player \"Auston Matthews\" \"games played\" \"20202021\"");
         System.out.println("Enter 'quit' to exit the program");
