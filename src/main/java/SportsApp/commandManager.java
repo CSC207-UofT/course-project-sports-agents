@@ -20,8 +20,6 @@ public class commandManager {
             return "";
         }
         inputParser parser = new inputParser(input);
-        System.out.println(parser.getKeyword());
-        System.out.println(parser.getArguments());
         String command_keyword = parser.getKeyword();
 
         Command command = commandDictionary.get(command_keyword);

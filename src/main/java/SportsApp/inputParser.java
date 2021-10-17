@@ -11,7 +11,15 @@ public class inputParser {
     public inputParser(String input) {
         String[] parts = input.split(" ", 2);
         keyword = parts[0];
-        String rest = parts[1];
+        String rest;
+        if (keyword.equals("member_manager")) {
+            parts = input.split(" ", 3);
+            arguments.add(parts[1]);
+            rest = parts[2];
+        }
+        else {
+            rest = parts[1];
+        }
         int curr_index = 0;
         while (curr_index < rest.length()) {
             char curr_character = rest.charAt(curr_index);
@@ -40,7 +48,9 @@ public class inputParser {
     private void trimArguments() {
         for (int i = 0; i < arguments.size(); i++) {
             String argument = arguments.get(i);
-            arguments.set(i, argument.substring(1 , argument.length() - 1));
+            if (argument.charAt(0) == '"') {
+                arguments.set(i, argument.substring(1, argument.length() - 1));
+            }
         }
     }
 
