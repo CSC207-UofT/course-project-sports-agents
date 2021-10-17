@@ -1,10 +1,9 @@
 ##Progress Report
 The report should include:
-
 * a brief summary of your specification, CRC model, scenario walk-through, and skeleton program,
 * open questions your group is struggling with,
 * what has worked well so far with your design,
-* and a brief summary of what each group leagueMember has been working on and plans to work on next.
+* and a brief summary of what each group member has been working on and plans to work on next.
 
 #### Brief summary of our specification:
 The sports app allows players to import and export statistics about 
