@@ -192,4 +192,9 @@ public class Match {
         return this.teamA.hashCode() + this.teamB.hashCode();
     }
 
+    @Override
+    public String toString() {
+        return "Match between " + this.teamA + " and " + this.teamB;
+    }
+
 }

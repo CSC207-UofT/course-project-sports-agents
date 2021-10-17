@@ -55,13 +55,13 @@ public class TeamStatManagerTest {
 
     @Test(timeout = 50)
     public void testGetWinRate(){
-        assertEquals(0, tsm.getWinRate("name"));
-        assertEquals((float) 1 / 3 * 100, tsm.getWinRate("name1"));
+        assertEquals(0, tsm.getWinRate("name"), 0.01);
+        assertEquals((float) 1 / 3 * 100, tsm.getWinRate("name1"), 0.01);
     }
 
     @Test(timeout = 50)
     public void testGetLossRate(){
-        assertEquals(0, tsm.getLossRate("name"));
-        assertEquals((float) 1 / 3 * 100, tsm.getLossRate("name1"));
+        assertEquals(0, tsm.getLossRate("name"), 0.01);
+        assertEquals((float) 1 / 3 * 100, tsm.getLossRate("name1"), 0.01);
     }
 }

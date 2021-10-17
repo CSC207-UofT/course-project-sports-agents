@@ -15,7 +15,7 @@ public class TennisPlayerListTest {
     @After
     public void tearDown() {}
 
-    @Test(timeout = 100)
+    @Test(timeout = 1000)
     public void TestTrueContainsPlayer() {
         assertTrue(tennisPlayerList.containsPlayer("Brisbane", "John Millman"));
 
@@ -26,7 +26,7 @@ public class TennisPlayerListTest {
         assertFalse(tennisPlayerList.containsPlayer("Doha", "Serena Williams"));
     }
 
-    @Test(timeout = 100)
+    @Test(timeout = 1000)
     public void testFindTennisPlayer() throws Exception {
         assertEquals("Name: Novak Djokovic\n" +
                         "Age: 32\n" +
