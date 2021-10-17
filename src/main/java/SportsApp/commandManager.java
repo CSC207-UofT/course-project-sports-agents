@@ -1,7 +1,7 @@
 package SportsApp;
 
 import commands.Command;
-import league_member.LeagueMemberManager;
+import commands.LeagueMemberManager;
 import commands.PlayerStatManager;
 
 import java.util.ArrayList;

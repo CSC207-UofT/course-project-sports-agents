@@ -1,14 +1,14 @@
-package league_member;
+package commands;
 
-import commands.Command;
+import league_member.LeagueMember;
 import match.Match;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class LeagueMemberManager implements Command {
-    // MemberMap stores the Members of the fantasy league
-    public HashMap<String, LeagueMember> MemberMap;
+    // MemberMap stores the League Members of the fantasy league
+    public HashMap<String, LeagueMember> LeagueMemberMap;
     // GameMap stores the ongoing Games of the fantasy league
     public HashMap<String, Match> MatchMap;
 
@@ -16,7 +16,7 @@ public class LeagueMemberManager implements Command {
      * Create a new MemberManager with no Members and no Games
      */
     public LeagueMemberManager() {
-        this.MemberMap = new HashMap<String, LeagueMember>();
+        this.LeagueMemberMap = new HashMap<String, LeagueMember>();
         this.MatchMap = new HashMap<String, Match>();
     }
 
@@ -38,18 +38,18 @@ public class LeagueMemberManager implements Command {
     }
 
     /**
-     * Add a new Member to the fantasy league
+     * Add a new League Member to the fantasy league
      * @param arguments String Array of form {"add_member", <member name>}
      * @return a confirmation if the Member was added
      * @throws Exception if a Member with the same name already exists
      */
     private String addMember(ArrayList<String> arguments) throws Exception {
-        String memberName = arguments.get(1);
-        if (this.MemberMap.containsKey(memberName)) {
-            throw new Exception(memberName + " is already an existing Member!");
+        String leagueMemberName = arguments.get(1);
+        if (this.LeagueMemberMap.containsKey(leagueMemberName)) {
+            throw new Exception(leagueMemberName + " is already an existing Member!");
         }
-        LeagueMember addedLeagueMember = new LeagueMember(memberName);
-        this.MemberMap.put(memberName, addedLeagueMember);
+        LeagueMember addedLeagueMember = new LeagueMember(leagueMemberName);
+        this.LeagueMemberMap.put(leagueMemberName, addedLeagueMember);
         return "New " + addedLeagueMember + " successfully added.";
     }
 
@@ -75,17 +75,17 @@ public class LeagueMemberManager implements Command {
     }
 
     /**
-     * Record a Member bet on the outcome of a Match
+     * Record a League Member's bet on the outcome of a Match
      * @param arguments String Array of form {"bet", <member name>,
      *                <match name>, <predicted winning team>}
      * @return a confirmation if the bet is recorded
-     * @throws Exception if the Member does not exist, the Match does not
-     * exist, or the team is not competing in the Match
+     * @throws Exception if the League Member does not exist, the Match does
+     * not exist, or the team is not competing in the Match
      */
     private String bet(ArrayList<String> arguments) throws Exception {
-        String memberName = arguments.get(1);
-        verifyMember(memberName);
-        LeagueMember bettingLeagueMember = this.MemberMap.get(memberName);
+        String leagueMemberName = arguments.get(1);
+        verifyMember(leagueMemberName);
+        LeagueMember bettingLeagueMember = this.LeagueMemberMap.get(leagueMemberName);
 
         String matchName = arguments.get(2);
         verifyMatch(matchName);
@@ -93,12 +93,12 @@ public class LeagueMemberManager implements Command {
 
         String favoredTeamName = arguments.get(3);
         targetMatch.addBet(bettingLeagueMember, favoredTeamName);
-        return memberName + " has successfully placed a bet that " +
+        return leagueMemberName + " has successfully placed a bet that " +
                 favoredTeamName + " will win " + matchName;
     }
 
     /**
-     * Resolve a Match's outcome and award Members according to their bets
+     * Resolve a Match's outcome and award League Members according to their bets
      * @param arguments String Array of form {"resolve_match", <match name>,
      *                <winning team name>}
      * @return a confirmation if the Match's outcome is resolved
@@ -117,26 +117,26 @@ public class LeagueMemberManager implements Command {
     }
 
     /**
-     * Return information on a given Member
+     * Return information on a given League Member
      * @param arguments String array for form {"member_info", <member name>}
      * @return a string representation of the member
-     * @throws Exception if the Member does not exist
+     * @throws Exception if the League Member does not exist
      */
     private String memberInfo(ArrayList<String> arguments) throws Exception {
         String memberName = arguments.get(1);
         verifyMember(memberName);
-        LeagueMember targetLeagueMember = this.MemberMap.get(memberName);
+        LeagueMember targetLeagueMember = this.LeagueMemberMap.get(memberName);
         return targetLeagueMember.toString();
     }
 
     /**
-     * Verify that the given Member exists
-     * @param memberName the possible Member's name
-     * @throws Exception if there is no Member with the given name
+     * Verify that the given League Member exists
+     * @param leagueMemberName the possible League Member's name
+     * @throws Exception if there is no League Member with the given name
      */
-    private void verifyMember(String memberName) throws Exception {
-        if (!this.MemberMap.containsKey(memberName)) {
-            throw new Exception(memberName + " is not an existing Member!");
+    private void verifyMember(String leagueMemberName) throws Exception {
+        if (!this.LeagueMemberMap.containsKey(leagueMemberName)) {
+            throw new Exception(leagueMemberName + " is not an existing Member!");
         }
     }
 

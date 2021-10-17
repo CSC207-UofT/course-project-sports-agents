@@ -1,4 +1,4 @@
-import league_member.LeagueMemberManager;
+import commands.LeagueMemberManager;
 import org.junit.Before;
 import org.junit.Test;
 
