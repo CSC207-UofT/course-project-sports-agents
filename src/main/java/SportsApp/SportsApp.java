@@ -24,7 +24,13 @@ public class SportsApp {
         commandManager manager = new commandManager();
         while (!input.equals("quit")) {
             input = inputScanner.nextLine();
-            System.out.println(manager.execute(input));
+            try {
+                String output = manager.execute(input);
+                System.out.println(output);
+            }
+            catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 }

@@ -1,20 +1,61 @@
-Scenario: the user compares two teams and makes a prediction
+Scenario 1: The user queries the pre-loaded statistic database
+about a player's statistic in a current season.
 
-The user can import data from a .csv file into the app. The app will load the data and create teams as specified by 
-the .csv file. The user can then easily access different stats about the team for a given season/competition/year.  For 
-example, if the user wanted to know how many games a hockey team has participated in for a specific season, the app 
-can be used to retrieve the number of games that team has participated in for the given season. Additionally, when 
-given two or more teams the app will provide the user with data that will make it easy and intuitive to compare the 
-teams. For example, if the user wants to compare four hockey teams, and he/she wants to know which team participated 
-in the most number of games for a given season, the app can be used to report the four hockey teams listed in 
-non-increasing order based on the number of games played. Finally, the app can also be used to make predictions about 
-a stat for a specific team, based on historical data for that team. For example, if the app contained data about a 
-hockey team, including how many goals that team scored in 5 past seasons, it can then estimate/predict how many goals 
-that team will score in an upcoming season (using linear regression).
+The app, running from the `SportsApp` class, reads the user's
+input of `stats_player "Auston Matthews" "games played" "20202021"`
+typed at the command line. It passes this to the
+`CommandManager` class's `execute` method.
+The `CommandManager` class uses its `parse` method to split the
+input into the 4 arguments, then finds the
+relevant use case class to handle the input -
+here, `PlayerStatManager`. All use case classes
+implement the `Command` interface, which defines their `execute`
+method which is called on the arguments. The `PlayerStatManager`'s
+`execute` method creates a `PlayerList`, which on initialization
+loads a dataset of Hockey Player data from a CSV file by
+creating `HockeyPlayer` objects with the relevant data.
+The `PlayerList` is queried for the relevant `HockeyPlayer`, which.
+is then queried for the given statistic. The statistic is formatted
+into a string, passed back up to `CommandManager`,
+and printed to the user by `SportsApp`.
 
-After viewing stats about specific teams as explained, the user can then make their own prediction on who will win in 
-a match between two teams of their choice. After making a decision on who will win, the user will create a match in the 
-app, add themselves as a member of the fantasy league, and bet on the outcome of the match. Additionally, the user will 
-add their friend as a member of the fantasy league and make a prediction on the same match on their behalf. After the
-match ends, the user will indicate the outcome of the match in the app, and the app will determine which members got 
-the predictions right and which didn't.
+Scenario 2: The user makes a user, makes a game, bets on it, resolves 
+the game, and checks that user's history.
+
+As above, the first command,
+`member_manager create_match "Semifinal 1" "Red Team" "Blue Team"`,
+is passed from the
+command line to `SportsApp` to
+`CommandManager` which parses it and chooses a relevant use case -
+here, the `MemberManager` - and calls its `execute` method.
+The `execute` method calls the private `createMatch` method to create
+and store a new `Match` object in the `MemberManager`, then passes back
+a conformation message up to `CommandManager` to `SportsApp` to the user.
+
+All following commands operate similarly, only with a different
+private method called. For space, only the new private 
+method is described and the passing of the command to 
+`MemberManager`'s `execute and the passing of the response to
+`CommandManager` to `SportsApp` to the user is omitted.
+
+The second command, `member_manager add_member "Paul Gries"`, 
+leads to `MemberManager` using the private `addMember` method to
+create and store a new `Member` object in the `MemberManager`.
+
+The third command, 
+`member_manager bet "Paul Gries" "Semifinal 1" "Blue Team"`,
+leads to `MemberManager` using the private `bet` method have the
+`Match` Semifinal 1 record `Member` Paul Gries bets Blue Team will 
+win.
+
+The fourth command,
+`member_manager resolve_match "Semifinal 1" "Blue Team"`,
+leads to `MemberManager` using the private `resolveMatch` method to
+direct the `Match` for Semifinal 1 to update all users who bet on its 
+outcome. The `MemberManager` then drops that Match, as it has ended.
+
+The fifth command,
+`member_manager member_info "Paul Gries"`,
+leads to `MemberManager` using the private `memberInfo` method to
+access the information about `Member` Paul Gries, which is passed back
+to the user who sees he made one successful bet!

@@ -96,5 +96,10 @@ public class Match {
         }
     }
 
+    @Override
+    public String toString() {
+        return "Match between " + this.teamA + " and " + this.teamB;
+    }
+
 
 }

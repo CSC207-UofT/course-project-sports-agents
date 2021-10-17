@@ -8,7 +8,7 @@ import java.util.*;
 /**
  * Predict a player's performance in season 2021-2022 in a given statistic.
  */
-public class PlayerStatPredictor implements Command{
+public class PlayerStatPredictor implements Command {
 
     /**
      *

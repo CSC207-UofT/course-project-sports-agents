@@ -48,7 +48,7 @@ public class MemberManagerTest {
         createMatchCommand.add("Owls");
         // TODO: Update this to reflect Match.toString()
         assertEquals(m.execute(createMatchCommand),
-                "New Match Super Bowl successfully created.");
+                "New Match between Ravens and Owls successfully created.");
 
         try {
             String failMessage = m.execute(createMatchCommand);
@@ -81,7 +81,7 @@ public class MemberManagerTest {
             String failMessage = m.execute(betFakeMemberCommand);
             fail();
         } catch (Exception e) {
-            assertEquals(e.getMessage(), "Gries Pail is not an " +
+            assertEquals(e.getMessage(), "Gries Paul is not an " +
                     "existing Member!");
         }
 
@@ -107,7 +107,7 @@ public class MemberManagerTest {
             fail();
         } catch (Exception e) {
             // TODO: Update this to reflect Match's error
-            assertEquals(e.getMessage(), "TODO");
+            assertEquals(e.getMessage(), "");
         }
     }
 
