@@ -20,7 +20,7 @@ public class SportsApp {
         String input = "";
 
         // TODO: Implement a catch statement
-        commandManager manager = new commandManager();
+        CommandManager manager = new CommandManager();
         while (!input.equals("quit")) {
             input = inputScanner.nextLine();
             System.out.println(manager.execute(input));

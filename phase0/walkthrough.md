@@ -1,12 +1,45 @@
-Scenario: the user looks compares two teams and makes two prediction
+Scenario 1: The user queries the pre-loaded statistic database 
+about a player's statistic in a current season.
 
-The user will import data from their csv file into the app. After the app loads the data, the user will check the 
-rankings and other data of the two teams that are playing against each other in the upcoming match. The app will provide
-the user with the data that will make it easy and intuitive to compare the two teams. The user will also look at the 
-statistics of some players who will be playing in the upcoming match.
+The app, running from the `SportsApp` class, reads the user's 
+input of `stats_player "Auston Matthews" "games played" "20202021"` 
+typed at the command line. It passes this to the 
+`CommandManager` class's `execute` method. 
+The `CommandManager` class uses its `parse` method to split the 
+input into the 4 arguments, then finds the 
+relevant use case class to handle the input - 
+here, `PlayerStatManager`. All use case classes
+implement the `Command` interface, which defines their `execute` 
+method which is called on the arguments. The `PlayerStatManager`'s 
+`execute` method creates a `PlayerList`, which on initialization 
+loads a dataset of Hockey Player data from a CSV file by 
+creating `HockeyPlayer` objects with the relevant data. 
+The `PlayerList` is queried for the relevant `HockeyPlayer`, which. 
+is then queried for the given statistic. The statistic is formatted 
+into a string, passed back up to `CommandManager`,
+and printed to the user by `SportsApp`.
 
-After making a decision on who will  win, the user will create a match in the app, add themselves as a leagueMember of the 
-fantasy league, and bet on the outcome of the match. Additionally, the user will add their friend as a leagueMember of the 
-fantasy league and make a prediction on the same match on their behalf. After the match ends, the user will indicate
-the outcome of the match in the app, and the app will determine which members got the predictions right and which
-didn't.
+Scenario 2: The user makes a user, makes a game, and bets on it.
+
+As above, the first command, 
+`member_manager create_match "Semifinal 1" "Red Team" "Blue Team"`, 
+is passed from the
+command line to `SportsApp` to 
+`CommandManager` which parses it and chooses a relevant use case -
+here, the `MemberManager` - and calls its `execute` method.
+The `execute` method calls the private `createMatch` method to create
+and store a new `Match` object in the `MemberManager`, then passes back
+a conformation message up to `CommandManager` to `SportsApp` to the user.
+
+The second command, `member_manager add_member "Paul Gries"`, is 
+passed to the `MemberManager`'s `execute` method exactly as described
+above. The `execute` method calls the private `addMember` method to
+create and store a new `Member` object in the `MemberManager`,
+then passes a conformation message to the user as described above.
+
+The third command,
+`member_manager bet "Paul Gries" "Semifinal 1" "Blue Team"`, 
+is passed from the command line to the `MemberManager`'s `execute`
+method. The `execute` method calls the private `bet` method to have the
+`Match` for Semifinal 1 record `Member` Paul Gries bet the Blue Team will win.
+The conformation message is passed back to the user.Adde
