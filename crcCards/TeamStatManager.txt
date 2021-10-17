@@ -4,8 +4,8 @@ Subclasses: None
 Layer: Use Case
 
 Responsibilities:
-* Find or compute statistics about a given Team.Team
+* Find or compute statistics about a given team.team
 
 Collaborators:
-* Team.TeamManager
-* Team.Team
+* team.TeamManager
+* team.team

@@ -1,6 +1,8 @@
+package sportsApp;
+
 import org.junit.*;
 import static org.junit.Assert.*;
-import SportsApp.inputParser;
+import sportsApp.inputParser;
 
 import java.util.ArrayList;
 

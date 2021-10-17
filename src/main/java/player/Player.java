@@ -1,4 +1,4 @@
-package Player;
+package player;
 
 import java.util.Objects;
 
@@ -7,7 +7,7 @@ import java.util.Objects;
  */
 
 public abstract class Player {
-    private final String name;
+    public final String name;
 
 
     /**

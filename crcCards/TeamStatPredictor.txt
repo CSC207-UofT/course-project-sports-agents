@@ -4,7 +4,7 @@ Subclasses: None
 Layer: Use Case
 
 Responsibilities:
-* Given a Team.Team has a past record for a statistic, predict their future performance on that statistic
+* Given a team.team has a past record for a statistic, predict their future performance on that statistic
 
 Collaborators:
 * commands.TeamStatManager

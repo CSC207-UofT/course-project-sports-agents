@@ -1,8 +1,8 @@
 package commands;
 
-import Player.GetStatsComparator;
-import Player.HockeyPlayer;
-import Player.PlayerList;
+import player.GetStatsComparator;
+import player.HockeyPlayer;
+import player.PlayerList;
 
 import java.util.*;
 

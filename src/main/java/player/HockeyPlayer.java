@@ -1,12 +1,11 @@
-package Player;
+package player;
 
 import java.util.HashMap;
 import java.util.Map;
 /**
  * A player Class.
  */
-public class HockeyPlayer {
-    public String name;
+public class HockeyPlayer extends Player {
     public String season;
     public String team;
     public String skaterShoots;
@@ -21,7 +20,7 @@ public class HockeyPlayer {
     public HockeyPlayer(String name, String season, String team, String skaterShoots, String position,
                         String gamesPlayed, String goals, String assists, String points, String shots,
                         String shootingPercentage) {
-        this.name = name;
+        super(name);
         this.season = season;
         this.team = team;
         this.skaterShoots = skaterShoots;
@@ -53,6 +52,7 @@ public class HockeyPlayer {
         return listAllStats;
     }
 
+    @Override
     public String toString() {
         return "name: " + this.name + "\nseason: " + this.season + "\nteam: " +
                 this.team + "\nskater shoots: " + this.skaterShoots + "\nposition: " +
