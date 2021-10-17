@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class SportsApp {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         System.out.println("Hi! Welcome to our sports agent app");
         System.out.println("Currently, the following commands are available:");
         System.out.println("member_manager add_member \"member_name\": adds a new member for your fantasy league");
