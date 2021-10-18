@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class CommandManager {
+public class commandManager {
 
     private static final HashMap<String, Command> commandDictionary = new HashMap<String, Command>();
 
