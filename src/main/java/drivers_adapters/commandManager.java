@@ -1,11 +1,10 @@
-package sportsApp;
+package drivers_adapters;
 
 import commands.Command;
 import commands.LeagueMemberManager;
 import commands.PlayerStatManager;
-import java.util.ArrayList;
+
 import java.util.HashMap;
-import java.util.List;
 
 public class commandManager {
 

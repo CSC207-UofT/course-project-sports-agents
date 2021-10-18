@@ -2,7 +2,7 @@ package sportsApp;
 
 import org.junit.*;
 import static org.junit.Assert.*;
-import sportsApp.inputParser;
+import drivers_adapters.inputParser;
 
 import java.util.ArrayList;
 
