@@ -55,6 +55,7 @@ public class TennisPlayerList {
                 updatePlayer(playerData, loser, LOSER_ACES, LOSER_DOUBLE_FAULTS, LOSER_SERVE_POINTS,
                         LOSER_FIRST_SERVES, LOSER_BREAK_POINTS);
             }
+            reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -33,6 +33,7 @@ public class PlayerList {
                 }
 
             }
+            br.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
