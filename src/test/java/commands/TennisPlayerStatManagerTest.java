@@ -32,7 +32,7 @@ public class TennisPlayerStatManagerTest {
 
     @Test (timeout = 50)
     public void TestExecute() throws Exception {
-        assertEquals("46", manager.execute(arguments));
+        assertEquals("Brisbane: 46", manager.execute(arguments));
     }
 
 }

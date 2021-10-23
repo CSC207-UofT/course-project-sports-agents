@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -148,5 +149,23 @@ public class TennisPlayerList {
             }
         }
         throw new Exception("player.Player not found!");
+    }
+
+
+    /**
+     * Find all competitions the given player participated in and return a list of the needed player with their
+     * stats in each competition
+     * @param name the name of the needed player
+     * @return a list of the player's stats in all competitions
+     * @throws Exception if the player is not found
+     */
+    public List<TennisPlayer> findAllCompetitions(String name) throws Exception {
+        List<TennisPlayer> player = new ArrayList<>();
+        for (String competition : competitionToPlayers.keySet()) {
+            if (containsPlayer(competition, name)) {
+                player.add(findTennisPlayer(competition, name));
+            }
+        }
+        return player;
     }
 }

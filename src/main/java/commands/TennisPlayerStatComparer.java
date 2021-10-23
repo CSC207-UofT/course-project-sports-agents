@@ -5,6 +5,7 @@ import player.TennisPlayerList;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * This is a class that compare two tennis players, who played in a given competition, based on the given stat.
@@ -30,41 +31,16 @@ public class TennisPlayerStatComparer implements Command {
      */
     @Override
     public String execute(ArrayList<String> arguments) throws Exception {
-        String playerOneName = arguments.get(PLAYER_ONE);
-        String playerTwoName = arguments.get(PLAYER_TWO);
-        String neededStat = arguments.get(STAT);
-        String neededCompetition = arguments.get(COMPETITION);
+        List<String> playerNames = arguments.subList(0, arguments.size() - 2);
         TennisPlayerList tp = new TennisPlayerList();
-        HashMap<String, ArrayList<TennisPlayer>> competitionToPlayers = tp.getAllTennisPlayers();
-        ArrayList<TennisPlayer> competitionPlayers = new ArrayList<>();
         ArrayList<TennisPlayer> neededPlayers = new ArrayList<>();
 
-        for (String competition : competitionToPlayers.keySet()) {
-            if (competition.equals(neededCompetition)) {
-                competitionPlayers = competitionToPlayers.get(competition);
-            }
+        for (String name : playerNames) {
+            neededPlayers.add(tp.findTennisPlayer(arguments.get(COMPETITION), name));
         }
 
-        for (TennisPlayer player : competitionPlayers) {
-            if (player.getName().equals(playerOneName) | player.getName().equals(playerTwoName)) {
-                neededPlayers.add(player);
-            }
-        }
-
-        if (competitionPlayers.isEmpty()) {
-            throw new Exception("Competition not found!");
-        }
-
-        if (neededPlayers.size() < 2) {
-            throw new Exception("Could not find all players!");
-        }
-
-        if (neededStat.equals("name") | neededStat.equals("country")) {
-            throw new Exception("Cannot compare those values!");
-        }
-
-        int playerOneStat = Integer.parseInt(neededPlayers.get(PLAYER_ONE).getNeededStat(neededStat));
-        int playerTwoStat = Integer.parseInt(neededPlayers.get(PLAYER_TWO).getNeededStat(neededStat));
+        int playerOneStat = Integer.parseInt(neededPlayers.get(PLAYER_ONE).getNeededStat(arguments.get(STAT)));
+        int playerTwoStat = Integer.parseInt(neededPlayers.get(PLAYER_TWO).getNeededStat(arguments.get(STAT)));
 
 
         if (playerOneStat > playerTwoStat) {

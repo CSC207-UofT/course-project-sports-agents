@@ -236,8 +236,10 @@ public class TennisPlayer extends Player {
      *             first serves, age, and country
      * @return the needed stat of the player (as a string)
      */
-    public String getNeededStat(String stat) {
+    public String getNeededStat(String stat) throws Exception {
         switch (stat) {
+            case "name":
+                return this.getName();
             case "aces":
                 return String.valueOf(this.aces);
             case "double faults":
@@ -250,8 +252,12 @@ public class TennisPlayer extends Player {
                 return String.valueOf(this.breakPointsSaved);
             case "age":
                 return String.valueOf(this.age);
+            case "country":
+                return this.country;
+            case "all stats":
+                return this.toString();
         }
-        return this.country;
+        throw new Exception("The given stat was not found!");
     }
 
 }
