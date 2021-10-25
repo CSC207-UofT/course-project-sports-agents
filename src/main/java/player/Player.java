@@ -56,7 +56,16 @@ public abstract class Player {
             return false;
         }
         Player other = (Player) obj;
-        return Objects.equals(this.name, other.name);
+        return this.name.equals(other.name);
+    }
+
+    /**
+     * Implement hashCode, for using Players in hashmaps
+     * @return hashCode of player name
+     */
+    @Override
+    public int hashCode() {
+        return this.name.hashCode();
     }
 }
 
