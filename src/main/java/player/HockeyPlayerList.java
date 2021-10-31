@@ -8,17 +8,17 @@ import java.util.*;
 /**
  * Read csv file and create a hash map where the key is the season and the value is a list of players objects.
  */
-public class PlayerList {
-    private HashMap<String, List<HockeyPlayer>> playerMap = new HashMap<>();
+public class HockeyPlayerList {
+    private final HashMap<String, List<HockeyPlayer>> playerMap = new HashMap<>();
 
-    public PlayerList() {
-        String line = "";
+    public HockeyPlayerList() {
+        String line;
         String splitBy = ",";
 
         try {
-            BufferedReader br = new BufferedReader(new FileReader("filtered_summary.csv"));
+            BufferedReader br = new BufferedReader(new FileReader("hockey.csv"));
             br.readLine(); //skip the first line.
-            List<String> seasons = Arrays.asList("20162017", "20172018", "20182019","20192020", "20202021");
+            List<String> seasons = Arrays.asList("2016-2017", "2017-2018", "2018-2019","2019-2020", "2020-2021");
             for (String season: seasons){
                 this.playerMap.put(season, new ArrayList<>());} //adding seasons as keys with empty lists as values
 

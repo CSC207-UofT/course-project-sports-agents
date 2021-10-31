@@ -6,22 +6,17 @@ import java.util.Comparator;
  * A comparator class for PlayerStatComparator. It compares and sorts the players based on
  * the values of the demanded statistics.
  */
-public class GetStatsComparator implements Comparator<HockeyPlayer> {
+public class GetStatsComparator implements Comparator<Player> {
     String demandedStat;
 
     public GetStatsComparator(String demandedStat) {
         this.demandedStat = demandedStat;
     }
 
-    public int compare(HockeyPlayer p1, HockeyPlayer p2) {
+    public int compare(Player p1, Player p2) {
         try {
-            if (Integer.parseInt(p1.getStat(this.demandedStat)) > Integer.parseInt(p2.getStat(this.demandedStat))) {
-                return 1;
-            } else if (Integer.parseInt(p1.getStat(this.demandedStat)) == Integer.parseInt(p2.getStat(this.demandedStat))) {
-                return 0;
-            } else {
-                return -1;
-            }
+            return Integer.compare(Integer.parseInt(p1.getNeededStat(this.demandedStat)),
+                    Integer.parseInt(p2.getNeededStat(this.demandedStat)));
         } catch (Exception e) {
             e.printStackTrace();
         }

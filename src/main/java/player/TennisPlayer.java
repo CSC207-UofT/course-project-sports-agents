@@ -1,5 +1,7 @@
 package player;
 
+import java.util.*;
+
 /**
  * This class represents a tennis player.
  */
@@ -229,29 +231,43 @@ public class TennisPlayer extends Player {
                 "\nFirst Serves: " + this.firstServes + "\nBreak Points Saved: " + this.breakPointsSaved;
     }
 
-
-    /**
-     * Return the given stat, assuming the given stat is a possible stat associated with a tennis player.
-     * @param stat stat that needs to be reported (possible stats include aces, dauble faults, serve points,
-     *             first serves, age, and country
-     * @return the needed stat of the player (as a string)
-     */
-    public String getNeededStat(String stat) {
-        switch (stat) {
-            case "aces":
-                return String.valueOf(this.aces);
-            case "double faults":
-                return String.valueOf(this.doubleFaults);
-            case "serve points":
-                return String.valueOf(this.servePoints);
-            case "first serves":
-                return String.valueOf(this.firstServes);
-            case "break points saved":
-                return String.valueOf(this.breakPointsSaved);
-            case "age":
-                return String.valueOf(this.age);
-        }
-        return this.country;
+    public Map<String, String> mapStats(){
+        return new HashMap<>(Map.of("name",
+                this.name, "age", String.valueOf(this.age), "country", this.country,
+                "aces", String.valueOf(this.aces), "double faults", String.valueOf(this.doubleFaults),
+                "serve points", String.valueOf(this.servePoints), "first serves",
+                String.valueOf(this.firstServes), "break points saved",
+                String.valueOf(this.breakPointsSaved)));
     }
+
+
+    public String getNeededStat(String stat) throws Exception {
+        Map<String, String> listAllSats = this.mapStats();
+        if (!listAllSats.containsKey(stat)) {
+            throw new Exception("Demanded statistics "+ stat+" not found!");
+        } else {
+            return listAllSats.get(stat);
+        }
+    }
+
+
+//    public String getNeededStat(String stat) {
+//        switch (stat) {
+//            case "aces":
+//                return String.valueOf(this.aces);
+//            case "double faults":
+//                return String.valueOf(this.doubleFaults);
+//            case "serve points":
+//                return String.valueOf(this.servePoints);
+//            case "first serves":
+//                return String.valueOf(this.firstServes);
+//            case "break points saved":
+//                return String.valueOf(this.breakPointsSaved);
+//            case "age":
+//                return String.valueOf(this.age);
+//        }
+//        return this.country;
+//    }
+
 
 }

@@ -2,16 +2,16 @@ package drivers_adapters;
 
 import commands.Command;
 import commands.LeagueMemberManager;
-import commands.PlayerStatManager;
+import commands.HockeyPlayerStatManager;
 
 import java.util.HashMap;
 
 public class commandManager {
 
-    private static final HashMap<String, Command> commandDictionary = new HashMap<String, Command>();
+    private static final HashMap<String, Command> commandDictionary = new HashMap<>();
 
     static {
-        commandDictionary.put("stats_player", new PlayerStatManager());
+        commandDictionary.put("stats_player", new HockeyPlayerStatManager());
         commandDictionary.put("member_manager", new LeagueMemberManager());
     }
     public String execute(String input) throws Exception {

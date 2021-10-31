@@ -17,6 +17,20 @@ public class HockeyPlayer extends Player {
     public String shots;
     public String shootingPercentage;
 
+    /**
+     *
+     * @param name player's name
+     * @param season player's season
+     * @param team player's team
+     * @param skaterShoots either left or right.
+     * @param position player's position in the team.
+     * @param gamesPlayed The number of games the player has played in the season.
+     * @param goals number of player's goals.
+     * @param assists number of player's assists.
+     * @param points number of player's points.
+     * @param shots number of player's shots.
+     * @param shootingPercentage the percentage of the shooting of the skater.
+     */
     public HockeyPlayer(String name, String season, String team, String skaterShoots, String position,
                         String gamesPlayed, String goals, String assists, String points, String shots,
                         String shootingPercentage) {
@@ -33,16 +47,16 @@ public class HockeyPlayer extends Player {
         this.shootingPercentage = shootingPercentage;
     }
 
-    public String getStat(String stat) throws Exception {
+    public String getNeededStat(String stat) throws Exception {
         Map<String, String> listAllSats = this.mapStats();
         if (!listAllSats.containsKey(stat)) {
-            throw new Exception("Demanded statistics not found!");
+            throw new Exception("Demanded statistics "+ stat+" not found!");
         } else {
             return listAllSats.get(stat);
         }
     }
 
-    public Map<String, String> mapStats() {
+    public Map<String, String> mapStats(){
         Map<String, String> listAllStats = new HashMap<>(Map.of("name",
                 this.name, "season", this.season, "team", this.team,
                 "skater shoots", this.skaterShoots, "position", this.position,
@@ -51,6 +65,7 @@ public class HockeyPlayer extends Player {
         listAllStats.put("shooting percentage", this.shootingPercentage);
         return listAllStats;
     }
+
 
     @Override
     public String toString() {

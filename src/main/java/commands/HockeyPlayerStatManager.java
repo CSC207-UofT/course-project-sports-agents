@@ -1,7 +1,7 @@
 package commands;
 
 import player.HockeyPlayer;
-import player.PlayerList;
+import player.HockeyPlayerList;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,9 +11,9 @@ import java.util.List;
  * Return the statistics of a player throughout the demanded years if statistics is specified, else return the
  * whole statistic information.
  */
-public class PlayerStatManager implements Command {
+public class HockeyPlayerStatManager implements Command {
 
-    public PlayerStatManager(){}
+    public HockeyPlayerStatManager(){}
 
     /**
      *
@@ -29,7 +29,16 @@ public class PlayerStatManager implements Command {
         String playerName = arguments.get(0);
         String stat = arguments.get(1);
         List<String> seasons = arguments.subList(2, arguments.size());
-        PlayerList p = new PlayerList();
+
+        List<HockeyPlayer> listDemandedStat = getHockeyPlayersFromFile(playerName, seasons);
+
+        return returnStatOfPlayer(stat, listDemandedStat);
+
+    }
+
+
+    private List<HockeyPlayer> getHockeyPlayersFromFile(String playerName, List<String> seasons) throws Exception {
+        HockeyPlayerList p = new HockeyPlayerList();
         HashMap<String, List<HockeyPlayer>> playerMap = p.getPlayerMap();
 
         List<HockeyPlayer> listDemandedStat = new ArrayList<>();
@@ -47,7 +56,11 @@ public class PlayerStatManager implements Command {
         if (listDemandedStat.isEmpty()){
             throw new Exception("player not found!");
         }
+        return listDemandedStat;
+    }
 
+
+    private String returnStatOfPlayer(String stat, List<HockeyPlayer> listDemandedStat) throws Exception {
         StringBuilder reportedStat = new StringBuilder();
 
         if (stat.equals("all stats")){ // if the demanded stat is not specified, return all the stat.
@@ -56,11 +69,10 @@ public class PlayerStatManager implements Command {
             }
         }else{ // if the demanded stat is specified, return the season and the related stat.
             for (HockeyPlayer demandedStat: listDemandedStat){
-                reportedStat.append(demandedStat.season).append(": ").append(demandedStat.getStat(stat)).append(stat);
+                reportedStat.append(demandedStat.season).append(": ").append(demandedStat.getNeededStat(stat)).append(stat);
             }
         }
         return reportedStat.toString();
-
     }
 
 
