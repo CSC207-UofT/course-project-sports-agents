@@ -33,5 +33,6 @@ public class SportsApp {
                 System.out.println(e.getMessage());
             }
         }
+        inputScanner.close();
     }
 }
