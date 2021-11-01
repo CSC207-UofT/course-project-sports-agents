@@ -1,18 +1,16 @@
 package team;
 
-import player.Player;
-import match.Match;
-
+import java.util.List;
 import java.util.ArrayList;
 
 public class TeamManager {
-    private ArrayList<Team> teams;
+    private List<Team> teams;
 
     public TeamManager(){
         teams = new ArrayList<Team>();
     }
 
-    public TeamManager(ArrayList<Team> teams){
+    public TeamManager(List<Team> teams){
         this.teams = teams;
     }
     
@@ -20,37 +18,16 @@ public class TeamManager {
      * Get teams
      * @return teams
      */
-    public ArrayList<Team> getTeams(){
+    public List<Team> getTeams(){
         return teams;
     }
 
     /**
      * Adds a new team
+     * @param team
      */
-    public void createTeam(){
-        teams.add(new HockeyTeam());
-    }
-
-    /**
-     * Adds a new team
-     * @param type Hockey, Tennis
-     * @param name
-     * @param homeCity
-     * @param players
-     * @param playedGames
-     * @param totalGamesPlayed
-     * @param wins
-     * @param losses
-     * @param ties
-     */
-    public void createTeam(String type, String name, String homeCity, ArrayList<Player> players, ArrayList<Match> playedGames, int totalGamesPlayed, int wins, int losses, int ties){
-        type = type.toLowerCase();
-        switch(type){
-            case("hockey"):
-                teams.add(new HockeyTeam(name, homeCity, players, playedGames, totalGamesPlayed, wins, losses, ties));
-            case("tennis"):
-                teams.add(new TennisTeam(name, homeCity, players, playedGames, totalGamesPlayed, wins, losses, ties));
-        }
+    public void createTeam(Team team){
+        teams.add(team);
     }
 
     /**

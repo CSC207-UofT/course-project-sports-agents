@@ -3,13 +3,13 @@ package team;
 import player.Player;
 import match.Match;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Team {
     private String name;
     private String homeCity;
-    private ArrayList<Player> players;
-    private ArrayList<Match> playedGames;
+    private List<Player> players;
+    private List<Match> playedGames;
     private int totalGamesPlayed;
     private int wins;
     private int losses;
@@ -24,7 +24,7 @@ public abstract class Team {
         this.ties = 0;
     }
 
-    public Team(String name, String homeCity, ArrayList<Player> players, ArrayList<Match> playedGames, int totalGamesPlayed, int wins, int losses, int ties){
+    public Team(String name, String homeCity, List<Player> players, List<Match> playedGames, int totalGamesPlayed, int wins, int losses, int ties){
         this.name = name;
         this.homeCity = homeCity;
         this.players = players;
@@ -71,7 +71,7 @@ public abstract class Team {
      * Get players
      * @return players
      */
-    public ArrayList<Player> getPlayers(){
+    public List<Player> getPlayers(){
         return players;
     }
 
@@ -79,7 +79,7 @@ public abstract class Team {
      * Set players
      * @param players
      */
-    public void setPlayers(ArrayList<Player> players){
+    public void setPlayers(List<Player> players){
         this.players = players;
     }
 
@@ -87,7 +87,7 @@ public abstract class Team {
      * Get played games
      * @return playedGames
      */
-    public ArrayList<Match> getPlayedGames(){
+    public List<Match> getPlayedGames(){
         return playedGames;
     }
     
@@ -95,7 +95,7 @@ public abstract class Team {
      * Set played games
      * @param playedGames
      */
-    public void setPlayedGames(ArrayList<Match> playedGames){
+    public void setPlayedGames(List<Match> playedGames){
         this.playedGames = playedGames;
     }
 
