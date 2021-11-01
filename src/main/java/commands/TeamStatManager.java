@@ -27,7 +27,7 @@ public class TeamStatManager implements Command, TeamConstants {
      * Gets the stats for teams
      * @param teamName
      * @param teamStat
-     * @return the stat for team
+     * @return the stat for the specified team
      */
     public float getStat(String teamName, TeamStats teamStat){
         Team team = teamManager.findTeamWithName(teamName);
@@ -67,9 +67,9 @@ public class TeamStatManager implements Command, TeamConstants {
     }
 
     /**
-     * 
+     * Parses the input text into an enum
      * @param stat
-     * @return
+     * @return If the stat exists returns enum, otherwise returns null
      */
     public TeamStats parseStat(String stat){
         switch(stat.toLowerCase()){

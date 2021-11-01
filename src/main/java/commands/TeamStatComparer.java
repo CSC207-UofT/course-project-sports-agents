@@ -15,6 +15,12 @@ public class TeamStatComparer implements Command, TeamConstants {
         this.teamStatManager = teamStatManager;
     }
 
+    /**
+     * Compares the stats of 2 teams
+     * @param team1
+     * @param team2
+     * @return 1 if team 1 is higher, 2 if team 2 is higher, 0 if team 1 equals team 2
+     */
     public int compareStats(String team1, String team2, TeamStats teamStat){
         float s1 = teamStatManager.getStat(team1, teamStat);
         float s2 = teamStatManager.getStat(team2, teamStat);
