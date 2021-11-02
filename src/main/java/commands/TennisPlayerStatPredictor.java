@@ -5,7 +5,7 @@ import player.*;
 import java.util.*;
 
 /**
- * Predict a player's performance in season 2021-2022 in a given statistic.
+ * A class that will predict a tennis player's future performance for a given stat.
  */
 public class TennisPlayerStatPredictor implements Command {
     static final int PLAYER_NAME = 0;
