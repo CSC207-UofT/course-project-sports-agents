@@ -1,75 +1,57 @@
 package player;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * This class represents a tennis player.
  */
 
 public class TennisPlayer extends Player {
-    private int age;
+    private final Map<String, Integer> age;
     private final String country;
-    private int aces;
-    private int doubleFaults;
-    private int servePoints;
-    private int firstServes;
-    private int breakPointsSaved;
-
-    /**
-     * Construct a tennis player with the following information specified
-     * @param name player's name
-     * @param age player's age
-     * @param country IOC code for this player's country
-     * @param aces number of aces made by this player
-     * @param servePoints number of serve points won by this player
-     * @param firstServes number of first serves made by this player
-     * @param breakPointsSaved number of break points saved
-     */
-    public TennisPlayer(String name, int age, String country, int aces, int doubleFaults,
-                        int servePoints, int firstServes, int breakPointsSaved) {
-        super(name);
-        this.age = age;
-        this.country = country;
-        this.aces = aces;
-        this.doubleFaults = doubleFaults;
-        this.servePoints = servePoints;
-        this.firstServes = firstServes;
-        this.breakPointsSaved = breakPointsSaved;
-    }
+    private final Map<String, Integer> aces;
+    private final Map<String, Integer> doubleFaults;
+    private final Map<String, Integer> servePoints;
+    private final Map<String, Integer> firstServes;
+    private final Map<String, Integer> breakPointsSaved;
 
 
     /**
      * Construct a tennis player who has participated in 0 rounds, and has 0 sets won and lost,
      * and 0 games won and lost
      * @param name player's name
-     * @param age player's age
      * @param country player's country
      */
-    public TennisPlayer(String name, int age, String country) {
+    public TennisPlayer(String name, String country) {
         super(name);
-        this.age = age;
+        this.age = new HashMap<>();
         this.country = country;
-        this.aces = 0;
-        this.doubleFaults = 0;
-        this.servePoints = 0;
-        this.firstServes = 0;
-        this.breakPointsSaved = 0;
+        this.aces = new HashMap<>();
+        this.doubleFaults = new HashMap<>();
+        this.servePoints = new HashMap<>();
+        this.firstServes = new HashMap<>();
+        this.breakPointsSaved = new HashMap<>();
     }
 
 
     /**
-     * Record this player's age
-     * @param age the player's age
-     */
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-
-    /**
-     * Return this player's age
+     * Return this player's age for the given competition
+     * @param competition the needed competition
      * @return player's age
      */
-    public int getAge() {
-        return this.age;
+    public int getAge(String competition) {
+        return this.age.get(competition);
+    }
+
+
+    /**
+     * Record the player's age during a competition
+     * @param competition the new competition the player participated in
+     * @param age the player's age during that competition
+     */
+    public void setAge(String competition, int age) {
+        this.age.put(competition, age);
     }
 
 
@@ -83,137 +65,174 @@ public class TennisPlayer extends Player {
 
 
     /**
-     * Record the number of aces made by this player
+     * Record the number of aces made by this player for a given competition
+     * @param competition the new competition the player participated in
      * @param aces number of aces made
      */
-    public void setAces(int aces) {
-        this.aces = aces;
+    public void setAces(String competition, int aces) {
+        this.aces.put(competition, aces);
     }
 
 
     /**
      * Update the number of aces made by this player
+     * @param competition the needed competition
      * @param aces number of new aces made by player
      */
-    public void updateAces(int aces) {
-        this.aces = this.aces + aces;
+    public void updateAces(String competition, int aces) {
+        int oldAces = this.aces.get(competition);
+        this.aces.put(competition, oldAces + aces);
     }
 
 
     /**
-     * Return the number of aces made by this player
-     * @return number of aces made
+     * Return the number of aces made by this player for a given competition
+     * @param competition the needed competition
+     * @return number of aces made during the given competition
      */
-    public int getAces() {
-        return this.aces;
+    public int getAces(String competition) {
+        return this.aces.get(competition);
     }
 
 
     /**
-     * Record the number of double faults by this player
+     * Record the number of double faults by this player during a competition
+     * @param competition the new competition to be recorded
      * @param doubleFaults number of double faults made by this player
      */
-    public void setDoubleFaults(int doubleFaults) {
-        this.doubleFaults = doubleFaults;
+    public void setDoubleFaults(String competition, int doubleFaults) {
+        this.doubleFaults.put(competition, doubleFaults);
     }
 
 
     /**
      * Update the number of double faults made by this player
+     * @param competition the needed competition
      * @param doubleFaults number of new double faults made by this player
      */
-    public void updateDoubleFaults(int doubleFaults) {
-        this.doubleFaults = this.doubleFaults + doubleFaults;
+    public void updateDoubleFaults(String competition, int doubleFaults) {
+        int oldDoubleFaults = this.doubleFaults.get(competition);
+        this.doubleFaults.put(competition, oldDoubleFaults + doubleFaults);
     }
 
 
     /**
-     * Return the number of double faults made by this player
+     * Return the number of double faults made by this player during a given competition
+     * @param competition the needed competition
      * @return number of double faults made
      */
-    public int getDoubleFaults() {
-        return this.doubleFaults;
+    public int getDoubleFaults(String competition) {
+        return this.doubleFaults.get(competition);
     }
 
 
     /**
-     * Record the number of serve points won by this player
+     * Record the number of serve points won by this player during a competition
+     * @param competition the new competition to be recorded
      * @param servePoints number of serve points
      */
-    public void setServePoints(int servePoints) {
-        this.servePoints = servePoints;
+    public void setServePoints(String competition, int servePoints) {
+        this.servePoints.put(competition, servePoints);
     }
 
 
     /**
      * Update the number of serve points won by this player
+     * @param competition the needed competition
      * @param servePoints number of new serve points won by this player
      */
-    public void updateServePoints(int servePoints) {
-        this.servePoints = this.servePoints + servePoints;
+    public void updateServePoints(String competition, int servePoints) {
+        int oldServePoints = this.servePoints.get(competition);
+        this.servePoints.put(competition, oldServePoints + servePoints);
     }
 
 
     /**
-     * Return the number of serve points won by this player
+     * Return the number of serve points won by this player for the given competition
      * @return number of serve points won
      */
-    public int getServePoints() {
-        return this.servePoints;
+    public int getServePoints(String competition) {
+        return this.servePoints.get(competition);
     }
 
 
     /**
-     * Record the number of first serves by this player
+     * Record the number of first serves by this player for the given competition
+     * @param competition the new competition to be recorded
      * @param firstServes number of first serves
      */
-    public void setFirstServes(int firstServes) {
-        this.firstServes = firstServes;
+    public void setFirstServes(String competition, int firstServes) {
+        this.firstServes.put(competition, firstServes);
     }
 
 
     /**
-     * Update the number of first serves made by this player
+     * Update the number of first serves made by this player for a competition
+     * @param competition the needed competition
      * @param firstServes number of first serves made by this player
      */
-    public void updateFirstServes(int firstServes) {
-        this.firstServes = this.firstServes + firstServes;
+    public void updateFirstServes(String competition, int firstServes) {
+        int oldFirstServes = this.firstServes.get(competition);
+        this.firstServes.put(competition, oldFirstServes + firstServes);
     }
 
 
     /**
-     * Return the number of first serves by this player
+     * Return the number of first serves by this player at a competition
+     * @param competition the needed competition
      * @return number of first serves made
      */
-    public int getFirstServes() {
-        return this.firstServes;
+    public int getFirstServes(String competition) {
+        return this.firstServes.get(competition);
     }
 
 
     /**
-     * Record the number of break points saved by this player
+     * Record the number of break points saved by this player for a competition
+     * @param competition the new competition to be recorded
      * @param breakPointsSaved number of break points saved
      */
-    public void setBreakPointsSaved(int breakPointsSaved) {
-        this.breakPointsSaved = breakPointsSaved;
+    public void setBreakPointsSaved(String competition, int breakPointsSaved) {
+        this.breakPointsSaved.put(competition, breakPointsSaved);
     }
 
 
     /**
      * Update the number of break points saved by this player
+     * @param competition the needed competition
      * @param breakPointsSaved number of new break points saved
      */
-    public void updateBreakPointsSaved(int breakPointsSaved) {
-        this.breakPointsSaved = this.breakPointsSaved + breakPointsSaved;
+    public void updateBreakPointsSaved(String competition, int breakPointsSaved) {
+        int oldBreakPointsSaved = this.breakPointsSaved.get(competition);
+        this.breakPointsSaved.put(competition, oldBreakPointsSaved + breakPointsSaved);
     }
 
 
     /**
      * Return the number of break points saved by this player
+     * @param competition the needed competition
      * @return number of break points saved
      */
-    public int getBreakPointsSaved() {
-        return this.breakPointsSaved;
+    public int getBreakPointsSaved(String competition) {
+        return this.breakPointsSaved.get(competition);
+    }
+
+
+    /**
+     * Add a competition to all maps for this player if the competition cannot be found in a map; all maps for this
+     * player have the same competitions
+     * @param competition the new competition to be added
+     * @param age the player's age during the given competition
+     */
+    public void addCompetition(String competition, int age) {
+        if (!(this.age.containsKey(competition))) {
+            this.age.put(competition, age);
+            this.aces.put(competition, 0);
+            this.doubleFaults.put(competition, 0);
+            this.servePoints.put(competition, 0);
+            this.firstServes.put(competition, 0);
+            this.breakPointsSaved.put(competition, 0);
+        }
     }
 
 
@@ -231,33 +250,54 @@ public class TennisPlayer extends Player {
 
 
     /**
+     * Return this player's data for a given competition in string format
+     * @param competition the needed competition
+     * @return string of player's data for given competition
+     */
+    public String competitionToString(String competition) {
+        String partOne = super.toString();
+        return partOne + "\nAge: " + this.age.get(competition) + "\nNationality: " + this.country + "\nAces: "
+                + this.aces.get(competition) + "\nDouble Faults: " + this.doubleFaults.get(competition) +
+                "\nServe Points: " + this.servePoints.get(competition) + "\nFirst Serves: " +
+                this.firstServes.get(competition) + "\nBreak Points Saved: " + this.breakPointsSaved.get(competition);
+    }
+
+
+     /**
      * Return the given stat, assuming the given stat is a possible stat associated with a tennis player.
      * @param stat stat that needs to be reported (possible stats include aces, dauble faults, serve points,
      *             first serves, age, and country
      * @return the needed stat of the player (as a string)
      */
     public String getNeededStat(String stat) throws Exception {
-        switch (stat) {
-            case "name":
-                return this.getName();
-            case "aces":
-                return String.valueOf(this.aces);
-            case "double faults":
-                return String.valueOf(this.doubleFaults);
-            case "serve points":
-                return String.valueOf(this.servePoints);
-            case "first serves":
-                return String.valueOf(this.firstServes);
-            case "break points saved":
-                return String.valueOf(this.breakPointsSaved);
-            case "age":
-                return String.valueOf(this.age);
-            case "country":
-                return this.country;
-            case "all stats":
-                return this.toString();
+        if (!(mapStats().containsKey(stat))) {
+            throw new Exception("Stat not found!");
         }
-        throw new Exception("The given stat was not found!");
+        return mapStats().get(stat);
     }
+
+
+    @Override
+    public Map<String, String> mapStats() {
+        Map<String, String> allStats = new HashMap<>();
+        allStats.put("name", this.getName());
+        allStats.put("age", String.valueOf(this.age));
+        allStats.put("nationality", this.country);
+        allStats.putAll(mapComparableStats());
+        return allStats;
+    }
+
+
+    public Map<String, String> mapComparableStats() {
+        Map<String, String> comparableStats = new HashMap<>();
+        comparableStats.put("aces", String.valueOf(this.aces));
+        comparableStats.put("double faults", String.valueOf(this.doubleFaults));
+        comparableStats.put("serve points", String.valueOf(this.servePoints));
+        comparableStats.put("first serves", String.valueOf(this.firstServes));
+        comparableStats.put("break points saved", String.valueOf(this.breakPointsSaved));
+        return comparableStats;
+    }
+
+
 
 }

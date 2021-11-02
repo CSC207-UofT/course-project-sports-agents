@@ -16,7 +16,7 @@ public class TennisPlayerListTest {
 
     @Test(timeout = 1000)
     public void TestTrueContainsPlayer() {
-        assertTrue(tennisPlayerList.containsPlayer("Brisbane", "John Millman"));
+        assertTrue(tennisPlayerList.containsPlayer("Australian Open", "Novak Djokovic"));
 
     }
 
@@ -27,16 +27,18 @@ public class TennisPlayerListTest {
 
     @Test(timeout = 1000)
     public void testFindTennisPlayer() throws Exception {
-        assertEquals("Name: Novak Djokovic\n" +
-                        "Age: 32\n" +
-                        "Nationality: SRB\n" +
-                        "Aces: 45\n" +
-                        "Double Faults: 13\n" +
-                        "Serve Points: 519\n" +
-                        "First Serves: 356\n" +
-                        "Break Points Saved: 14",
-                tennisPlayerList.findTennisPlayer("Australian Open",
-                "Novak Djokovic").toString());
+        TennisPlayer player = tennisPlayerList.findTennisPlayer("Brisbane",
+                "Kei Nishikori");
+        assertEquals("Name: Kei Nishikori\n" +
+                        "Age: 29\n" +
+                        "Nationality: JPN\n" +
+                        "Aces: 17\n" +
+                        "Double Faults: 9\n" +
+                        "Serve Points: 239\n" +
+                        "First Serves: 156\n" +
+                        "Break Points Saved: 5",
+                tennisPlayerList.findTennisPlayer("Brisbane",
+                "Kei Nishikori").competitionToString("Brisbane"));
     }
 
 }
