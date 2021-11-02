@@ -1,21 +1,40 @@
 package commands;
 
-import player.HockeyPlayer;
-import player.PlayerList;
+import player.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
- * Return the statistics of a player throughout the demanded years if statistics is specified, else return the
- * whole statistic information.
+ * An abstract class to compute statistics for a single Player.
+ * Each sport has a subclass handling that sport's statistics.
  */
-public class PlayerStatManager implements Command {
-
-    public PlayerStatManager(){}
+public abstract class PlayerStatManager implements Command {
+    protected PlayerList playerList;
+    protected final Set<String> allowedStatsGet;
 
     /**
+     * @param playerList the Players this StatManager will get statistics for
+     * @param allowedStatsGet the statistics this StatManager can compute
+     */
+    public PlayerStatManager(PlayerList playerList,
+                             Set<String> allowedStatsGet) {
+        this.playerList = playerList;
+        this.allowedStatsGet = allowedStatsGet;
+    }
+
+    /**
+     * @param statistic a statistic name, to check if it can be computed
+     * @throws Exception if the statistic cannot be computed
+     */
+    protected void checkStatistic(String statistic) throws Exception {
+        if (!this.allowedStatsGet.contains(statistic)) {
+            throw new Exception("Cannot get Statistic " + statistic + "!");
+        }
+    }
+
+    /*
+    public PlayerStatManager() {}
+
      *
      * @param arguments is a list of strings where ["player name", "stat", "season 1", "season 2", ...] if
      *                  the user wants the report of a specific stat
@@ -23,7 +42,6 @@ public class PlayerStatManager implements Command {
      *                  all stats.
      * @return a string reporting the stat.
      * @throws Exception when the player name is not found or the demanded stat is invalid.
-     */
     @Override
     public String execute(ArrayList<String> arguments) throws Exception {
         String playerName = arguments.get(0);
@@ -62,6 +80,7 @@ public class PlayerStatManager implements Command {
         return reportedStat.toString();
 
     }
+    */
 
 
 }

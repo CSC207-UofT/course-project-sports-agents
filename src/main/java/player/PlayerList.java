@@ -1,14 +1,43 @@
 package player;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.*;
 
 /**
- * Read csv file and create a hash map where the key is the season and the value is a list of players objects.
+ * Store a list of Players
  */
-public class PlayerList {
+public class PlayerList<T extends Player> {
+    // Key is primary key for player, value is Player
+    private HashMap<String, T> playerMap;
+
+    /**
+     * Create a new empty PlayerList
+     */
+    public PlayerList() {
+        this.playerMap = new HashMap<String, T>();
+    }
+
+    /**
+     * Add a Player to the PlayerList
+     * @param player the player to add
+     */
+    public void addPlayer(T player) {
+        this.playerMap.put(player.getName(), player);
+    }
+
+    /**
+     * Return the Players with the given name, if one exists
+     * @param name name to search for
+     * @return a Players with the given name
+     * @throws Exception if no such player exists
+     */
+    public T getPlayer(String name) throws Exception {
+        if (this.playerMap.containsKey(name)) {
+            return this.playerMap.get(name);
+        }
+        throw new Exception("The requested Player does not exist!");
+    }
+
+    /*
     private HashMap<String, List<HockeyPlayer>> playerMap = new HashMap<>();
 
     public PlayerList() {
@@ -43,4 +72,5 @@ public class PlayerList {
     public HashMap<String, List<HockeyPlayer>> getPlayerMap() {
         return this.playerMap;
     }
+     */
 }

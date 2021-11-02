@@ -1,25 +1,31 @@
 package commands;
 
-import player.GetStatsComparator;
-import player.HockeyPlayer;
-import player.PlayerList;
+import player.*;
 
 import java.util.*;
 
 /**
- * A class for comparing two or more players based on a specific statistic in a specific season.
+ * An abstract class for comparing two or more players based on a specific statistic.
+ * Each sport has a subclass handling that sport's statistic.
  */
+public abstract class PlayerStatComparer implements Command {
+    protected PlayerList playerList;
+    private final Set<String> allowedStatsCompare;
 
-public class PlayerStatComparer implements Command {
+    public PlayerStatComparer(PlayerList playerList,
+                              Set<String> allowedStatsCompare) {
+        this.playerList = playerList;
+        this.allowedStatsCompare = allowedStatsCompare;
+    }
 
 
+
+    /*
     public PlayerStatComparer() {}
-    /**
      *
      * @param arguments is a list of strings where ["player name 1", "player name2", ..., "stat", "season"]
      * @return the comparison between 2 or more player names based on the given stat in the given season.
      * @throws Exception when one or more player names is not found or the demanded stat is invalid.
-     */
     @Override
     public String execute(ArrayList<String> arguments) throws Exception {
         List<String> playerNames = arguments.subList(0, arguments.size() - 2);
@@ -69,6 +75,7 @@ public class PlayerStatComparer implements Command {
 
 
         }
+     */
 
 }
 

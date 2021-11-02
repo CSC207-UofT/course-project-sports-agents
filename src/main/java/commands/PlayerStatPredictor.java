@@ -1,21 +1,28 @@
 package commands;
 
-import player.HockeyPlayer;
-import player.PlayerList;
+import player.*;
 
 import java.util.*;
 
 /**
  * Predict a player's performance in season 2021-2022 in a given statistic.
  */
-public class PlayerStatPredictor implements Command {
+public abstract class PlayerStatPredictor implements Command {
+    protected PlayerList playerList;
+    private final Set<String> allowedStatsPredict;
 
-    /**
+    public PlayerStatPredictor(PlayerList playerList,
+                               Set<String> allowedStatsPredict) {
+        this.playerList = playerList;
+        this.allowedStatsPredict = allowedStatsPredict;
+    }
+
+
+    /*
      *
      * @param arguments is a list of strings where ["player name", "stat"]
      * @return the prediction of the stat based on the past data.
      * @throws Exception when the player name is not found or the demanded stat is invalid.
-     */
     @Override
     public String execute(ArrayList<String> arguments) throws Exception {
         String playerName = arguments.get(0);
@@ -74,5 +81,6 @@ public class PlayerStatPredictor implements Command {
         return "Predicted " + stat + " approximately in season 2021-2022: " + (int)(a*Math.pow(r, 6));
 
     }
+     */
 
 }
