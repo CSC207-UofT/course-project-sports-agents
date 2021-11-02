@@ -264,7 +264,7 @@ public class TennisPlayer extends Player {
 
 
      /**
-     * Return the given stat, assuming the given stat is a possible stat associated with a tennis player.
+     * Return the given comparable stat, assuming the given stat is a possible stat associated with a tennis player.
      * @param stat stat that needs to be reported (possible stats include aces, dauble faults, serve points,
      *             first serves, age, and country
      * @return the needed stat of the player (as a string)

@@ -61,7 +61,4 @@ public class TennisPlayerStatComparerTest {
                 "Nick Kyrgios: 109 first serves\n" +
                 "Andreas Seppi: 111 first serves", comparer.execute(arguments));
     }
-
-
-
 }

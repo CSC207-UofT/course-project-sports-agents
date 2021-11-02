@@ -1,7 +1,6 @@
 package commands;
 
 import player.GetStatsComparator;
-import player.Player;
 import player.TennisPlayer;
 import player.TennisPlayerList;
 

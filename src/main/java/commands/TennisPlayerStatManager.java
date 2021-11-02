@@ -4,7 +4,6 @@ import player.TennisPlayer;
 import player.TennisPlayerList;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,8 +16,7 @@ public class TennisPlayerStatManager implements Command {
     static final int STAT = 1;
     static final int COMPETITION = 2;
 
-    public TennisPlayerStatManager() {
-    }
+    public TennisPlayerStatManager() {}
 
 
     /**

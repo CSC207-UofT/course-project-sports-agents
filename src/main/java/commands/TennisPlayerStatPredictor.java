@@ -27,16 +27,16 @@ public class TennisPlayerStatPredictor implements Command {
         Map<String, Integer> neededStats = neededPlayer.getNeededStat(stat);
 
         List<String> competitions = pL.getAllCompetitions();
-        HashMap<String, Integer> regressionData = new HashMap<>();
+        HashMap<String, Integer> competitionValues = new HashMap<>();
         for (int i = 0; i < competitions.size(); i ++) {
-            regressionData.put(competitions.get(i), i+1);
+            competitionValues.put(competitions.get(i), i+1);
         }
 
         List<Integer> xAxis = new ArrayList<>();
         List<Double> yAxis = new ArrayList<>();
 
         for (String season : neededStats.keySet()){
-            xAxis.add(regressionData.get(season));
+            xAxis.add(competitionValues.get(season));
             yAxis.add((Double.valueOf(neededStats.get(season))));
         }
 

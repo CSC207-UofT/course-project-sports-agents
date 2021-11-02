@@ -10,13 +10,13 @@ public class TennisPlayerTest {
 
     @Before
     public void setUp() {
-        player = new TennisPlayer("Serena Williams", 40, "American");
+        player = new TennisPlayer("Serena Williams", "American");
     }
 
     @After
     public void tearDown() {}
 
-    @Test(timeout = 50)
+    /*@Test(timeout = 50)
     public void TestAcesSetterAndGetter() {
         player.setAces(2);
         player.updateAces(4);
@@ -49,5 +49,5 @@ public class TennisPlayerTest {
         player.setBreakPointsSaved(2);
         player.updateBreakPointsSaved(3);
         assertEquals(5, player.getBreakPointsSaved());
-    }
+    }*/
 }

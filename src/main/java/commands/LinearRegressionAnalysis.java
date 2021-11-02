@@ -22,7 +22,7 @@ public class LinearRegressionAnalysis {
         if (xAxis.size() != yAxis.size()) {
             throw new Exception("Invalid data!");
         } else if (xAxis.size() < 2) {
-            throw new Exception("Not enough data to make prediction!");
+            throw new Exception("Not enough data to make a prediction!");
         }
 
         this.seasons = xAxis;

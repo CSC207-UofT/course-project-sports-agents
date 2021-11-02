@@ -62,7 +62,7 @@ public abstract class Player {
 
 
     /**
-     * Return the given map of stats.
+     * Return the map for the given stat.
      * @param stat stat that needs to be reported
      * @return a map of the needed stat for this player
      * @throws Exception if the given stat is not a possible stat associated with the player
