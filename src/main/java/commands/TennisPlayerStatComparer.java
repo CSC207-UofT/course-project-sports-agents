@@ -1,10 +1,12 @@
 package commands;
 
+import player.GetStatsComparator;
+import player.Player;
 import player.TennisPlayer;
 import player.TennisPlayerList;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -12,10 +14,6 @@ import java.util.List;
  */
 
 public class TennisPlayerStatComparer implements Command {
-    static final int PLAYER_ONE = 0;
-    static final int PLAYER_TWO = 1;
-    static final int STAT = 2;
-    static final int COMPETITION = 3;
 
     public TennisPlayerStatComparer() {}
 
@@ -23,7 +21,7 @@ public class TennisPlayerStatComparer implements Command {
     /**
      * Return the player with the highest specified stat (e.g. aces, double faults, first serves, serve points,
      * and break points saved)
-     * @param arguments a list in the format: [player one, player two, stat, competition]
+     * @param arguments a list in the format: [player one, player two,....,stat, competition]
      * @return the player with the higher stat, reported as maximum, and the player with the lower stat, reported
      * as minimum
      * @throws Exception if the players cannot be found, the competition cannot be found, or the specified stat cannot
@@ -32,26 +30,29 @@ public class TennisPlayerStatComparer implements Command {
     @Override
     public String execute(ArrayList<String> arguments) throws Exception {
         List<String> playerNames = arguments.subList(0, arguments.size() - 2);
+        String stat = arguments.get(arguments.size() - 2);
+        String competition = arguments.get(arguments.size() - 1);
+
+        StringBuilder result = new StringBuilder(competition + "\nFrom lowest to highest:\n");
+        List<Integer> neededStats = new ArrayList<>();
+
         TennisPlayerList tp = new TennisPlayerList();
         ArrayList<TennisPlayer> neededPlayers = new ArrayList<>();
 
         for (String name : playerNames) {
-            neededPlayers.add(tp.findTennisPlayer(arguments.get(COMPETITION), name));
+            TennisPlayer newPlayer =  tp.findTennisPlayer(competition, name);
+            neededPlayers.add(newPlayer);
+            neededStats.add(newPlayer.getNeededStat(stat).get(competition));
         }
 
-        int playerOneStat = Integer.parseInt(neededPlayers.get(PLAYER_ONE).getNeededStat(arguments.get(STAT)));
-        int playerTwoStat = Integer.parseInt(neededPlayers.get(PLAYER_TWO).getNeededStat(arguments.get(STAT)));
+        Collections.sort(neededStats);
+        neededPlayers.sort(new GetStatsComparator(stat, competition));
 
-
-        if (playerOneStat > playerTwoStat) {
-            return "Maximum:\n" + neededPlayers.get(PLAYER_ONE).toString() + "\n\nMinimum:\n" +
-                    neededPlayers.get(PLAYER_TWO).toString();
-        } else if (playerOneStat < playerTwoStat) {
-            return "Maximum:\n" + neededPlayers.get(PLAYER_TWO).toString() + "\n\nMinimum:\n" +
-                    neededPlayers.get(PLAYER_ONE).toString();
-        } else {
-            return "Both players are equal." + "\n\n" + neededPlayers.get(PLAYER_ONE).toString() + "\n\n" +
-                    neededPlayers.get(PLAYER_TWO).toString();
+        for(TennisPlayer player : neededPlayers) {
+            result.append(player.getName()).append(": ").
+                    append(neededStats.get(neededPlayers.indexOf(player))).append(" ").append(stat).append('\n');
         }
-    }
+
+        return result.toString().trim();
+        }
 }

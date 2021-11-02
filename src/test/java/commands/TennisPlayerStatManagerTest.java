@@ -1,11 +1,12 @@
 package commands;
 
-import commands.TennisPlayerStatManager;
-import org.junit.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class TennisPlayerStatManagerTest {
     String playerOne;
@@ -16,13 +17,7 @@ public class TennisPlayerStatManagerTest {
 
     @Before
     public void setUp() {
-        playerOne = "Daniil Medvedev";
-        stat = "aces";
-        competition = "Brisbane";
         arguments = new ArrayList<>();
-        arguments.add(playerOne);
-        arguments.add(stat);
-        arguments.add(competition);
         manager = new TennisPlayerStatManager();
     }
 
@@ -30,9 +25,67 @@ public class TennisPlayerStatManagerTest {
     public void tearDown() {
     }
 
-    @Test (timeout = 50)
-    public void TestExecute() throws Exception {
+    @Test (timeout = 500)
+    public void TestExecuteOneCompetition() throws Exception {
+        playerOne = "Daniil Medvedev";
+        stat = "aces";
+        competition = "Brisbane";
+        arguments.add(playerOne);
+        arguments.add(stat);
+        arguments.add(competition);
         assertEquals("Brisbane: 46", manager.execute(arguments));
+    }
+
+    @Test (timeout = 500)
+    public void TestExecuteMultipleCompetitions() throws Exception {
+        playerOne = "Daniil Medvedev";
+        stat = "all stats";
+        competition = "Brisbane";
+        arguments.add(playerOne);
+        arguments.add(stat);
+        arguments.add(competition);
+        arguments.add("Australian Open");
+        arguments.add("Sofia");
+        arguments.add("Rotterdam");
+        assertEquals("Brisbane:\n" +
+                "Name: Daniil Medvedev\n" +
+                "Age: 23\n" +
+                "Nationality: RUS\n" +
+                "Aces: 46\n" +
+                "Double Faults: 12\n" +
+                "Serve Points: 311\n" +
+                "First Serves: 189\n" +
+                "Break Points Saved: 18\n" +
+                "\n" +
+                "Australian Open:\n" +
+                "Name: Daniil Medvedev\n" +
+                "Age: 23\n" +
+                "Nationality: RUS\n" +
+                "Aces: 42\n" +
+                "Double Faults: 13\n" +
+                "Serve Points: 364\n" +
+                "First Serves: 232\n" +
+                "Break Points Saved: 16\n" +
+                "\n" +
+                "Sofia:\n" +
+                "Name: Daniil Medvedev\n" +
+                "Age: 23\n" +
+                "Nationality: RUS\n" +
+                "Aces: 28\n" +
+                "Double Faults: 8\n" +
+                "Serve Points: 228\n" +
+                "First Serves: 123\n" +
+                "Break Points Saved: 9\n" +
+                "\n" +
+                "Rotterdam:\n" +
+                "Name: Daniil Medvedev\n" +
+                "Age: 23\n" +
+                "Nationality: RUS\n" +
+                "Aces: 21\n" +
+                "Double Faults: 7\n" +
+                "Serve Points: 277\n" +
+                "First Serves: 169\n" +
+                "Break Points Saved: 12", manager.execute(arguments));
     }
 
 }

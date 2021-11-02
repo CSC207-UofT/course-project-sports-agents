@@ -1,5 +1,6 @@
 package player;
 
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -58,5 +59,19 @@ public abstract class Player {
         Player other = (Player) obj;
         return Objects.equals(this.name, other.name);
     }
+
+
+    /**
+     * Return the given map of stats.
+     * @param stat stat that needs to be reported
+     * @return a map of the needed stat for this player
+     * @throws Exception if the given stat is not a possible stat associated with the player
+     */
+    public abstract Map<String, Integer> getNeededStat(String stat) throws Exception;
+
+
+
+
+
 }
 

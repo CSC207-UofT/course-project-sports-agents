@@ -12,6 +12,7 @@ import java.util.*;
 public class TennisPlayerList {
     private final HashMap<String, ArrayList<TennisPlayer>> competitionToPlayers;
     private final List<String> allCompetitions;
+    private final List<TennisPlayer> allPlayers;
     static final int TOURNAMENT_NAME = 0;
     static final int WINNER_NAME = 1;
     static final int WINNER_AGE = 3;
@@ -36,7 +37,7 @@ public class TennisPlayerList {
     public TennisPlayerList() {
         competitionToPlayers = new HashMap<>();
         allCompetitions = new ArrayList<>();
-        List<TennisPlayer> allPlayers = new ArrayList<>();
+        allPlayers = new ArrayList<>();
         String line;
         try {
             BufferedReader reader = new BufferedReader(new FileReader("Sample_Tennis_Data_2019.csv"));
@@ -48,11 +49,11 @@ public class TennisPlayerList {
                     allCompetitions.add(playerData[TOURNAMENT_NAME]);
                 }
                 ArrayList<TennisPlayer> competitionPlayers = competitionToPlayers.get(playerData[TOURNAMENT_NAME]);
-                TennisPlayer winner = findTennisPlayer(playerData[TOURNAMENT_NAME], allPlayers, competitionPlayers,
+                TennisPlayer winner = findTennisPlayer(playerData[TOURNAMENT_NAME], competitionPlayers,
                         playerData[WINNER_NAME], playerData[WINNER_COUNTRY]);
                 winner.addCompetition(playerData[TOURNAMENT_NAME],
                         (int) Math.round(Double.parseDouble(playerData[WINNER_AGE])));
-                TennisPlayer loser = findTennisPlayer(playerData[TOURNAMENT_NAME], allPlayers, competitionPlayers,
+                TennisPlayer loser = findTennisPlayer(playerData[TOURNAMENT_NAME], competitionPlayers,
                         playerData[LOSER_NAME], playerData[LOSER_COUNTRY]);
                 loser.addCompetition(playerData[TOURNAMENT_NAME],
                         (int) Math.round(Double.parseDouble(playerData[LOSER_AGE])));
@@ -92,14 +93,12 @@ public class TennisPlayerList {
      * is already in the list of all tennis players, that tennis player is found and returned. If that
      * tennis player is not in the list of all tennis players, that player is added to a list of competition players
      * and the list of all players, and returned.
-     * @param allPlayers list of all tennis players contained in the .csv file
      * @param competitionPlayers list of all tennis players that participated in a competition
      * @param name tennis player's name
      * @param nationality tennis player's nationality
      * @return a Tennis player from players if the player is there, or a new Tennis player if the player is not there
      */
-    private TennisPlayer findTennisPlayer(String competition, List<TennisPlayer> allPlayers,
-                                          List<TennisPlayer> competitionPlayers, String name,
+    private TennisPlayer findTennisPlayer(String competition, List<TennisPlayer> competitionPlayers, String name,
                                           String nationality) {
         TennisPlayer newPlayer = new TennisPlayer(name, nationality);
         for (TennisPlayer player : allPlayers) {
@@ -158,6 +157,22 @@ public class TennisPlayerList {
                 if (Objects.equals(player.getName(), name)) {
                     return player;
                 }
+            }
+        }
+        throw new Exception("Player not found!");
+    }
+
+
+    /**
+     * Return the tennis player with the given name
+     * @param name the name of the needed player
+     * @return the tennis player with the given name
+     * @throws Exception if the player cannot be found (the player is not included in the .csv file
+     */
+    public TennisPlayer findTennisPlayer(String name) throws Exception {
+        for (TennisPlayer player : allPlayers) {
+            if (player.getName().equals(name)) {
+                return player;
             }
         }
         throw new Exception("Player not found!");

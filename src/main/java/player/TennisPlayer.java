@@ -269,33 +269,22 @@ public class TennisPlayer extends Player {
      *             first serves, age, and country
      * @return the needed stat of the player (as a string)
      */
-    public String getNeededStat(String stat) throws Exception {
-        if (!(mapStats().containsKey(stat))) {
-            throw new Exception("Stat not found!");
+    public Map<String, Integer> getNeededStat(String stat) throws Exception {
+        switch (stat) {
+            case "aces":
+                return this.aces;
+            case "age":
+                return this.age;
+            case "double faults":
+                return this.doubleFaults;
+            case "serve points":
+                return this.servePoints;
+            case "first serves":
+                return this.firstServes;
+            case "break points saved":
+                return this.breakPointsSaved;
         }
-        return mapStats().get(stat);
-    }
-
-
-    @Override
-    public Map<String, String> mapStats() {
-        Map<String, String> allStats = new HashMap<>();
-        allStats.put("name", this.getName());
-        allStats.put("age", String.valueOf(this.age));
-        allStats.put("nationality", this.country);
-        allStats.putAll(mapComparableStats());
-        return allStats;
-    }
-
-
-    public Map<String, String> mapComparableStats() {
-        Map<String, String> comparableStats = new HashMap<>();
-        comparableStats.put("aces", String.valueOf(this.aces));
-        comparableStats.put("double faults", String.valueOf(this.doubleFaults));
-        comparableStats.put("serve points", String.valueOf(this.servePoints));
-        comparableStats.put("first serves", String.valueOf(this.firstServes));
-        comparableStats.put("break points saved", String.valueOf(this.breakPointsSaved));
-        return comparableStats;
+        throw new Exception("Stat not found!");
     }
 
 
