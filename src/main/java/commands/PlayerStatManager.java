@@ -10,16 +10,16 @@ import java.util.*;
  */
 public abstract class PlayerStatManager implements Command {
     protected PlayerList playerList;
-    protected final Set<String> allowedStatsGet;
+    protected final Set<String> allowedStatsToGet;
 
     /**
      * @param playerList the Players this StatManager will get statistics for
-     * @param allowedStatsGet the statistics this StatManager can compute
+     * @param allowedStatsToGet the statistics this StatManager can compute
      */
     public PlayerStatManager(PlayerList playerList,
-                             Set<String> allowedStatsGet) {
+                             Set<String> allowedStatsToGet) {
         this.playerList = playerList;
-        this.allowedStatsGet = allowedStatsGet;
+        this.allowedStatsToGet = allowedStatsToGet;
     }
 
     /**
@@ -27,9 +27,19 @@ public abstract class PlayerStatManager implements Command {
      * @throws Exception if the statistic cannot be computed
      */
     protected void checkStatistic(String statistic) throws Exception {
-        if (!this.allowedStatsGet.contains(statistic)) {
+        if (!this.allowedStatsToGet.contains(statistic)) {
             throw new Exception("Cannot get Statistic " + statistic + "!");
         }
+    }
+
+    /**
+     * Format the value of the statistic for display on the console
+     * @param player the Player the statistic is for
+     * @param statValue the value of the statistic
+     * @return the formatted output to display
+     */
+    protected String formatStat(Player player, String statValue) {
+        return player.getName() + ": " + statValue;
     }
 
     /*

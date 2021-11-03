@@ -9,12 +9,12 @@ import java.util.*;
  */
 public abstract class PlayerStatPredictor implements Command {
     protected PlayerList playerList;
-    private final Set<String> allowedStatsPredict;
+    private final Set<String> allowedStatsToPredict;
 
     public PlayerStatPredictor(PlayerList playerList,
-                               Set<String> allowedStatsPredict) {
+                               Set<String> allowedStatsToPredict) {
         this.playerList = playerList;
-        this.allowedStatsPredict = allowedStatsPredict;
+        this.allowedStatsToPredict = allowedStatsToPredict;
     }
 
 

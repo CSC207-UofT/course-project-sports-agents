@@ -1,7 +1,6 @@
 package player;
 
-import java.util.HashMap;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * This is an abstract class for any future players that need to be added.
@@ -60,7 +59,7 @@ public abstract class Player {
      * @param expected the expectation for if data is stored
      * @throws Exception if the expectation is violated
      */
-    public void checkForSeason(HashMap<String, String> dataMap, String season,
+    public void checkForSeason(HashMap dataMap, String season,
                                boolean expected) throws Exception {
         if (dataMap.containsKey(season) == expected) {
             // We expect data, but there is none

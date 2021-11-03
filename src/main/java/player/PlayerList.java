@@ -37,6 +37,14 @@ public class PlayerList<T extends Player> {
         throw new Exception("The requested Player does not exist!");
     }
 
+    public ArrayList<T> getPlayers(ArrayList<String> names) throws Exception {
+        ArrayList<T> players = new ArrayList<T>();
+        for (String name : names) {
+            players.add(this.getPlayer(name));
+        }
+        return players;
+    }
+
     /*
     private HashMap<String, List<HockeyPlayer>> playerMap = new HashMap<>();
 
