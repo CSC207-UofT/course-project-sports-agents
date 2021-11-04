@@ -9,7 +9,6 @@ import java.util.*;
 /**
  * A class that compare two tennis players, who played in a given competition, based on the given stat.
  */
-
 public class TennisPlayerStatComparer implements Command {
     private final HashSet<String> allowedStats;
     static final int PLAYER = 1;
