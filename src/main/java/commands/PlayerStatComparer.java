@@ -1,8 +1,10 @@
 package commands;
 
-import player.*;
+import player.PlayerList;
+import player.Player;
 
-import java.util.*;
+import java.util.List;
+import java.util.Set;
 
 /**
  * An abstract class for comparing two or more players based on a specific statistic.
@@ -34,8 +36,8 @@ public abstract class PlayerStatComparer implements Command {
      * @param statValues the values corresponding to each Player
      * @return the formatted output to displayed
      */
-    protected <T extends Player> String formatCompare(ArrayList<T> players,
-                                                      ArrayList<String> statValues) {
+    protected <T extends Player> String formatCompare(List<T> players,
+                                                      List<String> statValues) {
         StringBuilder output = new StringBuilder("From best to worst:\n");
         // Precondition: players.length == statValues.length
         for (int i = 0; i != players.size(); i += 1) {

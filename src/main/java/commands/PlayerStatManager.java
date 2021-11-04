@@ -1,6 +1,7 @@
 package commands;
 
-import player.*;
+import player.PlayerList;
+import player.Player;
 
 import java.util.*;
 
@@ -38,7 +39,7 @@ public abstract class PlayerStatManager implements Command {
      * @param statValue the value of the statistic
      * @return the formatted output to display
      */
-    protected String formatStat(Player player, String statValue) {
+    protected <T extends Player> String formatStat(T player, String statValue) {
         return player.getName() + ": " + statValue;
     }
 

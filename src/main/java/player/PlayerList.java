@@ -1,6 +1,8 @@
 package player;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.HashMap;
 
 /**
  * Store a list of Players
@@ -37,8 +39,8 @@ public class PlayerList<T extends Player> {
         throw new Exception("The requested Player does not exist!");
     }
 
-    public ArrayList<T> getPlayers(ArrayList<String> names) throws Exception {
-        ArrayList<T> players = new ArrayList<T>();
+    public List<T> getPlayers(List<String> names) throws Exception {
+        List<T> players = new ArrayList<T>();
         for (String name : names) {
             players.add(this.getPlayer(name));
         }

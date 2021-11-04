@@ -1,8 +1,11 @@
 package commands;
 
-import player.*;
+import player.PlayerList;
+import player.HockeyPlayer;
 
-import java.util.*;
+import java.util.List;
+import java.util.HashSet;
+import java.util.Arrays;
 
 public class HockeyPlayerStatManager extends PlayerStatManager {
 
@@ -22,7 +25,7 @@ public class HockeyPlayerStatManager extends PlayerStatManager {
      * @throws Exception if the Player or season does not exist
      */
     @Override
-    public String execute(ArrayList<String> arguments) throws Exception {
+    public String execute(List<String> arguments) throws Exception {
         String name = arguments.get(2);
         HockeyPlayer player = (HockeyPlayer) this.playerList.getPlayer(name);
         String season = arguments.get(3);
@@ -34,7 +37,7 @@ public class HockeyPlayerStatManager extends PlayerStatManager {
             case "Skater Shoots" ->
                     formatStat(player, player.getStatSkaterShoots(season).toString());
             case "Position" ->
-                    formatStat(player, player.getStatPosition(season).toString());
+                    formatStat(player, player.getStatPosition(season));
             case "Games Played" ->
                     formatStat(player, player.getStatGamesPlayed(season).toString());
             case "Goals" ->
