@@ -17,7 +17,6 @@ public class TennisPlayerStatPredictor implements Command {
                 "break points saved"));
     }
 
-
     /**
      * Return a prediction for a given player's stat
      * @param arguments is a list of strings where ["player name", "stat"]
