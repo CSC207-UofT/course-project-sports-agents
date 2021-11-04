@@ -8,8 +8,14 @@ import java.util.*;
  * A class that will predict a tennis player's future performance for a given stat.
  */
 public class TennisPlayerStatPredictor implements Command {
+    private final HashSet<String> allowedStats;
     static final int PLAYER_NAME = 0;
     static final int STAT = 1;
+
+    public TennisPlayerStatPredictor() {
+        this.allowedStats = new HashSet<>(Arrays.asList("aces", "double faults", "break points", "first serves",
+                "break points saved"));
+    }
 
     /**
      * Return a prediction for a given player's stat
@@ -22,6 +28,10 @@ public class TennisPlayerStatPredictor implements Command {
         String stat = arguments.get(STAT);
         String name = arguments.get(PLAYER_NAME);
         TennisPlayerList pL = new TennisPlayerList();
+
+        if (!(allowedStats.contains(stat))) {
+            throw new Exception("Invalid stat!");
+        }
 
         TennisPlayer neededPlayer = pL.findTennisPlayer(name);
         Map<String, Integer> neededStats = neededPlayer.getNeededStat(stat);

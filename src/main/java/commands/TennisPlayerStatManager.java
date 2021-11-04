@@ -3,20 +3,22 @@ package commands;
 import player.TennisPlayer;
 import player.TennisPlayerList;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * This is a class that can report a specific stat for a specific tennis player who played at a specific competition.
  */
 
 public class TennisPlayerStatManager implements Command {
+    private final HashSet<String> allowedStats;
     static final int PLAYER_NAME = 0;
     static final int STAT = 1;
     static final int COMPETITION = 2;
 
-    public TennisPlayerStatManager() {}
+    public TennisPlayerStatManager() {
+        this.allowedStats = new HashSet<>(Arrays.asList("age", "nationality", "aces", "double faults",
+                "serve points", "first serves", "break points saved"));
+    }
 
 
     /**
@@ -30,6 +32,11 @@ public class TennisPlayerStatManager implements Command {
     public String execute(ArrayList<String> arguments) throws Exception {
         String neededName = arguments.get(PLAYER_NAME);
         String stat = arguments.get(STAT);
+
+        if (!(this.allowedStats.contains(stat))) {
+            throw new Exception("Invalid stat!");
+        }
+
         List<String> neededCompetitions = arguments.subList(COMPETITION, arguments.size());
         TennisPlayerList tp = new TennisPlayerList();
         TennisPlayer neededPlayer = tp.findTennisPlayer(neededName);
