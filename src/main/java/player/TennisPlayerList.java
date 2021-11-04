@@ -32,15 +32,15 @@ public class TennisPlayerList {
     static final int LOSER_BREAK_POINTS = 16;
 
     /**
-     * Construct a map mapping tennis players to a competition
+     * Construct a map mapping tennis players to a competition when given the name of a file
      */
-    public TennisPlayerList() {
+    public TennisPlayerList(String fileName) {
         competitionToPlayers = new HashMap<>();
         allCompetitions = new ArrayList<>();
         allPlayers = new ArrayList<>();
         String line;
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("Sample_Tennis_Data_2019.csv"));
+            BufferedReader reader = new BufferedReader(new FileReader(fileName));
             reader.readLine();
             while ((line = reader.readLine()) != null) {
                 String[] playerData = line.split(",");
@@ -67,6 +67,14 @@ public class TennisPlayerList {
         }
     }
 
+
+    /**
+     * Construct a map of tennis players with a default file
+     */
+    public TennisPlayerList() {
+        this("Sample_Tennis_Data_2019.csv");
+    }
+
     /**
      * This is a helper method for the constructor; it updates all the attributes associated with a given
      * tennis player for a competition
@@ -89,7 +97,7 @@ public class TennisPlayerList {
 
 
     /**
-     * This is a helper method for the constructor; if a tennis player with the given name and nationality
+     * This is a helper method for the constructor; if a tennis player with the given name
      * is already in the list of all tennis players, that tennis player is found and returned. If that
      * tennis player is not in the list of all tennis players, that player is added to a list of competition players
      * and the list of all players, and returned.
