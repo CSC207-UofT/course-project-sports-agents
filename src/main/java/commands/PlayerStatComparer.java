@@ -39,7 +39,7 @@ public abstract class PlayerStatComparer implements Command {
     protected <T extends Player> String formatCompare(List<T> players,
                                                       List<String> statValues) {
         StringBuilder output = new StringBuilder("From best to worst:\n");
-        // Precondition: players.length == statValues.length
+        // Precondition: players.size() == statValues.size()
         for (int i = 0; i != players.size(); i += 1) {
             Player player = players.get(i);
             output.append(player.getName());

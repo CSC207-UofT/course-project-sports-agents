@@ -1,6 +1,6 @@
 package commands;
 
-import player.*;
+import player.PlayerList;
 
 import java.util.*;
 
@@ -11,10 +11,46 @@ public abstract class PlayerStatPredictor implements Command {
     protected PlayerList playerList;
     private final Set<String> allowedStatsToPredict;
 
+    /**
+     * @param playerList the Players this StatPredictor will get statistics for
+     * @param allowedStatsToPredict the statistics this StatManager can Predict
+     */
     public PlayerStatPredictor(PlayerList playerList,
                                Set<String> allowedStatsToPredict) {
         this.playerList = playerList;
         this.allowedStatsToPredict = allowedStatsToPredict;
+    }
+
+    /**
+     * @param statistic a statistic to check if it can be predicted
+     * @throws Exception if the statistic cannot be predicted
+     */
+    protected void checkStatistic(String statistic) throws Exception {
+        if (!this.allowedStatsToPredict.contains(statistic)) {
+            throw new Exception("Cannot predict statistic " + statistic + "!");
+        }
+    }
+
+    /**
+     * Format data for printing to a terminal
+     * @param seasons the seasons where past data originates from
+     * @param pastStats the past data
+     * @param prediction the prediction for next season
+     * @return the formatted output to display
+     */
+    protected String formatOut(List<String> seasons, List<Integer> pastStats,
+                               int prediction) {
+        StringBuilder out = new StringBuilder("Previous Statistics:\n");
+        // Precondition: seasons.size() = pastStats.size()
+        for (int i = 0; i != seasons.size(); i += 1) {
+            out.append(seasons.get(i));
+            out.append(": ");
+            out.append(pastStats.get(i));
+            out.append("\n");
+        }
+        out.append("Prediction for next season: ");
+        out.append(prediction);
+        return out.toString();
     }
 
 

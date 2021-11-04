@@ -30,11 +30,13 @@ public class HockeyPlayerStatComparer extends PlayerStatComparer {
         List<String> names = arguments.subList(2, argSize - 2);
         List<?> genericPlayers = this.playerList.getPlayers(names);
         List<HockeyPlayer> hockeyPlayers = castToHockeyPlayer(genericPlayers);
+
         String season = arguments.get(argSize - 2);
+
         String statistic = arguments.get(argSize - 1);
         checkStatistic(statistic);
-        hockeyPlayers.sort(new HockeyPlayerComparator(statistic, season));
 
+        hockeyPlayers.sort(new HockeyPlayerComparator(statistic, season));
         List<String> playersStatValues = getStatValues(hockeyPlayers,
                 statistic, season);
         return formatCompare(hockeyPlayers, playersStatValues);
@@ -81,7 +83,7 @@ public class HockeyPlayerStatComparer extends PlayerStatComparer {
                     getValuesShots(players, season);
             case "Shooting Percentage" ->
                     getValuesShootingPercentage(players, season);
-            default -> throw new Exception("This shouldn't be thrown, logically");
+            default -> throw new Exception("This shouldn't logically be thrown!");
         };
     }
 

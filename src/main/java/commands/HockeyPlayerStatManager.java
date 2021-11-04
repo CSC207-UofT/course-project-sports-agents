@@ -28,9 +28,12 @@ public class HockeyPlayerStatManager extends PlayerStatManager {
     public String execute(List<String> arguments) throws Exception {
         String name = arguments.get(2);
         HockeyPlayer player = (HockeyPlayer) this.playerList.getPlayer(name);
+
         String season = arguments.get(3);
+
         String statistic = arguments.get(4);
         checkStatistic(statistic);
+
         return switch (statistic) {
             case "Team" ->
                     formatStat(player, player.getStatTeam(season));
