@@ -3,16 +3,14 @@ package player;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * A class that can read a .csv file containing data about tennis players that participated in different tournaments
  * for a specific year (2019), and store that data as a value in a HashMap with the name of the tournament as a key.
  */
 public class TennisPlayerList {
-    private final HashMap<String, ArrayList<TennisPlayer>> competitionToPlayers;
+    private final HashMap<String, List<TennisPlayer>> competitionToPlayers;
     static final int TOURNAMENT_NAME = 0;
     static final int WINNER_NAME = 1;
     static final int WINNER_AGE = 3;
@@ -31,6 +29,7 @@ public class TennisPlayerList {
     static final int LOSER_FIRST_SERVES = 15;
     static final int LOSER_BREAK_POINTS = 16;
 
+
     /**
      * Construct a map mapping tennis players to a competition that happened in a specific year (2019)
      */
@@ -45,7 +44,7 @@ public class TennisPlayerList {
                 if (!(competitionToPlayers.containsKey(playerData[TOURNAMENT_NAME]))) {
                     competitionToPlayers.put(playerData[TOURNAMENT_NAME], new ArrayList<>());
                 }
-                ArrayList<TennisPlayer> competitionPlayers = competitionToPlayers.get(playerData[TOURNAMENT_NAME]);
+                List<TennisPlayer> competitionPlayers = competitionToPlayers.get(playerData[TOURNAMENT_NAME]);
                 TennisPlayer winner = findTennisPlayer(competitionPlayers, playerData[WINNER_NAME],
                         (int) Math.round(Double.parseDouble(playerData[WINNER_AGE])), playerData[WINNER_COUNTRY]);
                 TennisPlayer loser = findTennisPlayer(competitionPlayers, playerData[LOSER_NAME],
@@ -92,7 +91,7 @@ public class TennisPlayerList {
      * @param nationality tennis player's nationality
      * @return a Tennis player from players if the player is there, or a new Tennis player if the player is not there
      */
-    private TennisPlayer findTennisPlayer(ArrayList<TennisPlayer> players, String name, int age, String nationality) {
+    private TennisPlayer findTennisPlayer(List<TennisPlayer> players, String name, int age, String nationality) {
         TennisPlayer newPlayer = new TennisPlayer(name, age, nationality);
         for (TennisPlayer player : players) {
             if (player.equals(newPlayer)) {
@@ -108,7 +107,7 @@ public class TennisPlayerList {
      * Return a HashMap of competitions and associated players
      * @return HashMap of players
      */
-    public HashMap<String, ArrayList<TennisPlayer>> getAllTennisPlayers() {
+    public HashMap<String, List<TennisPlayer>> getAllTennisPlayers() {
         return competitionToPlayers;
     }
 
@@ -150,4 +149,6 @@ public class TennisPlayerList {
         }
         throw new Exception("player.Player not found!");
     }
+
+
 }

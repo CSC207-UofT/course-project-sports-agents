@@ -3,8 +3,7 @@ package commands;
 import player.TennisPlayer;
 import player.TennisPlayerList;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * This is a class that compare two tennis players, who played in a given competition, based on the given stat.
@@ -35,9 +34,9 @@ public class TennisPlayerStatComparer implements Command {
         String neededStat = arguments.get(STAT);
         String neededCompetition = arguments.get(COMPETITION);
         TennisPlayerList tp = new TennisPlayerList();
-        HashMap<String, ArrayList<TennisPlayer>> competitionToPlayers = tp.getAllTennisPlayers();
-        ArrayList<TennisPlayer> competitionPlayers = new ArrayList<>();
-        ArrayList<TennisPlayer> neededPlayers = new ArrayList<>();
+        HashMap<String, List<TennisPlayer>> competitionToPlayers = tp.getAllTennisPlayers();
+        List<TennisPlayer> competitionPlayers = new ArrayList<>();
+        List<TennisPlayer> neededPlayers = new ArrayList<>();
 
         for (String competition : competitionToPlayers.keySet()) {
             if (competition.equals(neededCompetition)) {
