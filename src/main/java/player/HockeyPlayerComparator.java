@@ -23,15 +23,22 @@ public class HockeyPlayerComparator implements Comparator<HockeyPlayer> {
 
     public int compare(HockeyPlayer p1, HockeyPlayer p2) {
         try {
-            return switch(this.compareBy) {
-                case "Skater Shoots" -> compareSkaterShoots(p1, p2);
-                case "Games Played" -> compareGamesPlayed(p1, p2);
-                case "Goals" -> compareGoals(p1, p2);
-                case "Assists" -> compareAssists(p1, p2);
-                case "Points" -> comparePoints(p1, p2);
-                case "Shots" -> compareShots(p1, p2);
-                case "ShootingPercentage" -> compareShootingPercentage(p1, p2);
-            };
+            switch(this.compareBy) {
+                case "Skater Shoots":
+                    return compareSkaterShoots(p1, p2);
+                case "Games Played":
+                    return compareGamesPlayed(p1, p2);
+                case "Goals":
+                    return compareGoals(p1, p2);
+                case "Assists":
+                    return compareAssists(p1, p2);
+                case "Points":
+                    return comparePoints(p1, p2);
+                case "Shots":
+                    return compareShots(p1, p2);
+                case "ShootingPercentage":
+                    return compareShootingPercentage(p1, p2);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

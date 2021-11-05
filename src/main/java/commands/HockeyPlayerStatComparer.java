@@ -4,7 +4,10 @@ import player.PlayerList;
 import player.HockeyPlayer;
 import player.HockeyPlayerComparator;
 
-import java.util.*;
+import java.util.List;
+import java.util.HashSet;
+import java.util.Arrays;
+import java.util.ArrayList;
 
 public class HockeyPlayerStatComparer extends PlayerStatComparer {
 
@@ -16,13 +19,15 @@ public class HockeyPlayerStatComparer extends PlayerStatComparer {
     }
 
     /**
-     * Handle an argument requesting a comparison of two or more players'
-     * statistics. Each statistic may be handled differently.
+     * Handle an argument requesting a comparison of two or more hockey
+     * players' statistics. Players are returned in descending order
+     * (best first, worst last)
      * @param arguments A string array of form
-     *                  {"compare_stat", "sport name", "player name 1",
+     *                  {"compare_stat", "Hockey", "player name 1",
      *                  "player name 2", ... , "season", "stat name"}
-     * @return the requested statistic
-     * @throws Exception if the Player or season does not exist
+     * @return the players and their associated statistics
+     * @throws Exception if a player does not exists, or lacks data for the
+     * given season
      */
     @Override
     public String execute(List<String> arguments) throws Exception {
@@ -44,7 +49,7 @@ public class HockeyPlayerStatComparer extends PlayerStatComparer {
 
     // TODO: Is there a better way to do this?
     /**
-     * Cast an ArrayList of Players to List of HockeyPlayers
+     * Cast a List of Players to List of HockeyPlayers
      * @param genericPlayers List of Player subclass castable to HockeyPlayer
      * @return List with original Players cast to HockeyPlayer
      */
@@ -68,23 +73,24 @@ public class HockeyPlayerStatComparer extends PlayerStatComparer {
     private List<String> getStatValues(List<HockeyPlayer> players,
                                             String statistic, String season)
             throws Exception {
-        return switch (statistic) {
-            case "Skater Shoots" ->
-                    getValuesSkaterShoots(players, season);
-            case "Games Played" ->
-                    getValuesGamesPlayed(players, season);
-            case "Goals" ->
-                    getValuesGoals(players, season);
-            case "Assists" ->
-                    getValuesAssists(players, season);
-            case "Points" ->
-                    getValuesPoints(players, season);
-            case "Shots" ->
-                    getValuesShots(players, season);
-            case "Shooting Percentage" ->
-                    getValuesShootingPercentage(players, season);
-            default -> throw new Exception("This shouldn't logically be thrown!");
-        };
+        switch (statistic) {
+            case "Skater Shoots":
+                return getValuesSkaterShoots(players, season);
+            case "Games Played":
+                return getValuesGamesPlayed(players, season);
+            case "Goals":
+                return getValuesGoals(players, season);
+            case "Assists":
+                return getValuesAssists(players, season);
+            case "Points":
+                return getValuesPoints(players, season);
+            case "Shots":
+                return getValuesShots(players, season);
+            case "Shooting Percentage":
+                return getValuesShootingPercentage(players, season);
+            default:
+                throw new Exception("This shouldn't logically be thrown!");
+        }
     }
 
     /**

@@ -53,21 +53,22 @@ public class HockeyPlayerStatPredictor extends PlayerStatPredictor {
     private List<Integer> getPastStats(HockeyPlayer player, String statistic,
                                        List<String> seasons)
             throws Exception {
-        return switch (statistic) {
-            case "Skater Shoots" ->
-                    getPastSkaterShoots(player, seasons);
-            case "Goals" ->
-                    getPastGoals(player, seasons);
-            case "Assists" ->
-                    getPastAssists(player, seasons);
-            case "Points" ->
-                    getPastPoints(player, seasons);
-            case "Shots" ->
-                    getPastShots(player, seasons);
-            case "Shooting Percentage" ->
-                    getPastShootingPercentage(player, seasons);
-            default -> throw new Exception("this shouldn't logically be thrown!");
-        };
+        switch (statistic) {
+            case "Skater Shoots":
+                return getPastSkaterShoots(player, seasons);
+            case "Goals":
+                return getPastGoals(player, seasons);
+            case "Assists":
+                return getPastAssists(player, seasons);
+            case "Points":
+                return getPastPoints(player, seasons);
+            case "Shots":
+                return getPastShots(player, seasons);
+            case "Shooting Percentage":
+                return getPastShootingPercentage(player, seasons);
+            default:
+                throw new Exception("this shouldn't logically be thrown!");
+        }
     }
 
     /**
@@ -170,16 +171,5 @@ public class HockeyPlayerStatPredictor extends PlayerStatPredictor {
             pastShootingPercentage.add(player.getStatShootingPercentage(season));
         }
         return pastShootingPercentage;
-    }
-
-    /**
-     * Extrapolate a series of data points, at evenly spaced intervals,
-     * into the future using a linear model
-     * @param pastStats the past data points
-     * @return the linearly extrapolated next data point in the series
-     */
-    private int linearExtrapolate(List<Integer> pastStats) {
-        // TODO: Implement linear extrapolation
-        return 0;
     }
 }

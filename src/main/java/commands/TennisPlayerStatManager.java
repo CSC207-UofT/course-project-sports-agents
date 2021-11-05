@@ -1,63 +1,69 @@
 package commands;
 
+import player.PlayerList;
 import player.TennisPlayer;
-import player.TennisPlayerList;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Arrays;
+import java.util.List;
+import java.util.HashSet;
 
 /**
- * This is a class that can report a specific stat for a specific tennis player who played at a specific competition.
+ * This is a class can get statistics for Tennis Players
  */
 
-public class TennisPlayerStatManager implements Command {
-    static final int PLAYER_NAME = 0;
-    static final int STAT = 1;
-    static final int COMPETITION = 2;
+public class TennisPlayerStatManager extends PlayerStatManager {
 
-    public TennisPlayerStatManager() {}
-
+    public TennisPlayerStatManager(PlayerList<TennisPlayer> tennisPlayerList) {
+        super(tennisPlayerList,
+                new HashSet<String>(Arrays.asList("Age", "Aces", "Double Faults",
+                        "Serve Points", "First Serves", "Break Points Served")));
+    }
 
     /**
-     * Return the specified stat for the specified player, who participated in the specified competition
-     * @param arguments a list in the format [player name, stat, competition]
+     * Return the specified stat for the specified player in the specified season
+     * @param arguments A string array of form
+     *                  {"get_stat", "Tennis", "player name", "season", "stat name"} or
+     *                  {"get_stat", "Tennis", "player name", "Country"}
      * @return the specified stat of the player
-     * @throws Exception if the competition or player could not be found
+     * @throws Exception if the Player or season does not exist
      */
     @Override
-    public String execute(ArrayList<String> arguments) throws Exception {
-        String neededName = arguments.get(PLAYER_NAME);
-        String neededStat = arguments.get(STAT);
-        String neededCompetition = arguments.get(COMPETITION);
-        TennisPlayerList tp = new TennisPlayerList();
-        HashMap<String, ArrayList<TennisPlayer>> competitionToPlayers = tp.getAllTennisPlayers();
-        ArrayList<TennisPlayer> competitionPlayers = new ArrayList<>();
+    public String execute(List<String> arguments) throws Exception {
+        String name = arguments.get(2);
+        TennisPlayer player = (TennisPlayer) this.playerList.getPlayer(name);
 
-        for (String competition : competitionToPlayers.keySet()) {
-            if (competition.equals(neededCompetition)) {
-                competitionPlayers = competitionToPlayers.get(competition);
-            }
+        // TODO: It'd be nice to have all stats as cases, but this is different
+        // because it doesn't need the season.
+        if (arguments.size() == 4 && arguments.get(3).equals("Country")) {
+            return formatStat(player, player.getCountry());
         }
 
-        if (competitionPlayers.isEmpty()) {
-            throw new Exception("Competition not found!");
-        }
-        
-        TennisPlayer neededPlayer = null;
-        for (TennisPlayer player : competitionPlayers) {
-            if (player.getName().equals(neededName)) {
-                neededPlayer = player;
-            }
-        }
+        String season = arguments.get(3);
 
-        if (neededPlayer == null) {
-            throw new Exception("That player did not participate in this competition!");
-        }
+        String statistic = arguments.get(4);
+        checkStatistic(statistic);
 
-        if (neededStat.equals("all stats")) {
-            return neededPlayer.toString();
-        } else {
-            return neededPlayer.getNeededStat(neededStat);
+        switch(statistic) {
+            case "Age":
+                return formatStat(player,
+                        player.getStatAge(season).toString());
+            case "Aces":
+                return formatStat(player,
+                        player.getStatAces(season).toString());
+            case "Double Faults":
+                return formatStat(player,
+                        player.getStatDoubleFaults(season).toString());
+            case "Serve Points":
+                return formatStat(player,
+                        player.getStatServePoints(season).toString());
+            case "First Serves":
+                return formatStat(player,
+                        player.getStatFirstServes(season).toString());
+            case "Break Points Saved":
+                return formatStat(player,
+                        player.getStatBreakPointsSaved(season).toString());
+            default:
+                throw new Exception("This shouldn't be thrown, logically");
         }
     }
 }

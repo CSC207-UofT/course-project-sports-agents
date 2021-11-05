@@ -19,7 +19,7 @@ public class HockeyPlayerStatManager extends PlayerStatManager {
     /**
      * Handle an argument requesting a player's statistics
      * @param arguments A string array of form
-     *                  {"get_stat", "sport name", "player name",
+     *                  {"get_stat", "Hockey", "player name",
      *                  "season", "stat name"}
      * @return the requested statistic
      * @throws Exception if the Player or season does not exist
@@ -34,26 +34,27 @@ public class HockeyPlayerStatManager extends PlayerStatManager {
         String statistic = arguments.get(4);
         checkStatistic(statistic);
 
-        return switch (statistic) {
-            case "Team" ->
-                    formatStat(player, player.getStatTeam(season));
-            case "Skater Shoots" ->
-                    formatStat(player, player.getStatSkaterShoots(season).toString());
-            case "Position" ->
-                    formatStat(player, player.getStatPosition(season));
-            case "Games Played" ->
-                    formatStat(player, player.getStatGamesPlayed(season).toString());
-            case "Goals" ->
-                    formatStat(player, player.getStatGoals(season).toString());
-            case "Assists" ->
-                    formatStat(player, player.getStatAssists(season).toString());
-            case "Points" ->
-                    formatStat(player, player.getStatPoints(season).toString());
-            case "Shots" ->
-                    formatStat(player, player.getStatShots(season).toString());
-            case "Shooting Percentage" ->
-                    formatStat(player, player.getStatShootingPercentage(season).toString());
-            default -> throw new Exception("This shouldn't be thrown, logically");
-        };
+        switch (statistic) {
+            case "Team":
+                return formatStat(player, player.getStatTeam(season));
+            case "Skater Shoots":
+                return formatStat(player, player.getStatSkaterShoots(season).toString());
+            case "Position":
+                return formatStat(player, player.getStatPosition(season));
+            case "Games Played":
+                return formatStat(player, player.getStatGamesPlayed(season).toString());
+            case "Goals":
+                return formatStat(player, player.getStatGoals(season).toString());
+            case "Assists":
+                return formatStat(player, player.getStatAssists(season).toString());
+            case "Points":
+                return formatStat(player, player.getStatPoints(season).toString());
+            case "Shots":
+                return formatStat(player, player.getStatShots(season).toString());
+            case "Shooting Percentage":
+                return formatStat(player, player.getStatShootingPercentage(season).toString());
+            default:
+                throw new Exception("This shouldn't be thrown, logically");
+        }
     }
 }

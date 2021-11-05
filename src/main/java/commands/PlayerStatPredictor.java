@@ -32,6 +32,17 @@ public abstract class PlayerStatPredictor implements Command {
     }
 
     /**
+     * Extrapolate a series of data points, at evenly spaced intervals,
+     * into the future using a linear model
+     * @param pastStats the past data points
+     * @return the linearly extrapolated next data point in the series
+     */
+    protected int linearExtrapolate(List<Integer> pastStats) {
+        // TODO: Implement linear extrapolation
+        return 0;
+    }
+
+    /**
      * Format data for printing to a terminal
      * @param seasons the seasons where past data originates from
      * @param pastStats the past data

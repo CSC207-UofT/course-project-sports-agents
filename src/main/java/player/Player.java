@@ -1,6 +1,7 @@
 package player;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * This is an abstract class for any future players that need to be added.
@@ -13,14 +14,11 @@ public abstract class Player {
 
     /**
      * @param name the Player's name
-     * @param season the Player's first season
-     * @param team the Player's first team
      * @throws Exception should not throw Exception
      */
-    public Player(String name, String season, String team) throws Exception {
+    public Player(String name) throws Exception {
         this.name = name;
         this.teamRecord = new HashMap<String, String>();
-        this.addStatTeam(season, team);
     }
 
     /**
@@ -59,7 +57,7 @@ public abstract class Player {
      * @param expected the expectation for if data is stored
      * @throws Exception if the expectation is violated
      */
-    public void checkForSeason(HashMap dataMap, String season,
+    public void checkForSeason(Map dataMap, String season,
                                boolean expected) throws Exception {
         if (dataMap.containsKey(season) == expected) {
             // We expect data, but there is none
@@ -81,7 +79,7 @@ public abstract class Player {
      */
     @Override
     public String toString() {
-        return "Name: " + this.name;
+        return this.name;
     }
 
     /**
