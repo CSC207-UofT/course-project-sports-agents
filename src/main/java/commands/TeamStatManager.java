@@ -42,28 +42,21 @@ public class TeamStatManager implements Command, TeamConstants {
                 case TIES:
                     return team.getTies();
                 case WIN_RATE:
-                    return calculateWinRate(team);
+                    return calculateRate(team, team.getWins(), team.getTotalGamesPlayed());
                 case LOSS_RATE:
-                    return calculateLossRate(team);
+                    return calculateRate(team, team.getLosses(), team.getTotalGamesPlayed());
                 default:
-                    return -1;
+                    return -5;
             }
         }
         return -1;
     }
 
-    private float calculateWinRate(Team team){
-        if(team.getTotalGamesPlayed() == 0){
+    private float calculateRate(Team team, int numerator, int denominator){
+        if(denominator == 0){
             return 0;
         }
-        return (float) team.getWins() / team.getTotalGamesPlayed() * 100;
-    }
-
-    private float calculateLossRate(Team team){
-        if(team.getTotalGamesPlayed() == 0){
-            return 0;
-        }
-        return (float) team.getLosses() / team.getTotalGamesPlayed() * 100;
+        return (float) numerator / denominator * 100;
     }
 
     /**
