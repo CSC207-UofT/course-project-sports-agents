@@ -19,9 +19,9 @@ public class TennisPlayerStatPredictor implements Command {
 
     /**
      * Return a prediction for a given player's stat
-     * @param arguments is a list of strings where ["player name", "stat"]
-     * @return the prediction of the stat based on the past data.
-     * @throws Exception when the player name is not found or the demanded stat is invalid.
+     * @param arguments a list of strings in the format ["player name", "stat"]
+     * @return prediction of given stat using linear regression
+     * @throws Exception when the player is not found or the given stat is invalid.
      */
     @Override
     public String execute(ArrayList<String> arguments) throws Exception {
@@ -52,7 +52,7 @@ public class TennisPlayerStatPredictor implements Command {
 
         LinearRegressionAnalysis lR = new LinearRegressionAnalysis(xAxis, yAxis);
 
-        return "Predicted " + stat + " approximately in next season/competition: " + (int)(lR.makePrediction());
+        return "Predicted " + stat + " in next competition: " + (int)(lR.makePrediction());
 
     }
 
