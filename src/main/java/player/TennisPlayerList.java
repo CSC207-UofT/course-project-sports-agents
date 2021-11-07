@@ -72,8 +72,9 @@ public class TennisPlayerList {
      * Construct a map of tennis players with a default file
      */
     public TennisPlayerList() {
-        this("tennis_atp.csv");
+        this("atp_tennis.csv");
     }
+
 
     /**
      * This is a helper method for the constructor; it updates all the attributes associated with a given

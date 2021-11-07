@@ -253,7 +253,7 @@ public class TennisPlayer extends Player {
      * @param competition the needed competition
      * @return string of player's data for given competition
      */
-    public String competitionToString(String competition) {
+    public String printCompetitionData(String competition) {
         String partOne = super.toString();
         return partOne + "\nAge: " + this.age.get(competition) + "\nNationality: " + this.country + "\nAces: "
                 + this.aces.get(competition) + "\nDouble Faults: " + this.doubleFaults.get(competition) +

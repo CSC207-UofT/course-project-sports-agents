@@ -54,7 +54,7 @@ public class TennisPlayerStatManager implements Command {
 
 
     /**
-     * This is a helper method for execute. It updates the given result to include the needed stat for a
+     * A helper method for execute method. It updates the given result to include the needed stat for a
      * tennis player at a given competition
      * @param result a StringBuilder object that needs to be updated
      * @param stat the needed stat to be added to result
@@ -66,7 +66,7 @@ public class TennisPlayerStatManager implements Command {
                                 String competition) throws Exception {
         if (stat.equals("all stats")) {
             result.append(competition).append(":\n");
-            result.append(neededPlayer.competitionToString(competition)).append("\n\n");
+            result.append(neededPlayer.printCompetitionData(competition)).append("\n\n");
         } else {
             Map<String, Integer> neededStats = neededPlayer.getNeededStat(stat);
             if (!(neededStats.containsKey(competition))) {

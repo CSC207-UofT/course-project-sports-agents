@@ -38,7 +38,7 @@ public class TennisPlayerListTest {
                         "First Serves: 156\n" +
                         "Break Points Saved: 5",
                 tennisPlayerList.findTennisPlayer("Brisbane",
-                "Kei Nishikori").competitionToString("Brisbane"));
+                "Kei Nishikori").printCompetitionData("Brisbane"));
     }
 
 }
