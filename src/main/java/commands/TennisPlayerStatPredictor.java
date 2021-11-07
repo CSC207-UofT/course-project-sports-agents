@@ -13,12 +13,12 @@ public class TennisPlayerStatPredictor implements Command {
 
     public TennisPlayerStatPredictor() {
         this.allowedStats = new HashSet<>(Arrays.asList("aces", "double faults", "break points", "first serves",
-                "break points saved"));
+                "break points saved", "serve points"));
     }
 
     /**
      * Make a prediction for the given player on the given stat using linear regression
-     * @param arguments is a list of strings in the format ["player name", "stat"]
+     * @param arguments is a list of strings in the format ["sport", "player name", "stat"]
      * @return the prediction of the stat based on historical data
      * @throws Exception when the player name is not found or the demanded stat is invalid.
      */

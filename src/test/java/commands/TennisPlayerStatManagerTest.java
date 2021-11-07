@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import static org.junit.Assert.assertEquals;
 
 public class TennisPlayerStatManagerTest {
+    String sport;
     String playerOne;
     String competition;
     String stat;
@@ -16,7 +17,9 @@ public class TennisPlayerStatManagerTest {
 
     @Before
     public void setUp() {
+        sport = "tennis";
         arguments = new ArrayList<>();
+        arguments.add(sport);
         manager = new TennisPlayerStatManager();
     }
 

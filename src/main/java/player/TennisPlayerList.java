@@ -7,7 +7,8 @@ import java.util.*;
 
 /**
  * A class that can read a .csv file containing data about tennis players that participated in different tournaments,
- * and store that data as a value in a Map with the name of the tournament as a key.
+ * and store that data as a value in a Map with the name of the tournament as a key. In the .csv file, the tournaments
+ * are in the order that they happened (i.e. the .csv file is in chronological order).
  */
 public class TennisPlayerList {
     private final HashMap<String, ArrayList<TennisPlayer>> competitionToPlayers;

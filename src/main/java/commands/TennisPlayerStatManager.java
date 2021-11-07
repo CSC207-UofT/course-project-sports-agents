@@ -11,20 +11,20 @@ import java.util.*;
 
 public class TennisPlayerStatManager implements Command {
     private final HashSet<String> allowedStats;
-    static final int PLAYER_NAME = 0;
-    static final int STAT = 1;
-    static final int COMPETITION = 2;
+    static final int PLAYER_NAME = 1;
+    static final int STAT = 2;
+    static final int COMPETITION = 3;
 
     public TennisPlayerStatManager() {
         this.allowedStats = new HashSet<>(Arrays.asList("age", "nationality", "aces", "double faults",
-                "serve points", "first serves", "break points saved"));
+                "serve points", "first serves", "break points saved", "all stats"));
     }
 
 
     /**
      * Return the specified stat for the specified player, who participated in the specified competition
      *
-     * @param arguments a list in the format [player name, stat, competition one, competition two, ...]
+     * @param arguments a list in the format [sport, player name, stat, competition one, competition two, ...]
      * @return the specified stat of the player
      * @throws Exception if the competition or player could not be found
      */

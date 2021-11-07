@@ -17,7 +17,7 @@ public class TennisPlayerStatComparer implements Command {
 
     public TennisPlayerStatComparer() {
         this.allowedStats = new HashSet<>(Arrays.asList("aces", "double faults", "break points", "first serves",
-                "break points saved"));
+                "break points saved", "serve points"));
     }
 
 
