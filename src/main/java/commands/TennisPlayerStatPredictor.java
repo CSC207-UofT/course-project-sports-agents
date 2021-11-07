@@ -16,6 +16,7 @@ public class TennisPlayerStatPredictor implements Command {
                 "break points saved", "serve points"));
     }
 
+
     /**
      * Make a prediction for the given player on the given stat using linear regression
      * @param arguments is a list of strings in the format ["sport", "player name", "stat"]

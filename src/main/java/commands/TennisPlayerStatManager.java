@@ -8,7 +8,6 @@ import java.util.*;
 /**
  * A class that can report a stat for a tennis player who played at a competition.
  */
-
 public class TennisPlayerStatManager implements Command {
     private final HashSet<String> allowedStats;
     static final int PLAYER_NAME = 1;
