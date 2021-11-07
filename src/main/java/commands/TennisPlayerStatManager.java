@@ -6,7 +6,7 @@ import player.TennisPlayerList;
 import java.util.*;
 
 /**
- * This is a class that can report a specific stat for a specific tennis player who played at a specific competition.
+ * A class that can report a stat for a tennis player who played at a competition.
  */
 
 public class TennisPlayerStatManager implements Command {

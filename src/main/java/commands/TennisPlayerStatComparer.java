@@ -48,7 +48,7 @@ public class TennisPlayerStatComparer implements Command {
         ArrayList<TennisPlayer> neededPlayers = new ArrayList<>();
 
         for (String name : playerNames) {
-            TennisPlayer newPlayer =  tp.findTennisPlayer(competition, name);
+            TennisPlayer newPlayer = tp.findTennisPlayer(competition, name);
             neededPlayers.add(newPlayer);
             neededStats.add(newPlayer.getNeededStat(stat).get(competition));
         }
@@ -56,11 +56,11 @@ public class TennisPlayerStatComparer implements Command {
         Collections.sort(neededStats);
         neededPlayers.sort(new GetStatsComparator(stat, competition));
 
-        for(TennisPlayer player : neededPlayers) {
+        for (TennisPlayer player : neededPlayers) {
             result.append(player.getName()).append(": ").
                     append(neededStats.get(neededPlayers.indexOf(player))).append(" ").append(stat).append('\n');
         }
 
         return result.toString().trim();
-        }
+    }
 }

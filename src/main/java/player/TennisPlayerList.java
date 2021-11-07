@@ -72,7 +72,7 @@ public class TennisPlayerList {
      * Construct a map of tennis players with a default file
      */
     public TennisPlayerList() {
-        this("Sample_Tennis_Data_2019.csv");
+        this("tennis_atp.csv");
     }
 
     /**

@@ -18,8 +18,7 @@ public class TennisPlayer extends Player {
 
 
     /**
-     * Construct a tennis player who has participated in 0 rounds, and has 0 sets won and lost,
-     * and 0 games won and lost
+     * Construct a tennis player who has not participated in any competitions yet
      * @param name player's name
      * @param country player's country
      */
@@ -284,7 +283,7 @@ public class TennisPlayer extends Player {
             case "break points saved":
                 return this.breakPointsSaved;
         }
-        throw new Exception("Stat not found!");
+        throw new Exception("Invalid stat!");
     }
 
 
