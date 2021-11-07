@@ -19,8 +19,7 @@ public class HockeyPlayerStatManager extends PlayerStatManager {
     /**
      * Handle an argument requesting a player's statistics
      * @param arguments A string array of form
-     *                  {"get_stat", "Hockey", "player name",
-     *                  "season", "stat name"}
+     *                  {"get_player_stat", "Hockey", "player name", "season", "stat name"}
      * @return the requested statistic
      * @throws Exception if the Player or season does not exist
      */

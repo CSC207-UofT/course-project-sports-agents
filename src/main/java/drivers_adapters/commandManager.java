@@ -10,6 +10,10 @@ public class commandManager {
 
     private static final HashMap<String, Command> commandDictionary = new HashMap<String, Command>();
 
+    public commandManager() {
+
+    }
+
     static {
         commandDictionary.put("stats_player", new PlayerStatManager());
         commandDictionary.put("member_manager", new LeagueMemberManager());

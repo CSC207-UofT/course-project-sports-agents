@@ -22,8 +22,8 @@ public class TennisPlayerStatManager extends PlayerStatManager {
     /**
      * Return the specified stat for the specified player in the specified season
      * @param arguments A string array of form
-     *                  {"get_stat", "Tennis", "player name", "season", "stat name"} or
-     *                  {"get_stat", "Tennis", "player name", "Country"}
+     *                  {"get_player_stat", "Tennis", "player name", "season", "stat name"} or
+     *                  {"get_player_stat", "Tennis", "player name", "Country"}
      * @return the specified stat of the player
      * @throws Exception if the Player or season does not exist
      */

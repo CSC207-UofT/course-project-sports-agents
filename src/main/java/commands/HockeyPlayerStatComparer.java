@@ -23,7 +23,7 @@ public class HockeyPlayerStatComparer extends PlayerStatComparer {
      * players' statistics. Players are returned in descending order
      * (best first, worst last)
      * @param arguments A string array of form
-     *                  {"compare_stat", "Hockey", "player name 1",
+     *                  {"compare_player_stat", "Hockey", "player name 1",
      *                  "player name 2", ... , "season", "stat name"}
      * @return the players and their associated statistics
      * @throws Exception if a player does not exists, or lacks data for the

@@ -28,7 +28,7 @@ public class TennisPlayerStatComparer extends PlayerStatComparer {
      * players' statistics. Players are returned in descending order
      * (best first, worst last)
      * @param arguments A string array of form
-     *                  {"compare_stat", "Tennis", "player name 1",
+     *                  {"compare_player_stat", "Tennis", "player name 1",
      *                  "player name 2", ... , "season", "stat name"}
      * @return the players and their associated statistics
      * @throws Exception if a player does not exist, or lacks data for the

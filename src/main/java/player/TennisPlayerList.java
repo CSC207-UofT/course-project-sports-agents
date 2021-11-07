@@ -1,3 +1,4 @@
+/*
 package player;
 
 import java.io.BufferedReader;
@@ -7,10 +8,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Objects;
 
-/**
  * A class that can read a .csv file containing data about tennis players that participated in different tournaments
  * for a specific year (2019), and store that data as a value in a HashMap with the name of the tournament as a key.
- */
 public class TennisPlayerList {
     private final HashMap<String, ArrayList<TennisPlayer>> competitionToPlayers;
     static final int TOURNAMENT_NAME = 0;
@@ -31,9 +30,7 @@ public class TennisPlayerList {
     static final int LOSER_FIRST_SERVES = 15;
     static final int LOSER_BREAK_POINTS = 16;
 
-    /**
      * Construct a map mapping tennis players to a competition that happened in a specific year (2019)
-     */
     public TennisPlayerList() {
         competitionToPlayers = new HashMap<>();
         String line;
@@ -71,7 +68,6 @@ public class TennisPlayerList {
      * @param servePoints playerData[servePoints] contains the number of new serve points won by player
      * @param firstServes playerData[firstServes] contains the number of new first serves made by player
      * @param breakPoints playerData[breakPoints] contains the number of new break points saved by player
-     */
     private void updatePlayer(String[] playerData, TennisPlayer player, int aces, int doubleFaults, int servePoints,
                               int firstServes, int breakPoints) {
         player.updateAces(Integer.parseInt(playerData[aces]));
@@ -91,7 +87,6 @@ public class TennisPlayerList {
      * @param age tennis player's age
      * @param nationality tennis player's nationality
      * @return a Tennis player from players if the player is there, or a new Tennis player if the player is not there
-     */
     private TennisPlayer findTennisPlayer(ArrayList<TennisPlayer> players, String name, int age, String nationality) {
         TennisPlayer newPlayer = new TennisPlayer(name, age, nationality);
         for (TennisPlayer player : players) {
@@ -107,18 +102,15 @@ public class TennisPlayerList {
     /**
      * Return a HashMap of competitions and associated players
      * @return HashMap of players
-     */
     public HashMap<String, ArrayList<TennisPlayer>> getAllTennisPlayers() {
         return competitionToPlayers;
     }
 
 
-    /**
      * Return true if this tennis player and competition can be found in competitionToPlayers
      * @param competition the name of the competition
      * @param name the name of the tennis player
      * @return true if the tennis player is found, and false otherwise
-     */
     public boolean containsPlayer(String competition, String name) {
         if (competitionToPlayers.containsKey(competition)) {
             for (TennisPlayer player : competitionToPlayers.get(competition)) {
@@ -131,13 +123,11 @@ public class TennisPlayerList {
     }
 
 
-    /**
      * Return a string representation of a player in a given competition
      * @param competition name of the competition
      * @param name name of the player
      * @return string representation of the tennis player
      * @throws Exception if the tennis player or competition are not found
-     */
     public TennisPlayer findTennisPlayer(String competition, String name) throws Exception {
         if (!(competitionToPlayers.containsKey(competition))) {
             throw new Exception("Competition not found!");
@@ -151,3 +141,4 @@ public class TennisPlayerList {
         throw new Exception("player.Player not found!");
     }
 }
+*/
