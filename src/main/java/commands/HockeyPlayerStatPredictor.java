@@ -11,8 +11,8 @@ import java.util.HashSet;
 public class HockeyPlayerStatPredictor extends PlayerStatPredictor {
 
     public HockeyPlayerStatPredictor(PlayerList<HockeyPlayer> playerList) {
-        super(playerList, new HashSet<String>(Arrays.asList("Skater Shoots",
-                "Goals", "Assists", "Points", "Shots", "Shooting Percentage")));
+        super(playerList, new HashSet<String>(Arrays.asList("Goals", "Assists",
+                "Points", "Shots", "Shooting Percentage")));
     }
 
     /**
@@ -54,8 +54,6 @@ public class HockeyPlayerStatPredictor extends PlayerStatPredictor {
                                        List<String> seasons)
             throws Exception {
         switch (statistic) {
-            case "Skater Shoots":
-                return getPastSkaterShoots(player, seasons);
             case "Goals":
                 return getPastGoals(player, seasons);
             case "Assists":
@@ -69,23 +67,6 @@ public class HockeyPlayerStatPredictor extends PlayerStatPredictor {
             default:
                 throw new Exception("this shouldn't logically be thrown!");
         }
-    }
-
-    /**
-     * Get the Skater Shoots statistics for the given player in all given seasons
-     * @param player the Player to get Skater Shoot statistics for
-     * @param seasons the list of seasons to consider
-     * @return the Skater Shoot statistics, for all given seasons
-     * @throws Exception if one season lacks recorded Skater Shoot data
-     */
-    private List<Integer> getPastSkaterShoots(HockeyPlayer player,
-                                              List<String> seasons)
-            throws Exception {
-        ArrayList<Integer> pastSkaterShoots = new ArrayList<Integer>();
-        for (String season : seasons) {
-            pastSkaterShoots.add(player.getStatSkaterShoots(season));
-        }
-        return pastSkaterShoots;
     }
 
     /**

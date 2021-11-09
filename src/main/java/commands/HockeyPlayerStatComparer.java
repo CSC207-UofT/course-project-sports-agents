@@ -13,9 +13,8 @@ public class HockeyPlayerStatComparer extends PlayerStatComparer {
 
     public HockeyPlayerStatComparer(PlayerList<HockeyPlayer> hockeyPlayerList) {
         super(hockeyPlayerList,
-                new HashSet<String>(Arrays.asList("Skater Shoots",
-                        "Games Played", "Goals", "Assists", "Points",
-                        "Shots", "Shooting Percentage")));
+                new HashSet<String>(Arrays.asList("Games Played", "Goals",
+                        "Assists", "Points", "Shots", "Shooting Percentage")));
     }
 
     /**
@@ -74,8 +73,6 @@ public class HockeyPlayerStatComparer extends PlayerStatComparer {
                                             String statistic, String season)
             throws Exception {
         switch (statistic) {
-            case "Skater Shoots":
-                return getValuesSkaterShoots(players, season);
             case "Games Played":
                 return getValuesGamesPlayed(players, season);
             case "Goals":
@@ -91,22 +88,6 @@ public class HockeyPlayerStatComparer extends PlayerStatComparer {
             default:
                 throw new Exception("This shouldn't logically be thrown!");
         }
-    }
-
-    /**
-     * Get the skater shoots statistic in the given season for all passed players
-     * @param players the list of Players to collect skater shoot statistics for
-     * @param season the season to consider
-     * @return the skater shoot statistics, for the list of players
-     * @throws Exception if one player lacks the given season's skater shoot data
-     */
-    private List<String> getValuesSkaterShoots(List<HockeyPlayer> players,
-                                                    String season) throws Exception{
-        ArrayList<String> skaterShootsValues = new ArrayList<String>();
-        for (HockeyPlayer player : players) {
-            skaterShootsValues.add(player.getStatSkaterShoots(season).toString());
-        }
-        return skaterShootsValues;
     }
 
     /**

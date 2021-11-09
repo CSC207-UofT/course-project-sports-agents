@@ -24,8 +24,6 @@ public class HockeyPlayerComparator implements Comparator<HockeyPlayer> {
     public int compare(HockeyPlayer p1, HockeyPlayer p2) {
         try {
             switch(this.compareBy) {
-                case "Skater Shoots":
-                    return compareSkaterShoots(p1, p2);
                 case "Games Played":
                     return compareGamesPlayed(p1, p2);
                 case "Goals":
@@ -43,12 +41,6 @@ public class HockeyPlayerComparator implements Comparator<HockeyPlayer> {
             e.printStackTrace();
         }
         return 0;
-    }
-
-    private int compareSkaterShoots(HockeyPlayer p1, HockeyPlayer p2)
-            throws Exception {
-        return p1.getStatSkaterShoots(this.season) -
-                p2.getStatSkaterShoots(this.season);
     }
 
     private int compareGamesPlayed(HockeyPlayer p1, HockeyPlayer p2)
