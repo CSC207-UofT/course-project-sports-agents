@@ -37,7 +37,7 @@ public class HockeyPlayerStatManager extends PlayerStatManager {
             case "Team":
                 return formatStat(player, player.getStatTeam(season));
             case "Skater Shoots":
-                return formatStat(player, player.getStatSkaterShoots(season).toString());
+                return formatStat(player, player.getStatSkaterShoots(season));
             case "Position":
                 return formatStat(player, player.getStatPosition(season));
             case "Games Played":

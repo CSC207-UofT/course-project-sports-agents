@@ -8,11 +8,13 @@ import java.util.Comparator;
  * When instantiated, sets the statistic and season of interest.
  */
 public class HockeyPlayerComparator implements Comparator<HockeyPlayer> {
-    String compareBy;
-    String season;
+    private final String compareBy;
+    private final String season;
 
     /**
      * Create a new HockeyPlayerComparator
+     * Precondition: compareBy is one of "Games Played", "Goals", "Assists",
+     * "Points", "Shots", or "Shooting Percentage"
      * @param compareBy Compare by this statistic
      * @param season Season to compare statistics from
      */
@@ -34,19 +36,20 @@ public class HockeyPlayerComparator implements Comparator<HockeyPlayer> {
                     return comparePoints(p1, p2);
                 case "Shots":
                     return compareShots(p1, p2);
-                case "ShootingPercentage":
+                case "Shooting Percentage":
                     return compareShootingPercentage(p1, p2);
+                default:
+                    return 0;
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            return 0;
         }
-        return 0;
     }
 
     private int compareGamesPlayed(HockeyPlayer p1, HockeyPlayer p2)
             throws Exception {
-        return p1.getStatGamesPlayed(this.season) -
-                p2.getStatGamesPlayed(this.season);
+        return p2.getStatGamesPlayed(this.season) -
+                p1.getStatGamesPlayed(this.season);
     }
 
     private int compareGoals(HockeyPlayer p1, HockeyPlayer p2)
@@ -75,8 +78,8 @@ public class HockeyPlayerComparator implements Comparator<HockeyPlayer> {
 
     private int compareShootingPercentage(HockeyPlayer p1, HockeyPlayer p2)
             throws Exception {
-        return p1.getStatShootingPercentage(this.season) -
-                p2.getStatShootingPercentage(this.season);
+        return (int) Math.signum(p1.getStatShootingPercentage(this.season) -
+                                 p2.getStatShootingPercentage(this.season));
     }
 }
 

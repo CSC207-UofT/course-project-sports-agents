@@ -4,10 +4,7 @@ import player.PlayerList;
 import player.HockeyPlayer;
 import player.HockeyPlayerComparator;
 
-import java.util.List;
-import java.util.HashSet;
-import java.util.Arrays;
-import java.util.ArrayList;
+import java.util.*;
 
 public class HockeyPlayerStatComparer extends PlayerStatComparer {
 
@@ -41,6 +38,7 @@ public class HockeyPlayerStatComparer extends PlayerStatComparer {
         checkStatistic(statistic);
 
         hockeyPlayers.sort(new HockeyPlayerComparator(statistic, season));
+        Collections.reverse(hockeyPlayers);
         List<String> playersStatValues = getStatValues(hockeyPlayers,
                 statistic, season);
         return formatCompare(hockeyPlayers, playersStatValues);

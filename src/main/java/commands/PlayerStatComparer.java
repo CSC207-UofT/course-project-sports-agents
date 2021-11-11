@@ -45,24 +45,10 @@ public abstract class PlayerStatComparer implements Command {
             Player player = players.get(i);
             output.append(player.getName());
             output.append(": ");
-            output.append(statValues.get(0));
+            output.append(statValues.get(i));
             output.append("\n");
         }
         return output.toString();
-    }
-
-    // TODO: Is there a better way to do this?
-    /**
-     * Cast a List of Players to List of T class objects
-     * @param genericPlayers List of Player subclass castable to type T
-     * @return List with original Players cast to HockeyPlayer
-     */
-    protected <T extends Player> List<T> castToPlayerType(List<?> genericPlayers) {
-        ArrayList<T> specificPlayers = new ArrayList<T>();
-        for (Object player : genericPlayers) {
-            specificPlayers.add((T) player);
-        }
-        return specificPlayers;
     }
 }
 

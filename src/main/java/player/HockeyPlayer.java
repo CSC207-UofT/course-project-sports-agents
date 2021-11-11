@@ -14,7 +14,7 @@ public class HockeyPlayer extends Player {
     private HashMap<String, Integer> assistsRecord;
     private HashMap<String, Integer> pointsRecord;
     private HashMap<String, Integer> shotsRecord;
-    private HashMap<String, Integer> shootingPercentageRecord;
+    private HashMap<String, Double> shootingPercentageRecord;
 
     /**
      * Create a new Hockey Player
@@ -35,7 +35,7 @@ public class HockeyPlayer extends Player {
                         String skaterShoots, String position,
                         Integer gamesPlayed, Integer goals, Integer assists,
                         Integer points, Integer shots,
-                        Integer shootingPercentage) throws Exception {
+                        Double shootingPercentage) throws Exception {
         super(name);
         this.skaterShootsRecord = new HashMap<String, String>();
         this.positionRecord = new HashMap<String, String>();
@@ -44,7 +44,7 @@ public class HockeyPlayer extends Player {
         this.assistsRecord = new HashMap<String, Integer>();
         this.pointsRecord = new HashMap<String, Integer>();
         this.shotsRecord = new HashMap<String, Integer>();
-        this.shootingPercentageRecord = new HashMap<String, Integer>();
+        this.shootingPercentageRecord = new HashMap<String, Double>();
 
         this.addRecord(season, team, skaterShoots, position, gamesPlayed,
                 goals, assists, points, shots, shootingPercentage);
@@ -67,7 +67,7 @@ public class HockeyPlayer extends Player {
     public void addRecord(String season, String team, String skaterShoots,
                           String position, Integer gamesPlayed, Integer goals,
                           Integer assists, Integer points, Integer shots,
-                          Integer shootingPercentage) throws Exception {
+                          Double shootingPercentage) throws Exception {
         this.addStatTeam(season, team);
         this.addStatSkaterShoots(season, skaterShoots);
         this.addStatPosition(season, position);
@@ -239,7 +239,7 @@ public class HockeyPlayer extends Player {
      * @param shootingPercentage the shooting percentage data
      * @throws Exception if that season already has shooting percentage data
      */
-    public void addStatShootingPercentage(String season, Integer
+    public void addStatShootingPercentage(String season, Double
             shootingPercentage) throws Exception {
         checkForSeason(this.shootingPercentageRecord, season, false);
         this.shootingPercentageRecord.put(season, shootingPercentage);
@@ -250,7 +250,7 @@ public class HockeyPlayer extends Player {
      * @return the shooting percentage data from that season
      * @throws Exception if that season has no shooting percentage data
      */
-    public Integer getStatShootingPercentage(String season) throws Exception {
+    public Double getStatShootingPercentage(String season) throws Exception {
         checkForSeason(this.shootingPercentageRecord, season, true);
         return this.shootingPercentageRecord.get(season);
     }

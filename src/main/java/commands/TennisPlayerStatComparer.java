@@ -4,10 +4,7 @@ import player.TennisPlayer;
 import player.PlayerList;
 import player.TennisPlayerComparator;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Arrays;
-import java.util.HashSet;
+import java.util.*;
 
 
 /**
@@ -47,6 +44,7 @@ public class TennisPlayerStatComparer extends PlayerStatComparer {
         checkStatistic(statistic);
 
         tennisPlayers.sort(new TennisPlayerComparator(statistic, season));
+        Collections.reverse(tennisPlayers);
         List<String> playersStatValues = getStatValues(tennisPlayers,
                 statistic, season);
         return formatCompare(tennisPlayers, playersStatValues);

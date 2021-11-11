@@ -108,7 +108,7 @@ public class TennisPlayer extends Player {
     public void addStatAces(String season, Integer aces)
             throws Exception {
         checkForSeason(this.acesRecord, season, false);
-        this.ageRecord.put(season, aces);
+        this.acesRecord.put(season, aces);
     }
 
     /**
@@ -211,7 +211,7 @@ public class TennisPlayer extends Player {
 
     @Override
     public String toString() {
-        return "Tennis Player: " + super.toString();
+        return "Tennis Player " + super.toString();
     }
 
 }

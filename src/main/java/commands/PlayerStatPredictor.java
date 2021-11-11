@@ -37,7 +37,7 @@ public abstract class PlayerStatPredictor implements Command {
      * @param pastStats the past data points
      * @return the linearly extrapolated next data point in the series
      */
-    protected int linearExtrapolate(List<Integer> pastStats) {
+    protected int linearExtrapolate(List<Double> pastStats) {
         // TODO: Implement linear extrapolation
         return 0;
     }
@@ -49,7 +49,7 @@ public abstract class PlayerStatPredictor implements Command {
      * @param prediction the prediction for next season
      * @return the formatted output to display
      */
-    protected String formatOut(List<String> seasons, List<Integer> pastStats,
+    protected String formatOut(List<String> seasons, List<Double> pastStats,
                                int prediction) {
         StringBuilder out = new StringBuilder("Previous Statistics:\n");
         // Precondition: seasons.size() = pastStats.size()

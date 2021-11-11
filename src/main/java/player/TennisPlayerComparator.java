@@ -13,6 +13,8 @@ public class TennisPlayerComparator implements Comparator<TennisPlayer> {
 
     /**
      * Create a new HockeyPlayerComparator
+     * Precondition: compareBy is one of "Age", "Aces", "Double Faults",
+     * "Serve Points", "First Serves", "Break Points Saved"
      * @param compareBy Compare by this statistic
      * @param season Season to compare statistics from
      */
@@ -28,7 +30,7 @@ public class TennisPlayerComparator implements Comparator<TennisPlayer> {
                     return compareAge(p1, p2);
                 case "Aces":
                     return compareAces(p1, p2);
-                case "compareDoubleFaults":
+                case "Double Faults":
                     return compareDoubleFaults(p1, p2);
                 case "Serve Points":
                     return compareServePoints(p1, p2);

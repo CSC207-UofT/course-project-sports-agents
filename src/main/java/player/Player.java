@@ -59,7 +59,7 @@ public abstract class Player {
      */
     public void checkForSeason(Map dataMap, String season,
                                boolean expected) throws Exception {
-        if (dataMap.containsKey(season) == expected) {
+        if (dataMap.containsKey(season) != expected) {
             // We expect data, but there is none
             if (expected) {
                 throw new Exception("Information on " + season +
