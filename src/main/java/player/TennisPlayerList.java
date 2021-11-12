@@ -1,5 +1,7 @@
 package player;
 
+import constants.Exceptions;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -140,7 +142,7 @@ public class TennisPlayerList {
      */
     public TennisPlayer findTennisPlayer(String competition, String name) throws Exception {
         if (!(competitionToPlayers.containsKey(competition))) {
-            throw new Exception("Competition not found!");
+            throw new Exception(Exceptions.COMP_NOT_FOUND);
         } else if (containsPlayer(competition, name)) {
             for (TennisPlayer player : competitionToPlayers.get(competition)) {
                 if (Objects.equals(player.getName(), name)) {
@@ -148,6 +150,6 @@ public class TennisPlayerList {
                 }
             }
         }
-        throw new Exception("player.Player not found!");
+        throw new Exception(Exceptions.PLAYER_NOT_FOUND);
     }
 }
