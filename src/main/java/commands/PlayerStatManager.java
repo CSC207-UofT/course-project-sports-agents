@@ -1,5 +1,6 @@
 package commands;
 
+import constants.Exceptions;
 import player.HockeyPlayer;
 import player.PlayerList;
 
@@ -45,7 +46,7 @@ public class PlayerStatManager implements Command {
         }
 
         if (listDemandedStat.isEmpty()){
-            throw new Exception("player not found!");
+            throw new Exception(Exceptions.PLAYER_NOT_FOUND);
         }
 
         StringBuilder reportedStat = new StringBuilder();

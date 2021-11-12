@@ -30,37 +30,37 @@ public class TeamStatManagerTest {
     }
 
     @Test(timeout = 50)
-    public void testGetTotalGamesPlayed(){
+    public void testGetTotalGamesPlayed() throws Exception {
         assertEquals(0, tsm.getTotalGamesPlayed("name"));
         assertEquals(3, tsm.getTotalGamesPlayed("name1"));
     }
 
     @Test(timeout = 50)
-    public void testGetWins(){
+    public void testGetWins() throws Exception {
         assertEquals(0, tsm.getWins("name"));
         assertEquals(1, tsm.getWins("name1"));
     }
 
     @Test(timeout = 50)
-    public void testGetLosses(){
+    public void testGetLosses() throws Exception {
         assertEquals(0, tsm.getLosses("name"));
         assertEquals(1, tsm.getLosses("name1"));
     }
 
     @Test(timeout = 50)
-    public void testGetTies(){
+    public void testGetTies() throws Exception {
         assertEquals(0, tsm.getTies("name"));
         assertEquals(1, tsm.getTies("name1"));
     }
 
     @Test(timeout = 50)
-    public void testGetWinRate(){
+    public void testGetWinRate() throws Exception {
         assertEquals(0, tsm.getWinRate("name"), 0.01);
         assertEquals((float) 1 / 3 * 100, tsm.getWinRate("name1"), 0.01);
     }
 
     @Test(timeout = 50)
-    public void testGetLossRate(){
+    public void testGetLossRate() throws Exception {
         assertEquals(0, tsm.getLossRate("name"), 0.01);
         assertEquals((float) 1 / 3 * 100, tsm.getLossRate("name1"), 0.01);
     }

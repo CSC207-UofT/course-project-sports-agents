@@ -1,5 +1,6 @@
 package commands;
 
+import constants.Exceptions;
 import player.GetStatsComparator;
 import player.HockeyPlayer;
 import player.PlayerList;
@@ -29,7 +30,7 @@ public class PlayerStatComparer implements Command {
         // Throw exception for a list of statistics that are invalid for comparison
         List<String> invalidStats = Arrays.asList( "name", "season", "team", "skater shoots","position");
         if (invalidStats.contains(stat)){
-            throw new Exception("Invalid statistic for comparison!");
+            throw new Exception(Exceptions.INVALID_STATISTIC);
         }
 
         PlayerList p = new PlayerList();
@@ -50,7 +51,7 @@ public class PlayerStatComparer implements Command {
 
         // throw exception if one or more players were not found.
         if (listDemandedPlayers.size() < playerNames.size()) {
-            throw new Exception("One or more players not found!");}
+            throw new Exception(Exceptions.PLAYER_NOT_FOUND);}
 
         StringBuilder compareToReturn = new StringBuilder("From min to max:\n");
         List<Integer> listDemandedStats = new ArrayList<>();
