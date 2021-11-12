@@ -1,8 +1,10 @@
 package commands;
 
 import leagueMember.LeagueMember;
+import leagueMember.LeagueStorage;
 import match.Match;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -32,8 +34,51 @@ public class LeagueMemberManager implements Command {
                 return resolveMatch(arguments);
             case "member_info":
                 return memberInfo(arguments);
+            case "save":
+                return saveLeague(arguments);
+            case "load":
+                return loadLeague(arguments);
             default:
                 throw new Exception("Invalid Command provided!");
+        }
+    }
+
+    private String loadLeague(ArrayList<String> arguments) {
+        String path = arguments.get(1);
+        try {
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream(path));
+            LeagueStorage loaded = (LeagueStorage) in.readObject();
+
+            this.LeagueMemberMap = loaded.LeagueMemberMap;
+            this.MatchMap = loaded.MatchMap;
+
+            in.close();
+
+            return "Successfully loaded the league. Welcome back!";
+
+        } catch (FileNotFoundException e) {
+            return "Could not find the given path";
+        } catch (IOException | ClassNotFoundException e) {
+            return "Could not load the given path";
+        }
+    }
+
+    private String saveLeague(ArrayList<String> arguments) throws Exception {
+        String path = arguments.get(1);
+        LeagueStorage to_save = new LeagueStorage(LeagueMemberMap, MatchMap);
+
+        try {
+            FileOutputStream fout = new FileOutputStream(path);
+            ObjectOutputStream out = new ObjectOutputStream(fout);
+
+            out.writeObject(to_save);
+            out.flush();
+            out.close();
+
+            return "Successfully saved to " + path;
+        }
+        catch (Exception e) {
+            throw new Exception("Could not save to " + path);
         }
     }
 

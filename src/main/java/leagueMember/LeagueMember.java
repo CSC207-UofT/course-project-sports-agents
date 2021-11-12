@@ -1,6 +1,8 @@
 package leagueMember;
 
-public class LeagueMember {
+import java.io.Serializable;
+
+public class LeagueMember implements Serializable {
     private final String name;
     private int correctBets;
     private int incorrectBets;
