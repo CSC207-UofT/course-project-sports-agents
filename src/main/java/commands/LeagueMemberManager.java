@@ -63,7 +63,7 @@ public class LeagueMemberManager implements Command {
         }
     }
 
-    private String saveLeague(ArrayList<String> arguments) {
+    private String saveLeague(ArrayList<String> arguments) throws Exception {
         String path = arguments.get(1);
         LeagueStorage to_save = new LeagueStorage(LeagueMemberMap, MatchMap);
 
@@ -75,10 +75,10 @@ public class LeagueMemberManager implements Command {
             out.flush();
             out.close();
 
-            return "Successfully saved to" + path;
+            return "Successfully saved to " + path;
         }
         catch (Exception e) {
-            return "Could not save to" + path;
+            throw new Exception("Could not save to " + path);
         }
     }
 
