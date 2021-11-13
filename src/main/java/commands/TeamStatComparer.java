@@ -98,6 +98,10 @@ public class TeamStatComparer {
      * @return 1 if team 1 is higher, 2 if team 2 is higher, 0 if team 1 equals team 2
      */
     public int compareWinRate(String team1, String team2) throws Exception {
+        return compareRate(team1, team2);
+    }
+
+    private int compareRate(String team1, String team2) throws Exception {
         float t1WinRate = teamStatManager.getWinRate(team1);
         float t2WinRate = teamStatManager.getWinRate(team2);
         int out = -1;
@@ -119,17 +123,6 @@ public class TeamStatComparer {
      * @return 1 if team 1 is higher, 2 if team 2 is higher, 0 if team 1 equals team 2
      */
     public int compareLossRate(String team1, String team2) throws Exception {
-        float t1LossRate = teamStatManager.getWinRate(team1);
-        float t2LossRate = teamStatManager.getWinRate(team2);
-        int out = -1;
-
-        if(t1LossRate > t2LossRate){
-            out = 1;
-        }else if(t1LossRate < t2LossRate){
-            out = 2;
-        }else{
-            out = 0;
-        }
-        return out;
+        return compareRate(team1, team2);
     }
 }
