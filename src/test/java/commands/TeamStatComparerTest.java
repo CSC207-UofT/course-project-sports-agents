@@ -31,32 +31,32 @@ public class TeamStatComparerTest {
     }
 
     @Test(timeout = 50)
-    public void testCompareTotalGamesPlayed(){
+    public void testCompareTotalGamesPlayed() throws Exception {
         assertEquals(2, tsc.compareTotalGamesPlayed("name", "name1"));
     }
 
     @Test(timeout = 50)
-    public void testCompareWins(){
+    public void testCompareWins() throws Exception {
         assertEquals(2, tsc.compareWins("name", "name1"));
     }
 
     @Test(timeout = 50)
-    public void testCompareLosses(){
+    public void testCompareLosses() throws Exception {
         assertEquals(2, tsc.compareLosses("name", "name1"));
     }
 
     @Test(timeout = 50)
-    public void testGetTies(){
+    public void testGetTies() throws Exception {
         assertEquals(2, tsc.compareTies("name", "name1"));
     }
 
     @Test(timeout = 50)
-    public void testCompareWinRate(){
+    public void testCompareWinRate() throws Exception {
         assertEquals(2, tsc.compareWinRate("name", "name1"));
     }
 
     @Test(timeout = 50)
-    public void testGetLossRate(){
+    public void testGetLossRate() throws Exception {
         assertEquals(2, tsc.compareLossRate("name", "name1"));
     }
 }
