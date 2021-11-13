@@ -6,16 +6,16 @@ import java.util.Map;
  * A player Class.
  */
 public class HockeyPlayer extends Player {
-    public String season;
-    public String team;
-    public String skaterShoots;
-    public String position;
-    public String gamesPlayed;
-    public String goals;
-    public String assists;
-    public String points;
-    public String shots;
-    public String shootingPercentage;
+    public final String season;
+    public final String team;
+    public final String skaterShoots;
+    public final String position;
+    public final String gamesPlayed;
+    public final String goals;
+    public final String assists;
+    public final String points;
+    public final String shots;
+    public final String shootingPercentage;
 
     public HockeyPlayer(String name, String season, String team, String skaterShoots, String position,
                         String gamesPlayed, String goals, String assists, String points, String shots,

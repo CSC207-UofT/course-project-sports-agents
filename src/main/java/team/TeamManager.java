@@ -6,7 +6,7 @@ import match.Match;
 import java.util.ArrayList;
 
 public class TeamManager {
-    private ArrayList<Team> teams;
+    private final ArrayList<Team> teams;
 
     public TeamManager(){
         teams = new ArrayList<Team>();

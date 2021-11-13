@@ -7,7 +7,7 @@ import java.util.Comparator;
  * the values of the demanded statistics.
  */
 public class GetStatsComparator implements Comparator<HockeyPlayer> {
-    String demandedStat;
+    final String demandedStat;
 
     public GetStatsComparator(String demandedStat) {
         this.demandedStat = demandedStat;

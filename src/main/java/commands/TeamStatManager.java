@@ -5,7 +5,7 @@ import team.Team;
 import team.TeamManager;
 
 public class TeamStatManager {
-    TeamManager teamManager;
+    final TeamManager teamManager;
     
     public TeamStatManager(TeamManager teamManager){
         this.teamManager = teamManager;

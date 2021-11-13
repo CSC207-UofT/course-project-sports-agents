@@ -9,7 +9,7 @@ import java.util.*;
  * Read csv file and create a hash map where the key is the season and the value is a list of players objects.
  */
 public class PlayerList {
-    private HashMap<String, List<HockeyPlayer>> playerMap = new HashMap<>();
+    private final HashMap<String, List<HockeyPlayer>> playerMap = new HashMap<>();
 
     public PlayerList() {
         String line = "";

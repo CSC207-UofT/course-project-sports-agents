@@ -1,7 +1,7 @@
 package commands;
 
 public class TeamStatComparer {
-    private TeamStatManager teamStatManager;
+    private final TeamStatManager teamStatManager;
 
     public TeamStatComparer(TeamStatManager teamStatManager){
         this.teamStatManager = teamStatManager;
