@@ -1,6 +1,7 @@
 package commands;
 
 import constants.Exceptions;
+import helpers.PlayerInvalidStatsChecker;
 import player.HockeyPlayer;
 import player.PlayerList;
 
@@ -22,10 +23,7 @@ public class PlayerStatPredictor implements Command {
         String stat = arguments.get(1);
 
         // Throw exception for a list of statistics that are invalid for comparison
-        List<String> invalidStats = Arrays.asList( "name", "season", "team", "skater shoots","position");
-        if (invalidStats.contains(stat)){
-            throw new Exception(Exceptions.INVALID_STATISTIC);
-        }
+        PlayerInvalidStatsChecker.checkStat(stat);
 
         PlayerList p = new PlayerList();
         HashMap<String, List<HockeyPlayer>> playerMap = p.getPlayerMap();
