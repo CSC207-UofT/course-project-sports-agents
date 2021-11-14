@@ -99,6 +99,7 @@ rather than the specific class being used.
 
 
 ## Packaging Strategies
+TODO: Packaging?
 
 ## Design Patterns
 We implement a Command design pattern almost word-for-word from the example
