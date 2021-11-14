@@ -1,19 +1,19 @@
 package team;
 
-import player.Player;
-import match.Match;
-
 import java.util.List;
+
+import match.Match;
 
 public abstract class Team {
     private String name;
     private String homeCity;
-    private List<Player> players;
+    private List<String> players;
     private List<Match> playedGames;
     private int totalGamesPlayed;
     private int wins;
     private int losses;
     private int ties;
+    private int rank;
 
     public Team(){
         this.name = "";
@@ -24,7 +24,7 @@ public abstract class Team {
         this.ties = 0;
     }
 
-    public Team(String name, String homeCity, List<Player> players, List<Match> playedGames, int totalGamesPlayed, int wins, int losses, int ties){
+    public Team(String name, String homeCity, List<String> players, List<Match> playedGames, int totalGamesPlayed, int wins, int losses, int ties, int rank){
         this.name = name;
         this.homeCity = homeCity;
         this.players = players;
@@ -71,7 +71,7 @@ public abstract class Team {
      * Get players
      * @return players
      */
-    public List<Player> getPlayers(){
+    public List<String> getPlayers(){
         return players;
     }
 
@@ -79,7 +79,7 @@ public abstract class Team {
      * Set players
      * @param players
      */
-    public void setPlayers(List<Player> players){
+    public void setPlayers(List<String> players){
         this.players = players;
     }
 
@@ -161,5 +161,21 @@ public abstract class Team {
      */
     public void setTies(int ties){
         this.ties = ties;
+    }
+
+    /**
+     * Get rank
+     * @return rank
+     */
+    public int getRank(){
+        return this.rank;
+    }
+
+    /**
+     * Set rank
+     * @param rank
+     */
+    public void setRank(int rank){
+        this.rank = rank;
     }
 }
