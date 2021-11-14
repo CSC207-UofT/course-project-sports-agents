@@ -1,5 +1,6 @@
 package commands;
 
+import constants.Exceptions;
 import player.HockeyPlayer;
 import player.PlayerList;
 
@@ -9,7 +10,6 @@ import java.util.*;
  * Predict a player's performance in season 2021-2022 in a given statistic.
  */
 public class PlayerStatPredictor implements Command {
-
     /**
      *
      * @param arguments is a list of strings where ["player name", "stat"]
@@ -24,7 +24,7 @@ public class PlayerStatPredictor implements Command {
         // Throw exception for a list of statistics that are invalid for comparison
         List<String> invalidStats = Arrays.asList( "name", "season", "team", "skater shoots","position");
         if (invalidStats.contains(stat)){
-            throw new Exception("Invalid statistic for comparison!");
+            throw new Exception(Exceptions.INVALID_STATISTIC);
         }
 
         PlayerList p = new PlayerList();
