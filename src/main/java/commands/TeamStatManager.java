@@ -2,6 +2,7 @@ package commands;
 
 import java.util.ArrayList;
 
+import team.BaseballTeam;
 import team.HockeyTeam;
 import team.Team;
 import team.TeamConstants;
@@ -33,6 +34,27 @@ public class TeamStatManager implements Command, TeamConstants {
     private final String KEY_OVERTIME_LOSSES = "overtime losses";
     private final String KEY_GOALS_FOR_PER_GAME_PLAYED = "goals for per game played";
     private final String KEY_GOALS_AGAINST_PER_GAME_PLAYED = "goals against per game played";
+    private final String KEY_GAMES_STARTED = "games started";
+    private final String KEY_COMPLETE_GAMES = "complete games";
+    private final String KEY_SHUTOUTS = "shutouts";
+    private final String KEY_SAVES = "saves";
+    private final String KEY_SAVE_OPPORTUNITIES = "save opportunities";
+    private final String KEY_INNINGS_PITCHED = "innings pitched";
+    private final String KEY_RUNS_ALLOWED = "runs allowed";
+    private final String KEY_EARNED_RUNS = "earned runs";
+    private final String KEY_HOME_RUNS_ALLOWED = "home runs allowed";
+    private final String KEY_HIT_BATSMEN = "hit batsmen";
+    private final String KEY_AT_BATS = "at bats";
+    private final String KEY_RUNS = "runs";
+    private final String KEY_HITS = "hits";
+    private final String KEY_DOUBLES = "doubles";
+    private final String KEY_TRIPLES = "triples";
+    private final String KEY_HOME_RUNS = "home runs";
+    private final String KEY_RUN_BATTED_IN = "run batted in";
+    private final String KEY_WALKS = "walks";
+    private final String KEY_STRIKEOUTS = "strikeouts";
+    private final String KEY_STOLEN_BASES = "stolen bases";
+    private final String KEY_CAUGHT_STEALING = "caught stealing";
     
     public TeamStatManager(TeamManager teamManager){
         this.teamManager = teamManager;
@@ -88,6 +110,48 @@ public class TeamStatManager implements Command, TeamConstants {
                     return calculateRate(team, ((HockeyTeam) team).getShotsFor(), team.getTotalGamesPlayed());
                 case SHOTS_AGAINST_PER_GAMES_PLAYED:
                     return calculateRate(team, ((HockeyTeam) team).getShotsAgainst(), team.getTotalGamesPlayed());
+                case GAMES_STARTED:
+                    return ((BaseballTeam) team).getGamesStarted();
+                case COMPLETE_GAMES:
+                    return ((BaseballTeam) team).getCompleteGames();
+                case SHUTOUTS:
+                    return ((BaseballTeam) team).getShutouts();
+                case SAVES:
+                    return ((BaseballTeam) team).getSaves();
+                case SAVE_OPPORTUNITIES:
+                    return ((BaseballTeam) team).getSaveOpportunities();
+                case INNINGS_PITCHED:
+                    return ((BaseballTeam) team).getInningsPitched();
+                case RUNS_ALLOWED:
+                    return ((BaseballTeam) team).getRunsAllowed();
+                case EARNED_RUNS:
+                    return ((BaseballTeam) team).getEarnedRuns();
+                case HOME_RUNS_ALLOWED:
+                    return ((BaseballTeam) team).getHomeRunsAllowed();
+                case HIT_BATSMEN:
+                    return ((BaseballTeam) team).getHitBatsmen();
+                case AT_BATS:
+                    return ((BaseballTeam) team).getAtBats();
+                case RUNS:
+                    return ((BaseballTeam) team).getRuns();
+                case HITS:
+                    return ((BaseballTeam) team).getHits();
+                case DOUBLES:
+                    return ((BaseballTeam) team).getDoubles();
+                case TRIPLES:
+                    return ((BaseballTeam) team).getTriples();
+                case HOME_RUNS:
+                    return ((BaseballTeam) team).getHomeRuns();
+                case RUN_BATTED_IN:
+                    return ((BaseballTeam) team).getRunBattedIn();
+                case WALKS:
+                    return ((BaseballTeam) team).getWalks();
+                case STRIKEOUTS:
+                    return ((BaseballTeam) team).getStrikeouts();
+                case STOLEN_BASES:
+                    return ((BaseballTeam) team).getStolenBases();
+                case CAUGHT_STEALING:
+                    return ((BaseballTeam) team).getCaughtStealing();
                 default:
                     return -5;
             }
@@ -149,6 +213,48 @@ public class TeamStatManager implements Command, TeamConstants {
                 return TeamStats.GOALS_FOR_PER_GAMES_PLAYED;
             case KEY_GOALS_AGAINST_PER_GAME_PLAYED:
                 return TeamStats.GOALS_AGAINST_PER_GAMES_PLAYED;
+            case KEY_GAMES_STARTED:
+                return TeamStats.GAMES_STARTED;
+            case KEY_COMPLETE_GAMES:
+                return TeamStats.COMPLETE_GAMES;
+            case KEY_SHUTOUTS:
+                return TeamStats.SHUTOUTS;
+            case KEY_SAVES:
+                return TeamStats.SAVES;
+            case KEY_SAVE_OPPORTUNITIES:
+                return TeamStats.SAVE_OPPORTUNITIES;
+            case KEY_INNINGS_PITCHED:
+                return TeamStats.INNINGS_PITCHED;
+            case KEY_RUNS_ALLOWED:
+                return TeamStats.RUNS_ALLOWED;
+            case KEY_EARNED_RUNS:
+                return TeamStats.EARNED_RUNS;
+            case KEY_HOME_RUNS_ALLOWED:
+                return TeamStats.HOME_RUNS_ALLOWED;
+            case KEY_HIT_BATSMEN:
+                return TeamStats.HIT_BATSMEN;
+            case KEY_AT_BATS:
+                return TeamStats.AT_BATS;
+            case KEY_RUNS:
+                return TeamStats.RUNS;
+            case KEY_HITS:
+                return TeamStats.HITS;
+            case KEY_DOUBLES:
+                return TeamStats.DOUBLES;
+            case KEY_TRIPLES:
+                return TeamStats.TRIPLES;
+            case KEY_HOME_RUNS:
+                return TeamStats.HOME_RUNS;
+            case KEY_RUN_BATTED_IN:
+                return TeamStats.RUN_BATTED_IN;
+            case KEY_WALKS:
+                return TeamStats.WALKS;
+            case KEY_STRIKEOUTS:
+                return TeamStats.STRIKEOUTS;
+            case KEY_STOLEN_BASES:
+                return TeamStats.STOLEN_BASES;
+            case KEY_CAUGHT_STEALING:
+                return TeamStats.CAUGHT_STEALING;
             default:
                 return null;
         }
