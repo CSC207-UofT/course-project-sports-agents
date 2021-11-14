@@ -12,15 +12,14 @@ public class HockeyTeam extends Team {
     private int shotsAgainst;
     private int regulationWins;
     private int regulationPlusOvertimeWins;
-    private int shootOutGamesWon;
+    private int shootoutGamesWon;
     private int overtimeLosses;
-
 
     public HockeyTeam(){
         super();
     }
 
-    public HockeyTeam(String name, String homeCity, List<String> players, List<Match> playedGames, int totalGamesPlayed, int wins, int losses, int ties, int rank, int goalsFor, int goalsAgainst, float faceOffWinPercentage, int shotsFor, int shotsAgainst, int regulationWins, int regulationPlusOvertimeWins, int shootOutGamesWon, int overtimeLosses){
+    public HockeyTeam(String name, String homeCity, List<String> players, List<Match> playedGames, int totalGamesPlayed, int wins, int losses, int ties, int rank, int goalsFor, int goalsAgainst, float faceOffWinPercentage, int shotsFor, int shotsAgainst, int regulationWins, int regulationPlusOvertimeWins, int shootoutGamesWon, int overtimeLosses){
         super(name, homeCity, players, playedGames, totalGamesPlayed, wins, losses, ties, rank);
         this.goalsFor = goalsFor;
         this.goalsAgainst = goalsAgainst;
@@ -29,7 +28,7 @@ public class HockeyTeam extends Team {
         this.shotsAgainst = shotsAgainst;
         this.regulationWins = regulationWins;
         this.regulationPlusOvertimeWins = regulationPlusOvertimeWins;
-        this.shootOutGamesWon = shootOutGamesWon;
+        this.shootoutGamesWon = shootoutGamesWon;
         this.overtimeLosses = overtimeLosses;
     }
 
@@ -149,16 +148,16 @@ public class HockeyTeam extends Team {
      * Get shoot out games won
      * @return shootOutGamesWon
      */
-    public int getShootOutGamesWon(){
-        return this.shootOutGamesWon;
+    public int getShootoutGamesWon(){
+        return this.shootoutGamesWon;
     }
 
     /**
      * Set shoot out games won
      * @param shootOutGamesWon
      */
-    public void setShootOutGamesWon(int shootOutGamesWon){
-        this.shootOutGamesWon = shootOutGamesWon;
+    public void setShootoutGamesWon(int shootoutGamesWon){
+        this.shootoutGamesWon = shootoutGamesWon;
     }
 
     /**

@@ -102,8 +102,8 @@ public class TeamStatManager implements Command, TeamConstants {
                     return ((HockeyTeam) team).getRegulationWins();
                 case REGULATION_PLUS_OVERTIME_WINS:
                     return ((HockeyTeam) team).getRegulationPlusOvertimeWins();
-                case SHOOT_OUT_GAMES_WON:
-                    return ((HockeyTeam) team).getShootOutGamesWon();
+                case SHOOTOUT_GAMES_WON:
+                    return ((HockeyTeam) team).getShootoutGamesWon();
                 case OVERTIME_LOSSES:
                     return ((HockeyTeam) team).getOvertimeLosses();
                 case SHOTS_FOR_PER_GAMES_PLAYED:
@@ -206,7 +206,7 @@ public class TeamStatManager implements Command, TeamConstants {
             case KEY_REGULATION_PLUS_OVERTIME_WINS:
                 return TeamStats.REGULATION_PLUS_OVERTIME_WINS;
             case KEY_SHOOT_OUT_GAMES_WON:
-                return TeamStats.SHOOT_OUT_GAMES_WON;
+                return TeamStats.SHOOTOUT_GAMES_WON;
             case KEY_OVERTIME_LOSSES:
                 return TeamStats.OVERTIME_LOSSES;
             case KEY_GOALS_FOR_PER_GAME_PLAYED:
