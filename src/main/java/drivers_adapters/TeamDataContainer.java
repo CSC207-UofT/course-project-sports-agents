@@ -1,15 +1,15 @@
 package drivers_adapters;
 
 import player.*;
+import team.*;
 
 import java.util.*;
 
-
-public class DataContainer {
+public class TeamDataContainer {
     /**
      * loadedFiles is a map from loaded sports to their data.
      */
-    protected HashMap<String, PlayerList> loadedFiles;
+    protected HashMap<String, TeamList> loadedFiles;
 
     /**
      * Load the csv file of the given sport name.
@@ -18,11 +18,10 @@ public class DataContainer {
     public void load(String sportName) throws Exception {
         switch (sportName) {
             case "Hockey":
-                save("Hockey", new HockeyPlayerList());
+                save("Hockey", new HockeyTeamList());
             case "Baseball":
-                save("Baseball", new BaseballPlayerList());
-            case "Tennis":
-                save("Tennis", new TennisPlayerList());
+                save("Baseball", new BaseballTeamList());
+
         }
 
     }
@@ -33,7 +32,7 @@ public class DataContainer {
      * @param loadedFile is the csv file for sport.
      */
 
-    public void save(String sportName, PlayerList loadedFile){
+    public void save(String sportName, TeamList loadedFile){
         loadedFiles.put(sportName, loadedFile);
 
     }
@@ -44,7 +43,7 @@ public class DataContainer {
      * @return the data for sport.
      */
 
-    public PlayerList getData(String sportName) throws Exception {
+    public TeamList getData(String sportName) throws Exception {
         if (!loadedFiles.containsKey(sportName)){
             load(sportName);
         }
