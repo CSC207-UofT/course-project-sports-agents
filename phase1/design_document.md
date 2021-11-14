@@ -12,8 +12,8 @@ Due to
 practical cost concerns and the goal of initially minimizing 
 complexity, we decided to load large datasets from a file with 
 API access as a later feature. However, we designed the 
-application such that the class loading the file can easily be 
-replaced by a class loading from an API for ease of transition
+application such that the class loading the file could easily be 
+replaced by a class loading from an API allowing for ease of transition
 later in development. 
 
 A second design challenge was how to handle the 
@@ -24,14 +24,14 @@ should a `Team` store about its current (and past)
 role for teams (such as hockey) compared to sports with
 a smaller role for teams (such as tennis)? 
 
-We first decided
+We first decided that
 all sports should use the same player-team relationship 
 regardless of the role of the team, as
 this allowed their `Player` and `Team` classes to use similar 
 inheritance patterns and increased the modularity of each 
 sports' classes (as they have identical functionality in
 this area while differing in statistics-related features).
-After reviewing our specification, we decided that `Player`s
+After reviewing our specifications, we decided that `Player`s
 should only know the name of their `Team` and `Team`s should only
 know the name of their `Player`s, rather than storing further
 information or a pointer to the full object.
@@ -67,6 +67,7 @@ Use Case performs its own presenting through the `formatOut` method.
 Should this be changed if our application is remaining command line only?
 
 ## SOLID Principles
+
 
 ## Packaging Strategies
 
