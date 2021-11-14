@@ -8,8 +8,8 @@ public class HockeyTeam extends Team {
     private int goalsFor;
     private int goalsAgainst;
     private float faceOffWinPercentage;
-    private int shotsAgainst;
     private int shotsFor;
+    private int shotsAgainst;
     private int regulationWins;
     private int regulationPlusOvertimeWins;
     private int shootOutGamesWon;
@@ -20,13 +20,13 @@ public class HockeyTeam extends Team {
         super();
     }
 
-    public HockeyTeam(String name, String homeCity, List<String> players, List<Match> playedGames, int totalGamesPlayed, int wins, int losses, int ties, int rank, int goalsFor, int goalsAgainst, float faceOffWinPercentage, int shotsAgainst, int shotsFor, int regulationWins, int regulationPlusOvertimeWins, int shootOutGamesWon, int overtimeLosses){
+    public HockeyTeam(String name, String homeCity, List<String> players, List<Match> playedGames, int totalGamesPlayed, int wins, int losses, int ties, int rank, int goalsFor, int goalsAgainst, float faceOffWinPercentage, int shotsFor, int shotsAgainst, int regulationWins, int regulationPlusOvertimeWins, int shootOutGamesWon, int overtimeLosses){
         super(name, homeCity, players, playedGames, totalGamesPlayed, wins, losses, ties, rank);
         this.goalsFor = goalsFor;
         this.goalsAgainst = goalsAgainst;
         this.faceOffWinPercentage = faceOffWinPercentage;
-        this.shotsAgainst = shotsAgainst;
         this.shotsFor = shotsFor;
+        this.shotsAgainst = shotsAgainst;
         this.regulationWins = regulationWins;
         this.regulationPlusOvertimeWins = regulationPlusOvertimeWins;
         this.shootOutGamesWon = shootOutGamesWon;
@@ -82,22 +82,6 @@ public class HockeyTeam extends Team {
     }
 
     /**
-     * Get shots against
-     * @return shotsAgainst
-     */
-    public int getShotsAgainst(){
-        return this.shotsAgainst;
-    }
-
-    /**
-     * Set shots against
-     * @param shotsAgainst
-     */
-    public void setShotsAgainst(int shotsAgainst){
-        this.shotsAgainst = shotsAgainst;
-    }
-
-    /**
      * Get shots for
      * @return shotsFor
      */
@@ -111,6 +95,22 @@ public class HockeyTeam extends Team {
      */
     public void setShotsFor(int shotsFor){
         this.shotsFor = shotsFor;
+    }
+
+    /**
+     * Get shots against
+     * @return shotsAgainst
+     */
+    public int getShotsAgainst(){
+        return this.shotsAgainst;
+    }
+
+    /**
+     * Set shots against
+     * @param shotsAgainst
+     */
+    public void setShotsAgainst(int shotsAgainst){
+        this.shotsAgainst = shotsAgainst;
     }
 
     /**

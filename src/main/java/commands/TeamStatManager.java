@@ -25,12 +25,14 @@ public class TeamStatManager implements Command, TeamConstants {
     private final String KEY_GOALS_FOR = "goals for";
     private final String KEY_GOALS_AGAINST = "goals against";
     private final String KEY_FACE_OFF_WIN_PERCENTAGE = "face off win percentage";
-    private final String KEY_SHOTS_AGAINST = "shots against";
     private final String KEY_SHOTS_FOR = "shots for";
+    private final String KEY_SHOTS_AGAINST = "shots against";
     private final String KEY_REGULATION_WINS = "regulation wins";
     private final String KEY_REGULATION_PLUS_OVERTIME_WINS = "regulation plus overtime wins played";
     private final String KEY_SHOOT_OUT_GAMES_WON = "shoot out games won";
     private final String KEY_OVERTIME_LOSSES = "overtime losses";
+    private final String KEY_GOALS_FOR_PER_GAME_PLAYED = "goals for per game played";
+    private final String KEY_GOALS_AGAINST_PER_GAME_PLAYED = "goals against per game played";
     
     public TeamStatManager(TeamManager teamManager){
         this.teamManager = teamManager;
@@ -70,10 +72,10 @@ public class TeamStatManager implements Command, TeamConstants {
                     return ((HockeyTeam) team).getGoalsAgainst();
                 case FACE_OFF_WIN_PERCENTAGE:
                     return ((HockeyTeam) team).getFaceOffWinPercentage();
-                case SHOTS_AGAINST: 
-                    return ((HockeyTeam) team).getShotsAgainst();
                 case SHOTS_FOR:
                     return ((HockeyTeam) team).getShotsFor();
+                case SHOTS_AGAINST: 
+                    return ((HockeyTeam) team).getShotsAgainst();
                 case REGULATION_WINS:
                     return ((HockeyTeam) team).getRegulationWins();
                 case REGULATION_PLUS_OVERTIME_WINS:
@@ -82,6 +84,10 @@ public class TeamStatManager implements Command, TeamConstants {
                     return ((HockeyTeam) team).getShootOutGamesWon();
                 case OVERTIME_LOSSES:
                     return ((HockeyTeam) team).getOvertimeLosses();
+                case SHOTS_FOR_PER_GAMES_PLAYED:
+                    return calculateRate(team, ((HockeyTeam) team).getShotsFor(), team.getTotalGamesPlayed());
+                case SHOTS_AGAINST_PER_GAMES_PLAYED:
+                    return calculateRate(team, ((HockeyTeam) team).getShotsAgainst(), team.getTotalGamesPlayed());
                 default:
                     return -5;
             }
@@ -139,6 +145,10 @@ public class TeamStatManager implements Command, TeamConstants {
                 return TeamStats.SHOOT_OUT_GAMES_WON;
             case KEY_OVERTIME_LOSSES:
                 return TeamStats.OVERTIME_LOSSES;
+            case KEY_GOALS_FOR_PER_GAME_PLAYED:
+                return TeamStats.GOALS_FOR_PER_GAMES_PLAYED;
+            case KEY_GOALS_AGAINST_PER_GAME_PLAYED:
+                return TeamStats.GOALS_AGAINST_PER_GAMES_PLAYED;
             default:
                 return null;
         }
