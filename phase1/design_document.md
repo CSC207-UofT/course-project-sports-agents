@@ -12,7 +12,7 @@ Due to
 practical cost concerns and the goal of initially minimizing 
 complexity, we decided to load large datasets from a file with 
 API access as a later feature. However, we designed the 
-application so the class loading the file can easily be 
+application such that the class loading the file can easily be 
 replaced by a class loading from an API for ease of transition
 later in development. 
 
