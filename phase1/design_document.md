@@ -49,8 +49,8 @@ TODO: More design decisions?
 
 ## Clean Architecture
 Our project follows clean architecture by allowing Entities,
-which are `Player`s, `Team`s, `Match`es, and `Member`s, to be accessed and 
-modified only by Use Cases, which are the classes implementing the 
+which are `Player`s, `Team`s, `Match`es, and `Member`s, to be accessed 
+and modified only by Use Cases, which are the classes implementing the 
 Command interface (which each correspond to a User command).
 The `commandManager` class acts as our controller by selecting the 
 appropriate Use Case then passing the command to it. The `Command` 
@@ -64,24 +64,51 @@ unusual as it is a case of a Use Case class interacting with a file
 
 We currently lack an output boundary or presenter class, as each 
 Use Case performs its own presenting through the `formatOut` method.
-Should this be changed if our application is remaining command line only?
+Should this be changed if our application is remaining command line 
+only?
 
 ## SOLID Principles
+Single Responsibility Principle: While the commands for getting, 
+comparing, and predicting statistics for each sport have a similar 
+format, they are each handled by a unique Use Case class to ensure
+that each of their behavior can be changed without affecting
+the behavior for other sports or other commands.
+
+Open-Closed Principle: All classes make use of private variables with 
+getters and setters, which ensures internal implementations can be changed
+without changing the interface. The `Command` interface and structure of the
+`commandManager` class allow easy adding of additional Use Cases for more
+functionality, by adding the new Use Case to the command dictionary.
+
+Liskov Substitution Principle: While we use inheritance, it is primarily
+from an abstract class to concrete classes concerning specific sports. 
+This means the Liskov substitution principle largely does not apply.
+However, even in the abstract-concrete inheritance patterns we
+ensure that overriding a parent method does not significantly change the
+method behavior.
+
+Interface Segregation Principle: Each Use Case (which corresponds to a 
+function of the program) is separated into its own class and does not interact
+with any other Use Case. This ensures each function of the program internally 
+relates to only one sub-interface of the specific Use Class (though they
+all share the same `Command` interface).
+
+Dependency Inversion Principle: Each Use Case implements the `Command` 
+interface, meaning the `commandManager` depends on the `Command` interface
+rather than the specific class being used. 
 
 
 ## Packaging Strategies
 
 ## Design Patterns
+We implement a Command design pattern almost word-for-word from the example
+in the `Command` interface, where all Use Cases handle the user's input
+by implementing `Command` interface with the `execute` method to perform the 
+action as specified.
+We implement a facade design pattern for `PlayerStatManager`, 
+`PlayerStatComparer`, and `PlayerStatPredictor`. Each sport has their own 
+class handling the function for that class (to avoid violating the 
+Single Responsibility Principle), so the `PlayerStatManager` facade will
+accept a command requesting a statistic and delegate it to the appropriate
+sport's use case.
 
-## Open questions your group is struggling with
-
-
-## What has worked well so far with your design
-We were able to expand our program to another sport, baseball. Similar to
-Hockey and Tennis, we got a csv file for baseball players and made new classes
-for getting stats, comparing, and predicting. We were also able to save the loaded
-csv files and passes them so that there won't be any need to reload them.
-
-## A summary of what each group member has been working on and plans to work on next Presentation
-Nazanin has worked on baseball stat manager, comparer, and predictor. She has also worked on DataContainer
-for teams and players which demonstrates some form of data persistence.  
