@@ -4,68 +4,55 @@ import player.*;
 
 import java.util.*;
 
-public class BaseballPlayerStatManager implements Command{
+public class BaseballPlayerStatManager extends PlayerStatManager {
 
-    public BaseballPlayerStatManager(){}
+    public BaseballPlayerStatManager(PlayerList<BaseballPlayer> baseballPlayerList) {
+        super(baseballPlayerList,
+                new HashSet<String>(Arrays.asList("Team",
+                        "Position", "Games Played", "At Bats", "Runs",
+                        "Hits", "Home Runs", "Runs Batted In", "Strike Outs", "Average")));
+    }
 
     /**
-     *
-     * @param arguments is a list of strings where ["player name", "stat", "season 1", "season 2", ...] if
-     *                  the user wants the report of a specific stat
-     *                  OR ["player name", "all stats", "season 1", "season 2", ...] if the user wants the report of
-     *                  all stats.
-     * @return a string reporting the stat.
-     * @throws Exception when the player name is not found or the demanded stat is invalid.
+     * Handle an argument requesting a player's statistics
+     * @param arguments A string array of form
+     *                  {"get_player_stat", "Baseball", "player name", "season", "stat name"}
+     * @return the requested statistic
+     * @throws Exception if the Player or season does not exist
      */
     @Override
-    public String execute(ArrayList<String> arguments) throws Exception {
-        String playerName = arguments.get(0);
-        String stat = arguments.get(1);
-        List<String> seasons = arguments.subList(2, arguments.size());
+    public String execute(List<String> arguments) throws Exception {
+        String name = arguments.get(2);
+        BaseballPlayer player = (BaseballPlayer) this.playerList.getPlayer(name);
 
-        List<BaseballPlayer> listDemandedStat = getBaseballPlayersFromFile(playerName, seasons);
+        String season = arguments.get(3);
 
+        String statistic = arguments.get(4);
+        checkStatistic(statistic);
 
-        return returnStatOfPlayer(stat, listDemandedStat);
-
-    }
-
-    private String returnStatOfPlayer(String stat, List<BaseballPlayer> listDemandedStat) throws Exception {
-        StringBuilder reportedStat = new StringBuilder();
-
-        if (stat.equals("all stats")){ // if the demanded stat is not specified, return all the stat.
-            for (BaseballPlayer demandedStat: listDemandedStat){
-                reportedStat.append(demandedStat.toString());
-            }
-        }else{ // if the demanded stat is specified, return the season and the related stat.
-            for (BaseballPlayer demandedStat: listDemandedStat){
-                reportedStat.append(demandedStat.season).append(": ").append(demandedStat.getNeededStat(stat)).append(stat);
-            }
+        switch (statistic) {
+            case "Team":
+                return formatStat(player, player.getStatTeam(season));
+            case "position":
+                return formatStat(player, player.getStatPosition(season));
+            case "Games Played":
+                return formatStat(player, player.getStatGamesPlayed(season).toString());
+            case "At Bats":
+                return formatStat(player, player.getStatAtBats(season).toString());
+            case "Runs":
+                return formatStat(player, player.getStatRuns(season).toString());
+            case "Hits":
+                return formatStat(player, player.getStatHits(season).toString());
+            case "Home Runs":
+                return formatStat(player, player.getStatHomeRuns(season).toString());
+            case "Runs Batted In":
+                return formatStat(player, player.getStatRunsBattedIn(season).toString());
+            case "Strike Outs":
+                return formatStat(player, player.getStatStrikeOuts(season).toString());
+            case "Average":
+                return formatStat(player, player.getStatAvg(season).toString());
+            default:
+                throw new Exception("This shouldn't be thrown, logically");
         }
-        return reportedStat.toString();
     }
-
-    private List<BaseballPlayer> getBaseballPlayersFromFile(String playerName,
-                                                            List<String> seasons) throws Exception {
-        BaseballPlayerList b = new BaseballPlayerList();
-        HashMap<String, List<BaseballPlayer>> playerMap = b.getPlayerMap();
-
-        List<BaseballPlayer> listDemandedStat = new ArrayList<>();
-        for (String season: playerMap.keySet()){
-            if (seasons.contains(season)){
-                for (BaseballPlayer playerInfo: playerMap.get(season)){
-                    if (playerInfo.name.equals(playerName)){
-                        listDemandedStat.add(playerInfo);
-                    }
-                }
-
-            }
-        }
-
-        if (listDemandedStat.isEmpty()){
-            throw new Exception("player not found!");
-        }
-        return listDemandedStat;
-    }
-
 }

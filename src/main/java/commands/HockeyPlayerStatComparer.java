@@ -1,90 +1,184 @@
 package commands;
 
-import player.GetStatsComparator;
-import player.HockeyPlayer;
-import player.HockeyPlayerList;
+import player.*;
 
 import java.util.*;
 
-/**
- * A class for comparing two or more players based on a specific statistic in a specific season.
- */
+public class HockeyPlayerStatComparer extends PlayerStatComparer {
 
-public class HockeyPlayerStatComparer implements Command {
+    public HockeyPlayerStatComparer(PlayerList<HockeyPlayer> hockeyPlayerList) {
+        super(hockeyPlayerList,
+                new HashSet<String>(Arrays.asList("Games Played", "Goals",
+                        "Assists", "Points", "Shots", "Shooting Percentage")));
+    }
 
-
-    public HockeyPlayerStatComparer() {}
     /**
-     *
-     * @param arguments is a list of strings where ["player name 1", "player name2", ..., "stat", "season"]
-     * @return the comparison between 2 or more player names based on the given stat in the given season.
-     * @throws Exception when one or more player names is not found or the demanded stat is invalid.
+     * Handle an argument requesting a comparison of two or more hockey
+     * players' statistics. Players are returned in descending order
+     * (best first, worst last)
+     * @param arguments A string array of form
+     *                  {"compare_player_stat", "Hockey", "player name 1",
+     *                  "player name 2", ... , "season", "stat name"}
+     * @return the players and their associated statistics
+     * @throws Exception if a player does not exists, or lacks data for the
+     * given season
      */
     @Override
-    public String execute(ArrayList<String> arguments) throws Exception {
-        List<String> playerNames = arguments.subList(0, arguments.size() - 2);
-        String stat = arguments.get(arguments.size() - 2);
-        String demandedSeason = arguments.get(arguments.size() - 1);
+    public String execute(List<String> arguments) throws Exception {
+        int argSize = arguments.size();
+        List<String> names = arguments.subList(2, argSize - 2);
+        List<?> genericPlayers = this.playerList.getPlayers(names);
+        List<HockeyPlayer> hockeyPlayers = castToHockeyPlayer(genericPlayers);
 
-        // Throw exception for a list of statistics that are invalid for comparison
-        ExceptionForInvalidStats(stat);
+        String season = arguments.get(argSize - 2);
 
-        List<HockeyPlayer> listDemandedPlayers = getHockeyPlayersFromFile(playerNames, demandedSeason);
+        String statistic = arguments.get(argSize - 1);
+        checkStatistic(statistic);
 
-        return returnComparisonBasedOnStat(stat, listDemandedPlayers);
-
+        hockeyPlayers.sort(new HockeyPlayerComparator(statistic, season));
+        Collections.reverse(hockeyPlayers);
+        List<String> playersStatValues = getStatValues(hockeyPlayers,
+                statistic, season);
+        return formatCompare(hockeyPlayers, playersStatValues);
     }
 
-
-
-    private String returnComparisonBasedOnStat(String stat, List<HockeyPlayer> listDemandedPlayers) throws Exception {
-        StringBuilder compareToReturn = new StringBuilder("From min to max:\n");
-        List<Integer> listDemandedStats = new ArrayList<>();
-
-        for (HockeyPlayer player: listDemandedPlayers) {
-            listDemandedStats.add(Integer.valueOf(player.getNeededStat(stat)));
+    // TODO: Is there a better way to do this?
+    /**
+     * Cast a List of Players to List of HockeyPlayers
+     * @param genericPlayers List of Player subclass castable to HockeyPlayer
+     * @return List with original Players cast to HockeyPlayer
+     */
+    private List<HockeyPlayer> castToHockeyPlayer(List<?> genericPlayers) {
+        ArrayList<HockeyPlayer> hockeyPlayers = new ArrayList<HockeyPlayer>();
+        for (Object player : genericPlayers) {
+            hockeyPlayers.add((HockeyPlayer) player);
         }
-        Collections.sort(listDemandedStats);
-        listDemandedPlayers.sort(new GetStatsComparator(stat));
-        for(int j = 0; j < listDemandedPlayers.size(); ++j) {
-            compareToReturn.append(listDemandedPlayers.get(j).name).append(": ").
-                    append(listDemandedStats.get(j)).append(stat).append('\n');
-        }
-
-        return compareToReturn.toString();
+        return hockeyPlayers;
     }
 
-    private List<HockeyPlayer> getHockeyPlayersFromFile(List<String> playerNames,
-                                                        String demandedSeason) throws Exception {
-
-        HockeyPlayerList p = new HockeyPlayerList();
-        HashMap<String, List<HockeyPlayer>> playerMap = p.getPlayerMap();
-        List<HockeyPlayer> listDemandedPlayers = new ArrayList<>();
-
-        for (String season: playerMap.keySet()){ // loop through the season and add demanded player.Player object to the list of
-                                                    // demanded players.
-            if (season.equals(demandedSeason)){
-                for (HockeyPlayer playerInfo: playerMap.get(season)){
-                    if (playerNames.contains(playerInfo.name)){
-                        listDemandedPlayers.add(playerInfo);
-                    }
-
-                }
-            }
-        }
-
-        // throw exception if one or more players were not found.
-        if (listDemandedPlayers.size() < playerNames.size()) {
-            throw new Exception("One or more players not found!");}
-        return listDemandedPlayers;
-    }
-
-    private void ExceptionForInvalidStats(String stat) throws Exception {
-        List<String> invalidStats = Arrays.asList( "name", "season", "team", "skater shoots","position");
-        if (invalidStats.contains(stat)){
-            throw new Exception("Invalid statistic for comparison!");
+    /**
+     * Collect the given statistic in the given season for all Players in
+     * the given list, maintaining order.
+     * @param players the list of Players to collect statistics for
+     * @param statistic the statistic to get
+     * @param season the season to consider
+     * @return the statistic for each player
+     * @throws Exception if one or more statistics are not recorded
+     */
+    private List<String> getStatValues(List<HockeyPlayer> players,
+                                       String statistic, String season)
+            throws Exception {
+        switch (statistic) {
+            case "Games Played":
+                return getValuesGamesPlayed(players, season);
+            case "Goals":
+                return getValuesGoals(players, season);
+            case "Assists":
+                return getValuesAssists(players, season);
+            case "Points":
+                return getValuesPoints(players, season);
+            case "Shots":
+                return getValuesShots(players, season);
+            case "Shooting Percentage":
+                return getValuesShootingPercentage(players, season);
+            default:
+                throw new Exception("This shouldn't logically be thrown!");
         }
     }
 
+    /**
+     * Get the games played statistic in the given season for all passed players
+     * @param players the list of Players to collect games played statistics for
+     * @param season the season to consider
+     * @return the games played statistics, for the list of players
+     * @throws Exception if one player lacks the given season's games played data
+     */
+    private List<String> getValuesGamesPlayed(List<HockeyPlayer> players,
+                                              String season) throws Exception{
+        ArrayList<String> gamesPlayedValues = new ArrayList<String>();
+        for (HockeyPlayer player : players) {
+            gamesPlayedValues.add(player.getStatGamesPlayed(season).toString());
+        }
+        return gamesPlayedValues;
+    }
+
+    /**
+     * Get the goals statistic in the given season for all passed players
+     * @param players the list of Players to collect goals statistics for
+     * @param season the season to consider
+     * @return the goals statistics, for the list of players
+     * @throws Exception if one player lacks the given season's goals data
+     */
+    private List<String> getValuesGoals(List<HockeyPlayer> players,
+                                        String season) throws Exception{
+        ArrayList<String> goalsValues = new ArrayList<String>();
+        for (HockeyPlayer player : players) {
+            goalsValues.add(player.getStatGoals(season).toString());
+        }
+        return goalsValues;
+    }
+
+    /**
+     * Get the assists statistic in the given season for all passed players
+     * @param players the list of Players to collect assists statistics for
+     * @param season the season to consider
+     * @return the assists statistics, for the list of players
+     * @throws Exception if one player lacks the given season's assists data
+     */
+    private List<String> getValuesAssists(List<HockeyPlayer> players,
+                                          String season) throws Exception{
+        ArrayList<String> assistsValues = new ArrayList<String>();
+        for (HockeyPlayer player : players) {
+            assistsValues.add(player.getStatAssists(season).toString());
+        }
+        return assistsValues;
+    }
+
+    /**
+     * Get the points statistic in the given season for all passed players
+     * @param players the list of Players to collect points statistics for
+     * @param season the season to consider
+     * @return the points statistics, for the list of players
+     * @throws Exception if one player lacks the given season's points data
+     */
+    private List<String> getValuesPoints(List<HockeyPlayer> players,
+                                         String season) throws Exception{
+        ArrayList<String> pointsValues = new ArrayList<String>();
+        for (HockeyPlayer player : players) {
+            pointsValues.add(player.getStatPoints(season).toString());
+        }
+        return pointsValues;
+    }
+
+    /**
+     * Get the shots statistic in the given season for all passed players
+     * @param players the list of Players to collect shot statistics for
+     * @param season the season to consider
+     * @return the shot statistics, for the list of players
+     * @throws Exception if one player lacks the given season's shot data
+     */
+    private List<String> getValuesShots(List<HockeyPlayer> players,
+                                        String season) throws Exception{
+        ArrayList<String> ShotsValues = new ArrayList<String>();
+        for (HockeyPlayer player : players) {
+            ShotsValues.add(player.getStatShots(season).toString());
+        }
+        return ShotsValues;
+    }
+
+    /**
+     * Get the Shooting percentage statistic in the given season for all passed players
+     * @param players the list of Players to collect shooting percentage statistics for
+     * @param season the season to consider
+     * @return the shooting percentage statistics, for the list of players
+     * @throws Exception if one player lacks the given season's shooting percentage data
+     */
+    private List<String> getValuesShootingPercentage(List<HockeyPlayer> players,
+                                                     String season) throws Exception{
+        ArrayList<String> ShootingPercentageValues = new ArrayList<String>();
+        for (HockeyPlayer player : players) {
+            ShootingPercentageValues.add(player.getStatShootingPercentage(season).toString());
+        }
+        return ShootingPercentageValues;
+    }
 }
-

@@ -3,8 +3,7 @@ package commands;
 import leagueMember.LeagueMember;
 import match.Match;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.*;
 
 public class LeagueMemberManager implements Command {
     // MemberMap stores the League Members of the fantasy league
@@ -20,7 +19,7 @@ public class LeagueMemberManager implements Command {
         this.MatchMap = new HashMap<String, Match>();
     }
 
-    public String execute(ArrayList<String> arguments) throws Exception {
+    public String execute(List<String> arguments) throws Exception {
         switch (arguments.get(0)) {
             case "add_member":
                 return addMember(arguments);
@@ -43,7 +42,7 @@ public class LeagueMemberManager implements Command {
      * @return a confirmation if the Member was added
      * @throws Exception if a Member with the same name already exists
      */
-    private String addMember(ArrayList<String> arguments) throws Exception {
+    private String addMember(List<String> arguments) throws Exception {
         String leagueMemberName = arguments.get(1);
         if (this.LeagueMemberMap.containsKey(leagueMemberName)) {
             throw new Exception(leagueMemberName + " is already an existing Member!");
@@ -60,7 +59,7 @@ public class LeagueMemberManager implements Command {
      * @return a confirmation if the Match was created
      * @throws Exception if a Match with the same name already exists
      */
-    private String createMatch(ArrayList<String> arguments) throws Exception {
+    private String createMatch(List<String> arguments) throws Exception {
         String matchName = arguments.get(1);
         if (this.MatchMap.containsKey(matchName)) {
             throw new Exception(matchName + " is already an existing Match!");
@@ -82,7 +81,7 @@ public class LeagueMemberManager implements Command {
      * @throws Exception if the League Member does not exist, the Match does
      * not exist, or the team is not competing in the Match
      */
-    private String bet(ArrayList<String> arguments) throws Exception {
+    private String bet(List<String> arguments) throws Exception {
         String leagueMemberName = arguments.get(1);
         verifyMember(leagueMemberName);
         LeagueMember bettingLeagueMember = this.LeagueMemberMap.get(leagueMemberName);
@@ -104,7 +103,7 @@ public class LeagueMemberManager implements Command {
      * @return a confirmation if the Match's outcome is resolved
      * @throws Exception if the Match does not exist
      */
-    private String resolveMatch(ArrayList<String> arguments) throws Exception {
+    private String resolveMatch(List<String> arguments) throws Exception {
         String matchName = arguments.get(1);
         verifyMatch(matchName);
         Match targetMatch = this.MatchMap.get(matchName);
@@ -122,7 +121,7 @@ public class LeagueMemberManager implements Command {
      * @return a string representation of the member
      * @throws Exception if the League Member does not exist
      */
-    private String memberInfo(ArrayList<String> arguments) throws Exception {
+    private String memberInfo(List<String> arguments) throws Exception {
         String memberName = arguments.get(1);
         verifyMember(memberName);
         LeagueMember targetLeagueMember = this.LeagueMemberMap.get(memberName);

@@ -1,7 +1,7 @@
 package team;
 
-import player.Player;
 import match.Match;
+import player.*;
 
 import java.util.ArrayList;
 
@@ -15,7 +15,7 @@ public abstract class Team {
     private int losses;
     private int ties;
 
-    public Team(){
+    public Team() {
         this.name = "";
         this.homeCity = "";
         this.totalGamesPlayed = 0;
@@ -24,7 +24,9 @@ public abstract class Team {
         this.ties = 0;
     }
 
-    public Team(String name, String homeCity, ArrayList<Player> players, ArrayList<Match> playedGames, int totalGamesPlayed, int wins, int losses, int ties){
+    public Team(String name, String homeCity,
+                ArrayList<Player> players, ArrayList<Match> playedGames,
+                int totalGamesPlayed, int wins, int losses, int ties) {
         this.name = name;
         this.homeCity = homeCity;
         this.players = players;
@@ -45,7 +47,7 @@ public abstract class Team {
 
     /**
      * Set name
-     * @param name
+     * @param name team name
      */
     public void setName(String name){
         this.name = name;
@@ -61,7 +63,7 @@ public abstract class Team {
 
     /**
      * Set home city
-     * @param homeCity
+     * @param homeCity team's home city
      */
     public void setHomeCity(String homeCity){
         this.homeCity = homeCity;
@@ -77,7 +79,7 @@ public abstract class Team {
 
     /**
      * Set players
-     * @param players
+     * @param players players on the team
      */
     public void setPlayers(ArrayList<Player> players){
         this.players = players;
@@ -90,10 +92,10 @@ public abstract class Team {
     public ArrayList<Match> getPlayedGames(){
         return playedGames;
     }
-    
+
     /**
      * Set played games
-     * @param playedGames
+     * @param playedGames number of played games
      */
     public void setPlayedGames(ArrayList<Match> playedGames){
         this.playedGames = playedGames;
@@ -109,7 +111,7 @@ public abstract class Team {
 
     /**
      * Set total games played
-     * @param totalGamesPlayed
+     * @param totalGamesPlayed number of played games
      */
     public void setTotalGamesPlayed(int totalGamesPlayed){
         this.totalGamesPlayed = totalGamesPlayed;
@@ -125,7 +127,7 @@ public abstract class Team {
 
     /**
      * Set wins
-     * @param wins
+     * @param wins number of wins
      */
     public void setWins(int wins){
         this.wins = wins;
@@ -141,7 +143,7 @@ public abstract class Team {
 
     /**
      * Set losses
-     * @param losses
+     * @param losses number of losses
      */
     public void setLosses(int losses){
         this.losses = losses;
@@ -157,9 +159,52 @@ public abstract class Team {
 
     /**
      * Set ties
-     * @param ties
+     * @param ties number of ties
      */
     public void setTies(int ties){
         this.ties = ties;
+    }
+
+    /**
+     * @return a string representation of the team
+     */
+    @Override
+    public String toString() {
+        return "Team " + this.name + " in " + this.homeCity +
+                " with record " + this.wins + "-" + this.losses + "-" + this.ties;
+    }
+
+    /**
+     * @param other an object to compare this to
+     * @return true if other is a Team with the same name, home city,
+     * wins, losses, and ties
+     */
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) {
+            return true;
+        }
+        if (other == null) {
+            return false;
+        }
+        if (this.getClass() != other.getClass()) {
+            return false;
+        }
+        Team otherTeam = (Team) other;
+        return (this.name.equals(otherTeam.name) &&
+                this.homeCity.equals(otherTeam.homeCity) &&
+                this.wins == otherTeam.wins &&
+                this.losses == otherTeam.losses &&
+                this.ties == otherTeam.ties);
+    }
+
+    /**
+     * Implement hashCode, for using Players in hashMaps
+     * @return sum of name hashCode, homeCity hashCode, wins, losses, and ties
+     */
+    @Override
+    public int hashCode() {
+        return this.name.hashCode() + this.homeCity.hashCode() +
+                this.wins + this.losses + this.ties;
     }
 }

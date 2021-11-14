@@ -1,7 +1,7 @@
 package team;
 
-import player.Player;
 import match.Match;
+import player.*;
 
 import java.util.ArrayList;
 

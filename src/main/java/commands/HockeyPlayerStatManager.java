@@ -1,79 +1,56 @@
 package commands;
 
-import player.HockeyPlayer;
-import player.HockeyPlayerList;
+import player.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
-/**
- * Return the statistics of a player throughout the demanded years if statistics is specified, else return the
- * whole statistic information.
- */
-public class HockeyPlayerStatManager implements Command {
+public class HockeyPlayerStatManager extends PlayerStatManager {
 
-    public HockeyPlayerStatManager(){}
+    public HockeyPlayerStatManager(PlayerList<HockeyPlayer> hockeyPlayerList) {
+        super(hockeyPlayerList,
+                new HashSet<String>(Arrays.asList("Team", "Skater Shoots",
+                        "Position", "Games Played", "Goals", "Assists",
+                        "Points", "Shots", "Shooting Percentage")));
+    }
 
     /**
-     *
-     * @param arguments is a list of strings where ["player name", "stat", "season 1", "season 2", ...] if
-     *                  the user wants the report of a specific stat
-     *                  OR ["player name", "all stats", "season 1", "season 2", ...] if the user wants the report of
-     *                  all stats.
-     * @return a string reporting the stat.
-     * @throws Exception when the player name is not found or the demanded stat is invalid.
+     * Handle an argument requesting a player's statistics
+     * @param arguments A string array of form
+     *                  {"get_player_stat", "Hockey", "player name", "season", "stat name"}
+     * @return the requested statistic
+     * @throws Exception if the Player or season does not exist
      */
     @Override
-    public String execute(ArrayList<String> arguments) throws Exception {
-        String playerName = arguments.get(0);
-        String stat = arguments.get(1);
-        List<String> seasons = arguments.subList(2, arguments.size());
+    public String execute(List<String> arguments) throws Exception {
+        String name = arguments.get(2);
+        HockeyPlayer player = (HockeyPlayer) this.playerList.getPlayer(name);
 
-        List<HockeyPlayer> listDemandedStat = getHockeyPlayersFromFile(playerName, seasons);
+        String season = arguments.get(3);
 
-        return returnStatOfPlayer(stat, listDemandedStat);
+        String statistic = arguments.get(4);
+        checkStatistic(statistic);
 
-    }
-
-
-    private List<HockeyPlayer> getHockeyPlayersFromFile(String playerName, List<String> seasons) throws Exception {
-        HockeyPlayerList p = new HockeyPlayerList();
-        HashMap<String, List<HockeyPlayer>> playerMap = p.getPlayerMap();
-
-        List<HockeyPlayer> listDemandedStat = new ArrayList<>();
-        for (String season: playerMap.keySet()){
-            if (seasons.contains(season)){
-                for (HockeyPlayer playerInfo: playerMap.get(season)){
-                    if (playerInfo.name.equals(playerName)){
-                        listDemandedStat.add(playerInfo);
-                    }
-                }
-
-            }
+        switch (statistic) {
+            case "Team":
+                return formatStat(player, player.getStatTeam(season));
+            case "Skater Shoots":
+                return formatStat(player, player.getStatSkaterShoots(season));
+            case "Position":
+                return formatStat(player, player.getStatPosition(season));
+            case "Games Played":
+                return formatStat(player, player.getStatGamesPlayed(season).toString());
+            case "Goals":
+                return formatStat(player, player.getStatGoals(season).toString());
+            case "Assists":
+                return formatStat(player, player.getStatAssists(season).toString());
+            case "Points":
+                return formatStat(player, player.getStatPoints(season).toString());
+            case "Shots":
+                return formatStat(player, player.getStatShots(season).toString());
+            case "Shooting Percentage":
+                return formatStat(player, player.getStatShootingPercentage(season).toString());
+            default:
+                throw new Exception("This shouldn't be thrown, logically");
         }
-
-        if (listDemandedStat.isEmpty()){
-            throw new Exception("player not found!");
-        }
-        return listDemandedStat;
     }
-
-
-    private String returnStatOfPlayer(String stat, List<HockeyPlayer> listDemandedStat) throws Exception {
-        StringBuilder reportedStat = new StringBuilder();
-
-        if (stat.equals("all stats")){ // if the demanded stat is not specified, return all the stat.
-            for (HockeyPlayer demandedStat: listDemandedStat){
-                reportedStat.append(demandedStat.toString());
-            }
-        }else{ // if the demanded stat is specified, return the season and the related stat.
-            for (HockeyPlayer demandedStat: listDemandedStat){
-                reportedStat.append(demandedStat.season).append(": ").append(demandedStat.getNeededStat(stat)).append(stat);
-            }
-        }
-        return reportedStat.toString();
-    }
-
-
 }
