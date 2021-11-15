@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class InputParser {
 
     private final String keyword;
-    private final ArrayList<String> arguments = new ArrayList<String>();
+    private final ArrayList<String> arguments = new ArrayList<>();
 
     public InputParser(String input) {
         String[] parts = input.split(" ", 2);

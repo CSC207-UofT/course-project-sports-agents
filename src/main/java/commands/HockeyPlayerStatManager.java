@@ -10,7 +10,7 @@ public class HockeyPlayerStatManager extends PlayerStatManager {
 
     public HockeyPlayerStatManager() {
         super(
-                new HashSet<String>(Arrays.asList("Team", "Skater Shoots",
+                new HashSet<>(Arrays.asList("Team", "Skater Shoots",
                         "Position", "Games Played", "Goals", "Assists",
                         "Points", "Shots", "Shooting Percentage")));
     }

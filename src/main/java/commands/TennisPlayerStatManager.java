@@ -14,7 +14,7 @@ public class TennisPlayerStatManager extends PlayerStatManager {
 
     public TennisPlayerStatManager() {
         super(
-                new HashSet<String>(Arrays.asList("Age", "Aces", "Double Faults",
+                new HashSet<>(Arrays.asList("Age", "Aces", "Double Faults",
                         "Serve Points", "First Serves", "Break Points Saved")));
     }
 

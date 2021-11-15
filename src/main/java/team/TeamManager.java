@@ -7,7 +7,7 @@ public class TeamManager {
     private final List<Team> teams;
 
     public TeamManager(){
-        teams = new ArrayList<Team>();
+        teams = new ArrayList<>();
     }
 
     public TeamManager(List<Team> teams){

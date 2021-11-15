@@ -10,7 +10,6 @@ import player.TennisPlayer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class TennisPlayerStatManagerTest {
     TennisPlayerStatManager tennisPlayerStatManager;

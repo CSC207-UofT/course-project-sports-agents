@@ -9,7 +9,7 @@ public class HockeyPlayerStatComparer extends PlayerStatComparer {
 
     public HockeyPlayerStatComparer() {
         super(
-                new HashSet<String>(Arrays.asList("Games Played", "Goals",
+                new HashSet<>(Arrays.asList("Games Played", "Goals",
                         "Assists", "Points", "Shots", "Shooting Percentage")));
     }
 
