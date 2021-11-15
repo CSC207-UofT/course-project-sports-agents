@@ -1,6 +1,7 @@
 package drivers_adapters;
 
 import commands.*;
+import constants.Exceptions;
 import player.*;
 
 import java.util.HashMap;
@@ -59,6 +60,9 @@ public class CommandManager {
         String command_keyword = parser.getKeyword();
 
         Command command = commandDictionary.get(command_keyword);
+        if (command == null) {
+            throw new Exception(Exceptions.WRONG_COMMAND);
+        }
         return command.execute(parser.getArguments(), container);
 
     }
