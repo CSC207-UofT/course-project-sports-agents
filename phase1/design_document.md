@@ -74,6 +74,11 @@ the behavior for other sports or other commands. This provides us with
 a lot of flexibility in the future when we add more sports, since 
 we will not need to change the implementation of the existing classes.
 
+Some code related to Teams (primarily the `TeamStatManager`, 
+`TeamStatPredictor`, and `TeamStatComparer`)
+violates the Single Responsibility Principle because it handles multiple
+sports within one class. This will be fixed at a later date.
+
 Open-Closed Principle: All classes make use of private variables with 
 getters and setters, which ensures internal implementations can be changed
 without changing the interface. The `Command` interface and structure of the
@@ -109,7 +114,7 @@ retrieve data or change the source from which we retrieve data. For example, if 
 retrieve data from a database instead of a .csv file. 
 
 Additionally, each Use Case implements the `Command` interface, meaning the 
-`commandManager` depends on the `Command` interface rather than a 
+`CommandManager` depends on the `Command` interface rather than a 
 specific client class. This allows us to have a wide variety of commands, which 
 do not depend on a single unnecessarily general abstract class. For example, 
 our statistics-related commands and league-related commands are completely different
@@ -127,6 +132,10 @@ package, all entity classes related to the fantasy league members are in the
 all of us found it to be the most straightforward and easiest to work with. Additionally,
 our app's structure really fit quite well with the packaging strategy, making
 our development process smooth and helping us work together better.
+
+The `command` package is expanding as we add more commands. While this is not a massive problem ,
+as we have many commands which should go under a `command` package, are there any 
+simple solutions to reducepackage size and simplify it?
 
 
 ## Design Patterns
