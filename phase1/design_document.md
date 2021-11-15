@@ -44,8 +44,6 @@ coupling and simplifies the process of recording new players
 and teams, as there are no links between `Player` and `Team` to 
 update.
 
-TODO: More design decisions?
-
 
 ## Clean Architecture
 Our project follows clean architecture by allowing Entities,
