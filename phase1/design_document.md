@@ -81,7 +81,7 @@ getters and setters, which ensures internal implementations can be changed
 without changing the interface. The `Command` interface and structure of the
 `commandManager` class allow easy adding of additional Use Cases for more
 functionality, by adding the new Use Case to the command dictionary. Additionally,
-due to how we define the abstract Player class, we can easily extend each of the
+due to how we define the abstract `Player` class, we can easily extend each of the
 subclasses to allow it to access statistics, which are specific to the sport.  
 
 Liskov Substitution Principle: While we use inheritance, it is primarily
@@ -97,6 +97,10 @@ single argument. This allows the client classes to have a lot of flexibility
 in how they implement the execution of their respective commands and what kind
 of arguments they use. Additionally, this ensures we follow the Interface Segregation
 Principle, since we make sure that the client only implements the methods it needs.
+
+Likewise, the `DataContainer` interface only requires its classes to implement
+two methods, meaning that the subclasses have flexibility in how they can store
+the data and how they can retrieve it from their respective sources.
 
 Dependency Inversion Principle: When accessing data, our use cases use
 objects, which are dependent on the `DataContainer` interface, instead of
