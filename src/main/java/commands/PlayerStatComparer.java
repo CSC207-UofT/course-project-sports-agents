@@ -1,5 +1,6 @@
 package commands;
 
+import constants.Exceptions;
 import player.PlayerList;
 import player.Player;
 
@@ -12,12 +13,9 @@ import java.util.Set;
  * Each sport has a subclass handling that sport's statistic.
  */
 public abstract class PlayerStatComparer implements Command {
-    protected PlayerList<?> playerList;
     protected final Set<String> allowedStatsToCompare;
 
-    public PlayerStatComparer(PlayerList playerList,
-                              Set<String> allowedStatsToCompare) {
-        this.playerList = playerList;
+    public PlayerStatComparer(Set<String> allowedStatsToCompare) {
         this.allowedStatsToCompare = allowedStatsToCompare;
     }
 
@@ -27,7 +25,7 @@ public abstract class PlayerStatComparer implements Command {
      */
     protected void checkStatistic(String statistic) throws Exception {
         if (!this.allowedStatsToCompare.contains(statistic)) {
-            throw new Exception("Cannot compare Statistic " + statistic + "!");
+            throw new Exception(Exceptions.INVALID_STATISTIC);
         }
     }
 
@@ -39,6 +37,7 @@ public abstract class PlayerStatComparer implements Command {
      */
     protected <T extends Player> String formatCompare(List<T> players,
                                                       List<String> statValues) {
+
         StringBuilder output = new StringBuilder("From best to worst:\n");
         // Precondition: players.size() == statValues.size()
         for (int i = 0; i != players.size(); i += 1) {
@@ -48,7 +47,6 @@ public abstract class PlayerStatComparer implements Command {
             output.append(statValues.get(i));
             output.append("\n");
         }
-        return output.toString();
+        return output.toString().trim();
     }
 }
-
