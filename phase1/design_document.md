@@ -80,7 +80,9 @@ Open-Closed Principle: All classes make use of private variables with
 getters and setters, which ensures internal implementations can be changed
 without changing the interface. The `Command` interface and structure of the
 `commandManager` class allow easy adding of additional Use Cases for more
-functionality, by adding the new Use Case to the command dictionary.
+functionality, by adding the new Use Case to the command dictionary. Additionally,
+due to how we define the abstract Player class, we can easily extend each of the
+subclasses to allow it to access statistics, which are specific to the sport.  
 
 Liskov Substitution Principle: While we use inheritance, it is primarily
 from an abstract class to concrete classes concerning specific sports. 
