@@ -133,10 +133,19 @@ action as specified by the arguments passed by the user. This allows us to achie
 decoupling by encapsulating our commands into completely separate processes, and ensuring
 that the command manager is not aware of the details in the commands.
 
-We implemented the facade design pattern for `PlayerStatManager`, 
+Furthermore, we implemented the facade design pattern for `PlayerStatManager`, 
 `PlayerStatComparer`, and `PlayerStatPredictor`. Each sport has their own 
 class handling the function for that class (to avoid violating the 
 Single Responsibility Principle), so the `PlayerStatManager` facade will
 accept a command requesting a statistic and delegate it to the appropriate
 sport's use case.
+
+Finally, we implemented the Strategy design pattern, when we implemented
+the `DataContainer` interface. In this case, the `DataContainer` interface
+is the Strategy interface, and the `CSVDataContainer` is the concrete strategy
+which implements the Strategy interface. This pattern gives us flexibility
+in the future, in case we decide to change how we retrieve the data or 
+how we store it or process it. For instance, if we decide that we want our
+data to be retrieved from online sources, we will make another strategy called
+`OnlineDataContainer`, which will have a different algorithm for retrieving data.
 
