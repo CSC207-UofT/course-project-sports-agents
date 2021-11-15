@@ -14,7 +14,7 @@ public class LeagueMemberManagerTest {
     private DataContainer container;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         m = new LeagueMemberManager();
         DataContainer container = new CSVDataContainer();
     }
@@ -23,7 +23,7 @@ public class LeagueMemberManagerTest {
 
     @Test
     public void testAddMember() throws Exception {
-        ArrayList<String> addMemberCommand = new ArrayList<String>();
+        ArrayList<String> addMemberCommand = new ArrayList<>();
         addMemberCommand.add("add_member");
         addMemberCommand.add("Paul Gries");
         assertEquals("New Member Paul Gries with 0 correct bet(s) and " +
@@ -36,7 +36,7 @@ public class LeagueMemberManagerTest {
         } catch (Exception e) {
             assertEquals("Given member already exists", e.getMessage());
         }
-        ArrayList<String> memberInfoCommand = new ArrayList<String>();
+        ArrayList<String> memberInfoCommand = new ArrayList<>();
         memberInfoCommand.add("member_info");
         memberInfoCommand.add("Paul Gries");
         assertEquals("Member Paul Gries with 0 correct bet(s) and " +
@@ -45,7 +45,7 @@ public class LeagueMemberManagerTest {
 
     @Test
     public void testCreateMatch() throws Exception {
-        ArrayList<String> createMatchCommand = new ArrayList<String>();
+        ArrayList<String> createMatchCommand = new ArrayList<>();
         createMatchCommand.add("create_match");
         createMatchCommand.add("Super Bowl");
         createMatchCommand.add("Ravens");
@@ -67,7 +67,7 @@ public class LeagueMemberManagerTest {
         testAddMember();
 
         testCreateMatch();
-        ArrayList<String> betCommand = new ArrayList<String>();
+        ArrayList<String> betCommand = new ArrayList<>();
         betCommand.add("bet");
         betCommand.add("Paul Gries");
         betCommand.add("Super Bowl");
@@ -76,7 +76,7 @@ public class LeagueMemberManagerTest {
                 "Owls will win Super Bowl", m.execute(betCommand, container));
 
         try {
-            ArrayList<String> betFakeMemberCommand = new ArrayList<String>();
+            ArrayList<String> betFakeMemberCommand = new ArrayList<>();
             betFakeMemberCommand.add("bet");
             betFakeMemberCommand.add("Gries Paul");
             betFakeMemberCommand.add("Super Bowl");
@@ -100,7 +100,7 @@ public class LeagueMemberManagerTest {
         }
 
         try {
-            ArrayList<String> betFakeTeamCommand = new ArrayList<String>();
+            ArrayList<String> betFakeTeamCommand = new ArrayList<>();
             betFakeTeamCommand.add("bet");
             betFakeTeamCommand.add("Paul Gries");
             betFakeTeamCommand.add("Super Bowl");
@@ -116,7 +116,7 @@ public class LeagueMemberManagerTest {
     public void testResolveMatch() throws Exception {
         testBet();
 
-        ArrayList<String> resolveMatchCommand = new ArrayList<String>();
+        ArrayList<String> resolveMatchCommand = new ArrayList<>();
         resolveMatchCommand.add("resolve_match");
         resolveMatchCommand.add("Super Bowl");
         resolveMatchCommand.add("Owls");
@@ -130,7 +130,7 @@ public class LeagueMemberManagerTest {
             assertEquals("Given match does not exist yet", e.getMessage());
         }
 
-        ArrayList<String> memberInfoCommand = new ArrayList<String>();
+        ArrayList<String> memberInfoCommand = new ArrayList<>();
         memberInfoCommand.add("member_info");
         memberInfoCommand.add("Paul Gries");
         assertEquals("Member Paul Gries with 1 correct bet(s) and " +

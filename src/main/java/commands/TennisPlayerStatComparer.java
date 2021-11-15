@@ -16,7 +16,7 @@ public class TennisPlayerStatComparer extends PlayerStatComparer {
 
     public TennisPlayerStatComparer() {
         super(
-                new HashSet<String>(Arrays.asList("Age", "Aces", "Double Faults",
+                new HashSet<>(Arrays.asList("Age", "Aces", "Double Faults",
                         "Serve Points", "First Serves", "Break Points Saved")));
     }
 
@@ -60,7 +60,7 @@ public class TennisPlayerStatComparer extends PlayerStatComparer {
      * @return List with original Players cast to TennisPlayer
      */
     private List<TennisPlayer> castToTennisPlayer(List<?> genericPlayers) {
-        ArrayList<TennisPlayer> tennisPlayers = new ArrayList<TennisPlayer>();
+        ArrayList<TennisPlayer> tennisPlayers = new ArrayList<>();
         for (Object player : genericPlayers) {
             tennisPlayers.add((TennisPlayer) player);
         }
@@ -106,7 +106,7 @@ public class TennisPlayerStatComparer extends PlayerStatComparer {
      */
     private List<String> getValuesAge(List<TennisPlayer> players,
                                       String season) throws Exception{
-        ArrayList<String> ageValues = new ArrayList<String>();
+        ArrayList<String> ageValues = new ArrayList<>();
         for (TennisPlayer player : players) {
             ageValues.add(player.getStatAge(season).toString());
         }
@@ -122,7 +122,7 @@ public class TennisPlayerStatComparer extends PlayerStatComparer {
      */
     private List<String> getValuesAces(List<TennisPlayer> players,
                                        String season) throws Exception{
-        ArrayList<String> acesValues = new ArrayList<String>();
+        ArrayList<String> acesValues = new ArrayList<>();
         for (TennisPlayer player : players) {
             acesValues.add(player.getStatAces(season).toString());
         }
@@ -138,7 +138,7 @@ public class TennisPlayerStatComparer extends PlayerStatComparer {
      */
     private List<String> getValuesDoubleFaults(List<TennisPlayer> players,
                                                String season) throws Exception{
-        ArrayList<String> doubleFaultsValues = new ArrayList<String>();
+        ArrayList<String> doubleFaultsValues = new ArrayList<>();
         for (TennisPlayer player : players) {
             doubleFaultsValues.add(player.getStatDoubleFaults(season).toString());
         }
@@ -154,7 +154,7 @@ public class TennisPlayerStatComparer extends PlayerStatComparer {
      */
     private List<String> getValuesServePoints(List<TennisPlayer> players,
                                               String season) throws Exception{
-        ArrayList<String> servePointsValues = new ArrayList<String>();
+        ArrayList<String> servePointsValues = new ArrayList<>();
         for (TennisPlayer player : players) {
             servePointsValues.add(player.getStatServePoints(season).toString());
         }
@@ -170,7 +170,7 @@ public class TennisPlayerStatComparer extends PlayerStatComparer {
      */
     private List<String> getValuesFirstServes(List<TennisPlayer> players,
                                               String season) throws Exception{
-        ArrayList<String> firstServeValues = new ArrayList<String>();
+        ArrayList<String> firstServeValues = new ArrayList<>();
         for (TennisPlayer player : players) {
             firstServeValues.add(player.getStatFirstServes(season).toString());
         }
@@ -186,7 +186,7 @@ public class TennisPlayerStatComparer extends PlayerStatComparer {
      */
     private List<String> getValuesBreakPointsSaved(List<TennisPlayer> players,
                                                    String season) throws Exception{
-        ArrayList<String> breakPointsSavedValues = new ArrayList<String>();
+        ArrayList<String> breakPointsSavedValues = new ArrayList<>();
         for (TennisPlayer player : players) {
             breakPointsSavedValues.add(player.getStatBreakPointsSaved(season).toString());
         }

@@ -29,7 +29,7 @@ public class TennisTeam extends Team {
 
     /**
      * Set total tournaments played
-     * @param totalTournamentsPlayed
+     * @param totalTournamentsPlayed total tournaments plated
      */
     public void setTotalTournamentsPlayed(int totalTournamentsPlayed){
         this.totalTournamentsPlayed = totalTournamentsPlayed;
@@ -45,7 +45,7 @@ public class TennisTeam extends Team {
 
     /**
      * Set tournament wins
-     * @param tournamentWins
+     * @param tournamentWins total tournaments won
      */
     public void setTournamentWins(int tournamentWins){
         this.tournamentWins = tournamentWins;

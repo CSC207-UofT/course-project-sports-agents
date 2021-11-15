@@ -4,7 +4,6 @@ import constants.Exceptions;
 import drivers_adapters.DataContainer;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class PlayerStatComparerFacade implements Command {
     private final HockeyPlayerStatComparer hockeyPlayerStatComparer;

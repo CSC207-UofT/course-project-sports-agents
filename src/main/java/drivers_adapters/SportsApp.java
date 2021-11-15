@@ -1,7 +1,5 @@
 package drivers_adapters;
 
-import commands.Command;
-
 import java.util.Scanner;
 
 public class SportsApp {

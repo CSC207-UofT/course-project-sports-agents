@@ -51,7 +51,7 @@ public class TeamStatPredictor implements Command {
     }
 
     @Override
-    public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
+    public String execute(ArrayList<String> arguments, DataContainer container) {
         String teamName1 = arguments.get(TEAM_NAME_1_SLOT);
         String teamName2 = arguments.get(TEAM_NAME_2_SLOT);
         return formatOut(arguments,

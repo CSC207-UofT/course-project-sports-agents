@@ -2,9 +2,7 @@ package player;
 
 import constants.Exceptions;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class TennisPlayer extends Player {
 
