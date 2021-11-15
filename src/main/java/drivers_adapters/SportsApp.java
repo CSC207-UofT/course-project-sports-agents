@@ -22,7 +22,7 @@ public class SportsApp {
         Scanner inputScanner = new Scanner(System.in);
         String input = "";
 
-        CommandManager manager = new CommandManager();
+        commandManager manager = new commandManager();
         while (!input.equals("quit")) {
             input = inputScanner.nextLine();
             try {

@@ -2,13 +2,12 @@ package match;
 
 import leagueMember.LeagueMember;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class Match implements Serializable {
-    private ArrayList<LeagueMember> teamABetters;
-    private ArrayList<LeagueMember> teamBBetters;
+public class Match {
+    private final ArrayList<LeagueMember> teamABetters;
+    private final ArrayList<LeagueMember> teamBBetters;
     private final String teamA;
     private final String teamB;
     // TODO: Implement updating score of games and resolving that way

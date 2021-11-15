@@ -29,7 +29,7 @@ public class BaseballTeam extends Team {
     private int caughtStealing;
 
 
-    public BaseballTeam(String name, String homeCity, List<String> players, List<Match> playedGames, int totalGamesPlayed, int wins, int losses, int ties, int rank, int gamesStarted, int completeGames, int shutouts, int saves, int saveOpportunities, int inningsPitched, int hitsAllowed, int runsAllowed, int earnedRuns, int homeRunsAllowed, int hitBatsmen, int atBats, int runs, int hits, int doubles, int triples, int homeRuns, int runBattedIn, int walks, int strikeouts, int stolenBases, int caughtStealing) {
+    public BaseballTeam(String name, String homeCity, List<String> players, List<Match> playedGames, int totalGamesPlayed, int wins, int losses, int ties, int rank, int gamesStarted, int completeGames, int shutouts, int saves, int saveOpportunities, int inningsPitched, int hitsAllowed, int runsAllowed, int earnedRuns, int homeRunsAllowed, int hitBatsmen, int atBats, int runs, int hits, int doubles, int triples, int homeRuns, int runBattedIn, int walks, int strikeouts, int stolenBases, int caughtStealing){
         super(name, homeCity, players, playedGames, totalGamesPlayed, wins, losses, ties, rank);
         this.gamesStarted = gamesStarted;
         this.completeGames = completeGames;
@@ -57,397 +57,353 @@ public class BaseballTeam extends Team {
 
     /**
      * Get games started
-     *
      * @return gamesStarted
      */
-    public int getGamesStarted() {
+    public int getGamesStarted(){
         return this.gamesStarted;
     }
 
     /**
      * Set games started
-     *
-     * @param gamesStarted number of games started
+     * @param gamesStarted number of games started by the team
      */
-    public void setGamesStarted(int gamesStarted) {
+    public void setGamesStarted(int gamesStarted){
         this.gamesStarted = gamesStarted;
     }
 
     /**
      * Get complete games
-     *
      * @return completeGames
      */
-    public int getCompleteGames() {
+    public int getCompleteGames(){
         return this.completeGames;
     }
 
     /**
      * Set complete games
-     *
-     * @param completeGames number of completed games
+     * @param completeGames number of games completed by the team
      */
-    public void setCompleteGames(int completeGames) {
+    public void setCompleteGames(int completeGames){
         this.completeGames = completeGames;
     }
 
     /**
      * Get shutouts
-     *
      * @return shutouts
      */
-    public int getShutouts() {
+    public int getShutouts(){
         return this.shutouts;
     }
 
     /**
      * Set shutouts
-     *
-     * @param shutouts number of shoutouts
+     * @param shutouts number of shutouts
      */
-    public void setShutouts(int shutouts) {
+    public void setShutouts(int shutouts){
         this.shutouts = shutouts;
     }
 
     /**
      * Get saves
-     *
      * @return saves
      */
-    public int getSaves() {
+    public int getSaves(){
         return this.saves;
     }
 
     /**
      * Set saves
-     *
      * @param saves number of saves
      */
-    public void setSavesGoalsFor(int saves) {
+    public void setSavesGoalsFor(int saves){
         this.saves = saves;
     }
 
     /**
      * Get save opportunities
-     *
      * @return saveOpportunities
      */
-    public int getSaveOpportunities() {
+    public int getSaveOpportunities(){
         return this.saveOpportunities;
     }
 
     /**
      * Set save opportunities
-     *
-     * @param saveOpportunities number of save opportunities
+     * @param saveOpportunities number of opportunities
      */
-    public void setSaveOpportunities(int saveOpportunities) {
+    public void setSaveOpportunities(int saveOpportunities){
         this.saveOpportunities = saveOpportunities;
     }
 
     /**
      * Get innings pitched
-     *
      * @return inningsPitched
      */
-    public int getInningsPitched() {
+    public int getInningsPitched(){
         return this.inningsPitched;
     }
 
     /**
      * Set innings pitched
-     *
      * @param inningsPitched number of innings pitched
      */
-    public void setInningsPitched(int inningsPitched) {
+    public void setInningsPitched(int inningsPitched){
         this.inningsPitched = inningsPitched;
     }
 
     /**
      * Get hits allowed
-     *
      * @return hitsAllowed
      */
-    public int getHitsAllowed() {
+    public int getHitsAllowed(){
         return this.hitsAllowed;
     }
 
     /**
      * Set hits allowed
-     *
      * @param hitsAllowed number of hits allowed
      */
-    public void setHitsAllowed(int hitsAllowed) {
+    public void setHitsAllowed(int hitsAllowed){
         this.hitsAllowed = hitsAllowed;
     }
 
     /**
      * Get runs allowed
-     *
      * @return runsAllowed
      */
-    public int getRunsAllowed() {
+    public int getRunsAllowed(){
         return this.runsAllowed;
     }
 
     /**
      * Set runs allowed
-     *
      * @param runsAllowed number of runs allowed
      */
-    public void setRunsAllowed(int runsAllowed) {
+    public void setRunsAllowed(int runsAllowed){
         this.runsAllowed = runsAllowed;
     }
 
     /**
      * Get earned runs
-     *
      * @return earnedRuns
      */
-    public int getEarnedRuns() {
+    public int getEarnedRuns(){
         return this.earnedRuns;
     }
 
     /**
      * Set earned runs
-     *
      * @param earnedRuns number of earned runs
      */
-    public void setEarnedRuns(int earnedRuns) {
+    public void setEarnedRuns(int earnedRuns){
         this.earnedRuns = earnedRuns;
     }
 
     /**
      * Get home runs allowed
-     *
      * @return homeRunsAllowed
      */
-    public int getHomeRunsAllowed() {
+    public int getHomeRunsAllowed(){
         return this.homeRunsAllowed;
     }
 
     /**
      * Set home runs allowed
-     *
      * @param homeRunsAllowed number of home runs allowed
      */
-    public void setHomeRunsAllowed(int homeRunsAllowed) {
+    public void setHomeRunsAllowed(int homeRunsAllowed){
         this.homeRunsAllowed = homeRunsAllowed;
     }
 
     /**
      * Get hit batsmen
-     *
      * @return hitBatsmen
      */
-    public int getHitBatsmen() {
+    public int getHitBatsmen(){
         return this.hitBatsmen;
     }
 
     /**
      * Set hit batsmen
-     *
      * @param hitBatsmen number of hit batsmen
      */
-    public void setHitBatsmen(int hitBatsmen) {
+    public void setHitBatsmen(int hitBatsmen){
         this.hitBatsmen = hitBatsmen;
     }
 
     /**
      * Get at bats
-     *
      * @return atBats
      */
-    public int getAtBats() {
+    public int getAtBats(){
         return this.atBats;
     }
 
     /**
      * Set at bats
-     *
      * @param atBats number of at bats
      */
-    public void setAtBats(int atBats) {
+    public void setAtBats(int atBats){
         this.atBats = atBats;
     }
 
     /**
      * Get runs
-     *
      * @return runs
      */
-    public int getRuns() {
+    public int getRuns(){
         return this.runs;
     }
 
     /**
      * Set runs
-     *
      * @param runs number of runs
      */
-    public void setRuns(int runs) {
+    public void setRuns(int runs){
         this.runs = runs;
     }
 
     /**
      * Get hits
-     *
      * @return hits
      */
-    public int getHits() {
+    public int getHits(){
         return this.hits;
     }
 
     /**
      * Set hits
-     *
      * @param hits number of hits
      */
-    public void setHits(int hits) {
+    public void setHits(int hits){
         this.hits = hits;
     }
 
     /**
      * Get doubles
-     *
      * @return doubles
      */
-    public int getDoubles() {
+    public int getDoubles(){
         return this.doubles;
     }
 
     /**
      * Set doubles
-     *
      * @param doubles number of doubles
      */
-    public void setDoubles(int doubles) {
+    public void setDoubles(int doubles){
         this.doubles = doubles;
     }
 
     /**
      * Get triples
-     *
      * @return triples
      */
-    public int getTriples() {
+    public int getTriples(){
         return this.triples;
     }
 
     /**
      * Set triples
-     *
      * @param triples number of triples
      */
-    public void setTriples(int triples) {
+    public void setTriples(int triples){
         this.triples = triples;
     }
 
     /**
      * Get home runs
-     *
      * @return homeRuns
      */
-    public int getHomeRuns() {
+    public int getHomeRuns(){
         return this.homeRuns;
     }
 
     /**
      * Set home runs
-     *
      * @param homeRuns number of home runs
      */
-    public void setHomeRuns(int homeRuns) {
+    public void setHomeRuns(int homeRuns){
         this.homeRuns = homeRuns;
     }
 
     /**
      * Get run batted in
-     *
      * @return runBattedIn
      */
-    public int getRunBattedIn() {
+    public int getRunBattedIn(){
         return this.runBattedIn;
     }
 
     /**
      * Set run batted in
-     *
      * @param runBattedIn number of runs batted in
      */
-    public void setRunBattedIn(int runBattedIn) {
+    public void setRunBattedIn(int runBattedIn){
         this.runBattedIn = runBattedIn;
     }
 
     /**
      * Get walks
-     *
      * @return walks
      */
-    public int getWalks() {
+    public int getWalks(){
         return this.walks;
     }
 
     /**
      * Set walks
-     *
      * @param walks number of walks
      */
-    public void setWalks(int walks) {
+    public void setWalks(int walks){
         this.walks = walks;
     }
 
     /**
      * Get strikeouts
-     *
      * @return strikeouts
      */
-    public int getStrikeouts() {
+    public int getStrikeouts(){
         return this.strikeouts;
     }
 
     /**
      * Set strikeouts
-     *
      * @param strikeouts number of strikeouts
      */
-    public void setStrikeouts(int strikeouts) {
+    public void setStrikeouts(int strikeouts){
         this.strikeouts = strikeouts;
     }
 
     /**
      * Get stolen bases
-     *
      * @return stolenBases
      */
-    public int getStolenBases() {
+    public int getStolenBases(){
         return this.stolenBases;
     }
 
     /**
      * Set stolen bases
-     *
      * @param stolenBases number of stolen bases
      */
-    public void setStolenBases(int stolenBases) {
+    public void setStolenBases(int stolenBases){
         this.stolenBases = stolenBases;
     }
 
     /**
      * Get caught stealing
-     *
      * @return caughtStealing
      */
-    public int getCaughtStealing() {
+    public int getCaughtStealing(){
         return this.caughtStealing;
     }
 
     /**
      * Set caught stealing
-     *
-     * @param caughtStealing number of bases caught stolen
+     * @param caughtStealing number of times caught stealing bases
      */
-    public void setCaughtStealing(int caughtStealing) {
+    public void setCaughtStealing(int caughtStealing){
         this.caughtStealing = caughtStealing;
     }
 }

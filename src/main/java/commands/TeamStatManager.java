@@ -14,47 +14,6 @@ public class TeamStatManager implements Command, TeamConstants {
     private final TeamManager teamManager;
     private final int TEAM_NAME_SLOT = 0;
     private final int REQUESTED_STAT_SLOT = 1;
-    private final String KEY_GAMES_PLAYED = "games played";
-    private final String KEY_WINS = "wins";
-    private final String KEY_LOSSES = "losses";
-    private final String KEY_TIES = "ties";
-    private final String KEY_WIN_RATE = "win rate";
-    private final String KEY_LOSS_RATE = "loss rate";
-    private final String KEY_RANK = "rank";
-    private final String KEY_TOURNAMENTS_PLAYED = "tournaments played";
-    private final String KEY_TOURNAMENT_WINS = "tournament wins";
-    private final String KEY_GOALS_FOR = "goals for";
-    private final String KEY_GOALS_AGAINST = "goals against";
-    private final String KEY_FACE_OFF_WIN_PERCENTAGE = "face off win percentage";
-    private final String KEY_SHOTS_FOR = "shots for";
-    private final String KEY_SHOTS_AGAINST = "shots against";
-    private final String KEY_REGULATION_WINS = "regulation wins";
-    private final String KEY_REGULATION_PLUS_OVERTIME_WINS = "regulation plus overtime wins played";
-    private final String KEY_SHOOT_OUT_GAMES_WON = "shoot out games won";
-    private final String KEY_OVERTIME_LOSSES = "overtime losses";
-    private final String KEY_GOALS_FOR_PER_GAME_PLAYED = "goals for per game played";
-    private final String KEY_GOALS_AGAINST_PER_GAME_PLAYED = "goals against per game played";
-    private final String KEY_GAMES_STARTED = "games started";
-    private final String KEY_COMPLETE_GAMES = "complete games";
-    private final String KEY_SHUTOUTS = "shutouts";
-    private final String KEY_SAVES = "saves";
-    private final String KEY_SAVE_OPPORTUNITIES = "save opportunities";
-    private final String KEY_INNINGS_PITCHED = "innings pitched";
-    private final String KEY_RUNS_ALLOWED = "runs allowed";
-    private final String KEY_EARNED_RUNS = "earned runs";
-    private final String KEY_HOME_RUNS_ALLOWED = "home runs allowed";
-    private final String KEY_HIT_BATSMEN = "hit batsmen";
-    private final String KEY_AT_BATS = "at bats";
-    private final String KEY_RUNS = "runs";
-    private final String KEY_HITS = "hits";
-    private final String KEY_DOUBLES = "doubles";
-    private final String KEY_TRIPLES = "triples";
-    private final String KEY_HOME_RUNS = "home runs";
-    private final String KEY_RUN_BATTED_IN = "run batted in";
-    private final String KEY_WALKS = "walks";
-    private final String KEY_STRIKEOUTS = "strikeouts";
-    private final String KEY_STOLEN_BASES = "stolen bases";
-    private final String KEY_CAUGHT_STEALING = "caught stealing";
 
     public TeamStatManager(TeamManager teamManager) {
         this.teamManager = teamManager;
@@ -175,87 +134,87 @@ public class TeamStatManager implements Command, TeamConstants {
      */
     public TeamStats parseStat(String stat) {
         switch (stat.toLowerCase()) {
-            case KEY_GAMES_PLAYED:
+            case "games played":
                 return TeamStats.GAMES_PLAYED;
-            case KEY_WINS:
+            case "wins":
                 return TeamStats.WINS;
-            case KEY_LOSSES:
+            case "losses":
                 return TeamStats.LOSSES;
-            case KEY_TIES:
+            case "ties":
                 return TeamStats.TIES;
-            case KEY_WIN_RATE:
+            case "win rate":
                 return TeamStats.WIN_RATE;
-            case KEY_LOSS_RATE:
+            case "loss rate":
                 return TeamStats.LOSS_RATE;
-            case KEY_RANK:
+            case "rank":
                 return TeamStats.RANK;
-            case KEY_TOURNAMENTS_PLAYED:
+            case "tournaments played":
                 return TeamStats.TOTAL_TOURNAMENTS_PLAYED;
-            case KEY_TOURNAMENT_WINS:
+            case "tournament wins":
                 return TeamStats.TOURNAMENT_WINS;
-            case KEY_GOALS_FOR:
+            case "goals for":
                 return TeamStats.GOALS_FOR;
-            case KEY_GOALS_AGAINST:
+            case "goals against":
                 return TeamStats.GOALS_AGAINST;
-            case KEY_FACE_OFF_WIN_PERCENTAGE:
+            case "face off win percentage":
                 return TeamStats.FACE_OFF_WIN_PERCENTAGE;
-            case KEY_SHOTS_AGAINST:
+            case "shots against":
                 return TeamStats.SHOTS_AGAINST;
-            case KEY_SHOTS_FOR:
+            case "shots for":
                 return TeamStats.SHOTS_FOR;
-            case KEY_REGULATION_WINS:
+            case "regulation wins":
                 return TeamStats.REGULATION_WINS;
-            case KEY_REGULATION_PLUS_OVERTIME_WINS:
+            case "regulation plus overtime wins played":
                 return TeamStats.REGULATION_PLUS_OVERTIME_WINS;
-            case KEY_SHOOT_OUT_GAMES_WON:
+            case "shoot out games won":
                 return TeamStats.SHOOTOUT_GAMES_WON;
-            case KEY_OVERTIME_LOSSES:
+            case "overtime losses":
                 return TeamStats.OVERTIME_LOSSES;
-            case KEY_GOALS_FOR_PER_GAME_PLAYED:
+            case "goals for per game played":
                 return TeamStats.GOALS_FOR_PER_GAMES_PLAYED;
-            case KEY_GOALS_AGAINST_PER_GAME_PLAYED:
+            case "goals against per game played":
                 return TeamStats.GOALS_AGAINST_PER_GAMES_PLAYED;
-            case KEY_GAMES_STARTED:
+            case "games started":
                 return TeamStats.GAMES_STARTED;
-            case KEY_COMPLETE_GAMES:
+            case "complete games":
                 return TeamStats.COMPLETE_GAMES;
-            case KEY_SHUTOUTS:
+            case "shutouts":
                 return TeamStats.SHUTOUTS;
-            case KEY_SAVES:
+            case "saves":
                 return TeamStats.SAVES;
-            case KEY_SAVE_OPPORTUNITIES:
+            case "save opportunities":
                 return TeamStats.SAVE_OPPORTUNITIES;
-            case KEY_INNINGS_PITCHED:
+            case "innings pitched":
                 return TeamStats.INNINGS_PITCHED;
-            case KEY_RUNS_ALLOWED:
+            case "runs allowed":
                 return TeamStats.RUNS_ALLOWED;
-            case KEY_EARNED_RUNS:
+            case "earned runs":
                 return TeamStats.EARNED_RUNS;
-            case KEY_HOME_RUNS_ALLOWED:
+            case "home runs allowed":
                 return TeamStats.HOME_RUNS_ALLOWED;
-            case KEY_HIT_BATSMEN:
+            case "hit batsmen":
                 return TeamStats.HIT_BATSMEN;
-            case KEY_AT_BATS:
+            case "at bats":
                 return TeamStats.AT_BATS;
-            case KEY_RUNS:
+            case "runs":
                 return TeamStats.RUNS;
-            case KEY_HITS:
+            case "hits":
                 return TeamStats.HITS;
-            case KEY_DOUBLES:
+            case "doubles":
                 return TeamStats.DOUBLES;
-            case KEY_TRIPLES:
+            case "triples":
                 return TeamStats.TRIPLES;
-            case KEY_HOME_RUNS:
+            case "home runs":
                 return TeamStats.HOME_RUNS;
-            case KEY_RUN_BATTED_IN:
+            case "run batted in":
                 return TeamStats.RUN_BATTED_IN;
-            case KEY_WALKS:
+            case "walks":
                 return TeamStats.WALKS;
-            case KEY_STRIKEOUTS:
+            case "strikeouts":
                 return TeamStats.STRIKEOUTS;
-            case KEY_STOLEN_BASES:
+            case "stolen bases":
                 return TeamStats.STOLEN_BASES;
-            case KEY_CAUGHT_STEALING:
+            case "caught stealing":
                 return TeamStats.CAUGHT_STEALING;
             default:
                 return null;

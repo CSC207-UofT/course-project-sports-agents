@@ -1,19 +1,15 @@
 package commands;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class PlayerStatComparerFacade implements Command {
     private final HockeyPlayerStatComparer hockeyPlayerStatComparer;
     private final TennisPlayerStatComparer tennisPlayerStatComparer;
-    private final BaseballPlayerStatComparer baseballPlayerStatComparer;
 
     public PlayerStatComparerFacade(HockeyPlayerStatComparer hockeyPlayerStatComparer,
-                                    TennisPlayerStatComparer tennisPlayerStatComparer,
-                                    BaseballPlayerStatComparer baseballPlayerStatComparer) {
+                                   TennisPlayerStatComparer tennisPlayerStatComparer) {
         this.hockeyPlayerStatComparer = hockeyPlayerStatComparer;
         this.tennisPlayerStatComparer = tennisPlayerStatComparer;
-        this.baseballPlayerStatComparer = baseballPlayerStatComparer;
     }
 
     /**
@@ -28,15 +24,13 @@ public class PlayerStatComparerFacade implements Command {
      * given season
      */
     @Override
-    public String execute(ArrayList<String> arguments) throws Exception {
+    public String execute(List<String> arguments) throws Exception {
         String sport = arguments.get(1);
         switch(sport) {
             case "Hockey":
                 return this.hockeyPlayerStatComparer.execute(arguments);
             case "Tennis":
                 return this.tennisPlayerStatComparer.execute(arguments);
-            case "Baseball":
-                return this.baseballPlayerStatComparer.execute(arguments);
             default:
                 throw new Exception("Invalid sport passed!");
         }
