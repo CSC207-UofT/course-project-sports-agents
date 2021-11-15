@@ -99,7 +99,13 @@ rather than the specific class being used.
 
 
 ## Packaging Strategies
-TODO: Packaging?
+We used the feature packaging strategy. All entity classes related to teams are 
+in the `team` package, all entity classes related to players are in the `player`
+package, all entity classes related to the fantasy league members are in the 
+`leagueMember`, all use case classes which handle user commands are in the 
+`command` package, and all drivers responsible for program operation are in the
+`drivers_adapters` package.
+
 
 ## Design Patterns
 We implement a Command design pattern almost word-for-word from the example
