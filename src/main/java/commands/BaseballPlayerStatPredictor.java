@@ -7,7 +7,7 @@ import java.util.*;
 
 public class BaseballPlayerStatPredictor extends PlayerStatPredictor{
     public BaseballPlayerStatPredictor() {
-        super(new HashSet<String>(Arrays.asList("At Bats", "Runs",
+        super(new HashSet<>(Arrays.asList("At Bats", "Runs",
                 "Hits", "Home Runs", "Runs Batted In", "Strike Outs", "Average")));
     }
 
@@ -17,8 +17,7 @@ public class BaseballPlayerStatPredictor extends PlayerStatPredictor{
      * the seasons were played in the order provided. Uses linear
      * regression.
      * @param arguments A string array of form
-     *                  {"Baseball", "player name",
-     *                  "season 1", "season 2", ..., "stat name"}
+     *                  {"Baseball", "player name", "stat name"}
      * @param container A container with the necessary data and the means to get it
      * @return the predicted statistic for the next season
      * @throws Exception if the Player or season does not exist
@@ -28,25 +27,21 @@ public class BaseballPlayerStatPredictor extends PlayerStatPredictor{
         String name = arguments.get(1);
         BaseballPlayer player = (BaseballPlayer) container.getPlayer("baseball", name);
 
-        int argSize = arguments.size();
-        List<String> seasons = arguments.subList(2, argSize - 1);
-
-        String statistic = arguments.get(argSize);
+        String statistic = arguments.get(2);
         checkStatistic(statistic);
 
-        List<String> allSeasons = this.baseballPlayerList.getSeasons();
-
-        Map<String, Integer> seasonsToIntsMap = this.getSeasonToIntsMap(allSeasons);
-
+        // Get a list of the player's stats for all the seasons they participated in
         List<String> playerSeasons = player.getSeasons();
+        List<Double> pastStats = getPastStats(player, statistic, playerSeasons);
+
+        Map<String, Integer> seasonsToIntMap = this.getSeasonToIntsMap(playerSeasons);
 
         // Get the integer value associated with each season the player participated in
         List<Integer> seasonInts = new ArrayList<>();
         for (String playerSeason : playerSeasons) {
-            seasonInts.add(seasonsToIntsMap.get(playerSeason));
+            seasonInts.add(seasonsToIntMap.get(playerSeason));
         }
 
-        List<Double> pastStats = getPastStats(player, statistic, playerSeasons);
         double prediction = linearExtrapolate(seasonInts, pastStats);
         return formatOut(playerSeasons, pastStats, prediction);
     }

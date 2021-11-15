@@ -7,33 +7,29 @@ import java.util.HashMap;
 
 public class CommandManager {
 
-    private final HashMap<String, Command> commandDictionary = new HashMap<String, Command>();
+    private final HashMap<String, Command> commandDictionary = new HashMap<>();
 
     public CommandManager() {
-        // TODO: Should this be its own builder class? Also, better var name ideas?
-        PlayerList<HockeyPlayer> hockeyPlayerList = new PlayerList<HockeyPlayer>();
         HockeyPlayerStatManager hockeyPlayerStatManager =
-                new HockeyPlayerStatManager(hockeyPlayerList);
+                new HockeyPlayerStatManager();
         HockeyPlayerStatComparer hockeyPlayerStatComparer =
-                new HockeyPlayerStatComparer(hockeyPlayerList);
+                new HockeyPlayerStatComparer();
         HockeyPlayerStatPredictor hockeyPlayerStatPredictor =
-                new HockeyPlayerStatPredictor(hockeyPlayerList);
+                new HockeyPlayerStatPredictor();
 
-        PlayerList<TennisPlayer> tennisPlayerList = new PlayerList<TennisPlayer>();
         TennisPlayerStatManager tennisPlayerStatManager =
-                new TennisPlayerStatManager(tennisPlayerList);
+                new TennisPlayerStatManager();
         TennisPlayerStatComparer tennisPlayerStatComparer =
-                new TennisPlayerStatComparer(tennisPlayerList);
+                new TennisPlayerStatComparer();
         TennisPlayerStatPredictor tennisPlayerStatPredictor =
-                new TennisPlayerStatPredictor(tennisPlayerList);
+                new TennisPlayerStatPredictor();
 
-        PlayerList<BaseballPlayer> baseballPlayerList = new PlayerList<BaseballPlayer>();
         BaseballPlayerStatManager baseballPlayerStatManager =
-                new BaseballPlayerStatManager(baseballPlayerList);
+                new BaseballPlayerStatManager();
         BaseballPlayerStatComparer baseballPlayerStatComparer =
-                new BaseballPlayerStatComparer(baseballPlayerList);
+                new BaseballPlayerStatComparer();
         BaseballPlayerStatPredictor baseballPlayerStatPredictor =
-                new BaseballPlayerStatPredictor(baseballPlayerList);
+                new BaseballPlayerStatPredictor();
 
         PlayerStatManagerFacade playerStatManagerFacade =
                 new PlayerStatManagerFacade(hockeyPlayerStatManager,
@@ -55,15 +51,15 @@ public class CommandManager {
 
     }
 
-    public String execute(String input) throws Exception {
+    public String execute(String input, DataContainer container) throws Exception {
         if (input.equals("")) {
             return "";
         }
-        inputParser parser = new inputParser(input);
+        InputParser parser = new InputParser(input);
         String command_keyword = parser.getKeyword();
 
         Command command = commandDictionary.get(command_keyword);
-        return command.execute(parser.getArguments());
+        return command.execute(parser.getArguments(), container);
 
     }
 }
