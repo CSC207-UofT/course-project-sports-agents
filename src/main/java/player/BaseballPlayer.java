@@ -12,6 +12,7 @@ public class BaseballPlayer extends Player {
     private final HashMap<String, Integer> runsBattedInRecord;
     private final HashMap<String, Integer> strikeOutsRecord;
     private final HashMap<String, Double> avgRecord;
+    private final List<String> seasons;
 
 
     /**
@@ -40,15 +41,16 @@ public class BaseballPlayer extends Player {
                           double avg) throws Exception {
         super(name);
 
-        this.positionRecord = new HashMap<String, String>();
-        this.gamesPlayedRecord = new HashMap<String, Integer>();
-        this.atBatsRecord = new HashMap<String, Integer>();
-        this.runsRecord = new HashMap<String, Integer>();
-        this.hitsRecord = new HashMap<String, Integer>();
-        this.homeRunsRecord = new HashMap<String, Integer>();
-        this.runsBattedInRecord = new HashMap<String, Integer>();
-        this.strikeOutsRecord = new HashMap<String, Integer>();
-        this.avgRecord = new HashMap<String, Double>();
+        this.positionRecord = new HashMap<>();
+        this.gamesPlayedRecord = new HashMap<>();
+        this.atBatsRecord = new HashMap<>();
+        this.runsRecord = new HashMap<>();
+        this.hitsRecord = new HashMap<>();
+        this.homeRunsRecord = new HashMap<>();
+        this.runsBattedInRecord = new HashMap<>();
+        this.strikeOutsRecord = new HashMap<>();
+        this.avgRecord = new HashMap<>();
+        this.seasons = new ArrayList<>();
 
         this.addRecord(season, team, position, gamesPlayed,
                 atBats, runs, hits, homeRuns, runsBattedIn, strikeOuts, avg);
@@ -85,6 +87,9 @@ public class BaseballPlayer extends Player {
         this.addRunsBattedIn(season, runsBattedIn);
         this.addStrikeOuts(season, strikeOuts);
         this.addAvg(season, avg);
+        if (!(this.seasons.contains(season))) {
+            this.seasons.add(season);
+        }
     }
 
     /**
@@ -300,6 +305,15 @@ public class BaseballPlayer extends Player {
     public Double getStatAvg(String season) throws Exception {
         checkForSeason(this.avgRecord, season, true);
         return this.avgRecord.get(season);
+    }
+
+
+    /**
+     * Return all the seasons this player participated in
+     * @return list of seasons
+     */
+    public List<String> getSeasons() {
+        return this.seasons;
     }
 
     @Override

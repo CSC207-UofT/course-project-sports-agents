@@ -3,8 +3,6 @@ package player;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 public class HockeyPlayerComparatorTest {
     HockeyPlayer player1;
     HockeyPlayer player2;

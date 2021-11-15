@@ -2,11 +2,12 @@ package commands;
 
 import java.util.ArrayList;
 
-import player.*;
 import team.Team;
+import commands.TeamStatComparer;
+import commands.TeamStatManager;
 import org.junit.*;
 import static org.junit.Assert.*;
-
+import player.Player;
 import match.Match;
 import team.HockeyTeam;
 import team.TeamManager;

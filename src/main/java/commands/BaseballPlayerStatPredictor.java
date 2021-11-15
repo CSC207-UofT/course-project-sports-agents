@@ -5,9 +5,12 @@ import player.*;
 import java.util.*;
 
 public class BaseballPlayerStatPredictor extends PlayerStatPredictor{
+    private final PlayerList<BaseballPlayer> baseballPlayerList;
+
     public BaseballPlayerStatPredictor(PlayerList<BaseballPlayer> baseballPlayerList) {
-        super(baseballPlayerList, new HashSet<String>(Arrays.asList("At Bats", "Runs",
+        super(new HashSet<>(Arrays.asList("At Bats", "Runs",
                 "Hits", "Home Runs", "Runs Batted In", "Strike Outs", "Average")));
+        this.baseballPlayerList = baseballPlayerList;
     }
 
     /**
@@ -24,17 +27,26 @@ public class BaseballPlayerStatPredictor extends PlayerStatPredictor{
     @Override
     public String execute(ArrayList<String> arguments) throws Exception {
         String name = arguments.get(2);
-        BaseballPlayer player = (BaseballPlayer) this.playerList.getPlayer(name);
-
+        BaseballPlayer player = this.baseballPlayerList.getPlayer(name);
         int argSize = arguments.size();
-        List<String> seasons = arguments.subList(3, argSize - 1);
-
-        String statistic = arguments.get(argSize);
+        String statistic = arguments.get(argSize - 1);
         checkStatistic(statistic);
 
-        List<Double> pastStats = getPastStats(player, statistic, seasons);
-        int prediction = linearExtrapolate(pastStats);
-        return formatOut(seasons, pastStats, prediction);
+        List<String> allSeasons = this.baseballPlayerList.getSeasons();
+
+        Map<String, Integer> seasonsToIntsMap = this.getSeasonToIntsMap(allSeasons);
+
+        List<String> playerSeasons = player.getSeasons();
+
+        // Get the integer value associated with each season the player participated in
+        List<Integer> seasonInts = new ArrayList<>();
+        for (String playerSeason : playerSeasons) {
+            seasonInts.add(seasonsToIntsMap.get(playerSeason));
+        }
+
+        List<Double> pastStats = getPastStats(player, statistic, playerSeasons);
+        double prediction = linearExtrapolate(seasonInts, pastStats);
+        return formatOut(playerSeasons, pastStats, prediction);
     }
 
     /**
