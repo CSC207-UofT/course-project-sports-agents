@@ -2,6 +2,7 @@ package commands;
 
 import java.util.ArrayList;
 
+import drivers_adapters.DataContainer;
 import team.BaseballTeam;
 import team.HockeyTeam;
 import team.Team;
@@ -242,7 +243,7 @@ public class TeamStatManager implements Command, TeamConstants {
     }
 
     @Override
-    public String execute(ArrayList<String> arguments) throws Exception {
+    public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
         String teamName = arguments.get(TEAM_NAME_SLOT);
         String requestedStat = arguments.get(REQUESTED_STAT_SLOT);
 

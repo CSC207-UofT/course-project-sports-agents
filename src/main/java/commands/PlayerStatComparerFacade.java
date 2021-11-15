@@ -35,14 +35,14 @@ public class PlayerStatComparerFacade implements Command {
     public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
         String sport = arguments.get(0);
         switch(sport) {
-            case "Hockey":
+            case "hockey":
                 return this.hockeyPlayerStatComparer.execute(arguments, container);
-            case "Tennis":
+            case "tennis":
                 return this.tennisPlayerStatComparer.execute(arguments, container);
-            case "Baseball":
+            case "baseball":
                 return this.baseballPlayerStatComparer.execute(arguments, container);
             default:
-                throw new Exception(Exceptions.INVALID_ARGUMENT);
+                throw new Exception(Exceptions.WRONG_SPORT);
         }
     }
 }

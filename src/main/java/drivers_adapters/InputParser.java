@@ -2,12 +2,12 @@ package drivers_adapters;
 
 import java.util.ArrayList;
 
-public class inputParser {
+public class InputParser {
 
     private final String keyword;
     private final ArrayList<String> arguments = new ArrayList<String>();
 
-    public inputParser(String input) {
+    public InputParser(String input) {
         String[] parts = input.split(" ", 2);
         keyword = parts[0];
         String rest;

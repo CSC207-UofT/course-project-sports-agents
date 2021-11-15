@@ -1,27 +1,36 @@
 package drivers_adapters;
 
 import commands.*;
+import constants.Exceptions;
 import player.*;
 
 import java.util.HashMap;
 
 public class CommandManager {
 
-    private final HashMap<String, Command> commandDictionary = new HashMap<String, Command>();
+    private final HashMap<String, Command> commandDictionary = new HashMap<>();
 
     public CommandManager() {
-        // TODO: Should this be its own builder class? Also, better var name ideas?
-        HockeyPlayerStatManager hockeyPlayerStatManager = new HockeyPlayerStatManager();
-        HockeyPlayerStatComparer hockeyPlayerStatComparer = new HockeyPlayerStatComparer();
-        HockeyPlayerStatPredictor hockeyPlayerStatPredictor = new HockeyPlayerStatPredictor();
+        HockeyPlayerStatManager hockeyPlayerStatManager =
+                new HockeyPlayerStatManager();
+        HockeyPlayerStatComparer hockeyPlayerStatComparer =
+                new HockeyPlayerStatComparer();
+        HockeyPlayerStatPredictor hockeyPlayerStatPredictor =
+                new HockeyPlayerStatPredictor();
 
-        TennisPlayerStatManager tennisPlayerStatManager = new TennisPlayerStatManager();
-        TennisPlayerStatComparer tennisPlayerStatComparer = new TennisPlayerStatComparer();
-        TennisPlayerStatPredictor tennisPlayerStatPredictor = new TennisPlayerStatPredictor();
+        TennisPlayerStatManager tennisPlayerStatManager =
+                new TennisPlayerStatManager();
+        TennisPlayerStatComparer tennisPlayerStatComparer =
+                new TennisPlayerStatComparer();
+        TennisPlayerStatPredictor tennisPlayerStatPredictor =
+                new TennisPlayerStatPredictor();
 
-        BaseballPlayerStatManager baseballPlayerStatManager = new BaseballPlayerStatManager();
-        BaseballPlayerStatComparer baseballPlayerStatComparer = new BaseballPlayerStatComparer();
-        BaseballPlayerStatPredictor baseballPlayerStatPredictor = new BaseballPlayerStatPredictor();
+        BaseballPlayerStatManager baseballPlayerStatManager =
+                new BaseballPlayerStatManager();
+        BaseballPlayerStatComparer baseballPlayerStatComparer =
+                new BaseballPlayerStatComparer();
+        BaseballPlayerStatPredictor baseballPlayerStatPredictor =
+                new BaseballPlayerStatPredictor();
 
         PlayerStatManagerFacade playerStatManagerFacade =
                 new PlayerStatManagerFacade(hockeyPlayerStatManager,
@@ -47,10 +56,14 @@ public class CommandManager {
         if (input.equals("")) {
             return "";
         }
-        inputParser parser = new inputParser(input);
+        InputParser parser = new InputParser(input);
         String command_keyword = parser.getKeyword();
+        System.out.println(command_keyword);
 
         Command command = commandDictionary.get(command_keyword);
+        if (command == null) {
+            throw new Exception(Exceptions.WRONG_COMMAND);
+        }
         return command.execute(parser.getArguments(), container);
 
     }

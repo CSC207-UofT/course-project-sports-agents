@@ -8,7 +8,7 @@ import java.util.*;
 public class HockeyPlayerStatPredictor extends PlayerStatPredictor {
 
     public HockeyPlayerStatPredictor() {
-        super(new HashSet<String>(Arrays.asList("Goals", "Assists",
+        super(new HashSet<>(Arrays.asList("Goals", "Assists",
                 "Points", "Shots", "Shooting Percentage")));
     }
 
@@ -18,8 +18,7 @@ public class HockeyPlayerStatPredictor extends PlayerStatPredictor {
      * the seasons were played in the order provided. Uses linear
      * regression.
      * @param arguments A string array of form
-     *                  {"Hockey", "player name",
-     *                  "season 1", "season 2", ..., "stat name"}
+     *                  {"Hockey", "player name", "stat name"}
      * @param container A container containing the data or means to retrieve it
      * @return the predicted statistic for the next season
      * @throws Exception if the Player or season does not exist
@@ -29,15 +28,14 @@ public class HockeyPlayerStatPredictor extends PlayerStatPredictor {
         String name = arguments.get(1);
         HockeyPlayer player = (HockeyPlayer) container.getPlayer("hockey", name);
 
-        int argSize = arguments.size();
-        String statistic = arguments.get(argSize - 1);
+        String statistic = arguments.get(2);
         checkStatistic(statistic);
 
         // Get a list of the player's stats for all the seasons they participated in
         List<String> playerSeasons = player.getSeasons();
         List<Double> pastStats = getPastStats(player, statistic, playerSeasons);
 
-        Map<String, Integer> seasonsToIntMap = this.getSeasonToIntsMap(allSeasons);
+        Map<String, Integer> seasonsToIntMap = this.getSeasonToIntsMap(playerSeasons);
 
         // Get the integer value associated with each season the player participated in
         List<Integer> seasonInts = new ArrayList<>();

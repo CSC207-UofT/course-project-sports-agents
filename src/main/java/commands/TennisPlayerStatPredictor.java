@@ -3,10 +3,7 @@ package commands;
 import drivers_adapters.DataContainer;
 import player.TennisPlayer;
 
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
+import java.util.*;
 
 public class TennisPlayerStatPredictor extends PlayerStatPredictor {
 
@@ -33,24 +30,23 @@ public class TennisPlayerStatPredictor extends PlayerStatPredictor {
         String name = arguments.get(1);
         TennisPlayer player = (TennisPlayer) container.getPlayer("tennis", name);
 
-        int argSize = arguments.size();
-        List<String> seasons = arguments.subList(2, argSize - 1);
-
-        String statistic = arguments.get(argSize);
+        String statistic = arguments.get(2);
         checkStatistic(statistic);
 
-        // Get the integer values for all the competitions the player participated in, the stat values for
-        // those competitions
-        List<Integer> competitionInts = new ArrayList<>();
-        List<String> playerCompetitions = neededPlayer.getCompetitions();
-        List<Double> playerStatsAsDoubles = this.getStat(neededPlayer, stat);
+        // Get a list of the player's stats for all the seasons they participated in
+        List<String> playerSeasons = player.getCompetitions();
+        List<Double> pastStats = getPastStats(player, statistic);
 
-        for (String competition : playerCompetitions) {
-            competitionInts.add(competitionValues.get(competition));
+        Map<String, Integer> seasonsToIntMap = this.getSeasonToIntsMap(playerSeasons);
+
+        // Get the integer value associated with each season the player participated in
+        List<Integer> seasonInts = new ArrayList<>();
+        for (String playerSeason : playerSeasons) {
+            seasonInts.add(seasonsToIntMap.get(playerSeason));
         }
 
-        double prediction = this.linearExtrapolate(competitionInts, playerStatsAsDoubles);
-        return this.formatOut(playerCompetitions, playerStatsAsDoubles, prediction);
+        double prediction = linearExtrapolate(seasonInts, pastStats);
+        return formatOut(playerSeasons, pastStats, prediction);
     }
 
 
@@ -61,7 +57,7 @@ public class TennisPlayerStatPredictor extends PlayerStatPredictor {
      * @return values of needed stat for all competitions the player participated in
      * @throws Exception if a stat does not have data for a competition
      */
-    private List<Double> getStat(TennisPlayer player, String stat) throws Exception {
+    private List<Double> getPastStats(TennisPlayer player, String stat) throws Exception {
         switch (stat) {
             case "Aces":
                 return this.getPastAces(player);

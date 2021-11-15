@@ -37,7 +37,7 @@ public class TeamManager {
      */
     public Team findTeamWithName(String teamName){
         for(Team t : teams){
-            if(t.getName() == teamName){
+            if(teamName.equals(t.getName())){
                 return t;
             }
         }

@@ -2,6 +2,7 @@ package commands;
 
 import java.util.ArrayList;
 
+import drivers_adapters.DataContainer;
 import team.TeamStats;
 
 public class TeamStatPredictor implements Command {
@@ -50,7 +51,7 @@ public class TeamStatPredictor implements Command {
     }
 
     @Override
-    public String execute(ArrayList<String> arguments) throws Exception {
+    public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
         String teamName1 = arguments.get(TEAM_NAME_1_SLOT);
         String teamName2 = arguments.get(TEAM_NAME_2_SLOT);
         return formatOut(arguments,
