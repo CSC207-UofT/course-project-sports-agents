@@ -13,8 +13,8 @@ import java.util.HashMap;
 
 public class CSVDataContainer implements DataContainer {
 
-    private HashMap<String, Player> playerMap;
-    private HashMap<String, Team> teamMap;
+    protected HashMap<String, Player> playerMap;
+    protected HashMap<String, Team> teamMap;
 
     @Override
     public Player getPlayer(String sport, String name) throws Exception {
