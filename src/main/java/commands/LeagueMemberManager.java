@@ -3,7 +3,8 @@ package commands;
 import leagueMember.LeagueMember;
 import match.Match;
 
-import java.util.*;
+import java.util.List;
+import java.util.HashMap;
 
 public class LeagueMemberManager implements Command {
     // MemberMap stores the League Members of the fantasy league

@@ -6,6 +6,7 @@ import org.junit.*;
 
 import static org.junit.Assert.*;
 import match.Match;
+import player.Player;
 
 public class TeamTest {
     private Team t;

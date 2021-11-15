@@ -4,6 +4,7 @@ import match.Match;
 import player.*;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public abstract class Team {
     private String name;

@@ -1,6 +1,6 @@
 package player;
 
-import java.util.*;
+import java.util.Comparator;
 
 /**
  * A comparator class for HockeyPlayerStatComparator. It compares and sorts
@@ -79,9 +79,8 @@ public class HockeyPlayerComparator implements Comparator<HockeyPlayer> {
     private int compareShootingPercentage(HockeyPlayer p1, HockeyPlayer p2)
             throws Exception {
         return (int) Math.signum(p1.getStatShootingPercentage(this.season) -
-                p2.getStatShootingPercentage(this.season));
+                                 p2.getStatShootingPercentage(this.season));
     }
 }
-
 
 

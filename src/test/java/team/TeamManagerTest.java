@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import match.Match;
 import org.junit.*;
+import player.Player;
 
 import static org.junit.Assert.*;
 

@@ -1,8 +1,11 @@
 package commands;
 
-import player.*;
+import player.PlayerList;
+import player.Player;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 /**
  * An abstract class for comparing two or more players based on a specific statistic.
@@ -48,5 +51,4 @@ public abstract class PlayerStatComparer implements Command {
         return output.toString();
     }
 }
-
 

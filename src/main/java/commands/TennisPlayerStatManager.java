@@ -1,8 +1,11 @@
 package commands;
 
-import player.*;
+import player.PlayerList;
+import player.TennisPlayer;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.HashSet;
 
 /**
  * This is a class can get statistics for Tennis Players

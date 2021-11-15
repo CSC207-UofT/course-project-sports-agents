@@ -1,8 +1,13 @@
 package commands;
 
-import player.*;
+import player.PlayerList;
+import player.HockeyPlayer;
 
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+
 public class HockeyPlayerStatPredictor extends PlayerStatPredictor {
 
     public HockeyPlayerStatPredictor(PlayerList<HockeyPlayer> playerList) {
@@ -46,7 +51,7 @@ public class HockeyPlayerStatPredictor extends PlayerStatPredictor {
      * @throws Exception if one statistic is not recorded
      */
     private List<Double> getPastStats(HockeyPlayer player, String statistic,
-                                      List<String> seasons)
+                                       List<String> seasons)
             throws Exception {
         switch (statistic) {
             case "Goals":
@@ -72,7 +77,7 @@ public class HockeyPlayerStatPredictor extends PlayerStatPredictor {
      * @throws Exception if one season lacks recorded Goals data
      */
     private List<Double> getPastGoals(HockeyPlayer player,
-                                      List<String> seasons)
+                                       List<String> seasons)
             throws Exception {
         ArrayList<Double> pastGoals = new ArrayList<>();
         for (String season : seasons) {
@@ -89,7 +94,7 @@ public class HockeyPlayerStatPredictor extends PlayerStatPredictor {
      * @throws Exception if one season lacks recorded Assists data
      */
     private List<Double> getPastAssists(HockeyPlayer player,
-                                        List<String> seasons)
+                                         List<String> seasons)
             throws Exception {
         ArrayList<Double> pastAssists = new ArrayList<>();
         for (String season : seasons) {
@@ -106,7 +111,7 @@ public class HockeyPlayerStatPredictor extends PlayerStatPredictor {
      * @throws Exception if one season lacks recorded Points data
      */
     private List<Double> getPastPoints(HockeyPlayer player,
-                                       List<String> seasons)
+                                        List<String> seasons)
             throws Exception {
         ArrayList<Double> pastPoints = new ArrayList<>();
         for (String season : seasons) {
@@ -123,7 +128,7 @@ public class HockeyPlayerStatPredictor extends PlayerStatPredictor {
      * @throws Exception if one season lacks recorded Shots data
      */
     private List<Double> getPastShots(HockeyPlayer player,
-                                      List<String> seasons)
+                                       List<String> seasons)
             throws Exception {
         ArrayList<Double> pastShots = new ArrayList<>();
         for (String season : seasons) {
@@ -140,7 +145,7 @@ public class HockeyPlayerStatPredictor extends PlayerStatPredictor {
      * @throws Exception if one season lacks recorded Shooting Percentage data
      */
     private List<Double> getPastShootingPercentage(HockeyPlayer player,
-                                                   List<String> seasons)
+                                                    List<String> seasons)
             throws Exception {
         ArrayList<Double> pastShootingPercentage = new ArrayList<>();
         for (String season : seasons) {

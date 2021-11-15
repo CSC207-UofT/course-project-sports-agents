@@ -1,20 +1,20 @@
 package player;
 
-import java.util.*;
+import java.util.HashMap;
 
 /**
  * A Hockey Player Class.
  */
 public class HockeyPlayer extends Player {
     // Key is Season, Value is statistic in that season
-    private final HashMap<String, String> skaterShootsRecord;
-    private final HashMap<String, String> positionRecord;
-    private final HashMap<String, Integer> gamesPlayedRecord;
-    private final HashMap<String, Integer> goalsRecord;
-    private final HashMap<String, Integer> assistsRecord;
-    private final HashMap<String, Integer> pointsRecord;
-    private final HashMap<String, Integer> shotsRecord;
-    private final HashMap<String, Double> shootingPercentageRecord;
+    private HashMap<String, String> skaterShootsRecord;
+    private HashMap<String, String> positionRecord;
+    private HashMap<String, Integer> gamesPlayedRecord;
+    private HashMap<String, Integer> goalsRecord;
+    private HashMap<String, Integer> assistsRecord;
+    private HashMap<String, Integer> pointsRecord;
+    private HashMap<String, Integer> shotsRecord;
+    private HashMap<String, Double> shootingPercentageRecord;
 
     /**
      * Create a new Hockey Player
@@ -257,10 +257,6 @@ public class HockeyPlayer extends Player {
 
     @Override
     public String toString() {
-        return "name: " + this.name +  "\nskater shoots: " + this.skaterShootsRecord + "\nposition: " +
-                this.positionRecord + "\ngames played: " + this.gamesPlayedRecord + "\ngoals: " +
-                this.goalsRecord + "\nassists: " + this.assistsRecord + "\npoints: " + this.pointsRecord +
-                "\nshots: " + this.shotsRecord + "\nshooting percentage: " + this.shootingPercentageRecord + "\n";
+        return "Hockey Player " + super.toString();
     }
 }
-

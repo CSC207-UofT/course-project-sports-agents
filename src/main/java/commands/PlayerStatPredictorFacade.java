@@ -1,16 +1,12 @@
 package commands;
 
-
-import java.util.*;
+import java.util.List;
 
 public class PlayerStatPredictorFacade implements Command {
     private final HockeyPlayerStatPredictor hockeyPlayerStatPredictor;
-    private final BaseballPlayerStatPredictor baseballPlayerStatPredictor;
 
-    public PlayerStatPredictorFacade(HockeyPlayerStatPredictor hockeyPlayerStatPredictor,
-                                     BaseballPlayerStatPredictor baseballPlayerStatPredictor) {
+    public PlayerStatPredictorFacade(HockeyPlayerStatPredictor hockeyPlayerStatPredictor, BaseballPlayerStatPredictor baseballPlayerStatPredictor) {
         this.hockeyPlayerStatPredictor = hockeyPlayerStatPredictor;
-        this.baseballPlayerStatPredictor = baseballPlayerStatPredictor;
     }
 
     /**
@@ -30,11 +26,8 @@ public class PlayerStatPredictorFacade implements Command {
         switch(sport) {
             case "Hockey":
                 return this.hockeyPlayerStatPredictor.execute(arguments);
-            case "Baseball":
-                return this.baseballPlayerStatPredictor.execute(arguments);
             default:
                 throw new Exception("Invalid sport passed!");
         }
     }
 }
-

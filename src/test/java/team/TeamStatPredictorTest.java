@@ -7,6 +7,7 @@ import commands.TeamStatManager;
 import commands.TeamStatPredictor;
 import org.junit.*;
 import match.Match;
+import player.Player;
 
 public class TeamStatPredictorTest {
     TeamStatPredictor tsp;

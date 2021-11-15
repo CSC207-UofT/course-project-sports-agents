@@ -1,6 +1,7 @@
 package commands;
 
-import player.*;
+import player.PlayerList;
+import player.Player;
 
 import java.util.*;
 
@@ -42,4 +43,3 @@ public abstract class PlayerStatManager implements Command {
         return player.getName() + ": " + statValue;
     }
 }
-

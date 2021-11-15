@@ -1,6 +1,7 @@
 package player;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * This is an abstract class for any future players that need to be added.
@@ -13,8 +14,9 @@ public abstract class Player {
 
     /**
      * @param name the Player's name
+     * @throws Exception should not throw Exception
      */
-    public Player(String name) {
+    public Player(String name) throws Exception {
         this.name = name;
         this.teamRecord = new HashMap<String, String>();
     }
@@ -109,5 +111,4 @@ public abstract class Player {
         return this.name.hashCode();
     }
 }
-
 

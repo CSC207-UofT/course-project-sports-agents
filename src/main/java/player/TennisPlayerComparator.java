@@ -1,6 +1,6 @@
 package player;
 
-import java.util.*;
+import java.util.Comparator;
 
 /**
  * A comparator class for HockeyPlayerStatComparator. It compares and sorts
@@ -79,7 +79,6 @@ public class TennisPlayerComparator implements Comparator<TennisPlayer> {
 
 
 }
-
 
 
 

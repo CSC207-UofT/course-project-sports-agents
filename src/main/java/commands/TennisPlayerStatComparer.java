@@ -1,8 +1,11 @@
 package commands;
 
-import player.*;
+import player.TennisPlayer;
+import player.PlayerList;
+import player.TennisPlayerComparator;
 
 import java.util.*;
+
 
 /**
  * This is a class that compare two tennis players based on the given stat

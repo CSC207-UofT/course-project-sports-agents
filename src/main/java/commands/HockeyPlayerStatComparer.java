@@ -1,6 +1,8 @@
 package commands;
 
-import player.*;
+import player.PlayerList;
+import player.HockeyPlayer;
+import player.HockeyPlayerComparator;
 
 import java.util.*;
 
@@ -66,7 +68,7 @@ public class HockeyPlayerStatComparer extends PlayerStatComparer {
      * @throws Exception if one or more statistics are not recorded
      */
     private List<String> getStatValues(List<HockeyPlayer> players,
-                                       String statistic, String season)
+                                            String statistic, String season)
             throws Exception {
         switch (statistic) {
             case "Games Played":
@@ -94,7 +96,7 @@ public class HockeyPlayerStatComparer extends PlayerStatComparer {
      * @throws Exception if one player lacks the given season's games played data
      */
     private List<String> getValuesGamesPlayed(List<HockeyPlayer> players,
-                                              String season) throws Exception{
+                                                   String season) throws Exception{
         ArrayList<String> gamesPlayedValues = new ArrayList<String>();
         for (HockeyPlayer player : players) {
             gamesPlayedValues.add(player.getStatGamesPlayed(season).toString());
@@ -110,7 +112,7 @@ public class HockeyPlayerStatComparer extends PlayerStatComparer {
      * @throws Exception if one player lacks the given season's goals data
      */
     private List<String> getValuesGoals(List<HockeyPlayer> players,
-                                        String season) throws Exception{
+                                             String season) throws Exception{
         ArrayList<String> goalsValues = new ArrayList<String>();
         for (HockeyPlayer player : players) {
             goalsValues.add(player.getStatGoals(season).toString());
@@ -126,7 +128,7 @@ public class HockeyPlayerStatComparer extends PlayerStatComparer {
      * @throws Exception if one player lacks the given season's assists data
      */
     private List<String> getValuesAssists(List<HockeyPlayer> players,
-                                          String season) throws Exception{
+                                               String season) throws Exception{
         ArrayList<String> assistsValues = new ArrayList<String>();
         for (HockeyPlayer player : players) {
             assistsValues.add(player.getStatAssists(season).toString());
@@ -142,7 +144,7 @@ public class HockeyPlayerStatComparer extends PlayerStatComparer {
      * @throws Exception if one player lacks the given season's points data
      */
     private List<String> getValuesPoints(List<HockeyPlayer> players,
-                                         String season) throws Exception{
+                                              String season) throws Exception{
         ArrayList<String> pointsValues = new ArrayList<String>();
         for (HockeyPlayer player : players) {
             pointsValues.add(player.getStatPoints(season).toString());
@@ -158,7 +160,7 @@ public class HockeyPlayerStatComparer extends PlayerStatComparer {
      * @throws Exception if one player lacks the given season's shot data
      */
     private List<String> getValuesShots(List<HockeyPlayer> players,
-                                        String season) throws Exception{
+                                             String season) throws Exception{
         ArrayList<String> ShotsValues = new ArrayList<String>();
         for (HockeyPlayer player : players) {
             ShotsValues.add(player.getStatShots(season).toString());
@@ -174,7 +176,7 @@ public class HockeyPlayerStatComparer extends PlayerStatComparer {
      * @throws Exception if one player lacks the given season's shooting percentage data
      */
     private List<String> getValuesShootingPercentage(List<HockeyPlayer> players,
-                                                     String season) throws Exception{
+                                                          String season) throws Exception{
         ArrayList<String> ShootingPercentageValues = new ArrayList<String>();
         for (HockeyPlayer player : players) {
             ShootingPercentageValues.add(player.getStatShootingPercentage(season).toString());

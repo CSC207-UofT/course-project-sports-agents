@@ -1,6 +1,6 @@
 package player;
 
-import java.util.*;
+import java.util.HashMap;
 
 /**
  * This class represents a tennis player.
@@ -10,12 +10,12 @@ public class TennisPlayer extends Player {
     private final String country;
     // Key is season, Value is statistic in that season
     // TODO: Do we want to record age? Is it a stat people want?
-    private final HashMap<String, Integer> ageRecord;
-    private final HashMap<String, Integer> acesRecord;
-    private final HashMap<String, Integer> doubleFaultsRecord;
-    private final HashMap<String, Integer> servePointsRecord;
-    private final HashMap<String, Integer> firstServesRecord;
-    private final HashMap<String, Integer> breakPointsSavedRecord;
+    private HashMap<String, Integer> ageRecord;
+    private HashMap<String, Integer> acesRecord;
+    private HashMap<String, Integer> doubleFaultsRecord;
+    private HashMap<String, Integer> servePointsRecord;
+    private HashMap<String, Integer> firstServesRecord;
+    private HashMap<String, Integer> breakPointsSavedRecord;
 
     /**
      * Construct a tennis player with the following information from one season
@@ -48,17 +48,6 @@ public class TennisPlayer extends Player {
                 breakPointsSaved);
     }
 
-    public TennisPlayer(String name, String country) {
-        super(name);
-        this.ageRecord = new HashMap<>();
-        this.country = country;
-        this.acesRecord = new HashMap<>();
-        this.doubleFaultsRecord = new HashMap<>();
-        this.servePointsRecord = new HashMap<>();
-        this.firstServesRecord = new HashMap<>();
-        this.breakPointsSavedRecord = new HashMap<>();
-    }
-
     /**
      * @return Player's country
      */
@@ -78,8 +67,8 @@ public class TennisPlayer extends Player {
      * @throws Exception if data for the season is already recorded
      */
     public void addRecord(String season, int age, int aces, int doubleFaults,
-                          int servePoints, int firstServes,
-                          int breakPointsSaved) throws Exception {
+                           int servePoints, int firstServes,
+                           int breakPointsSaved) throws Exception {
         this.addStatAge(season, age);
         this.addStatAces(season, aces);
         this.addStatDoubleFaults(season, doubleFaults);
@@ -133,16 +122,6 @@ public class TennisPlayer extends Player {
     }
 
     /**
-     * Update the number of aces made by this player
-     * @param competition the needed competition
-     * @param aces number of new aces made by player
-     */
-    public void updateAces(String competition, int aces) {
-        int oldAces = this.acesRecord.get(competition);
-        this.acesRecord.put(competition, oldAces + aces);
-    }
-
-    /**
      * Record double faults data
      * @param season the season the data is from
      * @param doubleFaults the player's double faults data in that season
@@ -162,16 +141,6 @@ public class TennisPlayer extends Player {
     public Integer getStatDoubleFaults(String season) throws Exception {
         checkForSeason(this.doubleFaultsRecord, season, true);
         return this.doubleFaultsRecord.get(season);
-    }
-
-    /**
-     * Update the number of double faults made by this player
-     * @param competition the needed competition
-     * @param doubleFaults number of new double faults made by this player
-     */
-    public void updateDoubleFaults(String competition, int doubleFaults) {
-        int oldDoubleFaults = this.doubleFaultsRecord.get(competition);
-        this.doubleFaultsRecord.put(competition, oldDoubleFaults + doubleFaults);
     }
 
     /**
@@ -197,17 +166,6 @@ public class TennisPlayer extends Player {
     }
 
     /**
-     * Update the number of serve points won by this player
-     * @param competition the needed competition
-     * @param servePoints number of new serve points won by this player
-     */
-    public void updateServePoints(String competition, int servePoints) {
-        int oldServePoints = this.servePointsRecord.get(competition);
-        this.servePointsRecord.put(competition, oldServePoints + servePoints);
-    }
-
-
-    /**
      * Record first serves data
      * @param season the season the data is from
      * @param firstServes the player's first serve data in that season
@@ -227,16 +185,6 @@ public class TennisPlayer extends Player {
     public Integer getStatFirstServes(String season) throws Exception {
         checkForSeason(this.firstServesRecord, season, true);
         return this.firstServesRecord.get(season);
-    }
-
-    /**
-     * Update the number of first serves made by this player for a competition
-     * @param competition the needed competition
-     * @param firstServes number of first serves made by this player
-     */
-    public void updateFirstServes(String competition, int firstServes) {
-        int oldFirstServes = this.firstServesRecord.get(competition);
-        this.firstServesRecord.put(competition, oldFirstServes + firstServes);
     }
 
     /**
@@ -261,85 +209,9 @@ public class TennisPlayer extends Player {
         return this.breakPointsSavedRecord.get(season);
     }
 
-    /**
-     * Update the number of break points saved by this player
-     * @param competition the needed competition
-     * @param breakPointsSaved number of new break points saved
-     */
-    public void updateBreakPointsSaved(String competition, int breakPointsSaved) {
-        int oldBreakPointsSaved = this.breakPointsSavedRecord.get(competition);
-        this.breakPointsSavedRecord.put(competition, oldBreakPointsSaved + breakPointsSaved);
-    }
-
-    /**
-     * Add a competition to all maps for this player if the competition cannot be found in a map; all maps for this
-     * player have the same competitions
-     * @param competition the new competition to be added
-     * @param age the player's age during the given competition
-     */
-    public void addCompetition(String competition, int age) {
-        if (!(this.ageRecord.containsKey(competition))) {
-            this.ageRecord.put(competition, age);
-            this.acesRecord.put(competition, 0);
-            this.doubleFaultsRecord.put(competition, 0);
-            this.servePointsRecord.put(competition, 0);
-            this.firstServesRecord.put(competition, 0);
-            this.breakPointsSavedRecord.put(competition, 0);
-        }
-    }
-
-
-    /**
-     * Return a string representation of this tennis player
-     * @return tennis player string
-     */
     @Override
     public String toString() {
-        String partOne = super.toString();
-        return partOne + "\nAge: " + this.ageRecord + "\nNationality: " + this.country + "\nAces: " + this.acesRecord +
-                "\nDouble Faults: " + this.doubleFaultsRecord + "\nServe Points: " + this.servePointsRecord +
-                "\nFirst Serves: " + this.firstServesRecord + "\nBreak Points Saved: " + this.breakPointsSavedRecord;
-    }
-
-
-    /**
-     * Return this player's data for a given competition in string format
-     * @param competition the needed competition
-     * @return string of player's data for given competition
-     */
-    public String printCompetitionData(String competition) {
-        String partOne = super.toString();
-        return partOne + "\nAge: " + this.ageRecord.get(competition) + "\nNationality: " + this.country + "\nAces: "
-                + this.acesRecord.get(competition) + "\nDouble Faults: " + this.doubleFaultsRecord.get(competition) +
-                "\nServe Points: " + this.servePointsRecord.get(competition) + "\nFirst Serves: " +
-                this.firstServesRecord.get(competition) + "\nBreak Points Saved: " +
-                this.breakPointsSavedRecord.get(competition);
-    }
-
-
-    /**
-     * Return the given comparable stat, assuming the given stat is a possible stat associated with a tennis player.
-     * @param stat stat that needs to be reported (possible stats include aces, dauble faults, serve points,
-     *             first serves, age, and country
-     * @return the needed stat of the player (as a string)
-     */
-    public Map<String, Integer> getNeededStat(String stat) throws Exception {
-        switch (stat) {
-            case "aces":
-                return this.acesRecord;
-            case "age":
-                return this.ageRecord;
-            case "double faults":
-                return this.doubleFaultsRecord;
-            case "serve points":
-                return this.servePointsRecord;
-            case "first serves":
-                return this.firstServesRecord;
-            case "break points saved":
-                return this.breakPointsSavedRecord;
-        }
-        throw new Exception("Invalid stat!");
+        return "Tennis Player " + super.toString();
     }
 
 }
-

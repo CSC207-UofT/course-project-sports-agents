@@ -1,25 +1,21 @@
 package player;
 
-
-import team.*;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.HashMap;
 
 /**
  * Store a list of Players
  */
-public class  PlayerList<T extends Player> {
+public class PlayerList<T extends Player> {
     // Key is primary key for player, value is Player
-    protected HashMap<String, T> playerMap;
-
-
+    private HashMap<String, T> playerMap;
 
     /**
      * Create a new empty PlayerList
      */
     public PlayerList() {
         this.playerMap = new HashMap<String, T>();
-
     }
 
     /**
@@ -29,7 +25,6 @@ public class  PlayerList<T extends Player> {
     public void addPlayer(T player) {
         this.playerMap.put(player.getName(), player);
     }
-
 
     /**
      * Return the Players with the given name, if one exists
@@ -51,12 +46,4 @@ public class  PlayerList<T extends Player> {
         }
         return players;
     }
-
-    public HashMap<String, T> getPlayerMap() {
-        return playerMap;
-    }
-
-
-
 }
-
