@@ -96,9 +96,21 @@ in how they implement the execution of their respective commands and what kind
 of arguments they use. Additionally, this ensures we follow the Interface Segregation
 Principle, since we make sure that the client only implements the methods it needs.
 
-Dependency Inversion Principle: Each Use Case implements the `Command` 
-interface, meaning the `commandManager` depends on the `Command` interface
-rather than the specific class being used. 
+Dependency Inversion Principle: When accessing data, our use cases use
+objects, which are dependent on the `DataContainer` interface, instead of
+a specific implementation of a `DataContainer`. This means that our high-level
+modules (use cases) do not depend on low-level modules (clients of `DataContainer`). 
+This provides us with flexibility in the future, in case we want to change how we
+retrieve data or change the source from which we retrieve data. For example, if we
+retrieve data from a database instead of a .csv file. 
+
+Additionally, each Use Case implements the `Command` interface, meaning the 
+`commandManager` depends on the `Command` interface rather than a 
+specific client class. This allows us to have a wide variety of commands, which 
+do not depend on a single unnecessarily general abstract class. For example, 
+our statistics-related commands and league-related commands are completely different
+in their purposes, but are both commands. This provides us with future flexibility, in
+case we want to add more features to our app. 
 
 
 ## Packaging Strategies
