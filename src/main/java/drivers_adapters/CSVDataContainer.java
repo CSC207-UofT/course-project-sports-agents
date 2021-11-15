@@ -16,6 +16,11 @@ public class CSVDataContainer implements DataContainer {
     public HashMap<String, Player> playerMap;
     public HashMap<String, Team> teamMap;
 
+    public CSVDataContainer() {
+        playerMap = new HashMap<>();
+        teamMap = new HashMap<>();
+    }
+
     @Override
     public Player getPlayer(String sport, String name) throws Exception {
         if (playerMap.containsKey(name)) {
