@@ -30,10 +30,13 @@ public class CSVDataContainer implements DataContainer {
         switch (sport) {
             case "hockey":
                 getHockeyPlayer(name);
+                break;
             case "baseball":
                 getBaseballPlayer(name);
+                break;
             case "tennis":
                 getTennisPlayer(name);
+                break;
         }
         return playerMap.get(name);
     }
@@ -118,6 +121,7 @@ public class CSVDataContainer implements DataContainer {
                 throw new Exception(Exceptions.PLAYER_NOT_FOUND);
             }
         } catch (IOException e) {
+            System.out.println(e.getMessage());
             throw new Exception("File not found!");
         }
     }
