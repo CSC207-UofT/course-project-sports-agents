@@ -1,7 +1,9 @@
 # Progress Report
 
 ## Open questions your group is struggling with
-Should teams store player names for every season?
+Should teams store player names for every season? How should we deal with
+players that switch teams between seasons? Should those players be stored in
+both teams for that season?
 What other use cases should we consider for the fantasy league aspect of our app?
 
 ## What has worked well so far with your design
@@ -14,7 +16,7 @@ these heirarchies in our classes has also made it easier to expand our program t
 other sports. Moreover, similar to our success with the Command design pattern in Phase 0, 
 implementing the facade design pattern was very successful in Phase 1. Using the facade
 design pattern has allowed us to easily incorporate the use case classes for all three
-sports in the CommandManager class.
+sports in the `CommandManager` class.
 
 ## A summary of what each group member has been working on and plans to work on Next
 
