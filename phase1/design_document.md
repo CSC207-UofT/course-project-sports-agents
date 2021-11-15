@@ -108,11 +108,14 @@ package, all entity classes related to the fantasy league members are in the
 
 
 ## Design Patterns
-We implement a Command design pattern almost word-for-word from the example
+We implemented the Command design pattern almost word-for-word from the example
 in the `Command` interface, where all Use Cases handle the user's input
 by implementing `Command` interface with the `execute` method to perform the 
-action as specified.
-We implement a facade design pattern for `PlayerStatManager`, 
+action as specified by the arguments passed by the user. This allows us to achieve high
+decoupling by encapsulating our commands into completely separate processes, and ensuring
+that the command manager is not aware of the details in the commands.
+
+We implemented the facade design pattern for `PlayerStatManager`, 
 `PlayerStatComparer`, and `PlayerStatPredictor`. Each sport has their own 
 class handling the function for that class (to avoid violating the 
 Single Responsibility Principle), so the `PlayerStatManager` facade will
