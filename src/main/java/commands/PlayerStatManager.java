@@ -2,7 +2,6 @@ package commands;
 
 import constants.Exceptions;
 import player.Player;
-
 import java.util.*;
 
 /**
@@ -10,6 +9,7 @@ import java.util.*;
  * Each sport has a subclass handling that sport's statistics.
  */
 public abstract class PlayerStatManager implements Command {
+
     protected final Set<String> allowedStatsToGet;
 
     /**

@@ -1,41 +1,46 @@
 package commands;
 
-import player.PlayerList;
-import player.TennisPlayerComparator;
+import drivers_adapters.DataContainer;
 import player.TennisPlayer;
+import player.TennisPlayerComparator;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
+
 /**
- * A class that compare two tennis players, who played in a given competition, based on the given stat.
+ * This is a class that compare two tennis players based on the given stat
+ * in a given season.
  */
+
 public class TennisPlayerStatComparer extends PlayerStatComparer {
-    private final PlayerList<TennisPlayer> tennisPlayerList;
 
-
-    public TennisPlayerStatComparer(PlayerList<TennisPlayer> tennisPlayerList) {
-        super(new HashSet<>(Arrays.asList("Aces", "Double Faults", "Break Points", "First Serves",
-                "Break Points Saved", "Serve Points")));
-        this.tennisPlayerList = tennisPlayerList;
+    public TennisPlayerStatComparer() {
+        super(
+                new HashSet<String>(Arrays.asList("Age", "Aces", "Double Faults",
+                        "Serve Points", "First Serves", "Break Points Saved")));
     }
 
-
     /**
-     * Return the player with the highest specified stat (e.g. aces, double faults, first serves, serve points,
-     * and break points saved)
-     * @param arguments a list in the format: ["command", "sport", "player one", "player two",...., "stat",
-     *                  "competition"]
-     * @return the player with the higher stat, reported as maximum, and the player with the lower stat, reported
-     * as minimum
-     * @throws Exception if the players cannot be found, the competition cannot be found, or the specified stat cannot
-     * be compared
+     * Handle an argument requesting a comparison of two or more tennis
+     * players' statistics. Players are returned in descending order
+     * (best first, worst last)
+     * @param arguments A string array of form
+     *                  {"Tennis", "player name 1",
+     *                  "player name 2", ... , "season", "stat name"}
+     * @param container A container containing the data or means to retrieve it
+     * @return the players and their associated statistics
+     * @throws Exception if a player does not exist, or lacks data for the
+     * given season
      */
     @Override
-    public String execute(ArrayList<String> arguments) throws Exception {
+    public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
         int argSize = arguments.size();
-        List<String> names = arguments.subList(2, argSize - 2);
-        List<TennisPlayer> tennisPlayers = this.tennisPlayerList.getPlayers(names);
+        List<String> names = arguments.subList(1, argSize - 2);
+
+        ArrayList<TennisPlayer> tennisPlayers = new ArrayList<>();
+        for (String name: names) {
+            tennisPlayers.add((TennisPlayer) container.getPlayer("tennis", name));
+        }
 
         String season = arguments.get(argSize - 2);
 
@@ -47,6 +52,19 @@ public class TennisPlayerStatComparer extends PlayerStatComparer {
         List<String> playersStatValues = getStatValues(tennisPlayers,
                 statistic, season);
         return formatCompare(tennisPlayers, playersStatValues);
+    }
+
+    /**
+     * Cast a List of Players to List of TennisPlayers
+     * @param genericPlayers List of Player subclass castable to TennisPlayer
+     * @return List with original Players cast to TennisPlayer
+     */
+    private List<TennisPlayer> castToTennisPlayer(List<?> genericPlayers) {
+        ArrayList<TennisPlayer> tennisPlayers = new ArrayList<TennisPlayer>();
+        for (Object player : genericPlayers) {
+            tennisPlayers.add((TennisPlayer) player);
+        }
+        return tennisPlayers;
     }
 
     /**
@@ -62,6 +80,8 @@ public class TennisPlayerStatComparer extends PlayerStatComparer {
                                        String statistic, String season)
             throws Exception {
         switch (statistic) {
+            case "Age":
+                return getValuesAge(players, season);
             case "Aces":
                 return getValuesAces(players, season);
             case "Double Faults":
@@ -78,6 +98,22 @@ public class TennisPlayerStatComparer extends PlayerStatComparer {
     }
 
     /**
+     * Get the age statistics in the given season for all passed players
+     * @param players the list of Players to collect age statistics for
+     * @param season the season to consider
+     * @return the age statistics, for the list of players
+     * @throws Exception if one player lacks the given season's age data
+     */
+    private List<String> getValuesAge(List<TennisPlayer> players,
+                                      String season) throws Exception{
+        ArrayList<String> ageValues = new ArrayList<String>();
+        for (TennisPlayer player : players) {
+            ageValues.add(player.getStatAge(season).toString());
+        }
+        return ageValues;
+    }
+
+    /**
      * Get the aces statistics in the given season for all passed players
      * @param players the list of Players to collect aces statistics for
      * @param season the season to consider
@@ -86,7 +122,7 @@ public class TennisPlayerStatComparer extends PlayerStatComparer {
      */
     private List<String> getValuesAces(List<TennisPlayer> players,
                                        String season) throws Exception{
-        ArrayList<String> acesValues = new ArrayList<>();
+        ArrayList<String> acesValues = new ArrayList<String>();
         for (TennisPlayer player : players) {
             acesValues.add(player.getStatAces(season).toString());
         }
@@ -102,7 +138,7 @@ public class TennisPlayerStatComparer extends PlayerStatComparer {
      */
     private List<String> getValuesDoubleFaults(List<TennisPlayer> players,
                                                String season) throws Exception{
-        ArrayList<String> doubleFaultsValues = new ArrayList<>();
+        ArrayList<String> doubleFaultsValues = new ArrayList<String>();
         for (TennisPlayer player : players) {
             doubleFaultsValues.add(player.getStatDoubleFaults(season).toString());
         }
@@ -118,7 +154,7 @@ public class TennisPlayerStatComparer extends PlayerStatComparer {
      */
     private List<String> getValuesServePoints(List<TennisPlayer> players,
                                               String season) throws Exception{
-        ArrayList<String> servePointsValues = new ArrayList<>();
+        ArrayList<String> servePointsValues = new ArrayList<String>();
         for (TennisPlayer player : players) {
             servePointsValues.add(player.getStatServePoints(season).toString());
         }
@@ -134,7 +170,7 @@ public class TennisPlayerStatComparer extends PlayerStatComparer {
      */
     private List<String> getValuesFirstServes(List<TennisPlayer> players,
                                               String season) throws Exception{
-        ArrayList<String> firstServeValues = new ArrayList<>();
+        ArrayList<String> firstServeValues = new ArrayList<String>();
         for (TennisPlayer player : players) {
             firstServeValues.add(player.getStatFirstServes(season).toString());
         }
@@ -150,7 +186,7 @@ public class TennisPlayerStatComparer extends PlayerStatComparer {
      */
     private List<String> getValuesBreakPointsSaved(List<TennisPlayer> players,
                                                    String season) throws Exception{
-        ArrayList<String> breakPointsSavedValues = new ArrayList<>();
+        ArrayList<String> breakPointsSavedValues = new ArrayList<String>();
         for (TennisPlayer player : players) {
             breakPointsSavedValues.add(player.getStatBreakPointsSaved(season).toString());
         }

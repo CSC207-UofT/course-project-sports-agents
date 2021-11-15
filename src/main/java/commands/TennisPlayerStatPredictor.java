@@ -1,42 +1,43 @@
 package commands;
 
-import player.*;
-import java.util.*;
+import drivers_adapters.DataContainer;
+import player.TennisPlayer;
 
-/**
- * A class that will predict a tennis player's future performance for a given stat.
- */
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+
 public class TennisPlayerStatPredictor extends PlayerStatPredictor {
-    private final PlayerList<TennisPlayer> tennisPlayerList;
-    static final int PLAYER_NAME = 2;
-    static final int STAT = 3;
 
-    public TennisPlayerStatPredictor(PlayerList<TennisPlayer> tennisPlayerList) {
-        super(new HashSet<>(Arrays.asList("Aces", "Double Faults", "First Serves",
-                "Break Points Saved", "Serve Points")));
-        this.tennisPlayerList = tennisPlayerList;
+    public TennisPlayerStatPredictor() {
+        super(new HashSet<String>(Arrays.asList("Aces",
+                "Double Faults", "Serve Points", "First Serves",
+                "Break Points Saved")));
     }
 
-
     /**
-     * Make a prediction for the given player on the given stat using linear regression
-     *
-     * @param arguments is a list of strings in the format ["command", "sport", "player name", "stat"]
-     * @return the prediction of the stat based on historical data
-     * @throws Exception when the player name is not found or the demanded stat is invalid.
+     * Handle an argument requesting a prediction of a player's
+     * future statistic. Uses only requested seasons and assumes
+     * the seasons were played in the order provided. Uses linear
+     * regression.
+     * @param arguments A string array of form
+     *                  {"Tennis", "player name",
+     *                  "season 1", "season 2", ..., "stat name"}
+     * @param container A container containing the data or means to retrieve it
+     * @return the predicted statistic for the next season
+     * @throws Exception if the Player or season does not exist
      */
     @Override
-    public String execute(ArrayList<String> arguments) throws Exception {
-        String stat = arguments.get(STAT);
-        String name = arguments.get(PLAYER_NAME);
-        this.checkStatistic(stat);
+    public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
+        String name = arguments.get(1);
+        TennisPlayer player = (TennisPlayer) container.getPlayer("tennis", name);
 
-        // Find the needed tennis player from list of tennis players
-        TennisPlayer neededPlayer = this.tennisPlayerList.getPlayer(name);
+        int argSize = arguments.size();
+        List<String> seasons = arguments.subList(2, argSize - 1);
 
-        List<String> competitions = this.tennisPlayerList.getSeasons();
-        Map<String, Integer> competitionValues = this.getSeasonToIntsMap(competitions);
-
+        String statistic = arguments.get(argSize);
+        checkStatistic(statistic);
 
         // Get the integer values for all the competitions the player participated in, the stat values for
         // those competitions
@@ -157,5 +158,39 @@ public class TennisPlayerStatPredictor extends PlayerStatPredictor {
             pastServePoints.add((double) player.getStatServePoints(competition));
         }
         return pastServePoints;
+    }
+
+    /**
+     * Get the First Serves statistics for the given player in all given seasons
+     * @param player the Player to get Goals statistics for
+     * @param seasons the list of seasons to consider
+     * @return the First Serves statistics, for all given seasons
+     * @throws Exception if one season lacks recorded First Serves data
+     */
+    private List<Double> getPastFirstServes(TennisPlayer player,
+                                            List<String> seasons)
+            throws Exception {
+        ArrayList<Double> pastFirstServes = new ArrayList<>();
+        for (String season : seasons) {
+            pastFirstServes.add((double) player.getStatFirstServes(season));
+        }
+        return pastFirstServes;
+    }
+
+    /**
+     * Get the Break Points Saved statistics for the given player in all given seasons
+     * @param player the Player to get Goals statistics for
+     * @param seasons the list of seasons to consider
+     * @return the Break Points Saved statistics, for all given seasons
+     * @throws Exception if one season lacks recorded Break Points Saved data
+     */
+    private List<Double> getPastBreakPointsSaved(TennisPlayer player,
+                                                 List<String> seasons)
+            throws Exception {
+        ArrayList<Double> pastBreakPointsSaved = new ArrayList<>();
+        for (String season : seasons) {
+            pastBreakPointsSaved.add((double) player.getStatBreakPointsSaved(season));
+        }
+        return pastBreakPointsSaved;
     }
 }

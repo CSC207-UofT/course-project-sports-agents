@@ -1,16 +1,14 @@
 package commands;
 
+import drivers_adapters.DataContainer;
 import player.*;
 
 import java.util.*;
 
 public class BaseballPlayerStatPredictor extends PlayerStatPredictor{
-    private final PlayerList<BaseballPlayer> baseballPlayerList;
-
-    public BaseballPlayerStatPredictor(PlayerList<BaseballPlayer> baseballPlayerList) {
-        super(new HashSet<>(Arrays.asList("At Bats", "Runs",
+    public BaseballPlayerStatPredictor() {
+        super(new HashSet<String>(Arrays.asList("At Bats", "Runs",
                 "Hits", "Home Runs", "Runs Batted In", "Strike Outs", "Average")));
-        this.baseballPlayerList = baseballPlayerList;
     }
 
     /**
@@ -19,17 +17,21 @@ public class BaseballPlayerStatPredictor extends PlayerStatPredictor{
      * the seasons were played in the order provided. Uses linear
      * regression.
      * @param arguments A string array of form
-     *                  {"predict_player_stat", "Baseball", "player name",
+     *                  {"Baseball", "player name",
      *                  "season 1", "season 2", ..., "stat name"}
+     * @param container A container with the necessary data and the means to get it
      * @return the predicted statistic for the next season
      * @throws Exception if the Player or season does not exist
      */
     @Override
-    public String execute(ArrayList<String> arguments) throws Exception {
-        String name = arguments.get(2);
-        BaseballPlayer player = this.baseballPlayerList.getPlayer(name);
+    public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
+        String name = arguments.get(1);
+        BaseballPlayer player = (BaseballPlayer) container.getPlayer("baseball", name);
+
         int argSize = arguments.size();
-        String statistic = arguments.get(argSize - 1);
+        List<String> seasons = arguments.subList(2, argSize - 1);
+
+        String statistic = arguments.get(argSize);
         checkStatistic(statistic);
 
         List<String> allSeasons = this.baseballPlayerList.getSeasons();

@@ -1,37 +1,36 @@
 package commands;
 
+import drivers_adapters.DataContainer;
 import player.HockeyPlayer;
-import player.PlayerList;
-
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Arrays;
 
 public class HockeyPlayerStatManager extends PlayerStatManager {
-    private final PlayerList<HockeyPlayer> hockeyPlayerList;
 
-    public HockeyPlayerStatManager(PlayerList<HockeyPlayer> hockeyPlayerList) {
-        super(new HashSet<>(Arrays.asList("Team", "Skater Shoots",
-                "Position", "Games Played", "Goals", "Assists",
-                "Points", "Shots", "Shooting Percentage", "All Stats")));
-        this.hockeyPlayerList = hockeyPlayerList;
+    public HockeyPlayerStatManager() {
+        super(
+                new HashSet<String>(Arrays.asList("Team", "Skater Shoots",
+                        "Position", "Games Played", "Goals", "Assists",
+                        "Points", "Shots", "Shooting Percentage")));
     }
 
     /**
      * Handle an argument requesting a player's statistics
      * @param arguments A string array of form
-     *                  {"get_player_stat", "Hockey", "player name", "season", "stat name"}
+     *                  {"Hockey", "player name", "season", "stat name"}
+     * @param container A container containing the data or means to retrieve it
      * @return the requested statistic
      * @throws Exception if the Player or season does not exist
      */
     @Override
-    public String execute(ArrayList<String> arguments) throws Exception {
-        String name = arguments.get(2);
-        HockeyPlayer player = this.hockeyPlayerList.getPlayer(name);
+    public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
+        String name = arguments.get(1);
+        HockeyPlayer player = (HockeyPlayer) container.getPlayer("hockey", name);
 
-        String season = arguments.get(3);
+        String season = arguments.get(2);
 
-        String statistic = arguments.get(4);
+        String statistic = arguments.get(3);
         checkStatistic(statistic);
 
         switch (statistic) {
@@ -60,4 +59,3 @@ public class HockeyPlayerStatManager extends PlayerStatManager {
         }
     }
 }
-
