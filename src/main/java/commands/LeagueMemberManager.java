@@ -4,8 +4,9 @@ import constants.Exceptions;
 import leagueMember.LeagueMember;
 import match.Match;
 
-import java.util.List;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class LeagueMemberManager implements Command {
     // MemberMap stores the League Members of the fantasy league
@@ -17,8 +18,8 @@ public class LeagueMemberManager implements Command {
      * Create a new MemberManager with no Members and no Games
      */
     public LeagueMemberManager() {
-        this.LeagueMemberMap = new HashMap<String, LeagueMember>();
-        this.MatchMap = new HashMap<String, Match>();
+        this.LeagueMemberMap = new HashMap<>();
+        this.MatchMap = new HashMap<>();
     }
 
     public String execute(List<String> arguments) throws Exception {
