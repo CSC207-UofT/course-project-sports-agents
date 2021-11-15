@@ -1,5 +1,7 @@
 package drivers_adapters;
 
+import commands.Command;
+
 import java.util.Scanner;
 
 public class SportsApp {
@@ -23,7 +25,7 @@ public class SportsApp {
         String input = "";
         DataContainer container = new CSVDataContainer();
 
-        commandManager manager = new commandManager();
+        CommandManager manager = new CommandManager();
         while (!input.equals("quit")) {
             input = inputScanner.nextLine();
             try {
