@@ -10,7 +10,7 @@ import java.util.*;
  * Each sport has a subclass handling that sport's statistics.
  */
 public abstract class PlayerStatManager implements Command {
-    protected PlayerList playerList;
+
     protected final Set<String> allowedStatsToGet;
 
     /**
@@ -19,7 +19,6 @@ public abstract class PlayerStatManager implements Command {
      */
     public PlayerStatManager(PlayerList playerList,
                              Set<String> allowedStatsToGet) {
-        this.playerList = playerList;
         this.allowedStatsToGet = allowedStatsToGet;
     }
 

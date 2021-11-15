@@ -1,6 +1,7 @@
 package commands;
 
 import drivers_adapters.DataContainer;
+import player.HockeyPlayer;
 import player.TennisPlayer;
 import player.PlayerList;
 import player.TennisPlayerComparator;
@@ -37,8 +38,11 @@ public class TennisPlayerStatComparer extends PlayerStatComparer {
     public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
         int argSize = arguments.size();
         List<String> names = arguments.subList(2, argSize - 2);
-        List<?> genericPlayers = this.playerList.getPlayers(names);
-        List<TennisPlayer> tennisPlayers = castToTennisPlayer(genericPlayers);
+
+        ArrayList<TennisPlayer> tennisPlayers = new ArrayList<>();
+        for (String name: names) {
+            tennisPlayers.add((TennisPlayer) container.getPlayer("tennis", name));
+        }
 
         String season = arguments.get(argSize - 2);
 

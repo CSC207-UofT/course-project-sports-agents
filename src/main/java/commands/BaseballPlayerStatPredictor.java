@@ -25,7 +25,7 @@ public class BaseballPlayerStatPredictor extends PlayerStatPredictor{
     @Override
     public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
         String name = arguments.get(2);
-        BaseballPlayer player = (BaseballPlayer) this.playerList.getPlayer(name);
+        BaseballPlayer player = (BaseballPlayer) container.getPlayer("baseball", name);
 
         int argSize = arguments.size();
         List<String> seasons = arguments.subList(3, argSize - 1);

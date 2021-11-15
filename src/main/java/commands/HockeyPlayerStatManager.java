@@ -26,7 +26,7 @@ public class HockeyPlayerStatManager extends PlayerStatManager {
     @Override
     public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
         String name = arguments.get(2);
-        HockeyPlayer player = (HockeyPlayer) this.playerList.getPlayer(name);
+        HockeyPlayer player = (HockeyPlayer) container.getPlayer("hockey", name);
 
         String season = arguments.get(3);
 

@@ -8,7 +8,6 @@ import java.util.*;
  * Predict a player's performance in season 2021-2022 in a given statistic.
  */
 public abstract class PlayerStatPredictor implements Command {
-    protected PlayerList playerList;
     private final Set<String> allowedStatsToPredict;
 
     /**
@@ -17,7 +16,6 @@ public abstract class PlayerStatPredictor implements Command {
      */
     public PlayerStatPredictor(PlayerList playerList,
                                Set<String> allowedStatsToPredict) {
-        this.playerList = playerList;
         this.allowedStatsToPredict = allowedStatsToPredict;
     }
 

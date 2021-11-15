@@ -21,11 +21,11 @@ public class CSVDataContainer implements DataContainer {
             return playerMap.get(name);
         }
         switch (sport) {
-            case "Hockey":
+            case "hockey":
                 getHockeyPlayer(name);
-            case "Baseball":
+            case "baseball":
                 getBaseballPlayer(name);
-            case "Tennis":
+            case "tennis":
                 getTennisPlayer(name);
         }
         return playerMap.get(name);

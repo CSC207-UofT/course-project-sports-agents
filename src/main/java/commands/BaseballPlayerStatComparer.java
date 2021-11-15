@@ -3,6 +3,7 @@ package commands;
 import drivers_adapters.DataContainer;
 import player.*;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class BaseballPlayerStatComparer extends PlayerStatComparer{
@@ -21,15 +22,17 @@ public class BaseballPlayerStatComparer extends PlayerStatComparer{
      *                  {"compare_player_stat", "Baseball", "player name 1",
      *                  "player name 2", ... , "season", "stat name"}
      * @return the players and their associated statistics
-     * @throws Exception if a player does not exists, or lacks data for the
+     * @throws Exception if a player does not exist, or lacks data for the
      * given season
      */
     @Override
     public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
         int argSize = arguments.size();
         List<String> names = arguments.subList(2, argSize - 2);
-        List<?> genericPlayers = this.playerList.getPlayers(names);
-        List<BaseballPlayer> baseballPlayers = castToBaseballPlayer(genericPlayers);
+        ArrayList<BaseballPlayer> baseballPlayers = new ArrayList<>();
+        for (String name: names) {
+            baseballPlayers.add((BaseballPlayer) container.getPlayer("baseball", name));
+        }
 
         String season = arguments.get(argSize - 2);
 

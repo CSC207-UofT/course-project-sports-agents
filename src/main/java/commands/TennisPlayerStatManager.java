@@ -32,7 +32,7 @@ public class TennisPlayerStatManager extends PlayerStatManager {
     @Override
     public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
         String name = arguments.get(2);
-        TennisPlayer player = (TennisPlayer) this.playerList.getPlayer(name);
+        TennisPlayer player = (TennisPlayer) container.getPlayer("tennis", name);
 
         // TODO: It'd be nice to have all stats as cases, but this is different
         // because it doesn't need the season.
