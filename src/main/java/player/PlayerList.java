@@ -1,46 +1,49 @@
 package player;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.HashMap;
 
 /**
- * Read csv file and create a hash map where the key is the season and the value is a list of players objects.
+ * Store a list of Players
  */
-public class PlayerList {
-    private HashMap<String, List<HockeyPlayer>> playerMap = new HashMap<>();
+public class PlayerList<T extends Player> {
+    // Key is primary key for player, value is Player
+    private HashMap<String, T> playerMap;
 
+    /**
+     * Create a new empty PlayerList
+     */
     public PlayerList() {
-        String line = "";
-        String splitBy = ",";
-
-        try {
-            BufferedReader br = new BufferedReader(new FileReader("filtered_summary.csv"));
-            br.readLine(); //skip the first line.
-            List<String> seasons = Arrays.asList("20162017", "20172018", "20182019","20192020", "20202021");
-            for (String season: seasons){
-                this.playerMap.put(season, new ArrayList<>());} //adding seasons as keys with empty lists as values
-
-            while((line = br.readLine()) != null) {
-                String[] playerInfo = line.split(splitBy);
-                for (String season: seasons){
-                    if (playerInfo[1].equals(season)){ //adding player.Player object to the corresponding season
-                        this.playerMap.get(season).add(new HockeyPlayer(playerInfo[0], playerInfo[1],
-                                playerInfo[2], playerInfo[3], playerInfo[4], playerInfo[5], playerInfo[6],
-                                playerInfo[7], playerInfo[8], playerInfo[9], playerInfo[10]));
-                    }
-                }
-
-            }
-            br.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        this.playerMap = new HashMap<String, T>();
     }
 
-    public HashMap<String, List<HockeyPlayer>> getPlayerMap() {
-        return this.playerMap;
+    /**
+     * Add a Player to the PlayerList
+     * @param player the player to add
+     */
+    public void addPlayer(T player) {
+        this.playerMap.put(player.getName(), player);
+    }
+
+    /**
+     * Return the Players with the given name, if one exists
+     * @param name name to search for
+     * @return a Players with the given name
+     * @throws Exception if no such player exists
+     */
+    public T getPlayer(String name) throws Exception {
+        if (this.playerMap.containsKey(name)) {
+            return this.playerMap.get(name);
+        }
+        throw new Exception("The requested Player does not exist!");
+    }
+
+    public List<T> getPlayers(List<String> names) throws Exception {
+        List<T> players = new ArrayList<T>();
+        for (String name : names) {
+            players.add(this.getPlayer(name));
+        }
+        return players;
     }
 }

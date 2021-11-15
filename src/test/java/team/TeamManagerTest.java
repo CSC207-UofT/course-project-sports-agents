@@ -2,12 +2,9 @@ package team;
 
 import java.util.ArrayList;
 
-import team.Team;
 import match.Match;
 import org.junit.*;
 import player.Player;
-import team.HockeyTeam;
-import team.TeamManager;
 
 import static org.junit.Assert.*;
 

@@ -1,8 +1,11 @@
 package commands;
 
+import constants.Exceptions;
 import leagueMember.LeagueMember;
+import leagueMember.LeagueStorage;
 import match.Match;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -32,8 +35,51 @@ public class LeagueMemberManager implements Command {
                 return resolveMatch(arguments);
             case "member_info":
                 return memberInfo(arguments);
+            case "save":
+                return saveLeague(arguments);
+            case "load":
+                return loadLeague(arguments);
             default:
-                throw new Exception("Invalid Command provided!");
+                throw new Exception(Exceptions.WRONG_COMMAND);
+        }
+    }
+
+    private String loadLeague(ArrayList<String> arguments) {
+        String path = arguments.get(1);
+        try {
+            ObjectInputStream in = new ObjectInputStream(new FileInputStream(path));
+            LeagueStorage loaded = (LeagueStorage) in.readObject();
+
+            this.LeagueMemberMap = loaded.LeagueMemberMap;
+            this.MatchMap = loaded.MatchMap;
+
+            in.close();
+
+            return "Successfully loaded the league. Welcome back!";
+
+        } catch (FileNotFoundException e) {
+            return "Could not find the given path";
+        } catch (IOException | ClassNotFoundException e) {
+            return "Could not load the given path";
+        }
+    }
+
+    private String saveLeague(ArrayList<String> arguments) throws Exception {
+        String path = arguments.get(1);
+        LeagueStorage to_save = new LeagueStorage(LeagueMemberMap, MatchMap);
+
+        try {
+            FileOutputStream fout = new FileOutputStream(path);
+            ObjectOutputStream out = new ObjectOutputStream(fout);
+
+            out.writeObject(to_save);
+            out.flush();
+            out.close();
+
+            return "Successfully saved to " + path;
+        }
+        catch (Exception e) {
+            throw new Exception("Could not save to " + path);
         }
     }
 
@@ -46,7 +92,7 @@ public class LeagueMemberManager implements Command {
     private String addMember(ArrayList<String> arguments) throws Exception {
         String leagueMemberName = arguments.get(1);
         if (this.LeagueMemberMap.containsKey(leagueMemberName)) {
-            throw new Exception(leagueMemberName + " is already an existing Member!");
+            throw new Exception(Exceptions.MEMBER_EXISTS);
         }
         LeagueMember addedLeagueMember = new LeagueMember(leagueMemberName);
         this.LeagueMemberMap.put(leagueMemberName, addedLeagueMember);
@@ -63,7 +109,7 @@ public class LeagueMemberManager implements Command {
     private String createMatch(ArrayList<String> arguments) throws Exception {
         String matchName = arguments.get(1);
         if (this.MatchMap.containsKey(matchName)) {
-            throw new Exception(matchName + " is already an existing Match!");
+            throw new Exception(Exceptions.MATCH_EXISTS);
         }
         String team1Name = arguments.get(2);
         String team2name = arguments.get(3);
@@ -136,7 +182,7 @@ public class LeagueMemberManager implements Command {
      */
     private void verifyMember(String leagueMemberName) throws Exception {
         if (!this.LeagueMemberMap.containsKey(leagueMemberName)) {
-            throw new Exception(leagueMemberName + " is not an existing Member!");
+            throw new Exception(Exceptions.NO_MEMBER);
         }
     }
 
@@ -147,7 +193,7 @@ public class LeagueMemberManager implements Command {
      */
     private void verifyMatch(String matchName) throws Exception {
         if (!this.MatchMap.containsKey(matchName)) {
-            throw new Exception(matchName + " is not an existing Match!");
+            throw new Exception(Exceptions.NO_MATCH);
         }
     }
 }
