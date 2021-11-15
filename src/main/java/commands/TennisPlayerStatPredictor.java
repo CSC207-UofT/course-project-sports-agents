@@ -8,7 +8,7 @@ import java.util.*;
 public class TennisPlayerStatPredictor extends PlayerStatPredictor {
 
     public TennisPlayerStatPredictor() {
-        super(new HashSet<String>(Arrays.asList("Aces",
+        super(new HashSet<>(Arrays.asList("Aces",
                 "Double Faults", "Serve Points", "First Serves",
                 "Break Points Saved")));
     }
@@ -37,13 +37,7 @@ public class TennisPlayerStatPredictor extends PlayerStatPredictor {
         List<String> playerSeasons = player.getCompetitions();
         List<Double> pastStats = getPastStats(player, statistic);
 
-        Map<String, Integer> seasonsToIntMap = this.getSeasonToIntsMap(playerSeasons);
-
-        // Get the integer value associated with each season the player participated in
-        List<Integer> seasonInts = new ArrayList<>();
-        for (String playerSeason : playerSeasons) {
-            seasonInts.add(seasonsToIntMap.get(playerSeason));
-        }
+        List<Integer> seasonInts = this.getXAxis(playerSeasons);
 
         double prediction = linearExtrapolate(seasonInts, pastStats);
         return formatOut(playerSeasons, pastStats, prediction);

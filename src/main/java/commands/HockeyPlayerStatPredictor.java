@@ -25,23 +25,14 @@ public class HockeyPlayerStatPredictor extends PlayerStatPredictor {
      */
     @Override
     public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
+        String statistic = arguments.get(2);
+        checkStatistic(statistic);
         String name = arguments.get(1);
         HockeyPlayer player = (HockeyPlayer) container.getPlayer("hockey", name);
 
-        String statistic = arguments.get(2);
-        checkStatistic(statistic);
-
-        // Get a list of the player's stats for all the seasons they participated in
         List<String> playerSeasons = player.getSeasons();
         List<Double> pastStats = getPastStats(player, statistic, playerSeasons);
-
-        Map<String, Integer> seasonsToIntMap = this.getSeasonToIntsMap(playerSeasons);
-
-        // Get the integer value associated with each season the player participated in
-        List<Integer> seasonInts = new ArrayList<>();
-        for (String playerSeason : playerSeasons) {
-            seasonInts.add(seasonsToIntMap.get(playerSeason));
-        }
+        List<Integer> seasonInts = this.getXAxis(playerSeasons);
 
         double prediction = linearExtrapolate(seasonInts, pastStats);
         return formatOut(playerSeasons, pastStats, prediction);

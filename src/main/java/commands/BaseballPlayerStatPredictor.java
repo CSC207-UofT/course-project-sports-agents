@@ -26,21 +26,13 @@ public class BaseballPlayerStatPredictor extends PlayerStatPredictor{
     public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
         String name = arguments.get(1);
         BaseballPlayer player = (BaseballPlayer) container.getPlayer("baseball", name);
+        List<String> playerSeasons = player.getSeasons();
 
         String statistic = arguments.get(2);
         checkStatistic(statistic);
 
-        // Get a list of the player's stats for all the seasons they participated in
-        List<String> playerSeasons = player.getSeasons();
         List<Double> pastStats = getPastStats(player, statistic, playerSeasons);
-
-        Map<String, Integer> seasonsToIntMap = this.getSeasonToIntsMap(playerSeasons);
-
-        // Get the integer value associated with each season the player participated in
-        List<Integer> seasonInts = new ArrayList<>();
-        for (String playerSeason : playerSeasons) {
-            seasonInts.add(seasonsToIntMap.get(playerSeason));
-        }
+        List<Integer> seasonInts = this.getXAxis(playerSeasons);
 
         double prediction = linearExtrapolate(seasonInts, pastStats);
         return formatOut(playerSeasons, pastStats, prediction);
