@@ -3,6 +3,7 @@ package constants;
 public class Exceptions {
 
     public static final String WRONG_COMMAND = "Given command not found";
+    public static final String WRONG_SPORT = "The sport you entered is currently not supported";
     public static final String PLAYER_NOT_FOUND = "Given player(s) not found";
     public static final String TEAM_NOT_FOUND = "Given team not found";
     public static final String INVALID_ARGUMENT = "Given argument(s) not valid";
