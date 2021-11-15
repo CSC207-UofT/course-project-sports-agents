@@ -32,7 +32,7 @@ public class TennisPlayerStatComparer extends PlayerStatComparer {
      * given season
      */
     @Override
-    public String execute(List<String> arguments) throws Exception {
+    public String execute(ArrayList<String> arguments) throws Exception {
         int argSize = arguments.size();
         List<String> names = arguments.subList(2, argSize - 2);
         List<?> genericPlayers = this.playerList.getPlayers(names);

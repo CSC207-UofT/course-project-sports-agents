@@ -27,7 +27,7 @@ public class HockeyPlayerStatPredictor extends PlayerStatPredictor {
      * @throws Exception if the Player or season does not exist
      */
     @Override
-    public String execute(List<String> arguments) throws Exception {
+    public String execute(ArrayList<String> arguments) throws Exception {
         String name = arguments.get(2);
         HockeyPlayer player = (HockeyPlayer) this.playerList.getPlayer(name);
 

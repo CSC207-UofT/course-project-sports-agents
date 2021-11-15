@@ -3,6 +3,7 @@ package commands;
 import player.PlayerList;
 import player.TennisPlayer;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.HashSet;
@@ -28,7 +29,7 @@ public class TennisPlayerStatManager extends PlayerStatManager {
      * @throws Exception if the Player or season does not exist
      */
     @Override
-    public String execute(List<String> arguments) throws Exception {
+    public String execute(ArrayList<String> arguments) throws Exception {
         String name = arguments.get(2);
         TennisPlayer player = (TennisPlayer) this.playerList.getPlayer(name);
 
