@@ -10,7 +10,7 @@ import java.util.Map;
 /**
  * Store a list of Players
  */
-public abstract class PlayerList<T extends Player> {
+public class PlayerList<T extends Player> {
     // Key is primary key for player, value is Player
     private Map<String, T> playerMap;
     private List<String> seasons;

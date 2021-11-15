@@ -1,14 +1,14 @@
 package commands;
 
 import player.HockeyPlayer;
-import player.HockeyPlayerList;
+import player.PlayerList;
 
 import java.util.*;
 
 public class HockeyPlayerStatPredictor extends PlayerStatPredictor {
-    protected final HockeyPlayerList hockeyPlayerList;
+    protected final PlayerList<HockeyPlayer> hockeyPlayerList;
 
-    public HockeyPlayerStatPredictor(HockeyPlayerList hockeyPlayerList) {
+    public HockeyPlayerStatPredictor(PlayerList<HockeyPlayer> hockeyPlayerList) {
         super(new HashSet<>(Arrays.asList("Goals", "Assists",
                 "Points", "Shots", "Shooting Percentage")));
         this.hockeyPlayerList = hockeyPlayerList;
@@ -25,7 +25,7 @@ public class HockeyPlayerStatPredictor extends PlayerStatPredictor {
      * @throws Exception if the Player or season does not exist
      */
     @Override
-    public String execute(List<String> arguments) throws Exception {
+    public String execute(ArrayList<String> arguments) throws Exception {
         String name = arguments.get(2);
         HockeyPlayer player = this.hockeyPlayerList.getPlayer(name);
 

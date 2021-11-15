@@ -10,7 +10,7 @@ public class commandManager {
     private final HashMap<String, Command> commandDictionary = new HashMap<>();
 
     public commandManager() {
-        HockeyPlayerList hockeyPlayerList = new HockeyPlayerList();
+        PlayerList<HockeyPlayer> hockeyPlayerList = new PlayerList<>();
         HockeyPlayerStatManager hockeyPlayerStatManager =
                 new HockeyPlayerStatManager(hockeyPlayerList);
         HockeyPlayerStatComparer hockeyPlayerStatComparer =
@@ -18,13 +18,15 @@ public class commandManager {
         HockeyPlayerStatPredictor hockeyPlayerStatPredictor =
                 new HockeyPlayerStatPredictor(hockeyPlayerList);
 
-        TennisPlayerList tennisPlayerList = new TennisPlayerList();
+        PlayerList<TennisPlayer> tennisPlayerList = new PlayerList<>();
         TennisPlayerStatManager tennisPlayerStatManager =
                 new TennisPlayerStatManager(tennisPlayerList);
         TennisPlayerStatComparer tennisPlayerStatComparer =
                 new TennisPlayerStatComparer(tennisPlayerList);
         TennisPlayerStatPredictor tennisPlayerStatPredictor =
                 new TennisPlayerStatPredictor(tennisPlayerList);
+
+        PlayerList<BaseballPlayer> baseballPlayerList = new PlayerList<>();
 
         PlayerStatManagerFacade playerStatManagerFacade =
                 new PlayerStatManagerFacade(hockeyPlayerStatManager,
@@ -37,7 +39,9 @@ public class commandManager {
         this.commandDictionary.put("compare_player_stat", playerStatComparerFacade);
 
         PlayerStatPredictorFacade playerStatPredictorFacade =
-                new PlayerStatPredictorFacade(hockeyPlayerStatPredictor, tennisPlayerStatPredictor);
+                new PlayerStatPredictorFacade(hockeyPlayerStatPredictor,
+                        tennisPlayerStatPredictor,
+                        baseballPlayerStatPredictor);
         this.commandDictionary.put("predict_player_stat", playerStatPredictorFacade);
 
         // TODO: Refactor teams, then make LeagueMemberManager work with injected TeamList

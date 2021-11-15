@@ -3,7 +3,6 @@ package player;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -29,7 +28,7 @@ public class PlayerListTest {
                 "20202021", "STL", "L", "C",
                 56,24,30,54,129,
                 18.6);
-        this.playerList = new HockeyPlayerList();
+        this.playerList = new PlayerList<>();
         this.playerList.addPlayer(this.player1);
         this.playerList.addPlayer(this.player2);
         this.playerList.addPlayer(this.player3);

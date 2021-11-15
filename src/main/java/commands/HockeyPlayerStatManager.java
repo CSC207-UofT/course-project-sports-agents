@@ -1,16 +1,16 @@
 package commands;
 
 import player.HockeyPlayer;
-import player.HockeyPlayerList;
+import player.PlayerList;
 
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
+import java.util.ArrayList;
 
 public class HockeyPlayerStatManager extends PlayerStatManager {
-    private final HockeyPlayerList hockeyPlayerList;
+    private final PlayerList<HockeyPlayer> hockeyPlayerList;
 
-    public HockeyPlayerStatManager(HockeyPlayerList hockeyPlayerList) {
+    public HockeyPlayerStatManager(PlayerList<HockeyPlayer> hockeyPlayerList) {
         super(new HashSet<>(Arrays.asList("Team", "Skater Shoots",
                 "Position", "Games Played", "Goals", "Assists",
                 "Points", "Shots", "Shooting Percentage", "All Stats")));
@@ -25,7 +25,7 @@ public class HockeyPlayerStatManager extends PlayerStatManager {
      * @throws Exception if the Player or season does not exist
      */
     @Override
-    public String execute(List<String> arguments) throws Exception {
+    public String execute(ArrayList<String> arguments) throws Exception {
         String name = arguments.get(2);
         HockeyPlayer player = this.hockeyPlayerList.getPlayer(name);
 

@@ -1,19 +1,20 @@
 package commands;
 
+import player.PlayerList;
 import player.TennisPlayerComparator;
 import player.TennisPlayer;
-import player.TennisPlayerList;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 /**
  * A class that compare two tennis players, who played in a given competition, based on the given stat.
  */
 public class TennisPlayerStatComparer extends PlayerStatComparer {
-    private final TennisPlayerList tennisPlayerList;
+    private final PlayerList<TennisPlayer> tennisPlayerList;
 
 
-    public TennisPlayerStatComparer(TennisPlayerList tennisPlayerList) {
+    public TennisPlayerStatComparer(PlayerList<TennisPlayer> tennisPlayerList) {
         super(new HashSet<>(Arrays.asList("Aces", "Double Faults", "Break Points", "First Serves",
                 "Break Points Saved", "Serve Points")));
         this.tennisPlayerList = tennisPlayerList;
@@ -31,7 +32,7 @@ public class TennisPlayerStatComparer extends PlayerStatComparer {
      * be compared
      */
     @Override
-    public String execute(List<String> arguments) throws Exception {
+    public String execute(ArrayList<String> arguments) throws Exception {
         int argSize = arguments.size();
         List<String> names = arguments.subList(2, argSize - 2);
         List<TennisPlayer> tennisPlayers = this.tennisPlayerList.getPlayers(names);

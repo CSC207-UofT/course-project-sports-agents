@@ -1,7 +1,6 @@
 package commands;
 
 import constants.Exceptions;
-import player.PlayerList;
 import player.Player;
 
 import java.util.*;

@@ -7,11 +7,11 @@ import java.util.*;
  * A class that will predict a tennis player's future performance for a given stat.
  */
 public class TennisPlayerStatPredictor extends PlayerStatPredictor {
-    private final TennisPlayerList tennisPlayerList;
+    private final PlayerList<TennisPlayer> tennisPlayerList;
     static final int PLAYER_NAME = 2;
     static final int STAT = 3;
 
-    public TennisPlayerStatPredictor(TennisPlayerList tennisPlayerList) {
+    public TennisPlayerStatPredictor(PlayerList<TennisPlayer> tennisPlayerList) {
         super(new HashSet<>(Arrays.asList("Aces", "Double Faults", "First Serves",
                 "Break Points Saved", "Serve Points")));
         this.tennisPlayerList = tennisPlayerList;
@@ -26,7 +26,7 @@ public class TennisPlayerStatPredictor extends PlayerStatPredictor {
      * @throws Exception when the player name is not found or the demanded stat is invalid.
      */
     @Override
-    public String execute(List<String> arguments) throws Exception {
+    public String execute(ArrayList<String> arguments) throws Exception {
         String stat = arguments.get(STAT);
         String name = arguments.get(PLAYER_NAME);
         this.checkStatistic(stat);

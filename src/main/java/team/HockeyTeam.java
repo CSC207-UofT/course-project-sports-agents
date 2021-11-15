@@ -42,7 +42,7 @@ public class HockeyTeam extends Team {
 
     /**
      * Set goals for
-     * @param goalsFor
+     * @param goalsFor goals for the team
      */
     public void setGoalsFor(int goalsFor){
         this.goalsFor = goalsFor;
@@ -58,7 +58,7 @@ public class HockeyTeam extends Team {
 
     /**
      * Set goals against
-     * @param goalsAgainst
+     * @param goalsAgainst goals against the team
      */
     public void setGoalsAgainst(int goalsAgainst){
         this.goalsAgainst = goalsAgainst;
@@ -74,7 +74,7 @@ public class HockeyTeam extends Team {
 
     /**
      * Set face off win percentage
-     * @param faceOffWinPercentage
+     * @param faceOffWinPercentage win percentage of face offs
      */
     public void setFaceOffWinPercentage(float faceOffWinPercentage){
         this.faceOffWinPercentage = faceOffWinPercentage;
@@ -90,7 +90,7 @@ public class HockeyTeam extends Team {
 
     /**
      * Set shots for
-     * @param shotsFor
+     * @param shotsFor shots for this team
      */
     public void setShotsFor(int shotsFor){
         this.shotsFor = shotsFor;
@@ -106,7 +106,7 @@ public class HockeyTeam extends Team {
 
     /**
      * Set shots against
-     * @param shotsAgainst
+     * @param shotsAgainst shots against this team
      */
     public void setShotsAgainst(int shotsAgainst){
         this.shotsAgainst = shotsAgainst;
@@ -122,7 +122,7 @@ public class HockeyTeam extends Team {
 
     /**
      * Set regulation wins
-     * @param regulationWins
+     * @param regulationWins the team's regulation wins
      */
     public void setRegulationWins(int regulationWins){
         this.regulationWins = regulationWins;
@@ -138,7 +138,7 @@ public class HockeyTeam extends Team {
 
     /**
      * Set regulation plus overtime wins
-     * @param regulationPlusOvertimeWins
+     * @param regulationPlusOvertimeWins the team's regulation and overtime wins
      */
     public void setRegulationPlusOvertimeWins(int regulationPlusOvertimeWins){
         this.regulationPlusOvertimeWins = regulationPlusOvertimeWins;
@@ -154,7 +154,7 @@ public class HockeyTeam extends Team {
 
     /**
      * Set shoot out games won
-     * @param shootOutGamesWon
+     * @param shootoutGamesWon number of shootout games won
      */
     public void setShootoutGamesWon(int shootoutGamesWon){
         this.shootoutGamesWon = shootoutGamesWon;
@@ -170,7 +170,7 @@ public class HockeyTeam extends Team {
 
     /**
      * Set overtime losses
-     * @param overtimeLosses
+     * @param overtimeLosses number of overtime losses
      */
     public void setOvertimeLosses(int overtimeLosses){
         this.overtimeLosses = overtimeLosses;

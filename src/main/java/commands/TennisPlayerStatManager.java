@@ -1,20 +1,20 @@
 package commands;
 
 import player.TennisPlayer;
-import player.TennisPlayerList;
+import player.PlayerList;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 
 /**
  * A class that can report a stat for a tennis player who played at a competition.
  */
 public class TennisPlayerStatManager extends PlayerStatManager {
-    final TennisPlayerList tennisPlayerList;
+    final PlayerList<TennisPlayer> tennisPlayerList;
 
 
-    public TennisPlayerStatManager(TennisPlayerList tennisPlayerList) {
+    public TennisPlayerStatManager(PlayerList<TennisPlayer> tennisPlayerList) {
         super(new HashSet<>(Arrays.asList("Age", "Country", "Aces", "Double Faults",
                 "Serve Points", "First Serves", "Break Points Saved", "All Stats")));
         this.tennisPlayerList = tennisPlayerList;
@@ -29,7 +29,7 @@ public class TennisPlayerStatManager extends PlayerStatManager {
      * @throws Exception if the competition or player could not be found
      */
     @Override
-    public String execute(List<String> arguments) throws Exception {
+    public String execute(ArrayList<String> arguments) throws Exception {
         String name = arguments.get(2);
         TennisPlayer player = this.tennisPlayerList.getPlayer(name);
 

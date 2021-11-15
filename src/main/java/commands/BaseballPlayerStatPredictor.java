@@ -5,9 +5,9 @@ import player.*;
 import java.util.*;
 
 public class BaseballPlayerStatPredictor extends PlayerStatPredictor{
-    private final BaseballPlayerList baseballPlayerList;
+    private final PlayerList<BaseballPlayer> baseballPlayerList;
 
-    public BaseballPlayerStatPredictor(BaseballPlayerList baseballPlayerList) {
+    public BaseballPlayerStatPredictor(PlayerList<BaseballPlayer> baseballPlayerList) {
         super(new HashSet<>(Arrays.asList("At Bats", "Runs",
                 "Hits", "Home Runs", "Runs Batted In", "Strike Outs", "Average")));
         this.baseballPlayerList = baseballPlayerList;
@@ -25,7 +25,7 @@ public class BaseballPlayerStatPredictor extends PlayerStatPredictor{
      * @throws Exception if the Player or season does not exist
      */
     @Override
-    public String execute(List<String> arguments) throws Exception {
+    public String execute(ArrayList<String> arguments) throws Exception {
         String name = arguments.get(2);
         BaseballPlayer player = this.baseballPlayerList.getPlayer(name);
         int argSize = arguments.size();

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TeamManager {
-    private List<Team> teams;
+    private final List<Team> teams;
 
     public TeamManager(){
         teams = new ArrayList<Team>();

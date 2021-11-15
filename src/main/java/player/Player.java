@@ -1,7 +1,6 @@
 package player;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -11,7 +10,7 @@ import java.util.Map;
 public abstract class Player {
     protected final String name;
     // Keys are seasons, values are Team name
-    protected HashMap<String, String> teamRecord;
+    protected final HashMap<String, String> teamRecord;
 
     /**
      * @param name the Player's name

@@ -65,7 +65,7 @@ public class BaseballTeam extends Team {
 
     /**
      * Set games started
-     * @param gamesStarted
+     * @param gamesStarted number of games started by the team
      */
     public void setGamesStarted(int gamesStarted){
         this.gamesStarted = gamesStarted;
@@ -81,7 +81,7 @@ public class BaseballTeam extends Team {
 
     /**
      * Set complete games
-     * @param completeGames
+     * @param completeGames number of games completed by the team
      */
     public void setCompleteGames(int completeGames){
         this.completeGames = completeGames;
@@ -97,7 +97,7 @@ public class BaseballTeam extends Team {
 
     /**
      * Set shutouts
-     * @param shutouts
+     * @param shutouts number of shutouts
      */
     public void setShutouts(int shutouts){
         this.shutouts = shutouts;
@@ -113,7 +113,7 @@ public class BaseballTeam extends Team {
 
     /**
      * Set saves
-     * @param saves
+     * @param saves number of saves
      */
     public void setSavesGoalsFor(int saves){
         this.saves = saves;
@@ -129,7 +129,7 @@ public class BaseballTeam extends Team {
 
     /**
      * Set save opportunities
-     * @param saveOpportunities
+     * @param saveOpportunities number of opportunities
      */
     public void setSaveOpportunities(int saveOpportunities){
         this.saveOpportunities = saveOpportunities;
@@ -145,7 +145,7 @@ public class BaseballTeam extends Team {
 
     /**
      * Set innings pitched
-     * @param inningsPitched
+     * @param inningsPitched number of innings pitched
      */
     public void setInningsPitched(int inningsPitched){
         this.inningsPitched = inningsPitched;
@@ -161,7 +161,7 @@ public class BaseballTeam extends Team {
 
     /**
      * Set hits allowed
-     * @param hitsAllowed
+     * @param hitsAllowed number of hits allowed
      */
     public void setHitsAllowed(int hitsAllowed){
         this.hitsAllowed = hitsAllowed;
@@ -177,7 +177,7 @@ public class BaseballTeam extends Team {
 
     /**
      * Set runs allowed
-     * @param runsAllowed
+     * @param runsAllowed number of runs allowed
      */
     public void setRunsAllowed(int runsAllowed){
         this.runsAllowed = runsAllowed;
@@ -193,7 +193,7 @@ public class BaseballTeam extends Team {
 
     /**
      * Set earned runs
-     * @param earnedRuns
+     * @param earnedRuns number of earned runs
      */
     public void setEarnedRuns(int earnedRuns){
         this.earnedRuns = earnedRuns;
@@ -209,7 +209,7 @@ public class BaseballTeam extends Team {
 
     /**
      * Set home runs allowed
-     * @param homeRunsAllowed
+     * @param homeRunsAllowed number of home runs allowed
      */
     public void setHomeRunsAllowed(int homeRunsAllowed){
         this.homeRunsAllowed = homeRunsAllowed;
@@ -225,7 +225,7 @@ public class BaseballTeam extends Team {
 
     /**
      * Set hit batsmen
-     * @param hitBatsmen
+     * @param hitBatsmen number of hit batsmen
      */
     public void setHitBatsmen(int hitBatsmen){
         this.hitBatsmen = hitBatsmen;
@@ -241,7 +241,7 @@ public class BaseballTeam extends Team {
 
     /**
      * Set at bats
-     * @param atBats
+     * @param atBats number of at bats
      */
     public void setAtBats(int atBats){
         this.atBats = atBats;
@@ -257,7 +257,7 @@ public class BaseballTeam extends Team {
 
     /**
      * Set runs
-     * @param runs
+     * @param runs number of runs
      */
     public void setRuns(int runs){
         this.runs = runs;
@@ -273,7 +273,7 @@ public class BaseballTeam extends Team {
 
     /**
      * Set hits
-     * @param hits
+     * @param hits number of hits
      */
     public void setHits(int hits){
         this.hits = hits;
@@ -289,7 +289,7 @@ public class BaseballTeam extends Team {
 
     /**
      * Set doubles
-     * @param doubles
+     * @param doubles number of doubles
      */
     public void setDoubles(int doubles){
         this.doubles = doubles;
@@ -305,7 +305,7 @@ public class BaseballTeam extends Team {
 
     /**
      * Set triples
-     * @param triples
+     * @param triples number of triples
      */
     public void setTriples(int triples){
         this.triples = triples;
@@ -321,7 +321,7 @@ public class BaseballTeam extends Team {
 
     /**
      * Set home runs
-     * @param homeRuns
+     * @param homeRuns number of home runs
      */
     public void setHomeRuns(int homeRuns){
         this.homeRuns = homeRuns;
@@ -337,7 +337,7 @@ public class BaseballTeam extends Team {
 
     /**
      * Set run batted in
-     * @param runBattedIn
+     * @param runBattedIn number of runs batted in
      */
     public void setRunBattedIn(int runBattedIn){
         this.runBattedIn = runBattedIn;
@@ -353,7 +353,7 @@ public class BaseballTeam extends Team {
 
     /**
      * Set walks
-     * @param walks
+     * @param walks number of walks
      */
     public void setWalks(int walks){
         this.walks = walks;
@@ -369,7 +369,7 @@ public class BaseballTeam extends Team {
 
     /**
      * Set strikeouts
-     * @param strikeouts
+     * @param strikeouts number of strikeouts
      */
     public void setStrikeouts(int strikeouts){
         this.strikeouts = strikeouts;
@@ -385,7 +385,7 @@ public class BaseballTeam extends Team {
 
     /**
      * Set stolen bases
-     * @param stolenBases
+     * @param stolenBases number of stolen bases
      */
     public void setStolenBases(int stolenBases){
         this.stolenBases = stolenBases;
@@ -401,7 +401,7 @@ public class BaseballTeam extends Team {
 
     /**
      * Set caught stealing
-     * @param caughtStealing
+     * @param caughtStealing number of times caught stealing bases
      */
     public void setCaughtStealing(int caughtStealing){
         this.caughtStealing = caughtStealing;
