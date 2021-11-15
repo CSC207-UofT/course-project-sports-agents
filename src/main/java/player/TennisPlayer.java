@@ -16,7 +16,6 @@ public class TennisPlayer extends Player {
     private final HashMap<String, Integer> servePointsRecord;
     private final HashMap<String, Integer> firstServesRecord;
     private final HashMap<String, Integer> breakPointsSavedRecord;
-    private final List<String> competitions;
 
 
     /**
@@ -33,7 +32,6 @@ public class TennisPlayer extends Player {
         this.servePointsRecord = new HashMap<>();
         this.firstServesRecord = new HashMap<>();
         this.breakPointsSavedRecord = new HashMap<>();
-        this.competitions = new ArrayList<>();
     }
 
 
@@ -85,27 +83,7 @@ public class TennisPlayer extends Player {
         this.addStatServePoints(competition, servePoints);
         this.addStatFirstServes(competition, firstServes);
         this.addStatBreakPointsSaved(competition, breakPointsSaved);
-        if (!(this.competitions.contains(competition))) {
-            this.competitions.add(competition);
-        }
-    }
-
-
-    /**
-     * Add a competition to all stat records (values of the stat have not been record yet are set to 0)
-     * @param competition competition to be added
-     * @param age player's age at competition
-     */
-    protected void addCompetition(String competition, int age) {
-        if (!(this.competitions.contains(competition))) {
-            this.ageRecord.put(competition, age);
-            this.competitions.add(competition);
-            this.acesRecord.put(competition, 0);
-            this.doubleFaultsRecord.put(competition, 0);
-            this.servePointsRecord.put(competition, 0);
-            this.firstServesRecord.put(competition, 0);
-            this.breakPointsSavedRecord.put(competition, 0);
-        }
+        this.addSeason(competition);
     }
 
     /**
@@ -309,15 +287,6 @@ public class TennisPlayer extends Player {
         this.updateServePoints(competition, servePoints);
         this.updateFirstServes(competition, firstServes);
         this.updateBreakPointsSaved(competition, breakPointsSaved);
-    }
-
-
-    /**
-     * Return a list of all the competitions this player participated in, in the order that they participated in them
-     * @return a list of competitions
-     */
-    public List<String> getCompetitions() {
-        return this.competitions;
     }
 
 

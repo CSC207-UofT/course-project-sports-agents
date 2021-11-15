@@ -1,6 +1,7 @@
 package commands;
 
 import constants.Exceptions;
+import player.Player;
 
 import java.util.*;
 
@@ -81,6 +82,29 @@ public abstract class PlayerStatPredictor implements Command {
         int xValue = xAxis.get(xAxis.size() - 1) + 1;
         return (slope * xValue) + intercept;
     }
+
+    protected <T extends Player> double getLinearPrediction(T player,
+                                                            String statistic)
+            throws Exception {
+        // Get a list of the player's stats for all the seasons they participated in
+        List<String> playerSeasons = player.getSeasons();
+        List<Double> pastStats = getPastStats(player, statistic, playerSeasons);
+
+        Map<String, Integer> seasonsToIntMap = this.getSeasonToIntsMap(playerSeasons);
+
+        // Get the integer value associated with each season the player participated in
+        List<Integer> seasonInts = new ArrayList<>();
+        for (String playerSeason : playerSeasons) {
+            seasonInts.add(seasonsToIntMap.get(playerSeason));
+        }
+
+        return linearExtrapolate(seasonInts, pastStats);
+    }
+
+    protected abstract List<Double> getPastStats(Player player,
+                                                 String statistic,
+                                                 List<String> playerSeasons)
+            throws Exception;
 
     /**
      * Format data for printing to a terminal

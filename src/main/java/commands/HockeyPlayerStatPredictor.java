@@ -2,6 +2,7 @@ package commands;
 
 import drivers_adapters.DataContainer;
 import player.HockeyPlayer;
+import player.Player;
 
 import java.util.*;
 
@@ -31,19 +32,9 @@ public class HockeyPlayerStatPredictor extends PlayerStatPredictor {
         String statistic = arguments.get(2);
         checkStatistic(statistic);
 
-        // Get a list of the player's stats for all the seasons they participated in
+        double prediction = this.getLinearPrediction((Player) player, statistic);
         List<String> playerSeasons = player.getSeasons();
         List<Double> pastStats = getPastStats(player, statistic, playerSeasons);
-
-        Map<String, Integer> seasonsToIntMap = this.getSeasonToIntsMap(playerSeasons);
-
-        // Get the integer value associated with each season the player participated in
-        List<Integer> seasonInts = new ArrayList<>();
-        for (String playerSeason : playerSeasons) {
-            seasonInts.add(seasonsToIntMap.get(playerSeason));
-        }
-
-        double prediction = linearExtrapolate(seasonInts, pastStats);
         return formatOut(playerSeasons, pastStats, prediction);
     }
 
@@ -55,26 +46,29 @@ public class HockeyPlayerStatPredictor extends PlayerStatPredictor {
      * @return the player's statistics for the given seasons
      * @throws Exception if one statistic is not recorded
      */
-    private List<Double> getPastStats(HockeyPlayer player, String statistic, List<String> seasons)
+    @Override
+    protected List<Double> getPastStats(Player player, String statistic,
+                                        List<String> seasons)
             throws Exception {
+        HockeyPlayer hockeyPlayer = (HockeyPlayer) player;
         switch (statistic) {
             case "Goals":
-                return getPastGoals(player, seasons);
+                return getPastGoals(hockeyPlayer, seasons);
             case "Assists":
-                return getPastAssists(player, seasons);
+                return getPastAssists(hockeyPlayer, seasons);
             case "Points":
-                return getPastPoints(player, seasons);
+                return getPastPoints(hockeyPlayer, seasons);
             case "Shots":
-                return getPastShots(player, seasons);
+                return getPastShots(hockeyPlayer, seasons);
             case "Shooting Percentage":
-                return getPastShootingPercentage(player, seasons);
+                return getPastShootingPercentage(hockeyPlayer, seasons);
             default:
                 throw new Exception("this shouldn't logically be thrown!");
         }
     }
 
     /**
-     * Get the Goals statistics for the given player in all seasons they participated in
+     * Get the Goals statistics for the given player for list of given seasons
      * @param player the Player to get Goals statistics for
      * @param seasons the list of seasons to consider
      * @return the Goals statistics, for all given seasons
@@ -89,7 +83,7 @@ public class HockeyPlayerStatPredictor extends PlayerStatPredictor {
     }
 
     /**
-     * Get the Assists statistics for the given player in all seasons player participated in
+     * Get the Assists statistics for the given player for list of given seasons
      * @param player the Player to get Assists statistics for
      * @param seasons the list of seasons to consider
      * @return the Assists statistics, for all given seasons
@@ -104,7 +98,7 @@ public class HockeyPlayerStatPredictor extends PlayerStatPredictor {
     }
 
     /**
-     * Get the Points statistics for the given player in all given seasons
+     * Get the Points statistics for the given player for list of given seasons
      * @param player the Player to get Points statistics for
      * @param seasons the list of seasons to consider
      * @return the Points statistics, for all given seasons
@@ -119,7 +113,7 @@ public class HockeyPlayerStatPredictor extends PlayerStatPredictor {
     }
 
     /**
-     * Get the Shots statistics for the given player in all seasons player participated in
+     * Get the Shots statistics for the given player for list of given seasons
      * @param player the Player to get Shots statistics for
      * @param seasons the list of seasons to consider
      * @return the Shots statistics, for all given seasons
@@ -134,7 +128,7 @@ public class HockeyPlayerStatPredictor extends PlayerStatPredictor {
     }
 
     /**
-     * Get the Shooting Percentage statistics for the given player in all seasons player participated in
+     * Get the Shooting Percentage statistics for the given player for list of given seasons
      * @param player the Player to get Shooting Percentage statistics for
      * @param seasons the list of seasons to consider
      * @return the Shooting Percentage statistics, for all given seasons

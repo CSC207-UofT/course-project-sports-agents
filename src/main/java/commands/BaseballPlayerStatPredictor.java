@@ -30,19 +30,9 @@ public class BaseballPlayerStatPredictor extends PlayerStatPredictor{
         String statistic = arguments.get(2);
         checkStatistic(statistic);
 
-        // Get a list of the player's stats for all the seasons they participated in
+        double prediction = this.getLinearPrediction((Player) player, statistic);
         List<String> playerSeasons = player.getSeasons();
         List<Double> pastStats = getPastStats(player, statistic, playerSeasons);
-
-        Map<String, Integer> seasonsToIntMap = this.getSeasonToIntsMap(playerSeasons);
-
-        // Get the integer value associated with each season the player participated in
-        List<Integer> seasonInts = new ArrayList<>();
-        for (String playerSeason : playerSeasons) {
-            seasonInts.add(seasonsToIntMap.get(playerSeason));
-        }
-
-        double prediction = linearExtrapolate(seasonInts, pastStats);
         return formatOut(playerSeasons, pastStats, prediction);
     }
 
@@ -54,31 +44,32 @@ public class BaseballPlayerStatPredictor extends PlayerStatPredictor{
      * @return the player's statistics for the given seasons
      * @throws Exception if one statistic is not recorded
      */
-    private List<Double> getPastStats(BaseballPlayer player, String statistic,
+    protected List<Double> getPastStats(Player player, String statistic,
                                       List<String> seasons)
             throws Exception {
+        BaseballPlayer baseballPlayer = (BaseballPlayer) player;
         switch (statistic) {
             case "At Bats":
-                return getPastAtBats(player, seasons);
+                return getPastAtBats(baseballPlayer, seasons);
             case "Runs":
-                return getPastRuns(player, seasons);
+                return getPastRuns(baseballPlayer, seasons);
             case "Hits":
-                return getPastHits(player, seasons);
+                return getPastHits(baseballPlayer, seasons);
             case "Home Runs":
-                return getPastHomeRuns(player, seasons);
+                return getPastHomeRuns(baseballPlayer, seasons);
             case "Runs Batted In":
-                return getPastRunsBattedIn(player, seasons);
+                return getPastRunsBattedIn(baseballPlayer, seasons);
             case "Strike Outs":
-                return getPastStrikeOuts(player, seasons);
+                return getPastStrikeOuts(baseballPlayer, seasons);
             case "Average":
-                return getPastAverage(player, seasons);
+                return getPastAverage(baseballPlayer, seasons);
             default:
                 throw new Exception("this shouldn't logically be thrown!");
         }
     }
 
     /**
-     * Get the at bats statistics for the given player in all given seasons
+     * Get the at bats statistics for the given player in the given seasons
      * @param player the Player to get at bats statistics for
      * @param seasons the list of seasons to consider
      * @return the at bats statistics, for all given seasons
@@ -95,7 +86,7 @@ public class BaseballPlayerStatPredictor extends PlayerStatPredictor{
     }
 
     /**
-     * Get the runs statistics for the given player in all given seasons
+     * Get the runs statistics for the given player in the given seasons
      * @param player the Player to get runs statistics for
      * @param seasons the list of seasons to consider
      * @return the runs statistics, for all given seasons
@@ -112,7 +103,7 @@ public class BaseballPlayerStatPredictor extends PlayerStatPredictor{
     }
 
     /**
-     * Get the Hits statistics for the given player in all given seasons
+     * Get the Hits statistics for the given player in the given seasons
      * @param player the Player to get Hits statistics for
      * @param seasons the list of seasons to consider
      * @return the Hits statistics, for all given seasons
@@ -129,7 +120,7 @@ public class BaseballPlayerStatPredictor extends PlayerStatPredictor{
     }
 
     /**
-     * Get the Home Runs statistics for the given player in all given seasons
+     * Get the Home Runs statistics for the given player in the given seasons
      * @param player the Player to get Home Runs statistics for
      * @param seasons the list of seasons to consider
      * @return the Home Runs statistics, for all given seasons
@@ -146,7 +137,7 @@ public class BaseballPlayerStatPredictor extends PlayerStatPredictor{
     }
 
     /**
-     * Get the Runs Batted In statistics for the given player in all given seasons
+     * Get the Runs Batted In statistics for the given player in the given seasons
      * @param player the Player to get Runs Batted In statistics for
      * @param seasons the list of seasons to consider
      * @return the Runs Batted In statistics, for all given seasons
@@ -163,7 +154,7 @@ public class BaseballPlayerStatPredictor extends PlayerStatPredictor{
     }
 
     /**
-     * Get the Strike Outs statistics for the given player in all given seasons
+     * Get the Strike Outs statistics for the given player in the given seasons
      * @param player the Player to get Strike Outs statistics for
      * @param seasons the list of seasons to consider
      * @return the Strike Outs statistics, for all given seasons
@@ -180,7 +171,7 @@ public class BaseballPlayerStatPredictor extends PlayerStatPredictor{
     }
 
     /**
-     * Get the Home Runs statistics for the given player in all given seasons
+     * Get the Home Runs statistics for the given player in the given seasons
      * @param player the Player to get Home Runs statistics for
      * @param seasons the list of seasons to consider
      * @return the Home Runs statistics, for all given seasons

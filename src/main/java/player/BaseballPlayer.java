@@ -12,7 +12,6 @@ public class BaseballPlayer extends Player {
     private final HashMap<String, Integer> runsBattedInRecord;
     private final HashMap<String, Integer> strikeOutsRecord;
     private final HashMap<String, Double> avgRecord;
-    private final List<String> seasons;
 
 
     /**
@@ -50,7 +49,6 @@ public class BaseballPlayer extends Player {
         this.runsBattedInRecord = new HashMap<>();
         this.strikeOutsRecord = new HashMap<>();
         this.avgRecord = new HashMap<>();
-        this.seasons = new ArrayList<>();
 
         this.addRecord(season, team, position, gamesPlayed,
                 atBats, runs, hits, homeRuns, runsBattedIn, strikeOuts, avg);
@@ -87,9 +85,7 @@ public class BaseballPlayer extends Player {
         this.addRunsBattedIn(season, runsBattedIn);
         this.addStrikeOuts(season, strikeOuts);
         this.addAvg(season, avg);
-        if (!(this.seasons.contains(season))) {
-            this.seasons.add(season);
-        }
+        this.addSeason(season);
     }
 
     /**
@@ -305,15 +301,6 @@ public class BaseballPlayer extends Player {
     public Double getStatAvg(String season) throws Exception {
         checkForSeason(this.avgRecord, season, true);
         return this.avgRecord.get(season);
-    }
-
-
-    /**
-     * Return all the seasons this player participated in
-     * @return list of seasons
-     */
-    public List<String> getSeasons() {
-        return this.seasons;
     }
 
     @Override
