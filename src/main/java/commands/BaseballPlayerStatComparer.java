@@ -3,13 +3,12 @@ package commands;
 import drivers_adapters.DataContainer;
 import player.*;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class BaseballPlayerStatComparer extends PlayerStatComparer{
 
-    public BaseballPlayerStatComparer(PlayerList<BaseballPlayer> baseballPlayerList) {
-        super(baseballPlayerList,
+    public BaseballPlayerStatComparer() {
+        super(
                 new HashSet<String>(Arrays.asList("Games Played", "At Bats", "Runs",
                         "Hits", "Home Runs", "Runs Batted In", "Strike Outs", "Average")));
     }

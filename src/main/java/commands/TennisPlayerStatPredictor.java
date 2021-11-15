@@ -1,7 +1,6 @@
 package commands;
 
 import drivers_adapters.DataContainer;
-import player.PlayerList;
 import player.TennisPlayer;
 
 import java.util.List;
@@ -11,8 +10,8 @@ import java.util.HashSet;
 
 public class TennisPlayerStatPredictor extends PlayerStatPredictor {
 
-    public TennisPlayerStatPredictor(PlayerList<TennisPlayer> playerList) {
-        super(playerList, new HashSet<String>(Arrays.asList("Aces",
+    public TennisPlayerStatPredictor() {
+        super(new HashSet<String>(Arrays.asList("Aces",
                 "Double Faults", "Serve Points", "First Serves",
                 "Break Points Saved")));
     }

@@ -6,8 +6,8 @@ import player.*;
 import java.util.*;
 
 public class BaseballPlayerStatPredictor extends PlayerStatPredictor{
-    public BaseballPlayerStatPredictor(PlayerList<BaseballPlayer> baseballPlayerList) {
-        super(baseballPlayerList, new HashSet<String>(Arrays.asList("At Bats", "Runs",
+    public BaseballPlayerStatPredictor() {
+        super(new HashSet<String>(Arrays.asList("At Bats", "Runs",
                 "Hits", "Home Runs", "Runs Batted In", "Strike Outs", "Average")));
     }
 

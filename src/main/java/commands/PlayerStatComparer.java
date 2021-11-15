@@ -1,10 +1,8 @@
 package commands;
 
 import constants.Exceptions;
-import player.PlayerList;
 import player.Player;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -13,12 +11,9 @@ import java.util.Set;
  * Each sport has a subclass handling that sport's statistic.
  */
 public abstract class PlayerStatComparer implements Command {
-    protected PlayerList<?> playerList;
     protected final Set<String> allowedStatsToCompare;
 
-    public PlayerStatComparer(PlayerList playerList,
-                              Set<String> allowedStatsToCompare) {
-        this.playerList = playerList;
+    public PlayerStatComparer(Set<String> allowedStatsToCompare) {
         this.allowedStatsToCompare = allowedStatsToCompare;
     }
 

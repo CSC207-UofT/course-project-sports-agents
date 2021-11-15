@@ -7,8 +7,8 @@ import java.util.*;
 
 public class BaseballPlayerStatManager extends PlayerStatManager {
 
-    public BaseballPlayerStatManager(PlayerList<BaseballPlayer> baseballPlayerList) {
-        super(baseballPlayerList,
+    public BaseballPlayerStatManager() {
+        super(
                 new HashSet<String>(Arrays.asList("Team",
                         "Position", "Games Played", "At Bats", "Runs",
                         "Hits", "Home Runs", "Runs Batted In", "Strike Outs", "Average")));

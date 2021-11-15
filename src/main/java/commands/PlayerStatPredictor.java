@@ -1,7 +1,5 @@
 package commands;
 
-import player.PlayerList;
-
 import java.util.*;
 
 /**
@@ -11,11 +9,9 @@ public abstract class PlayerStatPredictor implements Command {
     private final Set<String> allowedStatsToPredict;
 
     /**
-     * @param playerList the Players this StatPredictor will get statistics for
      * @param allowedStatsToPredict the statistics this StatManager can Predict
      */
-    public PlayerStatPredictor(PlayerList playerList,
-                               Set<String> allowedStatsToPredict) {
+    public PlayerStatPredictor(Set<String> allowedStatsToPredict) {
         this.allowedStatsToPredict = allowedStatsToPredict;
     }
 

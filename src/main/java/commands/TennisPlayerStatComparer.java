@@ -1,9 +1,7 @@
 package commands;
 
 import drivers_adapters.DataContainer;
-import player.HockeyPlayer;
 import player.TennisPlayer;
-import player.PlayerList;
 import player.TennisPlayerComparator;
 
 import java.util.*;
@@ -16,8 +14,8 @@ import java.util.*;
 
 public class TennisPlayerStatComparer extends PlayerStatComparer {
 
-    public TennisPlayerStatComparer(PlayerList<TennisPlayer> tennisPlayerList) {
-        super(tennisPlayerList,
+    public TennisPlayerStatComparer() {
+        super(
                 new HashSet<String>(Arrays.asList("Age", "Aces", "Double Faults",
                         "Serve Points", "First Serves", "Break Points Saved")));
     }

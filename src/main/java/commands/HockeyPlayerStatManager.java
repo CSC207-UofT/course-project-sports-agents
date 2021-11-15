@@ -1,7 +1,6 @@
 package commands;
 
 import drivers_adapters.DataContainer;
-import player.PlayerList;
 import player.HockeyPlayer;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -9,8 +8,8 @@ import java.util.Arrays;
 
 public class HockeyPlayerStatManager extends PlayerStatManager {
 
-    public HockeyPlayerStatManager(PlayerList<HockeyPlayer> hockeyPlayerList) {
-        super(hockeyPlayerList,
+    public HockeyPlayerStatManager() {
+        super(
                 new HashSet<String>(Arrays.asList("Team", "Skater Shoots",
                         "Position", "Games Played", "Goals", "Assists",
                         "Points", "Shots", "Shooting Percentage")));

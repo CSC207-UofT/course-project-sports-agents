@@ -13,6 +13,7 @@ import java.util.HashMap;
 
 public class CSVDataContainer implements DataContainer {
 
+    // Attributes were made public for easier testing
     public HashMap<String, Player> playerMap;
     public HashMap<String, Team> teamMap;
 

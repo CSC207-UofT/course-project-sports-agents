@@ -1,7 +1,6 @@
 package commands;
 
 import constants.Exceptions;
-import player.PlayerList;
 import player.Player;
 import java.util.*;
 
@@ -14,11 +13,9 @@ public abstract class PlayerStatManager implements Command {
     protected final Set<String> allowedStatsToGet;
 
     /**
-     * @param playerList the Players this StatManager will get statistics for
      * @param allowedStatsToGet the statistics this StatManager can compute
      */
-    public PlayerStatManager(PlayerList playerList,
-                             Set<String> allowedStatsToGet) {
+    public PlayerStatManager(Set<String> allowedStatsToGet) {
         this.allowedStatsToGet = allowedStatsToGet;
     }
 

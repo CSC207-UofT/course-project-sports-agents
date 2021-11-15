@@ -1,16 +1,14 @@
 package commands;
 
 import drivers_adapters.DataContainer;
-import player.BaseballPlayer;
-import player.PlayerList;
 import player.HockeyPlayer;
 import player.HockeyPlayerComparator;
 import java.util.*;
 
 public class HockeyPlayerStatComparer extends PlayerStatComparer {
 
-    public HockeyPlayerStatComparer(PlayerList<HockeyPlayer> hockeyPlayerList) {
-        super(hockeyPlayerList,
+    public HockeyPlayerStatComparer() {
+        super(
                 new HashSet<String>(Arrays.asList("Games Played", "Goals",
                         "Assists", "Points", "Shots", "Shooting Percentage")));
     }

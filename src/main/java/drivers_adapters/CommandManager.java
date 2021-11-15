@@ -11,29 +11,17 @@ public class CommandManager {
 
     public CommandManager() {
         // TODO: Should this be its own builder class? Also, better var name ideas?
-        PlayerList<HockeyPlayer> hockeyPlayerList = new PlayerList<HockeyPlayer>();
-        HockeyPlayerStatManager hockeyPlayerStatManager =
-                new HockeyPlayerStatManager(hockeyPlayerList);
-        HockeyPlayerStatComparer hockeyPlayerStatComparer =
-                new HockeyPlayerStatComparer(hockeyPlayerList);
-        HockeyPlayerStatPredictor hockeyPlayerStatPredictor =
-                new HockeyPlayerStatPredictor(hockeyPlayerList);
+        HockeyPlayerStatManager hockeyPlayerStatManager = new HockeyPlayerStatManager();
+        HockeyPlayerStatComparer hockeyPlayerStatComparer = new HockeyPlayerStatComparer();
+        HockeyPlayerStatPredictor hockeyPlayerStatPredictor = new HockeyPlayerStatPredictor();
 
-        PlayerList<TennisPlayer> tennisPlayerList = new PlayerList<TennisPlayer>();
-        TennisPlayerStatManager tennisPlayerStatManager =
-                new TennisPlayerStatManager(tennisPlayerList);
-        TennisPlayerStatComparer tennisPlayerStatComparer =
-                new TennisPlayerStatComparer(tennisPlayerList);
-        TennisPlayerStatPredictor tennisPlayerStatPredictor =
-                new TennisPlayerStatPredictor(tennisPlayerList);
+        TennisPlayerStatManager tennisPlayerStatManager = new TennisPlayerStatManager();
+        TennisPlayerStatComparer tennisPlayerStatComparer = new TennisPlayerStatComparer();
+        TennisPlayerStatPredictor tennisPlayerStatPredictor = new TennisPlayerStatPredictor();
 
-        PlayerList<BaseballPlayer> baseballPlayerList = new PlayerList<BaseballPlayer>();
-        BaseballPlayerStatManager baseballPlayerStatManager =
-                new BaseballPlayerStatManager(baseballPlayerList);
-        BaseballPlayerStatComparer baseballPlayerStatComparer =
-                new BaseballPlayerStatComparer(baseballPlayerList);
-        BaseballPlayerStatPredictor baseballPlayerStatPredictor =
-                new BaseballPlayerStatPredictor(baseballPlayerList);
+        BaseballPlayerStatManager baseballPlayerStatManager = new BaseballPlayerStatManager();
+        BaseballPlayerStatComparer baseballPlayerStatComparer = new BaseballPlayerStatComparer();
+        BaseballPlayerStatPredictor baseballPlayerStatPredictor = new BaseballPlayerStatPredictor();
 
         PlayerStatManagerFacade playerStatManagerFacade =
                 new PlayerStatManagerFacade(hockeyPlayerStatManager,
