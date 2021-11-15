@@ -1,7 +1,7 @@
 package team;
 
-import player.Player;
 import match.Match;
+import player.*;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -93,7 +93,7 @@ public abstract class Team {
     public ArrayList<Match> getPlayedGames(){
         return playedGames;
     }
-    
+
     /**
      * Set played games
      * @param playedGames number of played games

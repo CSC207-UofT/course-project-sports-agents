@@ -5,7 +5,7 @@ import java.util.List;
 public class PlayerStatPredictorFacade implements Command {
     private final HockeyPlayerStatPredictor hockeyPlayerStatPredictor;
 
-    public PlayerStatPredictorFacade(HockeyPlayerStatPredictor hockeyPlayerStatPredictor) {
+    public PlayerStatPredictorFacade(HockeyPlayerStatPredictor hockeyPlayerStatPredictor, BaseballPlayerStatPredictor baseballPlayerStatPredictor) {
         this.hockeyPlayerStatPredictor = hockeyPlayerStatPredictor;
     }
 

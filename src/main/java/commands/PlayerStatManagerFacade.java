@@ -11,7 +11,7 @@ public class PlayerStatManagerFacade implements Command {
     private final TennisPlayerStatManager tennisPlayerStatManager;
 
     public PlayerStatManagerFacade(HockeyPlayerStatManager hockeyPlayerStatManager,
-                                   TennisPlayerStatManager tennisPlayerStatManager) {
+                                   TennisPlayerStatManager tennisPlayerStatManager, BaseballPlayerStatManager baseballPlayerStatManager) {
         this.hockeyPlayerStatManager = hockeyPlayerStatManager;
         this.tennisPlayerStatManager = tennisPlayerStatManager;
     }

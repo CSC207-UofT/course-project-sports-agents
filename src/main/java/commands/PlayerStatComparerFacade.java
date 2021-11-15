@@ -7,7 +7,7 @@ public class PlayerStatComparerFacade implements Command {
     private final TennisPlayerStatComparer tennisPlayerStatComparer;
 
     public PlayerStatComparerFacade(HockeyPlayerStatComparer hockeyPlayerStatComparer,
-                                   TennisPlayerStatComparer tennisPlayerStatComparer) {
+                                    TennisPlayerStatComparer tennisPlayerStatComparer, BaseballPlayerStatComparer baseballPlayerStatComparer) {
         this.hockeyPlayerStatComparer = hockeyPlayerStatComparer;
         this.tennisPlayerStatComparer = tennisPlayerStatComparer;
     }

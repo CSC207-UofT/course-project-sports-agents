@@ -1,9 +1,7 @@
 package drivers_adapters;
 
 import commands.*;
-import player.HockeyPlayer;
-import player.PlayerList;
-import player.TennisPlayer;
+import player.*;
 
 import java.util.HashMap;
 
@@ -27,18 +25,26 @@ public class commandManager {
         TennisPlayerStatComparer tennisPlayerStatComparer =
                 new TennisPlayerStatComparer(tennisPlayerList);
 
+        PlayerList<BaseballPlayer> baseballPlayerList = new PlayerList<BaseballPlayer>();
+        BaseballPlayerStatManager baseballPlayerStatManager =
+                new BaseballPlayerStatManager(baseballPlayerList);
+        BaseballPlayerStatComparer baseballPlayerStatComparer =
+                new BaseballPlayerStatComparer(baseballPlayerList);
+        BaseballPlayerStatPredictor baseballPlayerStatPredictor =
+                new BaseballPlayerStatPredictor(baseballPlayerList);
+
         PlayerStatManagerFacade playerStatManagerFacade =
                 new PlayerStatManagerFacade(hockeyPlayerStatManager,
-                        tennisPlayerStatManager);
+                        tennisPlayerStatManager, baseballPlayerStatManager);
         this.commandDictionary.put("get_player_stat", playerStatManagerFacade);
 
         PlayerStatComparerFacade playerStatComparerFacade =
                 new PlayerStatComparerFacade(hockeyPlayerStatComparer,
-                        tennisPlayerStatComparer);
+                        tennisPlayerStatComparer, baseballPlayerStatComparer);
         this.commandDictionary.put("compare_player_stat", playerStatComparerFacade);
 
         PlayerStatPredictorFacade playerStatPredictorFacade =
-                new PlayerStatPredictorFacade(hockeyPlayerStatPredictor);
+                new PlayerStatPredictorFacade(hockeyPlayerStatPredictor, baseballPlayerStatPredictor);
         this.commandDictionary.put("predict_player_stat", playerStatPredictorFacade);
 
         // TODO: Refactor teams, then make LeagueMemberManager work with injected TeamList
@@ -58,3 +64,4 @@ public class commandManager {
 
     }
 }
+

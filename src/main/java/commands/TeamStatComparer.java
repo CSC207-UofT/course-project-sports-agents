@@ -90,7 +90,7 @@ public class TeamStatComparer {
         }
         return out;
     }
-    
+
     /**
      * Compares the win rate of 2 teams
      * @param team1
