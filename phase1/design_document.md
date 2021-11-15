@@ -87,11 +87,12 @@ However, even in the abstract-concrete inheritance patterns we
 ensure that overriding a parent method does not significantly change the
 method behavior.
 
-Interface Segregation Principle: Each Use Case (which corresponds to a 
-function of the program) is separated into its own class and does not interact
-with any other Use Case. This ensures each function of the program internally 
-relates to only one sub-interface of the specific Use Class (though they
-all share the same `Command` interface).
+Interface Segregation Principle: The `Command` interface only forces 
+the dependent classes to implement a single method `execute`, with a
+single argument. This allows the client classes to have a lot of flexibility
+in how they implement the execution of their respective commands and what kind
+of arguments they use. Additionally, this ensures we follow the Interface Segregation
+Principle, since we make sure that the client only implements the methods it needs.
 
 Dependency Inversion Principle: Each Use Case implements the `Command` 
 interface, meaning the `commandManager` depends on the `Command` interface
