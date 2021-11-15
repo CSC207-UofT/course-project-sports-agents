@@ -1,22 +1,21 @@
 package team;
 
-import match.Match;
-import player.*;
+import java.util.List;
 
-import java.util.ArrayList;
-import java.util.Objects;
+import match.Match;
 
 public abstract class Team {
     private String name;
     private String homeCity;
-    private ArrayList<Player> players;
-    private ArrayList<Match> playedGames;
+    private List<String> players;
+    private List<Match> playedGames;
     private int totalGamesPlayed;
     private int wins;
     private int losses;
     private int ties;
+    private int rank;
 
-    public Team() {
+    public Team(){
         this.name = "";
         this.homeCity = "";
         this.totalGamesPlayed = 0;
@@ -25,9 +24,7 @@ public abstract class Team {
         this.ties = 0;
     }
 
-    public Team(String name, String homeCity,
-                ArrayList<Player> players, ArrayList<Match> playedGames,
-                int totalGamesPlayed, int wins, int losses, int ties) {
+    public Team(String name, String homeCity, List<String> players, List<Match> playedGames, int totalGamesPlayed, int wins, int losses, int ties, int rank){
         this.name = name;
         this.homeCity = homeCity;
         this.players = players;
@@ -48,7 +45,7 @@ public abstract class Team {
 
     /**
      * Set name
-     * @param name team name
+     * @param name
      */
     public void setName(String name){
         this.name = name;
@@ -64,7 +61,7 @@ public abstract class Team {
 
     /**
      * Set home city
-     * @param homeCity team's home city
+     * @param homeCity
      */
     public void setHomeCity(String homeCity){
         this.homeCity = homeCity;
@@ -74,15 +71,15 @@ public abstract class Team {
      * Get players
      * @return players
      */
-    public ArrayList<Player> getPlayers(){
+    public List<String> getPlayers(){
         return players;
     }
 
     /**
      * Set players
-     * @param players players on the team
+     * @param players
      */
-    public void setPlayers(ArrayList<Player> players){
+    public void setPlayers(List<String> players){
         this.players = players;
     }
 
@@ -90,15 +87,15 @@ public abstract class Team {
      * Get played games
      * @return playedGames
      */
-    public ArrayList<Match> getPlayedGames(){
+    public List<Match> getPlayedGames(){
         return playedGames;
     }
-
+    
     /**
      * Set played games
-     * @param playedGames number of played games
+     * @param playedGames
      */
-    public void setPlayedGames(ArrayList<Match> playedGames){
+    public void setPlayedGames(List<Match> playedGames){
         this.playedGames = playedGames;
     }
 
@@ -112,7 +109,7 @@ public abstract class Team {
 
     /**
      * Set total games played
-     * @param totalGamesPlayed number of played games
+     * @param totalGamesPlayed
      */
     public void setTotalGamesPlayed(int totalGamesPlayed){
         this.totalGamesPlayed = totalGamesPlayed;
@@ -128,7 +125,7 @@ public abstract class Team {
 
     /**
      * Set wins
-     * @param wins number of wins
+     * @param wins
      */
     public void setWins(int wins){
         this.wins = wins;
@@ -144,7 +141,7 @@ public abstract class Team {
 
     /**
      * Set losses
-     * @param losses number of losses
+     * @param losses
      */
     public void setLosses(int losses){
         this.losses = losses;
@@ -160,52 +157,25 @@ public abstract class Team {
 
     /**
      * Set ties
-     * @param ties number of ties
+     * @param ties
      */
     public void setTies(int ties){
         this.ties = ties;
     }
 
     /**
-     * @return a string representation of the team
+     * Get rank
+     * @return rank
      */
-    @Override
-    public String toString() {
-        return "Team " + this.name + " in " + this.homeCity +
-                " with record " + this.wins + "-" + this.losses + "-" + this.ties;
+    public int getRank(){
+        return this.rank;
     }
 
     /**
-     * @param other an object to compare this to
-     * @return true if other is a Team with the same name, home city,
-     * wins, losses, and ties
+     * Set rank
+     * @param rank
      */
-    @Override
-    public boolean equals(Object other) {
-        if (this == other) {
-            return true;
-        }
-        if (other == null) {
-            return false;
-        }
-        if (this.getClass() != other.getClass()) {
-            return false;
-        }
-        Team otherTeam = (Team) other;
-        return (this.name.equals(otherTeam.name) &&
-                this.homeCity.equals(otherTeam.homeCity) &&
-                this.wins == otherTeam.wins &&
-                this.losses == otherTeam.losses &&
-                this.ties == otherTeam.ties);
-    }
-
-    /**
-     * Implement hashCode, for using Players in hashMaps
-     * @return sum of name hashCode, homeCity hashCode, wins, losses, and ties
-     */
-    @Override
-    public int hashCode() {
-        return this.name.hashCode() + this.homeCity.hashCode() +
-                this.wins + this.losses + this.ties;
+    public void setRank(int rank){
+        this.rank = rank;
     }
 }
