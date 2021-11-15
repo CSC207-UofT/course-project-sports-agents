@@ -1,6 +1,9 @@
 package player;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * A Hockey Player Class.
@@ -15,6 +18,26 @@ public class HockeyPlayer extends Player {
     private final HashMap<String, Integer> pointsRecord;
     private final HashMap<String, Integer> shotsRecord;
     private final HashMap<String, Double> shootingPercentageRecord;
+    private final List<String> seasons;
+
+
+    /**
+     * Construct a hockey player who has not participated in any seasons yet
+     * @param name player's name
+     */
+    public HockeyPlayer(String name) {
+        super(name);
+        this.skaterShootsRecord = new HashMap<>();
+        this.positionRecord = new HashMap<>();
+        this.gamesPlayedRecord = new HashMap<>();
+        this.goalsRecord = new HashMap<>();
+        this.assistsRecord = new HashMap<>();
+        this.pointsRecord = new HashMap<>();
+        this.shotsRecord = new HashMap<>();
+        this.shootingPercentageRecord = new HashMap<>();
+        this.seasons = new ArrayList<>();
+    }
+
 
     /**
      * Create a new Hockey Player
@@ -36,16 +59,7 @@ public class HockeyPlayer extends Player {
                         Integer gamesPlayed, Integer goals, Integer assists,
                         Integer points, Integer shots,
                         Double shootingPercentage) throws Exception {
-        super(name);
-        this.skaterShootsRecord = new HashMap<String, String>();
-        this.positionRecord = new HashMap<String, String>();
-        this.gamesPlayedRecord = new HashMap<String, Integer>();
-        this.goalsRecord = new HashMap<String, Integer>();
-        this.assistsRecord = new HashMap<String, Integer>();
-        this.pointsRecord = new HashMap<String, Integer>();
-        this.shotsRecord = new HashMap<String, Integer>();
-        this.shootingPercentageRecord = new HashMap<String, Double>();
-
+        this(name);
         this.addRecord(season, team, skaterShoots, position, gamesPlayed,
                 goals, assists, points, shots, shootingPercentage);
     }
@@ -77,6 +91,9 @@ public class HockeyPlayer extends Player {
         this.addStatPoints(season, points);
         this.addStatShots(season, shots);
         this.addStatShootingPercentage(season, shootingPercentage);
+        if (!(this.seasons.contains(season))) {
+            this.seasons.add(season);
+        }
     }
 
     /**
@@ -258,5 +275,29 @@ public class HockeyPlayer extends Player {
     @Override
     public String toString() {
         return "Hockey Player " + super.toString();
+    }
+
+
+    /**
+     * Return a string representation of this player's data for the given season
+     * @param season needed season
+     * @return the string of player's stats for season
+     */
+    public String printSeasonData(String season) {
+        return "Team: " + this.teamRecord.get(season) + "\nSkater Shoots: " + this.skaterShootsRecord.get(season) +
+                "\nPosition: " + this.positionRecord.get(season) + "\nGames Played: " +
+                this.gamesPlayedRecord.get(season) +
+                "\nGoals: " + this.goalsRecord.get(season) + "\nAssists: " + this.assistsRecord.get(season) +
+                "\nPoints: " + this.pointsRecord.get(season) + "\nShots: " + this.shotsRecord.get(season) +
+                "\nShooting Percentage: " + this.shootingPercentageRecord;
+    }
+
+    /**
+     * Return the list of seasons in chronological order
+     * @return list of seasons
+     */
+    public List<String> getSeasons() {
+        Collections.reverse(this.seasons);
+        return this.seasons;
     }
 }

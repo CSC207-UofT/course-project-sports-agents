@@ -8,8 +8,8 @@ import java.util.Comparator;
  * When instantiated, sets the statistic and season of interest.
  */
 public class TennisPlayerComparator implements Comparator<TennisPlayer> {
-    String compareBy;
-    String season;
+    final String compareBy;
+    final String season;
 
     /**
      * Create a new HockeyPlayerComparator
@@ -76,7 +76,6 @@ public class TennisPlayerComparator implements Comparator<TennisPlayer> {
         return p1.getStatBreakPointsSaved(this.season) -
                 p2.getStatBreakPointsSaved(this.season);
     }
-
 
 }
 

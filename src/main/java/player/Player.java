@@ -10,15 +10,14 @@ import java.util.Map;
 public abstract class Player {
     protected final String name;
     // Keys are seasons, values are Team name
-    protected HashMap<String, String> teamRecord;
+    protected final HashMap<String, String> teamRecord;
 
     /**
      * @param name the Player's name
-     * @throws Exception should not throw Exception
      */
-    public Player(String name) throws Exception {
+    public Player(String name) {
         this.name = name;
-        this.teamRecord = new HashMap<String, String>();
+        this.teamRecord = new HashMap<>();
     }
 
     /**
@@ -110,5 +109,8 @@ public abstract class Player {
     public int hashCode() {
         return this.name.hashCode();
     }
+
+
+
 }
 

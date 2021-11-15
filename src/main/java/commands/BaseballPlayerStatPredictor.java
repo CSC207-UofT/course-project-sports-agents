@@ -17,9 +17,8 @@ public class BaseballPlayerStatPredictor extends PlayerStatPredictor{
      * the seasons were played in the order provided. Uses linear
      * regression.
      * @param arguments A string array of form
-     *                  {"Baseball", "player name",
+     *                  {"predict_player_stat", "Baseball", "player name",
      *                  "season 1", "season 2", ..., "stat name"}
-     * @param container A container containing the data or means to retrieve it
      * @return the predicted statistic for the next season
      * @throws Exception if the Player or season does not exist
      */
@@ -34,9 +33,21 @@ public class BaseballPlayerStatPredictor extends PlayerStatPredictor{
         String statistic = arguments.get(argSize);
         checkStatistic(statistic);
 
-        List<Double> pastStats = getPastStats(player, statistic, seasons);
-        int prediction = linearExtrapolate(pastStats);
-        return formatOut(seasons, pastStats, prediction);
+        List<String> allSeasons = this.baseballPlayerList.getSeasons();
+
+        Map<String, Integer> seasonsToIntsMap = this.getSeasonToIntsMap(allSeasons);
+
+        List<String> playerSeasons = player.getSeasons();
+
+        // Get the integer value associated with each season the player participated in
+        List<Integer> seasonInts = new ArrayList<>();
+        for (String playerSeason : playerSeasons) {
+            seasonInts.add(seasonsToIntsMap.get(playerSeason));
+        }
+
+        List<Double> pastStats = getPastStats(player, statistic, playerSeasons);
+        double prediction = linearExtrapolate(seasonInts, pastStats);
+        return formatOut(playerSeasons, pastStats, prediction);
     }
 
     /**

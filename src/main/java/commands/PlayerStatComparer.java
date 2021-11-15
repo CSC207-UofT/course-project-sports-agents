@@ -35,6 +35,7 @@ public abstract class PlayerStatComparer implements Command {
      */
     protected <T extends Player> String formatCompare(List<T> players,
                                                       List<String> statValues) {
+
         StringBuilder output = new StringBuilder("From best to worst:\n");
         // Precondition: players.size() == statValues.size()
         for (int i = 0; i != players.size(); i += 1) {
@@ -44,7 +45,6 @@ public abstract class PlayerStatComparer implements Command {
             output.append(statValues.get(i));
             output.append("\n");
         }
-        return output.toString();
+        return output.toString().trim();
     }
 }
-

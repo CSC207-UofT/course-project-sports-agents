@@ -23,7 +23,7 @@ public class SportsApp {
         String input = "";
         DataContainer container = new CSVDataContainer();
 
-        CommandManager manager = new CommandManager();
+        commandManager manager = new commandManager();
         while (!input.equals("quit")) {
             input = inputScanner.nextLine();
             try {
@@ -34,5 +34,6 @@ public class SportsApp {
                 System.out.println(e.getMessage());
             }
         }
+        inputScanner.close();
     }
 }

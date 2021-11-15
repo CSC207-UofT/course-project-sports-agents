@@ -39,85 +39,123 @@ public class TennisPlayerStatPredictor extends PlayerStatPredictor {
         String statistic = arguments.get(argSize);
         checkStatistic(statistic);
 
-        List<Double> pastStats = getPastStats(player, statistic, seasons);
-        int prediction = linearExtrapolate(pastStats);
-        return formatOut(seasons, pastStats, prediction);
+        // Get the integer values for all the competitions the player participated in, the stat values for
+        // those competitions
+        List<Integer> competitionInts = new ArrayList<>();
+        List<String> playerCompetitions = neededPlayer.getCompetitions();
+        List<Double> playerStatsAsDoubles = this.getStat(neededPlayer, stat);
+
+        for (String competition : playerCompetitions) {
+            competitionInts.add(competitionValues.get(competition));
+        }
+
+        double prediction = this.linearExtrapolate(competitionInts, playerStatsAsDoubles);
+        return this.formatOut(playerCompetitions, playerStatsAsDoubles, prediction);
     }
 
+
     /**
-     * Collect the player's past statistics for the given seasons, maintaining order.
-     * @param player the player to get statistics for
-     * @param statistic the statistic to get
-     * @param seasons the list of seasons to get
-     * @return the player's statistics for the given seasons
-     * @throws Exception if one statistic is not recorded
+     * Return the values of the given stat for all the competitions a given player has participated in
+     * @param player needed player
+     * @param stat needed stat
+     * @return values of needed stat for all competitions the player participated in
+     * @throws Exception if a stat does not have data for a competition
      */
-    private List<Double> getPastStats(TennisPlayer player, String statistic,
-                                      List<String> seasons)
-            throws Exception {
-        switch (statistic) {
+    private List<Double> getStat(TennisPlayer player, String stat) throws Exception {
+        switch (stat) {
             case "Aces":
-                return this.getPastAces(player, seasons);
+                return this.getPastAces(player);
             case "Double Faults":
-                return this.getPastDoubleFaults(player, seasons);
-            case "Serve Points":
-                return this.getPastServePoints(player, seasons);
-            case "First Serves":
-                return this.getPastFirstServes(player, seasons);
+                return this.getPastDoubleFaults(player);
             case "Break Points Saved":
-                return this.getPastBreakPointsSaved(player, seasons);
+                return this.getPastBreakPointsSaved(player);
+            case "First Serves":
+                return this.getPastFirstServes(player);
+            case "Serve Points":
+                return this.getPastServePoints(player);
             default:
-                throw new Exception("this shouldn't logically be thrown!");
+                throw new Exception("should not be thrown logically");
         }
     }
 
     /**
-     * Get the Aces statistics for the given player in all given seasons
-     * @param player the Player to get Goals statistics for
-     * @param seasons the list of seasons to consider
-     * @return the Aces statistics, for all given seasons
-     * @throws Exception if one season lacks recorded Aces data
+     * Return the number of aces a tennis player has scored in all the competitions they have participated in
+     *
+     * @param player needed player
+     * @return list of past aces
+     * @throws Exception if a season has no aces data
      */
-    private List<Double> getPastAces(TennisPlayer player,
-                                     List<String> seasons)
-            throws Exception {
-        ArrayList<Double> pastAces = new ArrayList<>();
-        for (String season : seasons) {
-            pastAces.add((double) player.getStatAces(season));
+    private List<Double> getPastAces(TennisPlayer player) throws Exception {
+        List<String> competitions = player.getCompetitions();
+        List<Double> pastAces = new ArrayList<>();
+
+        for (String competition : competitions) {
+            pastAces.add((double) player.getStatAces(competition));
         }
         return pastAces;
     }
 
     /**
-     * Get the Double Faults statistics for the given player in all given seasons
-     * @param player the Player to get Double Faults statistics for
-     * @param seasons the list of seasons to consider
-     * @return the Aces statistics, for all given seasons
-     * @throws Exception if one season lacks recorded Double Faults data
+     * Return the number of double faults a tennis player has made in all the competitions they have participated in
+     *
+     * @param player needed player
+     * @return list of past double faults
+     * @throws Exception if a season has no double faults data
      */
-    private List<Double> getPastDoubleFaults(TennisPlayer player,
-                                             List<String> seasons)
-            throws Exception {
-        ArrayList<Double> pastDoubleFaults = new ArrayList<>();
-        for (String season : seasons) {
-            pastDoubleFaults.add((double) player.getStatDoubleFaults(season));
+    private List<Double> getPastDoubleFaults(TennisPlayer player) throws Exception {
+        List<String> competitions = player.getCompetitions();
+        List<Double> doubleFaults = new ArrayList<>();
+
+        for (String competition : competitions) {
+            doubleFaults.add((double) player.getStatDoubleFaults(competition));
         }
-        return pastDoubleFaults;
+        return doubleFaults;
     }
 
     /**
-     * Get the Serve Points statistics for the given player in all given seasons
-     * @param player the Player to get Goals statistics for
-     * @param seasons the list of seasons to consider
-     * @return the Serve Points statistics, for all given seasons
-     * @throws Exception if one season lacks recorded Serve Points data
+     * Return the number of aces a tennis player has scored in all the competitions they have participated in
+     * @param player needd player
+     * @return list of past aces
+     * @throws Exception if a season has no break points data
      */
-    private List<Double> getPastServePoints(TennisPlayer player,
-                                            List<String> seasons)
-            throws Exception {
-        ArrayList<Double> pastServePoints = new ArrayList<>();
-        for (String season : seasons) {
-            pastServePoints.add((double) player.getStatServePoints(season));
+    private List<Double> getPastBreakPointsSaved(TennisPlayer player) throws Exception {
+        List<String> competitions = player.getCompetitions();
+        List<Double> pastBreakPoints = new ArrayList<>();
+
+        for (String competition : competitions) {
+            pastBreakPoints.add((double) player.getStatBreakPointsSaved(competition));
+        }
+        return pastBreakPoints;
+    }
+
+    /**
+     * Return the number of first serves a tennis player has made in all the competitions they have participated in
+     * @param player needed player
+     * @return list of past first serves
+     * @throws Exception if a season has no first serves data
+     */
+    private List<Double> getPastFirstServes(TennisPlayer player) throws Exception {
+        List<String> competitions = player.getCompetitions();
+        List<Double> pastFirstServes = new ArrayList<>();
+
+        for (String competition : competitions) {
+            pastFirstServes.add((double) player.getStatFirstServes(competition));
+        }
+        return pastFirstServes;
+    }
+
+    /**
+     * Return the number of serve points a tennis player has scored in all the competitions they have participated in
+     * @param player needed player
+     * @return list of past serve points
+     * @throws Exception if a season has no aces data
+     */
+    private List<Double> getPastServePoints(TennisPlayer player) throws Exception {
+        List<String> competitions = player.getCompetitions();
+        List<Double> pastServePoints = new ArrayList<>();
+
+        for (String competition : competitions) {
+            pastServePoints.add((double) player.getStatServePoints(competition));
         }
         return pastServePoints;
     }

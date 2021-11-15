@@ -10,7 +10,6 @@ import java.util.HashSet;
 /**
  * This is a class can get statistics for Tennis Players
  */
-
 public class TennisPlayerStatManager extends PlayerStatManager {
 
     public TennisPlayerStatManager() {
@@ -44,7 +43,7 @@ public class TennisPlayerStatManager extends PlayerStatManager {
         String statistic = arguments.get(3);
         checkStatistic(statistic);
 
-        switch(statistic) {
+        switch (statistic) {
             case "Age":
                 return formatStat(player,
                         player.getStatAge(season).toString());
@@ -63,6 +62,8 @@ public class TennisPlayerStatManager extends PlayerStatManager {
             case "Break Points Saved":
                 return formatStat(player,
                         player.getStatBreakPointsSaved(season).toString());
+            case "All Stats":
+                return formatStat(player, player.printSeasonData(season));
             default:
                 throw new Exception("This shouldn't be thrown, logically");
         }
