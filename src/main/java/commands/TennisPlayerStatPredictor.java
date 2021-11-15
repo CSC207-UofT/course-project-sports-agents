@@ -1,7 +1,6 @@
 package commands;
 
 import drivers_adapters.DataContainer;
-import player.Player;
 import player.TennisPlayer;
 
 import java.util.*;
@@ -27,43 +26,46 @@ public class TennisPlayerStatPredictor extends PlayerStatPredictor {
      * @throws Exception if the Player or season does not exist
      */
     @Override
-    public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
+    public String execute(ArrayList<String> arguments, DataContainer container)
+            throws Exception {
         String name = arguments.get(1);
         TennisPlayer player = (TennisPlayer) container.getPlayer("tennis", name);
 
         String statistic = arguments.get(2);
         checkStatistic(statistic);
 
-        double prediction = this.getLinearPrediction((Player) player, statistic);
+        // Get a list of the player's stats for all the seasons they participated in
         List<String> playerSeasons = player.getSeasons();
+        List<Integer> seasonInts = this.getXAxis(playerSeasons);
         List<Double> pastStats = getPastStats(player, statistic, playerSeasons);
+
+        double prediction = linearExtrapolate(seasonInts, pastStats);
         return formatOut(playerSeasons, pastStats, prediction);
     }
 
 
     /**
-     * Return the values of the given stat for all the competitions a given player has participated in
+     * Return the values of the given stat for the given seasons
      * @param player needed player
      * @param stat needed stat
+     * @param seasons seasons to consider
      * @return values of needed stat for all competitions the player participated in
      * @throws Exception if a stat does not have data for a competition
      */
-    @Override
-    protected List<Double> getPastStats(Player player, String stat,
-                                        List<String> seasons)
+    private List<Double> getPastStats(TennisPlayer player, String stat,
+                                      List<String> seasons)
             throws Exception {
-        TennisPlayer tennisPlayer = (TennisPlayer) player;
         switch (stat) {
             case "Aces":
-                return this.getPastAces(tennisPlayer, seasons);
+                return this.getPastAces(player, seasons);
             case "Double Faults":
-                return this.getPastDoubleFaults(tennisPlayer, seasons);
+                return this.getPastDoubleFaults(player, seasons);
             case "Break Points Saved":
-                return this.getPastBreakPointsSaved(tennisPlayer, seasons);
+                return this.getPastBreakPointsSaved(player, seasons);
             case "First Serves":
-                return this.getPastFirstServes(tennisPlayer, seasons);
+                return this.getPastFirstServes(player, seasons);
             case "Serve Points":
-                return this.getPastServePoints(tennisPlayer, seasons);
+                return this.getPastServePoints(player, seasons);
             default:
                 throw new Exception("should not be thrown logically");
         }
@@ -71,9 +73,8 @@ public class TennisPlayerStatPredictor extends PlayerStatPredictor {
 
     /**
      * Return the number of aces a tennis player has scored in the given seasons
-     *
      * @param player needed player
-     * @param seasons list of seasons to consider
+     * @param seasons seasons to consider
      * @return list of past aces
      * @throws Exception if a season has no aces data
      */
@@ -91,7 +92,7 @@ public class TennisPlayerStatPredictor extends PlayerStatPredictor {
      * Return the number of double faults a tennis player has made in the given seasons
      *
      * @param player needed player
-     * @param seasons list of seasons to consider
+     * @param seasons seasons to consider
      * @return list of past double faults
      * @throws Exception if a season has no double faults data
      */
@@ -108,7 +109,7 @@ public class TennisPlayerStatPredictor extends PlayerStatPredictor {
     /**
      * Return the number of aces a tennis player has scored in the given seasons
      * @param player needed player
-     * @param seasons list of seasons to consider
+     * @param seasons seasons to consider
      * @return list of past aces
      * @throws Exception if a season has no break points data
      */
@@ -125,7 +126,7 @@ public class TennisPlayerStatPredictor extends PlayerStatPredictor {
     /**
      * Return the number of first serves a tennis player has made in the given seasons
      * @param player needed player
-     * @param seasons list of seasons to consider
+     * @param seasons seasons to consider
      * @return list of past first serves
      * @throws Exception if a season has no first serves data
      */
@@ -133,6 +134,7 @@ public class TennisPlayerStatPredictor extends PlayerStatPredictor {
                                             List<String> seasons)
             throws Exception {
         List<Double> pastFirstServes = new ArrayList<>();
+
         for (String season : seasons) {
             pastFirstServes.add((double) player.getStatFirstServes(season));
         }
@@ -142,7 +144,7 @@ public class TennisPlayerStatPredictor extends PlayerStatPredictor {
     /**
      * Return the number of serve points a tennis player has scored in the given seasons
      * @param player needed player
-     * @param seasons list of seasons to consider
+     * @param seasons seasons to consider
      * @return list of past serve points
      * @throws Exception if a season has no aces data
      */
@@ -150,6 +152,7 @@ public class TennisPlayerStatPredictor extends PlayerStatPredictor {
                                             List<String> seasons)
             throws Exception {
         List<Double> pastServePoints = new ArrayList<>();
+
         for (String season : seasons) {
             pastServePoints.add((double) player.getStatServePoints(season));
         }

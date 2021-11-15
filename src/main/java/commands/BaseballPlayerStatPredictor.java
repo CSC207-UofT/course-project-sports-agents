@@ -5,7 +5,7 @@ import player.*;
 
 import java.util.*;
 
-public class BaseballPlayerStatPredictor extends PlayerStatPredictor{
+public class BaseballPlayerStatPredictor extends PlayerStatPredictor {
     public BaseballPlayerStatPredictor() {
         super(new HashSet<>(Arrays.asList("At Bats", "Runs",
                 "Hits", "Home Runs", "Runs Batted In", "Strike Outs", "Average")));
@@ -26,13 +26,15 @@ public class BaseballPlayerStatPredictor extends PlayerStatPredictor{
     public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
         String name = arguments.get(1);
         BaseballPlayer player = (BaseballPlayer) container.getPlayer("baseball", name);
+        List<String> playerSeasons = player.getSeasons();
 
         String statistic = arguments.get(2);
         checkStatistic(statistic);
 
-        double prediction = this.getLinearPrediction((Player) player, statistic);
-        List<String> playerSeasons = player.getSeasons();
         List<Double> pastStats = getPastStats(player, statistic, playerSeasons);
+        List<Integer> seasonInts = this.getXAxis(playerSeasons);
+
+        double prediction = linearExtrapolate(seasonInts, pastStats);
         return formatOut(playerSeasons, pastStats, prediction);
     }
 
@@ -44,35 +46,34 @@ public class BaseballPlayerStatPredictor extends PlayerStatPredictor{
      * @return the player's statistics for the given seasons
      * @throws Exception if one statistic is not recorded
      */
-    protected List<Double> getPastStats(Player player, String statistic,
+    private List<Double> getPastStats(BaseballPlayer player, String statistic,
                                       List<String> seasons)
             throws Exception {
-        BaseballPlayer baseballPlayer = (BaseballPlayer) player;
         switch (statistic) {
             case "At Bats":
-                return getPastAtBats(baseballPlayer, seasons);
+                return getPastAtBats(player, seasons);
             case "Runs":
-                return getPastRuns(baseballPlayer, seasons);
+                return getPastRuns(player, seasons);
             case "Hits":
-                return getPastHits(baseballPlayer, seasons);
+                return getPastHits(player, seasons);
             case "Home Runs":
-                return getPastHomeRuns(baseballPlayer, seasons);
+                return getPastHomeRuns(player, seasons);
             case "Runs Batted In":
-                return getPastRunsBattedIn(baseballPlayer, seasons);
+                return getPastRunsBattedIn(player, seasons);
             case "Strike Outs":
-                return getPastStrikeOuts(baseballPlayer, seasons);
+                return getPastStrikeOuts(player, seasons);
             case "Average":
-                return getPastAverage(baseballPlayer, seasons);
+                return getPastAverage(player, seasons);
             default:
                 throw new Exception("this shouldn't logically be thrown!");
         }
     }
 
     /**
-     * Get the at bats statistics for the given player in the given seasons
+     * Get the at bats statistics for the given player in given seasons
      * @param player the Player to get at bats statistics for
      * @param seasons the list of seasons to consider
-     * @return the at bats statistics, for all given seasons
+     * @return the at bats statistics, for given seasons
      * @throws Exception if one season lacks recorded At Bats data
      */
     private List<Double> getPastAtBats(BaseballPlayer player,
@@ -86,10 +87,10 @@ public class BaseballPlayerStatPredictor extends PlayerStatPredictor{
     }
 
     /**
-     * Get the runs statistics for the given player in the given seasons
+     * Get the runs statistics for the given player in given seasons
      * @param player the Player to get runs statistics for
      * @param seasons the list of seasons to consider
-     * @return the runs statistics, for all given seasons
+     * @return the runs statistics, for given seasons
      * @throws Exception if one season lacks recorded runs data
      */
     private List<Double> getPastRuns(BaseballPlayer player,
@@ -103,10 +104,10 @@ public class BaseballPlayerStatPredictor extends PlayerStatPredictor{
     }
 
     /**
-     * Get the Hits statistics for the given player in the given seasons
+     * Get the Hits statistics for the given player in given seasons
      * @param player the Player to get Hits statistics for
      * @param seasons the list of seasons to consider
-     * @return the Hits statistics, for all given seasons
+     * @return the Hits statistics, for given seasons
      * @throws Exception if one season lacks recorded Hots data
      */
     private List<Double> getPastHits(BaseballPlayer player,
@@ -120,10 +121,10 @@ public class BaseballPlayerStatPredictor extends PlayerStatPredictor{
     }
 
     /**
-     * Get the Home Runs statistics for the given player in the given seasons
+     * Get the Home Runs statistics for the given player in given seasons
      * @param player the Player to get Home Runs statistics for
      * @param seasons the list of seasons to consider
-     * @return the Home Runs statistics, for all given seasons
+     * @return the Home Runs statistics, for given seasons
      * @throws Exception if one season lacks recorded Home Runs data
      */
     private List<Double> getPastHomeRuns(BaseballPlayer player,
@@ -137,10 +138,10 @@ public class BaseballPlayerStatPredictor extends PlayerStatPredictor{
     }
 
     /**
-     * Get the Runs Batted In statistics for the given player in the given seasons
+     * Get the Runs Batted In statistics for the given player in given seasons
      * @param player the Player to get Runs Batted In statistics for
      * @param seasons the list of seasons to consider
-     * @return the Runs Batted In statistics, for all given seasons
+     * @return the Runs Batted In statistics, for given seasons
      * @throws Exception if one season lacks recorded Runs Batted In data
      */
     private List<Double> getPastRunsBattedIn(BaseballPlayer player,
@@ -154,10 +155,10 @@ public class BaseballPlayerStatPredictor extends PlayerStatPredictor{
     }
 
     /**
-     * Get the Strike Outs statistics for the given player in the given seasons
+     * Get the Strike Outs statistics for the given player in given seasons
      * @param player the Player to get Strike Outs statistics for
      * @param seasons the list of seasons to consider
-     * @return the Strike Outs statistics, for all given seasons
+     * @return the Strike Outs statistics, for given seasons
      * @throws Exception if one season lacks recorded Strike Outs data
      */
     private List<Double> getPastStrikeOuts(BaseballPlayer player,
@@ -171,10 +172,10 @@ public class BaseballPlayerStatPredictor extends PlayerStatPredictor{
     }
 
     /**
-     * Get the Home Runs statistics for the given player in the given seasons
+     * Get the Home Runs statistics for the given player in given seasons
      * @param player the Player to get Home Runs statistics for
      * @param seasons the list of seasons to consider
-     * @return the Home Runs statistics, for all given seasons
+     * @return the Home Runs statistics, for given seasons
      * @throws Exception if one season lacks recorded Home Runs data
      */
     private List<Double> getPastAverage(BaseballPlayer player,
