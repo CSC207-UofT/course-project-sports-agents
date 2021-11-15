@@ -134,9 +134,9 @@ decoupling by encapsulating our commands into completely separate processes, and
 that the command manager is not aware of the details in the commands.
 
 Furthermore, we implemented the facade design pattern for `PlayerStatManager`, 
-`PlayerStatComparer`, and `PlayerStatPredictor`. Each sport has their own 
+`PlayerStatComparer`, and `PlayerStatPredictor`. For example, since each sport has its own 
 class handling the function for that class (to avoid violating the 
-Single Responsibility Principle), so the `PlayerStatManager` facade will
+Single Responsibility Principle), the `PlayerStatManager` facade will
 accept a command requesting a statistic and delegate it to the appropriate
 sport's use case.
 
