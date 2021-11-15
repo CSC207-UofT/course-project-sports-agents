@@ -42,7 +42,6 @@ public class BaseballPlayerStatComparer extends PlayerStatComparer{
         return formatCompare(baseballPlayers, playersStatValues);
     }
 
-    // TODO: Is there a better way to do this?
     /**
      * Cast a List of Players to List of HockeyPlayers
      * @param genericPlayers List of Player subclass castable to HockeyPlayer
@@ -107,11 +106,11 @@ public class BaseballPlayerStatComparer extends PlayerStatComparer{
     }
 
     /**
-     * Get the goals statistic in the given season for all passed players
+     * Get the at bats statistic in the given season for all passed players
      * @param players the list of Players to collect at bats statistics for
      * @param season the season to consider
      * @return the at bats statistics, for the list of players
-     * @throws Exception if one player lacks the given season's goals data
+     * @throws Exception if one player lacks the given season's at bats data
      */
     private List<String> getValuesAtBats(List<BaseballPlayer> players,
                                          String season) throws Exception{
@@ -123,11 +122,11 @@ public class BaseballPlayerStatComparer extends PlayerStatComparer{
     }
 
     /**
-     * Get the assists statistic in the given season for all passed players
+     * Get the runs statistic in the given season for all passed players
      * @param players the list of Players to collect runs statistics for
      * @param season the season to consider
      * @return the runs statistics, for the list of players
-     * @throws Exception if one player lacks the given season's assists data
+     * @throws Exception if one player lacks the given season's runs data
      */
     private List<String> getValuesRuns(List<BaseballPlayer> players,
                                        String season) throws Exception{
@@ -139,11 +138,11 @@ public class BaseballPlayerStatComparer extends PlayerStatComparer{
     }
 
     /**
-     * Get the points statistic in the given season for all passed players
+     * Get the hits statistic in the given season for all passed players
      * @param players the list of Players to collect hits statistics for
      * @param season the season to consider
      * @return the hits statistics, for the list of players
-     * @throws Exception if one player lacks the given season's points data
+     * @throws Exception if one player lacks the given season's hits data
      */
     private List<String> getValuesHits(List<BaseballPlayer> players,
                                        String season) throws Exception{
@@ -155,11 +154,11 @@ public class BaseballPlayerStatComparer extends PlayerStatComparer{
     }
 
     /**
-     * Get the shots statistic in the given season for all passed players
+     * Get the home runs statistic in the given season for all passed players
      * @param players the list of Players to collect home runs statistics for
      * @param season the season to consider
      * @return the home runs statistics, for the list of players
-     * @throws Exception if one player lacks the given season's shot data
+     * @throws Exception if one player lacks the given season's home runs data
      */
     private List<String> getValuesHomeRuns(List<BaseballPlayer> players,
                                            String season) throws Exception{
@@ -171,11 +170,11 @@ public class BaseballPlayerStatComparer extends PlayerStatComparer{
     }
 
     /**
-     * Get the Shooting percentage statistic in the given season for all passed players
+     * Get the runs batted in statistic in the given season for all passed players
      * @param players the list of Players to collect runs batted in statistics for
      * @param season the season to consider
      * @return the runs batted in statistics, for the list of players
-     * @throws Exception if one player lacks the given season's shooting percentage data
+     * @throws Exception if one player lacks the given season's runs batted in data
      */
     private List<String> getValuesRunsBattedIn(List<BaseballPlayer> players,
                                                String season) throws Exception{
@@ -187,11 +186,11 @@ public class BaseballPlayerStatComparer extends PlayerStatComparer{
     }
 
     /**
-     * Get the Shooting percentage statistic in the given season for all passed players
+     * Get the strike outs statistic in the given season for all passed players
      * @param players the list of Players to collect strike outs statistics for
      * @param season the season to consider
      * @return the strike outs statistics, for the list of players
-     * @throws Exception if one player lacks the given season's shooting percentage data
+     * @throws Exception if one player lacks the given season's strike outs data
      */
     private List<String> getValuesStrikeOuts(List<BaseballPlayer> players,
                                              String season) throws Exception{
@@ -204,11 +203,11 @@ public class BaseballPlayerStatComparer extends PlayerStatComparer{
 
 
     /**
-     * Get the Shooting percentage statistic in the given season for all passed players
+     * Get the batting average statistic in the given season for all passed players
      * @param players the list of Players to collect average statistics for
      * @param season the season to consider
      * @return the average statistics, for the list of players
-     * @throws Exception if one player lacks the given season's shooting percentage data
+     * @throws Exception if one player lacks the given season's batting average data
      */
     private List<String> getValuesAverage(List<BaseballPlayer> players,
                                           String season) throws Exception{

@@ -2,7 +2,7 @@ package player;
 
 import java.io.*;
 
-public class BaseballPlayerList extends PlayerList<BaseballPlayer>{
+public class BaseballPlayerList extends PlayerList<BaseballPlayer> {
 
     public BaseballPlayerList() throws Exception{
         String line;

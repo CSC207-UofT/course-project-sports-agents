@@ -9,13 +9,12 @@ import java.util.HashMap;
 public class TennisPlayer extends Player {
     private final String country;
     // Key is season, Value is statistic in that season
-    // TODO: Do we want to record age? Is it a stat people want?
-    private HashMap<String, Integer> ageRecord;
-    private HashMap<String, Integer> acesRecord;
-    private HashMap<String, Integer> doubleFaultsRecord;
-    private HashMap<String, Integer> servePointsRecord;
-    private HashMap<String, Integer> firstServesRecord;
-    private HashMap<String, Integer> breakPointsSavedRecord;
+    private final HashMap<String, Integer> ageRecord;
+    private final HashMap<String, Integer> acesRecord;
+    private final HashMap<String, Integer> doubleFaultsRecord;
+    private final HashMap<String, Integer> servePointsRecord;
+    private final HashMap<String, Integer> firstServesRecord;
+    private final HashMap<String, Integer> breakPointsSavedRecord;
 
     /**
      * Construct a tennis player with the following information from one season

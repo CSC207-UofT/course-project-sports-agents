@@ -44,7 +44,6 @@ public class HockeyPlayerStatComparer extends PlayerStatComparer {
         return formatCompare(hockeyPlayers, playersStatValues);
     }
 
-    // TODO: Is there a better way to do this?
     /**
      * Cast a List of Players to List of HockeyPlayers
      * @param genericPlayers List of Player subclass castable to HockeyPlayer

@@ -5,11 +5,11 @@ import player.*;
 
 import java.util.HashMap;
 
-public class commandManager {
+public class CommandManager {
 
     private final HashMap<String, Command> commandDictionary = new HashMap<String, Command>();
 
-    public commandManager() {
+    public CommandManager() {
         // TODO: Should this be its own builder class? Also, better var name ideas?
         PlayerList<HockeyPlayer> hockeyPlayerList = new PlayerList<HockeyPlayer>();
         HockeyPlayerStatManager hockeyPlayerStatManager =
@@ -24,6 +24,8 @@ public class commandManager {
                 new TennisPlayerStatManager(tennisPlayerList);
         TennisPlayerStatComparer tennisPlayerStatComparer =
                 new TennisPlayerStatComparer(tennisPlayerList);
+        TennisPlayerStatPredictor tennisPlayerStatPredictor =
+                new TennisPlayerStatPredictor(tennisPlayerList);
 
         PlayerList<BaseballPlayer> baseballPlayerList = new PlayerList<BaseballPlayer>();
         BaseballPlayerStatManager baseballPlayerStatManager =
@@ -44,7 +46,8 @@ public class commandManager {
         this.commandDictionary.put("compare_player_stat", playerStatComparerFacade);
 
         PlayerStatPredictorFacade playerStatPredictorFacade =
-                new PlayerStatPredictorFacade(hockeyPlayerStatPredictor, baseballPlayerStatPredictor);
+                new PlayerStatPredictorFacade(hockeyPlayerStatPredictor,
+                        tennisPlayerStatPredictor, baseballPlayerStatPredictor);
         this.commandDictionary.put("predict_player_stat", playerStatPredictorFacade);
 
         // TODO: Refactor teams, then make LeagueMemberManager work with injected TeamList

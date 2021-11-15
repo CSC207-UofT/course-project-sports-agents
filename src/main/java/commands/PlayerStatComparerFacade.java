@@ -5,11 +5,14 @@ import java.util.List;
 public class PlayerStatComparerFacade implements Command {
     private final HockeyPlayerStatComparer hockeyPlayerStatComparer;
     private final TennisPlayerStatComparer tennisPlayerStatComparer;
+    private final BaseballPlayerStatComparer baseballPlayerStatComparer;
 
     public PlayerStatComparerFacade(HockeyPlayerStatComparer hockeyPlayerStatComparer,
-                                    TennisPlayerStatComparer tennisPlayerStatComparer, BaseballPlayerStatComparer baseballPlayerStatComparer) {
+                                    TennisPlayerStatComparer tennisPlayerStatComparer,
+                                    BaseballPlayerStatComparer baseballPlayerStatComparer) {
         this.hockeyPlayerStatComparer = hockeyPlayerStatComparer;
         this.tennisPlayerStatComparer = tennisPlayerStatComparer;
+        this.baseballPlayerStatComparer = baseballPlayerStatComparer;
     }
 
     /**
@@ -31,6 +34,8 @@ public class PlayerStatComparerFacade implements Command {
                 return this.hockeyPlayerStatComparer.execute(arguments);
             case "Tennis":
                 return this.tennisPlayerStatComparer.execute(arguments);
+            case "Baseball":
+                return this.baseballPlayerStatComparer.execute(arguments);
             default:
                 throw new Exception("Invalid sport passed!");
         }

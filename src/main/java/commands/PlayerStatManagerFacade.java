@@ -9,11 +9,14 @@ import java.util.List;
 public class PlayerStatManagerFacade implements Command {
     private final HockeyPlayerStatManager hockeyPlayerStatManager;
     private final TennisPlayerStatManager tennisPlayerStatManager;
+    private final BaseballPlayerStatManager baseballPlayerStatManager;
 
     public PlayerStatManagerFacade(HockeyPlayerStatManager hockeyPlayerStatManager,
-                                   TennisPlayerStatManager tennisPlayerStatManager, BaseballPlayerStatManager baseballPlayerStatManager) {
+                                   TennisPlayerStatManager tennisPlayerStatManager,
+                                   BaseballPlayerStatManager baseballPlayerStatManager) {
         this.hockeyPlayerStatManager = hockeyPlayerStatManager;
         this.tennisPlayerStatManager = tennisPlayerStatManager;
+        this.baseballPlayerStatManager = baseballPlayerStatManager;
     }
 
     /**
@@ -32,6 +35,8 @@ public class PlayerStatManagerFacade implements Command {
                 return this.hockeyPlayerStatManager.execute(arguments);
             case "Tennis":
                 return this.tennisPlayerStatManager.execute(arguments);
+            case "Baseball":
+                return this.baseballPlayerStatManager.execute(arguments);
             default:
                 throw new Exception("Invalid sport passed!");
         }

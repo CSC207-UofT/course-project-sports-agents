@@ -4,9 +4,15 @@ import java.util.List;
 
 public class PlayerStatPredictorFacade implements Command {
     private final HockeyPlayerStatPredictor hockeyPlayerStatPredictor;
+    private final TennisPlayerStatPredictor tennisPlayerStatPredictor;
+    private final BaseballPlayerStatPredictor baseballPlayerStatPredictor;
 
-    public PlayerStatPredictorFacade(HockeyPlayerStatPredictor hockeyPlayerStatPredictor, BaseballPlayerStatPredictor baseballPlayerStatPredictor) {
+    public PlayerStatPredictorFacade(HockeyPlayerStatPredictor hockeyPlayerStatPredictor,
+                                     TennisPlayerStatPredictor tennisPlayerStatPredictor,
+                                     BaseballPlayerStatPredictor baseballPlayerStatPredictor) {
         this.hockeyPlayerStatPredictor = hockeyPlayerStatPredictor;
+        this.tennisPlayerStatPredictor = tennisPlayerStatPredictor;
+        this.baseballPlayerStatPredictor = baseballPlayerStatPredictor;
     }
 
     /**
@@ -26,6 +32,10 @@ public class PlayerStatPredictorFacade implements Command {
         switch(sport) {
             case "Hockey":
                 return this.hockeyPlayerStatPredictor.execute(arguments);
+            case "Tennis":
+                return this.tennisPlayerStatPredictor.execute(arguments);
+            case "Baseball":
+                return this.baseballPlayerStatPredictor.execute(arguments);
             default:
                 throw new Exception("Invalid sport passed!");
         }

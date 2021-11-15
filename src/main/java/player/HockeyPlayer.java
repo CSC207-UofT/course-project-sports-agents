@@ -7,14 +7,14 @@ import java.util.HashMap;
  */
 public class HockeyPlayer extends Player {
     // Key is Season, Value is statistic in that season
-    private HashMap<String, String> skaterShootsRecord;
-    private HashMap<String, String> positionRecord;
-    private HashMap<String, Integer> gamesPlayedRecord;
-    private HashMap<String, Integer> goalsRecord;
-    private HashMap<String, Integer> assistsRecord;
-    private HashMap<String, Integer> pointsRecord;
-    private HashMap<String, Integer> shotsRecord;
-    private HashMap<String, Double> shootingPercentageRecord;
+    private final HashMap<String, String> skaterShootsRecord;
+    private final HashMap<String, String> positionRecord;
+    private final HashMap<String, Integer> gamesPlayedRecord;
+    private final HashMap<String, Integer> goalsRecord;
+    private final HashMap<String, Integer> assistsRecord;
+    private final HashMap<String, Integer> pointsRecord;
+    private final HashMap<String, Integer> shotsRecord;
+    private final HashMap<String, Double> shootingPercentageRecord;
 
     /**
      * Create a new Hockey Player

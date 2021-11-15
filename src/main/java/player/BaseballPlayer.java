@@ -55,10 +55,26 @@ public class BaseballPlayer extends Player {
 
     }
 
-    public void addRecord(String season, String team, String position, int gamesPlayed, int atBats, int runs,
-                          int hits, int homeRuns, int runsBattedIn, int strikeOuts, double avg) throws Exception {
-
-
+    /**
+     * Add a new season of data for this baseball player.
+     *
+     * @param season the new season
+     * @param team the player's team in the new season
+     * @param position the player's position in the new season
+     * @param gamesPlayed the player's number of games played in the new season
+     * @param atBats the player's times at bat in the new season
+     * @param runs the player's total runs in the new season
+     * @param hits the player's total in the new season
+     * @param homeRuns the player's total home runs in the new season
+     * @param runsBattedIn the player's total runs batted in for the new season
+     * @param strikeOuts the player's total strike outs in the new season
+     * @param avg the player's batting average in the new season
+     * @throws Exception if data for the given season is already recorded
+     */
+    public void addRecord(String season, String team, String position,
+                          int gamesPlayed, int atBats, int runs, int hits,
+                          int homeRuns, int runsBattedIn, int strikeOuts,
+                          double avg) throws Exception {
         this.addStatTeam(season, team);
         this.addPosition(season, position);
         this.addGamesPlayed(season, gamesPlayed);
@@ -72,10 +88,10 @@ public class BaseballPlayer extends Player {
     }
 
     /**
-     * Record Skater shoots data
+     * Record position data
      * @param season the season the data is from
      * @param position player's position in the team.
-     * @throws Exception if that season already has skater shoots data
+     * @throws Exception if that season already has position data
      */
     public void addPosition(String season, String position)
             throws Exception {
@@ -85,10 +101,10 @@ public class BaseballPlayer extends Player {
 
 
     /**
-     * Record Skater shoots data
+     * Record games played data
      * @param season the season the data is from
      * @param gamesPlayed The number of games the player has played in the season.
-     * @throws Exception if that season already has skater shoots data
+     * @throws Exception if that season already has games played data
      */
     public void addGamesPlayed(String season, int gamesPlayed)
             throws Exception {
@@ -98,10 +114,11 @@ public class BaseballPlayer extends Player {
 
 
     /**
-     * Record Skater shoots data
+     * Record at bats data
      * @param season the season the data is from
-     * @param atBats trips to the plate that don't result in a walk, hit by patch, sacrifice, or reach on interference.
-     * @throws Exception if that season already has skater shoots data
+     * @param atBats trips to the plate that don't result in a walk,
+     *               hit by patch, sacrifice, or reach on interference.
+     * @throws Exception if that season already has at bats data
      */
     public void addAtBats(String season, int atBats)
             throws Exception {
@@ -110,10 +127,11 @@ public class BaseballPlayer extends Player {
     }
 
     /**
-     * Record Skater shoots data
+     * Record runs data
      * @param season the season the data is from
-     * @param runs number of runs whenever a base runner safely reaches home plate and scores
-     * @throws Exception if that season already has skater shoots data
+     * @param runs number of runs whenever a base runner safely reaches home
+     *             plate and scores
+     * @throws Exception if that season already has runs data
      */
     public void addRuns(String season, int runs)
             throws Exception {
@@ -122,10 +140,10 @@ public class BaseballPlayer extends Player {
     }
 
     /**
-     * Record Skater shoots data
+     * Record hits data
      * @param season the season the data is from
      * @param hits number of ball hits.
-     * @throws Exception if that season already has skater shoots data
+     * @throws Exception if that season already has hits data
      */
     public void addHits(String season, int hits)
             throws Exception {
@@ -134,11 +152,12 @@ public class BaseballPlayer extends Player {
     }
 
     /**
-     * Record Skater shoots data
+     * Record home runs data
      * @param season the season the data is from
-     * @param homeRuns number of runs whenever a bat reaches on a hit, touches all bases, and scores a run whithout a
-     * *                putout recorded or the benefit of error.
-     * @throws Exception if that season already has skater shoots data
+     * @param homeRuns number of runs whenever a bat reaches on a hit,
+     *                 touches all bases, and scores a run without
+     *                 putout recorded or the benefit of error.
+     * @throws Exception if that season already has home runs data
      */
     public void addHomeRuns(String season, int homeRuns)
             throws Exception {
@@ -147,10 +166,11 @@ public class BaseballPlayer extends Player {
     }
 
     /**
-     * Record Skater shoots data
+     * Record runs batted in data
      * @param season the season the data is from
-     * @param runsBattedIn number of runs that are scored because of the batter's safe hit.
-     * @throws Exception if that season already has skater shoots data
+     * @param runsBattedIn number of runs that are scored because of the
+     *                     batter's safe hit.
+     * @throws Exception if that season already has runs batted in data
      */
     public void addRunsBattedIn(String season, int runsBattedIn)
             throws Exception {
@@ -159,10 +179,11 @@ public class BaseballPlayer extends Player {
     }
 
     /**
-     * Record Skater shoots data
+     * Record strike out data
      * @param season the season the data is from
-     * @param strikeOuts number when the umpire calls three strikes on the batter.
-     * @throws Exception if that season already has skater shoots data
+     * @param strikeOuts number when the umpire calls three strikes on the
+     *                   batter.
+     * @throws Exception if that season already has strike out data
      */
     public void addStrikeOuts(String season, int strikeOuts)
             throws Exception {
@@ -171,10 +192,10 @@ public class BaseballPlayer extends Player {
     }
 
     /**
-     * Record Skater shoots data
+     * Record batting average data
      * @param season the season the data is from
      * @param avg the rate of hits per at bat.
-     * @throws Exception if that season already has skater shoots data
+     * @throws Exception if that season already has batting average data
      */
     public void addAvg(String season, double avg)
             throws Exception {
@@ -196,8 +217,8 @@ public class BaseballPlayer extends Player {
 
     /**
      * @param season the season of interest
-     * @return the position data from that season
-     * @throws Exception if that season has no position data
+     * @return the games played data from that season
+     * @throws Exception if that season has no games played data
      */
     public Integer getStatGamesPlayed(String season) throws Exception {
         checkForSeason(this.gamesPlayedRecord, season, true);
@@ -207,8 +228,8 @@ public class BaseballPlayer extends Player {
 
     /**
      * @param season the season of interest
-     * @return the position data from that season
-     * @throws Exception if that season has no position data
+     * @return the at bats data from that season
+     * @throws Exception if that season has no at bats data
      */
     public Integer getStatAtBats(String season) throws Exception {
         checkForSeason(this.atBatsRecord, season, true);
@@ -218,8 +239,8 @@ public class BaseballPlayer extends Player {
 
     /**
      * @param season the season of interest
-     * @return the position data from that season
-     * @throws Exception if that season has no position data
+     * @return the runs data from that season
+     * @throws Exception if that season has no runs data
      */
     public Integer getStatRuns(String season) throws Exception {
         checkForSeason(this.runsRecord, season, true);
@@ -229,8 +250,8 @@ public class BaseballPlayer extends Player {
 
     /**
      * @param season the season of interest
-     * @return the position data from that season
-     * @throws Exception if that season has no position data
+     * @return the hits data from that season
+     * @throws Exception if that season has no hits data
      */
     public Integer getStatHits(String season) throws Exception {
         checkForSeason(this.hitsRecord, season, true);
@@ -240,8 +261,8 @@ public class BaseballPlayer extends Player {
 
     /**
      * @param season the season of interest
-     * @return the position data from that season
-     * @throws Exception if that season has no position data
+     * @return the home runs data from that season
+     * @throws Exception if that season has no home runs data
      */
     public Integer getStatHomeRuns(String season) throws Exception {
         checkForSeason(this.homeRunsRecord, season, true);
@@ -251,8 +272,8 @@ public class BaseballPlayer extends Player {
 
     /**
      * @param season the season of interest
-     * @return the position data from that season
-     * @throws Exception if that season has no position data
+     * @return the runs batted in data from that season
+     * @throws Exception if that season has no runs batted in data
      */
     public Integer getStatRunsBattedIn(String season) throws Exception {
         checkForSeason(this.runsBattedInRecord, season, true);
@@ -262,8 +283,8 @@ public class BaseballPlayer extends Player {
 
     /**
      * @param season the season of interest
-     * @return the position data from that season
-     * @throws Exception if that season has no position data
+     * @return the strike out data from that season
+     * @throws Exception if that season has no strike out data
      */
     public Integer getStatStrikeOuts(String season) throws Exception {
         checkForSeason(this.strikeOutsRecord, season, true);
@@ -273,8 +294,8 @@ public class BaseballPlayer extends Player {
 
     /**
      * @param season the season of interest
-     * @return the position data from that season
-     * @throws Exception if that season has no position data
+     * @return the batting average data from that season
+     * @throws Exception if that season has no batting average data
      */
     public Double getStatAvg(String season) throws Exception {
         checkForSeason(this.avgRecord, season, true);
@@ -283,11 +304,7 @@ public class BaseballPlayer extends Player {
 
     @Override
     public String toString() {
-        return "name: " + this.name +  "\nposition: " + this.positionRecord +
-                "\ngames played: " + this.gamesPlayedRecord + "\nat bats: " +
-                this.atBatsRecord + "\nruns: " + this.runsRecord + "\nhits: " + this.hitsRecord +
-                "\nhome runs: " + this.homeRunsRecord + "\nruns batted in: " + this.runsBattedInRecord +
-                "\nstrikeouts: " + this.strikeOutsRecord + "\nbatting average: "+ this.avgRecord + "\n";
+        return "Baseball Player " + super.toString();
     }
 
 
