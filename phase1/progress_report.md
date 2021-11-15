@@ -16,11 +16,12 @@ implementing the facade design pattern was very successful in Phase 1. Using the
 design pattern has allowed us to easily incorporate the use case classes for all three
 sports in the CommandManager class.
 
-## A summary of what each group member has been working on and plans to work on next Presentation
+## A summary of what each group member has been working on and plans to work on Next
 
 First, all members continued working on previous code from phase 0 to improve readibility, and reduce redundant code. 
 Similar to phase 0, the group has been having regular weekly meetings outside of our practical session, which has
 helped all group members stay updated.
+
 Nazanin has worked on baseball stat manager, comparer, and predictor. She has also worked on DataContainer
 for teams and players which demonstrates some form of data persistence. Karim worked on the LeagueMemberManager,
 LeagueStorage and LeagueMember classes. LeagueMember and LeagueStorage are serializable, and the LeagueStorage
