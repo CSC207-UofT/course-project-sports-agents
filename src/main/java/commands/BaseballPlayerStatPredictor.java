@@ -17,18 +17,19 @@ public class BaseballPlayerStatPredictor extends PlayerStatPredictor{
      * the seasons were played in the order provided. Uses linear
      * regression.
      * @param arguments A string array of form
-     *                  {"predict_player_stat", "Baseball", "player name",
+     *                  {"Baseball", "player name",
      *                  "season 1", "season 2", ..., "stat name"}
+     * @param container A container containing the data or means to retrieve it
      * @return the predicted statistic for the next season
      * @throws Exception if the Player or season does not exist
      */
     @Override
     public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
-        String name = arguments.get(2);
+        String name = arguments.get(1);
         BaseballPlayer player = (BaseballPlayer) container.getPlayer("baseball", name);
 
         int argSize = arguments.size();
-        List<String> seasons = arguments.subList(3, argSize - 1);
+        List<String> seasons = arguments.subList(2, argSize - 1);
 
         String statistic = arguments.get(argSize);
         checkStatistic(statistic);

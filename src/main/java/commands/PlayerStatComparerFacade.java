@@ -1,5 +1,6 @@
 package commands;
 
+import constants.Exceptions;
 import drivers_adapters.DataContainer;
 
 import java.util.ArrayList;
@@ -23,15 +24,16 @@ public class PlayerStatComparerFacade implements Command {
      * players' statistics. Players are returned in descending order
      * (best first, worst last)
      * @param arguments A string array of form
-     *                  {"compare_player_stat", "sport name", "player name 1",
+     *                  {"sport name", "player name 1",
      *                  "player name 2", ... , "season", "stat name"}
+     * @param container A container containing the data or means to retrieve it
      * @return the players and their associated statistics
      * @throws Exception if a player does not exists, or lacks data for the
      * given season
      */
     @Override
     public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
-        String sport = arguments.get(1);
+        String sport = arguments.get(0);
         switch(sport) {
             case "Hockey":
                 return this.hockeyPlayerStatComparer.execute(arguments, container);
@@ -40,7 +42,7 @@ public class PlayerStatComparerFacade implements Command {
             case "Baseball":
                 return this.baseballPlayerStatComparer.execute(arguments, container);
             default:
-                throw new Exception("Invalid sport passed!");
+                throw new Exception(Exceptions.INVALID_ARGUMENT);
         }
     }
 }

@@ -1,5 +1,6 @@
 package commands;
 
+import constants.Exceptions;
 import drivers_adapters.DataContainer;
 
 import java.util.ArrayList;
@@ -24,14 +25,15 @@ public class PlayerStatPredictorFacade implements Command {
      * the seasons were played in the order provided. Uses linear
      * regression.
      * @param arguments A string array of form
-     *                  {"predict_player_stat", "sport name", "player name",
+     *                  {"sport name", "player name",
      *                  "season 1", "season 2", ..., "stat name"}
+     * @param container A container containing the data or means to retrieve it
      * @return the predicted statistic for the next season
      * @throws Exception if the Player or season does not exist
      */
     @Override
     public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
-        String sport = arguments.get(1);
+        String sport = arguments.get(0);
         switch(sport) {
             case "Hockey":
                 return this.hockeyPlayerStatPredictor.execute(arguments, container);
@@ -40,7 +42,7 @@ public class PlayerStatPredictorFacade implements Command {
             case "Baseball":
                 return this.baseballPlayerStatPredictor.execute(arguments, container);
             default:
-                throw new Exception("Invalid sport passed!");
+                throw new Exception(Exceptions.INVALID_ARGUMENT);
         }
     }
 }

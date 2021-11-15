@@ -25,9 +25,9 @@ public class TennisPlayerStatComparer extends PlayerStatComparer {
      * players' statistics. Players are returned in descending order
      * (best first, worst last)
      * @param arguments A string array of form
-     *                  {"compare_player_stat", "Tennis", "player name 1",
+     *                  {"Tennis", "player name 1",
      *                  "player name 2", ... , "season", "stat name"}
-     * @param container
+     * @param container A container containing the data or means to retrieve it
      * @return the players and their associated statistics
      * @throws Exception if a player does not exist, or lacks data for the
      * given season
@@ -35,7 +35,7 @@ public class TennisPlayerStatComparer extends PlayerStatComparer {
     @Override
     public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
         int argSize = arguments.size();
-        List<String> names = arguments.subList(2, argSize - 2);
+        List<String> names = arguments.subList(1, argSize - 2);
 
         ArrayList<TennisPlayer> tennisPlayers = new ArrayList<>();
         for (String name: names) {
