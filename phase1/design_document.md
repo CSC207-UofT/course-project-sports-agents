@@ -11,10 +11,10 @@ offering up-to-date data)?
 Due to 
 practical cost concerns and the goal of initially minimizing 
 complexity, we decided to load large datasets from a file with 
-API access as a later feature. However, we designed the 
-application such that the class loading the file could easily be 
-replaced by a class loading from an API allowing for ease of transition
-later in development. 
+API access as a later feature. However, we implemented the Strategy
+design pattern, which allows us to write more classes in the future
+that might have a different way of retrieving data, like retrieving data
+from an API or otherwise.
 
 A second design challenge was how to handle the 
 Player-Team relationship: how much should a `Player` 
