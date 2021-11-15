@@ -1,22 +1,22 @@
 package team;
 
 import java.util.ArrayList;
+import java.util.List;
 
-import team.Team;
 import org.junit.*;
-import player.Player;
 import static org.junit.Assert.*;
-import match.Match;
-import team.HockeyTeam;
 
-public class TeamTest {
-    private Team t;
+import match.Match;
+import team.TennisTeam;
+
+public class TennisTeamTest {
+    private TennisTeam t;
 
     @Before
     public void setUp() throws Exception {
-        ArrayList<Player> p = new ArrayList<Player>();
-        ArrayList<Match> g  = new ArrayList<Match>();
-        t = new HockeyTeam("name", "city", p, g, 0, 0, 0, 0);
+        List<String> p = new ArrayList<String>();
+        List<Match> g  = new ArrayList<Match>();
+        t = new TennisTeam("name", "city", p, g, 0, 0, 0, 0, 0, 0, 0);
     }
 
     @Test(timeout = 50)
@@ -41,7 +41,18 @@ public class TeamTest {
         assertEquals("hi", t.getHomeCity());
     }
 
-    //Test get set players
+    @Test(timeout = 50)
+    public void testGetPlayers(){
+        assertEquals("city", t.getHomeCity());
+    }
+
+    @Test(timeout = 50)
+    public void testSetPlayers(){
+        List<String> p = new ArrayList<String>();
+        p.add("playerName");
+        t.setPlayers(p);
+        assertEquals(p, t.getPlayers());
+    }
 
     //Test get set games
 
@@ -87,5 +98,38 @@ public class TeamTest {
     public void testSetTies(){
         t.setTies(1);
         assertEquals(1, t.getTies());
+    }
+
+    @Test(timeout = 50)
+    public void testGetRank(){
+        assertEquals(0, t.getRank());
+    }
+
+    @Test(timeout = 50)
+    public void testSetRank(){
+        t.setRank(1);
+        assertEquals(1, t.getRank());
+    }
+
+    @Test(timeout = 50)
+    public void testGetTotalTournamentsPlayed(){
+        assertEquals(0, t.getTotalTournamentsPlayed());
+    }
+
+    @Test(timeout = 50)
+    public void testSetTotalTournamentsPlayed(){
+        t.setTotalTournamentsPlayed(1);
+        assertEquals(1, t.getTotalTournamentsPlayed());
+    }
+
+    @Test(timeout = 50)
+    public void testGetTournamentWins(){
+        assertEquals(0, t.getTournamentWins());
+    }
+
+    @Test(timeout = 50)
+    public void testSetTournamentWins(){
+        t.setTournamentWins(1);
+        assertEquals(1, t.getTournamentWins());
     }
 }

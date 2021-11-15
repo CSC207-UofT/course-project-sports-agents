@@ -7,15 +7,15 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 import match.Match;
+import commands.TeamStatPredictor;
 import commands.TeamStatManager;
 import team.TeamManager;
 import team.TeamStats;
 import team.Team;
 import team.TennisTeam;
 
-
-public class TeamStatManagerTest {
-    private TeamStatManager tsm;
+public class TeamStatPredictorTest {
+    TeamStatPredictor tsp;
 
     @Before
     public void setUp() throws Exception {
@@ -23,20 +23,16 @@ public class TeamStatManagerTest {
         List<Match> g  = new ArrayList<Match>();
         Team t1 = new TennisTeam("name", "city", p, g, 0, 0, 0, 0, 0, 0, 0);
         Team t2 = new TennisTeam("name1", "city1", p, g, 3, 1, 1, 1, 1, 1, 1);
-        ArrayList<Team> t = new ArrayList<Team>();
+        List<Team> t = new ArrayList<Team>();
         t.add(t1);
         t.add(t2);
         TeamManager tm = new TeamManager(t);
-        tsm = new TeamStatManager(tm);
+        TeamStatManager tsm = new TeamStatManager(tm);
+        tsp = new TeamStatPredictor(tsm);
     }
 
     @Test(timeout = 50)
-    public void testGetStat(){
-        assertEquals(0, tsm.getStat("name", TeamStats.WINS), 0);
-    }
-
-    @Test(timeout = 50)
-    public void testParseStat(){
-        assertEquals(TeamStats.WINS, tsm.parseStat("wins"));
+    public void testPredictWinner(){
+        assertEquals(2, tsp.predictWinner("name", "name1"));
     }
 }

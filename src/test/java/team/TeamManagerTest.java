@@ -1,26 +1,25 @@
 package team;
 
+import java.util.List;
 import java.util.ArrayList;
 
-import team.Team;
-import match.Match;
 import org.junit.*;
-import player.Player;
-import team.HockeyTeam;
-import team.TeamManager;
-
 import static org.junit.Assert.*;
+
+import match.Match;
+import team.Team;
+import team.TennisTeam;
 
 public class TeamManagerTest {
     private TeamManager tm;
 
     @Before
     public void setUp() throws Exception {
-        ArrayList<Player> p = new ArrayList<Player>();
-        ArrayList<Match> g  = new ArrayList<Match>();
-        HockeyTeam t1 = new HockeyTeam("name", "city", p, g, 0, 0, 0, 0);
-        HockeyTeam t2 = new HockeyTeam("name1", "city1", p, g, 1, 1, 1, 1);
-        ArrayList<Team> t = new ArrayList<Team>();
+        List<String> p = new ArrayList<String>();
+        List<Match> g  = new ArrayList<Match>();
+        Team t1 = new TennisTeam("name", "city", p, g, 0, 0, 0, 0, 0, 0, 0);
+        Team t2 = new TennisTeam("name1", "city1", p, g, 1, 1, 1, 1, 1, 1, 1);
+        List<Team> t = new ArrayList<Team>();
         t.add(t1);
         t.add(t2);
         tm = new TeamManager(t);
@@ -28,11 +27,11 @@ public class TeamManagerTest {
 
     @Test(timeout = 50)
     public void testGetTeams(){
-        ArrayList<Player> p = new ArrayList<Player>();
-        ArrayList<Match> g  = new ArrayList<Match>();
-        HockeyTeam t1 = new HockeyTeam("name", "city", p, g, 0, 0, 0, 0);
-        HockeyTeam t2 = new HockeyTeam("name1", "city1", p, g, 1, 1, 1, 1);
-        ArrayList<Team> t = new ArrayList<Team>();
+        List<String> p = new ArrayList<String>();
+        List<Match> g  = new ArrayList<Match>();
+        Team t1 = new TennisTeam("name", "city", p, g, 0, 0, 0, 0, 0, 0, 0);
+        Team t2 = new TennisTeam("name1", "city1", p, g, 1, 1, 1, 1, 1, 1, 1);
+        List<Team> t = new ArrayList<Team>();
         t.add(t1);
         t.add(t2);
         assertEquals(t.get(0).getName(), tm.getTeams().get(0).getName());
@@ -48,15 +47,14 @@ public class TeamManagerTest {
         assertEquals(t.get(1).getWins(), tm.getTeams().get(1).getWins());
         assertEquals(t.get(1).getLosses(), tm.getTeams().get(1).getLosses());
         assertEquals(t.get(1).getTies(), tm.getTeams().get(1).getTies());
-
     }
 
     @Test(timeout = 50)
     public void testCreateTeam(){
-        ArrayList<Player> p = new ArrayList<Player>();
-        ArrayList<Match> g  = new ArrayList<Match>();
-        Team t = new HockeyTeam("hi", "hello", p, g, 5, 5, 5, 5);
-        tm.createTeam("hockey", "hi", "hello", p, g, 5, 5, 5, 5);
+        List<String> p = new ArrayList<String>();
+        List<Match> g  = new ArrayList<Match>();
+        Team t = new TennisTeam("name", "city", p, g, 0, 0, 0, 0, 0, 0, 0);
+        tm.createTeam(t);
         assertEquals(t.getName(), tm.getTeams().get(2).getName());
         assertEquals(t.getHomeCity(), tm.getTeams().get(2).getHomeCity());
         assertEquals(t.getTotalGamesPlayed(), tm.getTeams().get(2).getTotalGamesPlayed());
