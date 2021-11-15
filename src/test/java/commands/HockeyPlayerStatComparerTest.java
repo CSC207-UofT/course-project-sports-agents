@@ -45,7 +45,7 @@ public class HockeyPlayerStatComparerTest {
     public void testExecuteGamesPlayedPasses() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("compare_player_stat",
                 "Hockey", "Player 1", "Player 2",
-                "Player 3", "20202021", "Games Played");
+                "Player 3", "20202021", "Games Played"));
         String output = this.hockeyPlayerStatComparer.execute(arguments, container);
         String expected = "From best to worst:\n" +
                           "Player 3: 50\n" +
@@ -58,7 +58,7 @@ public class HockeyPlayerStatComparerTest {
     public void testExecuteGamesPlayedNoPlayer() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("compare_player_stat",
                 "Hockey", "Paul Gries", "Player 2",
-                "Player 3", "20202021", "Games Played");
+                "Player 3", "20202021", "Games Played"));
         String fail = this.hockeyPlayerStatComparer.execute(arguments, container);
     }
 
@@ -95,7 +95,7 @@ public class HockeyPlayerStatComparerTest {
     public void testExecuteGoalsNoSeason() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("compare_player_stat",
                 "Hockey", "Player 1", "Player 2",
-                "Player 3", "20192020", "Goals");
+                "Player 3", "20192020", "Goals"));
         String fail = this.hockeyPlayerStatComparer.execute(arguments, container);
     }
 
@@ -116,7 +116,7 @@ public class HockeyPlayerStatComparerTest {
     public void testExecuteAssistsNoPlayer() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("compare_player_stat",
                 "Hockey", "Paul Gries", "Player 2",
-                "Player 3", "20202021", "Assists");
+                "Player 3", "20202021", "Assists"));
         String fail = this.hockeyPlayerStatComparer.execute(arguments, container);
     }
 
@@ -124,7 +124,7 @@ public class HockeyPlayerStatComparerTest {
     public void testExecuteAssistsNoSeason() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("compare_player_stat",
                 "Hockey", "Player 1", "Player 2",
-                "Player 3", "20192020", "Assists");
+                "Player 3", "20192020", "Assists"));
         String fail = this.hockeyPlayerStatComparer.execute(arguments, container);
     }
 
@@ -132,7 +132,7 @@ public class HockeyPlayerStatComparerTest {
     public void testExecutePointsPasses() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("compare_player_stat",
                 "Hockey", "Player 1", "Player 2",
-                "Player 3", "20202021", "Points");
+                "Player 3", "20202021", "Points"));
         String output = this.hockeyPlayerStatComparer.execute(arguments, container);
         String expected = "From best to worst:\n" +
                           "Player 3: 60\n" +
@@ -145,7 +145,7 @@ public class HockeyPlayerStatComparerTest {
     public void testExecutePointsNoPlayer() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("compare_player_stat",
                 "Hockey", "Paul Gries", "Player 2",
-                "Player 3", "20202021", "Points");
+                "Player 3", "20202021", "Points"));
         String fail = this.hockeyPlayerStatComparer.execute(arguments, container);
     }
 
@@ -153,7 +153,7 @@ public class HockeyPlayerStatComparerTest {
     public void testExecutePointsNoSeason() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("compare_player_stat",
                 "Hockey", "Player 1", "Player 2",
-                "Player 3", "20192020", "Points");
+                "Player 3", "20192020", "Points"));
         String fail = this.hockeyPlayerStatComparer.execute(arguments, container);
     }
 
@@ -219,7 +219,7 @@ public class HockeyPlayerStatComparerTest {
     public void testExecuteInvalidStat() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("compare_player_stat",
                 "Hockey", "Player 1", "Player 2",
-                "Player 3", "20202021", "Name");
+                "Player 3", "20202021", "Name"));
         String fail = this.hockeyPlayerStatComparer.execute(arguments, container);
     }
 }

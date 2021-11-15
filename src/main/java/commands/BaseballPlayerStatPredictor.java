@@ -17,8 +17,9 @@ public class BaseballPlayerStatPredictor extends PlayerStatPredictor{
      * the seasons were played in the order provided. Uses linear
      * regression.
      * @param arguments A string array of form
-     *                  {"predict_player_stat", "Baseball", "player name",
+     *                  {"Baseball", "player name",
      *                  "season 1", "season 2", ..., "stat name"}
+     * @param container A container with the necessary data and the means to get it
      * @return the predicted statistic for the next season
      * @throws Exception if the Player or season does not exist
      */
