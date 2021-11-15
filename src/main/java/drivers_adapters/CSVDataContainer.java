@@ -43,6 +43,7 @@ public class CSVDataContainer implements DataContainer {
 
     private void getTennisPlayer(String name) throws Exception {
         // TODO: Read tennis players.
+        // Tennis players are two to a row, so data is harder to parse.
     }
 
     private void getBaseballPlayer(String name) throws Exception {
