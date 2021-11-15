@@ -1,5 +1,6 @@
 package drivers_adapters;
 
+import constants.Exceptions;
 import player.BaseballPlayer;
 import player.HockeyPlayer;
 import player.Player;
@@ -66,6 +67,9 @@ public class CSVDataContainer implements DataContainer {
                 }
             }
             br.close();
+            if (!found) {
+                throw new Exception(Exceptions.PLAYER_NOT_FOUND);
+            }
         } catch (IOException e) {
             throw new Exception("File not found!");
         }
@@ -104,6 +108,9 @@ public class CSVDataContainer implements DataContainer {
                 }
             }
             br.close();
+            if (!found) {
+                throw new Exception(Exceptions.PLAYER_NOT_FOUND);
+            }
         } catch (IOException e) {
             throw new Exception("File not found!");
         }
