@@ -1,5 +1,6 @@
 package commands;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -28,7 +29,7 @@ public class PlayerStatManagerFacade implements Command {
      * @throws Exception if the Player or season does not exist
      */
     @Override
-    public String execute(List<String> arguments) throws Exception {
+    public String execute(ArrayList<String> arguments) throws Exception {
         String sport = arguments.get(1);
         switch(sport) {
             case "Hockey":

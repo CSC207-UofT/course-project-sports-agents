@@ -1,8 +1,8 @@
 package commands;
 
+import constants.Exceptions;
 import player.PlayerList;
 import player.Player;
-
 import java.util.*;
 
 /**
@@ -29,7 +29,7 @@ public abstract class PlayerStatManager implements Command {
      */
     protected void checkStatistic(String statistic) throws Exception {
         if (!this.allowedStatsToGet.contains(statistic)) {
-            throw new Exception("Cannot get Statistic " + statistic + "!");
+            throw new Exception(Exceptions.INVALID_STATISTIC);
         }
     }
 

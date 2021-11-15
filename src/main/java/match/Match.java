@@ -2,10 +2,11 @@ package match;
 
 import leagueMember.LeagueMember;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
-public class Match {
+public class Match implements Serializable {
     private ArrayList<LeagueMember> teamABetters;
     private ArrayList<LeagueMember> teamBBetters;
     private final String teamA;

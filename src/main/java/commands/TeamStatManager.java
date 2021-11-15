@@ -1,5 +1,6 @@
 package commands;
 
+import constants.Exceptions;
 import team.Team;
 import team.TeamManager;
 
@@ -15,12 +16,12 @@ public class TeamStatManager {
      * @param teamName
      * @return If team exists returns total games played, otherwise returns -1
      */
-    public int getTotalGamesPlayed(String teamName){
+    public int getTotalGamesPlayed(String teamName) throws Exception {
         Team team = teamManager.findTeamWithName(teamName);
         if(team != null){
             return team.getTotalGamesPlayed();
         }
-        return -1;
+        throw new Exception(Exceptions.TEAM_NOT_FOUND);
     }
 
     /**
@@ -28,12 +29,12 @@ public class TeamStatManager {
      * @param teamName
      * @return If team exists returns number of wins, otherwise returns -1
      */
-    public int getWins(String teamName){
+    public int getWins(String teamName) throws Exception {
         Team team = teamManager.findTeamWithName(teamName);
         if(team != null){
             return team.getWins();
         }
-        return -1;
+        throw new Exception(Exceptions.TEAM_NOT_FOUND);
     }
 
     /**
@@ -41,12 +42,12 @@ public class TeamStatManager {
      * @param teamName
      * @return If team exists returns number of losses, otherwise returns -1
      */
-    public int getLosses(String teamName){
+    public int getLosses(String teamName) throws Exception {
         Team team = teamManager.findTeamWithName(teamName);
         if(team != null){
             return team.getLosses();
         }
-        return -1;
+        throw new Exception(Exceptions.TEAM_NOT_FOUND);
     }
 
     /**
@@ -54,12 +55,12 @@ public class TeamStatManager {
      * @param teamName
      * @return If team exists returns number of ties, otherwise returns -1
      */
-    public int getTies(String teamName){
+    public int getTies(String teamName) throws Exception {
         Team team = teamManager.findTeamWithName(teamName);
         if(team != null){
             return team.getTies();
         }
-        return -1;
+        throw new Exception(Exceptions.TEAM_NOT_FOUND);
     }
 
     /**
@@ -67,7 +68,7 @@ public class TeamStatManager {
      * @param teamName
      * @return If team exists returns win rate percentage, otherwise returns -1
      */
-    public float getWinRate(String teamName){
+    public float getWinRate(String teamName) throws Exception {
         Team team = teamManager.findTeamWithName(teamName);
         if(team != null){
             if(team.getTotalGamesPlayed() == 0){
@@ -75,7 +76,7 @@ public class TeamStatManager {
             }
             return (float) team.getWins() / team.getTotalGamesPlayed() * 100;
         }
-        return -1;
+        throw new Exception(Exceptions.TEAM_NOT_FOUND);
     }
 
     /**
@@ -83,7 +84,7 @@ public class TeamStatManager {
      * @param teamName
      * @return If team exists returns loss rate percentage, otherwise returns -1
      */
-    public float getLossRate(String teamName){
+    public float getLossRate(String teamName) throws Exception {
         Team team = teamManager.findTeamWithName(teamName);
         if(team != null){
             if(team.getTotalGamesPlayed() == 0){
@@ -91,6 +92,6 @@ public class TeamStatManager {
             }
             return (float) team.getLosses() / team.getTotalGamesPlayed() * 100;
         }
-        return -1;
+        throw new Exception(Exceptions.TEAM_NOT_FOUND);
     }
 }

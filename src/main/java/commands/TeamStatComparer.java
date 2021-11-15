@@ -13,7 +13,7 @@ public class TeamStatComparer {
      * @param team2
      * @return 1 if team 1 is higher, 2 if team 2 is higher, 0 if team 1 equals team 2
      */
-    public int compareTotalGamesPlayed(String team1, String team2){
+    public int compareTotalGamesPlayed(String team1, String team2) throws Exception {
         float t1TotalGamesPlayed = teamStatManager.getTotalGamesPlayed(team1);
         float t2TotalGamesPlayed = teamStatManager.getTotalGamesPlayed(team2);
         int out = -1;
@@ -34,7 +34,7 @@ public class TeamStatComparer {
      * @param team2
      * @return 1 if team 1 is higher, 2 if team 2 is higher, 0 if team 1 equals team 2
      */
-    public int compareWins(String team1, String team2){
+    public int compareWins(String team1, String team2) throws Exception {
         float t1Wins = teamStatManager.getWins(team1);
         float t2Wins = teamStatManager.getWins(team2);
         int out = -1;
@@ -55,7 +55,7 @@ public class TeamStatComparer {
      * @param team2
      * @return 1 if team 1 is higher, 2 if team 2 is higher, 0 if team 1 equals team 2
      */
-    public int compareLosses(String team1, String team2){
+    public int compareLosses(String team1, String team2) throws Exception {
         float t1Losses = teamStatManager.getLosses(team1);
         float t2Losses = teamStatManager.getLosses(team2);
         int out = -1;
@@ -76,7 +76,7 @@ public class TeamStatComparer {
      * @param team2
      * @return 1 if team 1 is higher, 2 if team 2 is higher, 0 if team 1 equals team 2
      */
-    public int compareTies(String team1, String team2){
+    public int compareTies(String team1, String team2) throws Exception {
         float t1Ties = teamStatManager.getTies(team1);
         float t2Ties = teamStatManager.getTies(team2);
         int out = -1;
@@ -97,7 +97,7 @@ public class TeamStatComparer {
      * @param team2
      * @return 1 if team 1 is higher, 2 if team 2 is higher, 0 if team 1 equals team 2
      */
-    public int compareWinRate(String team1, String team2){
+    public int compareWinRate(String team1, String team2) throws Exception {
         float t1WinRate = teamStatManager.getWinRate(team1);
         float t2WinRate = teamStatManager.getWinRate(team2);
         int out = -1;
@@ -118,7 +118,7 @@ public class TeamStatComparer {
      * @param team2
      * @return 1 if team 1 is higher, 2 if team 2 is higher, 0 if team 1 equals team 2
      */
-    public int compareLossRate(String team1, String team2){
+    public int compareLossRate(String team1, String team2) throws Exception {
         float t1LossRate = teamStatManager.getWinRate(team1);
         float t2LossRate = teamStatManager.getWinRate(team2);
         int out = -1;

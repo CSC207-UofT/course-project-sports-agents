@@ -1,5 +1,6 @@
 package commands;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PlayerStatComparerFacade implements Command {
@@ -27,7 +28,7 @@ public class PlayerStatComparerFacade implements Command {
      * given season
      */
     @Override
-    public String execute(List<String> arguments) throws Exception {
+    public String execute(ArrayList<String> arguments) throws Exception {
         String sport = arguments.get(1);
         switch(sport) {
             case "Hockey":

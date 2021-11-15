@@ -1,5 +1,6 @@
 package commands;
 
+import constants.Exceptions;
 import player.PlayerList;
 import player.Player;
 
@@ -27,7 +28,7 @@ public abstract class PlayerStatComparer implements Command {
      */
     protected void checkStatistic(String statistic) throws Exception {
         if (!this.allowedStatsToCompare.contains(statistic)) {
-            throw new Exception("Cannot compare Statistic " + statistic + "!");
+            throw new Exception(Exceptions.INVALID_STATISTIC);
         }
     }
 
