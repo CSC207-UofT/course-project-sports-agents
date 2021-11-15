@@ -1,7 +1,5 @@
 package commands;
 
-import constants.Exceptions;
-import player.HockeyPlayer;
 import player.PlayerList;
 
 import java.util.*;
@@ -9,13 +7,69 @@ import java.util.*;
 /**
  * Predict a player's performance in season 2021-2022 in a given statistic.
  */
-public class PlayerStatPredictor implements Command {
+public abstract class PlayerStatPredictor implements Command {
+    protected PlayerList playerList;
+    private final Set<String> allowedStatsToPredict;
+
     /**
+     * @param playerList the Players this StatPredictor will get statistics for
+     * @param allowedStatsToPredict the statistics this StatManager can Predict
+     */
+    public PlayerStatPredictor(PlayerList playerList,
+                               Set<String> allowedStatsToPredict) {
+        this.playerList = playerList;
+        this.allowedStatsToPredict = allowedStatsToPredict;
+    }
+
+    /**
+     * @param statistic a statistic to check if it can be predicted
+     * @throws Exception if the statistic cannot be predicted
+     */
+    protected void checkStatistic(String statistic) throws Exception {
+        if (!this.allowedStatsToPredict.contains(statistic)) {
+            throw new Exception("Cannot predict statistic " + statistic + "!");
+        }
+    }
+
+    /**
+     * Extrapolate a series of data points, at evenly spaced intervals,
+     * into the future using a linear model
+     * @param pastStats the past data points
+     * @return the linearly extrapolated next data point in the series
+     */
+    protected int linearExtrapolate(List<Double> pastStats) {
+        // TODO: Implement linear extrapolation
+        return 0;
+    }
+
+    /**
+     * Format data for printing to a terminal
+     * @param seasons the seasons where past data originates from
+     * @param pastStats the past data
+     * @param prediction the prediction for next season
+     * @return the formatted output to display
+     */
+    protected String formatOut(List<String> seasons, List<Double> pastStats,
+                               int prediction) {
+        StringBuilder out = new StringBuilder("Previous Statistics:\n");
+        // Precondition: seasons.size() = pastStats.size()
+        for (int i = 0; i != seasons.size(); i += 1) {
+            out.append(seasons.get(i));
+            out.append(": ");
+            out.append(pastStats.get(i));
+            out.append("\n");
+        }
+        out.append("Prediction for next season: ");
+        out.append(prediction);
+        return out.toString();
+    }
+
+
+    /*
      *
      * @param arguments is a list of strings where ["player name", "stat"]
      * @return the prediction of the stat based on the past data.
      * @throws Exception when the player name is not found or the demanded stat is invalid.
-     */
     @Override
     public String execute(ArrayList<String> arguments) throws Exception {
         String playerName = arguments.get(0);
@@ -24,7 +78,7 @@ public class PlayerStatPredictor implements Command {
         // Throw exception for a list of statistics that are invalid for comparison
         List<String> invalidStats = Arrays.asList( "name", "season", "team", "skater shoots","position");
         if (invalidStats.contains(stat)){
-            throw new Exception(Exceptions.INVALID_STATISTIC);
+            throw new Exception("Invalid statistic for comparison!");
         }
 
         PlayerList p = new PlayerList();
@@ -74,5 +128,6 @@ public class PlayerStatPredictor implements Command {
         return "Predicted " + stat + " approximately in season 2021-2022: " + (int)(a*Math.pow(r, 6));
 
     }
+     */
 
 }

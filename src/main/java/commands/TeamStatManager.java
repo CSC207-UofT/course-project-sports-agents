@@ -6,7 +6,7 @@ import team.TeamManager;
 
 public class TeamStatManager {
     TeamManager teamManager;
-    
+
     public TeamStatManager(TeamManager teamManager){
         this.teamManager = teamManager;
     }
@@ -90,7 +90,7 @@ public class TeamStatManager {
             if(team.getTotalGamesPlayed() == 0){
                 return 0;
             }
-            return (float) team.getLosses() / team.getTotalGamesPlayed() * 100; 
+            return (float) team.getLosses() / team.getTotalGamesPlayed() * 100;
         }
         throw new Exception(Exceptions.TEAM_NOT_FOUND);
     }

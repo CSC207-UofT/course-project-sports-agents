@@ -1,7 +1,7 @@
 package team;
 
-import player.Player;
 import match.Match;
+import player.*;
 
 import java.util.ArrayList;
 
@@ -15,7 +15,7 @@ public class TeamManager {
     public TeamManager(ArrayList<Team> teams){
         this.teams = teams;
     }
-    
+
     /**
      * Get teams
      * @return teams
