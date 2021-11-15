@@ -1,17 +1,15 @@
 package commands;
 
+import drivers_adapters.DataContainer;
 import player.HockeyPlayer;
-import player.PlayerList;
 
 import java.util.*;
 
 public class HockeyPlayerStatPredictor extends PlayerStatPredictor {
-    protected final PlayerList<HockeyPlayer> hockeyPlayerList;
 
-    public HockeyPlayerStatPredictor(PlayerList<HockeyPlayer> hockeyPlayerList) {
-        super(new HashSet<>(Arrays.asList("Goals", "Assists",
+    public HockeyPlayerStatPredictor() {
+        super(new HashSet<String>(Arrays.asList("Goals", "Assists",
                 "Points", "Shots", "Shooting Percentage")));
-        this.hockeyPlayerList = hockeyPlayerList;
     }
 
     /**
@@ -20,17 +18,16 @@ public class HockeyPlayerStatPredictor extends PlayerStatPredictor {
      * the seasons were played in the order provided. Uses linear
      * regression.
      * @param arguments A string array of form
-     *                  {"predict_player_stat", "Hockey", "player name", "stat name"}
+     *                  {"Hockey", "player name",
+     *                  "season 1", "season 2", ..., "stat name"}
+     * @param container A container containing the data or means to retrieve it
      * @return the predicted statistic for the next season
      * @throws Exception if the Player or season does not exist
      */
     @Override
-    public String execute(ArrayList<String> arguments) throws Exception {
-        String name = arguments.get(2);
-        HockeyPlayer player = this.hockeyPlayerList.getPlayer(name);
-
-        // Get a list of all the seasons that occurred
-        List<String> allSeasons = this.hockeyPlayerList.getSeasons();
+    public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
+        String name = arguments.get(1);
+        HockeyPlayer player = (HockeyPlayer) container.getPlayer("hockey", name);
 
         int argSize = arguments.size();
         String statistic = arguments.get(argSize - 1);
@@ -56,6 +53,7 @@ public class HockeyPlayerStatPredictor extends PlayerStatPredictor {
      * Collect the player's past statistics for the seasons they participated in, maintaining order.
      * @param player the player to get statistics for
      * @param statistic the statistic to get
+     * @param seasons the list of seasons to get
      * @return the player's statistics for the given seasons
      * @throws Exception if one statistic is not recorded
      */
@@ -80,6 +78,7 @@ public class HockeyPlayerStatPredictor extends PlayerStatPredictor {
     /**
      * Get the Goals statistics for the given player in all seasons they participated in
      * @param player the Player to get Goals statistics for
+     * @param seasons the list of seasons to consider
      * @return the Goals statistics, for all given seasons
      * @throws Exception if one season lacks recorded Goals data
      */
@@ -94,6 +93,7 @@ public class HockeyPlayerStatPredictor extends PlayerStatPredictor {
     /**
      * Get the Assists statistics for the given player in all seasons player participated in
      * @param player the Player to get Assists statistics for
+     * @param seasons the list of seasons to consider
      * @return the Assists statistics, for all given seasons
      * @throws Exception if one season lacks recorded Assists data
      */
@@ -108,6 +108,7 @@ public class HockeyPlayerStatPredictor extends PlayerStatPredictor {
     /**
      * Get the Points statistics for the given player in all given seasons
      * @param player the Player to get Points statistics for
+     * @param seasons the list of seasons to consider
      * @return the Points statistics, for all given seasons
      * @throws Exception if one season lacks recorded Points data
      */
@@ -122,6 +123,7 @@ public class HockeyPlayerStatPredictor extends PlayerStatPredictor {
     /**
      * Get the Shots statistics for the given player in all seasons player participated in
      * @param player the Player to get Shots statistics for
+     * @param seasons the list of seasons to consider
      * @return the Shots statistics, for all given seasons
      * @throws Exception if one season lacks recorded Shots data
      */
@@ -136,6 +138,7 @@ public class HockeyPlayerStatPredictor extends PlayerStatPredictor {
     /**
      * Get the Shooting Percentage statistics for the given player in all seasons player participated in
      * @param player the Player to get Shooting Percentage statistics for
+     * @param seasons the list of seasons to consider
      * @return the Shooting Percentage statistics, for all given seasons
      * @throws Exception if one season lacks recorded Shooting Percentage data
      */

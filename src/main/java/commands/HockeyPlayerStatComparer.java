@@ -1,18 +1,16 @@
 package commands;
 
-import player.PlayerList;
+import drivers_adapters.DataContainer;
 import player.HockeyPlayer;
 import player.HockeyPlayerComparator;
-
 import java.util.*;
 
 public class HockeyPlayerStatComparer extends PlayerStatComparer {
-    final PlayerList<HockeyPlayer> hockeyPlayerList;
 
-    public HockeyPlayerStatComparer(PlayerList<HockeyPlayer> hockeyPlayerList) {
-        super(new HashSet<>(Arrays.asList("Games Played", "Goals",
-                "Assists", "Points", "Shots", "Shooting Percentage")));
-        this.hockeyPlayerList = hockeyPlayerList;
+    public HockeyPlayerStatComparer() {
+        super(
+                new HashSet<String>(Arrays.asList("Games Played", "Goals",
+                        "Assists", "Points", "Shots", "Shooting Percentage")));
     }
 
     /**
@@ -20,17 +18,22 @@ public class HockeyPlayerStatComparer extends PlayerStatComparer {
      * players' statistics. Players are returned in descending order
      * (best first, worst last)
      * @param arguments A string array of form
-     *                  {"compare_player_stat", "Hockey", "player name 1",
+     *                  {"Hockey", "player name 1",
      *                  "player name 2", ... , "season", "stat name"}
+     * @param container A container containing the data or means to retrieve it
      * @return the players and their associated statistics
      * @throws Exception if a player does not exists, or lacks data for the
      * given season
      */
     @Override
-    public String execute(ArrayList<String> arguments) throws Exception {
+    public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
         int argSize = arguments.size();
-        List<String> names = arguments.subList(2, argSize - 2);
-        List<HockeyPlayer> hockeyPlayers = this.hockeyPlayerList.getPlayers(names);
+        List<String> names = arguments.subList(1, argSize - 2);
+
+        ArrayList<HockeyPlayer> hockeyPlayers = new ArrayList<>();
+        for (String name: names) {
+            hockeyPlayers.add((HockeyPlayer) container.getPlayer("hockey", name));
+        }
 
         String season = arguments.get(argSize - 2);
 

@@ -1,5 +1,7 @@
 package commands;
 
+import drivers_adapters.CSVDataContainer;
+import drivers_adapters.DataContainer;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -9,10 +11,12 @@ import static org.junit.Assert.*;
 
 public class LeagueMemberManagerTest {
     private LeagueMemberManager m;
+    private DataContainer container;
 
     @Before
     public void setUp() throws Exception {
         m = new LeagueMemberManager();
+        DataContainer container = new CSVDataContainer();
     }
 
     // TODO: Break up these tests. Most rely on multiple methods.
@@ -24,10 +28,10 @@ public class LeagueMemberManagerTest {
         addMemberCommand.add("Paul Gries");
         assertEquals("New Member Paul Gries with 0 correct bet(s) and " +
                         "0 incorrect bet(s) successfully added.",
-                m.execute(addMemberCommand));
+                m.execute(addMemberCommand, container));
 
         try {
-            String failMessage = m.execute(addMemberCommand);
+            String failMessage = m.execute(addMemberCommand, container);
             fail();
         } catch (Exception e) {
             assertEquals("Paul Gries is already an existing Member!", e.getMessage());
@@ -36,7 +40,7 @@ public class LeagueMemberManagerTest {
         memberInfoCommand.add("member_info");
         memberInfoCommand.add("Paul Gries");
         assertEquals("Member Paul Gries with 0 correct bet(s) and " +
-                        "0 incorrect bet(s)", m.execute(memberInfoCommand));
+                        "0 incorrect bet(s)", m.execute(memberInfoCommand, container));
     }
 
     @Test
@@ -47,10 +51,10 @@ public class LeagueMemberManagerTest {
         createMatchCommand.add("Ravens");
         createMatchCommand.add("Owls");
         assertEquals("New Match between Ravens and Owls successfully created.",
-                m.execute(createMatchCommand));
+                m.execute(createMatchCommand, container));
 
         try {
-            String failMessage = m.execute(createMatchCommand);
+            String failMessage = m.execute(createMatchCommand, container);
             fail();
         } catch (Exception e) {
             assertEquals("Super Bowl is already an existing Match!",
@@ -69,7 +73,7 @@ public class LeagueMemberManagerTest {
         betCommand.add("Super Bowl");
         betCommand.add("Owls");
         assertEquals("Paul Gries has successfully placed a bet that " +
-                "Owls will win Super Bowl", m.execute(betCommand));
+                "Owls will win Super Bowl", m.execute(betCommand, container));
 
         try {
             ArrayList<String> betFakeMemberCommand = new ArrayList<String>();
@@ -77,7 +81,7 @@ public class LeagueMemberManagerTest {
             betFakeMemberCommand.add("Gries Paul");
             betFakeMemberCommand.add("Super Bowl");
             betFakeMemberCommand.add("Owls");
-            String failMessage = m.execute(betFakeMemberCommand);
+            String failMessage = m.execute(betFakeMemberCommand, container);
             fail();
         } catch (Exception e) {
             assertEquals("Gries Paul is not an " +
@@ -90,7 +94,7 @@ public class LeagueMemberManagerTest {
             betFakeMatchCommand.add("Paul Gries");
             betFakeMatchCommand.add("Superb Owl");
             betFakeMatchCommand.add("Owls");
-            String failMessage = m.execute(betFakeMatchCommand);
+            String failMessage = m.execute(betFakeMatchCommand, container);
             fail();
         } catch (Exception e) {
             assertEquals("Superb Owl is not an existing Match!", e.getMessage());
@@ -102,7 +106,7 @@ public class LeagueMemberManagerTest {
             betFakeTeamCommand.add("Paul Gries");
             betFakeTeamCommand.add("Super Bowl");
             betFakeTeamCommand.add("Dogs");
-            String failMessage = m.execute(betFakeTeamCommand);
+            String failMessage = m.execute(betFakeTeamCommand, container);
             fail();
         } catch (Exception e) {
             assertEquals(e.getMessage(), "Dogs is not a Team in this Match!");
@@ -118,10 +122,10 @@ public class LeagueMemberManagerTest {
         resolveMatchCommand.add("Super Bowl");
         resolveMatchCommand.add("Owls");
         assertEquals("Super Bowl was successfully resolved with Owls " +
-                        "as the victors.", m.execute(resolveMatchCommand));
+                        "as the victors.", m.execute(resolveMatchCommand, container));
 
         try {
-            String failMessage = m.execute(resolveMatchCommand);
+            String failMessage = m.execute(resolveMatchCommand, container);
             fail();
         } catch (Exception e) {
             assertEquals("Super Bowl is not an existing Match!", e.getMessage());
@@ -131,6 +135,6 @@ public class LeagueMemberManagerTest {
         memberInfoCommand.add("member_info");
         memberInfoCommand.add("Paul Gries");
         assertEquals("Member Paul Gries with 1 correct bet(s) and " +
-                        "0 incorrect bet(s)", m.execute(memberInfoCommand));
+                        "0 incorrect bet(s)", m.execute(memberInfoCommand, container));
     }
 }

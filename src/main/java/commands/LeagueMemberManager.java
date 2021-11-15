@@ -1,6 +1,7 @@
 package commands;
 
 import constants.Exceptions;
+import drivers_adapters.DataContainer;
 import leagueMember.LeagueMember;
 import match.Match;
 
@@ -21,7 +22,7 @@ public class LeagueMemberManager implements Command {
         this.MatchMap = new HashMap<>();
     }
 
-    public String execute(ArrayList<String> arguments) throws Exception {
+    public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
         switch (arguments.get(0)) {
             case "add_member":
                 return addMember(arguments);
