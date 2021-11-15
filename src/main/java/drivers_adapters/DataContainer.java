@@ -5,8 +5,8 @@ import team.Team;
 
 public interface DataContainer {
 
-    Player getPlayer(String name);
+    Player getPlayer(String sport, String name) throws Exception;
 
-    Team getTeam(String name);
+    Team getTeam(String sport, String name) throws Exception;
 
 }
