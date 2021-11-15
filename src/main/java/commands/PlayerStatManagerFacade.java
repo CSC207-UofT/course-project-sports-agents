@@ -43,7 +43,7 @@ public class PlayerStatManagerFacade implements Command {
             case "baseball":
                 return this.baseballPlayerStatManager.execute(arguments, container);
             default:
-                throw new Exception(Exceptions.INVALID_ARGUMENT);
+                throw new Exception(Exceptions.WRONG_SPORT);
         }
     }
 }
