@@ -58,7 +58,6 @@ public class CommandManager {
         }
         InputParser parser = new InputParser(input);
         String command_keyword = parser.getKeyword();
-        System.out.println(command_keyword);
 
         Command command = commandDictionary.get(command_keyword);
         if (command == null) {
