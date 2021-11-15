@@ -72,7 +72,9 @@ Single Responsibility Principle: While the commands for getting,
 comparing, and predicting statistics for each sport have a similar 
 format, they are each handled by a unique Use Case class to ensure
 that each of their behavior can be changed without affecting
-the behavior for other sports or other commands.
+the behavior for other sports or other commands. This provides us with
+a lot of flexibility in the future when we add more sports, since 
+we will not need to change the implementation of the existing classes.
 
 Open-Closed Principle: All classes make use of private variables with 
 getters and setters, which ensures internal implementations can be changed
