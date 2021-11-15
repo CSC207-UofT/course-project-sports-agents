@@ -1,5 +1,6 @@
 package commands;
 
+import drivers_adapters.DataContainer;
 import player.PlayerList;
 import player.HockeyPlayer;
 
@@ -27,9 +28,9 @@ public class HockeyPlayerStatPredictor extends PlayerStatPredictor {
      * @throws Exception if the Player or season does not exist
      */
     @Override
-    public String execute(List<String> arguments) throws Exception {
+    public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
         String name = arguments.get(2);
-        HockeyPlayer player = (HockeyPlayer) this.playerList.getPlayer(name);
+        HockeyPlayer player = (HockeyPlayer) container.getPlayer("hockey", name);
 
         int argSize = arguments.size();
         List<String> seasons = arguments.subList(3, argSize - 1);

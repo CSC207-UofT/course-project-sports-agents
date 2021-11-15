@@ -1,5 +1,6 @@
 package commands;
 
+import drivers_adapters.DataContainer;
 import player.TennisPlayer;
 import player.PlayerList;
 import player.TennisPlayerComparator;
@@ -27,12 +28,13 @@ public class TennisPlayerStatComparer extends PlayerStatComparer {
      * @param arguments A string array of form
      *                  {"compare_player_stat", "Tennis", "player name 1",
      *                  "player name 2", ... , "season", "stat name"}
+     * @param container
      * @return the players and their associated statistics
      * @throws Exception if a player does not exist, or lacks data for the
      * given season
      */
     @Override
-    public String execute(List<String> arguments) throws Exception {
+    public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
         int argSize = arguments.size();
         List<String> names = arguments.subList(2, argSize - 2);
         List<?> genericPlayers = this.playerList.getPlayers(names);

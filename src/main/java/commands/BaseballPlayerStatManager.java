@@ -1,5 +1,6 @@
 package commands;
 
+import drivers_adapters.DataContainer;
 import player.*;
 
 import java.util.*;
@@ -21,7 +22,7 @@ public class BaseballPlayerStatManager extends PlayerStatManager {
      * @throws Exception if the Player or season does not exist
      */
     @Override
-    public String execute(List<String> arguments) throws Exception {
+    public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
         String name = arguments.get(2);
         BaseballPlayer player = (BaseballPlayer) this.playerList.getPlayer(name);
 

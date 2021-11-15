@@ -1,5 +1,7 @@
 package commands;
 
+import drivers_adapters.DataContainer;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,15 +30,15 @@ public class PlayerStatPredictorFacade implements Command {
      * @throws Exception if the Player or season does not exist
      */
     @Override
-    public String execute(ArrayList<String> arguments) throws Exception {
+    public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
         String sport = arguments.get(1);
         switch(sport) {
             case "Hockey":
-                return this.hockeyPlayerStatPredictor.execute(arguments);
+                return this.hockeyPlayerStatPredictor.execute(arguments, container);
             case "Tennis":
-                return this.tennisPlayerStatPredictor.execute(arguments);
+                return this.tennisPlayerStatPredictor.execute(arguments, container);
             case "Baseball":
-                return this.baseballPlayerStatPredictor.execute(arguments);
+                return this.baseballPlayerStatPredictor.execute(arguments, container);
             default:
                 throw new Exception("Invalid sport passed!");
         }

@@ -21,12 +21,13 @@ public class SportsApp {
 
         Scanner inputScanner = new Scanner(System.in);
         String input = "";
+        DataContainer container = new CSVDataContainer();
 
         CommandManager manager = new CommandManager();
         while (!input.equals("quit")) {
             input = inputScanner.nextLine();
             try {
-                String output = manager.execute(input);
+                String output = manager.execute(input, container);
                 System.out.println(output);
             }
             catch (Exception e) {

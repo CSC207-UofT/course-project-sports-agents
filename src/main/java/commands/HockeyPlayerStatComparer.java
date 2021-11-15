@@ -1,9 +1,9 @@
 package commands;
 
+import drivers_adapters.DataContainer;
 import player.PlayerList;
 import player.HockeyPlayer;
 import player.HockeyPlayerComparator;
-
 import java.util.*;
 
 public class HockeyPlayerStatComparer extends PlayerStatComparer {
@@ -26,7 +26,7 @@ public class HockeyPlayerStatComparer extends PlayerStatComparer {
      * given season
      */
     @Override
-    public String execute(List<String> arguments) throws Exception {
+    public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
         int argSize = arguments.size();
         List<String> names = arguments.subList(2, argSize - 2);
         List<?> genericPlayers = this.playerList.getPlayers(names);

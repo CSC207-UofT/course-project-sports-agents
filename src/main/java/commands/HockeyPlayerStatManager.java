@@ -1,9 +1,9 @@
 package commands;
 
+import drivers_adapters.DataContainer;
 import player.PlayerList;
 import player.HockeyPlayer;
-
-import java.util.List;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Arrays;
 
@@ -24,7 +24,7 @@ public class HockeyPlayerStatManager extends PlayerStatManager {
      * @throws Exception if the Player or season does not exist
      */
     @Override
-    public String execute(List<String> arguments) throws Exception {
+    public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
         String name = arguments.get(2);
         HockeyPlayer player = (HockeyPlayer) this.playerList.getPlayer(name);
 

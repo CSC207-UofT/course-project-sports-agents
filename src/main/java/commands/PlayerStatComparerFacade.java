@@ -1,5 +1,7 @@
 package commands;
 
+import drivers_adapters.DataContainer;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,15 +30,15 @@ public class PlayerStatComparerFacade implements Command {
      * given season
      */
     @Override
-    public String execute(ArrayList<String> arguments) throws Exception {
+    public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
         String sport = arguments.get(1);
         switch(sport) {
             case "Hockey":
-                return this.hockeyPlayerStatComparer.execute(arguments);
+                return this.hockeyPlayerStatComparer.execute(arguments, container);
             case "Tennis":
-                return this.tennisPlayerStatComparer.execute(arguments);
+                return this.tennisPlayerStatComparer.execute(arguments, container);
             case "Baseball":
-                return this.baseballPlayerStatComparer.execute(arguments);
+                return this.baseballPlayerStatComparer.execute(arguments, container);
             default:
                 throw new Exception("Invalid sport passed!");
         }

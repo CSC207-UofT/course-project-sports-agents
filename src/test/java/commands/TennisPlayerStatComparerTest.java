@@ -35,7 +35,7 @@ public class TennisPlayerStatComparerTest {
     public void testExecuteAgePasses() throws Exception {
         List<String> arguments = Arrays.asList("compare_player_stat", "Tennis",
                 "Player 1", "Player 2", "Player 3", "20202021", "Age");
-        String output = this.tennisPlayerStatComparer.execute(arguments);
+        String output = this.tennisPlayerStatComparer.execute(arguments, );
         String expected = "From best to worst:\n" +
                           "Player 3: 20\n" +
                           "Player 2: 20\n" +
@@ -47,21 +47,21 @@ public class TennisPlayerStatComparerTest {
     public void testExecuteAgeNoPlayer() throws Exception {
         List<String> arguments = Arrays.asList("compare_player_stat", "Tennis",
                 "Paul Gries", "Player 2", "Player 3", "20202021", "Age");
-        String fail = this.tennisPlayerStatComparer.execute(arguments);
+        String fail = this.tennisPlayerStatComparer.execute(arguments, );
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteAgeNoSeason() throws Exception {
         List<String> arguments = Arrays.asList("compare_player_stat", "Tennis",
                 "Player 1", "Player 2", "Player 3", "20192020", "Age");
-        String fail = this.tennisPlayerStatComparer.execute(arguments);
+        String fail = this.tennisPlayerStatComparer.execute(arguments, );
     }
 
     @Test(timeout = 100)
     public void testExecuteAcesPasses() throws Exception {
         List<String> arguments = Arrays.asList("compare_player_stat", "Tennis",
                 "Player 1", "Player 2", "Player 3", "20202021", "Aces");
-        String output = this.tennisPlayerStatComparer.execute(arguments);
+        String output = this.tennisPlayerStatComparer.execute(arguments, );
         String expected = "From best to worst:\n" +
                           "Player 1: 20\n" +
                           "Player 2: 15\n" +
@@ -73,21 +73,21 @@ public class TennisPlayerStatComparerTest {
     public void testExecuteAcesNoPlayer() throws Exception {
         List<String> arguments = Arrays.asList("compare_player_stat", "Tennis",
                 "Paul Gries", "Player 2", "Player 3", "20202021", "Aces");
-        String fail = this.tennisPlayerStatComparer.execute(arguments);
+        String fail = this.tennisPlayerStatComparer.execute(arguments, );
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteAcesNoSeason() throws Exception {
         List<String> arguments = Arrays.asList("compare_player_stat", "Tennis",
                 "Player 1", "Player 2", "Player 3", "20192020", "Aces");
-        String fail = this.tennisPlayerStatComparer.execute(arguments);
+        String fail = this.tennisPlayerStatComparer.execute(arguments, );
     }
 
     @Test(timeout = 100)
     public void testExecuteDoubleFaultsPasses() throws Exception {
         List<String> arguments = Arrays.asList("compare_player_stat", "Tennis",
                 "Player 1", "Player 2", "Player 3", "20202021", "Double Faults");
-        String output = this.tennisPlayerStatComparer.execute(arguments);
+        String output = this.tennisPlayerStatComparer.execute(arguments, );
         String expected = "From best to worst:\n" +
                           "Player 2: 20\n" +
                           "Player 1: 15\n" +
@@ -99,21 +99,21 @@ public class TennisPlayerStatComparerTest {
     public void testExecuteDoubleFaultsNoPlayer() throws Exception {
         List<String> arguments = Arrays.asList("compare_player_stat", "Tennis",
                 "Paul Gries", "Player 2", "Player 3", "20202021", "Double Faults");
-        String fail = this.tennisPlayerStatComparer.execute(arguments);
+        String fail = this.tennisPlayerStatComparer.execute(arguments, );
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteDoubleFaultsNoSeason() throws Exception {
         List<String> arguments = Arrays.asList("compare_player_stat", "Tennis",
                 "Player 1", "Player 2", "Player 3", "20192020", "Double Faults");
-        String fail = this.tennisPlayerStatComparer.execute(arguments);
+        String fail = this.tennisPlayerStatComparer.execute(arguments, );
     }
 
     @Test(timeout = 100)
     public void testExecuteServePointsPasses() throws Exception {
         List<String> arguments = Arrays.asList("compare_player_stat", "Tennis",
                 "Player 1", "Player 2", "Player 3", "20202021", "Serve Points");
-        String output = this.tennisPlayerStatComparer.execute(arguments);
+        String output = this.tennisPlayerStatComparer.execute(arguments, );
         String expected = "From best to worst:\n" +
                           "Player 3: 20\n" +
                           "Player 1: 15\n" +
@@ -125,21 +125,21 @@ public class TennisPlayerStatComparerTest {
     public void testExecuteServePointsNoPlayer() throws Exception {
         List<String> arguments = Arrays.asList("compare_player_stat", "Tennis",
                 "Paul Gries", "Player 2", "Player 3", "20202021", "Serve Points");
-        String fail = this.tennisPlayerStatComparer.execute(arguments);
+        String fail = this.tennisPlayerStatComparer.execute(arguments, );
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteServePointsNoSeason() throws Exception {
         List<String> arguments = Arrays.asList("compare_player_stat", "Tennis",
                 "Player 1", "Player 2", "Player 3", "20192020", "Serve Points");
-        String fail = this.tennisPlayerStatComparer.execute(arguments);
+        String fail = this.tennisPlayerStatComparer.execute(arguments, );
     }
 
     @Test(timeout = 100)
     public void testExecuteFirstServesPasses() throws Exception {
         List<String> arguments = Arrays.asList("compare_player_stat", "Tennis",
                 "Player 1", "Player 2", "Player 3", "20202021", "First Serves");
-        String output = this.tennisPlayerStatComparer.execute(arguments);
+        String output = this.tennisPlayerStatComparer.execute(arguments, );
         String expected = "From best to worst:\n" +
                           "Player 3: 20\n" +
                           "Player 2: 15\n" +
@@ -151,21 +151,21 @@ public class TennisPlayerStatComparerTest {
     public void testExecuteFirstServesNoPlayer() throws Exception {
         List<String> arguments = Arrays.asList("compare_player_stat", "Tennis",
                 "Paul Gries", "Player 2", "Player 3", "20202021", "First Serves");
-        String fail = this.tennisPlayerStatComparer.execute(arguments);
+        String fail = this.tennisPlayerStatComparer.execute(arguments, );
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteFirstServesNoSeason() throws Exception {
         List<String> arguments = Arrays.asList("compare_player_stat", "Tennis",
                 "Player 1", "Player 2", "Player 3", "20192020", "First Serves");
-        String fail = this.tennisPlayerStatComparer.execute(arguments);
+        String fail = this.tennisPlayerStatComparer.execute(arguments, );
     }
 
     @Test(timeout = 100)
     public void testExecuteBreakPointsSavedPasses() throws Exception {
         List<String> arguments = Arrays.asList("compare_player_stat", "Tennis",
                 "Player 1", "Player 2", "Player 3", "20202021", "Break Points Saved");
-        String output = this.tennisPlayerStatComparer.execute(arguments);
+        String output = this.tennisPlayerStatComparer.execute(arguments, );
         String expected = "From best to worst:\n" +
                           "Player 2: 20\n" +
                           "Player 3: 15\n" +
@@ -177,21 +177,21 @@ public class TennisPlayerStatComparerTest {
     public void testExecuteBreakPointsSavedNoPlayer() throws Exception {
         List<String> arguments = Arrays.asList("compare_player_stat", "Tennis",
                 "Paul Gries", "Player 2", "Player 3", "20202021", "Break Points Saved");
-        String fail = this.tennisPlayerStatComparer.execute(arguments);
+        String fail = this.tennisPlayerStatComparer.execute(arguments, );
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteBreakPointsSavedNoSeason() throws Exception {
         List<String> arguments = Arrays.asList("compare_player_stat", "Tennis",
                 "Player 1", "Player 2", "Player 3", "20192020", "Break Points Saved");
-        String fail = this.tennisPlayerStatComparer.execute(arguments);
+        String fail = this.tennisPlayerStatComparer.execute(arguments, );
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteInvalidStat() throws Exception {
         List<String> arguments = Arrays.asList("compare_player_stat", "Tennis",
                 "Player 1", "Player 2", "Player 3", "20192020", "Goals");
-        String fail = this.tennisPlayerStatComparer.execute(arguments);
+        String fail = this.tennisPlayerStatComparer.execute(arguments, );
     }
 
 }

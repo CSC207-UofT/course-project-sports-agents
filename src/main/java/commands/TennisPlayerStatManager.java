@@ -1,10 +1,11 @@
 package commands;
 
+import drivers_adapters.DataContainer;
 import player.PlayerList;
 import player.TennisPlayer;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.HashSet;
 
 /**
@@ -24,11 +25,12 @@ public class TennisPlayerStatManager extends PlayerStatManager {
      * @param arguments A string array of form
      *                  {"get_player_stat", "Tennis", "player name", "season", "stat name"} or
      *                  {"get_player_stat", "Tennis", "player name", "Country"}
+     * @param container
      * @return the specified stat of the player
      * @throws Exception if the Player or season does not exist
      */
     @Override
-    public String execute(List<String> arguments) throws Exception {
+    public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
         String name = arguments.get(2);
         TennisPlayer player = (TennisPlayer) this.playerList.getPlayer(name);
 

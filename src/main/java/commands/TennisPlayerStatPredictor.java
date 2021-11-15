@@ -1,5 +1,6 @@
 package commands;
 
+import drivers_adapters.DataContainer;
 import player.PlayerList;
 import player.TennisPlayer;
 
@@ -24,11 +25,12 @@ public class TennisPlayerStatPredictor extends PlayerStatPredictor {
      * @param arguments A string array of form
      *                  {"predict_player_stat", "Tennis", "player name",
      *                  "season 1", "season 2", ..., "stat name"}
+     * @param container
      * @return the predicted statistic for the next season
      * @throws Exception if the Player or season does not exist
      */
     @Override
-    public String execute(List<String> arguments) throws Exception {
+    public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
         String name = arguments.get(2);
         TennisPlayer player = (TennisPlayer) this.playerList.getPlayer(name);
 

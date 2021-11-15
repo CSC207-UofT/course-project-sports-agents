@@ -55,7 +55,7 @@ public class CommandManager {
 
     }
 
-    public String execute(String input) throws Exception {
+    public String execute(String input, DataContainer container) throws Exception {
         if (input.equals("")) {
             return "";
         }
@@ -63,7 +63,7 @@ public class CommandManager {
         String command_keyword = parser.getKeyword();
 
         Command command = commandDictionary.get(command_keyword);
-        return command.execute(parser.getArguments());
+        return command.execute(parser.getArguments(), container);
 
     }
 }
