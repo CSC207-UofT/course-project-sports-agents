@@ -1,7 +1,7 @@
 # Progress Report
 
 ## Open questions your group is struggling with
-Should teams store player objects for every season?
+Should teams store player names for every season?
 What other use cases should we consider for the fantasy league aspect of our app?
 
 ## What has worked well so far with your design
