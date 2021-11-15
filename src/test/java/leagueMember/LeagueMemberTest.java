@@ -9,7 +9,7 @@ public class LeagueMemberTest {
     private LeagueMember leagueMember1;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         leagueMember1 = new LeagueMember("Paul Gries");
     }
 

@@ -75,7 +75,7 @@ public class Match implements Serializable {
 
     /**
      * Get the winning team based on current score
-     * @return
+     * @return the winning team
      */
     public String getWinningTeam() {
         if (this.scoreA == this.scoreB) {

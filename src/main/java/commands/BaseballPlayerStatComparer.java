@@ -47,20 +47,6 @@ public class BaseballPlayerStatComparer extends PlayerStatComparer {
     }
 
     /**
-     * Cast a List of Players to List of HockeyPlayers
-     *
-     * @param genericPlayers List of Player subclass castable to HockeyPlayer
-     * @return List with original Players cast to HockeyPlayer
-     */
-    private List<BaseballPlayer> castToBaseballPlayer(List<?> genericPlayers) {
-        ArrayList<BaseballPlayer> baseballPlayers = new ArrayList<>();
-        for (Object player : genericPlayers) {
-            baseballPlayers.add((BaseballPlayer) player);
-        }
-        return baseballPlayers;
-    }
-
-    /**
      * Collect the given statistic in the given season for all Players in
      * the given list, maintaining order.
      *

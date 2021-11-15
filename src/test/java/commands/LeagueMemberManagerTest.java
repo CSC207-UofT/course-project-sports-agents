@@ -14,7 +14,7 @@ public class LeagueMemberManagerTest {
     private DataContainer container;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         m = new LeagueMemberManager();
         DataContainer container = new CSVDataContainer();
     }

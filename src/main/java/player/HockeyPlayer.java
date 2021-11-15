@@ -1,9 +1,6 @@
 package player;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * A Hockey Player Class.
@@ -18,7 +15,6 @@ public class HockeyPlayer extends Player {
     private final HashMap<String, Integer> pointsRecord;
     private final HashMap<String, Integer> shotsRecord;
     private final HashMap<String, Double> shootingPercentageRecord;
-    private final List<String> seasons;
 
 
     /**
@@ -35,7 +31,6 @@ public class HockeyPlayer extends Player {
         this.pointsRecord = new HashMap<>();
         this.shotsRecord = new HashMap<>();
         this.shootingPercentageRecord = new HashMap<>();
-        this.seasons = new ArrayList<>();
     }
 
 
@@ -65,6 +60,15 @@ public class HockeyPlayer extends Player {
     }
 
     /**
+     * Override addSeason: for Hockey data, seasons are in reverse order
+     * @param season new season to record
+     */
+    @Override
+    public void addSeason(String season) {
+        this.seasons.add(0, season);
+    }
+
+    /**
      * Add a new season of data for the Player
      * @param season the new season
      * @param team the Player's team in the new season
@@ -91,9 +95,7 @@ public class HockeyPlayer extends Player {
         this.addStatPoints(season, points);
         this.addStatShots(season, shots);
         this.addStatShootingPercentage(season, shootingPercentage);
-        if (!(this.seasons.contains(season))) {
-            this.seasons.add(season);
-        }
+        this.addSeason(season);
     }
 
     /**
@@ -290,14 +292,5 @@ public class HockeyPlayer extends Player {
                 "\nGoals: " + this.goalsRecord.get(season) + "\nAssists: " + this.assistsRecord.get(season) +
                 "\nPoints: " + this.pointsRecord.get(season) + "\nShots: " + this.shotsRecord.get(season) +
                 "\nShooting Percentage: " + this.shootingPercentageRecord;
-    }
-
-    /**
-     * Return the list of seasons in chronological order
-     * @return list of seasons
-     */
-    public List<String> getSeasons() {
-        Collections.reverse(this.seasons);
-        return this.seasons;
     }
 }

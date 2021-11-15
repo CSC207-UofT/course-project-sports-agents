@@ -6,6 +6,16 @@ players that switch teams between seasons? Should those players be stored in
 both teams for that season?
 - What other use cases should we consider for the fantasy league aspect of our app?
 - Are there any other ways we can predict the future performance of a player or a team?
+What regression models would you recommend?
+- The design of each sport having a separate StatManager, StatComparer, and Stat
+Predictor ensures we follow the single responsibility principle and can change
+the behavior or one command but not the others. However, it also creates a shotgun
+surgery problem, as adding a new statistic to a sport requires changing the
+sport's Player, StatManager, StatComparer, and StatPredictor classes. What is the
+best way to resolve this?
+- We currently assume the CSV data files are present, and throw Exceptions otherwise.
+Should we allow users to specify the name of the data file being used?
+
 
 ## What has worked well so far with your design
 We were able to expand our program to another sport, baseball. Similar to
