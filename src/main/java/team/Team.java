@@ -15,7 +15,7 @@ public abstract class Team {
     private int ties;
     private int rank;
 
-    public Team(){
+    public Team() {
         this.name = "";
         this.homeCity = "";
         this.totalGamesPlayed = 0;
@@ -24,7 +24,9 @@ public abstract class Team {
         this.ties = 0;
     }
 
-    public Team(String name, String homeCity, List<String> players, List<Match> playedGames, int totalGamesPlayed, int wins, int losses, int ties, int rank){
+    public Team(String name, String homeCity, List<String> players,
+                List<Match> playedGames, int totalGamesPlayed, int wins,
+                int losses, int ties, int rank) {
         this.name = name;
         this.homeCity = homeCity;
         this.players = players;
@@ -37,145 +39,163 @@ public abstract class Team {
 
     /**
      * Get name
+     *
      * @return name
      */
-    public String getName(){
+    public String getName() {
         return this.name;
     }
 
     /**
      * Set name
-     * @param name
+     *
+     * @param name name
      */
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 
     /**
      * Get home city
+     *
      * @return homeCity
      */
-    public String getHomeCity(){
+    public String getHomeCity() {
         return homeCity;
     }
 
     /**
      * Set home city
-     * @param homeCity
+     *
+     * @param homeCity home city
      */
-    public void setHomeCity(String homeCity){
+    public void setHomeCity(String homeCity) {
         this.homeCity = homeCity;
     }
 
     /**
      * Get players
+     *
      * @return players
      */
-    public List<String> getPlayers(){
+    public List<String> getPlayers() {
         return players;
     }
 
     /**
      * Set players
-     * @param players
+     *
+     * @param players players
      */
-    public void setPlayers(List<String> players){
+    public void setPlayers(List<String> players) {
         this.players = players;
     }
 
     /**
      * Get played games
+     *
      * @return playedGames
      */
-    public List<Match> getPlayedGames(){
+    public List<Match> getPlayedGames() {
         return playedGames;
     }
-    
+
     /**
      * Set played games
-     * @param playedGames
+     *
+     * @param playedGames played games
      */
-    public void setPlayedGames(List<Match> playedGames){
+    public void setPlayedGames(List<Match> playedGames) {
         this.playedGames = playedGames;
     }
 
     /**
      * Get total games played
+     *
      * @return totalGamesPlayed
      */
-    public int getTotalGamesPlayed(){
+    public int getTotalGamesPlayed() {
         return this.totalGamesPlayed;
     }
 
     /**
      * Set total games played
-     * @param totalGamesPlayed
+     *
+     * @param totalGamesPlayed total games played
      */
-    public void setTotalGamesPlayed(int totalGamesPlayed){
+    public void setTotalGamesPlayed(int totalGamesPlayed) {
         this.totalGamesPlayed = totalGamesPlayed;
     }
 
     /**
      * Get wins
+     *
      * @return wins
      */
-    public int getWins(){
+    public int getWins() {
         return this.wins;
     }
 
     /**
      * Set wins
-     * @param wins
+     *
+     * @param wins wins
      */
-    public void setWins(int wins){
+    public void setWins(int wins) {
         this.wins = wins;
     }
 
     /**
      * Get losses
+     *
      * @return losses
      */
-    public int getLosses(){
+    public int getLosses() {
         return this.losses;
     }
 
     /**
      * Set losses
-     * @param losses
+     *
+     * @param losses losses
      */
-    public void setLosses(int losses){
+    public void setLosses(int losses) {
         this.losses = losses;
     }
 
     /**
      * Get ties
+     *
      * @return ties
      */
-    public int getTies(){
+    public int getTies() {
         return this.ties;
     }
 
     /**
      * Set ties
-     * @param ties
+     *
+     * @param ties ties
      */
-    public void setTies(int ties){
+    public void setTies(int ties) {
         this.ties = ties;
     }
 
     /**
      * Get rank
+     *
      * @return rank
      */
-    public int getRank(){
+    public int getRank() {
         return this.rank;
     }
 
     /**
      * Set rank
-     * @param rank
+     *
+     * @param rank rank
      */
-    public void setRank(int rank){
+    public void setRank(int rank) {
         this.rank = rank;
     }
 }

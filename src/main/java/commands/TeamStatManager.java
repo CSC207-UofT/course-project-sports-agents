@@ -11,7 +11,7 @@ import team.TeamStats;
 import team.TennisTeam;
 
 public class TeamStatManager implements Command, TeamConstants {
-    private TeamManager teamManager;
+    private final TeamManager teamManager;
     private final int TEAM_NAME_SLOT = 0;
     private final int REQUESTED_STAT_SLOT = 1;
     private final String KEY_GAMES_PLAYED = "games played";
@@ -55,21 +55,22 @@ public class TeamStatManager implements Command, TeamConstants {
     private final String KEY_STRIKEOUTS = "strikeouts";
     private final String KEY_STOLEN_BASES = "stolen bases";
     private final String KEY_CAUGHT_STEALING = "caught stealing";
-    
-    public TeamStatManager(TeamManager teamManager){
+
+    public TeamStatManager(TeamManager teamManager) {
         this.teamManager = teamManager;
     }
 
     /**
      * Gets the stats for teams
-     * @param teamName
-     * @param teamStat
+     *
+     * @param teamName name of team being queried
+     * @param teamStat stat being queried
      * @return the stat for the specified team
      */
-    public float getStat(String teamName, TeamStats teamStat){
+    public float getStat(String teamName, TeamStats teamStat) {
         Team team = teamManager.findTeamWithName(teamName);
-        if(team != null){
-            switch(teamStat){
+        if (team != null) {
+            switch (teamStat) {
                 case GAMES_PLAYED:
                     return team.getTotalGamesPlayed();
                 case WINS:
@@ -89,14 +90,14 @@ public class TeamStatManager implements Command, TeamConstants {
                 case TOURNAMENT_WINS:
                     return ((TennisTeam) team).getTournamentWins();
                 case GOALS_FOR:
-                    return ((HockeyTeam) team).getGoalsFor(); 
+                    return ((HockeyTeam) team).getGoalsFor();
                 case GOALS_AGAINST:
                     return ((HockeyTeam) team).getGoalsAgainst();
                 case FACE_OFF_WIN_PERCENTAGE:
                     return ((HockeyTeam) team).getFaceOffWinPercentage();
                 case SHOTS_FOR:
                     return ((HockeyTeam) team).getShotsFor();
-                case SHOTS_AGAINST: 
+                case SHOTS_AGAINST:
                     return ((HockeyTeam) team).getShotsAgainst();
                 case REGULATION_WINS:
                     return ((HockeyTeam) team).getRegulationWins();
@@ -159,8 +160,8 @@ public class TeamStatManager implements Command, TeamConstants {
         return -1;
     }
 
-    private float calculateRate(Team team, int numerator, int denominator){
-        if(denominator == 0){
+    private float calculateRate(Team team, int numerator, int denominator) {
+        if (denominator == 0) {
             return 0;
         }
         return (float) numerator / denominator * 100;
@@ -168,11 +169,12 @@ public class TeamStatManager implements Command, TeamConstants {
 
     /**
      * Parses the input text into an enum
-     * @param stat
+     *
+     * @param stat stat being queried
      * @return If the stat exists returns enum, otherwise returns null
      */
-    public TeamStats parseStat(String stat){
-        switch(stat.toLowerCase()){
+    public TeamStats parseStat(String stat) {
+        switch (stat.toLowerCase()) {
             case KEY_GAMES_PLAYED:
                 return TeamStats.GAMES_PLAYED;
             case KEY_WINS:
@@ -260,13 +262,24 @@ public class TeamStatManager implements Command, TeamConstants {
         }
     }
 
-    private String getAllStats(String teamName){
-        String out = "";
+    private String getAllStats(ArrayList<String> arguments, String teamName) {
+        StringBuilder out = new StringBuilder();
+        out.append(arguments.get(TEAM_NAME_SLOT));
+        out.append("\n");
 
-        for(TeamStats ts : TeamStats.values()){
-            out += ts.name() + ": " + getStat(teamName, ts) + ", ";
+        for (TeamStats ts : TeamStats.values()) {
+            out.append(ts.name());
+            out.append(": ");
+            out.append(getStat(teamName, ts));
+            out.append("\n");
         }
-        return out;
+        return out.toString();
+    }
+
+    private String formatOut(ArrayList<String> arguments, float stat) {
+        return arguments.get(REQUESTED_STAT_SLOT) +
+               stat +
+               "\n";
     }
 
     @Override
@@ -274,15 +287,15 @@ public class TeamStatManager implements Command, TeamConstants {
         String teamName = arguments.get(TEAM_NAME_SLOT);
         String requestedStat = arguments.get(REQUESTED_STAT_SLOT);
 
-        if(requestedStat == KEY_ALL_STATS){
-            return getAllStats(teamName);
-        }else{
+        if (requestedStat.equals(KEY_ALL_STATS)) {
+            return getAllStats(arguments, teamName);
+        } else {
             TeamStats parsedStat = parseStat(requestedStat);
-            
-            if(parsedStat == null){
+
+            if (parsedStat == null) {
                 throw new Exception("Stat does not exist");
             }
-            return String.valueOf(getStat(teamName, parsedStat));
+            return formatOut(arguments, getStat(teamName, parsedStat));
         }
     }
 }
