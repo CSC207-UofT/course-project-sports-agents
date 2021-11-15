@@ -1,5 +1,6 @@
 package commands;
 
+import player.HockeyPlayerList;
 import player.PlayerList;
 import player.HockeyPlayer;
 import player.HockeyPlayerComparator;
@@ -7,11 +8,12 @@ import player.HockeyPlayerComparator;
 import java.util.*;
 
 public class HockeyPlayerStatComparer extends PlayerStatComparer {
+    PlayerList<HockeyPlayer> hockeyPlayerList;
 
-    public HockeyPlayerStatComparer(PlayerList<HockeyPlayer> hockeyPlayerList) {
-        super(hockeyPlayerList,
-                new HashSet<String>(Arrays.asList("Games Played", "Goals",
-                        "Assists", "Points", "Shots", "Shooting Percentage")));
+    public HockeyPlayerStatComparer(HockeyPlayerList hockeyPlayerList) {
+        super(new HashSet<>(Arrays.asList("Games Played", "Goals",
+                "Assists", "Points", "Shots", "Shooting Percentage")));
+        this.hockeyPlayerList = hockeyPlayerList;
     }
 
     /**
@@ -29,8 +31,7 @@ public class HockeyPlayerStatComparer extends PlayerStatComparer {
     public String execute(List<String> arguments) throws Exception {
         int argSize = arguments.size();
         List<String> names = arguments.subList(2, argSize - 2);
-        List<?> genericPlayers = this.playerList.getPlayers(names);
-        List<HockeyPlayer> hockeyPlayers = castToHockeyPlayer(genericPlayers);
+        List<HockeyPlayer> hockeyPlayers = this.hockeyPlayerList.getPlayers(names);
 
         String season = arguments.get(argSize - 2);
 
@@ -44,19 +45,6 @@ public class HockeyPlayerStatComparer extends PlayerStatComparer {
         return formatCompare(hockeyPlayers, playersStatValues);
     }
 
-    // TODO: Is there a better way to do this?
-    /**
-     * Cast a List of Players to List of HockeyPlayers
-     * @param genericPlayers List of Player subclass castable to HockeyPlayer
-     * @return List with original Players cast to HockeyPlayer
-     */
-    private List<HockeyPlayer> castToHockeyPlayer(List<?> genericPlayers) {
-        ArrayList<HockeyPlayer> hockeyPlayers = new ArrayList<HockeyPlayer>();
-        for (Object player : genericPlayers) {
-            hockeyPlayers.add((HockeyPlayer) player);
-        }
-        return hockeyPlayers;
-    }
 
     /**
      * Collect the given statistic in the given season for all Players in
@@ -97,7 +85,7 @@ public class HockeyPlayerStatComparer extends PlayerStatComparer {
      */
     private List<String> getValuesGamesPlayed(List<HockeyPlayer> players,
                                                    String season) throws Exception{
-        ArrayList<String> gamesPlayedValues = new ArrayList<String>();
+        ArrayList<String> gamesPlayedValues = new ArrayList<>();
         for (HockeyPlayer player : players) {
             gamesPlayedValues.add(player.getStatGamesPlayed(season).toString());
         }
@@ -113,7 +101,7 @@ public class HockeyPlayerStatComparer extends PlayerStatComparer {
      */
     private List<String> getValuesGoals(List<HockeyPlayer> players,
                                              String season) throws Exception{
-        ArrayList<String> goalsValues = new ArrayList<String>();
+        ArrayList<String> goalsValues = new ArrayList<>();
         for (HockeyPlayer player : players) {
             goalsValues.add(player.getStatGoals(season).toString());
         }
@@ -129,7 +117,7 @@ public class HockeyPlayerStatComparer extends PlayerStatComparer {
      */
     private List<String> getValuesAssists(List<HockeyPlayer> players,
                                                String season) throws Exception{
-        ArrayList<String> assistsValues = new ArrayList<String>();
+        ArrayList<String> assistsValues = new ArrayList<>();
         for (HockeyPlayer player : players) {
             assistsValues.add(player.getStatAssists(season).toString());
         }
@@ -145,7 +133,7 @@ public class HockeyPlayerStatComparer extends PlayerStatComparer {
      */
     private List<String> getValuesPoints(List<HockeyPlayer> players,
                                               String season) throws Exception{
-        ArrayList<String> pointsValues = new ArrayList<String>();
+        ArrayList<String> pointsValues = new ArrayList<>();
         for (HockeyPlayer player : players) {
             pointsValues.add(player.getStatPoints(season).toString());
         }
@@ -161,7 +149,7 @@ public class HockeyPlayerStatComparer extends PlayerStatComparer {
      */
     private List<String> getValuesShots(List<HockeyPlayer> players,
                                              String season) throws Exception{
-        ArrayList<String> ShotsValues = new ArrayList<String>();
+        ArrayList<String> ShotsValues = new ArrayList<>();
         for (HockeyPlayer player : players) {
             ShotsValues.add(player.getStatShots(season).toString());
         }
@@ -177,7 +165,7 @@ public class HockeyPlayerStatComparer extends PlayerStatComparer {
      */
     private List<String> getValuesShootingPercentage(List<HockeyPlayer> players,
                                                           String season) throws Exception{
-        ArrayList<String> ShootingPercentageValues = new ArrayList<String>();
+        ArrayList<String> ShootingPercentageValues = new ArrayList<>();
         for (HockeyPlayer player : players) {
             ShootingPercentageValues.add(player.getStatShootingPercentage(season).toString());
         }

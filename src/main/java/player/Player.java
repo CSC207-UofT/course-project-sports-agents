@@ -1,6 +1,7 @@
 package player;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -14,11 +15,10 @@ public abstract class Player {
 
     /**
      * @param name the Player's name
-     * @throws Exception should not throw Exception
      */
-    public Player(String name) throws Exception {
+    public Player(String name) {
         this.name = name;
-        this.teamRecord = new HashMap<String, String>();
+        this.teamRecord = new HashMap<>();
     }
 
     /**
@@ -110,5 +110,8 @@ public abstract class Player {
     public int hashCode() {
         return this.name.hashCode();
     }
+
+
+
 }
 

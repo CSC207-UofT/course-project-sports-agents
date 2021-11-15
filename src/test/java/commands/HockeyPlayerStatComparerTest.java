@@ -5,6 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 import player.HockeyPlayer;
+import player.HockeyPlayerList;
 import player.PlayerList;
 
 import java.util.Arrays;
@@ -27,7 +28,7 @@ public class HockeyPlayerStatComparerTest {
                 "20202021", "STL", "L", "C",
                 50,60,40,60,50,
                 40.0);
-        PlayerList<HockeyPlayer> hockeyPlayerList = new PlayerList<HockeyPlayer>();
+        HockeyPlayerList hockeyPlayerList = new HockeyPlayerList();
         hockeyPlayerList.addPlayer(player1);
         hockeyPlayerList.addPlayer(player2);
         hockeyPlayerList.addPlayer(player3);

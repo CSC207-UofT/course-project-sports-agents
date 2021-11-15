@@ -12,5 +12,6 @@ public class Exceptions {
     public static final String NO_MEMBER = "Given member does not exist yet";
     public static final String NO_MATCH = "Given match does not exist yet";
     public static final String COMP_NOT_FOUND = "Given competition was not found";
+    public static final String INVALID_DATA = "Not enough data to make a prediction";
 
 }

@@ -1,19 +1,20 @@
 package commands;
 
-import player.PlayerList;
 import player.HockeyPlayer;
+import player.HockeyPlayerList;
 
-import java.util.List;
-import java.util.HashSet;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
 
 public class HockeyPlayerStatManager extends PlayerStatManager {
+    private final HockeyPlayerList hockeyPlayerList;
 
-    public HockeyPlayerStatManager(PlayerList<HockeyPlayer> hockeyPlayerList) {
-        super(hockeyPlayerList,
-                new HashSet<String>(Arrays.asList("Team", "Skater Shoots",
-                        "Position", "Games Played", "Goals", "Assists",
-                        "Points", "Shots", "Shooting Percentage")));
+    public HockeyPlayerStatManager(HockeyPlayerList hockeyPlayerList) {
+        super(new HashSet<>(Arrays.asList("Team", "Skater Shoots",
+                "Position", "Games Played", "Goals", "Assists",
+                "Points", "Shots", "Shooting Percentage", "All Stats")));
+        this.hockeyPlayerList = hockeyPlayerList;
     }
 
     /**
@@ -26,7 +27,7 @@ public class HockeyPlayerStatManager extends PlayerStatManager {
     @Override
     public String execute(List<String> arguments) throws Exception {
         String name = arguments.get(2);
-        HockeyPlayer player = (HockeyPlayer) this.playerList.getPlayer(name);
+        HockeyPlayer player = this.hockeyPlayerList.getPlayer(name);
 
         String season = arguments.get(3);
 
@@ -52,8 +53,11 @@ public class HockeyPlayerStatManager extends PlayerStatManager {
                 return formatStat(player, player.getStatShots(season).toString());
             case "Shooting Percentage":
                 return formatStat(player, player.getStatShootingPercentage(season).toString());
+            case "All Stats":
+                return formatStat(player, player.printSeasonData(season));
             default:
                 throw new Exception("This shouldn't be thrown, logically");
         }
     }
 }
+

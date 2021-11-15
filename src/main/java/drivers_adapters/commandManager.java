@@ -1,19 +1,16 @@
 package drivers_adapters;
 
 import commands.*;
-import player.HockeyPlayer;
-import player.PlayerList;
-import player.TennisPlayer;
+import player.*;
 
 import java.util.HashMap;
 
 public class commandManager {
 
-    private final HashMap<String, Command> commandDictionary = new HashMap<String, Command>();
+    private final HashMap<String, Command> commandDictionary = new HashMap<>();
 
     public commandManager() {
-        // TODO: Should this be its own builder class? Also, better var name ideas?
-        PlayerList<HockeyPlayer> hockeyPlayerList = new PlayerList<HockeyPlayer>();
+        HockeyPlayerList hockeyPlayerList = new HockeyPlayerList();
         HockeyPlayerStatManager hockeyPlayerStatManager =
                 new HockeyPlayerStatManager(hockeyPlayerList);
         HockeyPlayerStatComparer hockeyPlayerStatComparer =
@@ -21,11 +18,13 @@ public class commandManager {
         HockeyPlayerStatPredictor hockeyPlayerStatPredictor =
                 new HockeyPlayerStatPredictor(hockeyPlayerList);
 
-        PlayerList<TennisPlayer> tennisPlayerList = new PlayerList<TennisPlayer>();
+        TennisPlayerList tennisPlayerList = new TennisPlayerList();
         TennisPlayerStatManager tennisPlayerStatManager =
                 new TennisPlayerStatManager(tennisPlayerList);
         TennisPlayerStatComparer tennisPlayerStatComparer =
                 new TennisPlayerStatComparer(tennisPlayerList);
+        TennisPlayerStatPredictor tennisPlayerStatPredictor =
+                new TennisPlayerStatPredictor(tennisPlayerList);
 
         PlayerStatManagerFacade playerStatManagerFacade =
                 new PlayerStatManagerFacade(hockeyPlayerStatManager,
@@ -38,7 +37,7 @@ public class commandManager {
         this.commandDictionary.put("compare_player_stat", playerStatComparerFacade);
 
         PlayerStatPredictorFacade playerStatPredictorFacade =
-                new PlayerStatPredictorFacade(hockeyPlayerStatPredictor);
+                new PlayerStatPredictorFacade(hockeyPlayerStatPredictor, tennisPlayerStatPredictor);
         this.commandDictionary.put("predict_player_stat", playerStatPredictorFacade);
 
         // TODO: Refactor teams, then make LeagueMemberManager work with injected TeamList

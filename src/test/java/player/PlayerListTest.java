@@ -29,7 +29,7 @@ public class PlayerListTest {
                 "20202021", "STL", "L", "C",
                 56,24,30,54,129,
                 18.6);
-        this.playerList = new PlayerList<HockeyPlayer>();
+        this.playerList = new HockeyPlayerList();
         this.playerList.addPlayer(this.player1);
         this.playerList.addPlayer(this.player2);
         this.playerList.addPlayer(this.player3);

@@ -1,21 +1,26 @@
 package player;
 
+import constants.Exceptions;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Store a list of Players
  */
-public class PlayerList<T extends Player> {
+public abstract class PlayerList<T extends Player> {
     // Key is primary key for player, value is Player
-    private HashMap<String, T> playerMap;
+    private Map<String, T> playerMap;
+    private List<String> seasons;
 
     /**
      * Create a new empty PlayerList
      */
     public PlayerList() {
-        this.playerMap = new HashMap<String, T>();
+        this.playerMap = new HashMap<>();
+        this.seasons = new ArrayList<>();
     }
 
     /**
@@ -36,14 +41,49 @@ public class PlayerList<T extends Player> {
         if (this.playerMap.containsKey(name)) {
             return this.playerMap.get(name);
         }
-        throw new Exception("The requested Player does not exist!");
+        throw new Exception(Exceptions.PLAYER_NOT_FOUND);
     }
 
     public List<T> getPlayers(List<String> names) throws Exception {
-        List<T> players = new ArrayList<T>();
+        List<T> players = new ArrayList<>();
         for (String name : names) {
             players.add(this.getPlayer(name));
         }
         return players;
+    }
+
+    /**
+     * Set the playerMap for this PlayerList
+     * @param playerMap map of players
+     */
+    public void setPlayerMap(Map<String, T> playerMap) {
+        this.playerMap = playerMap;
+    }
+
+
+    /**
+     * Set the seasons included in this PlayerList
+     * @param seasons list of seasons
+     */
+    public void setSeasons(List<String> seasons) {
+        this.seasons = seasons;
+    }
+
+
+    /**
+     * Return the seasons included in this PlayerList
+     * @return list of seasons
+     */
+    public List<String> getSeasons() {
+        return this.seasons;
+    }
+
+
+    /**
+     * Return the map of players in this PlayerList
+     * @return map of players
+     */
+    public Map<String, T> getPlayerMap() {
+        return this.playerMap;
     }
 }

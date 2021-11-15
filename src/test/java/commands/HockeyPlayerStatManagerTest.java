@@ -5,6 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 import player.HockeyPlayer;
+import player.HockeyPlayerList;
 import player.PlayerList;
 
 import java.util.Arrays;
@@ -28,7 +29,7 @@ public class HockeyPlayerStatManagerTest {
                 "20202021", "STL", "L", "C",
                 56,24,30,54,129,
                 18.6);
-        PlayerList<HockeyPlayer> hockeyPlayerList = new PlayerList<HockeyPlayer>();
+        HockeyPlayerList hockeyPlayerList = new HockeyPlayerList();
         hockeyPlayerList.addPlayer(player1);
         hockeyPlayerList.addPlayer(player2);
         hockeyPlayerList.addPlayer(player3);
