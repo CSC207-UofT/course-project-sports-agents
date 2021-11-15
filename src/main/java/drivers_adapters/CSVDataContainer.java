@@ -58,16 +58,16 @@ public class CSVDataContainer implements DataContainer {
                 String[] playerInfo = line.split(splitBy);
                 if (playerInfo[0].equals(name)) {
                     if (!found) {
-                        BaseballPlayer newPlayer = new BaseballPlayer(playerInfo[0], playerInfo[1],
-                                playerInfo[2], playerInfo[3], Integer.parseInt(playerInfo[4]), Integer.parseInt(playerInfo[5]),
+                        BaseballPlayer newPlayer = new BaseballPlayer(playerInfo[0], playerInfo[2],
+                                playerInfo[1], playerInfo[3], Integer.parseInt(playerInfo[4]), Integer.parseInt(playerInfo[5]),
                                 Integer.parseInt(playerInfo[6]), Integer.parseInt(playerInfo[7]),
                                 Integer.parseInt(playerInfo[8]), Integer.parseInt(playerInfo[9]),
                                 Integer.parseInt(playerInfo[10]), Double.parseDouble(playerInfo[11]));
                         playerMap.put(name, newPlayer);
                         found = true;
                     } else {
-                        ((BaseballPlayer) playerMap.get(playerInfo[0])).addRecord(playerInfo[1],
-                                playerInfo[2], playerInfo[3], Integer.parseInt(playerInfo[4]),
+                        ((BaseballPlayer) playerMap.get(playerInfo[0])).addRecord(playerInfo[2],
+                                playerInfo[1], playerInfo[3], Integer.parseInt(playerInfo[4]),
                                 Integer.parseInt(playerInfo[5]), Integer.parseInt(playerInfo[6]),
                                 Integer.parseInt(playerInfo[7]), Integer.parseInt(playerInfo[8]),
                                 Integer.parseInt(playerInfo[9]), Integer.parseInt(playerInfo[10]),
