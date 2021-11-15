@@ -34,7 +34,7 @@ public class LeagueMemberManagerTest {
             String failMessage = m.execute(addMemberCommand, container);
             fail();
         } catch (Exception e) {
-            assertEquals("Paul Gries is already an existing Member!", e.getMessage());
+            assertEquals("Given member already exists", e.getMessage());
         }
         ArrayList<String> memberInfoCommand = new ArrayList<String>();
         memberInfoCommand.add("member_info");
@@ -57,7 +57,7 @@ public class LeagueMemberManagerTest {
             String failMessage = m.execute(createMatchCommand, container);
             fail();
         } catch (Exception e) {
-            assertEquals("Super Bowl is already an existing Match!",
+            assertEquals("Given match already exists",
                     e.getMessage());
         }
     }
@@ -84,8 +84,7 @@ public class LeagueMemberManagerTest {
             String failMessage = m.execute(betFakeMemberCommand, container);
             fail();
         } catch (Exception e) {
-            assertEquals("Gries Paul is not an " +
-                    "existing Member!", e.getMessage());
+            assertEquals("Given member does not exist yet", e.getMessage());
         }
 
         try {
@@ -97,7 +96,7 @@ public class LeagueMemberManagerTest {
             String failMessage = m.execute(betFakeMatchCommand, container);
             fail();
         } catch (Exception e) {
-            assertEquals("Superb Owl is not an existing Match!", e.getMessage());
+            assertEquals("Given match does not exist yet", e.getMessage());
         }
 
         try {
@@ -128,7 +127,7 @@ public class LeagueMemberManagerTest {
             String failMessage = m.execute(resolveMatchCommand, container);
             fail();
         } catch (Exception e) {
-            assertEquals("Super Bowl is not an existing Match!", e.getMessage());
+            assertEquals("Given match does not exist yet", e.getMessage());
         }
 
         ArrayList<String> memberInfoCommand = new ArrayList<String>();

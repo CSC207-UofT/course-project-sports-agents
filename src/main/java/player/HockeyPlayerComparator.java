@@ -48,8 +48,8 @@ public class HockeyPlayerComparator implements Comparator<HockeyPlayer> {
 
     private int compareGamesPlayed(HockeyPlayer p1, HockeyPlayer p2)
             throws Exception {
-        return p2.getStatGamesPlayed(this.season) -
-                p1.getStatGamesPlayed(this.season);
+        return p1.getStatGamesPlayed(this.season) -
+                p2.getStatGamesPlayed(this.season);
     }
 
     private int compareGoals(HockeyPlayer p1, HockeyPlayer p2)

@@ -43,6 +43,7 @@ public class CSVDataContainer implements DataContainer {
 
     private void getTennisPlayer(String name) throws Exception {
         // TODO: Read tennis players.
+        // Tennis players are two to a row, so data is harder to parse.
     }
 
     private void getBaseballPlayer(String name) throws Exception {
@@ -92,7 +93,7 @@ public class CSVDataContainer implements DataContainer {
         boolean found = false;
 
         try {
-            BufferedReader br = new BufferedReader(new FileReader("hockey.csv"));
+            BufferedReader br = new BufferedReader(new FileReader("filtered_summary.csv"));
             br.readLine(); //skip the first line.
 
             while((line = br.readLine()) != null) {
