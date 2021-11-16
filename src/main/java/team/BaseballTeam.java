@@ -115,7 +115,7 @@ public class BaseballTeam extends Team {
      * Set saves
      * @param saves number of saves
      */
-    public void setSavesGoalsFor(int saves){
+    public void setSaves(int saves){
         this.saves = saves;
     }
 

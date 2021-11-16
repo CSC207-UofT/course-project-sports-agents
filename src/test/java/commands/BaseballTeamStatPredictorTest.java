@@ -8,12 +8,11 @@ import static org.junit.Assert.*;
 
 import match.Match;
 import team.TeamManager;
-import team.TeamStats;
 import team.Team;
 import team.BaseballTeam;
 
-public class BaseballTeamStatManagerTest {
-    private TeamStatManager tsm;
+public class BaseballTeamStatPredictorTest {
+    TeamStatPredictor tsp;
 
     @Before
     public void setUp() throws Exception {
@@ -25,26 +24,12 @@ public class BaseballTeamStatManagerTest {
         t.add(t1);
         t.add(t2);
         TeamManager tm = new TeamManager(t);
-        tsm = new BaseballTeamStatManager(tm);
+        TeamStatManager tsm = new BaseballTeamStatManager(tm);
+        tsp = new BaseballTeamStatPredictor(tsm);
     }
 
     @Test(timeout = 50)
-    public void testGetStat(){
-        assertEquals(0, tsm.getStat("name", TeamStats.WINS), 0);
-    }
-
-    @Test(timeout = 50)
-    public void testParseStat(){
-        assertEquals(TeamStats.WINS, tsm.parseStat("wins"));
-    }
-
-    @Test(timeout = 50)
-    public void testGetStat2(){
-        assertEquals(0, tsm.getStat("name", TeamStats.EARNED_RUNS), 0);
-    }
-
-    @Test(timeout = 50)
-    public void testParseStat2(){
-        assertEquals(TeamStats.EARNED_RUNS, tsm.parseStat("earned runs"));
+    public void testPredictWinner(){
+        assertEquals(2, tsp.predictWinner("name", "name1"));
     }
 }

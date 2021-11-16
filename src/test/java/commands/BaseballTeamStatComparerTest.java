@@ -7,13 +7,17 @@ import org.junit.*;
 import static org.junit.Assert.*;
 
 import match.Match;
+import commands.TeamStatComparer;
+import commands.BaseballTeamStatComparer;
+import commands.TeamStatManager;
+import commands.BaseballTeamStatManager;
 import team.TeamManager;
 import team.TeamStats;
 import team.Team;
 import team.BaseballTeam;
 
-public class BaseballTeamStatManagerTest {
-    private TeamStatManager tsm;
+public class BaseballTeamStatComparerTest {
+    private TeamStatComparer tsc;
 
     @Before
     public void setUp() throws Exception {
@@ -25,26 +29,17 @@ public class BaseballTeamStatManagerTest {
         t.add(t1);
         t.add(t2);
         TeamManager tm = new TeamManager(t);
-        tsm = new BaseballTeamStatManager(tm);
+        TeamStatManager tsm = new BaseballTeamStatManager(tm);
+        tsc = new BaseballTeamStatComparer(tsm);
+    }
+
+    @Test()
+    public void testCompareStats(){
+        assertEquals(2, tsc.compareStats("name", "name1", TeamStats.WINS));
     }
 
     @Test(timeout = 50)
-    public void testGetStat(){
-        assertEquals(0, tsm.getStat("name", TeamStats.WINS), 0);
-    }
-
-    @Test(timeout = 50)
-    public void testParseStat(){
-        assertEquals(TeamStats.WINS, tsm.parseStat("wins"));
-    }
-
-    @Test(timeout = 50)
-    public void testGetStat2(){
-        assertEquals(0, tsm.getStat("name", TeamStats.EARNED_RUNS), 0);
-    }
-
-    @Test(timeout = 50)
-    public void testParseStat2(){
-        assertEquals(TeamStats.EARNED_RUNS, tsm.parseStat("earned runs"));
+    public void testCompareStats2(){
+        assertEquals(2, tsc.compareStats("name", "name1", TeamStats.EARNED_RUNS));
     }
 }
