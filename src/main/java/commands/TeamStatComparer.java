@@ -6,14 +6,27 @@ import drivers_adapters.DataContainer;
 import team.TeamConstants;
 import team.TeamStats;
 
-public class TeamStatComparer implements Command, TeamConstants {
-    private final TeamStatManager teamStatManager;
-    private final int TEAM_NAME_1_SLOT = 0;
-    private final int TEAM_NAME_2_SLOT = 1;
-    private final int REQUESTED_STAT_SLOT = 2;
+public abstract class TeamStatComparer implements Command, TeamConstants {
+    protected final TeamStatManager teamStatManager;
+    protected final int TEAM_NAME_1_SLOT = 1;
+    protected final int TEAM_NAME_2_SLOT = 2;
+    protected final int REQUESTED_STAT_SLOT = 3;
 
     public TeamStatComparer(TeamStatManager teamStatManager) {
         this.teamStatManager = teamStatManager;
+    }
+
+    protected int compare(float teamStat1, float teamStat2){
+        if(teamStat1 == -1 && teamStat2 == -1){
+            return -1;
+        }
+        if (teamStat1 > teamStat2) {
+            return 1;
+        } else if (teamStat1 < teamStat2) {
+            return 2;
+        } else {
+            return 0;
+        }
     }
 
     /**
@@ -21,19 +34,10 @@ public class TeamStatComparer implements Command, TeamConstants {
      *
      * @param team1 first team to compare
      * @param team2 second team to compare
+     * @param teamStat the stat to compare
      * @return 1 if team 1 is higher, 2 if team 2 is higher, 0 if team 1 equals team 2
      */
-    public int compareStats(String team1, String team2, TeamStats teamStat) {
-        float s1 = teamStatManager.getStat(team1, teamStat);
-        float s2 = teamStatManager.getStat(team2, teamStat);
-        if (s1 > s2) {
-            return 1;
-        } else if (s1 < s2) {
-            return 2;
-        } else {
-            return 0;
-        }
-    }
+    public abstract int compareStats(String team1, String team2, TeamStats teamStat);
 
     public String formatOut(ArrayList<String> arguments, int result) {
         if (result == 1) {
