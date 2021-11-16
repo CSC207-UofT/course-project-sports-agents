@@ -25,8 +25,8 @@ public class Match implements Serializable {
         this.teamB = teamB;
         this.scoreA = 0;
         this.scoreB = 0;
-        this.teamABetters = new ArrayList<LeagueMember>();
-        this.teamBBetters = new ArrayList<LeagueMember>();
+        this.teamABetters = new ArrayList<>();
+        this.teamBBetters = new ArrayList<>();
     }
 
     /**
@@ -75,7 +75,7 @@ public class Match implements Serializable {
 
     /**
      * Get the winning team based on current score
-     * @return
+     * @return the winning team
      */
     public String getWinningTeam() {
         if (this.scoreA == this.scoreB) {

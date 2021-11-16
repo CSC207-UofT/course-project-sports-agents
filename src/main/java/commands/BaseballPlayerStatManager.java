@@ -9,7 +9,7 @@ public class BaseballPlayerStatManager extends PlayerStatManager {
 
     public BaseballPlayerStatManager() {
         super(
-                new HashSet<String>(Arrays.asList("Team",
+                new HashSet<>(Arrays.asList("Team",
                         "Position", "Games Played", "At Bats", "Runs",
                         "Hits", "Home Runs", "Runs Batted In", "Strike Outs", "Average")));
     }

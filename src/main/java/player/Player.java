@@ -1,6 +1,8 @@
 package player;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -11,6 +13,7 @@ public abstract class Player {
     protected final String name;
     // Keys are seasons, values are Team name
     protected final HashMap<String, String> teamRecord;
+    protected final List<String> seasons;
 
     /**
      * @param name the Player's name
@@ -18,6 +21,26 @@ public abstract class Player {
     public Player(String name) {
         this.name = name;
         this.teamRecord = new HashMap<>();
+        this.seasons = new ArrayList<>();
+    }
+
+    /**
+     * Precondition: seasons has all seasons in correct order
+     * @return list of seasons the player has participated in
+     */
+    public List<String> getSeasons() {
+        return this.seasons;
+    }
+
+    /**
+     * Add a new season to the list of seasons
+     * Assumes given season is the newest
+     * @param season new season to record
+     */
+    public void addSeason(String season) {
+        if (!this.seasons.contains(season)) {
+            this.seasons.add(season);
+        }
     }
 
     /**

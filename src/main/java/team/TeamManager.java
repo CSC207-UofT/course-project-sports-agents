@@ -7,7 +7,7 @@ public class TeamManager {
     private final List<Team> teams;
 
     public TeamManager(){
-        teams = new ArrayList<Team>();
+        teams = new ArrayList<>();
     }
 
     public TeamManager(List<Team> teams){
@@ -24,7 +24,7 @@ public class TeamManager {
 
     /**
      * Adds a new team
-     * @param team
+     * @param team team to add
      */
     public void createTeam(Team team){
         teams.add(team);
@@ -32,7 +32,7 @@ public class TeamManager {
 
     /**
      * Finds a team with the requested name
-     * @param teamName
+     * @param teamName team of interest
      * @return If team exists returns the team, otherwise returns null
      */
     public Team findTeamWithName(String teamName){
