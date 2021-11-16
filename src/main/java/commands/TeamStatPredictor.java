@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import drivers_adapters.DataContainer;
 import team.TeamStats;
 
-public class TeamStatPredictor implements Command {
+public abstract class TeamStatPredictor implements Command {
     private final TeamStatManager teamStatManager;
-    private final int TEAM_NAME_1_SLOT = 0;
-    private final int TEAM_NAME_2_SLOT = 1;
+    private final int TEAM_NAME_1_SLOT = 1;
+    private final int TEAM_NAME_2_SLOT = 2;
 
     public TeamStatPredictor(TeamStatManager teamStatManager) {
         this.teamStatManager = teamStatManager;
