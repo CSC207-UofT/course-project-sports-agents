@@ -21,21 +21,21 @@ public class SportsApp {
         System.out.println("Example of a season: 2020-2021");
         System.out.println("Enter 'quit' to exit the program");
 
-        Scanner inputScanner = new Scanner(System.in);
+        Presenter presenter = new CLIPresenter();
         String input = "";
         DataContainer container = new CSVDataContainer();
 
         CommandManager manager = new CommandManager();
         while (!input.equals("quit")) {
-            input = inputScanner.nextLine();
+            input = presenter.getInput();
             try {
                 String output = manager.execute(input, container);
-                System.out.println(output);
+                presenter.presentOutput(output);
             }
             catch (Exception e) {
-                System.out.println(e.getMessage());
+                presenter.presentOutput(e.getMessage());
             }
         }
-        inputScanner.close();
+        presenter.closeOutput();
     }
 }
