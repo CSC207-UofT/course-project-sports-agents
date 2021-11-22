@@ -11,8 +11,9 @@ public interface Presenter {
     /**
      * Display the given output to the User
      * @param output output to display
+     * @return true if output was successfully presented, false otherwise
      */
-    void presentOutput(String output);
+    boolean presentOutput(String output);
 
     /**
      * Close the output stream.

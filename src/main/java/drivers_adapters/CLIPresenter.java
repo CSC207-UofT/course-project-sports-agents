@@ -2,6 +2,9 @@ package drivers_adapters;
 
 import java.util.Scanner;
 
+/**
+ * Presenter for the Command line
+ */
 public class CLIPresenter implements Presenter {
     public Scanner inputScanner;
 
@@ -15,8 +18,9 @@ public class CLIPresenter implements Presenter {
     }
 
     @Override
-    public void presentOutput(String output) {
+    public boolean presentOutput(String output) {
         System.out.println(output);
+        return true;
     }
 
     @Override
