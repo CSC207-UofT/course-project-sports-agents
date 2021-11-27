@@ -37,13 +37,10 @@ public abstract class PlayerStatManager implements Command {
      * @return the formatted output to display
      */
     protected <T extends Player> String formatStat(T player, String statName, String statValue) {
-        String newLine = System.getProperty("line.separator");
         StringBuilder builder = new StringBuilder();
-        builder.append("-------------------------------------------");
-        builder.append(newLine);
+        builder.append("-------------------------------------------\n");
         builder.append(String.format("%10s %20s %n", "Name", statName));
-        builder.append("-------------------------------------------");
-        builder.append(newLine);
+        builder.append("-------------------------------------------\n");
         builder.append(String.format("%10s %10s %n", player.getName(), statValue));
         builder.append("-------------------------------------------");
         return builder.toString();
