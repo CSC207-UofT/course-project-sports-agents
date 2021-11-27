@@ -32,10 +32,20 @@ public abstract class PlayerStatManager implements Command {
     /**
      * Format the value of the statistic for display on the console
      * @param player the Player the statistic is for
+     * @param statName the name for the demanded statistic
      * @param statValue the value of the statistic
      * @return the formatted output to display
      */
-    protected <T extends Player> String formatStat(T player, String statValue) {
-        return player.getName() + ": " + statValue;
+    protected <T extends Player> String formatStat(T player, String statName, String statValue) {
+        String newLine = System.getProperty("line.separator");
+        StringBuilder builder = new StringBuilder();
+        builder.append("-------------------------------------------");
+        builder.append(newLine);
+        builder.append(String.format("%10s %20s %n", "Name", statName));
+        builder.append("-------------------------------------------");
+        builder.append(newLine);
+        builder.append(String.format("%10s %10s %n", player.getName(), statValue));
+        builder.append("-------------------------------------------");
+        return builder.toString();
     }
 }

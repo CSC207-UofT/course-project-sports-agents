@@ -35,7 +35,7 @@ public class TennisPlayerStatManager extends PlayerStatManager {
         // TODO: It'd be nice to have all stats as cases, but this is different
         // because it doesn't need the season.
         if (arguments.size() == 3 && arguments.get(2).equals("Country")) {
-            return formatStat(player, player.getCountry());
+            return formatStat(player, "Country", player.getCountry());
         }
 
         String season = arguments.get(2);
@@ -45,25 +45,25 @@ public class TennisPlayerStatManager extends PlayerStatManager {
 
         switch (statistic) {
             case "Age":
-                return formatStat(player,
+                return formatStat(player, statistic,
                         player.getStatAge(season).toString());
             case "Aces":
-                return formatStat(player,
+                return formatStat(player, statistic,
                         player.getStatAces(season).toString());
             case "Double Faults":
-                return formatStat(player,
+                return formatStat(player, statistic,
                         player.getStatDoubleFaults(season).toString());
             case "Serve Points":
-                return formatStat(player,
+                return formatStat(player, statistic,
                         player.getStatServePoints(season).toString());
             case "First Serves":
-                return formatStat(player,
+                return formatStat(player, statistic,
                         player.getStatFirstServes(season).toString());
             case "Break Points Saved":
-                return formatStat(player,
+                return formatStat(player, statistic,
                         player.getStatBreakPointsSaved(season).toString());
             case "All Stats":
-                return formatStat(player, player.printSeasonData(season));
+                return formatStat(player, statistic, player.printSeasonData(season));
             default:
                 throw new Exception("This shouldn't be thrown, logically");
         }
