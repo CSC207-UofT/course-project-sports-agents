@@ -49,6 +49,8 @@ public class CommandManager {
         // TODO: Refactor teams, then make LeagueMemberManager work with injected TeamList
         this.commandDictionary.put("member_manager", new LeagueMemberManager());
 
+        this.commandDictionary.put("get_commands", new PrintCommands());
+
     }
 
     public String execute(String input, DataContainer container) throws Exception {
