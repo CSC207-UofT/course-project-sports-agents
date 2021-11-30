@@ -30,21 +30,26 @@ public abstract class PlayerStatComparer implements Command {
     /**
      * Format the comparisons for display on the console
      * @param players the Players, sorted from best to worst stat
+     * @param statName the name of the statistic that was used to compare
      * @param statValues the values corresponding to each Player
      * @return the formatted output to displayed
      */
-    protected <T extends Player> String formatCompare(List<T> players,
+    protected <T extends Player> String formatCompare(List<T> players, String statName,
                                                       List<String> statValues) {
 
-        StringBuilder output = new StringBuilder("From best to worst:\n");
+        StringBuilder output = new StringBuilder();
+        output.append("-----------------------------------------------------\n");
+        output.append(String.format("%5s %20s %20s %n", "Rank", "Name", "Games Played"));
+        output.append("-----------------------------------------------------\n");
         // Precondition: players.size() == statValues.size()
         for (int i = 0; i != players.size(); i += 1) {
             Player player = players.get(i);
-            output.append(player.getName());
-            output.append(": ");
-            output.append(statValues.get(i));
-            output.append("\n");
+//            output.append(player.getName());
+//            output.append(": ");
+//            output.append(statValues.get(i));
+//            output.append("\n");
+            output.append(String.format("%5s %20s %20s %n", i+1, player.getName(), statValues.get(i)));
         }
-        return output.toString().trim();
+        return output.toString();
     }
 }

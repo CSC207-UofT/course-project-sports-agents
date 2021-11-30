@@ -51,7 +51,7 @@ public class TennisPlayerStatComparer extends PlayerStatComparer {
         Collections.reverse(tennisPlayers);
         List<String> playersStatValues = getStatValues(tennisPlayers,
                 statistic, season);
-        return formatCompare(tennisPlayers, playersStatValues);
+        return formatCompare(tennisPlayers, statistic, playersStatValues);
     }
 
     /**

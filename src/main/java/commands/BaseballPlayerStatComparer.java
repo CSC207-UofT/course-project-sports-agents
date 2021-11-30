@@ -43,7 +43,7 @@ public class BaseballPlayerStatComparer extends PlayerStatComparer {
         Collections.reverse(baseballPlayers);
         List<String> playersStatValues = getStatValues(baseballPlayers,
                 statistic, season);
-        return formatCompare(baseballPlayers, playersStatValues);
+        return formatCompare(baseballPlayers, statistic, playersStatValues);
     }
 
     /**

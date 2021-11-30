@@ -35,25 +35,25 @@ public class HockeyPlayerStatManager extends PlayerStatManager {
 
         switch (statistic) {
             case "Team":
-                return formatStat(player, player.getStatTeam(season));
+                return formatStat(player, statistic, player.getStatTeam(season));
             case "Skater Shoots":
-                return formatStat(player, player.getStatSkaterShoots(season));
+                return formatStat(player, statistic, player.getStatSkaterShoots(season));
             case "Position":
-                return formatStat(player, player.getStatPosition(season));
+                return formatStat(player, statistic, player.getStatPosition(season));
             case "Games Played":
-                return formatStat(player, player.getStatGamesPlayed(season).toString());
+                return formatStat(player, statistic, player.getStatGamesPlayed(season).toString());
             case "Goals":
-                return formatStat(player, player.getStatGoals(season).toString());
+                return formatStat(player, statistic, player.getStatGoals(season).toString());
             case "Assists":
-                return formatStat(player, player.getStatAssists(season).toString());
+                return formatStat(player, statistic, player.getStatAssists(season).toString());
             case "Points":
-                return formatStat(player, player.getStatPoints(season).toString());
+                return formatStat(player, statistic, player.getStatPoints(season).toString());
             case "Shots":
-                return formatStat(player, player.getStatShots(season).toString());
+                return formatStat(player, statistic, player.getStatShots(season).toString());
             case "Shooting Percentage":
-                return formatStat(player, player.getStatShootingPercentage(season).toString());
+                return formatStat(player, statistic, player.getStatShootingPercentage(season).toString());
             case "All Stats":
-                return formatStat(player, player.printSeasonData(season));
+                return formatStat(player, statistic, player.printSeasonData(season));
             default:
                 throw new Exception("This shouldn't be thrown, logically");
         }
