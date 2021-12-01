@@ -4,6 +4,7 @@ import constants.Exceptions;
 import player.BaseballPlayer;
 import player.HockeyPlayer;
 import player.Player;
+import player.TennisPlayer;
 import team.Team;
 
 import java.io.BufferedReader;
@@ -42,8 +43,43 @@ public class CSVDataContainer implements DataContainer {
     }
 
     private void getTennisPlayer(String name) throws Exception {
-        // TODO: Read tennis players.
-        // Tennis players are two to a row, so data is harder to parse.
+        String line;
+        String splitBy = ",";
+        boolean found = false;
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("tennis.csv"));
+            br.readLine(); //skip the first line
+
+            while ((line = br.readLine()) != null) {
+                String[] playerInfo = line.split(splitBy);
+                if (playerInfo[0].equals(name)) {
+                    if (!(found)) {
+                        TennisPlayer player = new TennisPlayer(playerInfo[1], playerInfo[2], playerInfo[0],
+                                Integer.parseInt(playerInfo[3]), Integer.parseInt(playerInfo[4]),
+                                Integer.parseInt(playerInfo[5]), Integer.parseInt(playerInfo[6]),
+                                Double.parseDouble(playerInfo[7]), Double.parseDouble(playerInfo[8]),
+                                Double.parseDouble(playerInfo[9]), Double.parseDouble(playerInfo[10]),
+                                Double.parseDouble(playerInfo[11]), Double.parseDouble(playerInfo[12]));
+                        playerMap.put(name, player);
+                        found = true;
+                    } else {
+                        TennisPlayer player = (TennisPlayer) playerMap.get(playerInfo[1]);
+                        player.addRecord(playerInfo[0], Integer.parseInt(playerInfo[3]),
+                                Integer.parseInt(playerInfo[4]), Integer.parseInt(playerInfo[5]),
+                                Integer.parseInt(playerInfo[6]), Double.parseDouble(playerInfo[7]),
+                                Double.parseDouble(playerInfo[8]), Double.parseDouble(playerInfo[9]),
+                                Double.parseDouble(playerInfo[10]), Double.parseDouble(playerInfo[11]),
+                                Double.parseDouble(playerInfo[12]));
+                    }
+                }
+            }
+            br.close();
+            if (!(found)) {
+                throw new Exception(Exceptions.PLAYER_NOT_FOUND);
+            }
+        } catch (IOException e) {
+            throw new Exception(Exceptions.FILE_NOT_FOUND);
+        }
     }
 
     private void getBaseballPlayer(String name) throws Exception {
@@ -60,10 +96,11 @@ public class CSVDataContainer implements DataContainer {
                 if (playerInfo[0].equals(name)) {
                     if (!found) {
                         BaseballPlayer newPlayer = new BaseballPlayer(playerInfo[0], playerInfo[2],
-                                playerInfo[1], playerInfo[3], Integer.parseInt(playerInfo[4]), Integer.parseInt(playerInfo[5]),
-                                Integer.parseInt(playerInfo[6]), Integer.parseInt(playerInfo[7]),
-                                Integer.parseInt(playerInfo[8]), Integer.parseInt(playerInfo[9]),
-                                Integer.parseInt(playerInfo[10]), Double.parseDouble(playerInfo[11]));
+                                playerInfo[1], playerInfo[3], Integer.parseInt(playerInfo[4]),
+                                Integer.parseInt(playerInfo[5]), Integer.parseInt(playerInfo[6]),
+                                Integer.parseInt(playerInfo[7]), Integer.parseInt(playerInfo[8]),
+                                Integer.parseInt(playerInfo[9]), Integer.parseInt(playerInfo[10]),
+                                Double.parseDouble(playerInfo[11]));
                         playerMap.put(name, newPlayer);
                         found = true;
                     } else {
@@ -81,10 +118,8 @@ public class CSVDataContainer implements DataContainer {
                 throw new Exception(Exceptions.PLAYER_NOT_FOUND);
             }
         } catch (IOException e) {
-            throw new Exception("File not found!");
+            throw new Exception(Exceptions.FILE_NOT_FOUND);
         }
-
-
     }
 
     private void getHockeyPlayer(String name) throws Exception {
@@ -123,7 +158,7 @@ public class CSVDataContainer implements DataContainer {
             }
         } catch (IOException e) {
             System.out.println(e.getMessage());
-            throw new Exception("File not found!");
+            throw new Exception(Exceptions.FILE_NOT_FOUND);
         }
     }
 

@@ -18,47 +18,21 @@ public class TennisPlayerStatComparerTest {
     @Before
     public void setUp() throws Exception {
         this.tennisPlayerStatComparer = new TennisPlayerStatComparer();
-        TennisPlayer player1 = new TennisPlayer("Player 1", "CAN",
-                "20202021", 20, 20, 15, 15,
-                10, 10);
-        TennisPlayer player2 = new TennisPlayer("Player 2", "CAN",
-                "20202021", 20, 15, 20, 10,
-                15, 20);
-        TennisPlayer player3 = new TennisPlayer("Player 3", "CAN",
-                "20202021", 20, 10, 10, 20,
-                20, 15);
+        TennisPlayer player1 = new TennisPlayer("The Greatest 1", "CAN","2018",
+                1, 3, 20, 11, 64.0, 69.0,
+                85.0, 35.0, 35.0, 43.0);
+        TennisPlayer player2 = new TennisPlayer("The Greatest 2", "USA", "2018",
+                20, 2, 12, 17, 56.0, 67.0,
+                81.0, 23.0, 32.0, 33.0);
+        TennisPlayer player3 = new TennisPlayer("The Worst", "ENG", "2018",
+                30, 1, 10, 23, 54.0, 10.0,
+                32.0, 10.0, 8.0, 9.0);
         CSVDataContainer container = new CSVDataContainer();
         container.playerMap.put("Player 1", player1);
         container.playerMap.put("Player 2", player2);
         container.playerMap.put("Player 3", player3);
         this.container = container;
 
-    }
-
-    @Test(timeout = 100)
-    public void testExecuteAgePasses() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
-                "Player 1", "Player 2", "Player 3", "20202021", "Age"));
-        String output = this.tennisPlayerStatComparer.execute(arguments, container);
-        String expected = "From best to worst:\n" +
-                          "Player 3: 20\n" +
-                          "Player 2: 20\n" +
-                          "Player 1: 20";
-        assertEquals(expected, output);
-    }
-
-    @Test(timeout = 100, expected = Exception.class)
-    public void testExecuteAgeNoPlayer() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
-                "Paul Gries", "Player 2", "Player 3", "20202021", "Age"));
-        String fail = this.tennisPlayerStatComparer.execute(arguments, container);
-    }
-
-    @Test(timeout = 100, expected = Exception.class)
-    public void testExecuteAgeNoSeason() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
-                "Player 1", "Player 2", "Player 3", "20192020", "Age"));
-        String fail = this.tennisPlayerStatComparer.execute(arguments, container);
     }
 
     @Test(timeout = 100)
@@ -110,58 +84,6 @@ public class TennisPlayerStatComparerTest {
     public void testExecuteDoubleFaultsNoSeason() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
                 "Player 1", "Player 2", "Player 3", "20192020", "Double Faults"));
-        String fail = this.tennisPlayerStatComparer.execute(arguments, container);
-    }
-
-    @Test(timeout = 100)
-    public void testExecuteServePointsPasses() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
-                "Player 1", "Player 2", "Player 3", "20202021", "Serve Points"));
-        String output = this.tennisPlayerStatComparer.execute(arguments, container);
-        String expected = "From best to worst:\n" +
-                          "Player 3: 20\n" +
-                          "Player 1: 15\n" +
-                          "Player 2: 10";
-        assertEquals(expected, output);
-    }
-
-    @Test(timeout = 100, expected = Exception.class)
-    public void testExecuteServePointsNoPlayer() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
-                "Paul Gries", "Player 2", "Player 3", "20202021", "Serve Points"));
-        String fail = this.tennisPlayerStatComparer.execute(arguments, container);
-    }
-
-    @Test(timeout = 100, expected = Exception.class)
-    public void testExecuteServePointsNoSeason() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
-                "Player 1", "Player 2", "Player 3", "20192020", "Serve Points"));
-        String fail = this.tennisPlayerStatComparer.execute(arguments, container);
-    }
-
-    @Test(timeout = 100)
-    public void testExecuteFirstServesPasses() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
-                "Player 1", "Player 2", "Player 3", "20202021", "First Serves"));
-        String output = this.tennisPlayerStatComparer.execute(arguments, container);
-        String expected = "From best to worst:\n" +
-                          "Player 3: 20\n" +
-                          "Player 2: 15\n" +
-                          "Player 1: 10";
-        assertEquals(expected, output);
-    }
-
-    @Test(timeout = 100, expected = Exception.class)
-    public void testExecuteFirstServesNoPlayer() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
-                "Paul Gries", "Player 2", "Player 3", "20202021", "First Serves"));
-        String fail = this.tennisPlayerStatComparer.execute(arguments, container);
-    }
-
-    @Test(timeout = 100, expected = Exception.class)
-    public void testExecuteFirstServesNoSeason() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
-                "Player 1", "Player 2", "Player 3", "20192020", "First Serves"));
         String fail = this.tennisPlayerStatComparer.execute(arguments, container);
     }
 
