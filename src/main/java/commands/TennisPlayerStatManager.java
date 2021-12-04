@@ -1,7 +1,7 @@
 package commands;
 
 import drivers_adapters.DataContainer;
-import player.TennisPlayer;
+import sports.tennis.TennisPlayer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
