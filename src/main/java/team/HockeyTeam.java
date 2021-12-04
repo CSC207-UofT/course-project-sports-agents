@@ -62,7 +62,7 @@ public class HockeyTeam extends Team {
                 faceOffWinPercentage);
     }
 
-    private void addRecord(String season, Integer gamesPlayed, Integer points, Integer gamesWon,
+    public void addRecord(String season, Integer gamesPlayed, Integer points, Integer gamesWon,
                            Integer gamesLost, Integer overtimeLosses, Integer goalsFor,
                            Integer goalsAgainst, Double goalsForPerGame, Double goalsAgainstPerGame,
                            Double faceOffWinPercentage) {
