@@ -1,178 +1,163 @@
 package team;
 
-import java.util.List;
-
-import match.Match;
+import java.util.HashMap;
 
 public class HockeyTeam extends Team {
-    private int goalsFor;
-    private int goalsAgainst;
-    private float faceOffWinPercentage;
-    private int shotsFor;
-    private int shotsAgainst;
-    private int regulationWins;
-    private int regulationPlusOvertimeWins;
-    private int shootoutGamesWon;
-    private int overtimeLosses;
 
-    public HockeyTeam(){
-        super();
-    }
+    private final HashMap<String, Integer> gamesPlayed;
+    private final HashMap<String, Integer> points;
+    private final HashMap<String, Integer> gamesWon;
+    private final HashMap<String, Integer> gamesLost;
+    private final HashMap<String, Integer> overtimeLosses;
+    private final HashMap<String, Integer> goalsFor;
+    private final HashMap<String, Integer> goalsAgainst;
+    private final HashMap<String, Double> goalsForPerGame;
+    private final HashMap<String, Double> goalsAgainstPerGame;
+    private final HashMap<String, Double> faceOffWinPercentage;
 
-    public HockeyTeam(String name, String homeCity, List<String> players, List<Match> playedGames, int totalGamesPlayed, int wins, int losses, int ties, int rank, int goalsFor, int goalsAgainst, float faceOffWinPercentage, int shotsFor, int shotsAgainst, int regulationWins, int regulationPlusOvertimeWins, int shootoutGamesWon, int overtimeLosses){
-        super(name, homeCity, players, playedGames, totalGamesPlayed, wins, losses, ties, rank);
-        this.goalsFor = goalsFor;
-        this.goalsAgainst = goalsAgainst;
-        this.faceOffWinPercentage = faceOffWinPercentage;
-        this.shotsFor = shotsFor;
-        this.shotsAgainst = shotsAgainst;
-        this.regulationWins = regulationWins;
-        this.regulationPlusOvertimeWins = regulationPlusOvertimeWins;
-        this.shootoutGamesWon = shootoutGamesWon;
-        this.overtimeLosses = overtimeLosses;
+
+    /**
+     * Construct a hockey team who has not participated in any seasons yet
+     * @param name team's name
+     */
+    public HockeyTeam(String name) {
+        super(name);
+        this.gamesPlayed = new HashMap<>();
+        this.points = new HashMap<>();
+        this.gamesWon = new HashMap<>();
+        this.gamesLost = new HashMap<>();
+        this.overtimeLosses = new HashMap<>();
+        this.goalsFor = new HashMap<>();
+        this.goalsAgainst = new HashMap<>();
+        this.goalsForPerGame = new HashMap<>();
+        this.goalsAgainstPerGame = new HashMap<>();
+        this.faceOffWinPercentage = new HashMap<>();
     }
 
     /**
-     * Get goals for
-     * @return goalsFor
+     * Create a new Hockey Player
+     * @param name Team's name
+     * @param season Team's first season
+     * @param gamesPlayed Amount of games the team played in the given season
+     * @param points Amount of points the team obtained in the given season
+     * @param gamesWon Amount of games the team won in the given season
+     * @param gamesLost Amount of games the team list in the given season
+     * @param overtimeLosses Amount of games the team lost in overtime
+     * @param goalsFor Amount of goals the team scored in the given season
+     * @param goalsAgainst Amount of goals the team received in the given season
+     * @param goalsForPerGame Average amount of goals scored by the team per game in the given season
+     * @param goalsAgainstPerGame Average amount of goals received by the team per game in the given season
+     * @param faceOffWinPercentage Percentage of face-offs won in a given season
+     * @throws Exception should not throw Exception
      */
-    public int getGoalsFor(){
-        return this.goalsFor;
+    public HockeyTeam(String name, String season,
+                        Integer gamesPlayed, Integer points,
+                        Integer gamesWon, Integer gamesLost, Integer overtimeLosses,
+                        Integer goalsFor, Integer goalsAgainst,
+                        Double goalsForPerGame, Double goalsAgainstPerGame,
+                        Double faceOffWinPercentage) throws Exception {
+        this(name);
+        this.addRecord(season, gamesPlayed, points, gamesWon, gamesLost,
+                overtimeLosses, goalsFor, goalsAgainst, goalsForPerGame, goalsAgainstPerGame,
+                faceOffWinPercentage);
     }
 
-    /**
-     * Set goals for
-     * @param goalsFor goals for the team
-     */
-    public void setGoalsFor(int goalsFor){
-        this.goalsFor = goalsFor;
+    private void addRecord(String season, Integer gamesPlayed, Integer points, Integer gamesWon,
+                           Integer gamesLost, Integer overtimeLosses, Integer goalsFor,
+                           Integer goalsAgainst, Double goalsForPerGame, Double goalsAgainstPerGame,
+                           Double faceOffWinPercentage) {
+        this.addGamesPlayed(season, gamesPlayed);
+        this.addPoints(season, points);
+        this.addGamesWon(season, gamesWon);
+        this.addGamesLost(season, gamesLost);
+        this.addOvertimeLosses(season, overtimeLosses);
+        this.addGoalsFor(season, goalsFor);
+        this.addGoalsAgainst(season, goalsAgainst);
+        this.addGoalsForPerGame(season, goalsForPerGame);
+        this.addGoalsAgainstPerGame(season, goalsAgainstPerGame);
+        this.addFaceOffWinPercentage(season, faceOffWinPercentage);
     }
 
-    /**
-     * Get goals against
-     * @return goalsAgainst
-     */
-    public int getGoalsAgainst(){
-        return this.goalsAgainst;
+    public Double getFaceOffWinPercentage(String season) {
+        return this.faceOffWinPercentage.get(season);
     }
 
-    /**
-     * Set goals against
-     * @param goalsAgainst goals against the team
-     */
-    public void setGoalsAgainst(int goalsAgainst){
-        this.goalsAgainst = goalsAgainst;
+    public Integer getGoalsFor(String season) {
+        return this.goalsFor.get(season);
     }
 
-    /**
-     * Get face off win percentage
-     * @return faceOffWinPercentage
-     */
-    public float getFaceOffWinPercentage(){
-        return this.faceOffWinPercentage;
+    public Integer getGoalsAgainst(String season) {
+        return this.goalsAgainst.get(season);
     }
 
-    /**
-     * Set face off win percentage
-     * @param faceOffWinPercentage win percentage of face offs
-     */
-    public void setFaceOffWinPercentage(float faceOffWinPercentage){
-        this.faceOffWinPercentage = faceOffWinPercentage;
+    public Double getGoalsForPerGame(String season) {
+        return this.goalsForPerGame.get(season);
     }
 
-    /**
-     * Get shots for
-     * @return shotsFor
-     */
-    public int getShotsFor(){
-        return this.shotsFor;
+    public Double getGoalsAgainstPerGame(String season) {
+        return this.goalsAgainstPerGame.get(season);
     }
 
-    /**
-     * Set shots for
-     * @param shotsFor shots for this team
-     */
-    public void setShotsFor(int shotsFor){
-        this.shotsFor = shotsFor;
+
+    public Integer getGamesPlayed(String season) {
+        return this.gamesPlayed.get(season);
     }
 
-    /**
-     * Get shots against
-     * @return shotsAgainst
-     */
-    public int getShotsAgainst(){
-        return this.shotsAgainst;
+    public Integer getGamesWon(String season) {
+        return this.gamesWon.get(season);
     }
 
-    /**
-     * Set shots against
-     * @param shotsAgainst shots against this team
-     */
-    public void setShotsAgainst(int shotsAgainst){
-        this.shotsAgainst = shotsAgainst;
+    public Integer getGamesLost(String season) {
+        return this.gamesLost.get(season);
     }
 
-    /**
-     * Get regulation wins
-     * @return regulationWins
-     */
-    public int getRegulationWins(){
-        return this.regulationWins;
+    public Integer getOvertimeLosses(String season) {
+        return this.overtimeLosses.get(season);
     }
 
-    /**
-     * Set regulation wins
-     * @param regulationWins the team's regulation wins
-     */
-    public void setRegulationWins(int regulationWins){
-        this.regulationWins = regulationWins;
+    public Integer getPoints(String season) {
+        return this.points.get(season);
     }
 
-    /**
-     * Get regulation plus overtime wins
-     * @return regulationPlusOvertimeWins
-     */
-    public int getRegulationPlusOvertimeWins(){
-        return this.regulationPlusOvertimeWins;
+    public void addFaceOffWinPercentage(String season, Double faceOffWinPercentage) {
+        this.faceOffWinPercentage.put(season, faceOffWinPercentage);
     }
 
-    /**
-     * Set regulation plus overtime wins
-     * @param regulationPlusOvertimeWins the team's regulation and overtime wins
-     */
-    public void setRegulationPlusOvertimeWins(int regulationPlusOvertimeWins){
-        this.regulationPlusOvertimeWins = regulationPlusOvertimeWins;
+    public void addGoalsAgainstPerGame(String season, Double goalsAgainstPerGame) {
+        this.goalsAgainstPerGame.put(season, goalsAgainstPerGame);
     }
 
-    /**
-     * Get shoot out games won
-     * @return shootOutGamesWon
-     */
-    public int getShootoutGamesWon(){
-        return this.shootoutGamesWon;
+    public void addGoalsForPerGame(String season, Double goalsForPerGame) {
+        this.goalsForPerGame.put(season, goalsForPerGame);
     }
 
-    /**
-     * Set shoot out games won
-     * @param shootoutGamesWon number of shootout games won
-     */
-    public void setShootoutGamesWon(int shootoutGamesWon){
-        this.shootoutGamesWon = shootoutGamesWon;
+
+    public void addGoalsAgainst(String season, Integer goalsAgainst) {
+        this.goalsAgainst.put(season, goalsAgainst);
     }
 
-    /**
-     * Get overtime losses
-     * @return overtimeLosses
-     */
-    public int getOvertimeLosses(){
-        return this.overtimeLosses;
+    public void addGoalsFor(String season, Integer goalsFor) {
+        this.goalsFor.put(season, goalsFor);
     }
 
-    /**
-     * Set overtime losses
-     * @param overtimeLosses number of overtime losses
-     */
-    public void setOvertimeLosses(int overtimeLosses){
-        this.overtimeLosses = overtimeLosses;
+    public void addOvertimeLosses(String season, Integer overtimeLosses) {
+        this.overtimeLosses.put(season, overtimeLosses);
     }
+
+    public void addGamesPlayed(String season, Integer gamesPlayed) {
+        this.gamesPlayed.put(season, gamesPlayed);
+    }
+
+    public void addPoints(String season, Integer points) {
+        this.points.put(season, points);
+    }
+
+    public void addGamesWon(String season, Integer gamesWon) {
+        this.gamesWon.put(season, gamesWon);
+    }
+
+    public void addGamesLost(String season, Integer gamesLost) {
+        this.gamesLost.put(season, gamesLost);
+    }
+
 }
