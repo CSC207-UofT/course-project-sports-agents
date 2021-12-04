@@ -183,7 +183,7 @@ public class CSVDataContainer implements DataContainer {
         boolean found = false;
 
         try {
-            BufferedReader br = new BufferedReader(new FileReader("hockey_team.csv"));
+            BufferedReader br = new BufferedReader(new FileReader("hockey_teams.csv"));
             br.readLine(); //skip the first line.
 
             while((line = br.readLine()) != null) {

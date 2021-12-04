@@ -1,11 +1,7 @@
 package commands;
 
 import drivers_adapters.DataContainer;
-import player.HockeyPlayer;
-import team.Team;
 import team.HockeyTeam;
-import team.TeamManager;
-import team.TeamStats;
 
 import java.util.*;
 

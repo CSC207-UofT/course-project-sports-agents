@@ -25,7 +25,7 @@ public abstract class TeamStatManager implements Command {
      * @throws Exception if the statistic cannot be computed
      */
     protected void checkStatistic(String statistic) throws Exception {
-        if (!this.allowedStatsToGet.contains(statistic)) {
+        if (!this.allowedStatsToGet.contains(statistic.toLowerCase())) {
             throw new Exception(Exceptions.INVALID_STATISTIC);
         }
     }
