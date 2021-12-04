@@ -45,6 +45,11 @@ public class LeagueMemberManager implements Command {
         }
     }
 
+    /**
+     * Load the fantasy league data stored at the given path
+     * @param arguments String Array of form ["load", <filepath>]
+     * @return if the league was successfully loaded
+     */
     private String loadLeague(ArrayList<String> arguments) {
         String path = arguments.get(1);
         try {
@@ -65,6 +70,12 @@ public class LeagueMemberManager implements Command {
         }
     }
 
+    /**
+     * Save the fantasy league data to the given filepath
+     * @param arguments String Array of form ["save", "filepath"]
+     * @return if the file was successfully saved
+     * @throws Exception if the file could not be saved
+     */
     private String saveLeague(ArrayList<String> arguments) throws Exception {
         String path = arguments.get(1);
         LeagueStorage to_save = new LeagueStorage(LeagueMemberMap, MatchMap);
@@ -87,7 +98,7 @@ public class LeagueMemberManager implements Command {
 
     /**
      * Add a new League Member to the fantasy league
-     * @param arguments String Array of form {"add_member", <member name>}
+     * @param arguments String Array of form ["add_member", <member name>]
      * @return a confirmation if the Member was added
      * @throws Exception if a Member with the same name already exists
      */
@@ -103,8 +114,8 @@ public class LeagueMemberManager implements Command {
 
     /**
      * Create a new Match for players to bet on
-     * @param arguments String Array of form {"create_match", <match name>,
-     *                <team 1 name>, <team 2 name>}
+     * @param arguments String Array of form ["create_match", <match name>,
+     *                <team 1 name>, <team 2 name>]
      * @return a confirmation if the Match was created
      * @throws Exception if a Match with the same name already exists
      */
@@ -124,8 +135,8 @@ public class LeagueMemberManager implements Command {
 
     /**
      * Record a League Member's bet on the outcome of a Match
-     * @param arguments String Array of form {"bet", <member name>,
-     *                <match name>, <predicted winning team>}
+     * @param arguments String Array of form ["bet", <member name>,
+     *                <match name>, <predicted winning team>]
      * @return a confirmation if the bet is recorded
      * @throws Exception if the League Member does not exist, the Match does
      * not exist, or the team is not competing in the Match
@@ -147,8 +158,8 @@ public class LeagueMemberManager implements Command {
 
     /**
      * Resolve a Match's outcome and award League Members according to their bets
-     * @param arguments String Array of form {"resolve_match", <match name>,
-     *                <winning team name>}
+     * @param arguments String Array of form ["resolve_match", <match name>,
+     *                <winning team name>]
      * @return a confirmation if the Match's outcome is resolved
      * @throws Exception if the Match does not exist
      */
@@ -166,7 +177,7 @@ public class LeagueMemberManager implements Command {
 
     /**
      * Return information on a given League Member
-     * @param arguments String array for form {"member_info", <member name>}
+     * @param arguments String array for form ["member_info", <member name>]
      * @return a string representation of the member
      * @throws Exception if the League Member does not exist
      */
