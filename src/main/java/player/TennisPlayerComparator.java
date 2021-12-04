@@ -26,18 +26,26 @@ public class TennisPlayerComparator implements Comparator<TennisPlayer> {
     public int compare(TennisPlayer p1, TennisPlayer p2) {
         try {
             switch(this.compareBy) {
-                case "Age":
-                    return compareAge(p1, p2);
-                case "Aces":
+                case "rank":
+                    return compareRank(p1, p2);
+                case "matches":
+                    return compareMatches(p1, p2);
+                case "aces":
                     return compareAces(p1, p2);
-                case "Double Faults":
+                case "double faults":
                     return compareDoubleFaults(p1, p2);
-                case "Serve Points":
-                    return compareServePoints(p1, p2);
-                case "First Serves":
-                    return compareFirstServes(p1, p2);
-                case "Break Points Saved":
+                case "serve points won":
+                    return compareServePointsWon(p1, p2);
+                case "break points saved":
                     return compareBreakPointsSaved(p1, p2);
+                case "serve games won":
+                    return compareServeGamesWon(p1, p2);
+                case "return games won":
+                    return compareReturnGamesWon(p1, p2);
+                case "break points converted":
+                    return compareBreakPointsConverted(p1, p2);
+                case "return points won":
+                    return compareReturnPointsWon(p1, p2);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -45,36 +53,53 @@ public class TennisPlayerComparator implements Comparator<TennisPlayer> {
         return 0;
     }
 
-    private int compareAge(TennisPlayer p1, TennisPlayer p2) throws Exception {
-        return p1.getStatAge(this.season) - p2.getStatAge(this.season);
+    private int compareRank(TennisPlayer p1, TennisPlayer p2) throws Exception {
+        return p1.getStatRank(this.season) - p2.getStatRank(this.season);
+    }
+
+    private int compareMatches(TennisPlayer p1, TennisPlayer p2) throws Exception {
+        return p1.getStatMatches(this.season) -
+                p2.getStatMatches(this.season);
     }
 
     private int compareAces(TennisPlayer p1, TennisPlayer p2) throws Exception {
-        return p1.getStatAces(this.season) - p2.getStatAces(this.season);
+        return p1.getStatAces(this.season) -
+                p2.getStatAces(this.season);
     }
 
-    private int compareDoubleFaults(TennisPlayer p1, TennisPlayer p2)
-            throws Exception {
+    private int compareDoubleFaults(TennisPlayer p1, TennisPlayer p2) throws Exception {
         return p1.getStatDoubleFaults(this.season) -
                 p2.getStatDoubleFaults(this.season);
     }
 
-    private int compareServePoints(TennisPlayer p1, TennisPlayer p2)
-            throws Exception {
-        return p1.getStatServePoints(this.season) -
-                p2.getStatServePoints(this.season);
+    private int compareServePointsWon(TennisPlayer p1, TennisPlayer p2) throws Exception {
+        return (int) Math.signum(p1.getStatServePointsWon(this.season) -
+                p2.getStatServePointsWon(this.season));
     }
 
-    private int compareFirstServes(TennisPlayer p1, TennisPlayer p2)
-            throws Exception {
-        return p1.getStatFirstServes(this.season) -
-                p2.getStatFirstServes(this.season);
+    private int compareBreakPointsSaved(TennisPlayer p1, TennisPlayer p2) throws Exception {
+        return (int) Math.signum(p1.getStatBreakPointsSaved(this.season) -
+                p2.getStatBreakPointsSaved(this.season));
     }
 
-    private int compareBreakPointsSaved(TennisPlayer p1, TennisPlayer p2)
-            throws Exception {
-        return p1.getStatBreakPointsSaved(this.season) -
-                p2.getStatBreakPointsSaved(this.season);
+    private int compareServeGamesWon(TennisPlayer p1, TennisPlayer p2) throws Exception {
+        return (int) Math.signum(p1.getStatServeGamesWon(this.season) -
+                p2.getStatServeGamesWon(this.season));
+    }
+
+    private int compareReturnGamesWon(TennisPlayer p1, TennisPlayer p2) throws Exception {
+        return (int) Math.signum(p1.getStatReturnGamesWon(this.season) -
+                p2.getStatReturnGamesWon(this.season));
+    }
+
+    private int compareBreakPointsConverted(TennisPlayer p1, TennisPlayer p2) throws Exception {
+        return (int) Math.signum(p1.getStatBreakPointsConverted(this.season) -
+                p2.getStatBreakPointsConverted(this.season));
+    }
+
+    private int compareReturnPointsWon(TennisPlayer p1, TennisPlayer p2) throws Exception {
+        return (int) Math.signum(p1.getStatReturnPointsWon(this.season) -
+                p2.getStatReturnPointsWon(this.season));
     }
 
 }

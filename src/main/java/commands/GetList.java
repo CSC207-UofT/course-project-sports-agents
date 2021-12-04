@@ -27,8 +27,9 @@ public class GetList {
                         "Position", "Games Played", "At Bats", "Runs",
                         "Hits", "Home Runs", "Runs Batted In", "Strike Outs", "Average");
             case "tennis":
-                return Arrays.asList("Age", "Aces", "Double Faults",
-                        "Serve Points", "First Serves", "Break Points Saved");
+                return Arrays.asList("Country", "Rank", "Matches", "Aces", "Double Faults", "Serve Points Won",
+                        "Break Points Saved", "Serve Games Won", "Return Games Won", "Break Points Converted",
+                        "Return Points Won");
         }
         throw new Exception(Exceptions.WRONG_SPORT);
     }

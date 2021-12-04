@@ -1,19 +1,21 @@
 package player;
 
-import constants.Exceptions;
-
 import java.util.HashMap;
 
 public class TennisPlayer extends Player {
 
     private final String country;
     // Key is season, Value is statistic in that season
-    private final HashMap<String, Integer> ageRecord;
+    private final HashMap<String, Integer> rankRecord;
+    private final HashMap<String, Integer> matchesRecord;
     private final HashMap<String, Integer> acesRecord;
     private final HashMap<String, Integer> doubleFaultsRecord;
-    private final HashMap<String, Integer> servePointsRecord;
-    private final HashMap<String, Integer> firstServesRecord;
-    private final HashMap<String, Integer> breakPointsSavedRecord;
+    private final HashMap<String, Double> servePointsWonRecord;
+    private final HashMap<String, Double> breakPointsSavedRecord;
+    private final HashMap<String, Double> serveGamesWonRecord;
+    private final HashMap<String, Double> returnGamesWonRecord;
+    private final HashMap<String, Double> breakPointsConvertedRecord;
+    private final HashMap<String, Double> returnPointsWonRecord;
 
 
     /**
@@ -24,33 +26,42 @@ public class TennisPlayer extends Player {
     public TennisPlayer(String name, String country) {
         super(name);
         this.country = country;
-        this.ageRecord = new HashMap<>();
+        this.rankRecord = new HashMap<>();
+        this.matchesRecord = new HashMap<>();
         this.acesRecord = new HashMap<>();
         this.doubleFaultsRecord = new HashMap<>();
-        this.servePointsRecord = new HashMap<>();
-        this.firstServesRecord = new HashMap<>();
+        this.servePointsWonRecord = new HashMap<>();
         this.breakPointsSavedRecord = new HashMap<>();
+        this.serveGamesWonRecord = new HashMap<>();
+        this.returnGamesWonRecord = new HashMap<>();
+        this.breakPointsConvertedRecord = new HashMap<>();
+        this.returnPointsWonRecord = new HashMap<>();
     }
 
 
     /**
      * Construct a tennis player with the following information from one season
      * @param name player's name
-     * @param country IOC code for this player's country
-     * @param season the season data is from
-     * @param age player's age
-     * @param aces number of aces made by this player
-     * @param servePoints number of serve points won by this player
-     * @param firstServes number of first serves made by this player
-     * @param breakPointsSaved number of break points saved
-     * @throws Exception should not throw exception
+     * @param country IOC code for player's home country
+     * @param season the season the player participated in
+     * @param rank player's rank during season
+     * @param matches number of matches played during season
+     * @param aces number of aces made during season
+     * @param doubleFaults number of double faults made during season
+     * @param servePointsWon percentage of serve points won during season
+     * @param breakPointsSaved percentage of break points saved during season
+     * @param serveGamesWon percentage of serve games won during season
+     * @param returnGamesWon percentage of return games won during season
+     * @param breakPointsConverted percentage of break points converted during season
+     * @param returnPointsWon percentage of return points won during season
+     * @throws Exception if data for any of the above stats has already been recorded for given season
      */
-    public TennisPlayer(String name, String country, String season, int age,
-                        int aces, int doubleFaults, int servePoints,
-                        int firstServes, int breakPointsSaved) throws Exception {
+    public TennisPlayer(String name, String country, String season, int rank, int matches, int aces, int doubleFaults,
+                        double servePointsWon, double breakPointsSaved, double serveGamesWon, double returnGamesWon,
+                        double breakPointsConverted, double returnPointsWon) throws Exception {
         this(name, country);
-        this.addRecord(season, age, aces, doubleFaults, servePoints, firstServes,
-                breakPointsSaved);
+        this.addRecord(season, rank, matches, aces, doubleFaults, servePointsWon, breakPointsSaved, serveGamesWon,
+                returnGamesWon, breakPointsConverted, returnPointsWon);
     }
 
 
@@ -62,48 +73,77 @@ public class TennisPlayer extends Player {
     }
 
     /**
-     * Record a new season of data for this player
-     * @param competition the new season
-     * @param age the player's age in the season
-     * @param aces the number of aces made
-     * @param doubleFaults the number of double faults made
-     * @param servePoints the number of serve points won
-     * @param firstServes the number of first serves made
-     * @param breakPointsSaved the number of breakpoints saved
-     * @throws Exception if data for the season is already recorded
+     * Record the all data for this player during the given season
+     * @param season the new season to be added
+     * @param rank the player's rank during season
+     * @param matches the number of matches the player played in during season
+     * @param aces the number of aces player made during season
+     * @param doubleFaults the number of double faults player made during season
+     * @param servePointsWon the percentage of serve points won by player during season
+     * @param breakPointsSaved the percentage of break points saved by player during season
+     * @param serveGamesWon the percentage of serve games player won during season
+     * @param returnGamesWon the percentage of return games player won during season
+     * @param breakPointsConverted the percentage of break points converted by player during season
+     * @param returnPointsWon the percentage of return points won by player during season
+     * @throws Exception if given season already has data for any of the above stats
      */
-    public void addRecord(String competition, int age, int aces, int doubleFaults,
-                          int servePoints, int firstServes,
-                          int breakPointsSaved) throws Exception {
-        this.addStatAge(competition, age);
-        this.addStatAces(competition, aces);
-        this.addStatDoubleFaults(competition, doubleFaults);
-        this.addStatServePoints(competition, servePoints);
-        this.addStatFirstServes(competition, firstServes);
-        this.addStatBreakPointsSaved(competition, breakPointsSaved);
-        this.addSeason(competition);
+    public void addRecord(String season, int rank, int matches, int aces, int doubleFaults, double servePointsWon,
+                          double breakPointsSaved, double serveGamesWon, double returnGamesWon,
+                          double breakPointsConverted, double returnPointsWon) throws Exception {
+        this.addStatRank(season, rank);
+        this.addStatMatches(season, matches);
+        this.addStatAces(season, aces);
+        this.addStatDoubleFaults(season, doubleFaults);
+        this.addStatServePointsWon(season, servePointsWon);
+        this.addStatBreakPointsSaved(season, breakPointsSaved);
+        this.addStatServeGamesWon(season, serveGamesWon);
+        this.addStatReturnGamesWon(season, returnGamesWon);
+        this.addStatBreakPointsConverted(season, breakPointsConverted);
+        this.addStatReturnPointsWon(season, returnPointsWon);
     }
 
     /**
-     * Record age data
+     * Record rank data
      * @param season the season the data is from
-     * @param age the player's age in that season
-     * @throws Exception if that season already has age data
+     * @param rank the player's rank in that season
+     * @throws Exception if data is already recorded for that season
      */
-    public void addStatAge(String season, Integer age)
-            throws Exception {
-        checkForSeason(this.ageRecord, season, false);
-        this.ageRecord.put(season, age);
+    public void addStatRank(String season, Integer rank) throws Exception {
+        checkForSeason(this.rankRecord, season, false);
+        this.rankRecord.put(season, rank);
     }
 
     /**
+     * Return the player's rank during the given season
      * @param season the season of interest
-     * @return the Player's age in that season
-     * @throws Exception if that season has no age data
+     * @return the player's rank during the given season
+     * @throws Exception if that season has no rank data
      */
-    public Integer getStatAge(String season) throws Exception {
-        checkForSeason(this.ageRecord, season, true);
-        return this.ageRecord.get(season);
+    public Integer getStatRank(String season) throws Exception {
+        checkForSeason(this.rankRecord, season, true);
+        return this.rankRecord.get(season);
+    }
+
+    /**
+     * Record the number of matches played for the given season
+     * @param season the new season the data is from
+     * @param matches number of matches won during given season
+     * @throws Exception if data is already recorded for that season
+     */
+    public void addStatMatches(String season, Integer matches) throws Exception {
+        checkForSeason(this.matchesRecord, season, false);
+        this.matchesRecord.put(season, matches);
+    }
+
+    /**
+     * Return the number of matches played during given season
+     * @param season the season of interest
+     * @return number of matches player played during given season
+     * @throws Exception if given season has no matches data
+     */
+    public Integer getStatMatches(String season) throws Exception {
+        checkForSeason(this.matchesRecord, season, true);
+        return this.matchesRecord.get(season);
     }
 
     /**
@@ -116,16 +156,6 @@ public class TennisPlayer extends Player {
             throws Exception {
         checkForSeason(this.acesRecord, season, false);
         this.acesRecord.put(season, aces);
-    }
-
-    /**
-     * Update the number of aces made by this player
-     * @param competition the needed competition
-     * @param aces number of new aces made by player
-     */
-    public void updateAces(String competition, int aces) {
-        int oldAces = this.acesRecord.get(competition);
-        this.acesRecord.put(competition, oldAces + aces);
     }
 
     /**
@@ -150,15 +180,6 @@ public class TennisPlayer extends Player {
         this.doubleFaultsRecord.put(season, doubleFaults);
     }
 
-    /**
-     * Update the number of double faults made by this player
-     * @param competition the needed competition
-     * @param doubleFaults number of new double faults made by this player
-     */
-    public void updateDoubleFaults(String competition, int doubleFaults) {
-        int oldDoubleFaults = this.doubleFaultsRecord.get(competition);
-        this.doubleFaultsRecord.put(competition, oldDoubleFaults + doubleFaults);
-    }
 
     /**
      * @param season the season of interest
@@ -170,151 +191,159 @@ public class TennisPlayer extends Player {
         return this.doubleFaultsRecord.get(season);
     }
 
+
     /**
-     * Record serve point data
-     * @param season the season the data is from
-     * @param servePoints the player's serve point data in that season
-     * @throws Exception if that season already has serve point data
+     * Record the percentage of serve points won during the given season
+     * @param season the new season the data is from
+     * @param servePointsWon percentage of serve points player won for given season
+     * @throws Exception if the given season already has serve points won data
      */
-    public void addStatServePoints(String season, Integer servePoints)
-            throws Exception {
-        checkForSeason(this.servePointsRecord, season, false);
-        this.servePointsRecord.put(season, servePoints);
+    public void addStatServePointsWon(String season, Double servePointsWon) throws Exception {
+        checkForSeason(this.servePointsWonRecord, season, false);
+        this.servePointsWonRecord.put(season, servePointsWon);
     }
 
     /**
+     * Return the percentage of serve points won by this player during the given season
      * @param season the season of interest
-     * @return the Player's serve point data in that season
-     * @throws Exception if that season has no serve point data
+     * @return percentage of serve points won
+     * @throws Exception if the given season does not have serve points won data
      */
-    public Integer getStatServePoints(String season) throws Exception {
-        checkForSeason(this.servePointsRecord, season, true);
-        return this.servePointsRecord.get(season);
+    public Double getStatServePointsWon(String season) throws Exception {
+        checkForSeason(this.servePointsWonRecord, season, true);
+        return this.servePointsWonRecord.get(season);
     }
 
     /**
-     * Update the number of serve points won by this player
-     * @param competition the needed competition
-     * @param servePoints number of new serve points won by this player
-     */
-    public void updateServePoints(String competition, int servePoints) {
-        int oldServePoints = this.servePointsRecord.get(competition);
-        this.servePointsRecord.put(competition, oldServePoints + servePoints);
-    }
-
-    /**
-     * Record first serves data
+     * Record percentage of break points saved data
      * @param season the season the data is from
-     * @param firstServes the player's first serve data in that season
-     * @throws Exception if that season already has first serve data
-     */
-    public void addStatFirstServes(String season, Integer firstServes)
-            throws Exception {
-        checkForSeason(this.firstServesRecord, season, false);
-        this.firstServesRecord.put(season, firstServes);
-    }
-
-
-    /**
-     * Update the number of first serves made by this player for a competition
-     * @param competition the needed competition
-     * @param firstServes number of first serves made by this player
-     */
-    public void updateFirstServes(String competition, int firstServes) {
-        int oldFirstServes = this.firstServesRecord.get(competition);
-        this.firstServesRecord.put(competition, oldFirstServes + firstServes);
-    }
-
-
-    /**
-     * @param season the season of interest
-     * @return the Player's first serves in that season
-     * @throws Exception if that season has no first serves data
-     */
-    public Integer getStatFirstServes(String season) throws Exception {
-        checkForSeason(this.firstServesRecord, season, true);
-        return this.firstServesRecord.get(season);
-    }
-
-    /**
-     * Record break points saved data
-     * @param season the season the data is from
-     * @param breakPointsSaved the player's break points saved in that season
+     * @param breakPointsSaved the percentage of break points saved by player during given season
      * @throws Exception if that season already has break points saved data
      */
-    public void addStatBreakPointsSaved(String season, Integer breakPointsSaved)
+    public void addStatBreakPointsSaved(String season, double breakPointsSaved)
             throws Exception {
         checkForSeason(this.breakPointsSavedRecord, season, false);
         this.breakPointsSavedRecord.put(season, breakPointsSaved);
     }
 
-    /**
-     * Update the number of break points saved by this player
-     * @param competition the needed competition
-     * @param breakPointsSaved number of new break points saved
-     */
-    public void updateBreakPointsSaved(String competition, int breakPointsSaved) {
-        int oldBreakPointsSaved = this.breakPointsSavedRecord.get(competition);
-        this.breakPointsSavedRecord.put(competition, oldBreakPointsSaved + breakPointsSaved);
-    }
 
     /**
+     * Return the percentage of break points saved during given season
      * @param season the season of interest
-     * @return the Player's break points saved in that season
+     * @return the Player's percentage of break points saved
      * @throws Exception if that season has no break points saved data
      */
-    public Integer getStatBreakPointsSaved(String season) throws Exception {
+    public Double getStatBreakPointsSaved(String season) throws Exception {
         checkForSeason(this.breakPointsSavedRecord, season, true);
         return this.breakPointsSavedRecord.get(season);
     }
 
-
     /**
-     * Update the value of all stats for a player during a competition
-     * @param competition needed competition
-     * @param aces number of new aces scored during competition
-     * @param doubleFaults number of new double faults made during competition
-     * @param servePoints number of new serve points won during competition
-     * @param firstServes number of new first serves made during competition
-     * @param breakPointsSaved number of new break points saved during competition
+     * Record percentage of serve games won during given season
+     * @param season the new season to be added
+     * @param serveGamesWon percentage of serve games won during season
+     * @throws Exception if serve games won data is already recorded for given season
      */
-    public void updateAll(String competition, int aces, int doubleFaults, int servePoints, int firstServes,
-                          int breakPointsSaved) {
-        this.updateAces(competition, aces);
-        this.updateDoubleFaults(competition, doubleFaults);
-        this.updateServePoints(competition, servePoints);
-        this.updateFirstServes(competition, firstServes);
-        this.updateBreakPointsSaved(competition, breakPointsSaved);
+    public void addStatServeGamesWon(String season, double serveGamesWon) throws Exception {
+        checkForSeason(this.serveGamesWonRecord, season, false);
+        this.serveGamesWonRecord.put(season, serveGamesWon);
     }
 
-
     /**
-     * Return this player's data for a given competition in string format (assuming player participated in given
-     * competition)
-     * @param competition the needed competition
-     * @return string of player's data for given competition
+     * Return the percentage of serve games won during given season
+     * @param season the season of interest
+     * @return percentage of serve games won during season
+     * @throws Exception if the given season does not have serve games won data
      */
-    public String printSeasonData(String competition) {
-        return "Age: " + this.ageRecord.get(competition) + "\nNationality: " + this.country + "\nAces: "
-                + this.acesRecord.get(competition) + "\nDouble Faults: " + this.doubleFaultsRecord.get(competition) +
-                "\nServe Points: " + this.servePointsRecord.get(competition) + "\nFirst Serves: " +
-                this.firstServesRecord.get(competition) + "\nBreak Points Saved: "
-                + this.breakPointsSavedRecord.get(competition);
+    public Double getStatServeGamesWon(String season) throws Exception {
+        checkForSeason(this.serveGamesWonRecord, season, true);
+        return this.serveGamesWonRecord.get(season);
+
     }
 
-
     /**
-     * Check whether the player contains data for the given competition. If one of the records for this player does
-     * not contain the given competition, then none of the records contain the given competition.
-     * @param competition needed competition
-     * @throws Exception if competition could not be found
+     * Record the percentage of return games won during the given season
+     * @param season new season to be added
+     * @param returnGamesWon percentage of return games won during season
+     * @throws Exception if return games won data already exists for the given season
      */
-    public void checkCompetition(String competition) throws Exception {
-         if (!(this.ageRecord.containsKey(competition))) {
-             throw new Exception(Exceptions.COMP_NOT_FOUND);
-        }
+    public void addStatReturnGamesWon(String season, double returnGamesWon) throws Exception {
+        checkForSeason(this.returnGamesWonRecord, season, false);
+        this.serveGamesWonRecord.put(season, returnGamesWon);
     }
 
+    /**
+     * Return the percentage of return games won during given season
+     * @param season the season of interest
+     * @return percentage of return games won during season
+     * @throws Exception if given season does not have return games won data
+     */
+    public Double getStatReturnGamesWon(String season) throws Exception {
+        checkForSeason(this.returnGamesWonRecord, season, true);
+        return this.returnGamesWonRecord.get(season);
+    }
+
+    /**
+     * Record the percentage of break points converted for the given season
+     * @param season new season to be added
+     * @param breakPointsConverted percentage of break points converted
+     * @throws Exception if the given season already has break points converted data
+     */
+    public void addStatBreakPointsConverted(String season, double breakPointsConverted) throws Exception {
+        checkForSeason(this.breakPointsConvertedRecord, season, false);
+        this.breakPointsConvertedRecord.put(season, breakPointsConverted);
+    }
+
+    /**
+     * Return the percentage of breakpoints converted for the given season
+     * @param season the season of interest
+     * @return percentage of breakpoints converted during given season
+     * @throws Exception if given season does not have break points converted data
+     */
+    public Double getStatBreakPointsConverted(String season) throws Exception {
+        checkForSeason(this.breakPointsConvertedRecord, season, true);
+        return this.breakPointsConvertedRecord.get(season);
+    }
+
+    /**
+     * Record the percentage of return points won during given season
+     * @param season new season to be added
+     * @param returnPointsWon percentage of return points won during given season
+     * @throws Exception if given season already has return points won data
+     */
+    public void addStatReturnPointsWon(String season, double returnPointsWon) throws Exception {
+        checkForSeason(this.returnPointsWonRecord, season, false);
+        this.returnPointsWonRecord.put(season, returnPointsWon);
+    }
+
+    /**
+     * Return the percentage of return points won during the given season
+     * @param season season of interest
+     * @return percentage of return points won during season
+     * @throws Exception if given season does not have return points won data
+     */
+    public Double getStatReturnPointsWon(String season) throws Exception {
+        checkForSeason(this.returnPointsWonRecord, season, true);
+        return this.returnPointsWonRecord.get(season);
+    }
+
+    /**
+     * Return this player's data (all stats) for a given season in string format (assuming player participated in given
+     * season)
+     * @param season the season of interest
+     * @return string of player's data for given season
+     */
+    public String printSeasonData(String season) {
+        return "Nationality: " + this.country + "\nRank: " + this.rankRecord.get(season) + "\nMatches: "
+                + this.matchesRecord.get(season) + "\nAces: " + this.acesRecord.get(season) +
+                "\nDouble Faults: " + this.doubleFaultsRecord.get(season) + "\nPercentage of Serve Points Won: " +
+                this.servePointsWonRecord.get(season) + "\nPercentage of Break Points Saved: " +
+                this.breakPointsSavedRecord.get(season) + "\nPercentage of Serve Games Won: " +
+                this.serveGamesWonRecord.get(season) + "\nPercentage of Return Games Won: " +
+                this.returnGamesWonRecord.get(season) + "\nPercentage of Break Points Converted: " +
+                this.breakPointsConvertedRecord.get(season) + "\nPercentage of Return Points Won: " +
+                this.returnPointsWonRecord.get(season);
+    }
 
     @Override
     public String toString() {
