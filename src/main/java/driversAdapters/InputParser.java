@@ -1,10 +1,8 @@
-package drivers_adapters;
+package driversAdapters;
 
-import commands.Command;
 import constants.CommandsInfo;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -27,7 +25,7 @@ public class InputParser {
     public InputParser(String input) {
         // The keyword should be the first word of the User input
         String[] parts = input.split(" ", 2);
-        this.keyword = parts[0];
+        this.keyword = cleanKeyword(parts[0]);
 
         ArrayList<String> argParts = split_args(parts[1]);
 
@@ -39,6 +37,19 @@ public class InputParser {
 
         decorateArgs(argParts);
         arguments = argParts;
+    }
+
+    /**
+     * Remove any quotes surrounding the keyword given
+     * @param keyword keyword phrase, as given in User input
+     * @return the keyword phrase with quotations removed
+     */
+    private String cleanKeyword(String keyword) {
+        if (keyword.charAt(0) == '"'
+            && keyword.charAt(keyword.length() - 1) == '"') {
+            keyword = keyword.substring(1, keyword.length() - 1);
+        }
+        return keyword;
     }
 
     /**
@@ -86,7 +97,8 @@ public class InputParser {
      */
     private boolean isVerbose(ArrayList<String> argParts) {
         for (String part : argParts) {
-            if (part.charAt(0) == '-' && part.charAt(1) == '-') {
+            if (part.length() > 1 && part.charAt(0) == '-' &&
+                part.charAt(1) == '-') {
                 return true;
             }
         }
@@ -165,21 +177,30 @@ public class InputParser {
             if (multiArgNames.contains(argName)) {
                 int curr_index = argParts.indexOf(argName) + 1;
                 boolean collect_phrases = true;
-                while (collect_phrases) {
+                while (collect_phrases && curr_index < argParts.size()) {
                     String phrase = argParts.get(curr_index);
-                    if (phrase.charAt(0) == '-' && phrase.charAt(1) == '-') {
+                    if (phrase.length() > 1 && phrase.charAt(0) == '-' &&
+                        phrase.charAt(1) == '-') {
                         collect_phrases = false;
                     } else {
                         parsedArgs.add(phrase);
                     }
+                    curr_index += 1;
                 }
             } else {
-                parsedArgs.add(argParts.get(argParts.indexOf(argName) + 1));
+                if (argParts.indexOf(argName) + 1 < argParts.size()) {
+                    parsedArgs.add(argParts.get(argParts.indexOf(argName) + 1));
+                }
             }
         }
         return parsedArgs;
     }
 
+    /**
+     * Some arguments (such as those managing the fantasy league) use the same
+     * use case. To tell them apart, they need the keyword as the first argument.
+     * @param argParts the arguments, processed to remove verbose markers
+     */
     private void decorateArgs(ArrayList<String> argParts) {
         if (CommandsInfo.manageLeagueKeywords.contains(keyword)) {
             argParts.add(0, keyword);

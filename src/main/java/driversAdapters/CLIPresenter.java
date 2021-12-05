@@ -1,4 +1,4 @@
-package drivers_adapters;
+package driversAdapters;
 
 import java.util.Scanner;
 

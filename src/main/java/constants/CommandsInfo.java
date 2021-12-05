@@ -61,7 +61,7 @@ public class CommandsInfo {
     public static class ResolveMatchInfo {
         public static final String keyword = "resolve_match";
         public static final List<String> argNames =
-                Arrays.asList("--match-name", "--winning-team-name");
+                Arrays.asList("--match-name", "--winner-name");
         public static final List<String> multiArgNames = List.of();
     }
 

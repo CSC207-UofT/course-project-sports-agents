@@ -1,7 +1,7 @@
 package commands;
 
-import drivers_adapters.CSVDataContainer;
-import drivers_adapters.DataContainer;
+import driversAdapters.CSVDataContainer;
+import driversAdapters.DataContainer;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;

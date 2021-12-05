@@ -1,6 +1,4 @@
-package drivers_adapters;
-
-import java.util.Scanner;
+package driversAdapters;
 
 public class SportsApp {
 

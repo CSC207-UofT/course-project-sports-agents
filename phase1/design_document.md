@@ -128,7 +128,7 @@ in the `team` package, all entity classes related to players are in the `player`
 package, all entity classes related to the fantasy league members are in the 
 `leagueMember`, all use case classes which handle user commands are in the 
 `command` package, and all drivers responsible for program operation are in the
-`drivers_adapters` package. This packaging strategy worked best for us, because
+`driversAdapters` package. This packaging strategy worked best for us, because
 all of us found it to be the most straightforward and easiest to work with. Additionally,
 our app's structure really fit quite well with the packaging strategy, making
 our development process smooth and helping us work together better.
