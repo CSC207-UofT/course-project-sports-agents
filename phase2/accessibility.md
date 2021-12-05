@@ -38,3 +38,7 @@ Question 3:
 
 Write a paragraph about whether or not your program is less likely to be used by certain demographics. For example, a program that converts txt files 
 to files that can be printed by a braille printer are less likely to be used by people who do not read braille.
+
+  Similarly to question 2, since our program is based around sports and betting, someone who does not have any interest in sports would would be much less likely to use our
+  program. Though someone without any interest in betting would still enjoyed watching sports may use our program to look through statistics and other information, they
+  could still use that part of our program, just not the betting.
