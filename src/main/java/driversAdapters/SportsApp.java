@@ -20,12 +20,11 @@ public class SportsApp {
         System.out.println("Enter 'quit' to exit the program");
 
         Presenter presenter = new CLIPresenter();
-        String input = "";
         DataContainer container = new CSVDataContainer();
 
         CommandManager manager = new CommandManager();
+        String input = presenter.getInput();
         while (!input.equals("quit")) {
-            input = presenter.getInput();
             try {
                 String output = manager.execute(input, container);
                 presenter.presentOutput(output);
@@ -33,6 +32,7 @@ public class SportsApp {
             catch (Exception e) {
                 presenter.presentOutput(e.getMessage());
             }
+            input = presenter.getInput();
         }
         presenter.closeOutput();
     }
