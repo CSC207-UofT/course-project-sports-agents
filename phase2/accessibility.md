@@ -30,8 +30,8 @@ category such as "students" or more vague, such as "people who like games". Try 
   Since our product is based around sports and betting, if we wanted to sell or license our program to customers, the target category of
   consumers would be people who like watching and betting on sports. The best option would be to market our program towards anyone within that category who would want
   to use any unique parts of our program. For example, sports fans that enjoy betting on baseball, tennis and hockey would be the best demographic for us to target since
-  our program does is centered around betting and statistics for those three sports. If we added more sports in the future, we could change our marketing strategy to
-  also target people that enjoy watching whatever sport we add.
+  our program is centered around betting and statistics for those three sports. If we added more sports in the future, we could change our marketing strategy to
+  also target people that enjoy watching whatever sports we add.
 
 
 Question 3:
