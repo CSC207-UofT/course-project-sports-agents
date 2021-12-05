@@ -32,6 +32,7 @@ public class PlayerStatPredictorFacade implements Command {
      */
     @Override
     public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
+        checkArgumentLength(arguments);
         String sport = arguments.get(0);
         switch(sport) {
             case "Hockey":
@@ -41,7 +42,17 @@ public class PlayerStatPredictorFacade implements Command {
             case "Baseball":
                 return this.baseballPlayerStatPredictor.execute(arguments, container);
             default:
-                throw new Exception(Exceptions.INVALID_ARGUMENT);
+                throw new Exception(Exceptions.WRONG_SPORT);
+        }
+    }
+
+    /**
+     * @param arguments user arguments for comparing players
+     * @throws Exception if insufficiently many arguments are provided (here, 5)
+     */
+    private void checkArgumentLength(ArrayList<String> arguments) throws Exception {
+        if (arguments.size() < 5) {
+            throw new Exception(Exceptions.WRONG_ARGUMENT_NUMBER);
         }
     }
 }

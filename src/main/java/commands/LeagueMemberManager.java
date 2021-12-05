@@ -50,7 +50,8 @@ public class LeagueMemberManager implements Command {
      * @param arguments String Array of form ["load", <filepath>]
      * @return if the league was successfully loaded
      */
-    private String loadLeague(ArrayList<String> arguments) {
+    private String loadLeague(ArrayList<String> arguments) throws Exception {
+        checkArgumentLength(arguments, 2);
         String path = arguments.get(1);
         try {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(path));
@@ -77,6 +78,7 @@ public class LeagueMemberManager implements Command {
      * @throws Exception if the file could not be saved
      */
     private String saveLeague(ArrayList<String> arguments) throws Exception {
+        checkArgumentLength(arguments, 2);
         String path = arguments.get(1);
         LeagueStorage to_save = new LeagueStorage(LeagueMemberMap, MatchMap);
 
@@ -103,6 +105,7 @@ public class LeagueMemberManager implements Command {
      * @throws Exception if a Member with the same name already exists
      */
     private String addMember(ArrayList<String> arguments) throws Exception {
+        checkArgumentLength(arguments, 2);
         String leagueMemberName = arguments.get(1);
         if (this.LeagueMemberMap.containsKey(leagueMemberName)) {
             throw new Exception(Exceptions.MEMBER_EXISTS);
@@ -120,6 +123,7 @@ public class LeagueMemberManager implements Command {
      * @throws Exception if a Match with the same name already exists
      */
     private String createMatch(ArrayList<String> arguments) throws Exception {
+        checkArgumentLength(arguments, 4);
         String matchName = arguments.get(1);
         if (this.MatchMap.containsKey(matchName)) {
             throw new Exception(Exceptions.MATCH_EXISTS);
@@ -142,6 +146,7 @@ public class LeagueMemberManager implements Command {
      * not exist, or the team is not competing in the Match
      */
     private String bet(ArrayList<String> arguments) throws Exception {
+        checkArgumentLength(arguments, 4);
         String leagueMemberName = arguments.get(1);
         verifyMember(leagueMemberName);
         LeagueMember bettingLeagueMember = this.LeagueMemberMap.get(leagueMemberName);
@@ -164,6 +169,7 @@ public class LeagueMemberManager implements Command {
      * @throws Exception if the Match does not exist
      */
     private String resolveMatch(ArrayList<String> arguments) throws Exception {
+        checkArgumentLength(arguments, 3);
         String matchName = arguments.get(1);
         verifyMatch(matchName);
         Match targetMatch = this.MatchMap.get(matchName);
@@ -182,6 +188,7 @@ public class LeagueMemberManager implements Command {
      * @throws Exception if the League Member does not exist
      */
     private String memberInfo(ArrayList<String> arguments) throws Exception {
+        checkArgumentLength(arguments, 2);
         String memberName = arguments.get(1);
         verifyMember(memberName);
         LeagueMember targetLeagueMember = this.LeagueMemberMap.get(memberName);
@@ -207,6 +214,19 @@ public class LeagueMemberManager implements Command {
     private void verifyMatch(String matchName) throws Exception {
         if (!this.MatchMap.containsKey(matchName)) {
             throw new Exception(Exceptions.NO_MATCH);
+        }
+    }
+
+    /**
+     * Check that the provided arguments have the expected length.
+     * @param arguments Parsed User-provided arguments
+     * @param expected Expected number of arguments provided
+     * @throws Exception if the provided arguments has too many or too few arguments
+     */
+    private void checkArgumentLength(ArrayList<String> arguments, int expected)
+            throws Exception {
+        if (arguments.size() != expected) {
+            throw new Exception(Exceptions.WRONG_ARGUMENT_NUMBER);
         }
     }
 }
