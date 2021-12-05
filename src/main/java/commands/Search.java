@@ -11,7 +11,7 @@ import java.util.*;
  */
 public class Search implements Command {
     public String execute(ArrayList<String> arguments, DataContainer container) throws IOException {
-        String partOfName = arguments.get(0);
+        String partOfName = arguments.get(1);
         List<String> relatedPlayers = new ArrayList<>();
         for(String playerName: container.getAllPlayersForAllSports()){
             if(playerName.contains(partOfName.toLowerCase())){
