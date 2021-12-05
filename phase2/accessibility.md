@@ -8,12 +8,19 @@ If you do not have any such features you can either:
 (b) Explain why the principle does not apply to a program like yours.
 
 Equitable use:
+
 Flexiblity in use:
+
 Simple and intuitive use:
+
 Perceptible infromation:
+
 Tolerance for error:
+
 Low physical effort:
+
 Size and space for approach and use:
+
 
 Question 2:
 
