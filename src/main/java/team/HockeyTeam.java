@@ -4,16 +4,16 @@ import java.util.HashMap;
 
 public class HockeyTeam extends Team {
 
-    private final HashMap<String, Integer> gamesPlayed;
-    private final HashMap<String, Integer> points;
-    private final HashMap<String, Integer> gamesWon;
-    private final HashMap<String, Integer> gamesLost;
-    private final HashMap<String, Integer> overtimeLosses;
-    private final HashMap<String, Integer> goalsFor;
-    private final HashMap<String, Integer> goalsAgainst;
-    private final HashMap<String, Double> goalsForPerGame;
-    private final HashMap<String, Double> goalsAgainstPerGame;
-    private final HashMap<String, Double> faceOffWinPercentage;
+    protected final HashMap<String, Integer> gamesPlayed;
+    protected final HashMap<String, Integer> points;
+    protected final HashMap<String, Integer> gamesWon;
+    protected final HashMap<String, Integer> gamesLost;
+    protected final HashMap<String, Integer> overtimeLosses;
+    protected final HashMap<String, Integer> goalsFor;
+    protected final HashMap<String, Integer> goalsAgainst;
+    protected final HashMap<String, Double> goalsForPerGame;
+    protected final HashMap<String, Double> goalsAgainstPerGame;
+    protected final HashMap<String, Double> faceOffWinPercentage;
 
 
     /**
