@@ -11,8 +11,8 @@ public class HockeyTeam extends Team {
     protected final HashMap<String, Integer> overtimeLosses;
     protected final HashMap<String, Integer> goalsFor;
     protected final HashMap<String, Integer> goalsAgainst;
-    protected final HashMap<String, Double> goalsForPerGame;
-    protected final HashMap<String, Double> goalsAgainstPerGame;
+    protected final HashMap<String, Double> shotsForPerGame;
+    protected final HashMap<String, Double> shotsAgainstPerGame;
     protected final HashMap<String, Double> faceOffWinPercentage;
 
 
@@ -29,13 +29,13 @@ public class HockeyTeam extends Team {
         this.overtimeLosses = new HashMap<>();
         this.goalsFor = new HashMap<>();
         this.goalsAgainst = new HashMap<>();
-        this.goalsForPerGame = new HashMap<>();
-        this.goalsAgainstPerGame = new HashMap<>();
+        this.shotsForPerGame = new HashMap<>();
+        this.shotsAgainstPerGame = new HashMap<>();
         this.faceOffWinPercentage = new HashMap<>();
     }
 
     /**
-     * Create a new Hockey Player
+     * Create a new Hockey Team
      * @param name Team's name
      * @param season Team's first season
      * @param gamesPlayed Amount of games the team played in the given season
@@ -45,26 +45,41 @@ public class HockeyTeam extends Team {
      * @param overtimeLosses Amount of games the team lost in overtime
      * @param goalsFor Amount of goals the team scored in the given season
      * @param goalsAgainst Amount of goals the team received in the given season
-     * @param goalsForPerGame Average amount of goals scored by the team per game in the given season
-     * @param goalsAgainstPerGame Average amount of goals received by the team per game in the given season
+     * @param shotsForPerGame Average amount of shots scored by the team per game in the given season
+     * @param shotsAgainstPerGame Average amount of shots received by the team per game in the given season
      * @param faceOffWinPercentage Percentage of face-offs won in a given season
-     * @throws Exception should not throw Exception
      */
     public HockeyTeam(String name, String season,
                         Integer gamesPlayed, Integer points,
                         Integer gamesWon, Integer gamesLost, Integer overtimeLosses,
                         Integer goalsFor, Integer goalsAgainst,
-                        Double goalsForPerGame, Double goalsAgainstPerGame,
-                        Double faceOffWinPercentage) throws Exception {
+                        Double shotsForPerGame, Double shotsAgainstPerGame,
+                        Double faceOffWinPercentage) {
         this(name);
         this.addRecord(season, gamesPlayed, points, gamesWon, gamesLost,
-                overtimeLosses, goalsFor, goalsAgainst, goalsForPerGame, goalsAgainstPerGame,
+                overtimeLosses, goalsFor, goalsAgainst, shotsForPerGame, shotsAgainstPerGame,
                 faceOffWinPercentage);
     }
 
+
+    /**
+     * Add a new season to the hockey team
+     * @param season Team's first season
+     * @param gamesPlayed Amount of games the team played in the given season
+     * @param points Amount of points the team obtained in the given season
+     * @param gamesWon Amount of games the team won in the given season
+     * @param gamesLost Amount of games the team list in the given season
+     * @param overtimeLosses Amount of games the team lost in overtime
+     * @param goalsFor Amount of goals the team scored in the given season
+     * @param goalsAgainst Amount of goals the team received in the given season
+     * @param shotsForPerGame Average amount of shots scored by the team per game in the given season
+     * @param shotsAgainstPerGame Average amount of shots received by the team per game in the given season
+     * @param faceOffWinPercentage Percentage of face-offs won in a given season
+     */
+
     public void addRecord(String season, Integer gamesPlayed, Integer points, Integer gamesWon,
                            Integer gamesLost, Integer overtimeLosses, Integer goalsFor,
-                           Integer goalsAgainst, Double goalsForPerGame, Double goalsAgainstPerGame,
+                           Integer goalsAgainst, Double shotsForPerGame, Double shotsAgainstPerGame,
                            Double faceOffWinPercentage) {
         this.addGamesPlayed(season, gamesPlayed);
         this.addPoints(season, points);
@@ -73,8 +88,8 @@ public class HockeyTeam extends Team {
         this.addOvertimeLosses(season, overtimeLosses);
         this.addGoalsFor(season, goalsFor);
         this.addGoalsAgainst(season, goalsAgainst);
-        this.addGoalsForPerGame(season, goalsForPerGame);
-        this.addGoalsAgainstPerGame(season, goalsAgainstPerGame);
+        this.addShotsForPerGame(season, shotsForPerGame);
+        this.addShotsAgainstPerGame(season, shotsAgainstPerGame);
         this.addFaceOffWinPercentage(season, faceOffWinPercentage);
     }
 
@@ -90,12 +105,12 @@ public class HockeyTeam extends Team {
         return this.goalsAgainst.get(season);
     }
 
-    public Double getGoalsForPerGame(String season) {
-        return this.goalsForPerGame.get(season);
+    public Double getShotsPerGame(String season) {
+        return this.shotsForPerGame.get(season);
     }
 
-    public Double getGoalsAgainstPerGame(String season) {
-        return this.goalsAgainstPerGame.get(season);
+    public Double getShotsAgainstPerGame(String season) {
+        return this.shotsAgainstPerGame.get(season);
     }
 
 
@@ -123,12 +138,12 @@ public class HockeyTeam extends Team {
         this.faceOffWinPercentage.put(season, faceOffWinPercentage);
     }
 
-    public void addGoalsAgainstPerGame(String season, Double goalsAgainstPerGame) {
-        this.goalsAgainstPerGame.put(season, goalsAgainstPerGame);
+    public void addShotsAgainstPerGame(String season, Double goalsAgainstPerGame) {
+        this.shotsAgainstPerGame.put(season, goalsAgainstPerGame);
     }
 
-    public void addGoalsForPerGame(String season, Double goalsForPerGame) {
-        this.goalsForPerGame.put(season, goalsForPerGame);
+    public void addShotsForPerGame(String season, Double goalsForPerGame) {
+        this.shotsForPerGame.put(season, goalsForPerGame);
     }
 
 

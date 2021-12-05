@@ -47,10 +47,10 @@ public class HockeyTeamStatManager extends TeamStatManager {
                 return formatStat(team, statistic, team.getGoalsFor(season).toString());
             case "goals against":
                 return formatStat(team, statistic, team.getGoalsAgainst(season).toString());
-            case "goals for per game":
-                return formatStat(team, statistic, team.getGoalsForPerGame(season).toString());
-            case "goals against per game":
-                return formatStat(team, statistic, team.getGoalsAgainstPerGame(season).toString());
+            case "shots for per game":
+                return formatStat(team, statistic, team.getShotsPerGame(season).toString());
+            case "shots against per game":
+                return formatStat(team, statistic, team.getShotsAgainstPerGame(season).toString());
             case "faceoff win percentage":
                 return formatStat(team, statistic, team.getFaceOffWinPercentage(season).toString());
             default:

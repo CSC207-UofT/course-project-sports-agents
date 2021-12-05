@@ -24,8 +24,8 @@ public class HockeyTeamTest {
         assertTrue(team.overtimeLosses.containsKey("2018-2019"));
         assertTrue(team.goalsFor.containsKey("2018-2019"));
         assertTrue(team.goalsAgainst.containsKey("2018-2019"));
-        assertTrue(team.goalsForPerGame.containsKey("2018-2019"));
-        assertTrue(team.goalsAgainstPerGame.containsKey("2018-2019"));
+        assertTrue(team.shotsForPerGame.containsKey("2018-2019"));
+        assertTrue(team.shotsAgainstPerGame.containsKey("2018-2019"));
         assertTrue(team.faceOffWinPercentage.containsKey("2018-2019"));
     }
 
@@ -40,18 +40,18 @@ public class HockeyTeamTest {
 
     @Test
     public void testAddGoalsAgainstPerGame() {
-        team.addGoalsAgainstPerGame("2018-2019", 8.0);
-        assertTrue(team.goalsAgainstPerGame.containsKey("2018-2019"));
-        double goalsAgainstPerGame = team.goalsAgainstPerGame.get("2018-2019");
+        team.addShotsAgainstPerGame("2018-2019", 8.0);
+        assertTrue(team.shotsAgainstPerGame.containsKey("2018-2019"));
+        double goalsAgainstPerGame = team.shotsAgainstPerGame.get("2018-2019");
         assertEquals(8, (int) goalsAgainstPerGame);
     }
 
 
     @Test
     public void testAddGoalsForPerGame() {
-        team.addGoalsForPerGame("2018-2019", 7.0);
-        assertTrue(team.goalsForPerGame.containsKey("2018-2019"));
-        double goalsForPerGame = team.goalsForPerGame.get("2018-2019");
+        team.addShotsForPerGame("2018-2019", 7.0);
+        assertTrue(team.shotsForPerGame.containsKey("2018-2019"));
+        double goalsForPerGame = team.shotsForPerGame.get("2018-2019");
         assertEquals(7, (int) goalsForPerGame);
     }
 
