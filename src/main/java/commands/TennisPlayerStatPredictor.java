@@ -8,9 +8,9 @@ import java.util.*;
 public class TennisPlayerStatPredictor extends PlayerStatPredictor {
 
     public TennisPlayerStatPredictor() {
-        super(new HashSet<>(Arrays.asList("Aces",
-                "Double Faults", "Serve Points", "First Serves",
-                "Break Points Saved")));
+        super(new HashSet<>(Arrays.asList("rank", "matches", "aces", "double faults",
+                "serve points won", "break points saved", "serve games won",
+                "return games won", "break points converted", "return points won")));
     }
 
     /**

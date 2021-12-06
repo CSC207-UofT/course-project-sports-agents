@@ -8,8 +8,8 @@ import java.util.*;
 public class HockeyPlayerStatPredictor extends PlayerStatPredictor {
 
     public HockeyPlayerStatPredictor() {
-        super(new HashSet<>(Arrays.asList("Goals", "Assists",
-                "Points", "Shots", "Shooting Percentage")));
+        super(new HashSet<>(Arrays.asList("goals", "assists",
+                "points", "shots", "shooting percentage")));
     }
 
     /**
@@ -50,15 +50,15 @@ public class HockeyPlayerStatPredictor extends PlayerStatPredictor {
                                       List<String> seasons)
             throws Exception {
         switch (statistic) {
-            case "Goals":
+            case "goals":
                 return getPastGoals(player, seasons);
-            case "Assists":
+            case "assists":
                 return getPastAssists(player, seasons);
-            case "Points":
+            case "points":
                 return getPastPoints(player, seasons);
-            case "Shots":
+            case "shots":
                 return getPastShots(player, seasons);
-            case "Shooting Percentage":
+            case "shooting percentage":
                 return getPastShootingPercentage(player, seasons);
             default:
                 throw new Exception("this shouldn't logically be thrown!");

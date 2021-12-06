@@ -33,173 +33,187 @@ public class HockeyPlayerStatComparerTest {
         this.hockeyPlayerStatComparer = new HockeyPlayerStatComparer();
 
         CSVDataContainer container = new CSVDataContainer();
-        container.playerMap.put("Player 1", player1);
-        container.playerMap.put("Player 2", player2);
-        container.playerMap.put("Player 3", player3);
+        container.playerMap.put("player 1", player1);
+        container.playerMap.put("player 2", player2);
+        container.playerMap.put("player 3", player3);
         this.container = container;
 
     }
 
     @Test(timeout = 100)
     public void testExecuteGamesPlayedPasses() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Hockey", "Player 1", "Player 2",
-                "Player 3", "20202021", "Games Played"));
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey", "player 1", "player 2",
+                "player 3", "20202021", "games played"));
         String output = this.hockeyPlayerStatComparer.execute(arguments, container);
-        String expected = "From best to worst:\n" +
-                          "Player 3: 50\n" +
-                          "Player 2: 50\n" +
-                          "Player 1: 50";
+        String expected = "-----------------------------------------------------\n" +
+                          " Rank                 Name         Games Played \n" +
+                          "-----------------------------------------------------\n" +
+                          "    1             Player 3                   50 \n" +
+                          "    2             Player 2                   50 \n" +
+                          "    3             Player 1                   50 \n";
         assertEquals(expected, output);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteGamesPlayedNoPlayer() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Hockey", "Paul Gries", "Player 2",
-                "Player 3", "20202021", "Games Played"));
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey", "paul gries", "player 2",
+                "player 3", "20202021", "games played"));
         String fail = this.hockeyPlayerStatComparer.execute(arguments, container);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteGamesPlayedNoSeason() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Hockey", "Player 1", "Player 2",
-                "Player 3", "20192020", "Games Played"));
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey", "player 1", "player 2",
+                "player 3", "20192020", "games played"));
         String fail = this.hockeyPlayerStatComparer.execute(arguments, container);
     }
 
     @Test(timeout = 100)
     public void testExecuteGoalsPasses() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Hockey", "Player 1", "Player 2",
-                "Player 3", "20202021", "Goals"));
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey", "player 1", "player 2",
+                "player 3", "20202021", "goals"));
         String output = this.hockeyPlayerStatComparer.execute(arguments, container);
-        String expected = "From best to worst:\n" +
-                          "Player 3: 60\n" +
-                          "Player 2: 50\n" +
-                          "Player 1: 40";
+        String expected = "-----------------------------------------------------\n" +
+                          " Rank                 Name                Goals \n" +
+                          "-----------------------------------------------------\n" +
+                          "    1             Player 3                   60 \n" +
+                          "    2             Player 2                   50 \n" +
+                          "    3             Player 1                   40 \n";
+
         assertEquals(expected, output);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteGoalsNoPlayer() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Hockey", "Paul Gries", "Player 2",
-                "Player 3", "20202021", "Goals"));
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey", "paul gries", "player 2",
+                "player 3", "20202021", "goals"));
         String fail = this.hockeyPlayerStatComparer.execute(arguments, container);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteGoalsNoSeason() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Hockey", "Player 1", "Player 2",
-                "Player 3", "20192020", "Goals"));
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey", "player 1", "player 2",
+                "player 3", "20192020", "goals"));
         String fail = this.hockeyPlayerStatComparer.execute(arguments, container);
     }
 
     @Test(timeout = 100)
     public void testExecuteAssistsPasses() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Hockey", "Player 1", "Player 2",
-                "Player 3", "20202021", "Assists"));
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey", "player 1", "player 2",
+                "player 3", "20202021", "assists"));
         String output = this.hockeyPlayerStatComparer.execute(arguments, container);
-        String expected = "From best to worst:\n" +
-                          "Player 1: 60\n" +
-                          "Player 2: 50\n" +
-                          "Player 3: 40";
+        String expected = "-----------------------------------------------------\n" +
+                          " Rank                 Name              Assists \n" +
+                          "-----------------------------------------------------\n" +
+                          "    1             Player 1                   60 \n" +
+                          "    2             Player 2                   50 \n" +
+                          "    3             Player 3                   40 \n";
         assertEquals(expected, output);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteAssistsNoPlayer() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Hockey", "Paul Gries", "Player 2",
-                "Player 3", "20202021", "Assists"));
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey", "paul gries", "player 2",
+                "player 3", "20202021", "assists"));
         String fail = this.hockeyPlayerStatComparer.execute(arguments, container);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteAssistsNoSeason() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Hockey", "Player 1", "Player 2",
-                "Player 3", "20192020", "Assists"));
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey", "player 1", "player 2",
+                "player 3", "20192020", "assists"));
         String fail = this.hockeyPlayerStatComparer.execute(arguments, container);
     }
 
     @Test(timeout = 100)
     public void testExecutePointsPasses() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Hockey", "Player 1", "Player 2",
-                "Player 3", "20202021", "Points"));
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey", "player 1", "player 2",
+                "player 3", "20202021", "points"));
         String output = this.hockeyPlayerStatComparer.execute(arguments, container);
-        String expected = "From best to worst:\n" +
-                          "Player 3: 60\n" +
-                          "Player 1: 50\n" +
-                          "Player 2: 40";
+        String expected = "-----------------------------------------------------\n" +
+                          " Rank                 Name               Points \n" +
+                          "-----------------------------------------------------\n" +
+                          "    1             Player 3                   60 \n" +
+                          "    2             Player 1                   50 \n" +
+                          "    3             Player 2                   40 \n";
         assertEquals(expected, output);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecutePointsNoPlayer() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Hockey", "Paul Gries", "Player 2",
-                "Player 3", "20202021", "Points"));
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey", "paul gries", "player 2",
+                "player 3", "20202021", "points"));
         String fail = this.hockeyPlayerStatComparer.execute(arguments, container);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecutePointsNoSeason() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Hockey", "Player 1", "Player 2",
-                "Player 3", "20192020", "Points"));
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey", "player 1", "player 2",
+                "player 3", "20192020", "points"));
         String fail = this.hockeyPlayerStatComparer.execute(arguments, container);
     }
 
     @Test(timeout = 100)
     public void testExecuteShotsPasses() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Hockey", "Player 1", "Player 2",
-                "Player 3", "20202021", "Shots"));
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey", "player 1", "player 2",
+                "player 3", "20202021", "shots"));
         String output = this.hockeyPlayerStatComparer.execute(arguments, container);
-        String expected = "From best to worst:\n" +
-                          "Player 2: 60\n" +
-                          "Player 3: 50\n" +
-                          "Player 1: 40";
+        String expected = "-----------------------------------------------------\n" +
+                          " Rank                 Name                Shots \n" +
+                          "-----------------------------------------------------\n" +
+                          "    1             Player 2                   60 \n" +
+                          "    2             Player 3                   50 \n" +
+                          "    3             Player 1                   40 \n";
         assertEquals(expected, output);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteShotsNoPlayer() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Hockey", "Paul Gries", "Player 2",
-                "Player 3", "20202021", "Shots"));
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey", "paul gries", "player 2",
+                "player 3", "20202021", "shots"));
         String fail = this.hockeyPlayerStatComparer.execute(arguments, container);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteShotsNoSeason() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Hockey", "Player 1", "Player 2",
-                "Player 3", "20192020", "Shots"));
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey", "player 1", "player 2",
+                "player 3", "20192020", "shots"));
         String fail = this.hockeyPlayerStatComparer.execute(arguments, container);
     }
 
     @Test(timeout = 100)
     public void testExecuteShootingPercentagePasses() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Hockey", "Player 1", "Player 2",
-                "Player 3", "20202021", "Shooting Percentage"));
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey", "player 1", "player 2",
+                "player 3", "20202021", "shooting percentage"));
         String output = this.hockeyPlayerStatComparer.execute(arguments, container);
-        String expected = "From best to worst:\n" +
-                          "Player 2: 60.0\n" +
-                          "Player 1: 50.0\n" +
-                          "Player 3: 40.0";
+        String expected = "-----------------------------------------------------\n" +
+                          " Rank                 Name  Shooting Percentage \n" +
+                          "-----------------------------------------------------\n" +
+                          "    1             Player 2                 60.0 \n" +
+                          "    2             Player 1                 50.0 \n" +
+                          "    3             Player 3                 40.0 \n";
+
         assertEquals(expected, output);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteShootingPercentageNoPlayer() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Hockey", "Paul Gries", "Player 2",
-                "Player 3", "20202021", "Shooting Percentage"));
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey", "paul gries", "player 2",
+                "player 3", "20202021", "shooting percentage"));
         String fail = this.hockeyPlayerStatComparer.execute(arguments, container);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteShootingPercentageNoSeason() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Hockey", "Player 1", "Player 2",
-                "Player 3", "20192020", "Shooting Percentage"));
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey", "player 1", "player 2",
+                "player 3", "20192020", "shooting percentage"));
         String fail = this.hockeyPlayerStatComparer.execute(arguments, container);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteInvalidStat() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Hockey", "Player 1", "Player 2",
-                "Player 3", "20202021", "Name"));
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey", "player 1", "player 2",
+                "player 3", "20202021", "name"));
         String fail = this.hockeyPlayerStatComparer.execute(arguments, container);
     }
 }

@@ -38,19 +38,21 @@ public class TennisPlayerStatComparerTest {
     @Test(timeout = 100)
     public void testExecuteAcesPasses() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
-                "Player 1", "Player 2", "Player 3", "20202021", "Aces"));
+                "Player 1", "Player 2", "Player 3", "2018", "Aces"));
         String output = this.tennisPlayerStatComparer.execute(arguments, container);
-        String expected = "From best to worst:\n" +
-                          "Player 1: 20\n" +
-                          "Player 2: 15\n" +
-                          "Player 3: 10";
+        String expected = "-----------------------------------------------------\n" +
+                          " Rank                 Name                 aces \n" +
+                          "-----------------------------------------------------\n" +
+                          "    1       The Greatest 1                   20 \n" +
+                          "    2       The Greatest 2                   12 \n" +
+                          "    3            The Worst                   10 \n";
         assertEquals(expected, output);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteAcesNoPlayer() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
-                "Paul Gries", "Player 2", "Player 3", "20202021", "Aces"));
+                "Paul Gries", "Player 2", "Player 3", "2018", "Aces"));
         String fail = this.tennisPlayerStatComparer.execute(arguments, container);
     }
 
@@ -64,19 +66,21 @@ public class TennisPlayerStatComparerTest {
     @Test(timeout = 100)
     public void testExecuteDoubleFaultsPasses() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
-                "Player 1", "Player 2", "Player 3", "20202021", "Double Faults"));
+                "Player 1", "Player 2", "Player 3", "2018", "Double Faults"));
         String output = this.tennisPlayerStatComparer.execute(arguments, container);
-        String expected = "From best to worst:\n" +
-                          "Player 2: 20\n" +
-                          "Player 1: 15\n" +
-                          "Player 3: 10";
+        String expected = "-----------------------------------------------------\n" +
+                          " Rank                 Name        double faults \n" +
+                          "-----------------------------------------------------\n" +
+                          "    1            The Worst                   23 \n" +
+                          "    2       The Greatest 2                   17 \n" +
+                          "    3       The Greatest 1                   11 \n";
         assertEquals(expected, output);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteDoubleFaultsNoPlayer() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
-                "Paul Gries", "Player 2", "Player 3", "20202021", "Double Faults"));
+                "Paul Gries", "Player 2", "Player 3", "2018", "Double Faults"));
         String fail = this.tennisPlayerStatComparer.execute(arguments, container);
     }
 
@@ -90,19 +94,21 @@ public class TennisPlayerStatComparerTest {
     @Test(timeout = 100)
     public void testExecuteBreakPointsSavedPasses() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
-                "Player 1", "Player 2", "Player 3", "20202021", "Break Points Saved"));
+                "Player 1", "Player 2", "Player 3", "2018", "Break Points Saved"));
         String output = this.tennisPlayerStatComparer.execute(arguments, container);
-        String expected = "From best to worst:\n" +
-                          "Player 2: 20\n" +
-                          "Player 3: 15\n" +
-                          "Player 1: 10";
+        String expected = "-----------------------------------------------------\n" +
+                          " Rank                 Name   break points saved \n" +
+                          "-----------------------------------------------------\n" +
+                          "    1       The Greatest 1                 69.0 \n" +
+                          "    2       The Greatest 2                 67.0 \n" +
+                          "    3            The Worst                 10.0 \n";
         assertEquals(expected, output);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteBreakPointsSavedNoPlayer() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
-                "Paul Gries", "Player 2", "Player 3", "20202021", "Break Points Saved"));
+                "Paul Gries", "Player 2", "Player 3", "2018", "Break Points Saved"));
         String fail = this.tennisPlayerStatComparer.execute(arguments, container);
     }
 
@@ -116,7 +122,7 @@ public class TennisPlayerStatComparerTest {
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteInvalidStat() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
-                "Player 1", "Player 2", "Player 3", "20192020", "Goals"));
+                "Player 1", "Player 2", "Player 3", "2018", "Goals"));
         String fail = this.tennisPlayerStatComparer.execute(arguments, container);
     }
 

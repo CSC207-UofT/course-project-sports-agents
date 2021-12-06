@@ -35,11 +35,11 @@ public class PlayerStatPredictorFacade implements Command {
         checkArgumentLength(arguments);
         String sport = arguments.get(0);
         switch(sport) {
-            case "Hockey":
+            case "hockey":
                 return this.hockeyPlayerStatPredictor.execute(arguments, container);
-            case "Tennis":
+            case "tennis":
                 return this.tennisPlayerStatPredictor.execute(arguments, container);
-            case "Baseball":
+            case "baseball":
                 return this.baseballPlayerStatPredictor.execute(arguments, container);
             default:
                 throw new Exception(Exceptions.WRONG_SPORT);

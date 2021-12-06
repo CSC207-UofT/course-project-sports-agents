@@ -7,48 +7,11 @@ import java.util.HashMap;
 
 public class CommandManager {
 
-    private final HashMap<String, Command> commandDictionary = new HashMap<>();
+    private final HashMap<String, Command> commandDictionary;
 
     public CommandManager() {
-        HockeyPlayerStatManager hockeyPlayerStatManager =
-                new HockeyPlayerStatManager();
-        HockeyPlayerStatComparer hockeyPlayerStatComparer =
-                new HockeyPlayerStatComparer();
-        HockeyPlayerStatPredictor hockeyPlayerStatPredictor =
-                new HockeyPlayerStatPredictor();
-
-        TennisPlayerStatManager tennisPlayerStatManager =
-                new TennisPlayerStatManager();
-        TennisPlayerStatComparer tennisPlayerStatComparer =
-                new TennisPlayerStatComparer();
-        TennisPlayerStatPredictor tennisPlayerStatPredictor =
-                new TennisPlayerStatPredictor();
-
-        BaseballPlayerStatManager baseballPlayerStatManager =
-                new BaseballPlayerStatManager();
-        BaseballPlayerStatComparer baseballPlayerStatComparer =
-                new BaseballPlayerStatComparer();
-        BaseballPlayerStatPredictor baseballPlayerStatPredictor =
-                new BaseballPlayerStatPredictor();
-
-        PlayerStatManagerFacade playerStatManagerFacade =
-                new PlayerStatManagerFacade(hockeyPlayerStatManager,
-                        tennisPlayerStatManager, baseballPlayerStatManager);
-        this.commandDictionary.put("get_player_stat", playerStatManagerFacade);
-
-        PlayerStatComparerFacade playerStatComparerFacade =
-                new PlayerStatComparerFacade(hockeyPlayerStatComparer,
-                        tennisPlayerStatComparer, baseballPlayerStatComparer);
-        this.commandDictionary.put("compare_player_stat", playerStatComparerFacade);
-
-        PlayerStatPredictorFacade playerStatPredictorFacade =
-                new PlayerStatPredictorFacade(hockeyPlayerStatPredictor,
-                        tennisPlayerStatPredictor, baseballPlayerStatPredictor);
-        this.commandDictionary.put("predict_player_stat", playerStatPredictorFacade);
-
-        // TODO: Refactor teams, then make LeagueMemberManager work with injected TeamList
-        this.commandDictionary.put("member_manager", new LeagueMemberManager());
-
+        CommandDictBuilder commandDictBuilder = new CommandDictBuilder();
+        this.commandDictionary = commandDictBuilder.getCommandDict();
     }
 
     public String execute(String input, DataContainer container) throws Exception {

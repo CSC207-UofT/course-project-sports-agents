@@ -27,16 +27,20 @@ public class InputParser {
         String[] parts = input.split(" ", 2);
         this.keyword = cleanKeyword(parts[0]);
 
-        ArrayList<String> argParts = split_args(parts[1]);
+        if (parts.length > 1) {
+            ArrayList<String> argParts = split_args(parts[1]);
 
-        if (isVerbose(argParts)) {
-            List<String> argNames = getArgNames(keyword);
-            List<String> multiArgNames = getMultiArgNames(keyword);
-            argParts = parseVerbose(argParts, argNames, multiArgNames);
+            if (isVerbose(argParts)) {
+                List<String> argNames = getArgNames(keyword);
+                List<String> multiArgNames = getMultiArgNames(keyword);
+                argParts = parseVerbose(argParts, argNames, multiArgNames);
+            }
+
+            decorateArgs(argParts);
+            arguments = argParts;
+        } else {
+            arguments = new ArrayList<>();
         }
-
-        decorateArgs(argParts);
-        arguments = argParts;
     }
 
     /**
