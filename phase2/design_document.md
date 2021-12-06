@@ -1,4 +1,4 @@
-# Progress Report
+# Design Document
 
 ## Major Design Decisions
 A first large challenge was how the application should access
@@ -163,9 +163,14 @@ data to be retrieved from online sources, we will make another strategy called
 `OnlineDataContainer`, which will have a different algorithm for retrieving data.
 
 ## Use of GitHub Features
-
-
-
+Throughout the term, we made use of pull requests and issues.
+Each group member created their own branch, in which they would make
+their necessary changes. Once those changes were complete, the group
+member would open pull request. Other group members would review the
+changes, leave comments, and/or approve the changes before the new branch
+was merged into the main branch. Additionally, the group used issues to
+remind all members of any problems (such as missing important parts of code)
+in the program that needed to be addressed.
 
 
 ## Code Style and Documentation
@@ -173,18 +178,26 @@ data to be retrieved from online sources, we will make another strategy called
 
 
 
+
 ## Testing
-
-
-
+Most components of our program has been tested. All concrete player classes
+have tests. All concrete PlayerStatManager, PlayerStatComparer, and 
+PlayerStatPredictor classes have tests. However, we were not able to write tests
+for some methods in the `GetList` class. For example, the `GetList` class
+can return all players in all sports. We did not write a test for the method
+that does this because the list of players returned is far too long. 
 
 
 ## Refactoring
-
-
-
-
-
+Following Phase 0, we extensively refactored code to reduce duplicate code.
+For example, the abstract `PlayerStatManager`, `PlayerStatComparer`, and 
+`PlayerStatPredictor` were added after Phase 0. These abstract classes significantly
+reduced redundant code, and made it easier for more sports (such as baseball) to
+be added to the program. Following Phase 1, we refactored our packages. As we
+added more classes to each package, packages quickly became too large. As such,
+within each package we alread had, we decided to create a package for each sport. 
+For example, the `Command` package now contains `Tennis`, `Hockey`, and `Baseball`
+packages; these packages store all use case classes for that sport. 
 
 
 ## Code Organization
@@ -196,3 +209,10 @@ data to be retrieved from online sources, we will make another strategy called
 
 
 ## Functionality
+Our program fulfills our specification significantly. However, there were
+some aspects of our specification that were not included. For example, 
+we originally wanted to allow the user to upload a .csv file of their
+own and load data from this file. However, our program does not currently
+allow the user to upload a file. The user can only access data that is available
+in the .csv files that we have added. Additionally, our program does not support
+baseball teams; our program only stores information on hockey teams. 
