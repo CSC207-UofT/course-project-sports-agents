@@ -1,5 +1,6 @@
-package commands;
+package sports.tennis;
 
+import commands.PlayerStatPredictor;
 import drivers_adapters.DataContainer;
 import sports.tennis.TennisPlayer;
 

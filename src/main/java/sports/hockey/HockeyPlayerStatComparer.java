@@ -1,5 +1,6 @@
-package commands;
+package sports.hockey;
 
+import commands.PlayerStatComparer;
 import drivers_adapters.DataContainer;
 import sports.hockey.*;
 import java.util.*;

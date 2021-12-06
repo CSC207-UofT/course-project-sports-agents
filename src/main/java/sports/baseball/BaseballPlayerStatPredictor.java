@@ -1,5 +1,6 @@
-package commands;
+package sports.baseball;
 
+import commands.PlayerStatPredictor;
 import drivers_adapters.DataContainer;
 import player.*;
 import sports.baseball.*;
