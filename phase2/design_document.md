@@ -182,7 +182,8 @@ in the program that needed to be addressed.
 ## Testing
 Most components of our program has been tested. All concrete player classes
 have tests. All concrete PlayerStatManager, PlayerStatComparer, and 
-PlayerStatPredictor classes have tests. However, we were not able to write tests
+PlayerStatPredictor classes have tests. All TeamStatManager, TeamStatComparer, and
+TeamStatPredictor classes also have tests. However, we were not able to write tests
 for some methods in the `GetList` class. For example, the `GetList` class
 can return all players in all sports. We did not write a test for the method
 that does this because the list of players returned is far too long. 
