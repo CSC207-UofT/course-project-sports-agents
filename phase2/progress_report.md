@@ -9,3 +9,10 @@ This makes the output much easier to see for the user and allows them to easily
 compare players, or simply analyze a single player's performance. This
 drastically increases the usability of the app, and allows the user to more easily
 see the output of the app. [Pull Request](https://github.com/CSC207-UofT/course-project-sports-agents/pull/46)
+
+Isaiah has worked on the Verbose Parsing functionality in the `InputParser` class.
+This allows including the argument names in the input, which makes the command's
+purpose much clearer. The application still supports the short form, which is
+less readable but is faster to type. Alongside these changes, he also modified
+the application to ignore the capitalization of inputs.
+[Pull Request](https://github.com/CSC207-UofT/course-project-sports-agents/pull/53)
