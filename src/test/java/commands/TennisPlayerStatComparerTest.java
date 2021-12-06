@@ -28,17 +28,17 @@ public class TennisPlayerStatComparerTest {
                 30, 1, 10, 23, 54.0, 10.0,
                 32.0, 10.0, 8.0, 9.0);
         CSVDataContainer container = new CSVDataContainer();
-        container.playerMap.put("Player 1", player1);
-        container.playerMap.put("Player 2", player2);
-        container.playerMap.put("Player 3", player3);
+        container.playerMap.put("player 1", player1);
+        container.playerMap.put("player 2", player2);
+        container.playerMap.put("player 3", player3);
         this.container = container;
 
     }
 
     @Test(timeout = 100)
     public void testExecuteAcesPasses() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
-                "Player 1", "Player 2", "Player 3", "2018", "Aces"));
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("tennis",
+                "player 1", "player 2", "player 3", "2018", "aces"));
         String output = this.tennisPlayerStatComparer.execute(arguments, container);
         String expected = "-----------------------------------------------------\n" +
                           " Rank                 Name                 aces \n" +
@@ -51,22 +51,22 @@ public class TennisPlayerStatComparerTest {
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteAcesNoPlayer() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
-                "Paul Gries", "Player 2", "Player 3", "2018", "Aces"));
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("tennis",
+                "paul Gries", "player 2", "player 3", "2018", "aces"));
         String fail = this.tennisPlayerStatComparer.execute(arguments, container);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteAcesNoSeason() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
-                "Player 1", "Player 2", "Player 3", "20192020", "Aces"));
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("tennis",
+                "player 1", "player 2", "player 3", "20192020", "aces"));
         String fail = this.tennisPlayerStatComparer.execute(arguments, container);
     }
 
     @Test(timeout = 100)
     public void testExecuteDoubleFaultsPasses() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
-                "Player 1", "Player 2", "Player 3", "2018", "Double Faults"));
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("tennis",
+                "player 1", "player 2", "player 3", "2018", "double faults"));
         String output = this.tennisPlayerStatComparer.execute(arguments, container);
         String expected = "-----------------------------------------------------\n" +
                           " Rank                 Name        double faults \n" +
@@ -79,22 +79,22 @@ public class TennisPlayerStatComparerTest {
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteDoubleFaultsNoPlayer() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
-                "Paul Gries", "Player 2", "Player 3", "2018", "Double Faults"));
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("tennis",
+                "paul gries", "player 2", "player 3", "2018", "double faults"));
         String fail = this.tennisPlayerStatComparer.execute(arguments, container);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteDoubleFaultsNoSeason() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
-                "Player 1", "Player 2", "Player 3", "20192020", "Double Faults"));
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("tennis",
+                "player 1", "player 2", "player 3", "20192020", "double faults"));
         String fail = this.tennisPlayerStatComparer.execute(arguments, container);
     }
 
     @Test(timeout = 100)
     public void testExecuteBreakPointsSavedPasses() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
-                "Player 1", "Player 2", "Player 3", "2018", "Break Points Saved"));
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("tennis",
+                "player 1", "player 2", "player 3", "2018", "break points saved"));
         String output = this.tennisPlayerStatComparer.execute(arguments, container);
         String expected = "-----------------------------------------------------\n" +
                           " Rank                 Name   break points saved \n" +
@@ -107,22 +107,22 @@ public class TennisPlayerStatComparerTest {
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteBreakPointsSavedNoPlayer() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
-                "Paul Gries", "Player 2", "Player 3", "2018", "Break Points Saved"));
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("tennis",
+                "paul Gries", "player 2", "player 3", "2018", "break points saved"));
         String fail = this.tennisPlayerStatComparer.execute(arguments, container);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteBreakPointsSavedNoSeason() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
-                "Player 1", "Player 2", "Player 3", "20192020", "Break Points Saved"));
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("tennis",
+                "player 1", "player 2", "player 3", "20192020", "break points saved"));
         String fail = this.tennisPlayerStatComparer.execute(arguments, container);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteInvalidStat() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
-                "Player 1", "Player 2", "Player 3", "2018", "Goals"));
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("tennis",
+                "player 1", "player 2", "player 3", "2018", "goals"));
         String fail = this.tennisPlayerStatComparer.execute(arguments, container);
     }
 

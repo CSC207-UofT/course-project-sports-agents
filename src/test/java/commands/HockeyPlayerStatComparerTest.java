@@ -46,7 +46,7 @@ public class HockeyPlayerStatComparerTest {
                 "player 3", "20202021", "games played"));
         String output = this.hockeyPlayerStatComparer.execute(arguments, container);
         String expected = "-----------------------------------------------------\n" +
-                          " Rank                 Name         Games Played \n" +
+                          " Rank                 Name         games played \n" +
                           "-----------------------------------------------------\n" +
                           "    1             Player 3                   50 \n" +
                           "    2             Player 2                   50 \n" +
@@ -74,7 +74,7 @@ public class HockeyPlayerStatComparerTest {
                 "player 3", "20202021", "goals"));
         String output = this.hockeyPlayerStatComparer.execute(arguments, container);
         String expected = "-----------------------------------------------------\n" +
-                          " Rank                 Name                Goals \n" +
+                          " Rank                 Name                goals \n" +
                           "-----------------------------------------------------\n" +
                           "    1             Player 3                   60 \n" +
                           "    2             Player 2                   50 \n" +
@@ -103,7 +103,7 @@ public class HockeyPlayerStatComparerTest {
                 "player 3", "20202021", "assists"));
         String output = this.hockeyPlayerStatComparer.execute(arguments, container);
         String expected = "-----------------------------------------------------\n" +
-                          " Rank                 Name              Assists \n" +
+                          " Rank                 Name              assists \n" +
                           "-----------------------------------------------------\n" +
                           "    1             Player 1                   60 \n" +
                           "    2             Player 2                   50 \n" +
@@ -131,7 +131,7 @@ public class HockeyPlayerStatComparerTest {
                 "player 3", "20202021", "points"));
         String output = this.hockeyPlayerStatComparer.execute(arguments, container);
         String expected = "-----------------------------------------------------\n" +
-                          " Rank                 Name               Points \n" +
+                          " Rank                 Name               points \n" +
                           "-----------------------------------------------------\n" +
                           "    1             Player 3                   60 \n" +
                           "    2             Player 1                   50 \n" +
@@ -159,7 +159,7 @@ public class HockeyPlayerStatComparerTest {
                 "player 3", "20202021", "shots"));
         String output = this.hockeyPlayerStatComparer.execute(arguments, container);
         String expected = "-----------------------------------------------------\n" +
-                          " Rank                 Name                Shots \n" +
+                          " Rank                 Name                shots \n" +
                           "-----------------------------------------------------\n" +
                           "    1             Player 2                   60 \n" +
                           "    2             Player 3                   50 \n" +
@@ -174,7 +174,7 @@ public class HockeyPlayerStatComparerTest {
         String fail = this.hockeyPlayerStatComparer.execute(arguments, container);
     }
 
-    @Test(timeout = 100, expected = Exception.class)
+    @Test(timeout = 200, expected = Exception.class)
     public void testExecuteShotsNoSeason() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey", "player 1", "player 2",
                 "player 3", "20192020", "shots"));
@@ -187,7 +187,7 @@ public class HockeyPlayerStatComparerTest {
                 "player 3", "20202021", "shooting percentage"));
         String output = this.hockeyPlayerStatComparer.execute(arguments, container);
         String expected = "-----------------------------------------------------\n" +
-                          " Rank                 Name  Shooting Percentage \n" +
+                          " Rank                 Name  shooting percentage \n" +
                           "-----------------------------------------------------\n" +
                           "    1             Player 2                 60.0 \n" +
                           "    2             Player 1                 50.0 \n" +

@@ -28,21 +28,21 @@ public class BaseballPlayerComparator implements Comparator<BaseballPlayer> {
     public int compare(BaseballPlayer b1, BaseballPlayer b2) {
         try {
             switch (this.compareBy) {
-                case "Games Played":
+                case "games played":
                     return compareGamesPlayed(b1, b2);
-                case "At Bats":
+                case "at bats":
                     return compareAtBats(b1, b2);
-                case "Runs":
+                case "runs":
                     return compareRuns(b1, b2);
-                case "Hits":
+                case "hits":
                     return compareHits(b1, b2);
-                case "Home Runs":
+                case "home runs":
                     return compareHomeRuns(b1, b2);
-                case "Runs Batted In":
+                case "runs batted in":
                     return compareRunsBattedIn(b1, b2);
-                case "Strike Outs":
+                case "strike outs":
                     return compareStrikeOuts(b1, b2);
-                case "Average":
+                case "average":
                     return compareAverage(b1, b2);
                 default:
                     return 0;

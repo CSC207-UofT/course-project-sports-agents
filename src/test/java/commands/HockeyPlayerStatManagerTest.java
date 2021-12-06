@@ -45,7 +45,7 @@ public class HockeyPlayerStatManagerTest {
                 "player 1", "2020-2021", "team"));
         String output1 = this.hockeyPlayerStatManager.execute(arguments1, container);
         String expected1 = "-------------------------------------------\n" +
-                           "      Name                 Team \n" +
+                           "      Name                 team \n" +
                            "-------------------------------------------\n" +
                            "  Player 1        TOR \n" +
                            "-------------------------------------------";
@@ -55,7 +55,7 @@ public class HockeyPlayerStatManagerTest {
                 "player 2", "2020-2021", "team"));
         String output2 = this.hockeyPlayerStatManager.execute(arguments2, container);
         String expected2 = "-------------------------------------------\n" +
-                           "      Name                 Team \n" +
+                           "      Name                 team \n" +
                            "-------------------------------------------\n" +
                            "  Player 2        COL \n" +
                            "-------------------------------------------";
@@ -65,7 +65,7 @@ public class HockeyPlayerStatManagerTest {
                 "player 3", "2020-2021", "team"));
         String output3 = this.hockeyPlayerStatManager.execute(arguments3, container);
         String expected3 = "-------------------------------------------\n" +
-                           "      Name                 Team \n" +
+                           "      Name                 team \n" +
                            "-------------------------------------------\n" +
                            "  Player 3        STL \n" +
                            "-------------------------------------------";
@@ -92,7 +92,7 @@ public class HockeyPlayerStatManagerTest {
                 "player 1", "2020-2021", "skater shoots"));
         String output1 = this.hockeyPlayerStatManager.execute(arguments1, container);
         String expected1 = "-------------------------------------------\n" +
-                           "      Name        Skater Shoots \n" +
+                           "      Name        skater shoots \n" +
                            "-------------------------------------------\n" +
                            "  Player 1          L \n" +
                            "-------------------------------------------";
@@ -102,7 +102,7 @@ public class HockeyPlayerStatManagerTest {
                 "player 2", "2020-2021", "skater shoots"));
         String output2 = this.hockeyPlayerStatManager.execute(arguments2, container);
         String expected2 = "-------------------------------------------\n" +
-                           "      Name        Skater Shoots \n" +
+                           "      Name        skater shoots \n" +
                            "-------------------------------------------\n" +
                            "  Player 2          L \n" +
                            "-------------------------------------------";
@@ -112,7 +112,7 @@ public class HockeyPlayerStatManagerTest {
                 "player 3", "2020-2021", "skater shoots"));
         String output3 = this.hockeyPlayerStatManager.execute(arguments3, container);
         String expected3 = "-------------------------------------------\n" +
-                           "      Name        Skater Shoots \n" +
+                           "      Name        skater shoots \n" +
                            "-------------------------------------------\n" +
                            "  Player 3          L \n" +
                            "-------------------------------------------";
@@ -139,7 +139,7 @@ public class HockeyPlayerStatManagerTest {
                 "player 1", "2020-2021", "position"));
         String output1 = this.hockeyPlayerStatManager.execute(arguments1, container);
         String expected1 = "-------------------------------------------\n" +
-                           "      Name             Position \n" +
+                           "      Name             position \n" +
                            "-------------------------------------------\n" +
                            "  Player 1          C \n" +
                            "-------------------------------------------";
@@ -149,7 +149,7 @@ public class HockeyPlayerStatManagerTest {
                 "player 2", "2020-2021", "position"));
         String output2 = this.hockeyPlayerStatManager.execute(arguments2, container);
         String expected2 = "-------------------------------------------\n" +
-                           "      Name             Position \n" +
+                           "      Name             position \n" +
                            "-------------------------------------------\n" +
                            "  Player 2          R \n" +
                            "-------------------------------------------";
@@ -159,7 +159,7 @@ public class HockeyPlayerStatManagerTest {
                 "player 3", "2020-2021", "position"));
         String output3 = this.hockeyPlayerStatManager.execute(arguments3, container);
         String expected3 = "-------------------------------------------\n" +
-                           "      Name             Position \n" +
+                           "      Name             position \n" +
                            "-------------------------------------------\n" +
                            "  Player 3          C \n" +
                            "-------------------------------------------";
@@ -186,7 +186,7 @@ public class HockeyPlayerStatManagerTest {
                 "player 1", "2020-2021", "games played"));
         String output1 = this.hockeyPlayerStatManager.execute(arguments1, container);
         String expected1 = "-------------------------------------------\n" +
-                           "      Name         Games Played \n" +
+                           "      Name         games played \n" +
                            "-------------------------------------------\n" +
                            "  Player 1         52 \n" +
                            "-------------------------------------------";
@@ -196,7 +196,7 @@ public class HockeyPlayerStatManagerTest {
                 "player 2", "2020-2021", "games played"));
         String output2 = this.hockeyPlayerStatManager.execute(arguments2, container);
         String expected2 = "-------------------------------------------\n" +
-                           "      Name         Games Played \n" +
+                           "      Name         games played \n" +
                            "-------------------------------------------\n" +
                            "  Player 2         52 \n" +
                            "-------------------------------------------";
@@ -206,7 +206,7 @@ public class HockeyPlayerStatManagerTest {
                 "player 3", "2020-2021", "games played"));
         String output3 = this.hockeyPlayerStatManager.execute(arguments3, container);
         String expected3 = "-------------------------------------------\n" +
-                           "      Name         Games Played \n" +
+                           "      Name         games played \n" +
                            "-------------------------------------------\n" +
                            "  Player 3         56 \n" +
                            "-------------------------------------------";
@@ -233,7 +233,7 @@ public class HockeyPlayerStatManagerTest {
                 "player 1", "2020-2021", "goals"));
         String output1 = this.hockeyPlayerStatManager.execute(arguments1, container);
         String expected1 = "-------------------------------------------\n" +
-                           "      Name                Goals \n" +
+                           "      Name                goals \n" +
                            "-------------------------------------------\n" +
                            "  Player 1         41 \n" +
                            "-------------------------------------------";
@@ -243,7 +243,7 @@ public class HockeyPlayerStatManagerTest {
                 "player 2", "2020-2021", "goals"));
         String output2 = this.hockeyPlayerStatManager.execute(arguments2, container);
         String expected2 = "-------------------------------------------\n" +
-                           "      Name                Goals \n" +
+                           "      Name                goals \n" +
                            "-------------------------------------------\n" +
                            "  Player 2         30 \n" +
                            "-------------------------------------------";
@@ -253,7 +253,7 @@ public class HockeyPlayerStatManagerTest {
                 "player 3", "2020-2021", "goals"));
         String output3 = this.hockeyPlayerStatManager.execute(arguments3, container);
         String expected3 = "-------------------------------------------\n" +
-                           "      Name                Goals \n" +
+                           "      Name                goals \n" +
                            "-------------------------------------------\n" +
                            "  Player 3         24 \n" +
                            "-------------------------------------------";
@@ -280,7 +280,7 @@ public class HockeyPlayerStatManagerTest {
                 "player 1", "2020-2021", "assists"));
         String output1 = this.hockeyPlayerStatManager.execute(arguments1, container);
         String expected1 = "-------------------------------------------\n" +
-                           "      Name              Assists \n" +
+                           "      Name              assists \n" +
                            "-------------------------------------------\n" +
                            "  Player 1         25 \n" +
                            "-------------------------------------------";
@@ -290,7 +290,7 @@ public class HockeyPlayerStatManagerTest {
                 "player 2", "2020-2021", "assists"));
         String output2 = this.hockeyPlayerStatManager.execute(arguments2, container);
         String expected2 = "-------------------------------------------\n" +
-                           "      Name              Assists \n" +
+                           "      Name              assists \n" +
                            "-------------------------------------------\n" +
                            "  Player 2         36 \n" +
                            "-------------------------------------------";
@@ -300,7 +300,7 @@ public class HockeyPlayerStatManagerTest {
                 "player 3", "2020-2021", "assists"));
         String output3 = this.hockeyPlayerStatManager.execute(arguments3, container);
         String expected3 = "-------------------------------------------\n" +
-                           "      Name              Assists \n" +
+                           "      Name              assists \n" +
                            "-------------------------------------------\n" +
                            "  Player 3         30 \n" +
                            "-------------------------------------------";
@@ -327,7 +327,7 @@ public class HockeyPlayerStatManagerTest {
                 "player 1", "2020-2021", "points"));
         String output1 = this.hockeyPlayerStatManager.execute(arguments1, container);
         String expected1 = "-------------------------------------------\n" +
-                           "      Name               Points \n" +
+                           "      Name               points \n" +
                            "-------------------------------------------\n" +
                            "  Player 1         66 \n" +
                            "-------------------------------------------";
@@ -337,7 +337,7 @@ public class HockeyPlayerStatManagerTest {
                 "player 2", "2020-2021", "points"));
         String output2 = this.hockeyPlayerStatManager.execute(arguments2, container);
         String expected2 = "-------------------------------------------\n" +
-                           "      Name               Points \n" +
+                           "      Name               points \n" +
                            "-------------------------------------------\n" +
                            "  Player 2         66 \n" +
                            "-------------------------------------------";
@@ -347,7 +347,7 @@ public class HockeyPlayerStatManagerTest {
                 "player 3", "2020-2021", "points"));
         String output3 = this.hockeyPlayerStatManager.execute(arguments3, container);
         String expected3 = "-------------------------------------------\n" +
-                           "      Name               Points \n" +
+                           "      Name               points \n" +
                            "-------------------------------------------\n" +
                            "  Player 3         54 \n" +
                            "-------------------------------------------";
@@ -374,7 +374,7 @@ public class HockeyPlayerStatManagerTest {
                 "player 1", "2020-2021", "shots"));
         String output1 = this.hockeyPlayerStatManager.execute(arguments1, container);
         String expected1 = "-------------------------------------------\n" +
-                           "      Name                Shots \n" +
+                           "      Name                shots \n" +
                            "-------------------------------------------\n" +
                            "  Player 1        222 \n" +
                            "-------------------------------------------";
@@ -384,7 +384,7 @@ public class HockeyPlayerStatManagerTest {
                 "player 2", "2020-2021", "shots"));
         String output2 = this.hockeyPlayerStatManager.execute(arguments2, container);
         String expected2 = "-------------------------------------------\n" +
-                           "      Name                Shots \n" +
+                           "      Name                shots \n" +
                            "-------------------------------------------\n" +
                            "  Player 2        177 \n" +
                            "-------------------------------------------";
@@ -394,7 +394,7 @@ public class HockeyPlayerStatManagerTest {
                 "player 3", "2020-2021", "shots"));
         String output3 = this.hockeyPlayerStatManager.execute(arguments3, container);
         String expected3 = "-------------------------------------------\n" +
-                           "      Name                Shots \n" +
+                           "      Name                shots \n" +
                            "-------------------------------------------\n" +
                            "  Player 3        129 \n" +
                            "-------------------------------------------";
@@ -421,7 +421,7 @@ public class HockeyPlayerStatManagerTest {
                 "player 1", "2020-2021", "shooting percentage"));
         String output1 = this.hockeyPlayerStatManager.execute(arguments1, container);
         String expected1 = "-------------------------------------------\n" +
-                           "      Name  Shooting Percentage \n" +
+                           "      Name  shooting percentage \n" +
                            "-------------------------------------------\n" +
                            "  Player 1       18.5 \n" +
                            "-------------------------------------------";
@@ -431,7 +431,7 @@ public class HockeyPlayerStatManagerTest {
                 "player 2", "2020-2021", "shooting percentage"));
         String output2 = this.hockeyPlayerStatManager.execute(arguments2, container);
         String expected2 = "-------------------------------------------\n" +
-                           "      Name  Shooting Percentage \n" +
+                           "      Name  shooting percentage \n" +
                            "-------------------------------------------\n" +
                            "  Player 2       17.0 \n" +
                            "-------------------------------------------";
@@ -441,7 +441,7 @@ public class HockeyPlayerStatManagerTest {
                 "player 3", "2020-2021", "shooting percentage"));
         String output3 = this.hockeyPlayerStatManager.execute(arguments3, container);
         String expected3 = "-------------------------------------------\n" +
-                           "      Name  Shooting Percentage \n" +
+                           "      Name  shooting percentage \n" +
                            "-------------------------------------------\n" +
                            "  Player 3       18.6 \n" +
                            "-------------------------------------------";

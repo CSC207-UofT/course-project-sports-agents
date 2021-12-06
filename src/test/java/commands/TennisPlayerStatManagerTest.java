@@ -48,7 +48,7 @@ public class TennisPlayerStatManagerTest {
         assertEquals(expected1, output1);
 
         ArrayList<String> arguments2 = new ArrayList<>(Arrays.asList("Tennis",
-                "player 2", "2018", "Aces"));
+                "player 2", "2018", "aces"));
         String output2 = this.tennisPlayerStatManager.execute(arguments2, container);
         String expected2 = "-------------------------------------------\n" +
                            "      Name                 aces \n" +
@@ -57,8 +57,8 @@ public class TennisPlayerStatManagerTest {
                            "-------------------------------------------";
         assertEquals(expected2, output2);
 
-        ArrayList<String> arguments3 = new ArrayList<>(Arrays.asList("Tennis",
-                "player 3", "2018", "Aces"));
+        ArrayList<String> arguments3 = new ArrayList<>(Arrays.asList("tennis",
+                "player 3", "2018", "aces"));
         String output3 = this.tennisPlayerStatManager.execute(arguments3, container);
         String expected3 = "-------------------------------------------\n" +
                            "      Name                 aces \n" +
