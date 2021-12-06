@@ -196,9 +196,7 @@ For example, the abstract `PlayerStatManager`, `PlayerStatComparer`, and
 reduced redundant code, and made it easier for more sports (such as baseball) to
 be added to the program. Following Phase 1, we refactored our packages. As we
 added more classes to each package, packages quickly became too large. As such,
-within each package we alread had, we decided to create a package for each sport. 
-For example, the `Command` package now contains `Tennis`, `Hockey`, and `Baseball`
-packages; these packages store all use case classes for that sport. 
+we had to change our packaging. Now, each sport has its own package.  
 
 
 ## Code Organization
