@@ -13,7 +13,7 @@ which allows either typing, clicking buttons, or selecting from a dropdown.
 
 Flexibility in use:
 We allow users to either use verbose mode commands or short mode commands,
-depending on their preference in readability or command length. 
+depending on their preference in readability or command length.
 In the future, we could support more interfaces, such as a GUI with buttons.
 
 Simple and intuitive use: 
@@ -35,7 +35,8 @@ screen reader view with only important information to be read out loud.
 
 
 Tolerance for error:
-Our program requires commands be spelled exactly correctly, otherwise they will not
+We convert all inputs to lower case, which tolerates any mis-capitalizations from the 
+user. However, it still requires commands be spelled exactly correctly, otherwise they will not
 function. In the future, we could implement a rudimentary form of spellcheck
 to correct single-letter spelling mistakes in words and tolerate that error.
 
