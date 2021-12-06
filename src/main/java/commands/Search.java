@@ -1,5 +1,7 @@
 package commands;
 
+
+import driversAdapters.DataContainer;
 import java.io.*;
 import java.util.*;
 
@@ -7,58 +9,30 @@ import java.util.*;
  * A class for searching a player through all the available players, only by
  * knowing some parts of the player's name.
  */
-public class Search {
-    public List<String> search(String partOfName) throws IOException {
+public class Search implements Command {
+    public String execute(ArrayList<String> arguments, DataContainer container) throws IOException {
+        String partOfName = arguments.get(0);
         List<String> relatedPlayers = new ArrayList<>();
-        for(String playerName: getAllPlayersForAllSports()){
+        for(String playerName: container.getAllPlayersForAllSports()){
             if(playerName.contains(partOfName.toLowerCase())){
                 relatedPlayers.add(playerName);
             }
         }
-        return relatedPlayers;
+        return formatSearch(relatedPlayers);
 
     }
 
-    public List<String> getAllPlayersForAllSports() throws IOException {
-        List<String> allNames = new ArrayList<>();
-        allNames.addAll(getAllHockeyPlayers());
-        allNames.addAll(getAllBaseballPlayers());
-        //allNames.addAll(getAllTennisPlayers());
-
-        return allNames;
-
-    }
-    public List<String> getAllHockeyPlayers() throws IOException {
-        List<String> allHockeyNames = new ArrayList<>();
-        BufferedReader br = new BufferedReader(new FileReader("hockey.csv"));
-        br.readLine(); //skip the first line.
-        String line;
-        String splitBy = ",";
-
-        while((line = br.readLine()) != null) {
-            String[] playerInfo = line.split(splitBy);
-            if (!allHockeyNames.contains(playerInfo[0].toLowerCase()+ ": Hockey")){
-                allHockeyNames.add(playerInfo[0].toLowerCase()+ ": Hockey");}
+    private String formatSearch(List<String> relatedPlayers) {
+        if(relatedPlayers.isEmpty()){
+            return "No results found!";
         }
-        return allHockeyNames;
-
-    }
-    public List<String> getAllBaseballPlayers() throws IOException {
-        List<String> allBaseballNames = new ArrayList<>();
-        BufferedReader br = new BufferedReader(new FileReader("baseball.csv"));
-        br.readLine(); //skip the first line.
-        String line;
-        String splitBy = ",";
-
-        while((line = br.readLine()) != null) {
-            String[] playerInfo = line.split(splitBy);
-            if (!allBaseballNames.contains(playerInfo[0].toLowerCase()+ ": Baseball")){
-                allBaseballNames.add(playerInfo[0].toLowerCase()+ ": Baseball");}
+        StringBuilder output = new StringBuilder();
+        for(String relatedPlayer:relatedPlayers){
+            output.append(relatedPlayer);
+            output.append("\n");
         }
-        return allBaseballNames;
-
+        return output.toString();
     }
 
-    public List<String> getAllTennisPlayers() throws IOException {return null;}
 
 }

@@ -1,7 +1,7 @@
 package commands;
 
 import constants.Exceptions;
-import drivers_adapters.DataContainer;
+import driversAdapters.DataContainer;
 import leagueMember.LeagueMember;
 import leagueMember.LeagueStorage;
 import match.Match;
@@ -45,7 +45,13 @@ public class LeagueMemberManager implements Command {
         }
     }
 
-    private String loadLeague(ArrayList<String> arguments) {
+    /**
+     * Load the fantasy league data stored at the given path
+     * @param arguments String Array of form ["load", <filepath>]
+     * @return if the league was successfully loaded
+     */
+    private String loadLeague(ArrayList<String> arguments) throws Exception {
+        checkArgumentLength(arguments, 2);
         String path = arguments.get(1);
         try {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(path));
@@ -65,7 +71,14 @@ public class LeagueMemberManager implements Command {
         }
     }
 
+    /**
+     * Save the fantasy league data to the given filepath
+     * @param arguments String Array of form ["save", "filepath"]
+     * @return if the file was successfully saved
+     * @throws Exception if the file could not be saved
+     */
     private String saveLeague(ArrayList<String> arguments) throws Exception {
+        checkArgumentLength(arguments, 2);
         String path = arguments.get(1);
         LeagueStorage to_save = new LeagueStorage(LeagueMemberMap, MatchMap);
 
@@ -87,11 +100,12 @@ public class LeagueMemberManager implements Command {
 
     /**
      * Add a new League Member to the fantasy league
-     * @param arguments String Array of form {"add_member", <member name>}
+     * @param arguments String Array of form ["add_member", <member name>]
      * @return a confirmation if the Member was added
      * @throws Exception if a Member with the same name already exists
      */
     private String addMember(ArrayList<String> arguments) throws Exception {
+        checkArgumentLength(arguments, 2);
         String leagueMemberName = arguments.get(1);
         if (this.LeagueMemberMap.containsKey(leagueMemberName)) {
             throw new Exception(Exceptions.MEMBER_EXISTS);
@@ -103,12 +117,13 @@ public class LeagueMemberManager implements Command {
 
     /**
      * Create a new Match for players to bet on
-     * @param arguments String Array of form {"create_match", <match name>,
-     *                <team 1 name>, <team 2 name>}
+     * @param arguments String Array of form ["create_match", <match name>,
+     *                <team 1 name>, <team 2 name>]
      * @return a confirmation if the Match was created
      * @throws Exception if a Match with the same name already exists
      */
     private String createMatch(ArrayList<String> arguments) throws Exception {
+        checkArgumentLength(arguments, 4);
         String matchName = arguments.get(1);
         if (this.MatchMap.containsKey(matchName)) {
             throw new Exception(Exceptions.MATCH_EXISTS);
@@ -124,13 +139,14 @@ public class LeagueMemberManager implements Command {
 
     /**
      * Record a League Member's bet on the outcome of a Match
-     * @param arguments String Array of form {"bet", <member name>,
-     *                <match name>, <predicted winning team>}
+     * @param arguments String Array of form ["bet", <member name>,
+     *                <match name>, <predicted winning team>]
      * @return a confirmation if the bet is recorded
      * @throws Exception if the League Member does not exist, the Match does
      * not exist, or the team is not competing in the Match
      */
     private String bet(ArrayList<String> arguments) throws Exception {
+        checkArgumentLength(arguments, 4);
         String leagueMemberName = arguments.get(1);
         verifyMember(leagueMemberName);
         LeagueMember bettingLeagueMember = this.LeagueMemberMap.get(leagueMemberName);
@@ -147,12 +163,13 @@ public class LeagueMemberManager implements Command {
 
     /**
      * Resolve a Match's outcome and award League Members according to their bets
-     * @param arguments String Array of form {"resolve_match", <match name>,
-     *                <winning team name>}
+     * @param arguments String Array of form ["resolve_match", <match name>,
+     *                <winning team name>]
      * @return a confirmation if the Match's outcome is resolved
      * @throws Exception if the Match does not exist
      */
     private String resolveMatch(ArrayList<String> arguments) throws Exception {
+        checkArgumentLength(arguments, 3);
         String matchName = arguments.get(1);
         verifyMatch(matchName);
         Match targetMatch = this.MatchMap.get(matchName);
@@ -166,11 +183,12 @@ public class LeagueMemberManager implements Command {
 
     /**
      * Return information on a given League Member
-     * @param arguments String array for form {"member_info", <member name>}
+     * @param arguments String array for form ["member_info", <member name>]
      * @return a string representation of the member
      * @throws Exception if the League Member does not exist
      */
     private String memberInfo(ArrayList<String> arguments) throws Exception {
+        checkArgumentLength(arguments, 2);
         String memberName = arguments.get(1);
         verifyMember(memberName);
         LeagueMember targetLeagueMember = this.LeagueMemberMap.get(memberName);
@@ -196,6 +214,19 @@ public class LeagueMemberManager implements Command {
     private void verifyMatch(String matchName) throws Exception {
         if (!this.MatchMap.containsKey(matchName)) {
             throw new Exception(Exceptions.NO_MATCH);
+        }
+    }
+
+    /**
+     * Check that the provided arguments have the expected length.
+     * @param arguments Parsed User-provided arguments
+     * @param expected Expected number of arguments provided
+     * @throws Exception if the provided arguments has too many or too few arguments
+     */
+    private void checkArgumentLength(ArrayList<String> arguments, int expected)
+            throws Exception {
+        if (arguments.size() != expected) {
+            throw new Exception(Exceptions.WRONG_ARGUMENT_NUMBER);
         }
     }
 }

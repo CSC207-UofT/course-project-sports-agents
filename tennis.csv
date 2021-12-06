@@ -1,13 +1,13 @@
-season,player_name,nationality,rank,matches,aces,double faults,% serve points won,% breakpoints saved,% serve games won,% return games won,% break points converted,% return points won
+﻿season,player_name,nationality,rank,matches,aces,doublefaults,%servepointswon,%breakpointssaved,%servegameswon,%returngameswon,%breakpointsconverted,%returnpointswon
 2016,Ashleigh Barty,AUS,1,3,20,11,0.64,0.69,0.85,0.35,0.35,0.43
 2016,Barbora Krejcikova,CZE,3,7,17,30,0.55,0.56,0.61,0.32,0.43,0.42
 2016,Karolina Pliskova,CZE,4,61,530,174,0.62,0.60,0.76,0.35,0.46,0.43
 2016,Garbine Mugurza,ESP,5,48,180,192,0.60,0.59,0.73,0.38,0.50,0.44
 2016,Maria Sakkari,GRE,6,17,38,33,0.53,0.53,0.57,0.34,0.38,0.43
 2016,Ons Jabeur,TUN,7,2,8,4,0.51,0.50,0.52,0.26,0.43,0.33
-2016,Anett Kontaveit ,EST,8,29,124,139,0.58,0.55,0.70,0.33,0.47,0.42
+2016,Anett Kontaveit,EST,8,29,124,139,0.58,0.55,0.70,0.33,0.47,0.42
 2016,Paula Badosa,ESP,10,3,2,10,0.57,0.56,0.63,0.17,0.42,0.34
-2016,Anastasia Pavlyuchenkova ,RUS,11,48,134,205,0.56,0.52,0.65,0.37,0.50,0.45
+2016,Anastasia Pavlyuchenkova,RUS,11,48,134,205,0.56,0.52,0.65,0.37,0.50,0.45
 2016,Sofia Kenin,USA,12,1,0,2,0.50,0.56,0.60,0.11,0.14,0.36
 2016,Naomi Osaka,JPN,13,33,160,83,0.60,0.55,0.72,0.35,0.49,0.43
 2016,Elina Svitolina,UKR,15,59,146,152,0.58,0.54,0.67,0.41,0.47,0.46
@@ -116,7 +116,7 @@ season,player_name,nationality,rank,matches,aces,double faults,% serve points wo
 2016,Ellen Perez,AUS,195,1,2,5,0.368,0.167,0.286,0,0,0.277
 2016,Daniela Seguel,CHI,203,1,1,2,0.5,0.533,0.5,0.357,0.556,0.427
 2016,Urszula Radwanska,POL,205,7,9,29,0.523,0.314,0.527,0.438,0.471,0.467
-2016,Kateryna Bondarenko ,UKR,207,31,77,139,0.55,0.544,0.612,0.387,0.469,0.445
+2016,Kateryna Bondarenko,UKR,207,31,77,139,0.55,0.544,0.612,0.387,0.469,0.445
 2016,Tereza Mrdeza,CRO,212,1,0,4,0.437,0.5,0.3,0.455,0.625,0.458
 2016,Asia Muhammad,USA,216,1,2,5,0.562,0.143,0.6,0.313,0.417,0.442
 2016,Marina Melnikova,RUS,217,6,0,35,0.432,0.327,0.314,0.224,0.5,0.363
@@ -131,12 +131,12 @@ season,player_name,nationality,rank,matches,aces,double faults,% serve points wo
 2016,Cagla Buyukakcay,TUR,232,23,20,49,0.564,0.567,0.657,0.361,0.512,0.437
 2016,Eugenie Bouchard,CAN,236,51,117,163,0.575,0.545,0.671,0.353,0.443,0.441
 2016,Richel Hogenkamp,NED,237,6,5,29,0.552,0.536,0.623,0.419,0.536,0.457
-2016,Natalia Vikhlyantseva ,RUS,239,3,10,12,0.576,0.476,0.645,0.3,0.429,0.405
-2016,Jesika Maleckova ,CZE,240,1,2,3,0.506,0.583,0.5,0.273,0.6,0.406
+2016,Natalia Vikhlyantseva,RUS,239,3,10,12,0.576,0.476,0.645,0.3,0.429,0.405
+2016,Jesika Maleckova,CZE,240,1,2,3,0.506,0.583,0.5,0.273,0.6,0.406
 2016,Mandy Minella,LUX,242,10,24,31,0.559,0.511,0.617,0.304,0.461,0.411
-2016,Marcela Zacarias ,MEX,244,1,0,3,0.452,0.333,0.4,0.3,0.3,0.397
-2016,Isabella Shinikova ,BUL,245,3,8,10,0.548,0.659,0.632,0.25,0.563,0.397
-2016,Tsvetana Pironkova ,BUL,246,24,35,46,0.556,0.483,0.625,0.376,0.431,0.444
+2016,Marcela Zacarias,MEX,244,1,0,3,0.452,0.333,0.4,0.3,0.3,0.397
+2016,Isabella Shinikova,BUL,245,3,8,10,0.548,0.659,0.632,0.25,0.563,0.397
+2016,Tsvetana Pironkova,BUL,246,24,35,46,0.556,0.483,0.625,0.376,0.431,0.444
 2016,Cristine Dinu,ROU,248,1,2,1,0.476,0.429,0.429,0,0,0.214
 2016,Veronica Cepede Royg,PAR,249,14,18,34,0.552,0.441,0.629,0.371,0.488,0.444
 2016,Priscilla Hon,AUS,253,2,4,1,0.491,0.375,0.444,0.176,0.375,0.38
@@ -156,7 +156,7 @@ season,player_name,nationality,rank,matches,aces,double faults,% serve points wo
 2016,Shuai Peng,CHN,281,16,37,29,0.563,0.595,0.659,0.269,0.49,0.381
 2016,Katie Swan,GBR,283,1,6,4,0.426,0.333,0.333,0.25,0.667,0.37
 2016,Sofia Shapatava,GEO,286,4,11,12,0.536,0.5,0.65,0.351,0.371,0.434
-2016,Dalila Jakupovic ,SLO,288,1,0,6,0.422,0.286,0.444,0.3,0.5,0.431
+2016,Dalila Jakupovic,SLO,288,1,0,6,0.422,0.286,0.444,0.3,0.5,0.431
 2016,Gabriela Ce,BRA,291,2,0,6,0.417,0.389,0.313,0.278,0.417,0.429
 2016,Cristiana Ferrando,ITA,292,1,0,3,0.596,0.5,0.667,0.1,1,0.296
 2016,Yafan Wang,CHN,304,11,12,32,0.539,0.402,0.574,0.336,0.396,0.43
@@ -196,7 +196,7 @@ season,player_name,nationality,rank,matches,aces,double faults,% serve points wo
 2016,Xinyun Han,CHN,463,9,16,50,0.515,0.483,0.549,0.436,0.463,0.457
 2016,Varvara Flink,RUS,477,2,7,1,0.572,0.556,0.652,0.217,0.294,0.398
 2016,Sabina Sharipova,UZB,480,1,0,7,0.5,0.667,0.5,0.444,0.615,0.475
-2016,Ivana Jorovic ,SRB,491,1,3,15,0.5,0.632,0.5,0.429,0.75,0.462
+2016,Ivana Jorovic,SRB,491,1,3,15,0.5,0.632,0.5,0.429,0.75,0.462
 2016,Denisa Satralova,CZE,494,29,56,143,0.553,0.529,0.633,0.34,0.447,0.431
 2016,Katarzyna Piter,POL,495,1,0,4,0.442,0.286,0.375,0.222,0.333,0.4
 2016,Polina Leykina,RUS,502,2,1,6,0.494,0.538,0.455,0.381,0.444,0.431
@@ -210,10 +210,10 @@ season,player_name,nationality,rank,matches,aces,double faults,% serve points wo
 2016,Shilin Xu,CHN,581,2,2,8,0.492,0.353,0.476,0.333,0.438,0.411
 2016,Emily Webley-Smith,GBR,587,1,2,5,0.396,0.538,0.143,0.25,0.333,0.4
 2016,Erika Sema,JPN,596,1,0,2,0.387,0.632,0,0.167,0.333,0.41
-2016,Teliana Pereira ,BRA,599,22,15,36,0.507,0.449,0.5,0.257,0.361,0.397
-2016,Anastasiya Shoshyna ,POL,618,1,0,6,0.435,0.571,0.333,0.4,0.5,0.423
-2016,Freya Christie ,GBR,628,1,6,3,0.556,0.727,0.667,0,0,0.286
-2016,Wushuang Zheng ,CHN,646,1,3,3,0.46,0.444,0.444,0.125,0.333,0.319
+2016,Teliana Pereira,BRA,599,22,15,36,0.507,0.449,0.5,0.257,0.361,0.397
+2016,Anastasiya Shoshyna,POL,618,1,0,6,0.435,0.571,0.333,0.4,0.5,0.423
+2016,Freya Christie,GBR,628,1,6,3,0.556,0.727,0.667,0,0,0.286
+2016,Wushuang Zheng,CHN,646,1,3,3,0.46,0.444,0.444,0.125,0.333,0.319
 2016,Yuxuan Zhang,CHN,654,3,17,19,0.539,0.5,0.568,0.37,0.486,0.456
 2016,Claudia Giovine,ITA,662,1,4,6,0.476,0.444,0.545,0.25,1,0.371
 2016,Paula Cristina Goncalves,BRA,683,9,33,36,0.593,0.509,0.719,0.357,0.522,0.443
@@ -222,7 +222,7 @@ season,player_name,nationality,rank,matches,aces,double faults,% serve points wo
 2016,Andreea Mitu,ROU,725,9,11,43,0.547,0.528,0.595,0.182,0.4,0.355
 2016,Naomi Broady,GBR,726,25,214,122,0.586,0.556,0.687,0.228,0.426,0.379
 2016,Kimberly Birrell,AUS,734,3,6,6,0.536,0.4,0.64,0.185,0.455,0.333
-2016,Sanaz Marand ,USA,751,1,0,4,0.493,0.556,0.6,0.273,0.6,0.338
+2016,Sanaz Marand,USA,751,1,0,4,0.493,0.556,0.6,0.273,0.6,0.338
 2016,Tamira Paszek,AUT,776,16,32,55,0.516,0.503,0.53,0.39,0.496,0.454
 2016,Ayla Aksu,TUR,794,1,1,3,0.55,0.571,0.667,0.1,0.333,0.31
 2016,Paula Kania-Chodun,POL,798,3,5,8,0.553,0.5,0.625,0.088,0.3,0.319
@@ -273,7 +273,7 @@ season,player_name,nationality,rank,matches,aces,double faults,% serve points wo
 2016,Aleksandrina Naydenova,BUL,9999,1,1,3,0.436,0.455,0.333,0.436,0.455,0.333
 2016,Lyudmyla Kichenok,UKR,9999,5,10,34,0.553,0.421,0.6,0.553,0.421,0.6
 2016,Kiki Bertens,NED,9999,45,170,155,0.587,0.581,0.703,0.587,0.581,0.703
-2016,Misa Eguchi ,JPN,9999,6,2,10,0.62,0.409,0.735,0.62,0.409,0.735
+2016,Misa Eguchi,JPN,9999,6,2,10,0.62,0.409,0.735,0.62,0.409,0.735
 2016,Michelle Larcher De Brito,POR,9999,2,2,7,0.547,0.556,0.579,0.547,0.556,0.579
 2016,Varatchaya Wongteanchai,THA,9999,1,0,0,0.417,0.545,0.286,0.417,0.545,0.286
 2016,Nicha Lertpitaksinchai,THA,9999,2,4,2,0.567,0.538,0.625,0.567,0.538,0.625
@@ -314,7 +314,7 @@ season,player_name,nationality,rank,matches,aces,double faults,% serve points wo
 2016,Patty Schnyder,SUI,9999,1,1,3,0.491,0.667,0.467,0.491,0.667,0.467
 2016,Francesca Schiavone,ITA,9999,26,48,134,0.538,0.427,0.591,0.538,0.427,0.591
 2016,Samantha Crawford,USA,9999,16,76,70,0.559,0.582,0.635,0.559,0.582,0.635
-2016,Elizaveta Kulichkova ,RUS,9999,12,34,78,0.514,0.53,0.53,0.514,0.53,0.53
+2016,Elizaveta Kulichkova,RUS,9999,12,34,78,0.514,0.53,0.53,0.514,0.53,0.53
 2016,Ghita Benhadi,MAR,9999,1,0,2,0.333,0.143,0.143,0.333,0.143,0.143
 2016,Ching-Wen Hsu,TPE,9999,1,1,1,0.487,0.143,0.455,0.487,0.143,0.455
 2016,Valeriya Solovyeva,RUS,9999,1,0,5,0.478,0.455,0.455,0.478,0.455,0.455
@@ -325,7 +325,7 @@ season,player_name,nationality,rank,matches,aces,double faults,% serve points wo
 2016,Annika Beck,GER,9999,47,33,125,0.518,0.501,0.539,0.518,0.501,0.539
 2016,Olga Fridman,UKR,9999,1,1,5,0.505,0.462,0.563,0.505,0.462,0.563
 2016,Frances Altick,USA,9999,1,0,0,0.508,0.692,0.5,0.508,0.692,0.5
-2016,Olesya Pervushina ,RUS,9999,1,7,10,0.522,0.25,0.571,0.522,0.25,0.571
+2016,Olesya Pervushina,RUS,9999,1,7,10,0.522,0.25,0.571,0.522,0.25,0.571
 2016,Komola Umarova,UZB,9999,1,0,8,0.388,0.4,0.25,0.388,0.4,0.25
 2016,Ioana Minca,ROU,9999,1,3,9,0.48,0.706,0.5,0.48,0.706,0.5
 2017,Ashleigh Barty,AUS,1,44,216,123,0.62,0.599,0.764,0.343,0.47,0.435
@@ -335,9 +335,9 @@ season,player_name,nationality,rank,matches,aces,double faults,% serve points wo
 2017,Garbine Muguruza,ESP,5,66,180,164,0.593,0.568,0.725,0.397,0.503,0.454
 2017,Maria Sakkari,GRE,6,32,67,69,0.555,0.494,0.622,0.323,0.455,0.434
 2017,Ons Jabeur,TUN,7,20,75,62,0.569,0.614,0.687,0.312,0.39,0.42
-2017,Anett Kontaveit ,EST,8,45,146,170,0.606,0.549,0.738,0.344,0.425,4.37
+2017,Anett Kontaveit,EST,8,45,146,170,0.606,0.549,0.738,0.344,0.425,4.37
 2017,Paula Badosa,ESP,10,1,1,8,0.464,0.538,0.455,0.364,0.8,0.433
-2017,Anastasia Pavlyuchenkova ,RUS,11,64,193,290,0.579,0.575,0.7,0.379,0.457,0.45
+2017,Anastasia Pavlyuchenkova,RUS,11,64,193,290,0.579,0.575,0.7,0.379,0.457,0.45
 2017,Sofia Kenin,USA,12,6,8,35,0.558,0.517,0.611,0.342,0.481,0.431
 2017,Naomi Osaka,JPN,13,40,168,101,0.582,0.506,0.696,0.286,0.456,0.407
 2017,Elena Rybakina,KAZ,14,1,2,2,0.535,0.538,0.538,0.25,0.5,0.317
@@ -465,7 +465,7 @@ season,player_name,nationality,rank,matches,aces,double faults,% serve points wo
 2017,Caroline Dolehide,USA,196,4,9,16,0.605,0.583,0.737,0.282,0.55,0.399
 2017,Jana Fett,CRO,201,15,45,100,0.559,0.535,0.636,0.413,0.475,0.459
 2017,Alexandra Ignatik,ROU,206,3,1,11,0.476,0.5,0.414,0.483,0.483,0.495
-2017,Kateryna Bondarenko ,UKR,207,24,64,131,0.559,0.514,0.62,0.373,0.532,0.443
+2017,Kateryna Bondarenko,UKR,207,24,64,131,0.559,0.514,0.62,0.373,0.532,0.443
 2017,Mirjam Bjorklund,SWE,209,1,1,3,0.482,0.6,0.467,0.5,0.538,0.505
 2017,Asia Muhammad,USA,216,5,34,20,0.584,0.561,0.667,0.208,0.379,0.385
 2017,Lara Arruabarrena,ESP,219,33,39,100,0.541,0.532,0.599,0.332,0.455,0.431
@@ -476,10 +476,10 @@ season,player_name,nationality,rank,matches,aces,double faults,% serve points wo
 2017,Cagla Buyukakcay,TUR,232,14,11,27,0.529,0.508,0.57,0.272,0.436,0.408
 2017,Eugenie Bouchard,CAN,236,31,76,112,0.535,0.511,0.588,0.33,0.404,0.428
 2017,Richel Hogenkamp,NED,237,13,23,38,0.562,0.546,0.645,0.294,0.421,0.396
-2017,Natalia Vikhlyantseva ,RUS,239,29,93,109,0.574,0.6,0.696,0.313,0.438,0.417
+2017,Natalia Vikhlyantseva,RUS,239,29,93,109,0.574,0.6,0.696,0.313,0.438,0.417
 2017,Mandy Minella,LUX,242,18,56,31,0.534,0.525,0.574,0.268,0.473,0.392
-2017,Isabella Shinikova ,BUL,245,2,13,13,0.539,0.412,0.565,0.174,0.222,0.387
-2017,Tsvetana Pironkova ,BUL,246,16,28,31,0.543,0.553,0.576,0.377,0.535,0.432
+2017,Isabella Shinikova,BUL,245,2,13,13,0.539,0.412,0.565,0.174,0.222,0.387
+2017,Tsvetana Pironkova,BUL,246,16,28,31,0.543,0.553,0.576,0.377,0.535,0.432
 2017,Veronica Cepede Royg,PAR,249,26,29,98,0.539,0.524,0.593,0.347,0.461,0.436
 2017,Kristie Ahn,USA,250,9,12,21,0.591,0.523,0.659,0.383,0.45,0.453
 2017,Priscilla Hon,AUS,253,4,21,15,0.582,0.632,0.708,0.333,0.531,0.433
@@ -497,7 +497,7 @@ season,player_name,nationality,rank,matches,aces,double faults,% serve points wo
 2017,Su Jeong Jang,KOR,275,4,12,8,0.523,0.596,0.525,0.231,0.375,0.388
 2017,Allie Kiick,USA,279,1,1,5,0.3,0.3,0,0.375,1,0.457
 2017,Shuai Peng,CHN,281,58,99,125,0.572,0.575,0.669,0.404,0.478,0.461
-2017,Dalila Jakupovic ,SLO,288,4,3,17,0.554,0.579,0.61,0.372,0.41,0.443
+2017,Dalila Jakupovic,SLO,288,4,3,17,0.554,0.579,0.61,0.372,0.41,0.443
 2017,Quirine Lemoine,NED,298,2,1,5,0.49,0.5,0.476,0.238,0.417,0.39
 2017,Alexa Glatch,USA,301,1,1,1,0.526,0.5,0.583,0.273,0.75,0.385
 2017,Yafan Wang,CHN,304,10,11,35,0.514,0.565,0.56,0.451,0.547,0.476
@@ -536,7 +536,7 @@ season,player_name,nationality,rank,matches,aces,double faults,% serve points wo
 2017,Ipek Soylu,TUR,453,5,2,30,0.432,0.395,0.381,0.366,0.556,0.451
 2017,Xinyun Han,CHN,463,15,16,90,0.534,0.573,0.576,0.411,0.446,0.458
 2017,Sabina Sharipova,UZB,480,3,4,20,0.535,0.444,0.545,0.353,0.4,0.432
-2017,Ivana Jorovic ,SRB,491,1,1,6,0.441,0.455,0.333,0.25,0.667,0.391
+2017,Ivana Jorovic,SRB,491,1,1,6,0.441,0.455,0.333,0.25,0.667,0.391
 2017,Denisa Satralova,CZE,494,15,27,82,0.543,0.407,0.573,0.282,0.346,0.413
 2017,Lena Papadakis,GER,499,1,5,4,0.459,0.444,0.444,0.222,0.667,0.34
 2017,Risa Ozaki,JPN,515,27,23,61,0.527,0.512,0.534,0.318,0.433,0.421
@@ -545,8 +545,8 @@ season,player_name,nationality,rank,matches,aces,double faults,% serve points wo
 2017,Akgul Amanmuradova,UZB,566,1,3,4,0.324,0.333,0.143,0,0,0.25
 2017,Deborah Chiesa,ITA,584,1,1,1,0.5,0.167,0.5,0.2,0.2,0.391
 2017,Hanyu Guo,CHN,589,1,1,2,0.556,0.571,0.7,0.1,1,0.316
-2017,Teliana Pereira ,BRA,599,1,0,2,0.406,0.222,0.364,0.5,0.714,0.47
-2017,Wushuang Zheng ,CHN,646,1,2,4,0.651,0,0.8,0.071,0.077,0.376
+2017,Teliana Pereira,BRA,599,1,0,2,0.406,0.222,0.364,0.5,0.714,0.47
+2017,Wushuang Zheng,CHN,646,1,2,4,0.651,0,0.8,0.071,0.077,0.376
 2017,Jiaqi Kang,CHN,674,1,0,4,0.435,0.462,0.3,0.4,0.5,0.469
 2017,Gabriela Dabrowski,CAN,712,3,15,9,0.57,0.5,0.636,0.441,0.5,0.484
 2017,Naomi Broady,GBR,726,17,163,70,0.614,0.575,0.742,0.176,0.354,0.342
@@ -574,12 +574,12 @@ season,player_name,nationality,rank,matches,aces,double faults,% serve points wo
 2017,Monica Puig,PUR,9999,41,136,141,0.584,0.534,0.681,0.319,0.43,0.426
 2017,Annika Beck,GER,9999,24,8,67,0.49,0.444,0.457,0.342,0.481,0.432
 2017,Laura Robson,GBR,9999,2,5,9,0.568,0.3,0.632,0.056,0.067,0.351
-2017,Olesya Pervushina ,RUS,9999,1,5,2,0.536,0.429,0.6,0,0,0.293
+2017,Olesya Pervushina,RUS,9999,1,5,2,0.536,0.429,0.6,0,0,0.293
 2017,Ashley Kratzer,USA,9999,1,1,6,0.34,0.538,0.143,0.143,1,0.326
 2017,Brienne Minor,USA,9999,1,1,11,0.433,0.3,0.3,0.333,0.6,0.435
 2017,Charlotte Robillard-Millette,CAN,9999,1,3,6,0.519,0.333,0.556,0,0,0.271
 2017,Jade Lewis,NZL,9999,1,0,1,0.431,0.333,0.4,0.4,0.333,0.463
-2017,Elizaveta Kulichkova ,RUS,9999,8,26,58,0.538,0.5,0.573,0.293,0.342,0.416
+2017,Elizaveta Kulichkova,RUS,9999,8,26,58,0.538,0.5,0.573,0.293,0.342,0.416
 2017,Lina Qostal,MAR,9999,1,1,9,0.367,0.455,0.143,0,0,0.167
 2017,Dominika Cibulkova,SVK,9999,48,36,145,0.565,0.572,0.654,0.385,0.473,0.448
 2017,Anna Tatishvili,USA,9999,2,1,11,0.451,0.45,0.313,0.188,0.231,0.365
@@ -609,7 +609,7 @@ season,player_name,nationality,rank,matches,aces,double faults,% serve points wo
 2017,Lucie Safarova,CZE,9999,53,323,206,0.617,0.64,0.772,0.324,0.451,0.422
 2017,Maria Sharapova,RUS,9999,22,124,121,0.599,0.609,0.735,0.406,0.441,0.462
 2017,Shuko Aoyama,JPN,9999,1,0,5,0.381,0.111,0.2,0.545,0.6,0.514
-2017,Misa Eguchi ,JPN,9999,5,0,9,0.447,0.265,0.375,0.122,0.227,0.327
+2017,Misa Eguchi,JPN,9999,5,0,9,0.447,0.265,0.375,0.122,0.227,0.327
 2017,Petra Krejsova,CZE,9999,2,4,3,0.625,0.222,0.65,0.278,0.5,0.393
 2017,Nicole Gibbs,USA,9999,17,19,54,0.53,0.564,0.566,0.316,0.373,0.427
 2017,Alexa Guarachi,CHI,9999,1,1,2,0.492,0.5,0.545,0.273,0.3,0.388

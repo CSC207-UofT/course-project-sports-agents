@@ -84,12 +84,12 @@ public abstract class Player {
         if (dataMap.containsKey(season) != expected) {
             // We expect data, but there is none
             if (expected) {
-                throw new Exception("Information on " + season +
+                throw new Exception("Information on Season " + season +
                         " is not recorded!");
             }
             // We expect nothing, but there is data
             else {
-                throw new Exception("Information on " + season +
+                throw new Exception("Information on Season " + season +
                         " already exists!");
             }
         }
@@ -133,7 +133,12 @@ public abstract class Player {
         return this.name.hashCode();
     }
 
-
-
+    /**
+     * Return a string representation of the player's data (all their stats) for the given season
+     * @param season season of interest
+     * @return string of all stats for the player
+     * @throws Exception if any of the stats is missing data for the given season
+     */
+    public abstract String getSeasonData(String season) throws Exception;
 }
 
