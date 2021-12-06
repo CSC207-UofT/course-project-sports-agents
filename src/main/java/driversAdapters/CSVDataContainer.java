@@ -185,7 +185,7 @@ public class CSVDataContainer implements DataContainer {
             BufferedReader br = new BufferedReader(new FileReader("hockey_teams.csv"));
             br.readLine(); //skip the first line.
 
-            while((line = br.readLine()) != null) {
+            while ((line = br.readLine()) != null) {
                 String[] teamInfo = line.split(splitBy);
 
                 if (teamInfo[0].equals(name)) {
@@ -216,6 +216,7 @@ public class CSVDataContainer implements DataContainer {
             System.out.println(e.getMessage());
             throw new Exception(Exceptions.FILE_NOT_FOUND);
         }
+    }
 
     public List<String> getAllPlayers(String sport, String season) throws Exception {
         switch (sport.toLowerCase()) {
