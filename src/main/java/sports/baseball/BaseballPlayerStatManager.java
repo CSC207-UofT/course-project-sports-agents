@@ -2,8 +2,6 @@ package sports.baseball;
 
 import driversAdapters.DataContainer;
 import commands.PlayerStatManager;
-import player.*;
-import sports.baseball.*;
 
 import java.util.*;
 

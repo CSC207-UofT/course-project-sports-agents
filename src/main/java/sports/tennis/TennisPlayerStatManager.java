@@ -1,9 +1,7 @@
 package sports.tennis;
 
 import driversAdapters.DataContainer;
-import player.TennisPlayer;
 import commands.PlayerStatManager;
-import sports.tennis.TennisPlayer;
 
 import java.util.ArrayList;
 import java.util.Arrays;

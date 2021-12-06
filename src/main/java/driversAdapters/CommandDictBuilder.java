@@ -2,7 +2,16 @@ package driversAdapters;
 
 import commands.*;
 import constants.CommandsInfo;
-import player.Player;
+import sports.baseball.BaseballPlayerStatManager;
+import sports.baseball.BaseballPlayerStatComparer;
+import sports.baseball.BaseballPlayerStatPredictor;
+import sports.hockey.HockeyPlayerStatComparer;
+import sports.hockey.HockeyPlayerStatManager;
+import sports.hockey.HockeyPlayerStatPredictor;
+import sports.tennis.TennisPlayerStatComparer;
+import sports.tennis.TennisPlayerStatManager;
+import sports.tennis.TennisPlayerStatPredictor;
+
 
 import java.util.HashMap;
 

@@ -1,13 +1,10 @@
-package commands;
+package sports.tennis;
 
 import driversAdapters.CSVDataContainer;
 import driversAdapters.DataContainer;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
-
-import player.TennisPlayer;
-import sports.tennis.TennisPlayerStatManager;
 
 import java.util.ArrayList;
 import java.util.Arrays;
