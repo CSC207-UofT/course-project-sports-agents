@@ -306,6 +306,17 @@ public class BaseballPlayer extends Player {
     }
 
     @Override
+    public String getSeasonData(String season) throws Exception {
+        return "Team: " + this.getStatTeam(season) + "\nPosition: " + this.getStatPosition(season) +
+                "\nGames Played: " + this.getStatGamesPlayed(season) + "\nAt Bats: " + this.getStatAtBats(season) +
+                "\nRuns: " + this.getStatRuns(season) + "\nHits: " + this.getStatHits(season) +
+                "\nHome Runs: " + this.getStatHomeRuns(season) + "\nRuns Batted In: " +
+                this.getStatRunsBattedIn(season) + "\nStrike Outs: " + this.getStatStrikeOuts(season) +
+                "\nAverage Hits per at Bat: " + this.getStatAvg(season);
+    }
+
+
+    @Override
     public String toString() {
         return "Baseball Player " + super.toString();
     }
