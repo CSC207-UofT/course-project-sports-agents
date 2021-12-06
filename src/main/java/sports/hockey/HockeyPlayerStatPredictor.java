@@ -2,7 +2,7 @@ package sports.hockey;
 
 import commands.PlayerStatPredictor;
 import drivers_adapters.DataContainer;
-import sports.player.HockeyPlayer;
+import sports.hockey.HockeyPlayer;
 
 import java.util.*;
 
