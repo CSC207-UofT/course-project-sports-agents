@@ -44,10 +44,6 @@ public abstract class PlayerStatComparer implements Command {
         // Precondition: players.size() == statValues.size()
         for (int i = 0; i != players.size(); i += 1) {
             Player player = players.get(i);
-//            output.append(player.getName());
-//            output.append(": ");
-//            output.append(statValues.get(i));
-//            output.append("\n");
             output.append(String.format("%5s %20s %20s %n", i+1, player.getName(), statValues.get(i)));
         }
         return output.toString();
