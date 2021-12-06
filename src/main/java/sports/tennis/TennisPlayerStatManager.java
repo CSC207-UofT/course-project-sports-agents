@@ -35,7 +35,7 @@ public class TennisPlayerStatManager extends PlayerStatManager {
 
         String season = arguments.get(2);
 
-        String statistic = arguments.get(3);
+        String statistic = arguments.get(3).toLowerCase();
         checkStatistic(statistic);
 
         switch (statistic) {
@@ -50,6 +50,9 @@ public class TennisPlayerStatManager extends PlayerStatManager {
             case "aces":
                 return formatStat(player, statistic,
                         player.getStatAces(season).toString());
+            case "double faults":
+                return formatStat(player, statistic,
+                        player.getStatDoubleFaults(season).toString());
             case "serve points won":
                 return formatStat(player, statistic,
                         player.getStatServePointsWon(season).toString());
@@ -68,11 +71,8 @@ public class TennisPlayerStatManager extends PlayerStatManager {
             case "return points won":
                 return formatStat(player, statistic,
                         player.getStatReturnPointsWon(season).toString());
-            case "double faults":
-                return formatStat(player, statistic,
-                        player.getStatDoubleFaults(season).toString());
             case "all":
-                return formatStat(player, statistic, player.printSeasonData(season));
+                return formatStat(player, statistic, player.getSeasonData(season));
             default:
                 throw new Exception("This shouldn't be thrown, logically");
         }

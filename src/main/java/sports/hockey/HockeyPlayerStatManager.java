@@ -53,7 +53,7 @@ public class HockeyPlayerStatManager extends PlayerStatManager {
             case "shooting percentage":
                 return formatStat(player, statistic, player.getStatShootingPercentage(season).toString());
             case "all stats":
-                return formatStat(player, statistic, player.printSeasonData(season));
+                return formatStat(player, statistic, player.getSeasonData(season));
             default:
                 throw new Exception("This shouldn't be thrown, logically");
         }
