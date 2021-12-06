@@ -10,8 +10,10 @@ If you do not have any such features you can either:
 (b) Explain why the principle does not apply to a program like yours.
 
 Equitable use: 
+Our program requires the user to type in keywords. In the future, we could implement multiple input sources. For example, we could allow the user to choose their commands (e.g. predict_player_stat, compare_player_stat, or get_player_stat) by clicking or typing. 
 
 Flexiblity in use:
+In the future, we could implement a "help" feature that allows users to get explanations on what a specific statistic means. If a user does not know what a specific statistic is, the user may not know if it is better for the player/team to have a higher or lower value associated with that statistic. For example, one possible statistic tennis players have is double faults; the "help" feature can allow the user to get an explanation on double faults that explains how having more double faults is not good. This "help" feature would allow users with no sports background to use and understand the information conveyed by our program. 
 
 Simple and intuitive use: 
 Our program adheres to the principle by providing detailed error messages if the user gives invalid input. Specifically, when the user wants to retrieve a 
