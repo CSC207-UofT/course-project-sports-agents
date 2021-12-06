@@ -11,8 +11,8 @@ import java.util.*;
 public class GetListPlayers implements Command{
 
     public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
-        String sportName = arguments.get(1);
-        String season = arguments.get(2);
+        String sportName = arguments.get(0);
+        String season = arguments.get(1);
         List<String> listAllPlayers =  container.getAllPlayers(sportName, season);
         return formatGetListPlayers(listAllPlayers);
     }

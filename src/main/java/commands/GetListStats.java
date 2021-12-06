@@ -8,7 +8,7 @@ import java.util.*;
 public class GetListStats implements Command{
     @Override
     public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
-        String sportName = arguments.get(1);
+        String sportName = arguments.get(0);
         switch (sportName.toLowerCase()){
             case "hockey":
                 return "All available Stats For " + sportName+ "\n"+

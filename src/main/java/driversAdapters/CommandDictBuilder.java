@@ -74,6 +74,10 @@ public class CommandDictBuilder {
         for (String keyword : CommandsInfo.manageLeagueKeywords) {
             this.commandDict.put(keyword, leagueMemberManager);
         }
+
+        this.commandDict.put(CommandsInfo.GetListPlayersInfo.keyword, new GetListPlayers());
+        this.commandDict.put(CommandsInfo.GetListSportsInfo.keyword, new GetListSports());
+        this.commandDict.put(CommandsInfo.GetListStatsInfo.keyword, new GetListStats());
     }
 
     public HashMap<String, Command> getCommandDict() {

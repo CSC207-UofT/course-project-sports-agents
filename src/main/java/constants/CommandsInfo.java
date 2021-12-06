@@ -85,4 +85,22 @@ public class CommandsInfo {
                 List.of("--path");
         public static final List<String> multiArgNames = List.of();
     }
+
+    public static class GetListPlayersInfo {
+        public static final String keyword = "get_players_list";
+        public static final List<String> argNames = List.of("--sport", "--season");
+        public static final List<String> multiArgNames = List.of();
+    }
+
+    public static class GetListSportsInfo {
+        public static final String keyword = "get_sports";
+        public static final List<String> argNames = List.of();
+        public static final List<String> multiArgNames = List.of();
+    }
+
+    public static class GetListStatsInfo {
+        public static final String keyword = "get_stats";
+        public static final List<String> argNames = List.of("--sport");
+        public static final List<String> multiArgNames = List.of();
+    }
 }

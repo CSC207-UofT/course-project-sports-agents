@@ -136,6 +136,12 @@ public class InputParser {
                 return CommandsInfo.SaveInfo.argNames;
             case "load":
                 return CommandsInfo.LoadInfo.argNames;
+            case "get_players_list":
+                return CommandsInfo.GetListPlayersInfo.argNames;
+            case "get_sports":
+                return CommandsInfo.GetListSportsInfo.argNames;
+            case "get_stats":
+                return CommandsInfo.GetListStatsInfo.argNames;
             default:
                 return new ArrayList<>();
         }
@@ -168,6 +174,13 @@ public class InputParser {
                 return CommandsInfo.SaveInfo.multiArgNames;
             case "load":
                 return CommandsInfo.LoadInfo.multiArgNames;
+            case "get_players_list":
+                return CommandsInfo.GetListPlayersInfo.multiArgNames;
+            case "get_sports":
+                return CommandsInfo.GetListSportsInfo.multiArgNames;
+            case "get_stats":
+                return CommandsInfo.GetListStatsInfo.multiArgNames;
+
             default:
                 return new ArrayList<>();
         }
