@@ -1,55 +1,73 @@
 # Accessibility
 
 ## Question 1:
-
-For each Principle of Universal Design, write 2-5 sentences or point form notes explaining which features your program adhere to that principle.
-If you do not have any such features you can either:
-
-(a) Describe features that you could implement in the future that would adhere to principle or
-
-(b) Explain why the principle does not apply to a program like yours.
+Principles of Universal Design:
 
 Equitable use: 
-Our program requires the user to type in keywords. In the future, we could implement multiple input sources. For example, we could allow the user to choose their commands (e.g. predict_player_stat, compare_player_stat, or get_player_stat) by clicking or typing. 
+Our program requires the user to type in commands with specific keywords and 
+arguments, with no misspellings. This is challenging for those with impaired 
+motor coordination. In the future, we could implement multiple input sources. 
+For example, we could allow the user to choose their commands 
+(e.g. predict_player_stat, compare_player_stat, or get_player_stat) via a Web interface 
+which allows either typing, clicking buttons, or selecting from a dropdown. 
 
-Flexiblity in use:
-In the future, we could implement a "help" feature that allows users to get explanations on what a specific statistic means. If a user does not know what a specific statistic is, the user may not know if it is better for the player/team to have a higher or lower value associated with that statistic. For example, one possible statistic tennis players have is double faults; the "help" feature can allow the user to get an explanation on double faults that explains how having more double faults is not good. This "help" feature would allow users with no sports background to use and understand the information conveyed by our program. 
+Flexibility in use:
+We allow users to either use verbose mode commands or short mode commands,
+depending on their preference in readability or command length. 
+In the future, we could support more interfaces, such as a GUI with buttons.
 
 Simple and intuitive use: 
-Our program adheres to the principle by providing detailed error messages if the user gives invalid input. Specifically, when the user wants to retrieve a 
-statistic for a certain player, the user must input the sport name, the player name, the season, and the name of the statistic. However, if any of this information
-is invalid (not supported by our app), the app will tell the user which piece of information was incorrect. 
+Our program provides assistance through the `available_commands` method (to list all
+commands and their usages) and the several list commands to list other important
+features of the commands. We provide detailed error messages on invalid inputs, 
+warning them where or why their input is invalid.
+In the future, we could add a "help" feature to explain sports-related terms. 
+As an example, most people are unfamiliar with tennis's "Double Faults", so 
+an explanation command would tell them what it means and that a Double Fault is
+a mark of poor play.
 
-Perceptible infromation: 
+Perceptible information: 
+The command line limits our ability to modify how text is displayed in colors
+and font. However, we added a new display formatting method to present results
+in a table format, which makes them easier to view. These decorative dashes 
+makes it less accessible to screen readers, so in the future we will create a 
+screen reader view with only important information to be read out loud.
 
 
 Tolerance for error:
-Our program does not any contain hazardous elements
+Our program requires commands be spelled exactly correctly, otherwise they will not
+function. In the future, we could implement a rudimentary form of spellcheck
+to correct single-letter spelling mistakes in words and tolerate that error.
 
 Low physical effort:
-Our program only requires the user to type in keywords. However, to minimize the amount of typing, we could implement a GUI in the future. Instead of having the user type in the needed keywords, the user can interct with icons or buttons that allow the user to select what command they are interested in.
+Our program only requires the user to type on the command line, making this
+principle less important. 
+However, to minimize the amount of typing, we could implement a 
+GUI or other interface in the future.
 
 Size and space for approach and use: 
-Our program only requires that the user can see their computer screen and access their keyboard (to type in commands) 
+Our program only requires that the user can see their computer screen 
+and access their keyboard (to type in commands). This means the principle is 
+difficult to apply here.
 
 
 ## Question 2:
-
-Write a paragraph about who you would market your program towards, if you were to sell or license your program to customers. This could be a specific 
-category such as "students" or more vague, such as "people who like games". Try to give a bit more detail along with the category.
-
-  Since our product is based around sports and betting, if we wanted to sell or license our program to customers, the target category of
-  consumers would be people who like watching and betting on sports. The best option would be to market our program towards anyone within that category who would want
-  to use any unique parts of our program. For example, sports fans that enjoy betting on baseball, tennis and hockey would be the best demographic for us to target since
-  our program is centered around betting and statistics for those three sports. If we added more sports in the future, we could change our marketing strategy to
-  also target people that enjoy watching whatever sports we add.
+Since our product is based around sports statistics and fantasy sports, 
+the target category of consumers would be sports fans or sports analysts.
+Specifically, we should market to fantasy sports groups, 
+as the application offers both the ability to manage a fantasy sport group and 
+also perform the research and analysis to make informed fantasy sport bets.
+We should also market to individuals interested in a variety of sports, 
+as our program implements many sports, so they would be engaged with all its 
+features rather than only the aspects related to one sport.
 
 
 ## Question 3:
+Our program is less likely to be used by the non-target demographic, which is people
+who do not enjoy sports, fantasy sports, or sports statistics. Because our program 
+is currently on the command line, it is also less likely to be used by people
+with disabilities making command line usage more difficult; this includes 
+those with limited motor coordination (as typing is more difficult), those
+with vision impairment (as the command line font is very small), and those 
+with less technical experience (such as the elderly).
 
-Write a paragraph about whether or not your program is less likely to be used by certain demographics. For example, a program that converts txt files 
-to files that can be printed by a braille printer are less likely to be used by people who do not read braille.
-
-  Similarly to question 2, since our program is based around sports and betting, someone who does not have any interest in sports would would be much less likely to use our
-  program. Though someone without any interest in betting would still enjoyed watching sports may use our program to look through statistics and other information, they
-  could still use that part of our program, just not the betting.
