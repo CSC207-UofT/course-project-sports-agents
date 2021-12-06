@@ -49,6 +49,9 @@ public class CommandManager {
         // TODO: Refactor teams, then make LeagueMemberManager work with injected TeamList
         this.commandDictionary.put("member_manager", new LeagueMemberManager());
 
+        HockeyTeamStatManager hockeyTeamStatManager = new HockeyTeamStatManager();
+        this.commandDictionary.put("get_team", new TeamStatManagerFacade(hockeyTeamStatManager));
+      
         GetListSports getListSports = new GetListSports();
         this.commandDictionary.put("get_list_sports", getListSports);
 

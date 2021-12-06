@@ -1,92 +1,60 @@
 package commands;
 
-import team.Team;
+import drivers_adapters.DataContainer;
 import team.HockeyTeam;
-import team.TeamManager;
-import team.TeamStats;
+
+import java.util.*;
 
 public class HockeyTeamStatManager extends TeamStatManager {
-    public HockeyTeamStatManager(TeamManager teamManager){
-        super(teamManager);
-    }
 
-    public float getStat(String teamName, TeamStats teamStat) {
-        float retrievedStat = super.getStat(teamName, teamStat);
-        
-        if(retrievedStat != -5 && retrievedStat != -1){
-            return retrievedStat;
-        }
-        if(retrievedStat == -5){
-            Team team = teamManager.findTeamWithName(teamName);
-            if (team != null) {
-                switch (teamStat) {
-                    case GOALS_FOR:
-                        return ((HockeyTeam) team).getGoalsFor();
-                    case GOALS_AGAINST:
-                        return ((HockeyTeam) team).getGoalsAgainst();
-                    case FACE_OFF_WIN_PERCENTAGE:
-                        return ((HockeyTeam) team).getFaceOffWinPercentage();
-                    case SHOTS_FOR:
-                        return ((HockeyTeam) team).getShotsFor();
-                    case SHOTS_AGAINST:
-                        return ((HockeyTeam) team).getShotsAgainst();
-                    case REGULATION_WINS:
-                        return ((HockeyTeam) team).getRegulationWins();
-                    case REGULATION_PLUS_OVERTIME_WINS:
-                        return ((HockeyTeam) team).getRegulationPlusOvertimeWins();
-                    case SHOOTOUT_GAMES_WON:
-                        return ((HockeyTeam) team).getShootoutGamesWon();
-                    case OVERTIME_LOSSES:
-                        return ((HockeyTeam) team).getOvertimeLosses();
-                    case SHOTS_FOR_PER_GAMES_PLAYED:
-                        return calculateRate(team, ((HockeyTeam) team).getShotsFor(), team.getTotalGamesPlayed());
-                    case SHOTS_AGAINST_PER_GAMES_PLAYED:
-                        return calculateRate(team, ((HockeyTeam) team).getShotsAgainst(), team.getTotalGamesPlayed());
-                    default:
-                        return -5;
-                }
-            }
-        }
-        return -1;
+    public HockeyTeamStatManager() {
+        super(
+                new HashSet<>(Arrays.asList("games played", "wins", "losses", "overtime losses",
+                "points", "goals for", "goals against", "shots per game",
+                "shots against per game", "face off win percentage")));
     }
 
     /**
-     * Parses the input text into an enum
-     *
-     * @param stat stat being queried
-     * @return If the stat exists returns enum, otherwise returns null
+     * Handle an argument requesting a player's statistics
+     * @param arguments A string array of form
+     *                  {"Hockey", "player name", "season", "stat name"}
+     * @param container A container containing the data or means to retrieve it
+     * @return the requested statistic
+     * @throws Exception if the Player or season does not exist
      */
-    public TeamStats parseStat(String stat) {
-        TeamStats retrieveStat = super.parseStat(stat);
-        
-        if(retrieveStat != null){
-            return retrieveStat;
-        }
-        switch (stat.toLowerCase()) {
-            case "goals for":
-                return TeamStats.GOALS_FOR;
-            case "goals against":
-                return TeamStats.GOALS_AGAINST;
-            case "face off win percentage":
-                return TeamStats.FACE_OFF_WIN_PERCENTAGE;
-            case "shots against":
-                return TeamStats.SHOTS_AGAINST;
-            case "shots for":
-                return TeamStats.SHOTS_FOR;
-            case "regulation wins":
-                return TeamStats.REGULATION_WINS;
-            case "regulation plus overtime wins played":
-                return TeamStats.REGULATION_PLUS_OVERTIME_WINS;
-            case "shoot out games won":
-                return TeamStats.SHOOTOUT_GAMES_WON;
+    @Override
+    public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
+        String name = arguments.get(1);
+        HockeyTeam team = (HockeyTeam) container.getTeam("hockey", name);
+
+        String season = arguments.get(2);
+
+        String statistic = arguments.get(3);
+        checkStatistic(statistic);
+
+        switch (statistic.toLowerCase()) {
+            case "games played":
+                return formatStat(team, statistic, team.getGamesPlayed(season).toString());
+            case "games won":
+                return formatStat(team, statistic, team.getGamesWon(season).toString());
+            case "games lost":
+                return formatStat(team, statistic, team.getGamesLost(season).toString());
             case "overtime losses":
-                return TeamStats.OVERTIME_LOSSES;
-            case "goals for per game played":
-                return TeamStats.GOALS_FOR_PER_GAMES_PLAYED;
-            case "goals against per game played":
-                return TeamStats.GOALS_AGAINST_PER_GAMES_PLAYED;
+                return formatStat(team, statistic, team.getOvertimeLosses(season).toString());
+            case "points":
+                return formatStat(team, statistic, team.getPoints(season).toString());
+            case "goals for":
+                return formatStat(team, statistic, team.getGoalsFor(season).toString());
+            case "goals against":
+                return formatStat(team, statistic, team.getGoalsAgainst(season).toString());
+            case "shots for per game":
+                return formatStat(team, statistic, team.getShotsPerGame(season).toString());
+            case "shots against per game":
+                return formatStat(team, statistic, team.getShotsAgainstPerGame(season).toString());
+            case "faceoff win percentage":
+                return formatStat(team, statistic, team.getFaceOffWinPercentage(season).toString());
             default:
-                return null;
+                throw new Exception("This shouldn't be thrown, logically");
         }
     }
 }

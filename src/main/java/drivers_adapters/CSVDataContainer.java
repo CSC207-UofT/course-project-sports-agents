@@ -5,6 +5,7 @@ import player.BaseballPlayer;
 import player.HockeyPlayer;
 import player.Player;
 import player.TennisPlayer;
+import team.HockeyTeam;
 import team.Team;
 
 import java.io.BufferedReader;
@@ -163,6 +164,59 @@ public class CSVDataContainer implements DataContainer {
     }
 
     @Override
+    public Team getTeam(String sport, String name) throws Exception {
+        if (teamMap.containsKey(name)) {
+            return teamMap.get(name);
+        }
+        switch (sport.toLowerCase()) {
+            case "hockey":
+                getHockeyTeam(name);
+                break;
+        }
+        return teamMap.get(name);
+    }
+
+    private void getHockeyTeam(String name) throws Exception {
+        String line;
+        String splitBy = ",";
+        boolean found = false;
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("hockey_teams.csv"));
+            br.readLine(); //skip the first line.
+
+            while((line = br.readLine()) != null) {
+                String[] teamInfo = line.split(splitBy);
+
+                if (teamInfo[0].equals(name)) {
+                    if (!found) {
+                        HockeyTeam newTeam = new HockeyTeam(teamInfo[0], teamInfo[1], Integer.valueOf(teamInfo[2]),
+                                Integer.valueOf(teamInfo[6]), Integer.valueOf(teamInfo[3]),
+                                Integer.valueOf(teamInfo[4]), Integer.valueOf(teamInfo[5]),
+                                Integer.valueOf(teamInfo[7]), Integer.valueOf(teamInfo[8]),
+                                Double.valueOf(teamInfo[9]), Double.valueOf(teamInfo[10]),
+                                Double.valueOf(teamInfo[11]));
+                        teamMap.put(name, newTeam);
+                        found = true;
+                    } else {
+                        ((HockeyTeam) teamMap.get(teamInfo[0])).addRecord(teamInfo[1], Integer.valueOf(teamInfo[2]),
+                                Integer.valueOf(teamInfo[6]), Integer.valueOf(teamInfo[3]),
+                                Integer.valueOf(teamInfo[4]), Integer.valueOf(teamInfo[5]),
+                                Integer.valueOf(teamInfo[7]), Integer.valueOf(teamInfo[8]),
+                                Double.valueOf(teamInfo[9]), Double.valueOf(teamInfo[10]),
+                                Double.valueOf(teamInfo[11]));
+                    }
+                }
+            }
+            br.close();
+            if (!found) {
+                throw new Exception(Exceptions.TEAM_NOT_FOUND);
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+            throw new Exception(Exceptions.FILE_NOT_FOUND);
+        }
+
     public List<String> getAllPlayers(String sport, String season) throws Exception {
         switch (sport.toLowerCase()) {
             case "hockey":
@@ -283,13 +337,5 @@ public class CSVDataContainer implements DataContainer {
                 allTennisNames.add(playerInfo[1].toLowerCase()+ ": Tennis");}
         }
         return allTennisNames;
-    }
-
-
-
-    @Override
-    public Team getTeam(String sport, String name) {
-        // TODO: Implement this!
-        return null;
     }
 }
