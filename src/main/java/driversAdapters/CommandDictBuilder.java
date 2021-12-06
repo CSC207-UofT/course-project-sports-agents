@@ -78,6 +78,7 @@ public class CommandDictBuilder {
         this.commandDict.put(CommandsInfo.GetListPlayersInfo.keyword, new GetListPlayers());
         this.commandDict.put(CommandsInfo.GetListSportsInfo.keyword, new GetListSports());
         this.commandDict.put(CommandsInfo.GetListStatsInfo.keyword, new GetListStats());
+        this.commandDict.put(CommandsInfo.SearchInfo.keyword, new Search());
     }
 
     public HashMap<String, Command> getCommandDict() {

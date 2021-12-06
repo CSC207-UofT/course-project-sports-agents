@@ -142,6 +142,8 @@ public class InputParser {
                 return CommandsInfo.GetListSportsInfo.argNames;
             case "get_stats":
                 return CommandsInfo.GetListStatsInfo.argNames;
+            case "search":
+                return CommandsInfo.SearchInfo.argNames;
             default:
                 return new ArrayList<>();
         }
@@ -180,7 +182,8 @@ public class InputParser {
                 return CommandsInfo.GetListSportsInfo.multiArgNames;
             case "get_stats":
                 return CommandsInfo.GetListStatsInfo.multiArgNames;
-
+            case "search":
+                return CommandsInfo.SearchInfo.multiArgNames;
             default:
                 return new ArrayList<>();
         }

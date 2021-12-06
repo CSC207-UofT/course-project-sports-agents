@@ -103,4 +103,10 @@ public class CommandsInfo {
         public static final List<String> argNames = List.of("--sport");
         public static final List<String> multiArgNames = List.of();
     }
+
+    public static class SearchInfo {
+        public static final String keyword = "search";
+        public static final List<String> argNames = List.of("--player");
+        public static final List<String> multiArgNames = List.of();
+    }
 }
