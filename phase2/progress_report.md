@@ -18,7 +18,7 @@ the application to ignore the capitalization of inputs.
 [Pull Request](https://github.com/CSC207-UofT/course-project-sports-agents/pull/53)
 
 Vishali has worked on adding tennis player data and updating the `TennisPlayer`
-class. We changed the .csv file we used for tennis players. 
+class. The .csv file used for tennis players was changed. 
 The old .csv file required users to query players by competition name
 instead of season. It also only contained data for one year.
 The new file contains data for multiple years, and players can now be queried
