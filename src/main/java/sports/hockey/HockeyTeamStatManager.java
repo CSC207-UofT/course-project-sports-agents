@@ -29,7 +29,7 @@ public class HockeyTeamStatManager extends TeamStatManager {
         HockeyTeam team = (HockeyTeam) container.getTeam("hockey", name);
 
         String season = arguments.get(2);
-
+        System.out.println("executed");
         String statistic = arguments.get(3);
         checkStatistic(statistic);
 

@@ -188,7 +188,7 @@ public class CSVDataContainer implements DataContainer {
             while ((line = br.readLine()) != null) {
                 String[] teamInfo = line.split(splitBy);
 
-                if (teamInfo[0].equals(name)) {
+                if (teamInfo[0].toLowerCase().equals(name)) {
                     if (!found) {
                         HockeyTeam newTeam = new HockeyTeam(teamInfo[0], teamInfo[1], Integer.valueOf(teamInfo[2]),
                                 Integer.valueOf(teamInfo[6]), Integer.valueOf(teamInfo[3]),
@@ -199,7 +199,7 @@ public class CSVDataContainer implements DataContainer {
                         teamMap.put(name, newTeam);
                         found = true;
                     } else {
-                        ((HockeyTeam) teamMap.get(teamInfo[0])).addRecord(teamInfo[1], Integer.valueOf(teamInfo[2]),
+                        ((HockeyTeam) teamMap.get(teamInfo[0].toLowerCase())).addRecord(teamInfo[1], Integer.valueOf(teamInfo[2]),
                                 Integer.valueOf(teamInfo[6]), Integer.valueOf(teamInfo[3]),
                                 Integer.valueOf(teamInfo[4]), Integer.valueOf(teamInfo[5]),
                                 Integer.valueOf(teamInfo[7]), Integer.valueOf(teamInfo[8]),

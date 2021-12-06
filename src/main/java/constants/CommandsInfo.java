@@ -29,7 +29,7 @@ public class CommandsInfo {
     public static class PredictPlayerStatInfo {
         public static final String keyword = "predict_player_stat";
         public static final List<String> argNames =
-                Arrays.asList("--sport", "--player-name", "--seasons", "--stat");
+                Arrays.asList("--sport", "--player-name", "--stat");
         public static final List<String> multiArgNames = List.of("--seasons");
     }
 
@@ -109,4 +109,19 @@ public class CommandsInfo {
         public static final List<String> argNames = List.of("--player");
         public static final List<String> multiArgNames = List.of();
     }
+
+    public static class AvailableCommandsInfo {
+        public static final String keyword = "get_available_commands";
+        public static final List<String> argNames =
+                Arrays.asList();
+        public static final List<String> multiArgNames = List.of();
+    }
+    public static class GetTeamStatInfo {
+        public static final String keyword = "get_team_stat";
+        public static final List<String> argNames =
+                List.of("--sport", "--team_name");
+        public static final List<String> multiArgNames = List.of();
+    }
+
+
 }

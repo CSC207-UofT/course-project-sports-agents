@@ -8,6 +8,7 @@ import sports.baseball.BaseballPlayerStatPredictor;
 import sports.hockey.HockeyPlayerStatComparer;
 import sports.hockey.HockeyPlayerStatManager;
 import sports.hockey.HockeyPlayerStatPredictor;
+import sports.hockey.HockeyTeamStatManager;
 import sports.tennis.TennisPlayerStatComparer;
 import sports.tennis.TennisPlayerStatManager;
 import sports.tennis.TennisPlayerStatPredictor;
@@ -79,6 +80,10 @@ public class CommandDictBuilder {
         this.commandDict.put(CommandsInfo.GetListSportsInfo.keyword, new GetListSports());
         this.commandDict.put(CommandsInfo.GetListStatsInfo.keyword, new GetListStats());
         this.commandDict.put(CommandsInfo.SearchInfo.keyword, new Search());
+        this.commandDict.put(CommandsInfo.AvailableCommandsInfo.keyword, new AvailableCommands());
+
+        HockeyTeamStatManager hockeyTeamStatManager = new HockeyTeamStatManager();
+        this.commandDict.put(CommandsInfo.GetTeamStatInfo.keyword, new TeamStatManagerFacade(hockeyTeamStatManager));
     }
 
     public HashMap<String, Command> getCommandDict() {
