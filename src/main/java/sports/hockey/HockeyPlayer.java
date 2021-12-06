@@ -1,4 +1,6 @@
-package player;
+package sports.hockey;
+
+import player.*;
 
 import java.util.HashMap;
 

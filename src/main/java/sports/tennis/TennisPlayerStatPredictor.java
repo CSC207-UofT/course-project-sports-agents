@@ -1,7 +1,8 @@
-package commands;
+package sports.tennis;
 
+import commands.PlayerStatPredictor;
 import drivers_adapters.DataContainer;
-import player.TennisPlayer;
+import sports.tennis.TennisPlayer;
 
 import java.util.*;
 

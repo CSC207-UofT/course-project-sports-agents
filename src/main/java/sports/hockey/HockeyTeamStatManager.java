@@ -1,5 +1,6 @@
-package commands;
+package sports.hockey;
 
+import commands.TeamStatManager;
 import drivers_adapters.DataContainer;
 import team.HockeyTeam;
 

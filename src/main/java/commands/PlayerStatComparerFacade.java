@@ -2,6 +2,9 @@ package commands;
 
 import constants.Exceptions;
 import drivers_adapters.DataContainer;
+import sports.baseball.BaseballPlayerStatComparer;
+import sports.hockey.HockeyPlayerStatComparer;
+import sports.tennis.TennisPlayerStatComparer;
 
 import java.util.ArrayList;
 

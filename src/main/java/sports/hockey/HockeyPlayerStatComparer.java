@@ -1,8 +1,8 @@
-package commands;
+package sports.hockey;
 
+import commands.PlayerStatComparer;
 import drivers_adapters.DataContainer;
-import player.HockeyPlayer;
-import player.HockeyPlayerComparator;
+import sports.hockey.*;
 import java.util.*;
 
 public class HockeyPlayerStatComparer extends PlayerStatComparer {

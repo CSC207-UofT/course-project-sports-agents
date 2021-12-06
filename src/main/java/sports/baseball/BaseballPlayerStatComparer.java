@@ -1,7 +1,9 @@
-package commands;
+package sports.baseball;
 
+import commands.PlayerStatComparer;
 import drivers_adapters.DataContainer;
 import player.*;
+import sports.baseball.*;
 
 import java.util.*;
 
