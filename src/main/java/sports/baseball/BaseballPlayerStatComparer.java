@@ -1,8 +1,7 @@
 package sports.baseball;
 
 import commands.PlayerStatComparer;
-import drivers_adapters.DataContainer;
-import player.*;
+import driversAdapters.DataContainer;
 import sports.baseball.*;
 
 import java.util.*;
@@ -10,8 +9,8 @@ import java.util.*;
 public class BaseballPlayerStatComparer extends PlayerStatComparer {
 
     public BaseballPlayerStatComparer() {
-        super(new HashSet<>(Arrays.asList("Games Played", "At Bats", "Runs",
-                        "Hits", "Home Runs", "Runs Batted In", "Strike Outs", "Average")));
+        super(new HashSet<>(Arrays.asList("games played", "at bats", "runs",
+                        "hits", "home runs", "runs batted in", "strike outs", "average")));
     }
 
     /**
@@ -20,7 +19,7 @@ public class BaseballPlayerStatComparer extends PlayerStatComparer {
      * (best first, worst last)
      *
      * @param arguments A string array of form
-     *                  {"Baseball", "player name 1",
+     *                  {"baseball", "player name 1",
      *                  "player name 2", ... , "season", "stat name"}
      * @param container A container containing the data or means to retrieve it
      * @return the players and their associated statistics
@@ -62,21 +61,21 @@ public class BaseballPlayerStatComparer extends PlayerStatComparer {
                                        String statistic, String season)
             throws Exception {
         switch (statistic) {
-            case "Games Played":
+            case "games played":
                 return getValuesGamesPlayed(players, season);
-            case "At Bats":
+            case "at bats":
                 return getValuesAtBats(players, season);
-            case "Runs":
+            case "runs":
                 return getValuesRuns(players, season);
-            case "Hits":
+            case "hits":
                 return getValuesHits(players, season);
-            case "Home Runs":
+            case "home runs":
                 return getValuesHomeRuns(players, season);
-            case "Runs Batted In":
+            case "runs batted in":
                 return getValuesRunsBattedIn(players, season);
-            case "Strike Outs":
+            case "strike outs":
                 return getValuesStrikeOuts(players, season);
-            case "Average":
+            case "average":
                 return getValuesAverage(players, season);
             default:
                 throw new Exception("This shouldn't logically be thrown!");

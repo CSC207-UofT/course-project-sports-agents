@@ -1,4 +1,4 @@
-package drivers_adapters;
+package driversAdapters;
 
 import player.Player;
 import team.Team;

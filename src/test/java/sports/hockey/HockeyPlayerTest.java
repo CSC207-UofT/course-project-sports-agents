@@ -1,4 +1,4 @@
-package player;
+package sports.hockey;
 
 import org.junit.Before;
 import org.junit.Test;

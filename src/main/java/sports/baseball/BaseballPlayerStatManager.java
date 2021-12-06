@@ -1,9 +1,7 @@
 package sports.baseball;
 
+import driversAdapters.DataContainer;
 import commands.PlayerStatManager;
-import drivers_adapters.DataContainer;
-import player.*;
-import sports.baseball.*;
 
 import java.util.*;
 
@@ -11,9 +9,9 @@ public class BaseballPlayerStatManager extends PlayerStatManager {
 
     public BaseballPlayerStatManager() {
         super(
-                new HashSet<>(Arrays.asList("Team",
-                        "Position", "Games Played", "At Bats", "Runs",
-                        "Hits", "Home Runs", "Runs Batted In", "Strike Outs", "Average")));
+                new HashSet<>(Arrays.asList("team",
+                        "position", "games played", "at bats", "runs",
+                        "hits", "home runs", "runs batted in", "strike outs", "average")));
     }
 
     /**
@@ -35,25 +33,25 @@ public class BaseballPlayerStatManager extends PlayerStatManager {
         checkStatistic(statistic);
 
         switch (statistic) {
-            case "Team":
+            case "team":
                 return formatStat(player, statistic, player.getStatTeam(season));
             case "position":
                 return formatStat(player, statistic, player.getStatPosition(season));
-            case "Games Played":
+            case "games played":
                 return formatStat(player, statistic, player.getStatGamesPlayed(season).toString());
-            case "At Bats":
+            case "at bats":
                 return formatStat(player, statistic, player.getStatAtBats(season).toString());
-            case "Runs":
+            case "runs":
                 return formatStat(player, statistic, player.getStatRuns(season).toString());
-            case "Hits":
+            case "hits":
                 return formatStat(player, statistic, player.getStatHits(season).toString());
-            case "Home Runs":
+            case "home runs":
                 return formatStat(player, statistic, player.getStatHomeRuns(season).toString());
-            case "Runs Batted In":
+            case "runs batted in":
                 return formatStat(player, statistic, player.getStatRunsBattedIn(season).toString());
-            case "Strike Outs":
+            case "strike outs":
                 return formatStat(player, statistic, player.getStatStrikeOuts(season).toString());
-            case "Average":
+            case "average":
                 return formatStat(player, statistic, player.getStatAvg(season).toString());
             default:
                 throw new Exception("This shouldn't be thrown, logically");

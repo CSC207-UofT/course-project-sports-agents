@@ -1,8 +1,7 @@
 package sports.tennis;
 
+import driversAdapters.DataContainer;
 import commands.PlayerStatManager;
-import drivers_adapters.DataContainer;
-import sports.tennis.TennisPlayer;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -23,8 +22,8 @@ public class TennisPlayerStatManager extends PlayerStatManager {
     /**
      * Return the specified stat for the specified player in the specified season
      * @param arguments A string array of form
-     *                  { "Tennis", "player name", "season", "stat name"} or
-     *                  {"Tennis", "player name", "Country"}
+     *                  { "tennis", "player name", "season", "stat name"} or
+     *                  {"tennis", "player name", "country"}
      * @param container A container containing the data or means to retrieve it
      * @return the specified stat of the player
      * @throws Exception if the Player or season does not exist
@@ -34,17 +33,14 @@ public class TennisPlayerStatManager extends PlayerStatManager {
         String name = arguments.get(1);
         TennisPlayer player = (TennisPlayer) container.getPlayer("tennis", name);
 
-
-        if (arguments.size() == 3 && arguments.get(2).equals("Country")) {
-            return formatStat(player, "Country", player.getCountry());
-        }
-
         String season = arguments.get(2);
 
-        String statistic = arguments.get(3).toLowerCase();
+        String statistic = arguments.get(3);
         checkStatistic(statistic);
 
         switch (statistic) {
+            case "country":
+                return formatStat(player, statistic, player.getCountry());
             case "rank":
                 return formatStat(player, statistic,
                         player.getStatRank(season).toString());
@@ -72,6 +68,9 @@ public class TennisPlayerStatManager extends PlayerStatManager {
             case "return points won":
                 return formatStat(player, statistic,
                         player.getStatReturnPointsWon(season).toString());
+            case "double faults":
+                return formatStat(player, statistic,
+                        player.getStatDoubleFaults(season).toString());
             case "all":
                 return formatStat(player, statistic, player.printSeasonData(season));
             default:

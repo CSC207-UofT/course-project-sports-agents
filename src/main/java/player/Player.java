@@ -84,12 +84,12 @@ public abstract class Player {
         if (dataMap.containsKey(season) != expected) {
             // We expect data, but there is none
             if (expected) {
-                throw new Exception("Information on " + season +
+                throw new Exception("Information on Season " + season +
                         " is not recorded!");
             }
             // We expect nothing, but there is data
             else {
-                throw new Exception("Information on " + season +
+                throw new Exception("Information on Season " + season +
                         " already exists!");
             }
         }

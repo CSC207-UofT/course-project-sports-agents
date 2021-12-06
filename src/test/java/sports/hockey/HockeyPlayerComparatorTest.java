@@ -1,4 +1,4 @@
-package player;
+package sports.hockey;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -27,7 +27,7 @@ public class HockeyPlayerComparatorTest {
     @Test(timeout = 100)
     public void testCompareGamesPlayed() {
         HockeyPlayerComparator hockeyPlayerComparator =
-                new HockeyPlayerComparator("Games Played", "20202021");
+                new HockeyPlayerComparator("games played", "20202021");
         int compareEquals = hockeyPlayerComparator.compare(this.player1, this.player2);
         assert(compareEquals == 0);
         int compareGreater = hockeyPlayerComparator.compare(this.player1, this.player3);
@@ -39,7 +39,7 @@ public class HockeyPlayerComparatorTest {
     @Test(timeout = 100)
     public void testCompareGoals() {
         HockeyPlayerComparator hockeyPlayerComparator =
-                new HockeyPlayerComparator("Goals", "20202021");
+                new HockeyPlayerComparator("goals", "20202021");
         int compareEquals = hockeyPlayerComparator.compare(this.player1, this.player2);
         assert(compareEquals == 0);
         int compareGreater = hockeyPlayerComparator.compare(this.player1, this.player3);
@@ -51,7 +51,7 @@ public class HockeyPlayerComparatorTest {
     @Test(timeout = 100)
     public void testCompareAssists() {
         HockeyPlayerComparator hockeyPlayerComparator =
-                new HockeyPlayerComparator("Assists", "20202021");
+                new HockeyPlayerComparator("assists", "20202021");
         int compareEquals = hockeyPlayerComparator.compare(this.player1, this.player2);
         assert(compareEquals == 0);
         int compareGreater = hockeyPlayerComparator.compare(this.player1, this.player3);
@@ -63,7 +63,7 @@ public class HockeyPlayerComparatorTest {
     @Test(timeout = 100)
     public void testComparePoints() {
         HockeyPlayerComparator hockeyPlayerComparator =
-                new HockeyPlayerComparator("Points", "20202021");
+                new HockeyPlayerComparator("points", "20202021");
         int compareEquals = hockeyPlayerComparator.compare(this.player1, this.player2);
         assert(compareEquals == 0);
         int compareGreater = hockeyPlayerComparator.compare(this.player1, this.player3);
@@ -75,7 +75,7 @@ public class HockeyPlayerComparatorTest {
     @Test(timeout = 100)
     public void testCompareShots() {
         HockeyPlayerComparator hockeyPlayerComparator =
-                new HockeyPlayerComparator("Shots", "20202021");
+                new HockeyPlayerComparator("shots", "20202021");
         int compareEquals = hockeyPlayerComparator.compare(this.player1, this.player2);
         assert(compareEquals == 0);
         int compareGreater = hockeyPlayerComparator.compare(this.player1, this.player3);
@@ -87,7 +87,7 @@ public class HockeyPlayerComparatorTest {
     @Test(timeout = 100)
     public void testCompareShootingPercentage() {
         HockeyPlayerComparator hockeyPlayerComparator =
-                new HockeyPlayerComparator("Shooting Percentage", "20202021");
+                new HockeyPlayerComparator("shooting percentage", "20202021");
         int compareEquals = hockeyPlayerComparator.compare(this.player1, this.player2);
         assert(compareEquals == 0);
         int compareGreater = hockeyPlayerComparator.compare(this.player1, this.player3);
@@ -99,7 +99,7 @@ public class HockeyPlayerComparatorTest {
     @Test(timeout = 200)
     public void testCompareNoData() {
         HockeyPlayerComparator hockeyPlayerComparator =
-                new HockeyPlayerComparator("Games Played", "20192020");
+                new HockeyPlayerComparator("games played", "20192020");
         int compareEquals = hockeyPlayerComparator.compare(this.player1, this.player2);
         assert(compareEquals == 0);
         int compareGreater = hockeyPlayerComparator.compare(this.player1, this.player3);

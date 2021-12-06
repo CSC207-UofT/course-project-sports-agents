@@ -1,7 +1,7 @@
 package sports.baseball;
 
 import commands.PlayerStatPredictor;
-import drivers_adapters.DataContainer;
+import driversAdapters.DataContainer;
 import player.*;
 import sports.baseball.*;
 
@@ -9,8 +9,8 @@ import java.util.*;
 
 public class BaseballPlayerStatPredictor extends PlayerStatPredictor {
     public BaseballPlayerStatPredictor() {
-        super(new HashSet<>(Arrays.asList("At Bats", "Runs",
-                "Hits", "Home Runs", "Runs Batted In", "Strike Outs", "Average")));
+        super(new HashSet<>(Arrays.asList("at bats", "runs",
+                "hits", "home runs", "runs batted in", "strike outs", "average")));
     }
 
     /**
@@ -52,19 +52,19 @@ public class BaseballPlayerStatPredictor extends PlayerStatPredictor {
                                       List<String> seasons)
             throws Exception {
         switch (statistic) {
-            case "At Bats":
+            case "at bats":
                 return getPastAtBats(player, seasons);
-            case "Runs":
+            case "runs":
                 return getPastRuns(player, seasons);
-            case "Hits":
+            case "hits":
                 return getPastHits(player, seasons);
-            case "Home Runs":
+            case "home runs":
                 return getPastHomeRuns(player, seasons);
-            case "Runs Batted In":
+            case "runs batted in":
                 return getPastRunsBattedIn(player, seasons);
-            case "Strike Outs":
+            case "strike outs":
                 return getPastStrikeOuts(player, seasons);
-            case "Average":
+            case "average":
                 return getPastAverage(player, seasons);
             default:
                 throw new Exception("this shouldn't logically be thrown!");

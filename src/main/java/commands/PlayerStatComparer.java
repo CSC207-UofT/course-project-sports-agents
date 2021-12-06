@@ -39,7 +39,7 @@ public abstract class PlayerStatComparer implements Command {
 
         StringBuilder output = new StringBuilder();
         output.append("-----------------------------------------------------\n");
-        output.append(String.format("%5s %20s %20s %n", "Rank", "Name", "Games Played"));
+        output.append(String.format("%5s %20s %20s %n", "Rank", "Name", statName));
         output.append("-----------------------------------------------------\n");
         // Precondition: players.size() == statValues.size()
         for (int i = 0; i != players.size(); i += 1) {

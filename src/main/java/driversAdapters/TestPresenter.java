@@ -1,6 +1,7 @@
-package drivers_adapters;
+package driversAdapters;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Presenter for use in Test Cases
@@ -21,7 +22,7 @@ public class TestPresenter implements Presenter {
 
     @Override
     public String getInput() {
-        String curr_command = commandsToRun.get(curr_in);
+        String curr_command = commandsToRun.get(curr_in).toLowerCase();
         curr_in += 1;
         return curr_command;
     }

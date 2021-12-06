@@ -1,7 +1,7 @@
 package sports.hockey;
 
+import driversAdapters.DataContainer;
 import commands.TeamStatManager;
-import drivers_adapters.DataContainer;
 import team.HockeyTeam;
 
 import java.util.*;

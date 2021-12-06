@@ -1,4 +1,4 @@
-package drivers_adapters;
+package driversAdapters;
 
 import constants.Exceptions;
 import sports.baseball.BaseballPlayer;
@@ -53,7 +53,7 @@ public class CSVDataContainer implements DataContainer {
 
             while ((line = br.readLine()) != null) {
                 String[] playerInfo = line.split(splitBy);
-                if (playerInfo[0].equals(name)) {
+                if (playerInfo[1].toLowerCase().equals(name)) {
                     if (!(found)) {
                         TennisPlayer player = new TennisPlayer(playerInfo[1], playerInfo[2], playerInfo[0],
                                 Integer.parseInt(playerInfo[3]), Integer.parseInt(playerInfo[4]),
@@ -64,7 +64,7 @@ public class CSVDataContainer implements DataContainer {
                         playerMap.put(name, player);
                         found = true;
                     } else {
-                        TennisPlayer player = (TennisPlayer) playerMap.get(playerInfo[1]);
+                        TennisPlayer player = (TennisPlayer) playerMap.get(name);
                         player.addRecord(playerInfo[0], Integer.parseInt(playerInfo[3]),
                                 Integer.parseInt(playerInfo[4]), Integer.parseInt(playerInfo[5]),
                                 Integer.parseInt(playerInfo[6]), Double.parseDouble(playerInfo[7]),
@@ -94,7 +94,7 @@ public class CSVDataContainer implements DataContainer {
 
             while((line = br.readLine()) != null) {
                 String[] playerInfo = line.split(splitBy);
-                if (playerInfo[0].equals(name)) {
+                if (playerInfo[0].toLowerCase().equals(name)) {
                     if (!found) {
                         BaseballPlayer newPlayer = new BaseballPlayer(playerInfo[0], playerInfo[2],
                                 playerInfo[1], playerInfo[3], Integer.parseInt(playerInfo[4]),
@@ -105,7 +105,7 @@ public class CSVDataContainer implements DataContainer {
                         playerMap.put(name, newPlayer);
                         found = true;
                     } else {
-                        ((BaseballPlayer) playerMap.get(playerInfo[0])).addRecord(playerInfo[2],
+                        ((BaseballPlayer) playerMap.get(name)).addRecord(playerInfo[2],
                                 playerInfo[1], playerInfo[3], Integer.parseInt(playerInfo[4]),
                                 Integer.parseInt(playerInfo[5]), Integer.parseInt(playerInfo[6]),
                                 Integer.parseInt(playerInfo[7]), Integer.parseInt(playerInfo[8]),
@@ -135,7 +135,7 @@ public class CSVDataContainer implements DataContainer {
             while((line = br.readLine()) != null) {
                 String[] playerInfo = line.split(splitBy);
 
-                if (playerInfo[0].equals(name)) {
+                if (playerInfo[0].toLowerCase().equals(name)) {
                     if (!found) {
                         HockeyPlayer newPlayer = new HockeyPlayer(playerInfo[0], playerInfo[1],
                                 playerInfo[2], playerInfo[3], playerInfo[4], Integer.valueOf(playerInfo[5]),
@@ -145,7 +145,7 @@ public class CSVDataContainer implements DataContainer {
                         playerMap.put(name, newPlayer);
                         found = true;
                     } else {
-                        ((HockeyPlayer) playerMap.get(playerInfo[0])).addRecord(playerInfo[1],
+                        ((HockeyPlayer) playerMap.get(name)).addRecord(playerInfo[1],
                                 playerInfo[2], playerInfo[3], playerInfo[4], Integer.valueOf(playerInfo[5]),
                                 Integer.valueOf(playerInfo[6]), Integer.valueOf(playerInfo[7]),
                                 Integer.valueOf(playerInfo[8]), Integer.valueOf(playerInfo[9]),

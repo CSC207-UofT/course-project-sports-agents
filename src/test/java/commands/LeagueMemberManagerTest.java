@@ -1,7 +1,7 @@
 package commands;
 
-import drivers_adapters.CSVDataContainer;
-import drivers_adapters.DataContainer;
+import driversAdapters.CSVDataContainer;
+import driversAdapters.DataContainer;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -25,8 +25,8 @@ public class LeagueMemberManagerTest {
     public void testAddMember() throws Exception {
         ArrayList<String> addMemberCommand = new ArrayList<>();
         addMemberCommand.add("add_member");
-        addMemberCommand.add("Paul Gries");
-        assertEquals("New Member Paul Gries with 0 correct bet(s) and " +
+        addMemberCommand.add("paul gries");
+        assertEquals("New Member paul gries with 0 correct bet(s) and " +
                         "0 incorrect bet(s) successfully added.",
                 m.execute(addMemberCommand, container));
 
@@ -38,8 +38,8 @@ public class LeagueMemberManagerTest {
         }
         ArrayList<String> memberInfoCommand = new ArrayList<>();
         memberInfoCommand.add("member_info");
-        memberInfoCommand.add("Paul Gries");
-        assertEquals("Member Paul Gries with 0 correct bet(s) and " +
+        memberInfoCommand.add("paul gries");
+        assertEquals("Member paul gries with 0 correct bet(s) and " +
                         "0 incorrect bet(s)", m.execute(memberInfoCommand, container));
     }
 
@@ -47,10 +47,10 @@ public class LeagueMemberManagerTest {
     public void testCreateMatch() throws Exception {
         ArrayList<String> createMatchCommand = new ArrayList<>();
         createMatchCommand.add("create_match");
-        createMatchCommand.add("Super Bowl");
-        createMatchCommand.add("Ravens");
-        createMatchCommand.add("Owls");
-        assertEquals("New Match between Ravens and Owls successfully created.",
+        createMatchCommand.add("super bowl");
+        createMatchCommand.add("ravens");
+        createMatchCommand.add("owls");
+        assertEquals("New Match between ravens and owls successfully created.",
                 m.execute(createMatchCommand, container));
 
         try {
@@ -69,18 +69,18 @@ public class LeagueMemberManagerTest {
         testCreateMatch();
         ArrayList<String> betCommand = new ArrayList<>();
         betCommand.add("bet");
-        betCommand.add("Paul Gries");
-        betCommand.add("Super Bowl");
-        betCommand.add("Owls");
-        assertEquals("Paul Gries has successfully placed a bet that " +
-                "Owls will win Super Bowl", m.execute(betCommand, container));
+        betCommand.add("paul gries");
+        betCommand.add("super bowl");
+        betCommand.add("owls");
+        assertEquals("paul gries has successfully placed a bet that " +
+                "owls will win super bowl", m.execute(betCommand, container));
 
         try {
             ArrayList<String> betFakeMemberCommand = new ArrayList<>();
             betFakeMemberCommand.add("bet");
-            betFakeMemberCommand.add("Gries Paul");
-            betFakeMemberCommand.add("Super Bowl");
-            betFakeMemberCommand.add("Owls");
+            betFakeMemberCommand.add("gries paul");
+            betFakeMemberCommand.add("super bowl");
+            betFakeMemberCommand.add("owls");
             String failMessage = m.execute(betFakeMemberCommand, container);
             fail();
         } catch (Exception e) {
@@ -90,9 +90,9 @@ public class LeagueMemberManagerTest {
         try {
             ArrayList<String> betFakeMatchCommand = new ArrayList<>();
             betFakeMatchCommand.add("bet");
-            betFakeMatchCommand.add("Paul Gries");
-            betFakeMatchCommand.add("Superb Owl");
-            betFakeMatchCommand.add("Owls");
+            betFakeMatchCommand.add("paul gries");
+            betFakeMatchCommand.add("superb owl");
+            betFakeMatchCommand.add("owls");
             String failMessage = m.execute(betFakeMatchCommand, container);
             fail();
         } catch (Exception e) {
@@ -102,13 +102,13 @@ public class LeagueMemberManagerTest {
         try {
             ArrayList<String> betFakeTeamCommand = new ArrayList<>();
             betFakeTeamCommand.add("bet");
-            betFakeTeamCommand.add("Paul Gries");
-            betFakeTeamCommand.add("Super Bowl");
-            betFakeTeamCommand.add("Dogs");
+            betFakeTeamCommand.add("paul gries");
+            betFakeTeamCommand.add("super bowl");
+            betFakeTeamCommand.add("dogs");
             String failMessage = m.execute(betFakeTeamCommand, container);
             fail();
         } catch (Exception e) {
-            assertEquals(e.getMessage(), "Dogs is not a Team in this Match!");
+            assertEquals(e.getMessage(), "dogs is not a Team in this Match!");
         }
     }
 
@@ -118,9 +118,9 @@ public class LeagueMemberManagerTest {
 
         ArrayList<String> resolveMatchCommand = new ArrayList<>();
         resolveMatchCommand.add("resolve_match");
-        resolveMatchCommand.add("Super Bowl");
-        resolveMatchCommand.add("Owls");
-        assertEquals("Super Bowl was successfully resolved with Owls " +
+        resolveMatchCommand.add("super bowl");
+        resolveMatchCommand.add("owls");
+        assertEquals("super bowl was successfully resolved with owls " +
                         "as the victors.", m.execute(resolveMatchCommand, container));
 
         try {
@@ -132,8 +132,8 @@ public class LeagueMemberManagerTest {
 
         ArrayList<String> memberInfoCommand = new ArrayList<>();
         memberInfoCommand.add("member_info");
-        memberInfoCommand.add("Paul Gries");
-        assertEquals("Member Paul Gries with 1 correct bet(s) and " +
+        memberInfoCommand.add("paul gries");
+        assertEquals("Member paul gries with 1 correct bet(s) and " +
                         "0 incorrect bet(s)", m.execute(memberInfoCommand, container));
     }
 }

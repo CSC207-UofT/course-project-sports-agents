@@ -1,9 +1,7 @@
 package sports.tennis;
 
+import driversAdapters.DataContainer;
 import commands.PlayerStatComparer;
-import drivers_adapters.DataContainer;
-import sports.tennis.TennisPlayer;
-import sports.tennis.TennisPlayerComparator;
 
 import java.util.*;
 
@@ -46,7 +44,7 @@ public class TennisPlayerStatComparer extends PlayerStatComparer {
 
         String season = arguments.get(argSize - 2);
 
-        String statistic = arguments.get(argSize - 1).toLowerCase();
+        String statistic = arguments.get(argSize - 1);
         checkStatistic(statistic);
 
         tennisPlayers.sort(new TennisPlayerComparator(statistic, season));

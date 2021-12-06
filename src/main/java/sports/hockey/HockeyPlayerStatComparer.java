@@ -1,16 +1,15 @@
 package sports.hockey;
 
 import commands.PlayerStatComparer;
-import drivers_adapters.DataContainer;
-import sports.hockey.*;
+import driversAdapters.DataContainer;
 import java.util.*;
 
 public class HockeyPlayerStatComparer extends PlayerStatComparer {
 
     public HockeyPlayerStatComparer() {
         super(
-                new HashSet<>(Arrays.asList("Games Played", "Goals",
-                        "Assists", "Points", "Shots", "Shooting Percentage")));
+                new HashSet<>(Arrays.asList("games played", "goals",
+                        "assists", "points", "shots", "shooting percentage")));
     }
 
     /**
@@ -61,17 +60,17 @@ public class HockeyPlayerStatComparer extends PlayerStatComparer {
                                             String statistic, String season)
             throws Exception {
         switch (statistic) {
-            case "Games Played":
+            case "games played":
                 return getValuesGamesPlayed(players, season);
-            case "Goals":
+            case "goals":
                 return getValuesGoals(players, season);
-            case "Assists":
+            case "assists":
                 return getValuesAssists(players, season);
-            case "Points":
+            case "points":
                 return getValuesPoints(players, season);
-            case "Shots":
+            case "shots":
                 return getValuesShots(players, season);
-            case "Shooting Percentage":
+            case "shooting percentage":
                 return getValuesShootingPercentage(players, season);
             default:
                 throw new Exception("This shouldn't logically be thrown!");

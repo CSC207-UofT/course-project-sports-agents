@@ -1,4 +1,4 @@
-package drivers_adapters;
+package driversAdapters;
 
 import java.util.Scanner;
 
@@ -14,7 +14,7 @@ public class CLIPresenter implements Presenter {
 
     @Override
     public String getInput() {
-        return this.inputScanner.nextLine();
+        return this.inputScanner.nextLine().toLowerCase();
     }
 
     @Override
