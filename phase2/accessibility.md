@@ -1,4 +1,6 @@
-Question 1:
+# Accessibility
+
+## Question 1:
 
 For each Principle of Universal Design, write 2-5 sentences or point form notes explaining which features your program adhere to that principle.
 If you do not have any such features you can either:
@@ -7,22 +9,29 @@ If you do not have any such features you can either:
 
 (b) Explain why the principle does not apply to a program like yours.
 
-Equitable use:
+Equitable use: 
 
 Flexiblity in use:
 
-Simple and intuitive use:
+Simple and intuitive use: 
+Our program adheres to the principle by providing detailed error messages if the user gives invalid input. Specifically, when the user wants to retrieve a 
+statistic for a certain player, the user must input the sport name, the player name, the season, and the name of the statistic. However, if any of this information
+is invalid (not supported by our app), the app will tell the user which piece of information was incorrect. 
 
-Perceptible infromation:
+Perceptible infromation: 
+
 
 Tolerance for error:
+Our program does not any contain hazardous elements
 
 Low physical effort:
+Our program only requires the user to type in keywords. However, to minimize the amount of typing, we could implement a GUI in the future. Instead of having the user type in the needed keywords, the user can interct with icons or buttons that allow the user to select what command they are interested in.
 
-Size and space for approach and use:
+Size and space for approach and use: 
+Our program only requires that the user can see their computer screen and access their keyboard (to type in commands) 
 
 
-Question 2:
+## Question 2:
 
 Write a paragraph about who you would market your program towards, if you were to sell or license your program to customers. This could be a specific 
 category such as "students" or more vague, such as "people who like games". Try to give a bit more detail along with the category.
@@ -34,7 +43,7 @@ category such as "students" or more vague, such as "people who like games". Try 
   also target people that enjoy watching whatever sports we add.
 
 
-Question 3:
+## Question 3:
 
 Write a paragraph about whether or not your program is less likely to be used by certain demographics. For example, a program that converts txt files 
 to files that can be printed by a braille printer are less likely to be used by people who do not read braille.
