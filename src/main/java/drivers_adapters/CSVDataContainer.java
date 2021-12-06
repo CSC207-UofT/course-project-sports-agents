@@ -11,8 +11,7 @@ import team.Team;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Locale;
+import java.util.*;
 
 public class CSVDataContainer implements DataContainer {
 
@@ -218,5 +217,125 @@ public class CSVDataContainer implements DataContainer {
             throw new Exception(Exceptions.FILE_NOT_FOUND);
         }
 
+    public List<String> getAllPlayers(String sport, String season) throws Exception {
+        switch (sport.toLowerCase()) {
+            case "hockey":
+                return getAllHockeyPlayers(season);
+            case "baseball":
+                return getAllBaseballPlayers(season);
+            case "tennis":
+                return getAllTennisPlayers(season);
+        }
+        return null;
+    }
+
+    public List<String> getAllHockeyPlayers(String season) throws Exception {
+        List<String> allPlayers = new ArrayList<>();
+        BufferedReader br = new BufferedReader(new FileReader("hockey.csv"));
+        br.readLine(); //skip the first line.
+        String line;
+        String splitBy = ",";
+
+        while((line = br.readLine()) != null) {
+            String[] playerInfo = line.split(splitBy);
+            if (playerInfo[1].equals(season)){
+                allPlayers.add(playerInfo[0]);
+            }
+        }
+        br.close();
+        return allPlayers;
+
+    }
+
+    public List<String> getAllBaseballPlayers(String season) throws Exception {
+        List<String> allPlayers = new ArrayList<>();
+        BufferedReader br = new BufferedReader(new FileReader("baseball.csv"));
+        br.readLine(); //skip the first line.
+        String line;
+        String splitBy = ",";
+
+        while((line = br.readLine()) != null) {
+            String[] playerInfo = line.split(splitBy);
+            if (playerInfo[2].equals(season)){
+                allPlayers.add(playerInfo[0]);
+            }
+        }
+        br.close();
+        return allPlayers;
+
+    }
+
+    public List<String> getAllTennisPlayers(String season) throws Exception {
+
+        List<String> allPlayers = new ArrayList<>();
+        String line;
+        String splitBy = ",";
+        BufferedReader br = new BufferedReader(new FileReader("tennis.csv"));
+        br.readLine(); //skip the first line
+
+        while ((line = br.readLine()) != null) {
+            String[] playerInfo = line.split(splitBy);
+            if (playerInfo[0].equals(season)) {
+                allPlayers.add(playerInfo[1]);
+            }
+        }
+        br.close();
+        return allPlayers;
+
+    }
+
+    public List<String> getAllPlayersForAllSports() throws IOException {
+        List<String> allNames = new ArrayList<>();
+        allNames.addAll(getAllHockeyPlayers());
+        allNames.addAll(getAllBaseballPlayers());
+        allNames.addAll(getAllTennisPlayers());
+
+        return allNames;
+
+    }
+    public List<String> getAllHockeyPlayers() throws IOException {
+        List<String> allHockeyNames = new ArrayList<>();
+        BufferedReader br = new BufferedReader(new FileReader("hockey.csv"));
+        br.readLine(); //skip the first line.
+        String line;
+        String splitBy = ",";
+
+        while((line = br.readLine()) != null) {
+            String[] playerInfo = line.split(splitBy);
+            if (!allHockeyNames.contains(playerInfo[0].toLowerCase()+ ": Hockey")){
+                allHockeyNames.add(playerInfo[0].toLowerCase()+ ": Hockey");}
+        }
+        return allHockeyNames;
+
+    }
+    public List<String> getAllBaseballPlayers() throws IOException {
+        List<String> allBaseballNames = new ArrayList<>();
+        BufferedReader br = new BufferedReader(new FileReader("baseball.csv"));
+        br.readLine(); //skip the first line.
+        String line;
+        String splitBy = ",";
+
+        while((line = br.readLine()) != null) {
+            String[] playerInfo = line.split(splitBy);
+            if (!allBaseballNames.contains(playerInfo[0].toLowerCase()+ ": Baseball")){
+                allBaseballNames.add(playerInfo[0].toLowerCase()+ ": Baseball");}
+        }
+        return allBaseballNames;
+
+    }
+
+    public List<String> getAllTennisPlayers() throws IOException {
+        List<String> allTennisNames = new ArrayList<>();
+        BufferedReader br = new BufferedReader(new FileReader("tennis.csv"));
+        br.readLine(); //skip the first line.
+        String line;
+        String splitBy = ",";
+
+        while((line = br.readLine()) != null) {
+            String[] playerInfo = line.split(splitBy);
+            if (!allTennisNames.contains(playerInfo[1].toLowerCase()+ ": Tennis")){
+                allTennisNames.add(playerInfo[1].toLowerCase()+ ": Tennis");}
+        }
+        return allTennisNames;
     }
 }

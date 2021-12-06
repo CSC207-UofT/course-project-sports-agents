@@ -51,6 +51,18 @@ public class CommandManager {
 
         HockeyTeamStatManager hockeyTeamStatManager = new HockeyTeamStatManager();
         this.commandDictionary.put("get_team", new TeamStatManagerFacade(hockeyTeamStatManager));
+      
+        GetListSports getListSports = new GetListSports();
+        this.commandDictionary.put("get_list_sports", getListSports);
+
+        GetListStats getListStats = new GetListStats();
+        this.commandDictionary.put("get_list_stats", getListStats);
+
+        GetListPlayers getListPlayers = new GetListPlayers();
+        this.commandDictionary.put("get_list_players", getListPlayers);
+
+        Search search = new Search();
+        this.commandDictionary.put("search_player", search);
 
     }
 
