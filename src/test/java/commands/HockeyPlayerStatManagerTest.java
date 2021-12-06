@@ -7,6 +7,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 import player.HockeyPlayer;
+import sports.hockey.HockeyPlayerStatManager;
 
 import java.util.ArrayList;
 import java.util.Arrays;

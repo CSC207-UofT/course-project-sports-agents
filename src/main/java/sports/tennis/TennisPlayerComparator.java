@@ -1,4 +1,4 @@
-package player;
+package sports.tennis;
 
 import java.util.Comparator;
 

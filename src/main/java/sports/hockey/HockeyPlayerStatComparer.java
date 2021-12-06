@@ -1,5 +1,7 @@
-package commands;
+package sports.hockey;
 
+import commands.PlayerStatComparer;
+import sports.hockey.*;
 import driversAdapters.DataContainer;
 import player.HockeyPlayer;
 import player.HockeyPlayerComparator;

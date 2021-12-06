@@ -1,10 +1,10 @@
 package driversAdapters;
 
 import constants.Exceptions;
-import player.BaseballPlayer;
-import player.HockeyPlayer;
+import sports.baseball.BaseballPlayer;
+import sports.hockey.HockeyPlayer;
 import player.Player;
-import player.TennisPlayer;
+import sports.tennis.TennisPlayer;
 import team.HockeyTeam;
 import team.Team;
 

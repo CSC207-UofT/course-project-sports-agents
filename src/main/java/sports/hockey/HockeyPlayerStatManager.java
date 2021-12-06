@@ -1,5 +1,7 @@
-package commands;
+package sports.hockey;
 
+import commands.PlayerStatManager;
+import sports.hockey.HockeyPlayer;
 import driversAdapters.DataContainer;
 import player.HockeyPlayer;
 import java.util.ArrayList;

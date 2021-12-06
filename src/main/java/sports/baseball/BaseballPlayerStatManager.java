@@ -1,7 +1,9 @@
-package commands;
+package sports.baseball;
 
 import driversAdapters.DataContainer;
+import commands.PlayerStatManager;
 import player.*;
+import sports.baseball.*;
 
 import java.util.*;
 
@@ -47,7 +49,7 @@ public class BaseballPlayerStatManager extends PlayerStatManager {
                 return formatStat(player, statistic, player.getStatHits(season).toString());
             case "home runs":
                 return formatStat(player, statistic, player.getStatHomeRuns(season).toString());
-            case "runs batted In":
+            case "runs batted in":
                 return formatStat(player, statistic, player.getStatRunsBattedIn(season).toString());
             case "strike outs":
                 return formatStat(player, statistic, player.getStatStrikeOuts(season).toString());

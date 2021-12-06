@@ -1,4 +1,4 @@
-package player;
+package sports.hockey;
 
 import java.util.Comparator;
 
