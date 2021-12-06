@@ -104,6 +104,7 @@ public class TennisPlayer extends Player {
         this.addStatReturnGamesWon(season, returnGamesWon);
         this.addStatBreakPointsConverted(season, breakPointsConverted);
         this.addStatReturnPointsWon(season, returnPointsWon);
+        this.addSeason(season);
     }
 
     /**
@@ -273,7 +274,7 @@ public class TennisPlayer extends Player {
      */
     public void addStatReturnGamesWon(String season, double returnGamesWon) throws Exception {
         checkForSeason(this.returnGamesWonRecord, season, false);
-        this.serveGamesWonRecord.put(season, returnGamesWon);
+        this.returnGamesWonRecord.put(season, returnGamesWon);
     }
 
     /**
@@ -331,22 +332,17 @@ public class TennisPlayer extends Player {
         return this.returnPointsWonRecord.get(season);
     }
 
-    /**
-     * Return this player's data (all stats) for a given season in string format (assuming player participated in given
-     * season)
-     * @param season the season of interest
-     * @return string of player's data for given season
-     */
-    public String printSeasonData(String season) {
-        return "Nationality: " + this.country + "\nRank: " + this.rankRecord.get(season) + "\nMatches: "
-                + this.matchesRecord.get(season) + "\nAces: " + this.acesRecord.get(season) +
-                "\nDouble Faults: " + this.doubleFaultsRecord.get(season) + "\nPercentage of Serve Points Won: " +
-                this.servePointsWonRecord.get(season) + "\nPercentage of Break Points Saved: " +
-                this.breakPointsSavedRecord.get(season) + "\nPercentage of Serve Games Won: " +
-                this.serveGamesWonRecord.get(season) + "\nPercentage of Return Games Won: " +
-                this.returnGamesWonRecord.get(season) + "\nPercentage of Break Points Converted: " +
-                this.breakPointsConvertedRecord.get(season) + "\nPercentage of Return Points Won: " +
-                this.returnPointsWonRecord.get(season);
+
+    public String getSeasonData(String season) throws Exception {
+        return "Nationality: " + this.country + "\nRank: " + this.getStatRank(season) + "\nMatches: "
+                + this.getStatMatches(season) + "\nAces: " + this.getStatAces(season) +
+                "\nDouble Faults: " + this.getStatDoubleFaults(season) + "\nPercentage of Serve Points Won: " +
+                this.getStatServePointsWon(season) + "\nPercentage of Break Points Saved: " +
+                this.getStatBreakPointsSaved(season) + "\nPercentage of Serve Games Won: " +
+                this.getStatServeGamesWon(season) + "\nPercentage of Return Games Won: " +
+                this.getStatReturnGamesWon(season) + "\nPercentage of Break Points Converted: " +
+                this.getStatBreakPointsConverted(season) + "\nPercentage of Return Points Won: " +
+                this.getStatReturnPointsWon(season);
     }
 
     @Override

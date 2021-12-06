@@ -53,7 +53,7 @@ public class CSVDataContainer implements DataContainer {
 
             while ((line = br.readLine()) != null) {
                 String[] playerInfo = line.split(splitBy);
-                if (playerInfo[1].toLowerCase().equals(name)) {
+                if (playerInfo[1].equalsIgnoreCase(name)) {
                     if (!(found)) {
                         TennisPlayer player = new TennisPlayer(playerInfo[1], playerInfo[2], playerInfo[0],
                                 Integer.parseInt(playerInfo[3]), Integer.parseInt(playerInfo[4]),

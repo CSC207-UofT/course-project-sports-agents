@@ -282,12 +282,8 @@ public class HockeyPlayer extends Player {
     }
 
 
-    /**
-     * Return a string representation of this player's data for the given season
-     * @param season needed season
-     * @return the string of player's stats for season
-     */
-    public String printSeasonData(String season) {
+    @Override
+    public String getSeasonData(String season) {
         return "Team: " + this.teamRecord.get(season) + "\nSkater Shoots: " + this.skaterShootsRecord.get(season) +
                 "\nPosition: " + this.positionRecord.get(season) + "\nGames Played: " +
                 this.gamesPlayedRecord.get(season) +
