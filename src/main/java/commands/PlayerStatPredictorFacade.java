@@ -54,7 +54,7 @@ public class PlayerStatPredictorFacade implements Command {
      * @throws Exception if insufficiently many arguments are provided (here, 5)
      */
     private void checkArgumentLength(ArrayList<String> arguments) throws Exception {
-        if (arguments.size() < 5) {
+        if (arguments.size() < 3) {
             throw new Exception(Exceptions.WRONG_ARGUMENT_NUMBER);
         }
     }
