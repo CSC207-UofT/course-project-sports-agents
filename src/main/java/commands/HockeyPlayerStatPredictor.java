@@ -35,7 +35,7 @@ public class HockeyPlayerStatPredictor extends PlayerStatPredictor {
         List<Integer> seasonInts = this.getXAxis(playerSeasons);
 
         double prediction = linearExtrapolate(seasonInts, pastStats);
-        return formatOut(playerSeasons, pastStats, prediction);
+        return formatOut(playerSeasons, statistic, pastStats, prediction);
     }
 
     /**

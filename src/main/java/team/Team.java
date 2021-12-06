@@ -1,201 +1,111 @@
 package team;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import match.Match;
+import player.Player;
 
 public abstract class Team {
-    private String name;
-    private String homeCity;
-    private List<String> players;
-    private List<Match> playedGames;
-    private int totalGamesPlayed;
-    private int wins;
-    private int losses;
-    private int ties;
-    private int rank;
 
-    public Team() {
-        this.name = "";
-        this.homeCity = "";
-        this.totalGamesPlayed = 0;
-        this.wins = 0;
-        this.losses = 0;
-        this.ties = 0;
-    }
+    protected final String name;
+    protected final List<String> seasons;
 
-    public Team(String name, String homeCity, List<String> players,
-                List<Match> playedGames, int totalGamesPlayed, int wins,
-                int losses, int ties, int rank) {
+    public Team(String name) {
         this.name = name;
-        this.homeCity = homeCity;
-        this.players = players;
-        this.playedGames = playedGames;
-        this.totalGamesPlayed = totalGamesPlayed;
-        this.wins = wins;
-        this.losses = losses;
-        this.ties = ties;
+        this.seasons = new ArrayList<>();
     }
 
     /**
-     * Get name
-     *
-     * @return name
+     * Precondition: seasons has all seasons in correct order
+     * @return list of seasons the team has participated in
+     */
+    public List<String> getSeasons() {
+        return this.seasons;
+    }
+
+    /**
+     * Add a new season to the list of seasons
+     * Assumes given season is the newest
+     * @param season new season to record
+     */
+    public void addSeason(String season) {
+        if (!this.seasons.contains(season)) {
+            this.seasons.add(season);
+        }
+    }
+
+    /**
+     * Return this team's name
+     * @return player's name
      */
     public String getName() {
         return this.name;
     }
 
+
     /**
-     * Set name
-     *
-     * @param name name
+     * Check if a map containing statistics has a record for a given season
+     * @param dataMap the map to check
+     * @param season the season to check for
+     * @param expected the expectation for if data is stored
+     * @throws Exception if the expectation is violated
      */
-    public void setName(String name) {
-        this.name = name;
+    public void checkForSeason(Map dataMap, String season,
+                               boolean expected) throws Exception {
+        if (dataMap.containsKey(season) != expected) {
+            // We expect data, but there is none
+            if (expected) {
+                throw new Exception("Information on " + season +
+                        " is not recorded!");
+            }
+            // We expect nothing, but there is data
+            else {
+                throw new Exception("Information on " + season +
+                        " already exists!");
+            }
+        }
     }
 
     /**
-     * Get home city
-     *
-     * @return homeCity
+     * Create a string representation of this team
+     * @return team in string representation
      */
-    public String getHomeCity() {
-        return homeCity;
+    @Override
+    public String toString() {
+        return this.name;
     }
 
     /**
-     * Set home city
-     *
-     * @param homeCity home city
+     * Compare two teams to check if they are equal
+     * @param obj another player
+     * @return true if the two teams are the same, and false otherwise
      */
-    public void setHomeCity(String homeCity) {
-        this.homeCity = homeCity;
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (this.getClass() != obj.getClass()) {
+            return false;
+        }
+        Team other = (Team) obj;
+        return this.name.equals(other.name);
     }
 
     /**
-     * Get players
-     *
-     * @return players
+     * Implement hashCode, for using Players in hashmaps
+     * @return hashCode of player name
      */
-    public List<String> getPlayers() {
-        return players;
+    @Override
+    public int hashCode() {
+        return this.name.hashCode();
     }
 
-    /**
-     * Set players
-     *
-     * @param players players
-     */
-    public void setPlayers(List<String> players) {
-        this.players = players;
-    }
 
-    /**
-     * Get played games
-     *
-     * @return playedGames
-     */
-    public List<Match> getPlayedGames() {
-        return playedGames;
-    }
-
-    /**
-     * Set played games
-     *
-     * @param playedGames played games
-     */
-    public void setPlayedGames(List<Match> playedGames) {
-        this.playedGames = playedGames;
-    }
-
-    /**
-     * Get total games played
-     *
-     * @return totalGamesPlayed
-     */
-    public int getTotalGamesPlayed() {
-        return this.totalGamesPlayed;
-    }
-
-    /**
-     * Set total games played
-     *
-     * @param totalGamesPlayed total games played
-     */
-    public void setTotalGamesPlayed(int totalGamesPlayed) {
-        this.totalGamesPlayed = totalGamesPlayed;
-    }
-
-    /**
-     * Get wins
-     *
-     * @return wins
-     */
-    public int getWins() {
-        return this.wins;
-    }
-
-    /**
-     * Set wins
-     *
-     * @param wins wins
-     */
-    public void setWins(int wins) {
-        this.wins = wins;
-    }
-
-    /**
-     * Get losses
-     *
-     * @return losses
-     */
-    public int getLosses() {
-        return this.losses;
-    }
-
-    /**
-     * Set losses
-     *
-     * @param losses losses
-     */
-    public void setLosses(int losses) {
-        this.losses = losses;
-    }
-
-    /**
-     * Get ties
-     *
-     * @return ties
-     */
-    public int getTies() {
-        return this.ties;
-    }
-
-    /**
-     * Set ties
-     *
-     * @param ties ties
-     */
-    public void setTies(int ties) {
-        this.ties = ties;
-    }
-
-    /**
-     * Get rank
-     *
-     * @return rank
-     */
-    public int getRank() {
-        return this.rank;
-    }
-
-    /**
-     * Set rank
-     *
-     * @param rank rank
-     */
-    public void setRank(int rank) {
-        this.rank = rank;
-    }
 }

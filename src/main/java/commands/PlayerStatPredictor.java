@@ -105,18 +105,23 @@ public abstract class PlayerStatPredictor implements Command {
      * @param prediction the prediction for next season
      * @return the formatted output to display
      */
-    protected String formatOut(List<String> seasons, List<Double> pastStats,
+    protected String formatOut(List<String> seasons, String statName, List<Double> pastStats,
                                double prediction) {
-        StringBuilder out = new StringBuilder("Previous Statistics:\n");
+        StringBuilder output = new StringBuilder();
+        output.append("------------------------------------\n");
+        output.append(String.format("%15s %20s %n", "Season", statName));
+        output.append("------------------------------------\n");
         // Precondition: seasons.size() = pastStats.size()
         for (int i = 0; i != seasons.size(); i += 1) {
-            out.append(seasons.get(i));
-            out.append(": ");
-            out.append(pastStats.get(i));
-            out.append("\n");
+//            output.append(seasons.get(i));
+//            output.append(": ");
+//            output.append(pastStats.get(i));
+//            output.append("\n");
+            output.append(String.format("%15s %20s %n", seasons.get(i), pastStats.get(i)));
         }
-        out.append("Prediction for next season: ");
-        out.append(prediction);
-        return out.toString();
+        output.append(String.format("%15s %20f", "Next Season", prediction));
+//        output.append("Prediction for next season: ");
+//        output.append(prediction);
+        return output.toString();
     }
 }

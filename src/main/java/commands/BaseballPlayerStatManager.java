@@ -35,25 +35,25 @@ public class BaseballPlayerStatManager extends PlayerStatManager {
 
         switch (statistic) {
             case "Team":
-                return formatStat(player, player.getStatTeam(season));
+                return formatStat(player, statistic, player.getStatTeam(season));
             case "position":
-                return formatStat(player, player.getStatPosition(season));
+                return formatStat(player, statistic, player.getStatPosition(season));
             case "Games Played":
-                return formatStat(player, player.getStatGamesPlayed(season).toString());
+                return formatStat(player, statistic, player.getStatGamesPlayed(season).toString());
             case "At Bats":
-                return formatStat(player, player.getStatAtBats(season).toString());
+                return formatStat(player, statistic, player.getStatAtBats(season).toString());
             case "Runs":
-                return formatStat(player, player.getStatRuns(season).toString());
+                return formatStat(player, statistic, player.getStatRuns(season).toString());
             case "Hits":
-                return formatStat(player, player.getStatHits(season).toString());
+                return formatStat(player, statistic, player.getStatHits(season).toString());
             case "Home Runs":
-                return formatStat(player, player.getStatHomeRuns(season).toString());
+                return formatStat(player, statistic, player.getStatHomeRuns(season).toString());
             case "Runs Batted In":
-                return formatStat(player, player.getStatRunsBattedIn(season).toString());
+                return formatStat(player, statistic, player.getStatRunsBattedIn(season).toString());
             case "Strike Outs":
-                return formatStat(player, player.getStatStrikeOuts(season).toString());
+                return formatStat(player, statistic, player.getStatStrikeOuts(season).toString());
             case "Average":
-                return formatStat(player, player.getStatAvg(season).toString());
+                return formatStat(player, statistic, player.getStatAvg(season).toString());
             default:
                 throw new Exception("This shouldn't be thrown, logically");
         }

@@ -1,82 +1,52 @@
 package commands;
 
-import java.util.ArrayList;
+import constants.Exceptions;
+import team.Team;
 
-import drivers_adapters.DataContainer;
-import team.TeamConstants;
-import team.TeamStats;
+import java.util.List;
+import java.util.Set;
 
-public abstract class TeamStatComparer implements Command, TeamConstants {
-    protected final TeamStatManager teamStatManager;
-    protected final int TEAM_NAME_1_SLOT = 1;
-    protected final int TEAM_NAME_2_SLOT = 2;
-    protected final int REQUESTED_STAT_SLOT = 3;
 
-    public TeamStatComparer(TeamStatManager teamStatManager) {
-        this.teamStatManager = teamStatManager;
+/**
+ * An abstract class for comparing two or more players based on a specific statistic.
+ * Each sport has a subclass handling that sport's statistic.
+ */
+public abstract class TeamStatComparer implements Command {
+    protected final Set<String> allowedStatsToCompare;
+
+    public TeamStatComparer(Set<String> allowedStatsToCompare) {
+        this.allowedStatsToCompare = allowedStatsToCompare;
     }
 
-    protected int compare(float teamStat1, float teamStat2){
-        if(teamStat1 == -1 && teamStat2 == -1){
-            return -1;
-        }
-        if (teamStat1 > teamStat2) {
-            return 1;
-        } else if (teamStat1 < teamStat2) {
-            return 2;
-        } else {
-            return 0;
+    /**
+     * @param statistic a statistic name, to check if it can be compared
+     * @throws Exception if the statistic cannot be compared
+     */
+    protected void checkStatistic(String statistic) throws Exception {
+        if (!this.allowedStatsToCompare.contains(statistic)) {
+            throw new Exception(Exceptions.INVALID_STATISTIC);
         }
     }
 
     /**
-     * Compares the stats of 2 teams
-     *
-     * @param team1 first team to compare
-     * @param team2 second team to compare
-     * @param teamStat the stat to compare
-     * @return 1 if team 1 is higher, 2 if team 2 is higher, 0 if team 1 equals team 2
+     * Format the comparisons for display on the console
+     * @param teams the Teams, sorted from best to worst stat
+     * @param statName the name of the statistic that was used to compare
+     * @param statValues the values corresponding to each Player
+     * @return the formatted output to displayed
      */
-    public abstract int compareStats(String team1, String team2, TeamStats teamStat);
+    protected <T extends Team> String formatCompare(List<T> teams, String statName,
+                                                    List<String> statValues) {
 
-    public String formatOut(ArrayList<String> arguments, int result) {
-        if (result == 1) {
-            return arguments.get(TEAM_NAME_1_SLOT) +
-                   " has a higher performance in " +
-                   arguments.get(REQUESTED_STAT_SLOT) +
-                   " than " +
-                   arguments.get(TEAM_NAME_2_SLOT);
-        } else if (result == 2) {
-            return arguments.get(TEAM_NAME_2_SLOT) +
-                   " has a higher performance in " +
-                   arguments.get(REQUESTED_STAT_SLOT) +
-                   " than " +
-                   arguments.get(TEAM_NAME_1_SLOT);
-        } else {
-            return arguments.get(TEAM_NAME_1_SLOT) +
-                   " has an equal performance in " +
-                   arguments.get(REQUESTED_STAT_SLOT) +
-                   " than " +
-                   arguments.get(TEAM_NAME_2_SLOT);
+        StringBuilder output = new StringBuilder();
+        output.append("-----------------------------------------------------\n");
+        output.append(String.format("%5s %20s %20s %n", "Rank", "Name", "Games Played"));
+        output.append("-----------------------------------------------------\n");
+        // Precondition: players.size() == statValues.size()
+        for (int i = 0; i != teams.size(); i += 1) {
+            Team team = teams.get(i);
+            output.append(String.format("%5s %20s %20s %n", i+1, team.getName(), statValues.get(i)));
         }
-    }
-
-    @Override
-    public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
-        String teamName1 = arguments.get(TEAM_NAME_1_SLOT);
-        String teamName2 = arguments.get(TEAM_NAME_2_SLOT);
-        String requestedStat = arguments.get(REQUESTED_STAT_SLOT);
-
-        if (requestedStat.equals(KEY_ALL_STATS)) {
-            return null;
-        } else {
-            TeamStats parsedStat = teamStatManager.parseStat(requestedStat);
-
-            if (parsedStat == null) {
-                throw new Exception("Stat does not exist");
-            }
-            return formatOut(arguments,
-                    compareStats(teamName1, teamName2, parsedStat));
-        }
+        return output.toString();
     }
 }

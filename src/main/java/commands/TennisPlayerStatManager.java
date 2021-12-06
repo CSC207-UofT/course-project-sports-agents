@@ -14,8 +14,9 @@ public class TennisPlayerStatManager extends PlayerStatManager {
 
     public TennisPlayerStatManager() {
         super(
-                new HashSet<>(Arrays.asList("Age", "Aces", "Double Faults",
-                        "Serve Points", "First Serves", "Break Points Saved")));
+                new HashSet<>(Arrays.asList("country", "rank", "matches", "aces", "double faults", "serve points won",
+                        "break points saved", "serve games won", "return games won", "break points converted",
+                        "return points won", "all")));
     }
 
     /**
@@ -32,38 +33,46 @@ public class TennisPlayerStatManager extends PlayerStatManager {
         String name = arguments.get(1);
         TennisPlayer player = (TennisPlayer) container.getPlayer("tennis", name);
 
-        // TODO: It'd be nice to have all stats as cases, but this is different
-        // because it doesn't need the season.
+
         if (arguments.size() == 3 && arguments.get(2).equals("Country")) {
-            return formatStat(player, player.getCountry());
+            return formatStat(player, "Country", player.getCountry());
         }
 
         String season = arguments.get(2);
 
-        String statistic = arguments.get(3);
+        String statistic = arguments.get(3).toLowerCase();
         checkStatistic(statistic);
 
         switch (statistic) {
-            case "Age":
-                return formatStat(player,
-                        player.getStatAge(season).toString());
-            case "Aces":
-                return formatStat(player,
+            case "rank":
+                return formatStat(player, statistic,
+                        player.getStatRank(season).toString());
+            case "matches":
+                return formatStat(player, statistic,
+                        player.getStatMatches(season).toString());
+            case "aces":
+                return formatStat(player, statistic,
                         player.getStatAces(season).toString());
-            case "Double Faults":
-                return formatStat(player,
-                        player.getStatDoubleFaults(season).toString());
-            case "Serve Points":
-                return formatStat(player,
-                        player.getStatServePoints(season).toString());
-            case "First Serves":
-                return formatStat(player,
-                        player.getStatFirstServes(season).toString());
-            case "Break Points Saved":
-                return formatStat(player,
+            case "serve points won":
+                return formatStat(player, statistic,
+                        player.getStatServePointsWon(season).toString());
+            case "break points saved":
+                return formatStat(player, statistic,
                         player.getStatBreakPointsSaved(season).toString());
-            case "All Stats":
-                return formatStat(player, player.printSeasonData(season));
+            case "serve games won":
+                return formatStat(player, statistic,
+                        player.getStatServeGamesWon(season).toString());
+            case "return games won":
+                return formatStat(player, statistic,
+                        player.getStatReturnGamesWon(season).toString());
+            case "break points converted":
+                return formatStat(player, statistic,
+                        player.getStatBreakPointsConverted(season).toString());
+            case "return points won":
+                return formatStat(player, statistic,
+                        player.getStatReturnPointsWon(season).toString());
+            case "all":
+                return formatStat(player, statistic, player.printSeasonData(season));
             default:
                 throw new Exception("This shouldn't be thrown, logically");
         }

@@ -18,15 +18,15 @@ public class TennisPlayerStatManagerTest {
     @Before
     public void setUp() throws Exception {
         tennisPlayerStatManager = new TennisPlayerStatManager();
-        TennisPlayer player1 = new TennisPlayer("Player 1", "CAN",
-                "20202021", 20, 20, 15, 15,
-                10, 10);
-        TennisPlayer player2 = new TennisPlayer("Player 2", "CAN",
-                "20202021", 20, 15, 20, 10,
-                15, 20);
-        TennisPlayer player3 = new TennisPlayer("Player 3", "CAN",
-                "20202021", 20, 10, 10, 20,
-                20, 15);
+        TennisPlayer player1 = new TennisPlayer("The Greatest 1", "CAN","2018",
+                1, 3, 20, 11, 64.0, 69.0,
+                85.0, 35.0, 35.0, 43.0);
+        TennisPlayer player2 = new TennisPlayer("The Greatest 2", "USA", "2018",
+                20, 2, 12, 17, 56.0, 67.0,
+                81.0, 23.0, 32.0, 33.0);
+        TennisPlayer player3 = new TennisPlayer("The Worst", "ENG", "2018",
+                30, 1, 10, 23, 54.0, 10.0,
+                32.0, 10.0, 8.0, 9.0);
 
         CSVDataContainer container = new CSVDataContainer();
         container.playerMap.put("Player 1", player1);
@@ -161,54 +161,6 @@ public class TennisPlayerStatManagerTest {
         assertEquals(expected3, output3);
     }
 
-    @Test(timeout = 100, expected = Exception.class)
-    public void testExecuteServePointsNoPlayer() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
-                "Paul Gries", "20202021", "Serve Points"));
-        String fail = this.tennisPlayerStatManager.execute(arguments, container);
-    }
-
-    @Test(timeout = 100, expected = Exception.class)
-    public void testExecuteServePointsNoSeason() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
-                "Player 1", "20192020", "Serve Points"));
-        String fail = this.tennisPlayerStatManager.execute(arguments, container);
-    }
-
-    @Test(timeout = 100)
-    public void testExecuteFirstServesPasses() throws Exception {
-        ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("Tennis",
-                "Player 1", "20202021", "First Serves"));
-        String output1 = this.tennisPlayerStatManager.execute(arguments1, container);
-        String expected1 = "Player 1: 10";
-        assertEquals(expected1, output1);
-
-        ArrayList<String> arguments2 = new ArrayList<>(Arrays.asList("Tennis",
-                "Player 2", "20202021", "First Serves"));
-        String output2 = this.tennisPlayerStatManager.execute(arguments2, container);
-        String expected2 = "Player 2: 15";
-        assertEquals(expected2, output2);
-
-        ArrayList<String> arguments3 = new ArrayList<>(Arrays.asList("Tennis",
-                "Player 3", "20202021", "First Serves"));
-        String output3 = this.tennisPlayerStatManager.execute(arguments3, container);
-        String expected3 = "Player 3: 20";
-        assertEquals(expected3, output3);
-    }
-
-    @Test(timeout = 100, expected = Exception.class)
-    public void testExecuteFirstServesNoPlayer() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
-                "Paul Gries", "20202021", "First Serves"));
-        String fail = this.tennisPlayerStatManager.execute(arguments, container);
-    }
-
-    @Test(timeout = 100, expected = Exception.class)
-    public void testExecuteFirstServesNoSeason() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
-                "Player 1", "20192020", "First Serves"));
-        String fail = this.tennisPlayerStatManager.execute(arguments, container);
-    }
 
     @Test(timeout = 100)
     public void testExecuteBreakPointsSavedPointsPasses() throws Exception {

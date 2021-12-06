@@ -40,7 +40,7 @@ public class TennisPlayerStatPredictor extends PlayerStatPredictor {
         List<Double> pastStats = getPastStats(player, statistic, playerSeasons);
 
         double prediction = linearExtrapolate(seasonInts, pastStats);
-        return formatOut(playerSeasons, pastStats, prediction);
+        return formatOut(playerSeasons, statistic, pastStats, prediction);
     }
 
 
@@ -56,19 +56,60 @@ public class TennisPlayerStatPredictor extends PlayerStatPredictor {
                                       List<String> seasons)
             throws Exception {
         switch (stat) {
-            case "Aces":
+            case "rank":
+                return this.getPastRanks(player, seasons);
+            case "matches":
+                return this.getPastMatches(player, seasons);
+            case "aces":
                 return this.getPastAces(player, seasons);
-            case "Double Faults":
+            case "double faults":
                 return this.getPastDoubleFaults(player, seasons);
-            case "Break Points Saved":
+            case "serve points won":
+                return this.getPastServePointsWon(player, seasons);
+            case "break points saved":
                 return this.getPastBreakPointsSaved(player, seasons);
-            case "First Serves":
-                return this.getPastFirstServes(player, seasons);
-            case "Serve Points":
-                return this.getPastServePoints(player, seasons);
+            case "serve games won":
+                return this.getPastServeGamesWon(player, seasons);
+            case "return games won":
+                return this.getPastReturnGamesWon(player, seasons);
+            case "break points converted":
+                return this.getPastBreakPointsConverted(player, seasons);
+            case "return points won":
+                return this.getPastReturnPointsWon(player, seasons);
             default:
                 throw new Exception("should not be thrown logically");
         }
+    }
+
+    /**
+     * Return the player's rank in the given list of seasons, assuming the player participated in those seasons
+     * @param player player of interest
+     * @param seasons seasons to consider
+     * @return list of past ranks
+     * @throws Exception if a season has no rank data
+     */
+    private List<Double> getPastRanks(TennisPlayer player, List<String> seasons) throws Exception {
+        List<Double> pastRanks = new ArrayList<>();
+        for (String season : seasons) {
+            pastRanks.add((double) player.getStatRank(season));
+        }
+        return pastRanks;
+    }
+
+    /**
+     * Return the number of matches the player participated in for the given seasons, assuming the player
+     * participated in those seasons
+     * @param player player of interest
+     * @param seasons seasons to consider
+     * @return list of past numbers of matches
+     * @throws Exception if a season has no matches data
+     */
+    private List<Double> getPastMatches(TennisPlayer player, List<String> seasons) throws Exception {
+        List<Double> pastMatches = new ArrayList<>();
+        for (String season : seasons) {
+            pastMatches.add((double) player.getStatMatches(season));
+        }
+        return pastMatches;
     }
 
     /**
@@ -90,7 +131,6 @@ public class TennisPlayerStatPredictor extends PlayerStatPredictor {
 
     /**
      * Return the number of double faults a tennis player has made in the given seasons
-     *
      * @param player needed player
      * @param seasons seasons to consider
      * @return list of past double faults
@@ -99,63 +139,103 @@ public class TennisPlayerStatPredictor extends PlayerStatPredictor {
     private List<Double> getPastDoubleFaults(TennisPlayer player,
                                              List<String> seasons)
             throws Exception {
-        List<Double> doubleFaults = new ArrayList<>();
+        List<Double> pastDoubleFaults = new ArrayList<>();
         for (String season : seasons) {
-            doubleFaults.add((double) player.getStatDoubleFaults(season));
+            pastDoubleFaults.add((double) player.getStatDoubleFaults(season));
         }
-        return doubleFaults;
+        return pastDoubleFaults;
     }
 
     /**
-     * Return the number of aces a tennis player has scored in the given seasons
+     * Return the percentage of serve points a player has won in the given seasons
      * @param player needed player
      * @param seasons seasons to consider
-     * @return list of past aces
-     * @throws Exception if a season has no break points data
+     * @return list of past percentages of serve points won
+     * @throws Exception if a given season has no serve points won data
      */
-    private List<Double> getPastBreakPointsSaved(TennisPlayer player,
-                                                 List<String> seasons)
-            throws Exception {
-        List<Double> pastBreakPoints = new ArrayList<>();
+    private List<Double> getPastServePointsWon(TennisPlayer player, List<String> seasons) throws Exception {
+        List<Double> pastServePointsWon = new ArrayList<>();
         for (String season : seasons) {
-            pastBreakPoints.add((double) player.getStatBreakPointsSaved(season));
+            pastServePointsWon.add(player.getStatServePointsWon(season));
         }
-        return pastBreakPoints;
+        return pastServePointsWon;
     }
 
     /**
-     * Return the number of first serves a tennis player has made in the given seasons
+     * Return the percentage of break points a tennis player has saved in the given seasons
      * @param player needed player
      * @param seasons seasons to consider
-     * @return list of past first serves
-     * @throws Exception if a season has no first serves data
+     * @return list of past percentages of break points saved
+     * @throws Exception if a season has no break points saved data
      */
-    private List<Double> getPastFirstServes(TennisPlayer player,
-                                            List<String> seasons)
-            throws Exception {
-        List<Double> pastFirstServes = new ArrayList<>();
-
+    private List<Double> getPastBreakPointsSaved(TennisPlayer player, List<String> seasons) throws Exception {
+        List<Double> pastBreakPointsSaved = new ArrayList<>();
         for (String season : seasons) {
-            pastFirstServes.add((double) player.getStatFirstServes(season));
+            pastBreakPointsSaved.add(player.getStatBreakPointsSaved(season));
         }
-        return pastFirstServes;
+        return pastBreakPointsSaved;
     }
 
     /**
-     * Return the number of serve points a tennis player has scored in the given seasons
+     * Return the percentage of serve games a tennis player has won in the given seasons
      * @param player needed player
      * @param seasons seasons to consider
-     * @return list of past serve points
+     * @return list of past percentage of serve games won
+     * @throws Exception if a season has no serve games won data
+     */
+    private List<Double> getPastServeGamesWon(TennisPlayer player, List<String> seasons) throws Exception {
+        List<Double> pastServeGamesWon = new ArrayList<>();
+        for (String season : seasons) {
+            pastServeGamesWon.add(player.getStatServeGamesWon(season));
+        }
+        return pastServeGamesWon;
+    }
+
+    /**
+     * Return the percentage of return games a tennis player has won in the given seasons
+     * @param player needed player
+     * @param seasons seasons to consider
+     * @return list of past percentage of return games won
+     * @throws Exception if a season has no return games won data
+     */
+    private List<Double> getPastReturnGamesWon(TennisPlayer player, List<String> seasons) throws Exception {
+        List<Double> pastReturnGamesWon = new ArrayList<>();
+        for (String season : seasons) {
+            pastReturnGamesWon.add(player.getStatReturnGamesWon(season));
+        }
+        return pastReturnGamesWon;
+    }
+
+    /**
+     * Return the percentage of break points a tennis player has converted in the given seasons
+     * @param player needed player
+     * @param seasons seasons to consider
+     * @return list of past percentages of break points converted
+     * @throws Exception if a season has no break points converted data
+     */
+    private List<Double> getPastBreakPointsConverted(TennisPlayer player, List<String> seasons) throws Exception {
+        List<Double> pastBreakPointsConverted = new ArrayList<>();
+        for (String season : seasons) {
+            pastBreakPointsConverted.add(player.getStatBreakPointsConverted(season));
+        }
+        return pastBreakPointsConverted;
+    }
+
+    /**
+     * Return the percentage of return points a tennis player has scored in the given seasons
+     * @param player needed player
+     * @param seasons seasons to consider
+     * @return list of past percentage of return points won
      * @throws Exception if a season has no aces data
      */
-    private List<Double> getPastServePoints(TennisPlayer player,
+    private List<Double> getPastReturnPointsWon(TennisPlayer player,
                                             List<String> seasons)
             throws Exception {
-        List<Double> pastServePoints = new ArrayList<>();
+        List<Double> pastReturnPointsWon = new ArrayList<>();
 
         for (String season : seasons) {
-            pastServePoints.add((double) player.getStatServePoints(season));
+            pastReturnPointsWon.add(player.getStatReturnPointsWon(season));
         }
-        return pastServePoints;
+        return pastReturnPointsWon;
     }
 }

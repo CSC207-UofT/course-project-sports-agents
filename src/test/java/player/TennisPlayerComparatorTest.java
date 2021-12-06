@@ -11,15 +11,15 @@ public class TennisPlayerComparatorTest {
 
     @Before
     public void setUp() throws Exception {
-        this.player1 = new TennisPlayer("The Greatest 1", "CAN",
-                "20202021", 26, 10, 10, 10,
-                10, 10);
-        this.player2 = new TennisPlayer("The Greatest 2", "USA",
-                "20202021", 26, 10, 10, 10,
-                10, 10);
-        this.player3 = new TennisPlayer("The Worst", "ENG",
-                "20202021", 22, 5, 5, 5,
-                5, 5);
+        this.player1 = new TennisPlayer("The Greatest 1", "CAN","2018",
+                1, 3, 20, 11, 64.0, 69.0,
+                85.0, 35.0, 35.0, 43.0);
+        this.player2 = new TennisPlayer("The Greatest 2", "USA", "2018",
+                20, 2, 12, 17, 56.0, 67.0,
+                81.0, 23.0, 32.0, 33.0);
+        this.player3 = new TennisPlayer("The Worst", "ENG", "2018",
+                30, 1, 10, 23, 54.0, 10.0,
+                32.0, 10.0, 8.0, 9.0);
     }
 
     @Test(timeout = 100)
