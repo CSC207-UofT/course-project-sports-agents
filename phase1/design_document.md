@@ -126,7 +126,7 @@ case we want to add more features to our app.
 We used the feature packaging strategy. All entity classes related to teams are 
 in the `team` package, all entity classes related to players are in the `player`
 package, all entity classes related to the fantasy league members are in the 
-`leagueMember`, all use case classes which handle user commands are in the 
+`FantasyLeague`, all use case classes which handle user commands are in the 
 `command` package, and all drivers responsible for program operation are in the
 `driversAdapters` package. This packaging strategy worked best for us, because
 all of us found it to be the most straightforward and easiest to work with. Additionally,

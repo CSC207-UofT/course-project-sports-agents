@@ -1,25 +1,26 @@
-package commands;
+package FantasyLeague;
 
+import commands.Command;
 import constants.Exceptions;
 import driversAdapters.DataContainer;
-import leagueMember.LeagueMember;
-import leagueMember.LeagueStorage;
-import match.Match;
+import FantasyLeague.LeagueMember;
+import FantasyLeague.LeagueStorage;
+import FantasyLeague.Match;
 
 import java.io.*;
 import java.util.HashMap;
 import java.util.ArrayList;
 
-public class LeagueMemberManager implements Command {
+public class FantasyLeagueManager implements Command {
     // MemberMap stores the League Members of the fantasy league
     public HashMap<String, LeagueMember> LeagueMemberMap;
     // GameMap stores the ongoing Games of the fantasy league
     public HashMap<String, Match> MatchMap;
 
     /**
-     * Create a new MemberManager with no Members and no Games
+     * Create a new FantasyLeagueManager with no Members and no Games
      */
-    public LeagueMemberManager() {
+    public FantasyLeagueManager() {
         this.LeagueMemberMap = new HashMap<>();
         this.MatchMap = new HashMap<>();
     }

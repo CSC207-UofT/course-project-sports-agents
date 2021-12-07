@@ -1,7 +1,7 @@
 package driversAdapters;
 
-import player.Player;
-import team.Team;
+import sports.Player;
+import sports.Team;
 
 import java.io.*;
 import java.util.*;

@@ -1,7 +1,7 @@
 package commands;
 
 import constants.Exceptions;
-import player.Player;
+import sports.Player;
 import java.util.*;
 
 /**

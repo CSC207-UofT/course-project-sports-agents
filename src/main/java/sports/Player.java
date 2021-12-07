@@ -1,26 +1,32 @@
-package team;
+package sports;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import match.Match;
-import player.Player;
+/**
+ * This is an abstract class for any future players that need to be added.
+ */
 
-public abstract class Team {
-
+public abstract class Player {
     protected final String name;
+    // Keys are seasons, values are Team name
+    protected final HashMap<String, String> teamRecord;
     protected final List<String> seasons;
 
-    public Team(String name) {
+    /**
+     * @param name the Player's name
+     */
+    public Player(String name) {
         this.name = name;
+        this.teamRecord = new HashMap<>();
         this.seasons = new ArrayList<>();
     }
 
     /**
      * Precondition: seasons has all seasons in correct order
-     * @return list of seasons the team has participated in
+     * @return list of seasons the player has participated in
      */
     public List<String> getSeasons() {
         return this.seasons;
@@ -38,13 +44,33 @@ public abstract class Team {
     }
 
     /**
-     * Return this team's name
+     * Return this player's name
      * @return player's name
      */
     public String getName() {
         return this.name;
     }
 
+    /**
+     * Record the Player played under a given team in the given season
+     * @param season the season the Player played in
+     * @param team the team the Player played with
+     * @throws Exception if information on that season is already recorded
+     */
+    public void addStatTeam(String season, String team) throws Exception {
+        checkForSeason(this.teamRecord, season, false);
+        this.teamRecord.put(season, team);
+    }
+
+    /**
+     * @param season the season of interest
+     * @return the Player's team for the season of interest
+     * @throws Exception if the Player did not perform in that season
+     */
+    public String getStatTeam(String season) throws Exception {
+        checkForSeason(this.teamRecord, season, true);
+        return this.teamRecord.get(season);
+    }
 
     /**
      * Check if a map containing statistics has a record for a given season
@@ -58,20 +84,20 @@ public abstract class Team {
         if (dataMap.containsKey(season) != expected) {
             // We expect data, but there is none
             if (expected) {
-                throw new Exception("Information on " + season +
+                throw new Exception("Information on Season " + season +
                         " is not recorded!");
             }
             // We expect nothing, but there is data
             else {
-                throw new Exception("Information on " + season +
+                throw new Exception("Information on Season " + season +
                         " already exists!");
             }
         }
     }
 
     /**
-     * Create a string representation of this team
-     * @return team in string representation
+     * Create a string representation of this player
+     * @return player in string representation
      */
     @Override
     public String toString() {
@@ -79,9 +105,9 @@ public abstract class Team {
     }
 
     /**
-     * Compare two teams to check if they are equal
+     * Compare two players to check if they are equal
      * @param obj another player
-     * @return true if the two teams are the same, and false otherwise
+     * @return true if the two players are the same, and false otherwise
      */
     @Override
     public boolean equals(Object obj) {
@@ -94,7 +120,7 @@ public abstract class Team {
         if (this.getClass() != obj.getClass()) {
             return false;
         }
-        Team other = (Team) obj;
+        Player other = (Player) obj;
         return this.name.equals(other.name);
     }
 
@@ -107,5 +133,12 @@ public abstract class Team {
         return this.name.hashCode();
     }
 
-
+    /**
+     * Return a string representation of the player's data (all their stats) for the given season
+     * @param season season of interest
+     * @return string of all stats for the player
+     * @throws Exception if any of the stats is missing data for the given season
+     */
+    public abstract String getSeasonData(String season) throws Exception;
 }
+

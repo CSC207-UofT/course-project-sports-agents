@@ -1,6 +1,6 @@
 package sports.baseball;
 
-import player.*;
+import sports.Player;
 
 import java.util.*;
 

@@ -1,5 +1,6 @@
-package commands;
+package FantasyLeague;
 
+import FantasyLeague.FantasyLeagueManager;
 import driversAdapters.CSVDataContainer;
 import driversAdapters.DataContainer;
 import org.junit.Before;
@@ -10,12 +11,12 @@ import java.util.ArrayList;
 import static org.junit.Assert.*;
 
 public class LeagueMemberManagerTest {
-    private LeagueMemberManager m;
+    private FantasyLeagueManager m;
     private DataContainer container;
 
     @Before
     public void setUp() {
-        m = new LeagueMemberManager();
+        m = new FantasyLeagueManager();
         DataContainer container = new CSVDataContainer();
     }
 

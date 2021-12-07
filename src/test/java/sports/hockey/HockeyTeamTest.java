@@ -1,7 +1,9 @@
-package team;
+package sports.hockey;
 
 import org.junit.Before;
 import org.junit.Test;
+import sports.hockey.HockeyTeam;
+
 import static org.junit.Assert.*;
 
 public class HockeyTeamTest {
