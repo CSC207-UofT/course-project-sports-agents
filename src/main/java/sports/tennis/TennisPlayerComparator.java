@@ -25,7 +25,7 @@ public class TennisPlayerComparator implements Comparator<TennisPlayer> {
 
     public int compare(TennisPlayer p1, TennisPlayer p2) {
         try {
-            switch(this.compareBy) {
+            switch(this.compareBy.toLowerCase()) {
                 case "rank":
                     return compareRank(p1, p2);
                 case "matches":
