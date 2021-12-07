@@ -1,6 +1,4 @@
-package match;
-
-import leagueMember.LeagueMember;
+package FantasyLeague;
 
 import java.io.Serializable;
 import java.util.ArrayList;

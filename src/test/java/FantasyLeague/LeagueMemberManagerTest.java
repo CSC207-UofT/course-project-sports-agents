@@ -1,4 +1,4 @@
-package commands;
+package FantasyLeague;
 
 import driversAdapters.CSVDataContainer;
 import driversAdapters.DataContainer;
@@ -10,13 +10,13 @@ import java.util.ArrayList;
 import static org.junit.Assert.*;
 
 public class LeagueMemberManagerTest {
-    private LeagueMemberManager m;
+    private FantasyLeagueManager m;
     private DataContainer container;
 
     @Before
     public void setUp() {
-        m = new LeagueMemberManager();
-        DataContainer container = new CSVDataContainer();
+        m = new FantasyLeagueManager();
+        container = new CSVDataContainer();
     }
 
     // TODO: Break up these tests. Most rely on multiple methods.

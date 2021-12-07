@@ -1,8 +1,6 @@
 package sports.tennis;
 
-import constants.Exceptions;
-
-import player.*;
+import sports.Player;
 
 import java.util.HashMap;
 

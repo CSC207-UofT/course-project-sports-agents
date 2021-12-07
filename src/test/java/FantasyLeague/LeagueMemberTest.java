@@ -1,4 +1,4 @@
-package leagueMember;
+package FantasyLeague;
 
 import org.junit.Before;
 import org.junit.Test;

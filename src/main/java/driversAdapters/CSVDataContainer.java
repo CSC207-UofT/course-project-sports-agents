@@ -3,10 +3,10 @@ package driversAdapters;
 import constants.Exceptions;
 import sports.baseball.BaseballPlayer;
 import sports.hockey.HockeyPlayer;
-import player.Player;
+import sports.Player;
 import sports.tennis.TennisPlayer;
-import team.HockeyTeam;
-import team.Team;
+import sports.hockey.HockeyTeam;
+import sports.Team;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

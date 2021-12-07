@@ -1,6 +1,6 @@
 package sports.hockey;
 
-import player.*;
+import sports.Player;
 
 import java.util.HashMap;
 

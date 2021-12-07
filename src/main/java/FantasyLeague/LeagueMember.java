@@ -1,4 +1,4 @@
-package leagueMember;
+package FantasyLeague;
 
 import java.io.Serializable;
 
