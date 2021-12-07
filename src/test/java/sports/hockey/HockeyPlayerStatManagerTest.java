@@ -42,32 +42,23 @@ public class HockeyPlayerStatManagerTest {
         ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("hockey",
                 "player 1", "2020-2021", "team"));
         String output1 = this.hockeyPlayerStatManager.execute(arguments1, container);
-        String expected1 = "-------------------------------------------\n" +
-                           "      Name                 team \n" +
-                           "-------------------------------------------\n" +
-                           "  Player 1        TOR \n" +
-                           "-------------------------------------------";
-        assertEquals(expected1, output1);
+        String outputSub1 = output1.substring(140, 143);
+        String expected1 = "TOR";
+        assertEquals(expected1, outputSub1);
 
         ArrayList<String> arguments2 = new ArrayList<>(Arrays.asList("hockey",
                 "player 2", "2020-2021", "team"));
         String output2 = this.hockeyPlayerStatManager.execute(arguments2, container);
-        String expected2 = "-------------------------------------------\n" +
-                           "      Name                 team \n" +
-                           "-------------------------------------------\n" +
-                           "  Player 2        COL \n" +
-                           "-------------------------------------------";
-        assertEquals(expected2, output2);
+        String outputSub2 = output2.substring(140, 143);
+        String expected2 = "COL";
+        assertEquals(expected2, outputSub2);
 
         ArrayList<String> arguments3 = new ArrayList<>(Arrays.asList("hockey",
                 "player 3", "2020-2021", "team"));
         String output3 = this.hockeyPlayerStatManager.execute(arguments3, container);
-        String expected3 = "-------------------------------------------\n" +
-                           "      Name                 team \n" +
-                           "-------------------------------------------\n" +
-                           "  Player 3        STL \n" +
-                           "-------------------------------------------";
-        assertEquals(expected3, output3);
+        String outputSub3 = output3.substring(140, 143);
+        String expected3 = "STL";
+        assertEquals(expected3, outputSub3);
     }
 
     @Test(timeout = 100, expected = Exception.class)
