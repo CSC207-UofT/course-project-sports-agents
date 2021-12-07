@@ -133,13 +133,17 @@ public class HockeyPlayerStatComparerTest {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey", "player 1", "player 2",
                 "player 3", "20202021", "points"));
         String output = this.hockeyPlayerStatComparer.execute(arguments, container);
-        String expected = "-----------------------------------------------------\n" +
-                          " Rank                 Name               points \n" +
-                          "-----------------------------------------------------\n" +
-                          "    1             Player 3                   60 \n" +
-                          "    2             Player 1                   50 \n" +
-                          "    3             Player 2                   40 \n";
-        assertEquals(expected, output);
+        String outputPlayer3 = output.substring(176, 184);
+        String expectedPlayer3 = "Player 3";
+        String outputPlayer1 = output.substring(226, 234);
+        String expectedPlayer1 = "Player 1";
+        String outputPlayer2 = output.substring(276, 284);
+        String expectedPlayer2 = "Player 2";
+
+        assertEquals(expectedPlayer3, outputPlayer3);
+        assertEquals(expectedPlayer2, outputPlayer2);
+        assertEquals(expectedPlayer1, outputPlayer1);
+
     }
 
     @Test(timeout = 100, expected = Exception.class)
