@@ -41,7 +41,7 @@ public class TennisPlayerStatManager extends PlayerStatManager {
 
         switch (statistic) {
             case "country":
-                checkCountrySeason(player, season);
+                countryCheckSeason(player, season);
                 return formatStat(player, statistic, player.getCountry());
             case "rank":
                 return formatStat(player, statistic,
@@ -86,7 +86,7 @@ public class TennisPlayerStatManager extends PlayerStatManager {
      * @param season the season of interest
      * @throws Exception if the player did not participate in that season
      */
-    private void checkCountrySeason(TennisPlayer player, String season) throws Exception {
+    private void countryCheckSeason(TennisPlayer player, String season) throws Exception {
         if (!(player.getSeasons().contains(season))) {
             throw new Exception(Exceptions.INVALID_SEASON);
         }

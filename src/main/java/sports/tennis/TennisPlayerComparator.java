@@ -12,7 +12,7 @@ public class TennisPlayerComparator implements Comparator<TennisPlayer> {
     final String season;
 
     /**
-     * Create a new HockeyPlayerComparator
+     * Create a new TennisPlayerComparator
      * Precondition: compareBy is one of "Age", "Aces", "Double Faults",
      * "Serve Points", "First Serves", "Break Points Saved"
      * @param compareBy Compare by this statistic

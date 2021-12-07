@@ -17,7 +17,6 @@ public class TennisPlayerStatComparerTest {
     public void setUp() throws Exception {
         this.tennisPlayerStatComparer = new TennisPlayerStatComparer();
         this.container = new CSVDataContainer();
-
     }
 
     @Test(timeout = 100)

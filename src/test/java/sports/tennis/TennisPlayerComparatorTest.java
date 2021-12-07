@@ -8,7 +8,6 @@ public class TennisPlayerComparatorTest {
     TennisPlayer player2;
     TennisPlayer player3;
 
-
     @Before
     public void setUp() throws Exception {
         this.player1 = new TennisPlayer("Player One", "CAN","2018",
