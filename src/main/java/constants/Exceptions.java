@@ -14,5 +14,6 @@ public class Exceptions {
     public static final String NO_MATCH = "Given match does not exist yet";
     public static final String INVALID_DATA = "Not enough data to make a prediction";
     public static final String FILE_NOT_FOUND = "Needed file could not be found";
+    public static final String INVALID_SEASON = "Data on given season not found";
 
 }

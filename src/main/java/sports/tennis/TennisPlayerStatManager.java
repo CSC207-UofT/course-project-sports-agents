@@ -1,5 +1,6 @@
 package sports.tennis;
 
+import constants.Exceptions;
 import driversAdapters.DataContainer;
 import commands.PlayerStatManager;
 
@@ -40,6 +41,7 @@ public class TennisPlayerStatManager extends PlayerStatManager {
 
         switch (statistic) {
             case "country":
+                countryCheckSeason(player, season);
                 return formatStat(player, statistic, player.getCountry());
             case "rank":
                 return formatStat(player, statistic,
@@ -75,6 +77,18 @@ public class TennisPlayerStatManager extends PlayerStatManager {
                 return formatStat(player, statistic, player.getSeasonData(season));
             default:
                 throw new Exception("This shouldn't be thrown, logically");
+        }
+    }
+
+    /**
+     * Check if the player participated in the given season
+     * @param player the player of interest
+     * @param season the season of interest
+     * @throws Exception if the player did not participate in that season
+     */
+    private void countryCheckSeason(TennisPlayer player, String season) throws Exception {
+        if (!(player.getSeasons().contains(season))) {
+            throw new Exception(Exceptions.INVALID_SEASON);
         }
     }
 }

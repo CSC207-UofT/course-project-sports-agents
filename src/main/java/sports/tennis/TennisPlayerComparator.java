@@ -12,7 +12,7 @@ public class TennisPlayerComparator implements Comparator<TennisPlayer> {
     final String season;
 
     /**
-     * Create a new HockeyPlayerComparator
+     * Create a new TennisPlayerComparator
      * Precondition: compareBy is one of "Age", "Aces", "Double Faults",
      * "Serve Points", "First Serves", "Break Points Saved"
      * @param compareBy Compare by this statistic
@@ -54,7 +54,7 @@ public class TennisPlayerComparator implements Comparator<TennisPlayer> {
     }
 
     private int compareRank(TennisPlayer p1, TennisPlayer p2) throws Exception {
-        return p1.getStatRank(this.season) - p2.getStatRank(this.season);
+        return p2.getStatRank(this.season) - p1.getStatRank(this.season);
     }
 
     private int compareMatches(TennisPlayer p1, TennisPlayer p2) throws Exception {
@@ -68,8 +68,8 @@ public class TennisPlayerComparator implements Comparator<TennisPlayer> {
     }
 
     private int compareDoubleFaults(TennisPlayer p1, TennisPlayer p2) throws Exception {
-        return p1.getStatDoubleFaults(this.season) -
-                p2.getStatDoubleFaults(this.season);
+        return p2.getStatDoubleFaults(this.season) -
+                p1.getStatDoubleFaults(this.season);
     }
 
     private int compareServePointsWon(TennisPlayer p1, TennisPlayer p2) throws Exception {
