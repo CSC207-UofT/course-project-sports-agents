@@ -152,7 +152,7 @@ public class BaseballPlayerTest {
         double fail = this.player.getStatAvg("1999-2000");
     }
 
-    @Test(timeout = 100)
+    @Test(timeout = 200)
     public void testGetSeasonData() throws Exception {
         assertEquals("Team: BOS\n" +
                 "Position: 2B\n" +
