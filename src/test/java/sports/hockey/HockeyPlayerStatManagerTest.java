@@ -136,32 +136,23 @@ public class HockeyPlayerStatManagerTest {
         ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("hockey",
                 "player 1", "2020-2021", "position"));
         String output1 = this.hockeyPlayerStatManager.execute(arguments1, container);
-        String expected1 = "-------------------------------------------\n" +
-                           "      Name             position \n" +
-                           "-------------------------------------------\n" +
-                           "  Player 1          C \n" +
-                           "-------------------------------------------";
-        assertEquals(expected1, output1);
+        char outputChar1 = output1.charAt(142);
+        char expected1 = 'C';
+        assertEquals(expected1, outputChar1);
 
         ArrayList<String> arguments2 = new ArrayList<>(Arrays.asList("hockey",
                 "player 2", "2020-2021", "position"));
         String output2 = this.hockeyPlayerStatManager.execute(arguments2, container);
-        String expected2 = "-------------------------------------------\n" +
-                           "      Name             position \n" +
-                           "-------------------------------------------\n" +
-                           "  Player 2          R \n" +
-                           "-------------------------------------------";
-        assertEquals(expected2, output2);
+        char outputChar2 = output2.charAt(142);
+        char expected2 = 'R';
+        assertEquals(expected2, outputChar2);
 
         ArrayList<String> arguments3 = new ArrayList<>(Arrays.asList("hockey",
                 "player 3", "2020-2021", "position"));
         String output3 = this.hockeyPlayerStatManager.execute(arguments3, container);
-        String expected3 = "-------------------------------------------\n" +
-                           "      Name             position \n" +
-                           "-------------------------------------------\n" +
-                           "  Player 3          C \n" +
-                           "-------------------------------------------";
-        assertEquals(expected3, output3);
+        char outputChar3 = output3.charAt(142);
+        char expected3 = 'C';
+        assertEquals(expected3, outputChar3);
     }
 
     @Test(timeout = 100, expected = Exception.class)
