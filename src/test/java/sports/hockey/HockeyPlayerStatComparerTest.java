@@ -43,11 +43,11 @@ public class HockeyPlayerStatComparerTest {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey", "player 1", "player 2",
                 "player 3", "20202021", "games played"));
         String output = this.hockeyPlayerStatComparer.execute(arguments, container);
-        String outputPlayer3 = output.substring(176, 184);
+        String outputPlayer3 = output.substring(175, 183);
         String expectedPlayer3 = "Player 3";
-        String outputPlayer2 = output.substring(226, 234);
+        String outputPlayer2 = output.substring(224, 232);
         String expectedPlayer2 = "Player 2";
-        String outputPlayer1 = output.substring(276, 284);
+        String outputPlayer1 = output.substring(273, 281);
         String expectedPlayer1 = "Player 1";
 
         assertEquals(expectedPlayer3, outputPlayer3);
@@ -74,11 +74,11 @@ public class HockeyPlayerStatComparerTest {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey", "player 1", "player 2",
                 "player 3", "20202021", "goals"));
         String output = this.hockeyPlayerStatComparer.execute(arguments, container);
-        String outputPlayer3 = output.substring(176, 184);
+        String outputPlayer3 = output.substring(175, 183);
         String expectedPlayer3 = "Player 3";
-        String outputPlayer2 = output.substring(226, 234);
+        String outputPlayer2 = output.substring(224, 232);
         String expectedPlayer2 = "Player 2";
-        String outputPlayer1 = output.substring(276, 284);
+        String outputPlayer1 = output.substring(273, 281);
         String expectedPlayer1 = "Player 1";
 
         assertEquals(expectedPlayer3, outputPlayer3);
@@ -105,12 +105,12 @@ public class HockeyPlayerStatComparerTest {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey", "player 1", "player 2",
                 "player 3", "20202021", "assists"));
         String output = this.hockeyPlayerStatComparer.execute(arguments, container);
-        String outputPlayer1 = output.substring(176, 184);
-        String expectedPlayer1 = "Player 1";
-        String outputPlayer2 = output.substring(226, 234);
+        String outputPlayer3 = output.substring(175, 183);
+        String expectedPlayer3 = "Player 1";
+        String outputPlayer2 = output.substring(224, 232);
         String expectedPlayer2 = "Player 2";
-        String outputPlayer3 = output.substring(276, 284);
-        String expectedPlayer3 = "Player 3";
+        String outputPlayer1 = output.substring(273, 281);
+        String expectedPlayer1 = "Player 3";
 
         assertEquals(expectedPlayer3, outputPlayer3);
         assertEquals(expectedPlayer2, outputPlayer2);
@@ -136,12 +136,12 @@ public class HockeyPlayerStatComparerTest {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey", "player 1", "player 2",
                 "player 3", "20202021", "points"));
         String output = this.hockeyPlayerStatComparer.execute(arguments, container);
-        String outputPlayer3 = output.substring(176, 184);
+        String outputPlayer3 = output.substring(175, 183);
         String expectedPlayer3 = "Player 3";
-        String outputPlayer1 = output.substring(226, 234);
-        String expectedPlayer1 = "Player 1";
-        String outputPlayer2 = output.substring(276, 284);
-        String expectedPlayer2 = "Player 2";
+        String outputPlayer2 = output.substring(224, 232);
+        String expectedPlayer2 = "Player 1";
+        String outputPlayer1 = output.substring(273, 281);
+        String expectedPlayer1 = "Player 2";
 
         assertEquals(expectedPlayer3, outputPlayer3);
         assertEquals(expectedPlayer2, outputPlayer2);
@@ -168,11 +168,11 @@ public class HockeyPlayerStatComparerTest {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey", "player 1", "player 2",
                 "player 3", "20202021", "shots"));
         String output = this.hockeyPlayerStatComparer.execute(arguments, container);
-        String outputPlayer2 = output.substring(176, 184);
-        String expectedPlayer2 = "Player 2";
-        String outputPlayer3 = output.substring(226, 234);
-        String expectedPlayer3 = "Player 3";
-        String outputPlayer1 = output.substring(276, 284);
+        String outputPlayer3 = output.substring(175, 183);
+        String expectedPlayer3 = "Player 2";
+        String outputPlayer2 = output.substring(224, 232);
+        String expectedPlayer2 = "Player 3";
+        String outputPlayer1 = output.substring(273, 281);
         String expectedPlayer1 = "Player 1";
 
         assertEquals(expectedPlayer3, outputPlayer3);
@@ -199,12 +199,12 @@ public class HockeyPlayerStatComparerTest {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey", "player 1", "player 2",
                 "player 3", "20202021", "shooting percentage"));
         String output = this.hockeyPlayerStatComparer.execute(arguments, container);
-        String outputPlayer2 = output.substring(176, 184);
-        String expectedPlayer2 = "Player 2";
-        String outputPlayer1 = output.substring(226, 234);
-        String expectedPlayer1 = "Player 1";
-        String outputPlayer3 = output.substring(276, 284);
-        String expectedPlayer3 = "Player 3";
+        String outputPlayer3 = output.substring(175, 183);
+        String expectedPlayer3 = "Player 2";
+        String outputPlayer2 = output.substring(224, 232);
+        String expectedPlayer2 = "Player 1";
+        String outputPlayer1 = output.substring(273, 281);
+        String expectedPlayer1 = "Player 3";
 
         assertEquals(expectedPlayer3, outputPlayer3);
         assertEquals(expectedPlayer2, outputPlayer2);
