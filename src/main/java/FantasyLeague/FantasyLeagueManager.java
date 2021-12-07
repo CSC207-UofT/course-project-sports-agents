@@ -25,6 +25,13 @@ public class FantasyLeagueManager implements Command {
         this.MatchMap = new HashMap<>();
     }
 
+    /**
+     * Execute a command related to the Fantasy League system
+     * @param arguments the arguments for the command
+     * @param container DataContainer with player and team data
+     * @return the String to return to the user
+     * @throws Exception if the command is invalid
+     */
     public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
         switch (arguments.get(0)) {
             case "add_member":

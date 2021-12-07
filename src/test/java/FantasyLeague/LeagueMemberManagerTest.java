@@ -1,6 +1,5 @@
 package FantasyLeague;
 
-import FantasyLeague.FantasyLeagueManager;
 import driversAdapters.CSVDataContainer;
 import driversAdapters.DataContainer;
 import org.junit.Before;
@@ -17,7 +16,7 @@ public class LeagueMemberManagerTest {
     @Before
     public void setUp() {
         m = new FantasyLeagueManager();
-        DataContainer container = new CSVDataContainer();
+        container = new CSVDataContainer();
     }
 
     // TODO: Break up these tests. Most rely on multiple methods.

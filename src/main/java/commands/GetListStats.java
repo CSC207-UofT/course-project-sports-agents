@@ -5,9 +5,17 @@ import driversAdapters.DataContainer;
 
 import java.util.*;
 
-public class GetListStats implements Command{
+public class GetListStats implements Command {
+    /**
+     * Return the stats for the given sport
+     * @param arguments a string array of form {"sport"}
+     * @param container a container of sport data
+     * @return the stats for the given sport
+     * @throws Exception if the sport is not implemented, or no sport argument is given
+     */
     @Override
     public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
+        checkArgLength(arguments);
         String sportName = arguments.get(0);
         switch (sportName.toLowerCase()){
             case "hockey":
@@ -32,6 +40,16 @@ public class GetListStats implements Command{
 
     }
 
+    /**
+     * Check that only one argument is provided
+     * @param arguments user argument for which sport to return stats for
+     * @throws Exception if the user provided more or less than one argument
+     */
+    private void checkArgLength(ArrayList<String> arguments) throws Exception {
+        if (arguments.size() != 1) {
+            throw new Exception(Exceptions.WRONG_ARGUMENT_NUMBER);
+        }
+    }
 
 
 }
