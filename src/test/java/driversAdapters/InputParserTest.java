@@ -84,24 +84,15 @@ public class InputParserTest {
     public void testParsePredictPlayerStat() {
         String shortInput = "predict_player_stat hockey " +
                             "\"auston matthews\" " +
-                            "2019-2020 2020-2021 \"games played\"";
+                            "\"games played\"";
         String verboseInput = "predict_player_stat --sport hockey " +
                               "--player-name \"auston matthews\" " +
-                              "--seasons 2019-2020 2020-2021 " +
                               "--stat \"games played\"";
         String verboseInputReordered = "predict_player_stat --stat \"games played\" " +
-                                       "--seasons 2019-2020 2020-2021 " +
                                        "--player-name \"auston matthews\" " +
                                        "--sport hockey";
         String keyword = "predict_player_stat";
-        String verboseInputMultiSeason = "predict_player_stat --sport hockey " +
-                                       "--player-name \"auston matthews\" " +
-                                       "--seasons 2018-2019 2019-2020 2020-2021 " +
-                                       "--stat \"games played\"";
-        List<String> arguments = Arrays.asList("hockey", "auston matthews",
-                "2019-2020", "2020-2021", "games played");
-        List<String> argumentsMultiSeason = Arrays.asList("hockey", "auston matthews",
-                "2018-2019", "2019-2020", "2020-2021", "games played");
+        List<String> arguments = Arrays.asList("hockey", "auston matthews", "games played");
 
 
         InputParser shortParser = new InputParser(shortInput);
@@ -115,10 +106,6 @@ public class InputParserTest {
         InputParser verboseParserReordered = new InputParser(verboseInputReordered);
         assertEquals(keyword, verboseParserReordered.getKeyword());
         assertEquals(arguments, verboseParserReordered.getArguments());
-
-        InputParser verboseParserMultiSeason = new InputParser(verboseInputMultiSeason);
-        assertEquals(keyword, verboseParserMultiSeason.getKeyword());
-        assertEquals(argumentsMultiSeason, verboseParserMultiSeason.getArguments());
     }
 
     @Test
