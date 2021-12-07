@@ -65,8 +65,8 @@ public class FantasyLeagueManager implements Command {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(path));
             LeagueStorage loaded = (LeagueStorage) in.readObject();
 
-            this.LeagueMemberMap = loaded.LeagueMemberMap;
-            this.MatchMap = loaded.MatchMap;
+            this.LeagueMemberMap = loaded.getLeagueMemberMap();
+            this.MatchMap = loaded.getMatchMap();
 
             in.close();
 
