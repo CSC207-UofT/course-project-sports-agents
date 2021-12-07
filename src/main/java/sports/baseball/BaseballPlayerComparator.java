@@ -89,7 +89,7 @@ public class BaseballPlayerComparator implements Comparator<BaseballPlayer> {
     }
     private int compareAverage(BaseballPlayer b1, BaseballPlayer b2)
             throws Exception {
-        return (int) (b2.getStatAvg(this.season) -
+        return (int) Math.signum(b2.getStatAvg(this.season) -
                 b1.getStatAvg(this.season));
     }
 }

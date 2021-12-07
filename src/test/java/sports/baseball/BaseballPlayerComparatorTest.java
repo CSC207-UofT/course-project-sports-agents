@@ -32,7 +32,7 @@ public class BaseballPlayerComparatorTest {
 
     @Test(timeout = 100)
     public void testCompareAtBats() {
-        BaseballPlayerComparator comparator = new BaseballPlayerComparator("At Bats",
+        BaseballPlayerComparator comparator = new BaseballPlayerComparator("at bats",
                 "2019-2020");
         int compareEquals = comparator.compare(this.playerOne, this.playerThree);
         assert(compareEquals == 0);
@@ -108,5 +108,9 @@ public class BaseballPlayerComparatorTest {
                 "2019-2020");
         double compareEquals = comparator.compare(this.playerOne, this.playerThree);
         assert(compareEquals == 0);
+        double compareGreater = comparator.compare(this.playerTwo, this.playerThree);
+        assert(compareGreater > 0);
+        double compareLess = comparator.compare(this.playerOne, this.playerTwo);
+        assert(compareLess < 0);
     }
 }
