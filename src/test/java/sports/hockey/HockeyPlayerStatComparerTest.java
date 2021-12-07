@@ -165,13 +165,16 @@ public class HockeyPlayerStatComparerTest {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey", "player 1", "player 2",
                 "player 3", "20202021", "shots"));
         String output = this.hockeyPlayerStatComparer.execute(arguments, container);
-        String expected = "-----------------------------------------------------\n" +
-                          " Rank                 Name                shots \n" +
-                          "-----------------------------------------------------\n" +
-                          "    1             Player 2                   60 \n" +
-                          "    2             Player 3                   50 \n" +
-                          "    3             Player 1                   40 \n";
-        assertEquals(expected, output);
+        String outputPlayer2 = output.substring(176, 184);
+        String expectedPlayer2 = "Player 2";
+        String outputPlayer3 = output.substring(226, 234);
+        String expectedPlayer3 = "Player 3";
+        String outputPlayer1 = output.substring(276, 284);
+        String expectedPlayer1 = "Player 1";
+
+        assertEquals(expectedPlayer3, outputPlayer3);
+        assertEquals(expectedPlayer2, outputPlayer2);
+        assertEquals(expectedPlayer1, outputPlayer1);
     }
 
     @Test(timeout = 100, expected = Exception.class)
@@ -193,14 +196,16 @@ public class HockeyPlayerStatComparerTest {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey", "player 1", "player 2",
                 "player 3", "20202021", "shooting percentage"));
         String output = this.hockeyPlayerStatComparer.execute(arguments, container);
-        String expected = "-----------------------------------------------------\n" +
-                          " Rank                 Name  shooting percentage \n" +
-                          "-----------------------------------------------------\n" +
-                          "    1             Player 2                 60.0 \n" +
-                          "    2             Player 1                 50.0 \n" +
-                          "    3             Player 3                 40.0 \n";
+        String outputPlayer2 = output.substring(176, 184);
+        String expectedPlayer2 = "Player 2";
+        String outputPlayer1 = output.substring(226, 234);
+        String expectedPlayer1 = "Player 1";
+        String outputPlayer3 = output.substring(276, 284);
+        String expectedPlayer3 = "Player 3";
 
-        assertEquals(expected, output);
+        assertEquals(expectedPlayer3, outputPlayer3);
+        assertEquals(expectedPlayer2, outputPlayer2);
+        assertEquals(expectedPlayer1, outputPlayer1);
     }
 
     @Test(timeout = 100, expected = Exception.class)
