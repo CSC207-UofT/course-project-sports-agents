@@ -13,9 +13,9 @@ import java.util.ArrayList;
 
 public class FantasyLeagueManager implements Command {
     // MemberMap stores the League Members of the fantasy league
-    public HashMap<String, LeagueMember> LeagueMemberMap;
+    private HashMap<String, LeagueMember> LeagueMemberMap;
     // GameMap stores the ongoing Games of the fantasy league
-    public HashMap<String, Match> MatchMap;
+    private HashMap<String, Match> MatchMap;
 
     /**
      * Create a new FantasyLeagueManager with no Members and no Games

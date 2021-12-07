@@ -27,7 +27,7 @@ public class BaseballPlayerComparator implements Comparator<BaseballPlayer> {
 
     public int compare(BaseballPlayer b1, BaseballPlayer b2) {
         try {
-            switch (this.compareBy) {
+            switch (this.compareBy.toLowerCase()) {
                 case "games played":
                     return compareGamesPlayed(b1, b2);
                 case "at bats":
@@ -80,7 +80,7 @@ public class BaseballPlayerComparator implements Comparator<BaseballPlayer> {
     private int compareRunsBattedIn(BaseballPlayer b1, BaseballPlayer b2)
             throws Exception {
         return b2.getStatRunsBattedIn(this.season) -
-                b1.getStatHits(this.season);
+                b1.getStatRunsBattedIn(this.season);
     }
     private int compareStrikeOuts(BaseballPlayer b1, BaseballPlayer b2)
             throws Exception {
