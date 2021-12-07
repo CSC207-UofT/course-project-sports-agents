@@ -19,11 +19,23 @@ public class CSVDataContainer implements DataContainer {
     public final HashMap<String, Player> playerMap;
     public final HashMap<String, Team> teamMap;
 
+    /**
+     * A CSV data container retrieves data from the CSV files and outputs appropriate classes to the user
+     * It stores the classes in playerMap and teamMap HashMaps, meaning that if a user already looked up a player
+     * or a team, then DataContainer will not have to look them up in the data again
+     */
     public CSVDataContainer() {
         playerMap = new HashMap<>();
         teamMap = new HashMap<>();
     }
 
+    /**
+     * get the player from a particular sport based on their name from the data
+     * @param sport sport of the player
+     * @param name name of the player
+     * @return the appropriate player class
+     * @throws Exception whenever a data file is not found, or something else goes wrong
+     */
     @Override
     public Player getPlayer(String sport, String name) throws Exception {
         if (playerMap.containsKey(name)) {
@@ -43,6 +55,11 @@ public class CSVDataContainer implements DataContainer {
         return playerMap.get(name);
     }
 
+    /**
+     * get a tennis player based on their name
+     * @param name of the player
+     * @throws Exception whenever a file is not found
+     */
     private void getTennisPlayer(String name) throws Exception {
         String line;
         String splitBy = ",";
@@ -82,6 +99,12 @@ public class CSVDataContainer implements DataContainer {
             throw new Exception(Exceptions.FILE_NOT_FOUND);
         }
     }
+
+    /**
+     * Get a baseball player from the baseball file based on their name
+     * @param name of the player
+     * @throws Exception whenever the file is not found
+     */
 
     private void getBaseballPlayer(String name) throws Exception {
         String line;
@@ -123,6 +146,11 @@ public class CSVDataContainer implements DataContainer {
         }
     }
 
+    /**
+     * Get a hockey player from the hockey file based on their name
+     * @param name of the player
+     * @throws Exception whenever the hockey.csv file isn't found
+     */
     private void getHockeyPlayer(String name) throws Exception {
         String line;
         String splitBy = ",";
@@ -163,6 +191,13 @@ public class CSVDataContainer implements DataContainer {
         }
     }
 
+    /**
+     * Call the appropriate helper methods to retrieve the right team based on the sport and their name
+     * @param sport name of the sport
+     * @param name name of the team
+     * @return the appropriate team from the appropriate sport
+     * @throws Exception whenever the appropraite files cannot be found
+     */
     @Override
     public Team getTeam(String sport, String name) throws Exception {
         if (teamMap.containsKey(name)) {
@@ -176,6 +211,11 @@ public class CSVDataContainer implements DataContainer {
         return teamMap.get(name);
     }
 
+    /**
+     * Get a hockey team from the file based on their name
+     * @param name name of the team
+     * @throws Exception whenever the hockey_teams.csv file cannot be found
+     */
     private void getHockeyTeam(String name) throws Exception {
         String line;
         String splitBy = ",";
@@ -218,6 +258,13 @@ public class CSVDataContainer implements DataContainer {
         }
     }
 
+    /**
+     * Get all of the players from a particular sport
+     * @param sport sport
+     * @param season season for which to get the players
+     * @return returns a list of names of the players
+     * @throws Exception whenever a data file cannot be found
+     */
     public List<String> getAllPlayers(String sport, String season) throws Exception {
         switch (sport.toLowerCase()) {
             case "hockey":
@@ -230,6 +277,12 @@ public class CSVDataContainer implements DataContainer {
         return null;
     }
 
+    /**
+     * Gets the names of all the hockey players who played in a particular season
+     * @param season season for which to query
+     * @return list of all the hockey players who played during the season
+     * @throws Exception whenever the hockey.csv file cannot be found
+     */
     public List<String> getAllHockeyPlayers(String season) throws Exception {
         List<String> allPlayers = new ArrayList<>();
         BufferedReader br = new BufferedReader(new FileReader("hockey.csv"));
@@ -248,6 +301,12 @@ public class CSVDataContainer implements DataContainer {
 
     }
 
+    /**
+     * Gets the names of all the baseball players who played in a particular season
+     * @param season season
+     * @return list of all the baseball players who played during the season
+     * @throws Exception whenever the baseball.csv file cannot be found
+     */
     public List<String> getAllBaseballPlayers(String season) throws Exception {
         List<String> allPlayers = new ArrayList<>();
         BufferedReader br = new BufferedReader(new FileReader("baseball.csv"));
@@ -266,6 +325,12 @@ public class CSVDataContainer implements DataContainer {
 
     }
 
+    /**
+     * get the names of all of the tennis players who played in the given season
+     * @param season season
+     * @return the names of the tennis players who played in the given season
+     * @throws Exception whenever the tennis.csv file cannot be found
+     */
     public List<String> getAllTennisPlayers(String season) throws Exception {
 
         List<String> allPlayers = new ArrayList<>();
@@ -285,6 +350,11 @@ public class CSVDataContainer implements DataContainer {
 
     }
 
+    /**
+     * Get the names for all players in all the sports
+     * @return the list of all the players in all the sports
+     * @throws IOException whenever the appropriate data files cannot be found
+     */
     public List<String> getAllPlayersForAllSports() throws IOException {
         List<String> allNames = new ArrayList<>();
         allNames.addAll(getAllHockeyPlayers());
@@ -294,6 +364,12 @@ public class CSVDataContainer implements DataContainer {
         return allNames;
 
     }
+
+    /**
+     * Get the names for all players in hockey for all seasons
+     * @return the list of hockey players in the data
+     * @throws IOException whenever hockey.csv file cannot be found
+     */
     public List<String> getAllHockeyPlayers() throws IOException {
         List<String> allHockeyNames = new ArrayList<>();
         BufferedReader br = new BufferedReader(new FileReader("hockey.csv"));
@@ -309,6 +385,12 @@ public class CSVDataContainer implements DataContainer {
         return allHockeyNames;
 
     }
+
+    /**
+     * Get the names for all players in baseball for all seasons
+     * @return the list of baseball players in the data
+     * @throws IOException whenever hockey.csv file cannot be found
+     */
     public List<String> getAllBaseballPlayers() throws IOException {
         List<String> allBaseballNames = new ArrayList<>();
         BufferedReader br = new BufferedReader(new FileReader("baseball.csv"));
@@ -325,6 +407,11 @@ public class CSVDataContainer implements DataContainer {
 
     }
 
+    /**
+     * Get the names for all players in tennis for all seasons
+     * @return the list of tennis players in the data
+     * @throws IOException whenever hockey.csv file cannot be found
+     */
     public List<String> getAllTennisPlayers() throws IOException {
         List<String> allTennisNames = new ArrayList<>();
         BufferedReader br = new BufferedReader(new FileReader("tennis.csv"));
