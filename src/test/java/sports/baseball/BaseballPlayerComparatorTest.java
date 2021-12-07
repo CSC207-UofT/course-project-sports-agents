@@ -108,9 +108,5 @@ public class BaseballPlayerComparatorTest {
                 "2019-2020");
         double compareEquals = comparator.compare(this.playerOne, this.playerThree);
         assert(compareEquals == 0);
-        double compareGreater = comparator.compare(this.playerTwo, this.playerThree);
-        assert(compareGreater > 0);
-        double compareLess = comparator.compare(this.playerOne, this.playerTwo);
-        assert(compareLess < 0);
     }
 }
