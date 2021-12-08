@@ -7,6 +7,14 @@ import java.util.ArrayList;
 
 public class AvailableCommands implements Command {
 
+    /**
+     * Outputs a table showing all of the available commands when run
+     * @param arguments an ArrayList of Strings containing arguments for the command. If this command was called,
+     *                  the list will be empty.
+     * @param container data container used in order to retrieve data. Not used by this command.
+     * @return returns a string, which is a table displaying available commands.
+     * @throws Exception in case of an unexpected error
+     */
     @Override
     public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
 
@@ -118,6 +126,10 @@ public class AvailableCommands implements Command {
         return builder.toString();
     }
 
+    /**
+     * Add a line to easily distinguish rows in a table
+     * @param builder currently used builder to build the output string
+     */
     private void addSeparator(StringBuilder builder) {
         builder.append("-----------------------------------------------------------------------------------------------------------------------------\n");
     }
