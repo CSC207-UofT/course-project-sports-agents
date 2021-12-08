@@ -96,6 +96,22 @@ into a `DataContainer` or possibly creating a new interface to ensure
 `DataContainer` classes do not violate the single responsibility principle
 by storing statistics and fantasy league information.
 
+### Walkthrough
+The user requests the statistic for a player by entering their input on the command line.
+The `CLIPresenter` class (an interface adapter) acts as the Presenter by accepting the input 
+and implementing the `Presenter` interface, which is the input boundary. 
+The `SportsApp` class (another interface adapter) is the controller, and uses the 
+`InputParser` class (another interface adapter) to parse the input. The `CommandManager` class
+(a Use Case) acts as the Use Case Interactor and selects the specific Use Case to perform
+the task - for this command, that is the `PlayerStatManagerFacade` Use Case which delegates
+to the appropriate sport's PlayerStatManager Use Case. The `DataContainer` interface gives
+the Use Case access to data externally, acting as the Data Access Interface. The `CSVDataContainer`
+implements the `DataContainer` interface and is the Data Access class (a framework or driver).
+The file's data is converted into `Player` objects (an Entity), and the Use Case
+interacts with those entities to find the relevant statistic. The Use Case returns the
+string output with the needed information, the output is passed to the `Presenter` interface which
+now acts as output boundary, and the `CLIPresenter` updates the Command line with the
+new information.
 
 ## Design Patterns
 We implemented the Command design pattern almost word-for-word from the example
