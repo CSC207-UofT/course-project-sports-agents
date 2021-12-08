@@ -119,7 +119,7 @@ public class CommandsInfo {
     public static class GetTeamStatInfo {
         public static final String keyword = "get_team_stat";
         public static final List<String> argNames =
-                List.of("--sport", "--team_name");
+                List.of("--sport", "--team-name", "--season", "--stat");
         public static final List<String> multiArgNames = List.of();
     }
 
