@@ -39,9 +39,9 @@ public abstract class PlayerStatManager implements Command {
     protected <T extends Player> String formatStat(T player, String statName, String statValue) {
         StringBuilder builder = new StringBuilder();
         builder.append("-------------------------------------------\n");
-        builder.append(String.format("%10s %20s %n", "Name", statName));
+        builder.append(String.format("%15s %20s %n", "Player Name", statName));
         builder.append("-------------------------------------------\n");
-        builder.append(String.format("%10s %10s %n", player.getName(), statValue));
+        builder.append(String.format("%15s %10s %n", player.getName(), statValue));
         builder.append("-------------------------------------------");
         return builder.toString();
     }
