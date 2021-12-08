@@ -4,6 +4,7 @@ import driversAdapters.*;
 import org.junit.Test;
 
 import java.util.*;
+
 import static org.junit.Assert.*;
 
 
@@ -15,8 +16,8 @@ public class GetListSportsTest {
         DataContainer dataContainer = new CSVDataContainer();
         ArrayList<String> arguments = new ArrayList<>();
         String expected = "All Available sports: \n" + "Baseball\n" +
-                "Hockey\n" +
-                "Tennis\n";
+                          "Hockey\n" +
+                          "Tennis\n";
         assertEquals(expected, getListSports.execute(arguments, dataContainer));
     }
 

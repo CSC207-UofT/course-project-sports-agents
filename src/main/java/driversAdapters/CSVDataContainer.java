@@ -92,7 +92,7 @@ public class CSVDataContainer implements DataContainer {
             BufferedReader br = new BufferedReader(new FileReader("baseball.csv"));
             br.readLine(); //skip the first line.
 
-            while((line = br.readLine()) != null) {
+            while ((line = br.readLine()) != null) {
                 String[] playerInfo = line.split(splitBy);
                 if (playerInfo[0].toLowerCase().equals(name)) {
                     if (!found) {
@@ -132,7 +132,7 @@ public class CSVDataContainer implements DataContainer {
             BufferedReader br = new BufferedReader(new FileReader("hockey.csv"));
             br.readLine(); //skip the first line.
 
-            while((line = br.readLine()) != null) {
+            while ((line = br.readLine()) != null) {
                 String[] playerInfo = line.split(splitBy);
 
                 if (playerInfo[0].toLowerCase().equals(name)) {
@@ -168,6 +168,10 @@ public class CSVDataContainer implements DataContainer {
         if (teamMap.containsKey(name)) {
             return teamMap.get(name);
         }
+
+        // This switch statement currently raises an IntelliJ warning
+        // We will keep it, because if more sports had implementations then
+        // it would be justified as a switch
         switch (sport.toLowerCase()) {
             case "hockey":
                 getHockeyTeam(name);
@@ -237,9 +241,9 @@ public class CSVDataContainer implements DataContainer {
         String line;
         String splitBy = ",";
 
-        while((line = br.readLine()) != null) {
+        while ((line = br.readLine()) != null) {
             String[] playerInfo = line.split(splitBy);
-            if (playerInfo[1].equals(season)){
+            if (playerInfo[1].equals(season)) {
                 allPlayers.add(playerInfo[0]);
             }
         }
@@ -255,9 +259,9 @@ public class CSVDataContainer implements DataContainer {
         String line;
         String splitBy = ",";
 
-        while((line = br.readLine()) != null) {
+        while ((line = br.readLine()) != null) {
             String[] playerInfo = line.split(splitBy);
-            if (playerInfo[2].equals(season)){
+            if (playerInfo[2].equals(season)) {
                 allPlayers.add(playerInfo[0]);
             }
         }
@@ -294,6 +298,7 @@ public class CSVDataContainer implements DataContainer {
         return allNames;
 
     }
+
     public List<String> getAllHockeyPlayers() throws IOException {
         List<String> allHockeyNames = new ArrayList<>();
         BufferedReader br = new BufferedReader(new FileReader("hockey.csv"));
@@ -301,14 +306,16 @@ public class CSVDataContainer implements DataContainer {
         String line;
         String splitBy = ",";
 
-        while((line = br.readLine()) != null) {
+        while ((line = br.readLine()) != null) {
             String[] playerInfo = line.split(splitBy);
-            if (!allHockeyNames.contains(playerInfo[0] + ": Hockey")){
-                allHockeyNames.add(playerInfo[0] + ": Hockey");}
+            if (!allHockeyNames.contains(playerInfo[0] + ": Hockey")) {
+                allHockeyNames.add(playerInfo[0] + ": Hockey");
+            }
         }
         return allHockeyNames;
 
     }
+
     public List<String> getAllBaseballPlayers() throws IOException {
         List<String> allBaseballNames = new ArrayList<>();
         BufferedReader br = new BufferedReader(new FileReader("baseball.csv"));
@@ -316,10 +323,11 @@ public class CSVDataContainer implements DataContainer {
         String line;
         String splitBy = ",";
 
-        while((line = br.readLine()) != null) {
+        while ((line = br.readLine()) != null) {
             String[] playerInfo = line.split(splitBy);
-            if (!allBaseballNames.contains(playerInfo[0] + ": Baseball")){
-                allBaseballNames.add(playerInfo[0] + ": Baseball");}
+            if (!allBaseballNames.contains(playerInfo[0] + ": Baseball")) {
+                allBaseballNames.add(playerInfo[0] + ": Baseball");
+            }
         }
         return allBaseballNames;
 
@@ -332,10 +340,11 @@ public class CSVDataContainer implements DataContainer {
         String line;
         String splitBy = ",";
 
-        while((line = br.readLine()) != null) {
+        while ((line = br.readLine()) != null) {
             String[] playerInfo = line.split(splitBy);
-            if (!allTennisNames.contains(playerInfo[1] + ": Tennis")){
-                allTennisNames.add(playerInfo[1] + ": Tennis");}
+            if (!allTennisNames.contains(playerInfo[1] + ": Tennis")) {
+                allTennisNames.add(playerInfo[1] + ": Tennis");
+            }
         }
         return allTennisNames;
     }

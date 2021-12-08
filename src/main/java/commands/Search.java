@@ -2,6 +2,7 @@ package commands;
 
 
 import driversAdapters.DataContainer;
+
 import java.io.*;
 import java.util.*;
 
@@ -13,8 +14,8 @@ public class Search implements Command {
     public String execute(ArrayList<String> arguments, DataContainer container) throws IOException {
         String partOfName = arguments.get(0);
         List<String> relatedPlayers = new ArrayList<>();
-        for(String playerName: container.getAllPlayersForAllSports()){
-            if(playerName.toLowerCase().contains(partOfName.toLowerCase())){
+        for (String playerName : container.getAllPlayersForAllSports()) {
+            if (playerName.toLowerCase().contains(partOfName.toLowerCase())) {
                 relatedPlayers.add(playerName);
             }
         }
@@ -23,11 +24,11 @@ public class Search implements Command {
     }
 
     private String formatSearch(List<String> relatedPlayers) {
-        if(relatedPlayers.isEmpty()){
+        if (relatedPlayers.isEmpty()) {
             return "No results found!";
         }
         StringBuilder output = new StringBuilder();
-        for(String relatedPlayer:relatedPlayers){
+        for (String relatedPlayer : relatedPlayers) {
             output.append(relatedPlayer);
             output.append("\n");
         }

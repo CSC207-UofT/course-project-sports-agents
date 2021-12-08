@@ -26,6 +26,7 @@ public class PlayerStatPredictorFacade implements Command {
      * future statistic. Uses only requested seasons and assumes
      * the seasons were played in the order provided. Uses linear
      * regression.
+     *
      * @param arguments A string array of form
      *                  {"sport name", "player name",
      *                  "season 1", "season 2", ..., "stat name"}
@@ -37,7 +38,7 @@ public class PlayerStatPredictorFacade implements Command {
     public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
         checkArgumentLength(arguments);
         String sport = arguments.get(0);
-        switch(sport) {
+        switch (sport) {
             case "hockey":
                 return this.hockeyPlayerStatPredictor.execute(arguments, container);
             case "tennis":
@@ -51,6 +52,7 @@ public class PlayerStatPredictorFacade implements Command {
 
     // The Facade needs to check at least one argument exists, so this is here
     // even though Single Responsibility would prefer it be in Sport-specific classes
+
     /**
      * @param arguments user arguments for comparing players
      * @throws Exception if insufficiently many arguments are provided (here, 5)

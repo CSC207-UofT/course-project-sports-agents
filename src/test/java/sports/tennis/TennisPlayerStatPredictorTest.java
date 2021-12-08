@@ -21,7 +21,7 @@ public class TennisPlayerStatPredictorTest {
         container = new CSVDataContainer();
         player = new TennisPlayer("Player 1", "USA", "2016", 1, 5, 6,
                 7, 65.0, 80.0, 14.5,
-                16.0, 17.8, 18.0 );
+                16.0, 17.8, 18.0);
         player.addRecord("2017", 3, 30, 28, 48, 45.0,
                 35.6, 45.4, 34.5, 67.8,
                 30.3);
@@ -47,7 +47,7 @@ public class TennisPlayerStatPredictorTest {
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteRankNoPlayer() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("tennis", "player 2", "rank"));
-        String fail = this.tennisPlayerStatPredictor.execute(arguments, container);
+        this.tennisPlayerStatPredictor.execute(arguments, container);
     }
 
     @Test(timeout = 100)
@@ -63,7 +63,7 @@ public class TennisPlayerStatPredictorTest {
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteAcesNoPlayer() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("tennis", "player 2", "aces"));
-        String fail = this.tennisPlayerStatPredictor.execute(arguments, container);
+        this.tennisPlayerStatPredictor.execute(arguments, container);
     }
 
     @Test(timeout = 100)
@@ -79,7 +79,7 @@ public class TennisPlayerStatPredictorTest {
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteDoubleFaultsNoPlayer() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("tennis", "player 2", "double faults"));
-        String fail = this.tennisPlayerStatPredictor.execute(arguments, container);
+        this.tennisPlayerStatPredictor.execute(arguments, container);
     }
 
     @Test(timeout = 100)
@@ -95,7 +95,7 @@ public class TennisPlayerStatPredictorTest {
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteServePointsWonNoPlayer() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("tennis", "player 2", "serve points won"));
-        String fail = this.tennisPlayerStatPredictor.execute(arguments, container);
+        this.tennisPlayerStatPredictor.execute(arguments, container);
     }
 
     @Test(timeout = 100)
@@ -111,7 +111,7 @@ public class TennisPlayerStatPredictorTest {
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteBreakPointsSavedNoPlayer() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("tennis", "player 2", "break points saved"));
-        String fail = this.tennisPlayerStatPredictor.execute(arguments, container);
+        this.tennisPlayerStatPredictor.execute(arguments, container);
     }
 
     @Test(timeout = 100)
@@ -127,7 +127,7 @@ public class TennisPlayerStatPredictorTest {
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteServeGamesWonNoPlayer() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("tennis", "player 2", "serve games won"));
-        String fail = this.tennisPlayerStatPredictor.execute(arguments, container);
+        this.tennisPlayerStatPredictor.execute(arguments, container);
     }
 
     @Test(timeout = 100)
@@ -143,7 +143,7 @@ public class TennisPlayerStatPredictorTest {
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteReturnGamesWonNoPlayer() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("tennis", "player 2", "return games won"));
-        String fail = this.tennisPlayerStatPredictor.execute(arguments, container);
+        this.tennisPlayerStatPredictor.execute(arguments, container);
     }
 
     @Test(timeout = 100)
@@ -159,7 +159,7 @@ public class TennisPlayerStatPredictorTest {
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteBreakPointsConvertedNoPlayer() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("tennis", "player 2", "break points converted"));
-        String fail = this.tennisPlayerStatPredictor.execute(arguments, container);
+        this.tennisPlayerStatPredictor.execute(arguments, container);
     }
 
     @Test(timeout = 100)
@@ -175,12 +175,12 @@ public class TennisPlayerStatPredictorTest {
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteReturnPointsWonNoPlayer() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("tennis", "player 2", "return points won"));
-        String fail = this.tennisPlayerStatPredictor.execute(arguments, container);
+        this.tennisPlayerStatPredictor.execute(arguments, container);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteInvalidStat() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("tennis", "player 1", "goals"));
-        String fail = this.tennisPlayerStatPredictor.execute(arguments, container);
+        this.tennisPlayerStatPredictor.execute(arguments, container);
     }
 }

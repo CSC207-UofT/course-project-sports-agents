@@ -16,7 +16,7 @@ public class CSVDataContainerTest {
     private CSVDataContainer container;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         container = new CSVDataContainer();
     }
 
@@ -151,7 +151,7 @@ public class CSVDataContainerTest {
         assertEquals((Integer) 128, team.getPoints("2018-2019"));
         assertEquals((Integer) 319, team.getGoalsFor("2018-2019"));
         assertEquals((Integer) 221, team.getGoalsAgainst("2018-2019"));
-        assertEquals((Double) 32.0 , team.getShotsPerGame("2018-2019"));
+        assertEquals((Double) 32.0, team.getShotsPerGame("2018-2019"));
         assertEquals((Double) 32.1, team.getShotsAgainstPerGame("2018-2019"));
         assertEquals((Double) 51.2, team.getFaceOffWinPercentage("2018-2019"));
     }

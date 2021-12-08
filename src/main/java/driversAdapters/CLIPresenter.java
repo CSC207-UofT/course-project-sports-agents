@@ -6,7 +6,7 @@ import java.util.Scanner;
  * Presenter for the Command line
  */
 public class CLIPresenter implements Presenter {
-    public Scanner inputScanner;
+    public final Scanner inputScanner;
 
     public CLIPresenter() {
         this.inputScanner = new Scanner(System.in);

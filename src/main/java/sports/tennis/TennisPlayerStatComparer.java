@@ -24,13 +24,14 @@ public class TennisPlayerStatComparer extends PlayerStatComparer {
      * Handle an argument requesting a comparison of two or more tennis
      * players' statistics. Players are returned in descending order
      * (best first, worst last)
+     *
      * @param arguments A string array of form
      *                  {"Tennis", "player name 1",
      *                  "player name 2", ... , "season", "stat name"}
      * @param container A container containing the data or means to retrieve it
      * @return the players and their associated statistics
      * @throws Exception if a player does not exist, or lacks data for the
-     * given season
+     *                   given season
      */
     @Override
     public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
@@ -38,7 +39,7 @@ public class TennisPlayerStatComparer extends PlayerStatComparer {
         List<String> names = arguments.subList(1, argSize - 2);
 
         ArrayList<TennisPlayer> tennisPlayers = new ArrayList<>();
-        for (String name: names) {
+        for (String name : names) {
             tennisPlayers.add((TennisPlayer) container.getPlayer("tennis", name));
         }
 
@@ -57,9 +58,10 @@ public class TennisPlayerStatComparer extends PlayerStatComparer {
     /**
      * Collect the given statistic in the given season for all Players in
      * the given list, maintaining order.
-     * @param players the list of Players to collect statistics for
+     *
+     * @param players   the list of Players to collect statistics for
      * @param statistic the statistic to get
-     * @param season the season to consider
+     * @param season    the season to consider
      * @return the statistic for each player
      * @throws Exception if one or more statistics are not recorded
      */
@@ -95,8 +97,9 @@ public class TennisPlayerStatComparer extends PlayerStatComparer {
 
     /**
      * Get the rank statistics in the given season for all given players
+     *
      * @param players the list of players to collect ranks for
-     * @param season the season of interest
+     * @param season  the season of interest
      * @return the ranks for the list of players
      * @throws Exception if a player does not have a rank for the given season
      */
@@ -110,8 +113,9 @@ public class TennisPlayerStatComparer extends PlayerStatComparer {
 
     /**
      * Get the number of matches played in the given season for all given players
+     *
      * @param players the list of players to collect number of matches for
-     * @param season the season of interest
+     * @param season  the season of interest
      * @return the number of matches played by the players in the list of players in the given season
      * @throws Exception if a player does not have matches data for the given season
      */
@@ -125,13 +129,14 @@ public class TennisPlayerStatComparer extends PlayerStatComparer {
 
     /**
      * Get the aces statistics in the given season for all passed players
+     *
      * @param players the list of Players to collect aces statistics for
-     * @param season the season to consider
+     * @param season  the season to consider
      * @return the aces statistics, for the list of players
      * @throws Exception if one player lacks the given season's aces data
      */
     private List<String> getValuesAces(List<TennisPlayer> players,
-                                       String season) throws Exception{
+                                       String season) throws Exception {
         ArrayList<String> acesValues = new ArrayList<>();
         for (TennisPlayer player : players) {
             acesValues.add(player.getStatAces(season).toString());
@@ -141,13 +146,14 @@ public class TennisPlayerStatComparer extends PlayerStatComparer {
 
     /**
      * Get the double faults statistics in the given season for all passed players
+     *
      * @param players the list of Players to collect double faults statistics for
-     * @param season the season to consider
+     * @param season  the season to consider
      * @return the double faults statistics, for the list of players
      * @throws Exception if one player lacks the given season's double faults data
      */
     private List<String> getValuesDoubleFaults(List<TennisPlayer> players,
-                                               String season) throws Exception{
+                                               String season) throws Exception {
         ArrayList<String> doubleFaultsValues = new ArrayList<>();
         for (TennisPlayer player : players) {
             doubleFaultsValues.add(player.getStatDoubleFaults(season).toString());
@@ -157,13 +163,14 @@ public class TennisPlayerStatComparer extends PlayerStatComparer {
 
     /**
      * Get the serve points won statistics in the given season for all passed players
+     *
      * @param players the list of Players to collect serve points statistics for
-     * @param season the season to consider
+     * @param season  the season to consider
      * @return the serve points won statistics, for the list of players
      * @throws Exception if one player lacks the given season's serve points won data
      */
     private List<String> getValuesServePointsWon(List<TennisPlayer> players,
-                                              String season) throws Exception{
+                                                 String season) throws Exception {
         ArrayList<String> servePointsValues = new ArrayList<>();
         for (TennisPlayer player : players) {
             servePointsValues.add(player.getStatServePointsWon(season).toString());
@@ -174,13 +181,14 @@ public class TennisPlayerStatComparer extends PlayerStatComparer {
 
     /**
      * Get the break points saved statistics in the given season for all passed players
+     *
      * @param players the list of Players to collect break points saved statistics for
-     * @param season the season to consider
+     * @param season  the season to consider
      * @return the break points saved statistics, for the list of players
      * @throws Exception if one player lacks the given season's break points saved data
      */
     private List<String> getValuesBreakPointsSaved(List<TennisPlayer> players,
-                                                   String season) throws Exception{
+                                                   String season) throws Exception {
         ArrayList<String> breakPointsSavedValues = new ArrayList<>();
         for (TennisPlayer player : players) {
             breakPointsSavedValues.add(player.getStatBreakPointsSaved(season).toString());
@@ -190,8 +198,9 @@ public class TennisPlayerStatComparer extends PlayerStatComparer {
 
     /**
      * Get the percentage of serve games won for all given players
+     *
      * @param players the list of needed players
-     * @param season the season of interest
+     * @param season  the season of interest
      * @return list of percentage of serve games won for given players
      * @throws Exception if a player does not have serve games won data for the given season
      */
@@ -205,8 +214,9 @@ public class TennisPlayerStatComparer extends PlayerStatComparer {
 
     /**
      * Get the percentage of return games won for all given players
+     *
      * @param players the list of needed players
-     * @param season the season of interest
+     * @param season  the season of interest
      * @return list of percentage of return games won for the given players
      * @throws Exception if a player does not have return games won data for the given season
      */
@@ -220,8 +230,9 @@ public class TennisPlayerStatComparer extends PlayerStatComparer {
 
     /**
      * Get the percentage of break points converted for all given players
+     *
      * @param players the list of needed players
-     * @param season the season of interest
+     * @param season  the season of interest
      * @return list of percentage of break points converted for the given players
      * @throws Exception if a player does not have break points converted data for the given season
      */
@@ -235,8 +246,9 @@ public class TennisPlayerStatComparer extends PlayerStatComparer {
 
     /**
      * Get the percentage of return points won for all given players
+     *
      * @param players the list of needed players
-     * @param season the season of interest
+     * @param season  the season of interest
      * @return list of percentage of return points won for the given players
      * @throws Exception if a player does not have return points on data for the given season
      */

@@ -1,4 +1,4 @@
-package FantasyLeague;
+package fantasyLeague;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -13,8 +13,9 @@ public class LeagueStorage implements Serializable {
 
     /**
      * Create a league storage with the specified LeagueMemberMap and MatchMap
+     *
      * @param LeagueMemberMap LeagueMemberMap to store
-     * @param MatchMap MatchMap to store
+     * @param MatchMap        MatchMap to store
      */
     public LeagueStorage(HashMap<String, LeagueMember> LeagueMemberMap, HashMap<String, Match> MatchMap) {
         this.LeagueMemberMap = LeagueMemberMap;

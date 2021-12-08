@@ -16,10 +16,11 @@ public class InputParser {
     /**
      * Create an InputParser containing the keyword and command for the given
      * User input. This can have two valid forms:
-     *      "[command_keyword] [argument1] [argument2] ..."
-     *      "[command_keyword] --argument1-name [argument1]
-     *          --argument2-name [argument2] ..."
+     * "[command_keyword] [argument1] [argument2] ..."
+     * "[command_keyword] --argument1-name [argument1]
+     * --argument2-name [argument2] ..."
      * Any argument of over one word should be wrapped in quotations.
+     *
      * @param input the user's input, from the command line
      */
     public InputParser(String input) {
@@ -45,6 +46,7 @@ public class InputParser {
 
     /**
      * Remove any quotes surrounding the keyword given
+     *
      * @param keyword keyword phrase, as given in User input
      * @return the keyword phrase with quotations removed
      */
@@ -59,6 +61,7 @@ public class InputParser {
     /**
      * Split the User's given arguments into their sections.
      * Each section is either one word or one phrase surrounded by double quotes.
+     *
      * @param rawArgs Given arguments, a combination of words and double-quoted phrases
      * @return List, where each item is one argument
      */
@@ -96,6 +99,7 @@ public class InputParser {
 
     /**
      * Determine if a series of argument phrases is verbose (some are --argument-name)
+     *
      * @param argParts argument phrases, from split_args
      * @return true if the argument phrases are verbose
      */
@@ -111,6 +115,7 @@ public class InputParser {
 
     /**
      * Find the argument names corresponding to the command keyword
+     *
      * @param keyword Command keyword given by User
      * @return argument names for that Command
      */
@@ -155,6 +160,7 @@ public class InputParser {
 
     /**
      * Find the multi-phrase argument names corresponding to the command keyword
+     *
      * @param keyword Command keyword given by User
      * @return multi-phrase argument names for that Command
      */
@@ -227,6 +233,7 @@ public class InputParser {
     /**
      * Some arguments (such as those managing the fantasy league) use the same
      * use case. To tell them apart, they need the keyword as the first argument.
+     *
      * @param argParts the arguments, processed to remove verbose markers
      */
     private void decorateArgs(ArrayList<String> argParts) {

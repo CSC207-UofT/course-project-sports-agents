@@ -4,6 +4,7 @@ import driversAdapters.CSVDataContainer;
 import driversAdapters.DataContainer;
 import org.junit.Before;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
@@ -384,26 +385,5 @@ public class HockeyPlayerStatManagerTest {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey",
                 "player 1", "2020-2021", "age"));
         this.hockeyPlayerStatManager.execute(arguments, container);
-    }
-
-    @Test(timeout = 100)
-    public void testExecuteWithPlayerInCsvFile() throws Exception {
-        ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("hockey",
-                "Zdeno Chara", "2020-2021", "team"));
-        String output1 = this.hockeyPlayerStatManager.execute(arguments1, container);
-        assertTrue(output1.contains("Zdeno Chara"));
-        assertTrue(output1.contains("WSH"));
-
-        ArrayList<String> arguments2 = new ArrayList<>(Arrays.asList("hockey",
-                "Corey Perry", "2020-2021", "skater shoots"));
-        String output2 = this.hockeyPlayerStatManager.execute(arguments2, container);
-        assertTrue(output2.contains("Corey Perry"));
-        assertTrue(output2.contains("R"));
-
-        ArrayList<String> arguments3 = new ArrayList<>(Arrays.asList("hockey",
-                "Jason Spezza", "2020-2021", "games played"));
-        String output3 = this.hockeyPlayerStatManager.execute(arguments3, container);
-        assertTrue(output3.contains("Jason Spezza"));
-        assertTrue(output3.contains("54"));
     }
 }

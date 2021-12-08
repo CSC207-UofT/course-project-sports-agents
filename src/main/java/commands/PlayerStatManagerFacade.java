@@ -27,6 +27,7 @@ public class PlayerStatManagerFacade implements Command {
 
     /**
      * Handle an argument requesting a player's statistics
+     *
      * @param arguments A string array of form
      *                  {"sport name", "player name",
      *                  "season", "stat name"}
@@ -38,7 +39,7 @@ public class PlayerStatManagerFacade implements Command {
     public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
         checkArgumentLength(arguments);
         String sport = arguments.get(0);
-        switch(sport) {
+        switch (sport) {
             case "hockey":
                 return this.hockeyPlayerStatManager.execute(arguments, container);
             case "tennis":
@@ -52,6 +53,7 @@ public class PlayerStatManagerFacade implements Command {
 
     // The Facade needs to check at least one argument exists, so this is here
     // even though Single Responsibility would prefer it be in Sport-specific classes
+
     /**
      * @param arguments user arguments for querying player stats
      * @throws Exception if more or less than 4 arguments are provided

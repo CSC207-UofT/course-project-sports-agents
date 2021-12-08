@@ -18,8 +18,7 @@ public class SportsApp {
             try {
                 String output = manager.execute(input, container);
                 presenter.presentOutput(output);
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 presenter.presentOutput(e.getMessage());
             }
             input = presenter.getInput();
