@@ -207,6 +207,8 @@ public class CSVDataContainer implements DataContainer {
             case "hockey":
                 getHockeyTeam(name);
                 break;
+            case "baseball":
+                throw new Exception(Exceptions.WRONG_SPORT);
         }
         return teamMap.get(name);
     }
