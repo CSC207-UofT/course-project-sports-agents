@@ -78,7 +78,6 @@ public class HockeyTeam extends Team {
      * @param shotsAgainstPerGame Average amount of shots received by the team per game in the given season
      * @param faceOffWinPercentage Percentage of face-offs won in a given season
      */
-
     public void addRecord(String season, Integer gamesPlayed, Integer points, Integer gamesWon,
                            Integer gamesLost, Integer overtimeLosses, Integer goalsFor,
                            Integer goalsAgainst, Double shotsForPerGame, Double shotsAgainstPerGame,
@@ -95,84 +94,182 @@ public class HockeyTeam extends Team {
         this.addFaceOffWinPercentage(season, faceOffWinPercentage);
     }
 
+    /**
+     * return the faceoff win percentage of the team in a given season
+     * @param season
+     * @return faceoff win percentage during the season
+     */
     public Double getFaceOffWinPercentage(String season) {
         return this.faceOffWinPercentage.get(season);
     }
 
+    /**
+     * return the goals scored by the team in a given season
+     * @param season
+     * @return goals scored by the team during the season
+     */
     public Integer getGoalsFor(String season) {
         return this.goalsFor.get(season);
     }
 
+    /**
+     * return the goals scored against the team in a given season
+     * @param season
+     * @return goals scored against the team during the season
+     */
     public Integer getGoalsAgainst(String season) {
         return this.goalsAgainst.get(season);
     }
 
+    /**
+     * return amount of shots per game by the team in a given season
+     * @param season
+     * @return amount of shots per game by the team during the season
+     */
     public Double getShotsPerGame(String season) {
         return this.shotsForPerGame.get(season);
     }
 
+    /**
+     * return amount of shots received per game by the team in a given season
+     * @param season
+     * @return amount of shots received per game by the team during the season
+     */
     public Double getShotsAgainstPerGame(String season) {
         return this.shotsAgainstPerGame.get(season);
     }
 
-
+    /**
+     * return amount of games played by the team in a given season
+     * @param season
+     * @return amount of games played by the team during the season
+     */
     public Integer getGamesPlayed(String season) {
         return this.gamesPlayed.get(season);
     }
 
+    /**
+     * return amount of games won by the team in a given season
+     * @param season
+     * @return amount of games won by the team during the season
+     */
     public Integer getGamesWon(String season) {
         return this.gamesWon.get(season);
     }
 
+    /**
+     * return amount of games lost by the team in a given season
+     * @param season
+     * @return amount of games lost by the team during the season
+     */
     public Integer getGamesLost(String season) {
         return this.gamesLost.get(season);
     }
 
+    /**
+     * return amount of games lost in overtime by the team in a given season
+     * @param season
+     * @return amount of games lost in overtime by the team during the season
+     */
     public Integer getOvertimeLosses(String season) {
         return this.overtimeLosses.get(season);
     }
 
+    /**
+     * return amount of points scored by the team in a given season
+     * @param season
+     * @return amount of points scored by the team during the season
+     */
     public Integer getPoints(String season) {
         return this.points.get(season);
     }
 
+    /**
+     * add the team's faceoff win percentage during the given season to the data
+     * @param season season
+     * @param faceOffWinPercentage statistic
+     */
     public void addFaceOffWinPercentage(String season, Double faceOffWinPercentage) {
         this.faceOffWinPercentage.put(season, faceOffWinPercentage);
     }
 
-    public void addShotsAgainstPerGame(String season, Double goalsAgainstPerGame) {
-        this.shotsAgainstPerGame.put(season, goalsAgainstPerGame);
+    /**
+     * add the team's shots against per game statistic during the given season to the data
+     * @param season season
+     * @param shotsAgainstPerGame statistic
+     */
+    public void addShotsAgainstPerGame(String season, Double shotsAgainstPerGame) {
+        this.shotsAgainstPerGame.put(season, shotsAgainstPerGame);
     }
 
-    public void addShotsForPerGame(String season, Double goalsForPerGame) {
-        this.shotsForPerGame.put(season, goalsForPerGame);
+    /**
+     * add the team's shots for per game statistic during the given season to the data
+     * @param season season
+     * @param shotsForPerGame statistic
+     */
+    public void addShotsForPerGame(String season, Double shotsForPerGame) {
+        this.shotsForPerGame.put(season, shotsForPerGame);
     }
 
-
+    /**
+     * add the team's goals received statistic during the given season to the data
+     * @param season season
+     * @param goalsAgainst statistic
+     */
     public void addGoalsAgainst(String season, Integer goalsAgainst) {
         this.goalsAgainst.put(season, goalsAgainst);
     }
 
+    /**
+     * add the team's goals scored statistic during the given season to the data
+     * @param season season
+     * @param goalsFor statistic
+     */
     public void addGoalsFor(String season, Integer goalsFor) {
         this.goalsFor.put(season, goalsFor);
     }
 
+    /**
+     * add the team's amount of overtime losses during the given season to the data
+     * @param season season
+     * @param overtimeLosses statistic
+     */
     public void addOvertimeLosses(String season, Integer overtimeLosses) {
         this.overtimeLosses.put(season, overtimeLosses);
     }
 
+    /**
+     * add the team's amount of games played during the given season to the data
+     * @param season season
+     * @param gamesPlayed statistic
+     */
     public void addGamesPlayed(String season, Integer gamesPlayed) {
         this.gamesPlayed.put(season, gamesPlayed);
     }
 
+    /**
+     * add the team's amount of points during the given season to the data
+     * @param season season
+     * @param points statistic
+     */
     public void addPoints(String season, Integer points) {
         this.points.put(season, points);
     }
 
+    /**
+     * add the team's amount of games won during the given season to the data
+     * @param season season
+     * @param gamesWon statistic
+     */
     public void addGamesWon(String season, Integer gamesWon) {
         this.gamesWon.put(season, gamesWon);
     }
 
+    /**
+     * add the team's amount of games lost during the given season to the data
+     * @param season season
+     * @param gamesLost statistic
+     */
     public void addGamesLost(String season, Integer gamesLost) {
         this.gamesLost.put(season, gamesLost);
     }
