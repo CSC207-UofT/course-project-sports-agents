@@ -39,9 +39,9 @@ public class TennisPlayerStatManagerTest {
         ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("Tennis",
                 "player 2", "2016", "Rank"));
         String output1 = this.tennisPlayerStatManager.execute(arguments1, container);
-        char outputChar1 = output1.charAt(142);
-        char expected1 = '2';
-        assertEquals(expected1, outputChar1);
+        String outputSub1 = output1.substring(141, 142);
+        String expected1 = "2";
+        assertEquals(expected1, outputSub1);
     }
 
     @Test(timeout = 100, expected = Exception.class)
@@ -87,7 +87,7 @@ public class TennisPlayerStatManagerTest {
         ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("Tennis",
                 "player 2", "2016", "Double Faults"));
         String output1 = this.tennisPlayerStatManager.execute(arguments1, container);
-        String outputSub1 = output1.substring(141, 143);
+        String outputSub1 = output1.substring(140, 142);
         String expected1 = "13";
         assertEquals(expected1, outputSub1);
     }
@@ -111,7 +111,7 @@ public class TennisPlayerStatManagerTest {
         ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("Tennis",
                 "player 3", "2016", "Serve Points won"));
         String output1 = this.tennisPlayerStatManager.execute(arguments1, container);
-        String outputSub1 = output1.substring(139, 143);
+        String outputSub1 = output1.substring(138, 142);
         String expected1 = "0.89";
         assertEquals(expected1, outputSub1);
     }
@@ -122,7 +122,7 @@ public class TennisPlayerStatManagerTest {
         ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("Tennis",
                 "player 1", "2016", "Break Points Saved"));
         String output1 = this.tennisPlayerStatManager.execute(arguments1, container);
-        String outputSub1 = output1.substring(140, 143);
+        String outputSub1 = output1.substring(139, 142);
         String expected1 = "0.8";
         assertEquals(expected1, outputSub1);
 

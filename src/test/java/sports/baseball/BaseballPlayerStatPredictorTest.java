@@ -28,12 +28,12 @@ public class BaseballPlayerStatPredictorTest {
         player.addRecord("2017-2018", "BOS", "3B", 49, 30, 56, 39,
         49, 58, 27, 0.673);
 
-        container.playerMap.put(player.getName(), player);
+        container.playerMap.put(player.getName().toLowerCase(), player);
     }
 
     @Test(timeout = 100)
     public void executeAtBatsPasses() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Baseball", "Player 1", "at bats"));
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("baseball", "player 1", "at bats"));
         String output = baseballPlayerStatPredictor.execute(arguments, container);
         BigDecimal outputValue = new BigDecimal(output.substring(291)).stripTrailingZeros();
         String actual = outputValue.toString();
@@ -43,14 +43,14 @@ public class BaseballPlayerStatPredictorTest {
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteAtBatsNoPlayer() throws Exception {
-        ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("Baseball",
+        ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("baseball",
                 "player 2", "at bats"));
         String fail = this.baseballPlayerStatPredictor.execute(arguments1, container);
     }
 
     @Test(timeout = 100)
     public void executeRunsPasses() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Baseball", "Player 1", "runs"));
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("baseball", "player 1", "runs"));
         String output = baseballPlayerStatPredictor.execute(arguments, container);
         BigDecimal outputValue = new BigDecimal(output.substring(291)).stripTrailingZeros();
         String actual = outputValue.toString();
@@ -60,14 +60,14 @@ public class BaseballPlayerStatPredictorTest {
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteRunsNoPlayer() throws Exception {
-        ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("Baseball",
+        ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("baseball",
                 "player 2", "runs"));
         String fail = this.baseballPlayerStatPredictor.execute(arguments1, container);
     }
 
     @Test(timeout = 100)
     public void executeHitsPasses() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Baseball", "Player 1", "hits"));
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("baseball", "player 1", "hits"));
         String output = baseballPlayerStatPredictor.execute(arguments, container);
         BigDecimal outputValue = new BigDecimal(output.substring(291)).stripTrailingZeros();
         String actual = outputValue.toString();
@@ -77,14 +77,14 @@ public class BaseballPlayerStatPredictorTest {
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteHitsNoPlayer() throws Exception {
-        ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("Baseball",
+        ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("baseball",
                 "player 2", "hits"));
         String fail = this.baseballPlayerStatPredictor.execute(arguments1, container);
     }
 
     @Test(timeout = 100)
     public void executeHomeRunsPasses() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Baseball", "Player 1", "home runs"));
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("baseball", "player 1", "home runs"));
         String output = baseballPlayerStatPredictor.execute(arguments, container);
         BigDecimal outputValue = new BigDecimal(output.substring(290)).stripTrailingZeros();
         String actual = outputValue.toString();
@@ -94,14 +94,14 @@ public class BaseballPlayerStatPredictorTest {
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteHomeRunsNoPlayer() throws Exception {
-        ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("Baseball",
+        ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("baseball",
                 "player 2", "home runs"));
         String fail = this.baseballPlayerStatPredictor.execute(arguments1, container);
     }
 
     @Test(timeout = 100)
     public void executeRunsBattedInPasses() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Baseball", "Player 1", "runs batted in"));
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("baseball", "player 1", "runs batted in"));
         String output = baseballPlayerStatPredictor.execute(arguments, container);
         BigDecimal outputValue = new BigDecimal(output.substring(291)).stripTrailingZeros();
         String actual = outputValue.toString();
@@ -111,14 +111,14 @@ public class BaseballPlayerStatPredictorTest {
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteRunsBattedInNoPlayer() throws Exception {
-        ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("Baseball",
+        ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("baseball",
                 "player 2", "runs batted in"));
         String fail = this.baseballPlayerStatPredictor.execute(arguments1, container);
     }
 
     @Test(timeout = 100)
     public void executeStrikeOutsPasses() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Baseball", "Player 1", "strike outs"));
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("baseball", "player 1", "strike outs"));
         String output = baseballPlayerStatPredictor.execute(arguments, container);
         BigDecimal outputValue = new BigDecimal(output.substring(291)).stripTrailingZeros();
         String actual = outputValue.toString();
@@ -128,14 +128,14 @@ public class BaseballPlayerStatPredictorTest {
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteStrikeOutsNoPlayer() throws Exception {
-        ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("Baseball",
+        ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("baseball",
                 "player 2", "strike outs"));
         String fail = this.baseballPlayerStatPredictor.execute(arguments1, container);
     }
 
     @Test(timeout = 100)
     public void executeAveragePasses() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Baseball", "Player 1", "average"));
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("baseball", "player 1", "average"));
         String output = baseballPlayerStatPredictor.execute(arguments, container);
         BigDecimal outputValue = new BigDecimal(output.substring(292)).stripTrailingZeros();
         String actual = outputValue.toString();
@@ -145,14 +145,14 @@ public class BaseballPlayerStatPredictorTest {
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteAverageNoPlayer() throws Exception {
-        ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("Baseball",
+        ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("baseball",
                 "player 2", "average"));
         String fail = this.baseballPlayerStatPredictor.execute(arguments1, container);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteInvalidStat() throws Exception {
-        ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("Baseball",
+        ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("baseball",
                 "player 1", "aces"));
         String fail = this.baseballPlayerStatPredictor.execute(arguments1, container);
     }
