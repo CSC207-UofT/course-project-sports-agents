@@ -27,64 +27,6 @@ public class Match implements Serializable {
     }
 
     /**
-     * @return team A, the home team
-     */
-    public String getTeamA() {
-        return this.teamA;
-    }
-
-    /**
-     * @return team B, the visiting team
-     */
-    public String getTeamB() {
-        return this.teamB;
-    }
-
-    /**
-     * @return Team A's current score
-     */
-    public int getScoreA() {
-        return this.scoreA;
-    }
-
-    /**
-     * @return Team B's current score
-     */
-    public int getScoreB() {
-        return this.scoreB;
-    }
-
-    /**
-     * Set Team A's score to the given number
-     * @param s Team A's new score
-     */
-    public void setScoreA(int s) {
-        this.scoreA = s;
-    }
-
-    /**
-     * Set Team B's score to the given number
-     * @param s Team B's new score
-     */
-    public void setScoreB(int s) {
-        this.scoreB = s;
-    }
-
-    /**
-     * Get the winning team based on current score
-     * @return the winning team
-     */
-    public String getWinningTeam() {
-        if (this.scoreA == this.scoreB) {
-            return "";
-        } else if (this.scoreA > this.scoreB) {
-            return this.teamA;
-        } else {
-            return this.teamB;
-        }
-    }
-
-    /**
      * Record a new bet on the Match's outcome
      * @param m the League Member who placed the bet
      * @param team the team predicted to win
