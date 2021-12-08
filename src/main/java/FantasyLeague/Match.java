@@ -9,8 +9,6 @@ public class Match implements Serializable {
     private final ArrayList<LeagueMember> teamBBetters;
     private final String teamA;
     private final String teamB;
-    private int scoreA;
-    private int scoreB;
 
     /**
      * Create a new Match with the teams given
@@ -20,8 +18,6 @@ public class Match implements Serializable {
     public Match(String teamA, String teamB) {
         this.teamA = teamA;
         this.teamB = teamB;
-        this.scoreA = 0;
-        this.scoreB = 0;
         this.teamABetters = new ArrayList<>();
         this.teamBBetters = new ArrayList<>();
     }
