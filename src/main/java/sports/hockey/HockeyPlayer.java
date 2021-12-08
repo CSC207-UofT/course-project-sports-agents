@@ -289,6 +289,6 @@ public class HockeyPlayer extends Player {
                 this.gamesPlayedRecord.get(season) +
                 "\nGoals: " + this.goalsRecord.get(season) + "\nAssists: " + this.assistsRecord.get(season) +
                 "\nPoints: " + this.pointsRecord.get(season) + "\nShots: " + this.shotsRecord.get(season) +
-                "\nShooting Percentage: " + this.shootingPercentageRecord;
+                "\nShooting Percentage: " + this.shootingPercentageRecord.get(season);
     }
 }
