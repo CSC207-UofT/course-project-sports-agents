@@ -49,6 +49,8 @@ public class PlayerStatPredictorFacade implements Command {
         }
     }
 
+    // The Facade needs to check at least one argument exists, so this is here
+    // even though Single Responsibility would prefer it be in Sport-specific classes
     /**
      * @param arguments user arguments for comparing players
      * @throws Exception if insufficiently many arguments are provided (here, 5)

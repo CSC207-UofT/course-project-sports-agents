@@ -24,12 +24,25 @@ public class TeamStatManagerFacade implements Command{
      */
     @Override
     public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
+        checkArgLength(arguments);
         String sport = arguments.get(0);
         switch(sport.toLowerCase()) {
             case "hockey":
                 return this.hockeyTeamStatManager.execute(arguments, container);
             default:
                 throw new Exception(Exceptions.WRONG_SPORT);
+        }
+    }
+
+    // The Facade needs to check at least one argument exists, so this is here
+    // even though Single Responsibility would prefer it be in Sport-specific classes
+    /**
+     * @param arguments user arguments for getting team statistic
+     * @throws Exception if more or less than 4 arguments are provided
+     */
+    private void checkArgLength(ArrayList<String> arguments) throws Exception {
+        if (arguments.size() != 4) {
+            throw new Exception(Exceptions.WRONG_ARGUMENT_NUMBER);
         }
     }
 }
