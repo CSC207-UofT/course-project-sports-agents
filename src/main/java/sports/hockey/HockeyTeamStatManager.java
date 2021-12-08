@@ -15,7 +15,7 @@ public class HockeyTeamStatManager extends TeamStatManager {
     }
 
     /**
-     * Handle an argument requesting a player's statistics
+     * Handle an argument requesting a hockey team's statistic
      * @param arguments A string array of form
      *                  {"Hockey", "team name", "season", "stat name"}
      * @param container A container containing the data or means to retrieve it
