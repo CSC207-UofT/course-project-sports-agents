@@ -46,7 +46,7 @@ public class CommandsInfo {
     }
 
     // The commands handled by the FantasyLeagueManager
-    public static List<String> manageLeagueKeywords =
+    public static final List<String> manageLeagueKeywords =
             Arrays.asList("add_member", "create_match", "bet", "resolve_match",
                     "member_info", "save", "load");
 
