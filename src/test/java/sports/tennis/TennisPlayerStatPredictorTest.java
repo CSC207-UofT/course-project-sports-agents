@@ -177,4 +177,10 @@ public class TennisPlayerStatPredictorTest {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("tennis", "player 2", "return points won"));
         String fail = this.tennisPlayerStatPredictor.execute(arguments, container);
     }
+
+    @Test(timeout = 100, expected = Exception.class)
+    public void testExecuteInvalidStat() throws Exception {
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("tennis", "player 1", "goals"));
+        String fail = this.tennisPlayerStatPredictor.execute(arguments, container);
+    }
 }

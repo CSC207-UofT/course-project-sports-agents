@@ -124,5 +124,13 @@ public class HockeyPlayerStatPredictorTest {
         String fail = this.hockeyPlayerStatPredictor.execute(arguments1, container);
     }
 
+    @Test(timeout = 100, expected = Exception.class)
+    public void testExecuteInvalidStat() throws Exception {
+        ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("Hockey",
+                "player 1", "aces"));
+        String fail = this.hockeyPlayerStatPredictor.execute(arguments1, container);
+    }
+
+
 
 }
