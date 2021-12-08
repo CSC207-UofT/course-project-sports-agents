@@ -91,14 +91,13 @@ public class BaseballPlayer extends Player {
     }
 
     /**
-     * Override addSeason: for Baseball data, seasons are in reverse order
+     * Override addSeason: for baseball data, seasons are in reverse order
      * @param season new season to record
      */
     @Override
     public void addSeason(String season) {
         this.seasons.add(0, season);
     }
-
 
     /**
      * Record position data

@@ -14,8 +14,7 @@ public class HockeyPlayerStatPredictor extends PlayerStatPredictor {
 
     /**
      * Handle an argument requesting a prediction of a player's
-     * future statistic. Uses only requested seasons and assumes
-     * the seasons were played in the order provided. Uses linear
+     * future statistic. Only uses seasons player participated in. Uses linear
      * regression.
      * @param arguments A string array of form
      *                  {"Hockey", "player name", "stat name"}
