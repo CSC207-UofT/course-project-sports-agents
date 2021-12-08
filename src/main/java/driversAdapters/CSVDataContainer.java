@@ -26,8 +26,8 @@ public class CSVDataContainer implements DataContainer {
 
     @Override
     public Player getPlayer(String sport, String name) throws Exception {
-        if (playerMap.containsKey(name)) {
-            return playerMap.get(name);
+        if (playerMap.containsKey(name.toLowerCase())) {
+            return playerMap.get(name.toLowerCase());
         }
         switch (sport) {
             case "hockey":
@@ -61,7 +61,7 @@ public class CSVDataContainer implements DataContainer {
                                 Double.parseDouble(playerInfo[7]), Double.parseDouble(playerInfo[8]),
                                 Double.parseDouble(playerInfo[9]), Double.parseDouble(playerInfo[10]),
                                 Double.parseDouble(playerInfo[11]), Double.parseDouble(playerInfo[12]));
-                        playerMap.put(name, player);
+                        playerMap.put(name.toLowerCase(), player);
                         found = true;
                     } else {
                         TennisPlayer player = (TennisPlayer) playerMap.get(name);
@@ -102,7 +102,7 @@ public class CSVDataContainer implements DataContainer {
                                 Integer.parseInt(playerInfo[7]), Integer.parseInt(playerInfo[8]),
                                 Integer.parseInt(playerInfo[9]), Integer.parseInt(playerInfo[10]),
                                 Double.parseDouble(playerInfo[11]));
-                        playerMap.put(name, newPlayer);
+                        playerMap.put(name.toLowerCase(), newPlayer);
                         found = true;
                     } else {
                         ((BaseballPlayer) playerMap.get(name)).addRecord(playerInfo[2],
@@ -142,7 +142,7 @@ public class CSVDataContainer implements DataContainer {
                                 Integer.valueOf(playerInfo[6]), Integer.valueOf(playerInfo[7]),
                                 Integer.valueOf(playerInfo[8]), Integer.valueOf(playerInfo[9]),
                                 Double.valueOf(playerInfo[10]));
-                        playerMap.put(name, newPlayer);
+                        playerMap.put(name.toLowerCase(), newPlayer);
                         found = true;
                     } else {
                         ((HockeyPlayer) playerMap.get(name)).addRecord(playerInfo[1],
@@ -188,7 +188,7 @@ public class CSVDataContainer implements DataContainer {
             while ((line = br.readLine()) != null) {
                 String[] teamInfo = line.split(splitBy);
 
-                if (teamInfo[0].toLowerCase().equals(name)) {
+                if (teamInfo[0].equalsIgnoreCase(name)) {
                     if (!found) {
                         HockeyTeam newTeam = new HockeyTeam(teamInfo[0], teamInfo[1], Integer.valueOf(teamInfo[2]),
                                 Integer.valueOf(teamInfo[6]), Integer.valueOf(teamInfo[3]),
@@ -196,7 +196,7 @@ public class CSVDataContainer implements DataContainer {
                                 Integer.valueOf(teamInfo[7]), Integer.valueOf(teamInfo[8]),
                                 Double.valueOf(teamInfo[9]), Double.valueOf(teamInfo[10]),
                                 Double.valueOf(teamInfo[11]));
-                        teamMap.put(name, newTeam);
+                        teamMap.put(name.toLowerCase(), newTeam);
                         found = true;
                     } else {
                         ((HockeyTeam) teamMap.get(teamInfo[0].toLowerCase())).addRecord(teamInfo[1], Integer.valueOf(teamInfo[2]),
@@ -303,8 +303,8 @@ public class CSVDataContainer implements DataContainer {
 
         while((line = br.readLine()) != null) {
             String[] playerInfo = line.split(splitBy);
-            if (!allHockeyNames.contains(playerInfo[0].toLowerCase()+ ": Hockey")){
-                allHockeyNames.add(playerInfo[0].toLowerCase()+ ": Hockey");}
+            if (!allHockeyNames.contains(playerInfo[0] + ": Hockey")){
+                allHockeyNames.add(playerInfo[0] + ": Hockey");}
         }
         return allHockeyNames;
 
@@ -318,8 +318,8 @@ public class CSVDataContainer implements DataContainer {
 
         while((line = br.readLine()) != null) {
             String[] playerInfo = line.split(splitBy);
-            if (!allBaseballNames.contains(playerInfo[0].toLowerCase()+ ": Baseball")){
-                allBaseballNames.add(playerInfo[0].toLowerCase()+ ": Baseball");}
+            if (!allBaseballNames.contains(playerInfo[0] + ": Baseball")){
+                allBaseballNames.add(playerInfo[0] + ": Baseball");}
         }
         return allBaseballNames;
 
@@ -334,8 +334,8 @@ public class CSVDataContainer implements DataContainer {
 
         while((line = br.readLine()) != null) {
             String[] playerInfo = line.split(splitBy);
-            if (!allTennisNames.contains(playerInfo[1].toLowerCase()+ ": Tennis")){
-                allTennisNames.add(playerInfo[1].toLowerCase()+ ": Tennis");}
+            if (!allTennisNames.contains(playerInfo[1] + ": Tennis")){
+                allTennisNames.add(playerInfo[1] + ": Tennis");}
         }
         return allTennisNames;
     }

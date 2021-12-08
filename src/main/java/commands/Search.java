@@ -14,7 +14,7 @@ public class Search implements Command {
         String partOfName = arguments.get(0);
         List<String> relatedPlayers = new ArrayList<>();
         for(String playerName: container.getAllPlayersForAllSports()){
-            if(playerName.contains(partOfName.toLowerCase())){
+            if(playerName.toLowerCase().contains(partOfName.toLowerCase())){
                 relatedPlayers.add(playerName);
             }
         }

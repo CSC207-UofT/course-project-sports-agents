@@ -63,9 +63,9 @@ public class TennisPlayerStatManagerTest {
         ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("Tennis",
                 "player 1", "2016", "Aces"));
         String output1 = this.tennisPlayerStatManager.execute(arguments1, container);
-        char outputChar1 = output1.charAt(142);
-        char expected1 = '6';
-        assertEquals(expected1, outputChar1);
+        String outputSub1 = output1.substring(141, 142);
+        String expected1 = "6";
+        assertEquals(expected1, outputSub1);
     }
 
     @Test(timeout = 100, expected = Exception.class)
@@ -147,5 +147,65 @@ public class TennisPlayerStatManagerTest {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
                 "Player 1", "20192020", "Goals"));
         String fail = this.tennisPlayerStatManager.execute(arguments, container);
+    }
+
+    @Test(timeout = 100)
+    public void testExecuteCountryPasses() throws Exception {
+        ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("Tennis",
+                "player 1", "2016", "country"));
+        String output1 = this.tennisPlayerStatManager.execute(arguments1, container);
+        String outputSub1 = output1.substring(136, 142);
+        String expected1 = "Canada";
+        assertEquals(expected1, outputSub1);
+    }
+
+    @Test(timeout = 100)
+    public void testExecuteMatchesPasses() throws Exception {
+        ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("Tennis",
+                "player 1", "2016", "matches"));
+        String output1 = this.tennisPlayerStatManager.execute(arguments1, container);
+        String outputSub1 = output1.substring(141, 142);
+        String expected1 = "5";
+        assertEquals(expected1, outputSub1);
+    }
+
+    @Test(timeout = 100)
+    public void testExecuteServeGamesWonPasses() throws Exception {
+        ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("Tennis",
+                "player 1", "2016", "serve games won"));
+        String output1 = this.tennisPlayerStatManager.execute(arguments1, container);
+        String outputSub1 = output1.substring(138, 142);
+        String expected1 = "14.5";
+        assertEquals(expected1, outputSub1);
+    }
+
+    @Test(timeout = 100)
+    public void testExecuteReturnGamesWonPasses() throws Exception {
+        ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("Tennis",
+                "player 1", "2016", "return games won"));
+        String output1 = this.tennisPlayerStatManager.execute(arguments1, container);
+        String outputSub1 = output1.substring(138, 142);
+        String expected1 = "16.0";
+        assertEquals(expected1, outputSub1);
+    }
+
+    @Test(timeout = 100)
+    public void testExecuteBreakPointsConvertedPasses() throws Exception {
+        ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("Tennis",
+                "player 1", "2016", "break points converted"));
+        String output1 = this.tennisPlayerStatManager.execute(arguments1, container);
+        String outputSub1 = output1.substring(140, 144);
+        String expected1 = "17.0";
+        assertEquals(expected1, outputSub1);
+    }
+
+    @Test(timeout = 100)
+    public void testExecuteReturnPointsWonPasses() throws Exception {
+        ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("Tennis",
+                "player 1", "2016", "return points won"));
+        String output1 = this.tennisPlayerStatManager.execute(arguments1, container);
+        String outputSub1 = output1.substring(138, 142);
+        String expected1 = "18.0";
+        assertEquals(expected1, outputSub1);
     }
 }
