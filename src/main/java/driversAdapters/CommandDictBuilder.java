@@ -21,50 +21,30 @@ import java.util.HashMap;
  * A builder class to construct the Command Dictionary for the Command Manager
  */
 public class CommandDictBuilder {
-    private final HockeyPlayerStatManager hockeyPlayerStatManager;
-    private final HockeyPlayerStatComparer hockeyPlayerStatComparer;
-    private final HockeyPlayerStatPredictor hockeyPlayerStatPredictor;
-
-    private final TennisPlayerStatManager tennisPlayerStatManager;
-    private final TennisPlayerStatComparer tennisPlayerStatComparer;
-    private final TennisPlayerStatPredictor tennisPlayerStatPredictor;
-
-    private final BaseballPlayerStatManager baseballPlayerStatManager;
-    private final BaseballPlayerStatComparer baseballPlayerStatComparer;
-    private final BaseballPlayerStatPredictor baseballPlayerStatPredictor;
-
-    private final PlayerStatManagerFacade playerStatManagerFacade;
-    private final PlayerStatComparerFacade playerStatComparerFacade;
-    private final PlayerStatPredictorFacade playerStatPredictorFacade;
-
-    private final FantasyLeagueManager leagueMemberManager;
 
     private final HashMap<String, Command> commandDict;
 
     public CommandDictBuilder() {
-        this.hockeyPlayerStatManager = new HockeyPlayerStatManager();
-        this.hockeyPlayerStatComparer = new HockeyPlayerStatComparer();
-        this.hockeyPlayerStatPredictor = new HockeyPlayerStatPredictor();
+        HockeyPlayerStatManager hockeyPlayerStatManager = new HockeyPlayerStatManager();
+        HockeyPlayerStatComparer hockeyPlayerStatComparer = new HockeyPlayerStatComparer();
+        HockeyPlayerStatPredictor hockeyPlayerStatPredictor = new HockeyPlayerStatPredictor();
 
-        this.tennisPlayerStatManager = new TennisPlayerStatManager();
-        this.tennisPlayerStatComparer = new TennisPlayerStatComparer();
-        this.tennisPlayerStatPredictor = new TennisPlayerStatPredictor();
+        TennisPlayerStatManager tennisPlayerStatManager = new TennisPlayerStatManager();
+        TennisPlayerStatComparer tennisPlayerStatComparer = new TennisPlayerStatComparer();
+        TennisPlayerStatPredictor tennisPlayerStatPredictor = new TennisPlayerStatPredictor();
 
-        this.baseballPlayerStatManager = new BaseballPlayerStatManager();
-        this.baseballPlayerStatComparer = new BaseballPlayerStatComparer();
-        this.baseballPlayerStatPredictor = new BaseballPlayerStatPredictor();
+        BaseballPlayerStatManager baseballPlayerStatManager = new BaseballPlayerStatManager();
+        BaseballPlayerStatComparer baseballPlayerStatComparer = new BaseballPlayerStatComparer();
+        BaseballPlayerStatPredictor baseballPlayerStatPredictor = new BaseballPlayerStatPredictor();
 
-        this.playerStatManagerFacade =
-                new PlayerStatManagerFacade(hockeyPlayerStatManager,
-                        tennisPlayerStatManager, baseballPlayerStatManager);
-        this.playerStatComparerFacade =
-                new PlayerStatComparerFacade(hockeyPlayerStatComparer,
-                        tennisPlayerStatComparer, baseballPlayerStatComparer);
-        this.playerStatPredictorFacade =
-                new PlayerStatPredictorFacade(hockeyPlayerStatPredictor,
-                        tennisPlayerStatPredictor, baseballPlayerStatPredictor);
+        PlayerStatManagerFacade playerStatManagerFacade = new PlayerStatManagerFacade(hockeyPlayerStatManager,
+                tennisPlayerStatManager, baseballPlayerStatManager);
+        PlayerStatComparerFacade playerStatComparerFacade = new PlayerStatComparerFacade(hockeyPlayerStatComparer,
+                tennisPlayerStatComparer, baseballPlayerStatComparer);
+        PlayerStatPredictorFacade playerStatPredictorFacade = new PlayerStatPredictorFacade(hockeyPlayerStatPredictor,
+                tennisPlayerStatPredictor, baseballPlayerStatPredictor);
 
-        this.leagueMemberManager = new FantasyLeagueManager();
+        FantasyLeagueManager leagueMemberManager = new FantasyLeagueManager();
 
         this.commandDict = new HashMap<>();
         this.commandDict.put(CommandsInfo.GetPlayerStatInfo.keyword,
