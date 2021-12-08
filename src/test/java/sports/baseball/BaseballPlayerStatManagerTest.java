@@ -30,7 +30,7 @@ public class BaseballPlayerStatManagerTest {
         ArrayList<String> command = new ArrayList<>(Arrays.asList("baseball", "player 1",
                 "2020-2021", "team"));
         String output = baseballPlayerStatManager.execute(command, container);
-        String outputSub = output.substring(134, 142);
+        String outputSub = output.substring(135, 143);
         String expected = "Red Team";
         assertEquals(expected, outputSub);
     }
@@ -40,7 +40,7 @@ public class BaseballPlayerStatManagerTest {
         ArrayList<String> command = new ArrayList<>(Arrays.asList("baseball", "player 1",
                 "2020-2021", "position"));
         String output = baseballPlayerStatManager.execute(command, container);
-        String outputSub = output.substring(141, 142);
+        String outputSub = output.substring(142, 143);
         String expected = "C";
         assertEquals(expected, outputSub);
     }
@@ -50,7 +50,7 @@ public class BaseballPlayerStatManagerTest {
         ArrayList<String> command = new ArrayList<>(Arrays.asList("baseball", "player 1",
                 "2020-2021", "games played"));
         String output = baseballPlayerStatManager.execute(command, container);
-        String outputSub = output.substring(140, 142);
+        String outputSub = output.substring(141, 143);
         String expected = "20";
         assertEquals(expected, outputSub);
     }
@@ -60,7 +60,7 @@ public class BaseballPlayerStatManagerTest {
         ArrayList<String> command = new ArrayList<>(Arrays.asList("baseball", "player 1",
                 "2020-2021", "at bats"));
         String output = baseballPlayerStatManager.execute(command, container);
-        String outputSub = output.substring(140, 142);
+        String outputSub = output.substring(141, 143);
         String expected = "50";
         assertEquals(expected, outputSub);
     }
@@ -70,7 +70,7 @@ public class BaseballPlayerStatManagerTest {
         ArrayList<String> command = new ArrayList<>(Arrays.asList("baseball", "player 1",
                 "2020-2021", "runs"));
         String output = baseballPlayerStatManager.execute(command, container);
-        String outputSub = output.substring(140, 142);
+        String outputSub = output.substring(141, 143);
         String expected = "25";
         assertEquals(expected, outputSub);
     }
@@ -80,7 +80,7 @@ public class BaseballPlayerStatManagerTest {
         ArrayList<String> command = new ArrayList<>(Arrays.asList("baseball", "player 1",
                 "2020-2021", "hits"));
         String output = baseballPlayerStatManager.execute(command, container);
-        String outputSub = output.substring(140, 142);
+        String outputSub = output.substring(141, 143);
         String expected = "10";
         assertEquals(expected, outputSub);
     }
@@ -90,7 +90,7 @@ public class BaseballPlayerStatManagerTest {
         ArrayList<String> command = new ArrayList<>(Arrays.asList("baseball", "player 1",
                 "2020-2021", "home runs"));
         String output = baseballPlayerStatManager.execute(command, container);
-        String outputSub = output.substring(141, 142);
+        String outputSub = output.substring(142, 143);
         String expected = "2";
         assertEquals(expected, outputSub);
     }
@@ -100,7 +100,7 @@ public class BaseballPlayerStatManagerTest {
         ArrayList<String> command = new ArrayList<>(Arrays.asList("baseball", "player 1",
                 "2020-2021", "runs batted in"));
         String output = baseballPlayerStatManager.execute(command, container);
-        String outputSub = output.substring(141, 142);
+        String outputSub = output.substring(142, 143);
         String expected = "5";
         assertEquals(expected, outputSub);
     }
@@ -110,7 +110,7 @@ public class BaseballPlayerStatManagerTest {
         ArrayList<String> command = new ArrayList<>(Arrays.asList("baseball", "player 1",
                 "2020-2021", "strike outs"));
         String output = baseballPlayerStatManager.execute(command, container);
-        String outputSub = output.substring(141, 142);
+        String outputSub = output.substring(142, 143);
         String expected = "3";
         assertEquals(expected, outputSub);
     }
@@ -120,7 +120,7 @@ public class BaseballPlayerStatManagerTest {
         ArrayList<String> command = new ArrayList<>(Arrays.asList("baseball", "player 1",
                 "2020-2021", "average"));
         String output = baseballPlayerStatManager.execute(command, container);
-        String outputSub = output.substring(137, 142);
+        String outputSub = output.substring(138, 143);
         String expected = "0.207";
         assertEquals(expected, outputSub);
     }
