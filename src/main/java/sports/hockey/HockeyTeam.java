@@ -50,13 +50,14 @@ public class HockeyTeam extends Team {
      * @param shotsForPerGame Average amount of shots scored by the team per game in the given season
      * @param shotsAgainstPerGame Average amount of shots received by the team per game in the given season
      * @param faceOffWinPercentage Percentage of face-offs won in a given season
+     * @throws Exception whenever the data already exists
      */
     public HockeyTeam(String name, String season,
                         Integer gamesPlayed, Integer points,
                         Integer gamesWon, Integer gamesLost, Integer overtimeLosses,
                         Integer goalsFor, Integer goalsAgainst,
                         Double shotsForPerGame, Double shotsAgainstPerGame,
-                        Double faceOffWinPercentage) {
+                        Double faceOffWinPercentage) throws Exception {
         this(name);
         this.addRecord(season, gamesPlayed, points, gamesWon, gamesLost,
                 overtimeLosses, goalsFor, goalsAgainst, shotsForPerGame, shotsAgainstPerGame,
@@ -77,11 +78,12 @@ public class HockeyTeam extends Team {
      * @param shotsForPerGame Average amount of shots scored by the team per game in the given season
      * @param shotsAgainstPerGame Average amount of shots received by the team per game in the given season
      * @param faceOffWinPercentage Percentage of face-offs won in a given season
+     * @throws Exception whenever the data already exists
      */
     public void addRecord(String season, Integer gamesPlayed, Integer points, Integer gamesWon,
                            Integer gamesLost, Integer overtimeLosses, Integer goalsFor,
                            Integer goalsAgainst, Double shotsForPerGame, Double shotsAgainstPerGame,
-                           Double faceOffWinPercentage) {
+                           Double faceOffWinPercentage) throws Exception {
         this.addGamesPlayed(season, gamesPlayed);
         this.addPoints(season, points);
         this.addGamesWon(season, gamesWon);
@@ -188,8 +190,10 @@ public class HockeyTeam extends Team {
      * add the team's faceoff win percentage during the given season to the data
      * @param season given season
      * @param faceOffWinPercentage statistic
+     * @throws Exception whenever the data already exists
      */
-    public void addFaceOffWinPercentage(String season, Double faceOffWinPercentage) {
+    public void addFaceOffWinPercentage(String season, Double faceOffWinPercentage) throws Exception {
+        checkForSeason(this.faceOffWinPercentage, season, false);
         this.faceOffWinPercentage.put(season, faceOffWinPercentage);
     }
 
