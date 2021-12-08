@@ -9,7 +9,6 @@ public class Match implements Serializable {
     private final ArrayList<LeagueMember> teamBBetters;
     private final String teamA;
     private final String teamB;
-    // TODO: Implement updating score of games and resolving that way
     private int scoreA;
     private int scoreB;
 
@@ -100,25 +99,6 @@ public class Match implements Serializable {
             throw new Exception(team + " is not a Team in this Match!");
         }
     }
-
-    /*
-    This is based on an old implementation and is not currently used
-    elsewhere in the code. However, it should be implemented later
-
-    public ArrayList<LeagueMember> getBetWinners() {
-        ArrayList<LeagueMember> winners = new ArrayList<LeagueMember>();
-        for (LeagueMember m : this.bets.keySet()) {
-            if (this.bets.get(m).equals(getWinningTeam())) {
-                winners.add(m);
-            }
-        }
-        return winners;
-    }
-
-    public int getNumBetWinners() {
-        return getBetWinners().size();
-    }
-     */
 
     /**
      * Resolve the Match and note which League Members bet
