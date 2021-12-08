@@ -330,7 +330,6 @@ public class CSVDataContainer implements DataContainer {
             }
         }
         return allBaseballNames;
-
     }
 
     public List<String> getAllTennisPlayers() throws IOException {

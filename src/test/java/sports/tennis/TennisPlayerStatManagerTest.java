@@ -208,4 +208,25 @@ public class TennisPlayerStatManagerTest {
         String expected1 = "18.0";
         assertEquals(expected1, outputSub1);
     }
+
+    @Test(timeout = 100)
+    public void testExecuteWithPlayersInCsvFile() throws Exception {
+        ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("Tennis",
+                "Barbora Krejcikova", "2016", "country"));
+        String output1 = this.tennisPlayerStatManager.execute(arguments1, container);
+        assertTrue(output1.contains("Barbora Krejcikova"));
+        assertTrue(output1.contains("CZE"));
+
+        ArrayList<String> arguments2 = new ArrayList<>(Arrays.asList("Tennis",
+                "Naomi Osaka", "2016", "rank"));
+        String output2 = this.tennisPlayerStatManager.execute(arguments2, container);
+        assertTrue(output2.contains("Naomi Osaka"));
+        assertTrue(output2.contains("13"));
+
+        ArrayList<String> arguments3 = new ArrayList<>(Arrays.asList("Tennis",
+                "Angelique Kerber", "2016", "aces"));
+        String output3 = this.tennisPlayerStatManager.execute(arguments3, container);
+        assertTrue(output3.contains("Angelique Kerber"));
+        assertTrue(output3.contains("104"));
+    }
 }
