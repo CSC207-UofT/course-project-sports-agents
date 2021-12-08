@@ -351,4 +351,18 @@ public class TennisPlayerStatComparerTest {
         String fail = this.tennisPlayerStatComparer.execute(arguments, container);
     }
 
+    @Test(timeout = 100)
+    public void testExecuteWithPlayerInCsvFile() throws Exception {
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("tennis",
+                "Anett Kontaveit", "Ashleigh Barty", "2016", "matches"));
+        String[] output = this.tennisPlayerStatComparer.execute(arguments, container).split("\n");
+        String output1 = output[3].replaceAll(" ", "");
+        String expected1 = "1AnettKontaveit29";
+        assertEquals(expected1, output1);
+
+        String output2 = output[4].replaceAll(" ", "");
+        String expected2 = "2AshleighBarty3";
+        assertEquals(expected2, output2);
+    }
+
 }

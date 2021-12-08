@@ -31,16 +31,16 @@ public class CSVDataContainer implements DataContainer {
         }
         switch (sport) {
             case "hockey":
-                getHockeyPlayer(name);
+                getHockeyPlayer(name.toLowerCase());
                 break;
             case "baseball":
-                getBaseballPlayer(name);
+                getBaseballPlayer(name.toLowerCase());
                 break;
             case "tennis":
-                getTennisPlayer(name);
+                getTennisPlayer(name.toLowerCase());
                 break;
         }
-        return playerMap.get(name);
+        return playerMap.get(name.toLowerCase());
     }
 
     private void getTennisPlayer(String name) throws Exception {

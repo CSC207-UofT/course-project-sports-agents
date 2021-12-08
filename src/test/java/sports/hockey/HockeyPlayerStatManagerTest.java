@@ -65,14 +65,14 @@ public class HockeyPlayerStatManagerTest {
     public void testExecuteTeamNoPlayer() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey",
                 "paul gries", "2020-2021", "team"));
-        String fail = this.hockeyPlayerStatManager.execute(arguments, container);
+        this.hockeyPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteTeamNoSeason() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey",
                 "player 1", "2018-2019", "team"));
-        String fail = this.hockeyPlayerStatManager.execute(arguments, container);
+        this.hockeyPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100)
@@ -80,37 +80,37 @@ public class HockeyPlayerStatManagerTest {
         ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("hockey",
                 "player 1", "2020-2021", "skater shoots"));
         String output1 = this.hockeyPlayerStatManager.execute(arguments1, container);
-        char outputChar1 = output1.charAt(142);
-        char expected1 = 'L';
-        assertEquals(expected1, outputChar1);
+        String outputSub1 = output1.substring(142, 143);
+        String expected1 = "L";
+        assertEquals(expected1, outputSub1);
 
         ArrayList<String> arguments2 = new ArrayList<>(Arrays.asList("hockey",
                 "player 2", "2020-2021", "skater shoots"));
         String output2 = this.hockeyPlayerStatManager.execute(arguments2, container);
-        char outputChar2 = output2.charAt(142);
-        char expected2 = 'L';
-        assertEquals(expected2, outputChar2);
+        String outputSub2 = output2.substring(142, 143);
+        String expected2 = "L";
+        assertEquals(expected2, outputSub2);
 
         ArrayList<String> arguments3 = new ArrayList<>(Arrays.asList("hockey",
                 "player 3", "2020-2021", "skater shoots"));
         String output3 = this.hockeyPlayerStatManager.execute(arguments3, container);
-        char outputChar3 = output3.charAt(142);
-        char expected3 = 'L';
-        assertEquals(expected3, outputChar3);
+        String outputSub3 = output3.substring(142, 143);
+        String expected3 = "L";
+        assertEquals(expected3, outputSub3);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteSkaterShootsNoPlayer() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey",
                 "paul gries", "2020-2021", "skater shoots"));
-        String fail = this.hockeyPlayerStatManager.execute(arguments, container);
+        this.hockeyPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteSkaterShootsNoSeason() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey",
                 "player 1", "2018-2019", "skater shoots"));
-        String fail = this.hockeyPlayerStatManager.execute(arguments, container);
+        this.hockeyPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100)
@@ -118,22 +118,22 @@ public class HockeyPlayerStatManagerTest {
         ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("hockey",
                 "player 1", "2020-2021", "position"));
         String output1 = this.hockeyPlayerStatManager.execute(arguments1, container);
-        char outputChar1 = output1.charAt(142);
-        char expected1 = 'C';
-        assertEquals(expected1, outputChar1);
+        String outputsub1 = output1.substring(142, 143);
+        String expected1 = "C";
+        assertEquals(expected1, outputsub1);
 
         ArrayList<String> arguments2 = new ArrayList<>(Arrays.asList("hockey",
                 "player 2", "2020-2021", "position"));
         String output2 = this.hockeyPlayerStatManager.execute(arguments2, container);
-        char outputChar2 = output2.charAt(142);
-        char expected2 = 'R';
+        String outputChar2 = output2.substring(142, 143);
+        String expected2 = "R";
         assertEquals(expected2, outputChar2);
 
         ArrayList<String> arguments3 = new ArrayList<>(Arrays.asList("hockey",
                 "player 3", "2020-2021", "position"));
         String output3 = this.hockeyPlayerStatManager.execute(arguments3, container);
-        char outputChar3 = output3.charAt(142);
-        char expected3 = 'C';
+        String outputChar3 = output3.substring(142, 143);
+        String expected3 = "C";
         assertEquals(expected3, outputChar3);
     }
 
@@ -141,14 +141,14 @@ public class HockeyPlayerStatManagerTest {
     public void testExecutePositionNoPlayer() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey",
                 "paul gries", "2020-2021", "position"));
-        String fail = this.hockeyPlayerStatManager.execute(arguments, container);
+        this.hockeyPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecutePositionNoSeason() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey",
                 "player 1", "2018-2019", "position"));
-        String fail = this.hockeyPlayerStatManager.execute(arguments, container);
+        this.hockeyPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100)
@@ -179,14 +179,14 @@ public class HockeyPlayerStatManagerTest {
     public void testExecuteGamesPlayedNoPlayer() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey",
                 "paul gries", "2020-2021", "games played"));
-        String fail = this.hockeyPlayerStatManager.execute(arguments, container);
+        this.hockeyPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteGamesPlayedNoSeason() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey",
                 "player 1", "2018-2019", "games played"));
-        String fail = this.hockeyPlayerStatManager.execute(arguments, container);
+        this.hockeyPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100)
@@ -217,14 +217,14 @@ public class HockeyPlayerStatManagerTest {
     public void testExecuteGoalsNoPlayer() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey",
                 "paul gries", "2020-2021", "goals"));
-        String fail = this.hockeyPlayerStatManager.execute(arguments, container);
+        this.hockeyPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteGoalsNoSeason() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey",
                 "player 1", "2018-2019", "goals"));
-        String fail = this.hockeyPlayerStatManager.execute(arguments, container);
+        this.hockeyPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100)
@@ -255,14 +255,14 @@ public class HockeyPlayerStatManagerTest {
     public void testExecuteAssistsNoPlayer() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey",
                 "paul gries", "2020-2021", "assists"));
-        String fail = this.hockeyPlayerStatManager.execute(arguments, container);
+        this.hockeyPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteAssistsNoSeason() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey",
                 "player 1", "2018-2019", "assists"));
-        String fail = this.hockeyPlayerStatManager.execute(arguments, container);
+        this.hockeyPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100)
@@ -293,14 +293,14 @@ public class HockeyPlayerStatManagerTest {
     public void testExecutePointsNoPlayer() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey",
                 "paul gries", "2020-2021", "points"));
-        String fail = this.hockeyPlayerStatManager.execute(arguments, container);
+        this.hockeyPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecutePointsNoSeason() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey",
                 "player 1", "2018-2019", "points"));
-        String fail = this.hockeyPlayerStatManager.execute(arguments, container);
+        this.hockeyPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100)
@@ -331,14 +331,14 @@ public class HockeyPlayerStatManagerTest {
     public void testExecuteShotsNoPlayer() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey",
                 "paul gries", "2020-2021", "shots"));
-        String fail = this.hockeyPlayerStatManager.execute(arguments, container);
+        this.hockeyPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 200, expected = Exception.class)
     public void testExecuteShotsNoSeason() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey",
                 "player 1", "2018-2019", "shots"));
-        String fail = this.hockeyPlayerStatManager.execute(arguments, container);
+        this.hockeyPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100)
@@ -369,20 +369,41 @@ public class HockeyPlayerStatManagerTest {
     public void testExecuteShootingPercentageNoPlayer() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey",
                 "paul gries", "2020-2021", "shooting percentage"));
-        String fail = this.hockeyPlayerStatManager.execute(arguments, container);
+        this.hockeyPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteShootingPercentageNoSeason() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey",
                 "player 1", "2018-2019", "shooting percentage"));
-        String fail = this.hockeyPlayerStatManager.execute(arguments, container);
+        this.hockeyPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteInvalidStat() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey",
                 "player 1", "2020-2021", "age"));
-        String fail = this.hockeyPlayerStatManager.execute(arguments, container);
+        this.hockeyPlayerStatManager.execute(arguments, container);
+    }
+
+    @Test(timeout = 100)
+    public void testExecuteWithPlayerInCsvFile() throws Exception {
+        ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("hockey",
+                "Zdeno Chara", "2020-2021", "team"));
+        String output1 = this.hockeyPlayerStatManager.execute(arguments1, container);
+        assertTrue(output1.contains("Zdeno Chara"));
+        assertTrue(output1.contains("WSH"));
+
+        ArrayList<String> arguments2 = new ArrayList<>(Arrays.asList("hockey",
+                "Corey Perry", "2020-2021", "skater shoots"));
+        String output2 = this.hockeyPlayerStatManager.execute(arguments2, container);
+        assertTrue(output2.contains("Corey Perry"));
+        assertTrue(output2.contains("R"));
+
+        ArrayList<String> arguments3 = new ArrayList<>(Arrays.asList("hockey",
+                "Jason Spezza", "2020-2021", "games played"));
+        String output3 = this.hockeyPlayerStatManager.execute(arguments3, container);
+        assertTrue(output3.contains("Jason Spezza"));
+        assertTrue(output3.contains("54"));
     }
 }

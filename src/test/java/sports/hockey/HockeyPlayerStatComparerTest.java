@@ -231,4 +231,19 @@ public class HockeyPlayerStatComparerTest {
                 "player 3", "20202021", "name"));
         String fail = this.hockeyPlayerStatComparer.execute(arguments, container);
     }
+
+    @Test(timeout = 100)
+    public void testExecuteWithPlayerInCsvFile() throws Exception {
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey", "Zdeno Chara", "Joe Thornton",
+                "2020-2021", "games played"));
+        String[] output = this.hockeyPlayerStatComparer.execute(arguments, container).split("\n");
+        String output1 = output[3].replaceAll(" ", "");
+        String expected1 = "1ZdenoChara55";
+        assertEquals(expected1, output1);
+
+        String output2 = output[4].replaceAll(" ", "");
+        String expected2 = "2JoeThornton44";
+        assertEquals(expected2, output2);
+
+    }
 }
