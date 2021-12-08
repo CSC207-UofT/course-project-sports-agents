@@ -205,10 +205,10 @@ public class CSVDataContainerTest {
     public void testGetAllHockeyPlayers() throws Exception {
         List<String> hockeyPlayers =
                 container.getAllHockeyPlayers();
-        List<String> firstHockeyPlayers = Arrays.asList("zdeno chara: Hockey",
-                "joe thornton: Hockey", "jason spezza: Hockey", "duncan keith: Hockey");
-        List<String> lastHockeyPlayers = Arrays.asList("adam clendening: Hockey",
-                "brian flynn: Hockey", "jayson megna: Hockey", "patrick brown: Hockey");
+        List<String> firstHockeyPlayers = Arrays.asList("Zdeno Chara: Hockey",
+                "Joe Thornton: Hockey", "Jason Spezza: Hockey", "Duncan Keith: Hockey");
+        List<String> lastHockeyPlayers = Arrays.asList("Adam Clendening: Hockey",
+                "Brian Flynn: Hockey", "Jayson Megna: Hockey", "Patrick Brown: Hockey");
         assertEquals(firstHockeyPlayers,
                 hockeyPlayers.subList(0, firstHockeyPlayers.size()));
         assertEquals(lastHockeyPlayers,
@@ -220,10 +220,10 @@ public class CSVDataContainerTest {
     public void testGetAllBaseballPlayers() throws Exception {
         List<String> baseballPlayers =
                 container.getAllBaseballPlayers();
-        List<String> firstBaseballPlayers = Arrays.asList("whit merrifield: Baseball",
-                "jose abreu: Baseball", "dansby swanson: Baseball", "francisco lindor: Baseball");
-        List<String> lastBaseballPlayers = Arrays.asList("matt tuiasosopo: Baseball",
-                "andrew lambo: Baseball", "mike miller: Baseball", "mike mckenry: Baseball");
+        List<String> firstBaseballPlayers = Arrays.asList("Whit Merrifield: Baseball",
+                "Jose Abreu: Baseball", "Dansby Swanson: Baseball", "Francisco Lindor: Baseball");
+        List<String> lastBaseballPlayers = Arrays.asList("Matt Tuiasosopo: Baseball",
+                "Andrew Lambo: Baseball", "Mike Miller: Baseball", "Mike McKenry: Baseball");
         assertEquals(firstBaseballPlayers,
                 baseballPlayers.subList(0, firstBaseballPlayers.size()));
         assertEquals(lastBaseballPlayers,
@@ -235,10 +235,10 @@ public class CSVDataContainerTest {
     public void testGetAllTennisPlayers() throws Exception {
         List<String> tennisPlayers =
                 container.getAllTennisPlayers();
-        List<String> firstTennisPlayers = Arrays.asList("ashleigh barty: Tennis",
-                "barbora krejcikova: Tennis", "karolina pliskova: Tennis", "garbine mugurza: Tennis");
-        List<String> lastTennisPlayers = Arrays.asList("petra krejsova: Tennis",
-                "alexa guarachi: Tennis", "victoria kamenskaya: Tennis", "alyssa mayo: Tennis");
+        List<String> firstTennisPlayers = Arrays.asList("Ashleigh Barty: Tennis",
+                "Barbora Krejcikova: Tennis", "Karolina Pliskova: Tennis", "Garbine Mugurza: Tennis");
+        List<String> lastTennisPlayers = Arrays.asList("Petra Krejsova: Tennis",
+                "Alexa Guarachi: Tennis", "Victoria Kamenskaya: Tennis", "Alyssa Mayo: Tennis");
         assertEquals(firstTennisPlayers,
                 tennisPlayers.subList(0, firstTennisPlayers.size()));
         assertEquals(lastTennisPlayers,

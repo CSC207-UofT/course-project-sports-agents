@@ -50,6 +50,8 @@ public class PlayerStatManagerFacade implements Command {
         }
     }
 
+    // The Facade needs to check at least one argument exists, so this is here
+    // even though Single Responsibility would prefer it be in Sport-specific classes
     /**
      * @param arguments user arguments for querying player stats
      * @throws Exception if more or less than 4 arguments are provided

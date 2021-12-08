@@ -15,13 +15,13 @@ public class SearchTest {
         DataContainer dataContainer = new CSVDataContainer();
         ArrayList<String> arguments = new ArrayList<>();
         arguments.add("Jeff");
-        String expected = "jeff carter: Hockey\n" +
-                "jeff petry: Hockey\n" +
-                "jeff skinner: Hockey\n" +
-                "jeff mcneil: Baseball\n" +
-                "jeff mathis: Baseball\n" +
-                "ryan jeffers: Baseball\n" +
-                "jeff francoeur: Baseball\n";
+        String expected = "Jeff Carter: Hockey\n" +
+                "Jeff Petry: Hockey\n" +
+                "Jeff Skinner: Hockey\n" +
+                "Jeff McNeil: Baseball\n" +
+                "Jeff Mathis: Baseball\n" +
+                "Ryan Jeffers: Baseball\n" +
+                "Jeff Francoeur: Baseball\n";
         assertEquals(expected, search.execute(arguments, dataContainer));
 
     }
