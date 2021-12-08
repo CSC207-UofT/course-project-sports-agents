@@ -9,8 +9,6 @@ public class Match implements Serializable {
     private final ArrayList<LeagueMember> teamBBetters;
     private final String teamA;
     private final String teamB;
-    private int scoreA;
-    private int scoreB;
 
     /**
      * Create a new Match with the teams given
@@ -20,68 +18,8 @@ public class Match implements Serializable {
     public Match(String teamA, String teamB) {
         this.teamA = teamA;
         this.teamB = teamB;
-        this.scoreA = 0;
-        this.scoreB = 0;
         this.teamABetters = new ArrayList<>();
         this.teamBBetters = new ArrayList<>();
-    }
-
-    /**
-     * @return team A, the home team
-     */
-    public String getTeamA() {
-        return this.teamA;
-    }
-
-    /**
-     * @return team B, the visiting team
-     */
-    public String getTeamB() {
-        return this.teamB;
-    }
-
-    /**
-     * @return Team A's current score
-     */
-    public int getScoreA() {
-        return this.scoreA;
-    }
-
-    /**
-     * @return Team B's current score
-     */
-    public int getScoreB() {
-        return this.scoreB;
-    }
-
-    /**
-     * Set Team A's score to the given number
-     * @param s Team A's new score
-     */
-    public void setScoreA(int s) {
-        this.scoreA = s;
-    }
-
-    /**
-     * Set Team B's score to the given number
-     * @param s Team B's new score
-     */
-    public void setScoreB(int s) {
-        this.scoreB = s;
-    }
-
-    /**
-     * Get the winning team based on current score
-     * @return the winning team
-     */
-    public String getWinningTeam() {
-        if (this.scoreA == this.scoreB) {
-            return "";
-        } else if (this.scoreA > this.scoreB) {
-            return this.teamA;
-        } else {
-            return this.teamB;
-        }
     }
 
     /**

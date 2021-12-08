@@ -18,13 +18,6 @@ public class LeagueMember implements Serializable {
     }
 
     /**
-     * @return the Member's name
-     */
-    public String getName() {
-        return this.name;
-    }
-
-    /**
      * @return the number of correct bets the Member has made
      */
     public int getCorrectBets() {
