@@ -2,7 +2,6 @@ package driversAdapters;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
 
@@ -19,9 +18,9 @@ public class InputParserTest {
                               "--season 2020-2021 " +
                               "--stat \"games played\"";
         String verboseInputReordered = "get_player_stat --stat \"games played\" " +
-                               "--season 2020-2021 " +
-                               "--player-name \"auston matthews\" " +
-                               "--sport hockey";
+                                       "--season 2020-2021 " +
+                                       "--player-name \"auston matthews\" " +
+                                       "--sport hockey";
         String keyword = "get_player_stat";
         List<String> arguments = Arrays.asList("hockey", "auston matthews",
                 "2020-2021", "games played");
@@ -49,9 +48,9 @@ public class InputParserTest {
                               "--season 2020-2021 " +
                               "--stat \"games played\"";
         String verboseInputReordered = "compare_player_stat --stat \"games played\" " +
-                               "--season 2020-2021 " +
-                               "--player-names \"auston matthews\" \"brad marchand\" " +
-                               "--sport hockey";
+                                       "--season 2020-2021 " +
+                                       "--player-names \"auston matthews\" \"brad marchand\" " +
+                                       "--sport hockey";
         String verboseInputMultiName = "compare_player_stat --sport hockey " +
                                        "--player-names \"auston matthews\" \"brad marchand\" " +
                                        "\"paul gries\"" +
@@ -250,9 +249,9 @@ public class InputParserTest {
     @Test
     public void testParsePoorlyFormattedVerbose() {
         String goodVerboseInput = "get_player_stat --sport \"hockey\"" +
-                                       "--player-name \"auston matthews\" " +
-                                       "--season 2020-2021 " +
-                                       "--stat \"games played\"";
+                                  "--player-name \"auston matthews\" " +
+                                  "--season 2020-2021 " +
+                                  "--stat \"games played\"";
         String noSpaceVerboseInput = "get_player_stat --sport\"hockey\"" +
                                      "--player-name\"auston matthews\"" +
                                      "--season\"2020-2021\"" +

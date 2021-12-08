@@ -1,4 +1,4 @@
-package FantasyLeague;
+package fantasyLeague;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +13,7 @@ public class LeagueStorageTest {
     private LeagueStorage leagueStorage;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         leagueMemberMap = new HashMap<>();
         LeagueMember member1 = new LeagueMember("John");
         leagueMemberMap.put("John", member1);

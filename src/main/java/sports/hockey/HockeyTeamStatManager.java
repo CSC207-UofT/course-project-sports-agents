@@ -10,12 +10,13 @@ public class HockeyTeamStatManager extends TeamStatManager {
     public HockeyTeamStatManager() {
         super(
                 new HashSet<>(Arrays.asList("games played", "games won", "games lost", "overtime losses",
-                "points", "goals for", "goals against", "shots for per game",
-                "shots against per game", "faceoff win percentage")));
+                        "points", "goals for", "goals against", "shots for per game",
+                        "shots against per game", "faceoff win percentage")));
     }
 
     /**
      * Handle an argument requesting a player's statistics
+     *
      * @param arguments A string array of form
      *                  {"Hockey", "team name", "season", "stat name"}
      * @param container A container containing the data or means to retrieve it

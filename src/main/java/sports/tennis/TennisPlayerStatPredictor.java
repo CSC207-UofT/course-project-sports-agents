@@ -17,6 +17,7 @@ public class TennisPlayerStatPredictor extends PlayerStatPredictor {
      * Handle an argument requesting a prediction of a player's
      * future statistic. Only uses the seasons the player participated in. Uses linear
      * regression.
+     *
      * @param arguments A string array of form
      *                  {"Tennis", "player name",
      *                  "season 1", "season 2", ..., "stat name"}
@@ -45,8 +46,9 @@ public class TennisPlayerStatPredictor extends PlayerStatPredictor {
 
     /**
      * Return the values of the given stat for the given seasons
-     * @param player needed player
-     * @param stat needed stat
+     *
+     * @param player  needed player
+     * @param stat    needed stat
      * @param seasons seasons to consider
      * @return values of needed stat for all competitions the player participated in
      * @throws Exception if a stat does not have data for a competition
@@ -82,7 +84,8 @@ public class TennisPlayerStatPredictor extends PlayerStatPredictor {
 
     /**
      * Return the player's rank in the given list of seasons, assuming the player participated in those seasons
-     * @param player player of interest
+     *
+     * @param player  player of interest
      * @param seasons seasons to consider
      * @return list of past ranks
      * @throws Exception if a season has no rank data
@@ -98,7 +101,8 @@ public class TennisPlayerStatPredictor extends PlayerStatPredictor {
     /**
      * Return the number of matches the player participated in for the given seasons, assuming the player
      * participated in those seasons
-     * @param player player of interest
+     *
+     * @param player  player of interest
      * @param seasons seasons to consider
      * @return list of past numbers of matches
      * @throws Exception if a season has no matches data
@@ -113,7 +117,8 @@ public class TennisPlayerStatPredictor extends PlayerStatPredictor {
 
     /**
      * Return the number of aces a tennis player has scored in the given seasons
-     * @param player needed player
+     *
+     * @param player  needed player
      * @param seasons seasons to consider
      * @return list of past aces
      * @throws Exception if a season has no aces data
@@ -130,7 +135,8 @@ public class TennisPlayerStatPredictor extends PlayerStatPredictor {
 
     /**
      * Return the number of double faults a tennis player has made in the given seasons
-     * @param player needed player
+     *
+     * @param player  needed player
      * @param seasons seasons to consider
      * @return list of past double faults
      * @throws Exception if a season has no double faults data
@@ -147,7 +153,8 @@ public class TennisPlayerStatPredictor extends PlayerStatPredictor {
 
     /**
      * Return the percentage of serve points a player has won in the given seasons
-     * @param player needed player
+     *
+     * @param player  needed player
      * @param seasons seasons to consider
      * @return list of past percentages of serve points won
      * @throws Exception if a given season has no serve points won data
@@ -162,7 +169,8 @@ public class TennisPlayerStatPredictor extends PlayerStatPredictor {
 
     /**
      * Return the percentage of break points a tennis player has saved in the given seasons
-     * @param player needed player
+     *
+     * @param player  needed player
      * @param seasons seasons to consider
      * @return list of past percentages of break points saved
      * @throws Exception if a season has no break points saved data
@@ -177,7 +185,8 @@ public class TennisPlayerStatPredictor extends PlayerStatPredictor {
 
     /**
      * Return the percentage of serve games a tennis player has won in the given seasons
-     * @param player needed player
+     *
+     * @param player  needed player
      * @param seasons seasons to consider
      * @return list of past percentage of serve games won
      * @throws Exception if a season has no serve games won data
@@ -192,7 +201,8 @@ public class TennisPlayerStatPredictor extends PlayerStatPredictor {
 
     /**
      * Return the percentage of return games a tennis player has won in the given seasons
-     * @param player needed player
+     *
+     * @param player  needed player
      * @param seasons seasons to consider
      * @return list of past percentage of return games won
      * @throws Exception if a season has no return games won data
@@ -207,7 +217,8 @@ public class TennisPlayerStatPredictor extends PlayerStatPredictor {
 
     /**
      * Return the percentage of break points a tennis player has converted in the given seasons
-     * @param player needed player
+     *
+     * @param player  needed player
      * @param seasons seasons to consider
      * @return list of past percentages of break points converted
      * @throws Exception if a season has no break points converted data
@@ -222,13 +233,14 @@ public class TennisPlayerStatPredictor extends PlayerStatPredictor {
 
     /**
      * Return the percentage of return points a tennis player has scored in the given seasons
-     * @param player needed player
+     *
+     * @param player  needed player
      * @param seasons seasons to consider
      * @return list of past percentage of return points won
      * @throws Exception if a season has no aces data
      */
     private List<Double> getPastReturnPointsWon(TennisPlayer player,
-                                            List<String> seasons)
+                                                List<String> seasons)
             throws Exception {
         List<Double> pastReturnPointsWon = new ArrayList<>();
 

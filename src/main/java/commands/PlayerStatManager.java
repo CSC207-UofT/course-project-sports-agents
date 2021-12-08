@@ -2,6 +2,7 @@ package commands;
 
 import constants.Exceptions;
 import sports.Player;
+
 import java.util.*;
 
 /**
@@ -31,15 +32,16 @@ public abstract class PlayerStatManager implements Command {
 
     /**
      * Format the value of the statistic for display on the console
-     * @param player the Player the statistic is for
-     * @param statName the name for the demanded statistic
+     *
+     * @param player    the Player the statistic is for
+     * @param statName  the name for the demanded statistic
      * @param statValue the value of the statistic
      * @return the formatted output to display
      */
     protected <T extends Player> String formatStat(T player, String statName, String statValue) {
         StringBuilder builder = new StringBuilder();
         builder.append("-------------------------------------------\n");
-        builder.append(String.format("%10s %20s %n", "Name", statName));
+        builder.append(String.format("%10s %20s %n", "Player Name", statName));
         builder.append("-------------------------------------------\n");
         builder.append(String.format("%10s %10s %n", player.getName(), statValue));
         builder.append("-------------------------------------------");

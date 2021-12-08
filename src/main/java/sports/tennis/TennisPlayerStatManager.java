@@ -22,6 +22,7 @@ public class TennisPlayerStatManager extends PlayerStatManager {
 
     /**
      * Return the specified stat for the specified player in the specified season
+     *
      * @param arguments A string array of form
      *                  { "tennis", "player name", "season", "stat name"} or
      *                  {"tennis", "player name", "country"}
@@ -82,6 +83,7 @@ public class TennisPlayerStatManager extends PlayerStatManager {
 
     /**
      * Check if the player participated in the given season
+     *
      * @param player the player of interest
      * @param season the season of interest
      * @throws Exception if the player did not participate in that season

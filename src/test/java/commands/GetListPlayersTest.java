@@ -4,6 +4,7 @@ import driversAdapters.*;
 import org.junit.Test;
 
 import java.util.*;
+
 import static org.junit.Assert.*;
 
 public class GetListPlayersTest {
@@ -15,13 +16,13 @@ public class GetListPlayersTest {
         DataContainer dataContainer = new CSVDataContainer();
         ArrayList<String> arguments = new ArrayList<>();
 
-        for (String sportName: sportNames) {
+        for (String sportName : sportNames) {
 
-            switch (sportName){
+            switch (sportName) {
                 case "hockey":
                     String expectedHockey = "All available players for the demanded sport and season:\n\n" +
-                            "Zdeno Chara, Joe Thornton, Jason Spezza, Duncan Keith, Ryan Suter," +
-                            " Jeff Carter, Dustin Brown, Zach Parise, Ryan Getzlaf, Brent Burns,";
+                                            "Zdeno Chara, Joe Thornton, Jason Spezza, Duncan Keith, Ryan Suter," +
+                                            " Jeff Carter, Dustin Brown, Zach Parise, Ryan Getzlaf, Brent Burns,";
                     arguments.add("hockey");
                     arguments.add("2020-2021");
                     assertEquals(expectedHockey,
@@ -31,9 +32,9 @@ public class GetListPlayersTest {
 
                 case "baseball":
                     String expectedBaseball = "All available players for the demanded sport and season:\n\n" +
-                            "Whit Merrifield, Jose Abreu, Dansby Swanson, Francisco Lindor," +
-                            " Trevor Story, Cesar Hernandez, Trea Turner, Rafael Devers," +
-                            " Marcell Ozuna, Manny Machado,";
+                                              "Whit Merrifield, Jose Abreu, Dansby Swanson, Francisco Lindor," +
+                                              " Trevor Story, Cesar Hernandez, Trea Turner, Rafael Devers," +
+                                              " Marcell Ozuna, Manny Machado,";
                     arguments.add("baseball");
                     arguments.add("2020-2021");
                     assertEquals(expectedBaseball,
@@ -44,9 +45,9 @@ public class GetListPlayersTest {
 
                 case "tennis":
                     String expectedTennis = "All available players for the demanded sport and season:\n\n" +
-                            "Ashleigh Barty, Barbora Krejcikova, Karolina Pliskova, Garbine Mugurza," +
-                            " Maria Sakkari, Ons Jabeur, Anett Kontaveit, Paula Badosa," +
-                            " Anastasia Pavlyuchenkova, Sofia Kenin,";
+                                            "Ashleigh Barty, Barbora Krejcikova, Karolina Pliskova, Garbine Mugurza," +
+                                            " Maria Sakkari, Ons Jabeur, Anett Kontaveit, Paula Badosa," +
+                                            " Anastasia Pavlyuchenkova, Sofia Kenin,";
                     arguments.add("tennis");
                     arguments.add("2016");
                     assertEquals(expectedTennis,

@@ -15,7 +15,7 @@ public class HockeyTeamStatManagerTest {
     private DataContainer container;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         HockeyTeam team1 = new HockeyTeam("Red Team");
         team1.addRecord("2020-2021", 10, 40, 7, 3,
                 1, 17, 3, 2.07, 2.09,

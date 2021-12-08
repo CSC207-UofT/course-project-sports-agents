@@ -29,8 +29,9 @@ public abstract class PlayerStatComparer implements Command {
 
     /**
      * Format the comparisons for display on the console
-     * @param players the Players, sorted from best to worst stat
-     * @param statName the name of the statistic that was used to compare
+     *
+     * @param players    the Players, sorted from best to worst stat
+     * @param statName   the name of the statistic that was used to compare
      * @param statValues the values corresponding to each Player
      * @return the formatted output to displayed
      */
@@ -44,7 +45,7 @@ public abstract class PlayerStatComparer implements Command {
         // Precondition: players.size() == statValues.size()
         for (int i = 0; i != players.size(); i += 1) {
             Player player = players.get(i);
-            output.append(String.format("%5s %20s %20s %n", i+1, player.getName(), statValues.get(i)));
+            output.append(String.format("%5s %20s %20s %n", i + 1, player.getName(), statValues.get(i)));
         }
         return output.toString();
     }

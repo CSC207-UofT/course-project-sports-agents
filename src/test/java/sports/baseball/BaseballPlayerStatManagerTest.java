@@ -129,6 +129,6 @@ public class BaseballPlayerStatManagerTest {
     public void testExecuteInvalidCommand() throws Exception {
         ArrayList<String> command = new ArrayList<>(Arrays.asList("baseball", "player 1",
                 "2020-2021", "teammates"));
-        String fail = baseballPlayerStatManager.execute(command, container);
+        baseballPlayerStatManager.execute(command, container);
     }
 }

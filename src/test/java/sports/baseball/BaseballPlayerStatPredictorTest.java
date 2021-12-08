@@ -26,7 +26,7 @@ public class BaseballPlayerStatPredictorTest {
         player.addRecord("2018-2019", "BOS", "3B", 39, 48, 39,
                 56, 93, 48, 24, 0.234);
         player.addRecord("2017-2018", "BOS", "3B", 49, 30, 56, 39,
-        49, 58, 27, 0.673);
+                49, 58, 27, 0.673);
 
         container.playerMap.put(player.getName().toLowerCase(), player);
     }
@@ -45,7 +45,7 @@ public class BaseballPlayerStatPredictorTest {
     public void testExecuteAtBatsNoPlayer() throws Exception {
         ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("baseball",
                 "player 2", "at bats"));
-        String fail = this.baseballPlayerStatPredictor.execute(arguments1, container);
+        this.baseballPlayerStatPredictor.execute(arguments1, container);
     }
 
     @Test(timeout = 100)
@@ -62,7 +62,7 @@ public class BaseballPlayerStatPredictorTest {
     public void testExecuteRunsNoPlayer() throws Exception {
         ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("baseball",
                 "player 2", "runs"));
-        String fail = this.baseballPlayerStatPredictor.execute(arguments1, container);
+        this.baseballPlayerStatPredictor.execute(arguments1, container);
     }
 
     @Test(timeout = 100)
@@ -79,7 +79,7 @@ public class BaseballPlayerStatPredictorTest {
     public void testExecuteHitsNoPlayer() throws Exception {
         ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("baseball",
                 "player 2", "hits"));
-        String fail = this.baseballPlayerStatPredictor.execute(arguments1, container);
+        this.baseballPlayerStatPredictor.execute(arguments1, container);
     }
 
     @Test(timeout = 100)
@@ -96,7 +96,7 @@ public class BaseballPlayerStatPredictorTest {
     public void testExecuteHomeRunsNoPlayer() throws Exception {
         ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("baseball",
                 "player 2", "home runs"));
-        String fail = this.baseballPlayerStatPredictor.execute(arguments1, container);
+        this.baseballPlayerStatPredictor.execute(arguments1, container);
     }
 
     @Test(timeout = 100)
@@ -113,7 +113,7 @@ public class BaseballPlayerStatPredictorTest {
     public void testExecuteRunsBattedInNoPlayer() throws Exception {
         ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("baseball",
                 "player 2", "runs batted in"));
-        String fail = this.baseballPlayerStatPredictor.execute(arguments1, container);
+        this.baseballPlayerStatPredictor.execute(arguments1, container);
     }
 
     @Test(timeout = 100)
@@ -130,7 +130,7 @@ public class BaseballPlayerStatPredictorTest {
     public void testExecuteStrikeOutsNoPlayer() throws Exception {
         ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("baseball",
                 "player 2", "strike outs"));
-        String fail = this.baseballPlayerStatPredictor.execute(arguments1, container);
+        this.baseballPlayerStatPredictor.execute(arguments1, container);
     }
 
     @Test(timeout = 100)
@@ -147,13 +147,13 @@ public class BaseballPlayerStatPredictorTest {
     public void testExecuteAverageNoPlayer() throws Exception {
         ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("baseball",
                 "player 2", "average"));
-        String fail = this.baseballPlayerStatPredictor.execute(arguments1, container);
+        this.baseballPlayerStatPredictor.execute(arguments1, container);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteInvalidStat() throws Exception {
         ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("baseball",
                 "player 1", "aces"));
-        String fail = this.baseballPlayerStatPredictor.execute(arguments1, container);
+        this.baseballPlayerStatPredictor.execute(arguments1, container);
     }
 }

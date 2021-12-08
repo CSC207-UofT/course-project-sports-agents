@@ -17,8 +17,9 @@ public class BaseballPlayerComparator implements Comparator<BaseballPlayer> {
      * Create a new BaseballPlayerComparator
      * Precondition: compareBy is one of "Games Played", "At Bats", "Runs",
      * "Hits", "Home Runs", "Runs Batted In", "Strike Outs", or "Average"
+     *
      * @param compareBy Compare by this statistic
-     * @param season Season to compare statistics from
+     * @param season    Season to compare statistics from
      */
     public BaseballPlayerComparator(String compareBy, String season) {
         this.compareBy = compareBy;
@@ -55,41 +56,48 @@ public class BaseballPlayerComparator implements Comparator<BaseballPlayer> {
     private int compareGamesPlayed(BaseballPlayer b1, BaseballPlayer b2)
             throws Exception {
         return b2.getStatGamesPlayed(this.season) -
-                b1.getStatGamesPlayed(this.season);
+               b1.getStatGamesPlayed(this.season);
     }
+
     private int compareAtBats(BaseballPlayer b1, BaseballPlayer b2)
             throws Exception {
         return b2.getStatAtBats(this.season) -
-                b1.getStatAtBats(this.season);
+               b1.getStatAtBats(this.season);
     }
+
     private int compareRuns(BaseballPlayer b1, BaseballPlayer b2)
             throws Exception {
         return b2.getStatRuns(this.season) -
-                b1.getStatRuns(this.season);
+               b1.getStatRuns(this.season);
     }
+
     private int compareHits(BaseballPlayer b1, BaseballPlayer b2)
             throws Exception {
         return b2.getStatHits(this.season) -
-                b1.getStatHits(this.season);
+               b1.getStatHits(this.season);
     }
+
     private int compareHomeRuns(BaseballPlayer b1, BaseballPlayer b2)
             throws Exception {
         return b2.getStatHomeRuns(this.season) -
-                b1.getStatHomeRuns(this.season);
+               b1.getStatHomeRuns(this.season);
     }
+
     private int compareRunsBattedIn(BaseballPlayer b1, BaseballPlayer b2)
             throws Exception {
         return b2.getStatRunsBattedIn(this.season) -
-                b1.getStatRunsBattedIn(this.season);
+               b1.getStatRunsBattedIn(this.season);
     }
+
     private int compareStrikeOuts(BaseballPlayer b1, BaseballPlayer b2)
             throws Exception {
         return b2.getStatStrikeOuts(this.season) -
-                b1.getStatStrikeOuts(this.season);
+               b1.getStatStrikeOuts(this.season);
     }
+
     private int compareAverage(BaseballPlayer b1, BaseballPlayer b2)
             throws Exception {
         return (int) Math.signum(b2.getStatAvg(this.season) -
-                b1.getStatAvg(this.season));
+                                 b1.getStatAvg(this.season));
     }
 }

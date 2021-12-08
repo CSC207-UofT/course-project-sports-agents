@@ -4,6 +4,7 @@ import driversAdapters.CSVDataContainer;
 import driversAdapters.DataContainer;
 import org.junit.Before;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
@@ -65,14 +66,14 @@ public class HockeyPlayerStatManagerTest {
     public void testExecuteTeamNoPlayer() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey",
                 "paul gries", "2020-2021", "team"));
-        String fail = this.hockeyPlayerStatManager.execute(arguments, container);
+        this.hockeyPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteTeamNoSeason() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey",
                 "player 1", "2018-2019", "team"));
-        String fail = this.hockeyPlayerStatManager.execute(arguments, container);
+        this.hockeyPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100)
@@ -103,14 +104,14 @@ public class HockeyPlayerStatManagerTest {
     public void testExecuteSkaterShootsNoPlayer() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey",
                 "paul gries", "2020-2021", "skater shoots"));
-        String fail = this.hockeyPlayerStatManager.execute(arguments, container);
+        this.hockeyPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteSkaterShootsNoSeason() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey",
                 "player 1", "2018-2019", "skater shoots"));
-        String fail = this.hockeyPlayerStatManager.execute(arguments, container);
+        this.hockeyPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100)
@@ -141,14 +142,14 @@ public class HockeyPlayerStatManagerTest {
     public void testExecutePositionNoPlayer() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey",
                 "paul gries", "2020-2021", "position"));
-        String fail = this.hockeyPlayerStatManager.execute(arguments, container);
+        this.hockeyPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecutePositionNoSeason() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey",
                 "player 1", "2018-2019", "position"));
-        String fail = this.hockeyPlayerStatManager.execute(arguments, container);
+        this.hockeyPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100)
@@ -179,14 +180,14 @@ public class HockeyPlayerStatManagerTest {
     public void testExecuteGamesPlayedNoPlayer() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey",
                 "paul gries", "2020-2021", "games played"));
-        String fail = this.hockeyPlayerStatManager.execute(arguments, container);
+        this.hockeyPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteGamesPlayedNoSeason() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey",
                 "player 1", "2018-2019", "games played"));
-        String fail = this.hockeyPlayerStatManager.execute(arguments, container);
+        this.hockeyPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100)
@@ -217,14 +218,14 @@ public class HockeyPlayerStatManagerTest {
     public void testExecuteGoalsNoPlayer() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey",
                 "paul gries", "2020-2021", "goals"));
-        String fail = this.hockeyPlayerStatManager.execute(arguments, container);
+        this.hockeyPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteGoalsNoSeason() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey",
                 "player 1", "2018-2019", "goals"));
-        String fail = this.hockeyPlayerStatManager.execute(arguments, container);
+        this.hockeyPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100)
@@ -255,14 +256,14 @@ public class HockeyPlayerStatManagerTest {
     public void testExecuteAssistsNoPlayer() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey",
                 "paul gries", "2020-2021", "assists"));
-        String fail = this.hockeyPlayerStatManager.execute(arguments, container);
+        this.hockeyPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteAssistsNoSeason() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey",
                 "player 1", "2018-2019", "assists"));
-        String fail = this.hockeyPlayerStatManager.execute(arguments, container);
+        this.hockeyPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100)
@@ -293,14 +294,14 @@ public class HockeyPlayerStatManagerTest {
     public void testExecutePointsNoPlayer() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey",
                 "paul gries", "2020-2021", "points"));
-        String fail = this.hockeyPlayerStatManager.execute(arguments, container);
+        this.hockeyPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecutePointsNoSeason() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey",
                 "player 1", "2018-2019", "points"));
-        String fail = this.hockeyPlayerStatManager.execute(arguments, container);
+        this.hockeyPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100)
@@ -331,14 +332,14 @@ public class HockeyPlayerStatManagerTest {
     public void testExecuteShotsNoPlayer() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey",
                 "paul gries", "2020-2021", "shots"));
-        String fail = this.hockeyPlayerStatManager.execute(arguments, container);
+        this.hockeyPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 200, expected = Exception.class)
     public void testExecuteShotsNoSeason() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey",
                 "player 1", "2018-2019", "shots"));
-        String fail = this.hockeyPlayerStatManager.execute(arguments, container);
+        this.hockeyPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100)
@@ -369,20 +370,20 @@ public class HockeyPlayerStatManagerTest {
     public void testExecuteShootingPercentageNoPlayer() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey",
                 "paul gries", "2020-2021", "shooting percentage"));
-        String fail = this.hockeyPlayerStatManager.execute(arguments, container);
+        this.hockeyPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteShootingPercentageNoSeason() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey",
                 "player 1", "2018-2019", "shooting percentage"));
-        String fail = this.hockeyPlayerStatManager.execute(arguments, container);
+        this.hockeyPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteInvalidStat() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey",
                 "player 1", "2020-2021", "age"));
-        String fail = this.hockeyPlayerStatManager.execute(arguments, container);
+        this.hockeyPlayerStatManager.execute(arguments, container);
     }
 }

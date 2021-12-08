@@ -20,6 +20,7 @@ public class HockeyTeam extends Team {
 
     /**
      * Construct a hockey team who has not participated in any seasons yet
+     *
      * @param name team's name
      */
     public HockeyTeam(String name) {
@@ -38,25 +39,26 @@ public class HockeyTeam extends Team {
 
     /**
      * Create a new Hockey Team
-     * @param name Team's name
-     * @param season Team's first season
-     * @param gamesPlayed Amount of games the team played in the given season
-     * @param points Amount of points the team obtained in the given season
-     * @param gamesWon Amount of games the team won in the given season
-     * @param gamesLost Amount of games the team list in the given season
-     * @param overtimeLosses Amount of games the team lost in overtime
-     * @param goalsFor Amount of goals the team scored in the given season
-     * @param goalsAgainst Amount of goals the team received in the given season
-     * @param shotsForPerGame Average amount of shots scored by the team per game in the given season
-     * @param shotsAgainstPerGame Average amount of shots received by the team per game in the given season
+     *
+     * @param name                 Team's name
+     * @param season               Team's first season
+     * @param gamesPlayed          Amount of games the team played in the given season
+     * @param points               Amount of points the team obtained in the given season
+     * @param gamesWon             Amount of games the team won in the given season
+     * @param gamesLost            Amount of games the team list in the given season
+     * @param overtimeLosses       Amount of games the team lost in overtime
+     * @param goalsFor             Amount of goals the team scored in the given season
+     * @param goalsAgainst         Amount of goals the team received in the given season
+     * @param shotsForPerGame      Average amount of shots scored by the team per game in the given season
+     * @param shotsAgainstPerGame  Average amount of shots received by the team per game in the given season
      * @param faceOffWinPercentage Percentage of face-offs won in a given season
      */
     public HockeyTeam(String name, String season,
-                        Integer gamesPlayed, Integer points,
-                        Integer gamesWon, Integer gamesLost, Integer overtimeLosses,
-                        Integer goalsFor, Integer goalsAgainst,
-                        Double shotsForPerGame, Double shotsAgainstPerGame,
-                        Double faceOffWinPercentage) {
+                      Integer gamesPlayed, Integer points,
+                      Integer gamesWon, Integer gamesLost, Integer overtimeLosses,
+                      Integer goalsFor, Integer goalsAgainst,
+                      Double shotsForPerGame, Double shotsAgainstPerGame,
+                      Double faceOffWinPercentage) {
         this(name);
         this.addRecord(season, gamesPlayed, points, gamesWon, gamesLost,
                 overtimeLosses, goalsFor, goalsAgainst, shotsForPerGame, shotsAgainstPerGame,
@@ -66,23 +68,24 @@ public class HockeyTeam extends Team {
 
     /**
      * Add a new season to the hockey team
-     * @param season Team's first season
-     * @param gamesPlayed Amount of games the team played in the given season
-     * @param points Amount of points the team obtained in the given season
-     * @param gamesWon Amount of games the team won in the given season
-     * @param gamesLost Amount of games the team list in the given season
-     * @param overtimeLosses Amount of games the team lost in overtime
-     * @param goalsFor Amount of goals the team scored in the given season
-     * @param goalsAgainst Amount of goals the team received in the given season
-     * @param shotsForPerGame Average amount of shots scored by the team per game in the given season
-     * @param shotsAgainstPerGame Average amount of shots received by the team per game in the given season
+     *
+     * @param season               Team's first season
+     * @param gamesPlayed          Amount of games the team played in the given season
+     * @param points               Amount of points the team obtained in the given season
+     * @param gamesWon             Amount of games the team won in the given season
+     * @param gamesLost            Amount of games the team list in the given season
+     * @param overtimeLosses       Amount of games the team lost in overtime
+     * @param goalsFor             Amount of goals the team scored in the given season
+     * @param goalsAgainst         Amount of goals the team received in the given season
+     * @param shotsForPerGame      Average amount of shots scored by the team per game in the given season
+     * @param shotsAgainstPerGame  Average amount of shots received by the team per game in the given season
      * @param faceOffWinPercentage Percentage of face-offs won in a given season
      */
 
     public void addRecord(String season, Integer gamesPlayed, Integer points, Integer gamesWon,
-                           Integer gamesLost, Integer overtimeLosses, Integer goalsFor,
-                           Integer goalsAgainst, Double shotsForPerGame, Double shotsAgainstPerGame,
-                           Double faceOffWinPercentage) {
+                          Integer gamesLost, Integer overtimeLosses, Integer goalsFor,
+                          Integer goalsAgainst, Double shotsForPerGame, Double shotsAgainstPerGame,
+                          Double faceOffWinPercentage) {
         this.addGamesPlayed(season, gamesPlayed);
         this.addPoints(season, points);
         this.addGamesWon(season, gamesWon);

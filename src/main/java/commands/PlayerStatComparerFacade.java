@@ -25,19 +25,20 @@ public class PlayerStatComparerFacade implements Command {
      * Handle an argument requesting a comparison of two or more hockey
      * players' statistics. Players are returned in descending order
      * (best first, worst last)
+     *
      * @param arguments A string array of form
      *                  {"sport name", "player name 1",
      *                  "player name 2", ... , "season", "stat name"}
      * @param container A container containing the data or means to retrieve it
      * @return the players and their associated statistics
      * @throws Exception if a player does not exists, or lacks data for the
-     * given season
+     *                   given season
      */
     @Override
     public String execute(ArrayList<String> arguments, DataContainer container) throws Exception {
         checkArgumentLength(arguments);
         String sport = arguments.get(0);
-        switch(sport) {
+        switch (sport) {
             case "hockey":
                 return this.hockeyPlayerStatComparer.execute(arguments, container);
             case "tennis":
@@ -51,6 +52,7 @@ public class PlayerStatComparerFacade implements Command {
 
     // The Facade needs to check at least one argument exists, so this is here
     // even though Single Responsibility would prefer it be in Sport-specific classes
+
     /**
      * @param arguments user arguments for comparing players
      * @throws Exception if insufficiently many arguments are provided (here, 5)

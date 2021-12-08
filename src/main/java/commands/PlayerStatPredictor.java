@@ -44,6 +44,7 @@ public abstract class PlayerStatPredictor implements Command {
 
     /**
      * Get the integer values for needed seasons (this will be the x axis for the linear regression model)
+     *
      * @param playerSeasons player's seasons
      * @return list of integer values associated with seasons;
      */
@@ -110,17 +111,10 @@ public abstract class PlayerStatPredictor implements Command {
         output.append("------------------------------------\n");
         output.append(String.format("%15s %20s %n", "Season", statName));
         output.append("------------------------------------\n");
-        // Precondition: seasons.size() = pastStats.size()
         for (int i = 0; i != seasons.size(); i += 1) {
-//            output.append(seasons.get(i));
-//            output.append(": ");
-//            output.append(pastStats.get(i));
-//            output.append("\n");
             output.append(String.format("%15s %20s %n", seasons.get(i), pastStats.get(i)));
         }
         output.append(String.format("%15s %20f", "Next Season", prediction));
-//        output.append("Prediction for next season: ");
-//        output.append(prediction);
         return output.toString();
     }
 }
