@@ -26,21 +26,21 @@ public class CSVDataContainer implements DataContainer {
 
     @Override
     public Player getPlayer(String sport, String name) throws Exception {
-        if (playerMap.containsKey(name.toLowerCase())) {
-            return playerMap.get(name.toLowerCase());
+        if (playerMap.containsKey(name)) {
+            return playerMap.get(name);
         }
         switch (sport) {
             case "hockey":
-                getHockeyPlayer(name.toLowerCase());
+                getHockeyPlayer(name);
                 break;
             case "baseball":
-                getBaseballPlayer(name.toLowerCase());
+                getBaseballPlayer(name);
                 break;
             case "tennis":
-                getTennisPlayer(name.toLowerCase());
+                getTennisPlayer(name);
                 break;
         }
-        return playerMap.get(name.toLowerCase());
+        return playerMap.get(name);
     }
 
     private void getTennisPlayer(String name) throws Exception {
@@ -61,7 +61,7 @@ public class CSVDataContainer implements DataContainer {
                                 Double.parseDouble(playerInfo[7]), Double.parseDouble(playerInfo[8]),
                                 Double.parseDouble(playerInfo[9]), Double.parseDouble(playerInfo[10]),
                                 Double.parseDouble(playerInfo[11]), Double.parseDouble(playerInfo[12]));
-                        playerMap.put(name.toLowerCase(), player);
+                        playerMap.put(name, player);
                         found = true;
                     } else {
                         TennisPlayer player = (TennisPlayer) playerMap.get(name);
@@ -94,7 +94,7 @@ public class CSVDataContainer implements DataContainer {
 
             while ((line = br.readLine()) != null) {
                 String[] playerInfo = line.split(splitBy);
-                if (playerInfo[0].toLowerCase().equals(name)) {
+                if (playerInfo[0].equalsIgnoreCase(name)) {
                     if (!found) {
                         BaseballPlayer newPlayer = new BaseballPlayer(playerInfo[0], playerInfo[2],
                                 playerInfo[1], playerInfo[3], Integer.parseInt(playerInfo[4]),
@@ -102,7 +102,7 @@ public class CSVDataContainer implements DataContainer {
                                 Integer.parseInt(playerInfo[7]), Integer.parseInt(playerInfo[8]),
                                 Integer.parseInt(playerInfo[9]), Integer.parseInt(playerInfo[10]),
                                 Double.parseDouble(playerInfo[11]));
-                        playerMap.put(name.toLowerCase(), newPlayer);
+                        playerMap.put(name, newPlayer);
                         found = true;
                     } else {
                         ((BaseballPlayer) playerMap.get(name)).addRecord(playerInfo[2],
@@ -135,14 +135,14 @@ public class CSVDataContainer implements DataContainer {
             while ((line = br.readLine()) != null) {
                 String[] playerInfo = line.split(splitBy);
 
-                if (playerInfo[0].toLowerCase().equals(name)) {
+                if (playerInfo[0].equalsIgnoreCase(name)) {
                     if (!found) {
                         HockeyPlayer newPlayer = new HockeyPlayer(playerInfo[0], playerInfo[1],
                                 playerInfo[2], playerInfo[3], playerInfo[4], Integer.valueOf(playerInfo[5]),
                                 Integer.valueOf(playerInfo[6]), Integer.valueOf(playerInfo[7]),
                                 Integer.valueOf(playerInfo[8]), Integer.valueOf(playerInfo[9]),
                                 Double.valueOf(playerInfo[10]));
-                        playerMap.put(name.toLowerCase(), newPlayer);
+                        playerMap.put(name, newPlayer);
                         found = true;
                     } else {
                         ((HockeyPlayer) playerMap.get(name)).addRecord(playerInfo[1],
@@ -200,7 +200,7 @@ public class CSVDataContainer implements DataContainer {
                                 Integer.valueOf(teamInfo[7]), Integer.valueOf(teamInfo[8]),
                                 Double.valueOf(teamInfo[9]), Double.valueOf(teamInfo[10]),
                                 Double.valueOf(teamInfo[11]));
-                        teamMap.put(name.toLowerCase(), newTeam);
+                        teamMap.put(name, newTeam);
                         found = true;
                     } else {
                         ((HockeyTeam) teamMap.get(teamInfo[0].toLowerCase())).addRecord(teamInfo[1], Integer.valueOf(teamInfo[2]),
