@@ -23,3 +23,8 @@ The old .csv file required users to query players by competition name
 instead of season. It also only contained data for one year.
 The new file contains data for multiple years, and players can now be queried
 by year. [Pull Request](https://github.com/CSC207-UofT/course-project-sports-agents/pull/47)
+
+Jack worked on fixing on how we packaged all of the sport-based classes and any similar issues. These changes
+let us have an easier time organizing and manipulating our code. He also went and worked on the written questions that
+needed to be completed.
+[Pull Request](https://github.com/CSC207-UofT/course-project-sports-agents/pull/50)
