@@ -1,7 +1,6 @@
 package driversAdapters;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 /**
  * Presenter for use in Test Cases

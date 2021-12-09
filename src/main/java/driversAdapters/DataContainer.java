@@ -1,11 +1,14 @@
 package driversAdapters;
 
-import player.Player;
-import team.Team;
+import sports.Player;
+import sports.Team;
 
 import java.io.*;
 import java.util.*;
 
+/**
+ * DataContainer interface provides an interface to easily retrieve from different sources
+ */
 public interface DataContainer {
 
     Player getPlayer(String sport, String name) throws Exception;

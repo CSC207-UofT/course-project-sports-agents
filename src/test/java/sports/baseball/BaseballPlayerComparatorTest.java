@@ -23,23 +23,23 @@ public class BaseballPlayerComparatorTest {
         BaseballPlayerComparator comparator = new BaseballPlayerComparator("games played",
                 "2019-2020");
         int compareEquals = comparator.compare(this.playerOne, this.playerTwo);
-        assert(compareEquals == 0);
-        int compareGreater = comparator.compare(this.playerThree, this.playerTwo);
-        assert(compareGreater > 0);
-        int compareLess = comparator.compare(this.playerOne, this.playerThree);
-        assert(compareLess < 0);
+        assert (compareEquals == 0);
+        int compareGreater = comparator.compare(this.playerTwo, this.playerThree);
+        assert (compareGreater > 0);
+        int compareLess = comparator.compare(this.playerThree, this.playerOne);
+        assert (compareLess < 0);
     }
 
     @Test(timeout = 100)
     public void testCompareAtBats() {
-        BaseballPlayerComparator comparator = new BaseballPlayerComparator("At Bats",
+        BaseballPlayerComparator comparator = new BaseballPlayerComparator("at bats",
                 "2019-2020");
         int compareEquals = comparator.compare(this.playerOne, this.playerThree);
-        assert(compareEquals == 0);
-        int compareGreater = comparator.compare(this.playerOne, this.playerTwo);
-        assert(compareGreater > 0);
-        int compareLess = comparator.compare(this.playerTwo, this.playerThree);
-        assert(compareLess < 0);
+        assert (compareEquals == 0);
+        int compareGreater = comparator.compare(this.playerTwo, this.playerOne);
+        assert (compareGreater > 0);
+        int compareLess = comparator.compare(this.playerThree, this.playerTwo);
+        assert (compareLess < 0);
     }
 
     @Test(timeout = 100)
@@ -47,11 +47,11 @@ public class BaseballPlayerComparatorTest {
         BaseballPlayerComparator comparator = new BaseballPlayerComparator("runs",
                 "2019-2020");
         int compareEquals = comparator.compare(this.playerTwo, this.playerThree);
-        assert(compareEquals == 0);
-        int compareGreater = comparator.compare(this.playerTwo, this.playerOne);
-        assert(compareGreater > 0);
-        int compareLess = comparator.compare(this.playerOne, this.playerThree);
-        assert(compareLess < 0);
+        assert (compareEquals == 0);
+        int compareGreater = comparator.compare(this.playerOne, this.playerTwo);
+        assert (compareGreater > 0);
+        int compareLess = comparator.compare(this.playerThree, this.playerOne);
+        assert (compareLess < 0);
     }
 
     @Test(timeout = 100)
@@ -59,11 +59,11 @@ public class BaseballPlayerComparatorTest {
         BaseballPlayerComparator comparator = new BaseballPlayerComparator("Hits",
                 "2019-2020");
         int compareEquals = comparator.compare(this.playerOne, this.playerTwo);
-        assert(compareEquals == 0);
-        int compareGreater = comparator.compare(this.playerThree, this.playerTwo);
-        assert(compareGreater > 0);
-        int compareLess = comparator.compare(this.playerOne, this.playerThree);
-        assert(compareLess < 0);
+        assert (compareEquals == 0);
+        int compareGreater = comparator.compare(this.playerTwo, this.playerThree);
+        assert (compareGreater > 0);
+        int compareLess = comparator.compare(this.playerThree, this.playerOne);
+        assert (compareLess < 0);
     }
 
     @Test(timeout = 100)
@@ -71,11 +71,11 @@ public class BaseballPlayerComparatorTest {
         BaseballPlayerComparator comparator = new BaseballPlayerComparator("home Runs",
                 "2019-2020");
         int compareEquals = comparator.compare(this.playerOne, this.playerThree);
-        assert(compareEquals == 0);
-        int compareGreater = comparator.compare(this.playerTwo, this.playerOne);
-        assert(compareGreater > 0);
-        int compareLess = comparator.compare(this.playerThree, this.playerTwo);
-        assert(compareLess < 0);
+        assert (compareEquals == 0);
+        int compareGreater = comparator.compare(this.playerOne, this.playerTwo);
+        assert (compareGreater > 0);
+        int compareLess = comparator.compare(this.playerTwo, this.playerThree);
+        assert (compareLess < 0);
     }
 
     @Test(timeout = 100)
@@ -83,11 +83,11 @@ public class BaseballPlayerComparatorTest {
         BaseballPlayerComparator comparator = new BaseballPlayerComparator("Runs Batted In",
                 "2019-2020");
         int compareEquals = comparator.compare(this.playerTwo, this.playerThree);
-        assert(compareEquals == 0);
-        int compareGreater = comparator.compare(this.playerTwo, this.playerOne);
-        assert(compareGreater > 0);
-        int compareLess = comparator.compare(this.playerOne, this.playerThree);
-        assert(compareLess < 0);
+        assert (compareEquals == 0);
+        int compareGreater = comparator.compare(this.playerOne, this.playerTwo);
+        assert (compareGreater > 0);
+        int compareLess = comparator.compare(this.playerThree, this.playerOne);
+        assert (compareLess < 0);
     }
 
     @Test(timeout = 100)
@@ -95,22 +95,22 @@ public class BaseballPlayerComparatorTest {
         BaseballPlayerComparator comparator = new BaseballPlayerComparator("strike outs",
                 "2019-2020");
         int compareEquals = comparator.compare(this.playerOne, this.playerTwo);
-        assert(compareEquals == 0);
+        assert (compareEquals == 0);
         int compareGreater = comparator.compare(this.playerOne, this.playerThree);
-        assert(compareGreater > 0);
+        assert (compareGreater > 0);
         int compareLess = comparator.compare(this.playerThree, this.playerTwo);
-        assert(compareLess < 0);
+        assert (compareLess < 0);
     }
 
     @Test(timeout = 100)
     public void testCompareAverage() {
         BaseballPlayerComparator comparator = new BaseballPlayerComparator("average",
                 "2019-2020");
-        double compareEquals = comparator.compare(this.playerOne, this.playerThree);
-        assert(compareEquals == 0);
-        double compareGreater = comparator.compare(this.playerTwo, this.playerThree);
-        assert(compareGreater > 0);
-        double compareLess = comparator.compare(this.playerOne, this.playerTwo);
-        assert(compareLess < 0);
+        double compareEquals = comparator.compare(this.playerThree, this.playerOne);
+        assert (compareEquals == 0);
+        double compareGreater = comparator.compare(this.playerThree, this.playerTwo);
+        assert (compareGreater > 0);
+        double compareLess = comparator.compare(this.playerTwo, this.playerOne);
+        assert (compareLess < 0);
     }
 }

@@ -10,7 +10,7 @@ public class BaseballPlayerStatComparer extends PlayerStatComparer {
 
     public BaseballPlayerStatComparer() {
         super(new HashSet<>(Arrays.asList("games played", "at bats", "runs",
-                        "hits", "home runs", "runs batted in", "strike outs", "average")));
+                "hits", "home runs", "runs batted in", "strike outs", "average")));
     }
 
     /**

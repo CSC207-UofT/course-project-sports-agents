@@ -1,12 +1,8 @@
-package team;
+package sports;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import match.Match;
-import player.Player;
 
 public abstract class Team {
 
@@ -20,6 +16,7 @@ public abstract class Team {
 
     /**
      * Precondition: seasons has all seasons in correct order
+     *
      * @return list of seasons the team has participated in
      */
     public List<String> getSeasons() {
@@ -29,6 +26,7 @@ public abstract class Team {
     /**
      * Add a new season to the list of seasons
      * Assumes given season is the newest
+     *
      * @param season new season to record
      */
     public void addSeason(String season) {
@@ -39,6 +37,7 @@ public abstract class Team {
 
     /**
      * Return this team's name
+     *
      * @return player's name
      */
     public String getName() {
@@ -48,8 +47,9 @@ public abstract class Team {
 
     /**
      * Check if a map containing statistics has a record for a given season
-     * @param dataMap the map to check
-     * @param season the season to check for
+     *
+     * @param dataMap  the map to check
+     * @param season   the season to check for
      * @param expected the expectation for if data is stored
      * @throws Exception if the expectation is violated
      */
@@ -59,18 +59,19 @@ public abstract class Team {
             // We expect data, but there is none
             if (expected) {
                 throw new Exception("Information on " + season +
-                        " is not recorded!");
+                                    " is not recorded!");
             }
             // We expect nothing, but there is data
             else {
                 throw new Exception("Information on " + season +
-                        " already exists!");
+                                    " already exists!");
             }
         }
     }
 
     /**
      * Create a string representation of this team
+     *
      * @return team in string representation
      */
     @Override
@@ -80,6 +81,7 @@ public abstract class Team {
 
     /**
      * Compare two teams to check if they are equal
+     *
      * @param obj another player
      * @return true if the two teams are the same, and false otherwise
      */
@@ -100,6 +102,7 @@ public abstract class Team {
 
     /**
      * Implement hashCode, for using Players in hashmaps
+     *
      * @return hashCode of player name
      */
     @Override

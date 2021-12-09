@@ -1,10 +1,7 @@
 package commands;
 
-import java.util.ArrayList;
-
-import driversAdapters.DataContainer;
 import constants.Exceptions;
-import team.Team;
+import sports.Team;
 
 import java.util.*;
 
@@ -35,15 +32,16 @@ public abstract class TeamStatManager implements Command {
 
     /**
      * Format the value of the statistic for display on the console
-     * @param team the team the statistic is for
-     * @param statName the name for the demanded statistic
+     *
+     * @param team      the team the statistic is for
+     * @param statName  the name for the demanded statistic
      * @param statValue the value of the statistic
      * @return the formatted output to display
      */
     protected <T extends Team> String formatStat(T team, String statName, String statValue) {
         StringBuilder builder = new StringBuilder();
         builder.append("-------------------------------------------\n");
-        builder.append(String.format("%10s %20s %n", "Name", statName));
+        builder.append(String.format("%10s %20s %n", "Team Name", statName));
         builder.append("-------------------------------------------\n");
         builder.append(String.format("%10s %10s %n", team.getName(), statValue));
         builder.append("-------------------------------------------");

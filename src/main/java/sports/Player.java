@@ -1,4 +1,4 @@
-package player;
+package sports;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,6 +26,7 @@ public abstract class Player {
 
     /**
      * Precondition: seasons has all seasons in correct order
+     *
      * @return list of seasons the player has participated in
      */
     public List<String> getSeasons() {
@@ -35,6 +36,7 @@ public abstract class Player {
     /**
      * Add a new season to the list of seasons
      * Assumes given season is the newest
+     *
      * @param season new season to record
      */
     public void addSeason(String season) {
@@ -45,6 +47,7 @@ public abstract class Player {
 
     /**
      * Return this player's name
+     *
      * @return player's name
      */
     public String getName() {
@@ -53,8 +56,9 @@ public abstract class Player {
 
     /**
      * Record the Player played under a given team in the given season
+     *
      * @param season the season the Player played in
-     * @param team the team the Player played with
+     * @param team   the team the Player played with
      * @throws Exception if information on that season is already recorded
      */
     public void addStatTeam(String season, String team) throws Exception {
@@ -74,8 +78,9 @@ public abstract class Player {
 
     /**
      * Check if a map containing statistics has a record for a given season
-     * @param dataMap the map to check
-     * @param season the season to check for
+     *
+     * @param dataMap  the map to check
+     * @param season   the season to check for
      * @param expected the expectation for if data is stored
      * @throws Exception if the expectation is violated
      */
@@ -85,18 +90,19 @@ public abstract class Player {
             // We expect data, but there is none
             if (expected) {
                 throw new Exception("Information on Season " + season +
-                        " is not recorded!");
+                                    " is not recorded!");
             }
             // We expect nothing, but there is data
             else {
                 throw new Exception("Information on Season " + season +
-                        " already exists!");
+                                    " already exists!");
             }
         }
     }
 
     /**
      * Create a string representation of this player
+     *
      * @return player in string representation
      */
     @Override
@@ -106,6 +112,7 @@ public abstract class Player {
 
     /**
      * Compare two players to check if they are equal
+     *
      * @param obj another player
      * @return true if the two players are the same, and false otherwise
      */
@@ -126,6 +133,7 @@ public abstract class Player {
 
     /**
      * Implement hashCode, for using Players in hashmaps
+     *
      * @return hashCode of player name
      */
     @Override
@@ -135,6 +143,7 @@ public abstract class Player {
 
     /**
      * Return a string representation of the player's data (all their stats) for the given season
+     *
      * @param season season of interest
      * @return string of all stats for the player
      * @throws Exception if any of the stats is missing data for the given season

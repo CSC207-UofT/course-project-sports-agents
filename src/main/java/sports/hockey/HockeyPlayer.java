@@ -1,6 +1,6 @@
 package sports.hockey;
 
-import player.*;
+import sports.Player;
 
 import java.util.HashMap;
 
@@ -21,6 +21,7 @@ public class HockeyPlayer extends Player {
 
     /**
      * Construct a hockey player who has not participated in any seasons yet
+     *
      * @param name player's name
      */
     public HockeyPlayer(String name) {
@@ -38,16 +39,17 @@ public class HockeyPlayer extends Player {
 
     /**
      * Create a new Hockey Player
-     * @param name Player's name
-     * @param season Player's first season
-     * @param team Player's team in given season
-     * @param skaterShoots Player's skater shoots in the given season
-     * @param position Player's position in the given season
-     * @param gamesPlayed Player's total games played in the given season
-     * @param goals Player's total goals in the given season
-     * @param assists Player's total assists in the given season
-     * @param points Player's total points in the given season
-     * @param shots Player's total shots in the given season
+     *
+     * @param name               Player's name
+     * @param season             Player's first season
+     * @param team               Player's team in given season
+     * @param skaterShoots       Player's skater shoots in the given season
+     * @param position           Player's position in the given season
+     * @param gamesPlayed        Player's total games played in the given season
+     * @param goals              Player's total goals in the given season
+     * @param assists            Player's total assists in the given season
+     * @param points             Player's total points in the given season
+     * @param shots              Player's total shots in the given season
      * @param shootingPercentage Player's shooting percentage in the given season
      * @throws Exception should not throw Exception
      */
@@ -63,6 +65,7 @@ public class HockeyPlayer extends Player {
 
     /**
      * Override addSeason: for Hockey data, seasons are in reverse order
+     *
      * @param season new season to record
      */
     @Override
@@ -72,15 +75,16 @@ public class HockeyPlayer extends Player {
 
     /**
      * Add a new season of data for the Player
-     * @param season the new season
-     * @param team the Player's team in the new season
-     * @param skaterShoots the Player's skater shoots in the new season
-     * @param position the Player's position in the new season
-     * @param gamesPlayed the Player's total games played in the new season
-     * @param goals the Player's total goals in the new season
-     * @param assists the Player's total assists in the new season
-     * @param points the Player's total point in the new season
-     * @param shots the Player's total shots in the new season
+     *
+     * @param season             the new season
+     * @param team               the Player's team in the new season
+     * @param skaterShoots       the Player's skater shoots in the new season
+     * @param position           the Player's position in the new season
+     * @param gamesPlayed        the Player's total games played in the new season
+     * @param goals              the Player's total goals in the new season
+     * @param assists            the Player's total assists in the new season
+     * @param points             the Player's total point in the new season
+     * @param shots              the Player's total shots in the new season
      * @param shootingPercentage the Player's shooting percentage in the new season
      * @throws Exception if data for the season is already recorded
      */
@@ -102,7 +106,8 @@ public class HockeyPlayer extends Player {
 
     /**
      * Record Skater shoots data
-     * @param season the season the data is from
+     *
+     * @param season       the season the data is from
      * @param skaterShoots the skater shoots data
      * @throws Exception if that season already has skater shoots data
      */
@@ -124,7 +129,8 @@ public class HockeyPlayer extends Player {
 
     /**
      * Record position data
-     * @param season the season the data is from
+     *
+     * @param season   the season the data is from
      * @param position the position data
      * @throws Exception if that season already has position data
      */
@@ -146,7 +152,8 @@ public class HockeyPlayer extends Player {
 
     /**
      * Record games played data
-     * @param season the season the data is from
+     *
+     * @param season      the season the data is from
      * @param gamesPlayed the games played data
      * @throws Exception if that season already has games played data
      */
@@ -168,8 +175,9 @@ public class HockeyPlayer extends Player {
 
     /**
      * Record goals data
+     *
      * @param season the season the data is from
-     * @param goals the games goals data
+     * @param goals  the games goals data
      * @throws Exception if that season already has goals data
      */
     public void addStatGoals(String season, Integer goals)
@@ -190,7 +198,8 @@ public class HockeyPlayer extends Player {
 
     /**
      * Record assists data
-     * @param season the season the data is from
+     *
+     * @param season  the season the data is from
      * @param assists the assists data
      * @throws Exception if that season already has assists data
      */
@@ -212,6 +221,7 @@ public class HockeyPlayer extends Player {
 
     /**
      * Record points data
+     *
      * @param season the season the data is from
      * @param points the points data
      * @throws Exception if that season already has points data
@@ -234,8 +244,9 @@ public class HockeyPlayer extends Player {
 
     /**
      * Record shots data
+     *
      * @param season the season the data is from
-     * @param shots the shots data
+     * @param shots  the shots data
      * @throws Exception if that season already has shots data
      */
     public void addStatShots(String season, Integer shots)
@@ -256,7 +267,8 @@ public class HockeyPlayer extends Player {
 
     /**
      * Record shooting percentage data
-     * @param season the season the data is from
+     *
+     * @param season             the season the data is from
      * @param shootingPercentage the shooting percentage data
      * @throws Exception if that season already has shooting percentage data
      */
@@ -285,10 +297,10 @@ public class HockeyPlayer extends Player {
     @Override
     public String getSeasonData(String season) {
         return "Team: " + this.teamRecord.get(season) + "\nSkater Shoots: " + this.skaterShootsRecord.get(season) +
-                "\nPosition: " + this.positionRecord.get(season) + "\nGames Played: " +
-                this.gamesPlayedRecord.get(season) +
-                "\nGoals: " + this.goalsRecord.get(season) + "\nAssists: " + this.assistsRecord.get(season) +
-                "\nPoints: " + this.pointsRecord.get(season) + "\nShots: " + this.shotsRecord.get(season) +
-                "\nShooting Percentage: " + this.shootingPercentageRecord;
+               "\nPosition: " + this.positionRecord.get(season) + "\nGames Played: " +
+               this.gamesPlayedRecord.get(season) +
+               "\nGoals: " + this.goalsRecord.get(season) + "\nAssists: " + this.assistsRecord.get(season) +
+               "\nPoints: " + this.pointsRecord.get(season) + "\nShots: " + this.shotsRecord.get(season) +
+               "\nShooting Percentage: " + this.shootingPercentageRecord.get(season);
     }
 }

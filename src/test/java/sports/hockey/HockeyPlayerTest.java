@@ -10,11 +10,11 @@ public class HockeyPlayerTest {
 
     @Before
     public void setUp() throws Exception {
-        this.player = new HockeyPlayer("Auston Matthews","2020-2021","TOR",
-                "L", "C",52,41,25,66,
-                222,18.5);
-        this.player.addRecord("2019-2020","EDM","L","C",
-                56,33,72,105,200,16.5);
+        this.player = new HockeyPlayer("Auston Matthews", "2020-2021", "TOR",
+                "L", "C", 52, 41, 25, 66,
+                222, 18.5);
+        this.player.addRecord("2019-2020", "EDM", "L", "C",
+                56, 33, 72, 105, 200, 16.5);
     }
 
     @Test(timeout = 100)
@@ -33,7 +33,7 @@ public class HockeyPlayerTest {
 
     @Test(timeout = 100, expected = Exception.class)
     public void testGetStatTeamFails() throws Exception {
-        String fail = this.player.getStatTeam("2018-2019");
+        this.player.getStatTeam("2018-2019");
     }
 
     @Test(timeout = 100)
@@ -46,7 +46,7 @@ public class HockeyPlayerTest {
 
     @Test(timeout = 100, expected = Exception.class)
     public void testGetStatSkaterShootsFails() throws Exception {
-        String fail = this.player.getStatSkaterShoots("2018-2019");
+        this.player.getStatSkaterShoots("2018-2019");
     }
 
     @Test(timeout = 100)
@@ -59,7 +59,7 @@ public class HockeyPlayerTest {
 
     @Test(timeout = 100, expected = Exception.class)
     public void testGetStatPositionFails() throws Exception {
-        String fail = this.player.getStatPosition("2018-2019");
+        this.player.getStatPosition("2018-2019");
     }
 
     @Test(timeout = 100)
@@ -72,7 +72,7 @@ public class HockeyPlayerTest {
 
     @Test(timeout = 100, expected = Exception.class)
     public void testGetStatGamesPlayedFails() throws Exception {
-        int fail = this.player.getStatGamesPlayed("2018-2019");
+        this.player.getStatGamesPlayed("2018-2019");
     }
 
     @Test(timeout = 100)
@@ -85,7 +85,7 @@ public class HockeyPlayerTest {
 
     @Test(timeout = 100, expected = Exception.class)
     public void testGetStatGoalsFails() throws Exception {
-        int fail = this.player.getStatGoals("2018-2019");
+        this.player.getStatGoals("2018-2019");
     }
 
     @Test(timeout = 100)
@@ -98,7 +98,7 @@ public class HockeyPlayerTest {
 
     @Test(timeout = 100, expected = Exception.class)
     public void testGetStatAssistsFails() throws Exception {
-        int fail = this.player.getStatAssists("2018-2019");
+        this.player.getStatAssists("2018-2019");
     }
 
     @Test(timeout = 100)
@@ -111,7 +111,7 @@ public class HockeyPlayerTest {
 
     @Test(timeout = 100, expected = Exception.class)
     public void testGetStatPointsFails() throws Exception {
-        int fail = this.player.getStatPoints("2018-2019");
+        this.player.getStatPoints("2018-2019");
     }
 
     @Test(timeout = 100)
@@ -124,7 +124,7 @@ public class HockeyPlayerTest {
 
     @Test(timeout = 100, expected = Exception.class)
     public void testGetStatShotsFails() throws Exception {
-        int fail = this.player.getStatShots("2018-2019");
+        this.player.getStatShots("2018-2019");
     }
 
     @Test(timeout = 100)
@@ -139,7 +139,7 @@ public class HockeyPlayerTest {
 
     @Test(timeout = 100, expected = Exception.class)
     public void testGetStatShootingPercentageFails() throws Exception {
-        double fail = this.player.getStatShootingPercentage("2018-2019");
+        this.player.getStatShootingPercentage("2018-2019");
     }
 
     @Test

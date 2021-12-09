@@ -16,6 +16,7 @@ public class BaseballPlayerStatManager extends PlayerStatManager {
 
     /**
      * Handle an argument requesting a player's statistics
+     *
      * @param arguments A string array of form
      *                  {"Baseball", "player name", "season", "stat name"}
      * @param container A container containing the data or means to retrieve it

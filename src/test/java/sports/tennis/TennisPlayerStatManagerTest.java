@@ -1,9 +1,9 @@
 package sports.tennis;
 
 import driversAdapters.CSVDataContainer;
-import driversAdapters.DataContainer;
 import org.junit.Before;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
@@ -11,230 +11,221 @@ import java.util.Arrays;
 
 public class TennisPlayerStatManagerTest {
     TennisPlayerStatManager tennisPlayerStatManager;
-    DataContainer container;
+    CSVDataContainer container;
 
     @Before
     public void setUp() throws Exception {
         tennisPlayerStatManager = new TennisPlayerStatManager();
         this.container = new CSVDataContainer();
+
+        TennisPlayer player1 = new TennisPlayer("player 1", "Canada", "2016",
+                1, 5, 6, 7, 0.65, 0.8, 14.5,
+                16.0, 17.0, 18.0);
+        TennisPlayer player2 = new TennisPlayer("player 2", "England", "2016",
+                2, 6, 15, 13, 0.33, 29.5, 34.2,
+                23.3, 27.2, 21.6);
+        TennisPlayer player3 = new TennisPlayer("player 3", "France", "2016",
+                3, 18, 3, 8, 0.89, 30.0, 9.6,
+                17.3, 16.5, 22.0);
+
+        container.playerMap.put(player1.getName(), player1);
+        container.playerMap.put(player2.getName(), player2);
+        container.playerMap.put(player3.getName(), player3);
     }
 
     @Test(timeout = 100)
     public void testExecuteRankPasses() throws Exception {
         ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("Tennis",
-                "Ashleigh Barty", "2016", "Rank"));
+                "player 2", "2016", "Rank"));
         String output1 = this.tennisPlayerStatManager.execute(arguments1, container);
-        String expected1 = "-------------------------------------------\n" +
-                "      Name                 rank \n" +
-                "-------------------------------------------\n" +
-                "Ashleigh Barty          1 \n" +
-                "-------------------------------------------";
-        assertEquals(expected1, output1);
-
-        ArrayList<String> arguments2 = new ArrayList<>(Arrays.asList("Tennis",
-                "Naomi Osaka", "2016", "Rank"));
-        String output2 = this.tennisPlayerStatManager.execute(arguments2, container);
-        String expected2 = "-------------------------------------------\n" +
-                "      Name                 rank \n" +
-                "-------------------------------------------\n" +
-                "Naomi Osaka         13 \n" +
-                "-------------------------------------------";
-        assertEquals(expected2, output2);
-
-        ArrayList<String> arguments3 = new ArrayList<>(Arrays.asList("Tennis",
-                "Belinda Bencic", "2016", "Rank"));
-        String output3 = this.tennisPlayerStatManager.execute(arguments3, container);
-        String expected3 = "-------------------------------------------\n" +
-                "      Name                 rank \n" +
-                "-------------------------------------------\n" +
-                "Belinda Bencic         23 \n" +
-                "-------------------------------------------";
-        assertEquals(expected3, output3);
+        String outputSub1 = output1.substring(142, 143);
+        String expected1 = "2";
+        assertEquals(expected1, outputSub1);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteRankNoPlayer() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
                 "Paul Gries", "2020", "Rank"));
-        String fail = this.tennisPlayerStatManager.execute(arguments, container);
+        this.tennisPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteRankNoSeason() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
                 "Player 1", "2020", "Rank"));
-        String fail = this.tennisPlayerStatManager.execute(arguments, container);
+        this.tennisPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100)
     public void testExecuteAcesPasses() throws Exception {
         ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("Tennis",
-                "Shelby Rogers", "2017", "Aces"));
+                "player 1", "2016", "Aces"));
         String output1 = this.tennisPlayerStatManager.execute(arguments1, container);
-        String expected1 = "-------------------------------------------\n" +
-                "      Name                 aces \n" +
-                "-------------------------------------------\n" +
-                "Shelby Rogers        145 \n" +
-                "-------------------------------------------";
-        assertEquals(expected1, output1);
-
-        ArrayList<String> arguments2 = new ArrayList<>(Arrays.asList("Tennis",
-                "Anett Kontaveit", "2016", "Aces"));
-        String output2 = this.tennisPlayerStatManager.execute(arguments2, container);
-        String expected2 = "-------------------------------------------\n" +
-                "      Name                 aces \n" +
-                "-------------------------------------------\n" +
-                "Anett Kontaveit        124 \n" +
-                "-------------------------------------------";
-        assertEquals(expected2, output2);
-
-        ArrayList<String> arguments3 = new ArrayList<>(Arrays.asList("Tennis",
-                "Angelique Kerber", "2016", "Aces"));
-        String output3 = this.tennisPlayerStatManager.execute(arguments3, container);
-        String expected3 = "-------------------------------------------\n" +
-                "      Name                 aces \n" +
-                "-------------------------------------------\n" +
-                "Angelique Kerber        104 \n" +
-                "-------------------------------------------";
-        assertEquals(expected3, output3);
+        String outputSub1 = output1.substring(142, 143);
+        String expected1 = "6";
+        assertEquals(expected1, outputSub1);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteAcesNoPlayer() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
                 "Paul Gries", "2016", "Aces"));
-        String fail = this.tennisPlayerStatManager.execute(arguments, container);
+        this.tennisPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteAcesNoSeason() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
                 "Player 1", "2020", "Aces"));
-        String fail = this.tennisPlayerStatManager.execute(arguments, container);
+        this.tennisPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100)
     public void testExecuteDoubleFaultsPasses() throws Exception {
         ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("Tennis",
-                "Barbora Krejcikova", "2016", "Double Faults"));
+                "player 2", "2016", "Double Faults"));
         String output1 = this.tennisPlayerStatManager.execute(arguments1, container);
-        String expected1 = "-------------------------------------------\n" +
-                "      Name        double faults \n" +
-                "-------------------------------------------\n" +
-                "Barbora Krejcikova         30 \n" +
-                "-------------------------------------------";
-        assertEquals(expected1, output1);
-
-        ArrayList<String> arguments2 = new ArrayList<>(Arrays.asList("Tennis",
-                "Elise Mertens", "2016", "Double Faults"));
-        String output2 = this.tennisPlayerStatManager.execute(arguments2, container);
-        String expected2 = "-------------------------------------------\n" +
-                "      Name        double faults \n" +
-                "-------------------------------------------\n" +
-                "Elise Mertens         28 \n" +
-                "-------------------------------------------";
-        assertEquals(expected2, output2);
-
-        ArrayList<String> arguments3 = new ArrayList<>(Arrays.asList("Tennis",
-                "Victoria Azarenka", "2017", "Double Faults"));
-        String output3 = this.tennisPlayerStatManager.execute(arguments3, container);
-        String expected3 = "-------------------------------------------\n" +
-                "      Name        double faults \n" +
-                "-------------------------------------------\n" +
-                "Victoria Azarenka         28 \n" +
-                "-------------------------------------------";
-        assertEquals(expected3, output3);
+        String outputSub1 = output1.substring(141, 143);
+        String expected1 = "13";
+        assertEquals(expected1, outputSub1);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteDoubleFaultsNoPlayer() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
                 "Paul Gries", "2016", "Double Faults"));
-        String fail = this.tennisPlayerStatManager.execute(arguments, container);
+        this.tennisPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteDoubleFaultsNoSeason() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
                 "Player 1", "1990", "Double Faults"));
-        String fail = this.tennisPlayerStatManager.execute(arguments, container);
+        this.tennisPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100)
     public void testExecuteServePointsWonPasses() throws Exception {
         ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("Tennis",
-                "Jasmine Paolini", "2017", "Serve Points won"));
+                "player 3", "2016", "Serve Points won"));
         String output1 = this.tennisPlayerStatManager.execute(arguments1, container);
-        String expected1 = "-------------------------------------------\n" +
-                "      Name     serve points won \n" +
-                "-------------------------------------------\n" +
-                "Jasmine Paolini      0.415 \n" +
-                "-------------------------------------------";
-        assertEquals(expected1, output1);
-
-        ArrayList<String> arguments2 = new ArrayList<>(Arrays.asList("Tennis",
-                "Petra Kvitova", "2017", "Serve Points won"));
-        String output2 = this.tennisPlayerStatManager.execute(arguments2, container);
-        String expected2 = "-------------------------------------------\n" +
-                "      Name     serve points won \n" +
-                "-------------------------------------------\n" +
-                "Petra Kvitova      0.623 \n" +
-                "-------------------------------------------";
-        assertEquals(expected2, output2);
-
-        ArrayList<String> arguments3 = new ArrayList<>(Arrays.asList("Tennis",
-                "Danielle Collins", "2016", "Serve Points won"));
-        String output3 = this.tennisPlayerStatManager.execute(arguments3, container);
-        String expected3 = "-------------------------------------------\n" +
-                "      Name     serve points won \n" +
-                "-------------------------------------------\n" +
-                "Danielle Collins       0.34 \n" +
-                "-------------------------------------------";
-        assertEquals(expected3, output3);
+        String outputSub1 = output1.substring(139, 143);
+        String expected1 = "0.89";
+        assertEquals(expected1, outputSub1);
     }
 
 
     @Test(timeout = 100)
     public void testExecuteBreakPointsSavedPointsPasses() throws Exception {
         ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("Tennis",
-                "Barbora Krejcikova", "2016", "Break Points Saved"));
+                "player 1", "2016", "Break Points Saved"));
         String output1 = this.tennisPlayerStatManager.execute(arguments1, container);
-        String expected1 = "-------------------------------------------\n" +
-                "      Name   break points saved \n" +
-                "-------------------------------------------\n" +
-                "Barbora Krejcikova       0.56 \n" +
-                "-------------------------------------------";
-        assertEquals(expected1, output1);
+        String outputSub1 = output1.substring(140, 143);
+        String expected1 = "0.8";
+        assertEquals(expected1, outputSub1);
 
-        ArrayList<String> arguments2 = new ArrayList<>(Arrays.asList("Tennis",
-                "Paula Badosa", "2016", "Break Points Saved"));
-        String output2 = this.tennisPlayerStatManager.execute(arguments2, container);
-        String expected2 = "-------------------------------------------\n" +
-                "      Name   break points saved \n" +
-                "-------------------------------------------\n" +
-                "Paula Badosa       0.56 \n" +
-                "-------------------------------------------";
-        assertEquals(expected2, output2);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteBreakPointsSavedNoPlayer() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
                 "Paul Gries", "20202021", "Break Points Saved"));
-        String fail = this.tennisPlayerStatManager.execute(arguments, container);
+        this.tennisPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteBreakPointsSavedNoSeason() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
                 "Player 1", "20192020", "Break Points Saved"));
-        String fail = this.tennisPlayerStatManager.execute(arguments, container);
+        this.tennisPlayerStatManager.execute(arguments, container);
     }
 
     @Test(timeout = 100, expected = Exception.class)
     public void testExecuteInvalidStat() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("Tennis",
                 "Player 1", "20192020", "Goals"));
-        String fail = this.tennisPlayerStatManager.execute(arguments, container);
+        this.tennisPlayerStatManager.execute(arguments, container);
+    }
+
+    @Test(timeout = 100)
+    public void testExecuteCountryPasses() throws Exception {
+        ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("Tennis",
+                "player 1", "2016", "country"));
+        String output1 = this.tennisPlayerStatManager.execute(arguments1, container);
+        String outputSub1 = output1.substring(137, 143);
+        String expected1 = "Canada";
+        assertEquals(expected1, outputSub1);
+    }
+
+    @Test(timeout = 100)
+    public void testExecuteMatchesPasses() throws Exception {
+        ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("Tennis",
+                "player 1", "2016", "matches"));
+        String output1 = this.tennisPlayerStatManager.execute(arguments1, container);
+        String outputSub1 = output1.substring(142, 143);
+        String expected1 = "5";
+        assertEquals(expected1, outputSub1);
+    }
+
+    @Test(timeout = 100)
+    public void testExecuteServeGamesWonPasses() throws Exception {
+        ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("Tennis",
+                "player 1", "2016", "serve games won"));
+        String output1 = this.tennisPlayerStatManager.execute(arguments1, container);
+        String outputSub1 = output1.substring(139, 143);
+        String expected1 = "14.5";
+        assertEquals(expected1, outputSub1);
+    }
+
+    @Test(timeout = 100)
+    public void testExecuteReturnGamesWonPasses() throws Exception {
+        ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("Tennis",
+                "player 1", "2016", "return games won"));
+        String output1 = this.tennisPlayerStatManager.execute(arguments1, container);
+        String outputSub1 = output1.substring(139, 143);
+        String expected1 = "16.0";
+        assertEquals(expected1, outputSub1);
+    }
+
+    @Test(timeout = 100)
+    public void testExecuteBreakPointsConvertedPasses() throws Exception {
+        ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("Tennis",
+                "player 1", "2016", "break points converted"));
+        String output1 = this.tennisPlayerStatManager.execute(arguments1, container);
+        String outputSub1 = output1.substring(141, 145);
+        String expected1 = "17.0";
+        assertEquals(expected1, outputSub1);
+    }
+
+    @Test(timeout = 100)
+    public void testExecuteReturnPointsWonPasses() throws Exception {
+        ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("Tennis",
+                "player 1", "2016", "return points won"));
+        String output1 = this.tennisPlayerStatManager.execute(arguments1, container);
+        String outputSub1 = output1.substring(139, 143);
+        String expected1 = "18.0";
+        assertEquals(expected1, outputSub1);
+    }
+
+    @Test(timeout = 100)
+    public void testExecuteWithPlayersInCsvFile() throws Exception {
+        ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("Tennis",
+                "barbora krejcikova", "2016", "country"));
+        String output1 = this.tennisPlayerStatManager.execute(arguments1, container);
+        assertTrue(output1.contains("Barbora Krejcikova"));
+        assertTrue(output1.contains("CZE"));
+
+        ArrayList<String> arguments2 = new ArrayList<>(Arrays.asList("Tennis",
+                "naomi osaka", "2016", "rank"));
+        String output2 = this.tennisPlayerStatManager.execute(arguments2, container);
+        assertTrue(output2.contains("Naomi Osaka"));
+        assertTrue(output2.contains("13"));
+
+        ArrayList<String> arguments3 = new ArrayList<>(Arrays.asList("Tennis",
+                "angelique kerber", "2016", "aces"));
+        String output3 = this.tennisPlayerStatManager.execute(arguments3, container);
+        assertTrue(output3.contains("Angelique Kerber"));
+        assertTrue(output3.contains("104"));
     }
 }

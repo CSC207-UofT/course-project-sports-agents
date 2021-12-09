@@ -1,7 +1,8 @@
-package team;
+package sports.hockey;
 
 import org.junit.Before;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 public class HockeyTeamTest {
@@ -14,7 +15,7 @@ public class HockeyTeamTest {
     }
 
     @Test
-    public void testAddRecord() {
+    public void testAddRecord() throws Exception {
         team.addRecord("2018-2019", 0, 1, 2, 3, 4,
                 5, 6, 7.0, 8.0, 9.0);
         assertTrue(team.gamesPlayed.containsKey("2018-2019"));
@@ -30,7 +31,7 @@ public class HockeyTeamTest {
     }
 
     @Test
-    public void testAddFaceoffWinPercentage() {
+    public void testAddFaceoffWinPercentage() throws Exception {
         team.addFaceOffWinPercentage("2018-2019", 9.0);
         assertTrue(team.faceOffWinPercentage.containsKey("2018-2019"));
         double faceOffWinPercentage = team.faceOffWinPercentage.get("2018-2019");
@@ -114,7 +115,6 @@ public class HockeyTeamTest {
         int gamesLost = team.gamesLost.get("2018-2019");
         assertEquals(2, gamesLost);
     }
-
 
 
 }
