@@ -143,7 +143,7 @@ public class BaseballPlayerStatComparerTest {
         assertEquals(expectedPlayer3, outputPlayer3);
     }
 
-    @Test(timeout = 100)
+    @Test(timeout = 100, expected = Exception.class)
     public void testExecuteHomeRunsNoSeason() throws Exception {
         ArrayList<String> arguments = new ArrayList<>(Arrays.asList("baseball", "player 1", "player 2", "player 3",
                 "2023-2023", "home runs"));
