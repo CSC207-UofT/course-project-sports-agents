@@ -31,7 +31,6 @@ public class TennisPlayerStatManagerTest {
         container.playerMap.put(player1.getName(), player1);
         container.playerMap.put(player2.getName(), player2);
         container.playerMap.put(player3.getName(), player3);
-
     }
 
     @Test(timeout = 100)
