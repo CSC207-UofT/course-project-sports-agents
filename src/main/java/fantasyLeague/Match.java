@@ -1,4 +1,4 @@
-package FantasyLeague;
+package fantasyLeague;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -12,6 +12,7 @@ public class Match implements Serializable {
 
     /**
      * Create a new Match with the teams given
+     *
      * @param teamA the home team competing
      * @param teamB the visiting team competing
      */
@@ -24,7 +25,8 @@ public class Match implements Serializable {
 
     /**
      * Record a new bet on the Match's outcome
-     * @param m the League Member who placed the bet
+     *
+     * @param m    the League Member who placed the bet
      * @param team the team predicted to win
      * @throws Exception if team is not a team in the game
      */
@@ -41,6 +43,7 @@ public class Match implements Serializable {
     /**
      * Resolve the Match and note which League Members bet
      * correctly and Incorrectly
+     *
      * @param winningTeam the team which won the Match
      * @throws Exception if winningTeam is not in the Match
      */
@@ -59,6 +62,7 @@ public class Match implements Serializable {
 
     /**
      * Record a correct bet for a list of LeagueMembers
+     *
      * @param correctBetters the correctly betting LeagueMembers
      */
     private void awardCorrectBet(ArrayList<LeagueMember> correctBetters) {
@@ -69,6 +73,7 @@ public class Match implements Serializable {
 
     /**
      * Record an incorrect bet for a list of LeagueMembers
+     *
      * @param incorrectBetters the incorrectly betting LeagueMembers
      */
     private void awardIncorrectBet(ArrayList<LeagueMember> incorrectBetters) {
@@ -80,6 +85,7 @@ public class Match implements Serializable {
     /**
      * Matches are defined based on the home and visiting team.
      * Check equality based on this.
+     *
      * @param other another object to compare this with
      * @return true if other is a Match with the same home and visiting team
      */
@@ -102,6 +108,7 @@ public class Match implements Serializable {
 
     /**
      * Override hashCode, for use in LeagueMemberManager
+     *
      * @return the hashCode for team A plus the hashCode for teamB
      */
     @Override

@@ -45,13 +45,13 @@ public abstract class PlayerStatPredictor implements Command {
     /**
      * Get the integer values for needed seasons (this will be the x axis for the linear regression model)
      *
-     * @param seasons player's seasons
+     * @param playerSeasons player's seasons
      * @return list of integer values associated with seasons;
      */
-    public List<Integer> getXAxis(List<String> seasons) {
-        Map<String, Integer> seasonsToIntsMap = this.getSeasonToIntsMap(seasons);
+    public List<Integer> getXAxis(List<String> playerSeasons) {
+        Map<String, Integer> seasonsToIntsMap = this.getSeasonToIntsMap(playerSeasons);
         List<Integer> xAxis = new ArrayList<>();
-        for (String playerSeason : seasons) {
+        for (String playerSeason : playerSeasons) {
             xAxis.add(seasonsToIntsMap.get(playerSeason));
         }
         return xAxis;
@@ -111,7 +111,6 @@ public abstract class PlayerStatPredictor implements Command {
         output.append("------------------------------------\n");
         output.append(String.format("%15s %20s %n", "Season", statName));
         output.append("------------------------------------\n");
-        // Precondition: seasons.size() = pastStats.size()
         for (int i = 0; i != seasons.size(); i += 1) {
             output.append(String.format("%15s %20s %n", seasons.get(i), pastStats.get(i)));
         }

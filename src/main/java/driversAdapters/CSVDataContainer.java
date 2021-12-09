@@ -31,8 +31,9 @@ public class CSVDataContainer implements DataContainer {
 
     /**
      * get the player from a particular sport based on their name from the data
+     *
      * @param sport sport of the player
-     * @param name name of the player
+     * @param name  name of the player
      * @return the appropriate player class
      * @throws Exception whenever a data file is not found, or something else goes wrong
      */
@@ -41,7 +42,7 @@ public class CSVDataContainer implements DataContainer {
         if (playerMap.containsKey(name)) {
             return playerMap.get(name);
         }
-        switch (sport) {
+        switch (sport.toLowerCase()) {
             case "hockey":
                 getHockeyPlayer(name);
                 break;
@@ -57,6 +58,7 @@ public class CSVDataContainer implements DataContainer {
 
     /**
      * get a tennis player based on their name
+     *
      * @param name of the player
      * @throws Exception whenever a file is not found
      */
@@ -102,6 +104,7 @@ public class CSVDataContainer implements DataContainer {
 
     /**
      * Get a baseball player from the baseball file based on their name
+     *
      * @param name of the player
      * @throws Exception whenever the file is not found
      */
@@ -115,9 +118,9 @@ public class CSVDataContainer implements DataContainer {
             BufferedReader br = new BufferedReader(new FileReader("baseball.csv"));
             br.readLine(); //skip the first line.
 
-            while((line = br.readLine()) != null) {
+            while ((line = br.readLine()) != null) {
                 String[] playerInfo = line.split(splitBy);
-                if (playerInfo[0].toLowerCase().equals(name)) {
+                if (playerInfo[0].equalsIgnoreCase(name)) {
                     if (!found) {
                         BaseballPlayer newPlayer = new BaseballPlayer(playerInfo[0], playerInfo[2],
                                 playerInfo[1], playerInfo[3], Integer.parseInt(playerInfo[4]),
@@ -148,6 +151,7 @@ public class CSVDataContainer implements DataContainer {
 
     /**
      * Get a hockey player from the hockey file based on their name
+     *
      * @param name of the player
      * @throws Exception whenever the hockey.csv file isn't found
      */
@@ -160,10 +164,10 @@ public class CSVDataContainer implements DataContainer {
             BufferedReader br = new BufferedReader(new FileReader("hockey.csv"));
             br.readLine(); //skip the first line.
 
-            while((line = br.readLine()) != null) {
+            while ((line = br.readLine()) != null) {
                 String[] playerInfo = line.split(splitBy);
 
-                if (playerInfo[0].toLowerCase().equals(name)) {
+                if (playerInfo[0].equalsIgnoreCase(name)) {
                     if (!found) {
                         HockeyPlayer newPlayer = new HockeyPlayer(playerInfo[0], playerInfo[1],
                                 playerInfo[2], playerInfo[3], playerInfo[4], Integer.valueOf(playerInfo[5]),
@@ -193,8 +197,9 @@ public class CSVDataContainer implements DataContainer {
 
     /**
      * Call the appropriate helper methods to retrieve the right team based on the sport and their name
+     *
      * @param sport name of the sport
-     * @param name name of the team
+     * @param name  name of the team
      * @return the appropriate team from the appropriate sport
      * @throws Exception whenever the appropraite files cannot be found
      */
@@ -203,6 +208,10 @@ public class CSVDataContainer implements DataContainer {
         if (teamMap.containsKey(name)) {
             return teamMap.get(name);
         }
+
+        // This switch statement currently raises an IntelliJ warning
+        // We will keep it, because if more sports had implementations then
+        // it would be justified as a switch
         switch (sport.toLowerCase()) {
             case "hockey":
                 getHockeyTeam(name);
@@ -215,6 +224,7 @@ public class CSVDataContainer implements DataContainer {
 
     /**
      * Get a hockey team from the file based on their name
+     *
      * @param name name of the team
      * @throws Exception whenever the hockey_teams.csv file cannot be found
      */
@@ -230,7 +240,7 @@ public class CSVDataContainer implements DataContainer {
             while ((line = br.readLine()) != null) {
                 String[] teamInfo = line.split(splitBy);
 
-                if (teamInfo[0].toLowerCase().equals(name)) {
+                if (teamInfo[0].equalsIgnoreCase(name)) {
                     if (!found) {
                         HockeyTeam newTeam = new HockeyTeam(teamInfo[0], teamInfo[1], Integer.valueOf(teamInfo[2]),
                                 Integer.valueOf(teamInfo[6]), Integer.valueOf(teamInfo[3]),
@@ -262,7 +272,8 @@ public class CSVDataContainer implements DataContainer {
 
     /**
      * Get all of the players from a particular sport
-     * @param sport sport
+     *
+     * @param sport  sport
      * @param season season for which to get the players
      * @return returns a list of names of the players
      * @throws Exception whenever a data file cannot be found
@@ -281,6 +292,7 @@ public class CSVDataContainer implements DataContainer {
 
     /**
      * Gets the names of all the hockey players who played in a particular season
+     *
      * @param season season for which to query
      * @return list of all the hockey players who played during the season
      * @throws Exception whenever the hockey.csv file cannot be found
@@ -292,9 +304,9 @@ public class CSVDataContainer implements DataContainer {
         String line;
         String splitBy = ",";
 
-        while((line = br.readLine()) != null) {
+        while ((line = br.readLine()) != null) {
             String[] playerInfo = line.split(splitBy);
-            if (playerInfo[1].equals(season)){
+            if (playerInfo[1].equals(season)) {
                 allPlayers.add(playerInfo[0]);
             }
         }
@@ -305,6 +317,7 @@ public class CSVDataContainer implements DataContainer {
 
     /**
      * Gets the names of all the baseball players who played in a particular season
+     *
      * @param season season
      * @return list of all the baseball players who played during the season
      * @throws Exception whenever the baseball.csv file cannot be found
@@ -316,9 +329,9 @@ public class CSVDataContainer implements DataContainer {
         String line;
         String splitBy = ",";
 
-        while((line = br.readLine()) != null) {
+        while ((line = br.readLine()) != null) {
             String[] playerInfo = line.split(splitBy);
-            if (playerInfo[2].equals(season)){
+            if (playerInfo[2].equals(season)) {
                 allPlayers.add(playerInfo[0]);
             }
         }
@@ -329,6 +342,7 @@ public class CSVDataContainer implements DataContainer {
 
     /**
      * get the names of all of the tennis players who played in the given season
+     *
      * @param season season
      * @return the names of the tennis players who played in the given season
      * @throws Exception whenever the tennis.csv file cannot be found
@@ -354,6 +368,7 @@ public class CSVDataContainer implements DataContainer {
 
     /**
      * Get the names for all players in all the sports
+     *
      * @return the list of all the players in all the sports
      * @throws IOException whenever the appropriate data files cannot be found
      */
@@ -369,6 +384,7 @@ public class CSVDataContainer implements DataContainer {
 
     /**
      * Get the names for all players in hockey for all seasons
+     *
      * @return the list of hockey players in the data
      * @throws IOException whenever hockey.csv file cannot be found
      */
@@ -379,10 +395,11 @@ public class CSVDataContainer implements DataContainer {
         String line;
         String splitBy = ",";
 
-        while((line = br.readLine()) != null) {
+        while ((line = br.readLine()) != null) {
             String[] playerInfo = line.split(splitBy);
-            if (!allHockeyNames.contains(playerInfo[0].toLowerCase()+ ": Hockey")){
-                allHockeyNames.add(playerInfo[0].toLowerCase()+ ": Hockey");}
+            if (!allHockeyNames.contains(playerInfo[0] + ": Hockey")) {
+                allHockeyNames.add(playerInfo[0] + ": Hockey");
+            }
         }
         return allHockeyNames;
 
@@ -390,6 +407,7 @@ public class CSVDataContainer implements DataContainer {
 
     /**
      * Get the names for all players in baseball for all seasons
+     *
      * @return the list of baseball players in the data
      * @throws IOException whenever hockey.csv file cannot be found
      */
@@ -400,17 +418,18 @@ public class CSVDataContainer implements DataContainer {
         String line;
         String splitBy = ",";
 
-        while((line = br.readLine()) != null) {
+        while ((line = br.readLine()) != null) {
             String[] playerInfo = line.split(splitBy);
-            if (!allBaseballNames.contains(playerInfo[0].toLowerCase()+ ": Baseball")){
-                allBaseballNames.add(playerInfo[0].toLowerCase()+ ": Baseball");}
+            if (!allBaseballNames.contains(playerInfo[0] + ": Baseball")) {
+                allBaseballNames.add(playerInfo[0] + ": Baseball");
+            }
         }
         return allBaseballNames;
-
     }
 
     /**
      * Get the names for all players in tennis for all seasons
+     *
      * @return the list of tennis players in the data
      * @throws IOException whenever hockey.csv file cannot be found
      */
@@ -421,10 +440,11 @@ public class CSVDataContainer implements DataContainer {
         String line;
         String splitBy = ",";
 
-        while((line = br.readLine()) != null) {
+        while ((line = br.readLine()) != null) {
             String[] playerInfo = line.split(splitBy);
-            if (!allTennisNames.contains(playerInfo[1].toLowerCase()+ ": Tennis")){
-                allTennisNames.add(playerInfo[1].toLowerCase()+ ": Tennis");}
+            if (!allTennisNames.contains(playerInfo[1] + ": Tennis")) {
+                allTennisNames.add(playerInfo[1] + ": Tennis");
+            }
         }
         return allTennisNames;
     }

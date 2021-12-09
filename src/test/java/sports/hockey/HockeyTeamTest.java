@@ -2,7 +2,6 @@ package sports.hockey;
 
 import org.junit.Before;
 import org.junit.Test;
-import sports.hockey.HockeyTeam;
 
 import static org.junit.Assert.*;
 
@@ -116,7 +115,6 @@ public class HockeyTeamTest {
         int gamesLost = team.gamesLost.get("2018-2019");
         assertEquals(2, gamesLost);
     }
-
 
 
 }

@@ -40,7 +40,7 @@ public class TennisPlayerTest {
 
     @Test(timeout = 100, expected = Exception.class)
     public void testGetStatRankFails() throws Exception {
-        int fail = this.player.getStatRank("2020");
+        this.player.getStatRank("2020");
     }
 
     @Test(timeout = 100)
@@ -53,11 +53,11 @@ public class TennisPlayerTest {
 
     @Test(timeout = 100, expected = Exception.class)
     public void testGetStatAcesFails() throws Exception {
-        int fail = this.player.getStatAces("2020");
+        this.player.getStatAces("2020");
     }
 
     @Test(timeout = 100)
-    public void testGetStatDoubleFaultsPasses() throws Exception{
+    public void testGetStatDoubleFaultsPasses() throws Exception {
         int doubleFaults2018 = this.player.getStatDoubleFaults("2018");
         assertEquals(11, doubleFaults2018);
         int doubleFaults2019 = this.player.getStatDoubleFaults("2019");
@@ -66,7 +66,7 @@ public class TennisPlayerTest {
 
     @Test(timeout = 100, expected = Exception.class)
     public void testGetStatDoubleFaultsFails() throws Exception {
-        int fail = this.player.getStatDoubleFaults("2020");
+        this.player.getStatDoubleFaults("2020");
     }
 
     @Test(timeout = 100)
@@ -79,7 +79,7 @@ public class TennisPlayerTest {
 
     @Test(timeout = 100, expected = Exception.class)
     public void testGetStatServePointsWonFails() throws Exception {
-        double fail = this.player.getStatServePointsWon("2020");
+        this.player.getStatServePointsWon("2020");
     }
 
     @Test(timeout = 100)
@@ -92,7 +92,7 @@ public class TennisPlayerTest {
 
     @Test(timeout = 100, expected = Exception.class)
     public void testGetStatBreakPointsSavedFails() throws Exception {
-        double fail = this.player.getStatBreakPointsSaved("2020");
+        this.player.getStatBreakPointsSaved("2020");
     }
 
     @Test(timeout = 100)
@@ -105,7 +105,7 @@ public class TennisPlayerTest {
 
     @Test(timeout = 100, expected = Exception.class)
     public void testGetStatServeGamesWonFails() throws Exception {
-        double fail = this.player.getStatServeGamesWon("2020");
+        this.player.getStatServeGamesWon("2020");
     }
 
     @Test(timeout = 100)
@@ -118,7 +118,7 @@ public class TennisPlayerTest {
 
     @Test(timeout = 100, expected = Exception.class)
     public void testGetStatReturnGamesWonFails() throws Exception {
-        double fail = this.player.getStatReturnGamesWon("2020");
+        this.player.getStatReturnGamesWon("2020");
     }
 
     @Test(timeout = 100)
@@ -131,7 +131,7 @@ public class TennisPlayerTest {
 
     @Test(timeout = 100, expected = Exception.class)
     public void testGetStatBreakPointsConvertedFails() throws Exception {
-        double fail = this.player.getStatBreakPointsConverted("2020");
+        this.player.getStatBreakPointsConverted("2020");
     }
 
     @Test(timeout = 100)
@@ -144,22 +144,22 @@ public class TennisPlayerTest {
 
     @Test(timeout = 100, expected = Exception.class)
     public void testGetStatReturnPointsWonFails() throws Exception {
-        double fail = this.player.getStatReturnPointsWon("2020");
+        this.player.getStatReturnPointsWon("2020");
     }
 
     @Test(timeout = 200)
     public void testGetSeasonData() throws Exception {
         assertEquals("Nationality: AUS\n" +
-                        "Rank: 3\n" +
-                        "Matches: 5\n" +
-                        "Aces: 23\n" +
-                        "Double Faults: 15\n" +
-                        "Percentage of Serve Points Won: 59.0\n" +
-                        "Percentage of Break Points Saved: 78.0\n" +
-                        "Percentage of Serve Games Won: 65.0\n" +
-                        "Percentage of Return Games Won: 37.0\n" +
-                        "Percentage of Break Points Converted: 68.0\n" +
-                        "Percentage of Return Points Won: 29.0",
+                     "Rank: 3\n" +
+                     "Matches: 5\n" +
+                     "Aces: 23\n" +
+                     "Double Faults: 15\n" +
+                     "Percentage of Serve Points Won: 59.0\n" +
+                     "Percentage of Break Points Saved: 78.0\n" +
+                     "Percentage of Serve Games Won: 65.0\n" +
+                     "Percentage of Return Games Won: 37.0\n" +
+                     "Percentage of Break Points Converted: 68.0\n" +
+                     "Percentage of Return Points Won: 29.0",
                 this.player.getSeasonData("2019"));
     }
 

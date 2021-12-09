@@ -8,10 +8,9 @@ public class TennisPlayerComparatorTest {
     TennisPlayer player2;
     TennisPlayer player3;
 
-
     @Before
     public void setUp() throws Exception {
-        this.player1 = new TennisPlayer("Player One", "CAN","2018",
+        this.player1 = new TennisPlayer("Player One", "CAN", "2018",
                 1, 10, 20, 11, 64.0, 67.0,
                 32.0, 35.0, 12.0, 43.0);
         this.player2 = new TennisPlayer("Player Two", "USA", "2018",
@@ -25,13 +24,13 @@ public class TennisPlayerComparatorTest {
     @Test(timeout = 100)
     public void testCompareRank() {
         TennisPlayerComparator tennisPlayerComparator =
-                new TennisPlayerComparator("Rank", "2018");
+                new TennisPlayerComparator("rank", "2018");
         int compareEquals = tennisPlayerComparator.compare(this.player1, this.player2);
-        assert(compareEquals == 0);
-        int compareGreater = tennisPlayerComparator.compare(this.player3, this.player1);
-        assert(compareGreater > 0);
-        int compareLesser = tennisPlayerComparator.compare(this.player2, this.player3);
-        assert(compareLesser < 0);
+        assert (compareEquals == 0);
+        int compareGreater = tennisPlayerComparator.compare(this.player1, this.player3);
+        assert (compareGreater > 0);
+        int compareLesser = tennisPlayerComparator.compare(this.player3, this.player2);
+        assert (compareLesser < 0);
     }
 
     @Test(timeout = 100)
@@ -39,59 +38,59 @@ public class TennisPlayerComparatorTest {
         TennisPlayerComparator tennisPlayerComparator =
                 new TennisPlayerComparator("matches", "2018");
         int compareEquals = tennisPlayerComparator.compare(this.player2, this.player3);
-        assert(compareEquals == 0);
+        assert (compareEquals == 0);
         int compareGreater = tennisPlayerComparator.compare(this.player1, this.player3);
-        assert(compareGreater > 0);
+        assert (compareGreater > 0);
         int compareLesser = tennisPlayerComparator.compare(this.player2, this.player1);
-        assert(compareLesser < 0);
+        assert (compareLesser < 0);
     }
 
     @Test(timeout = 100)
     public void testCompareAces() {
         TennisPlayerComparator tennisPlayerComparator =
-                new TennisPlayerComparator("Aces", "2018");
+                new TennisPlayerComparator("aces", "2018");
         int compareEquals = tennisPlayerComparator.compare(this.player1, this.player3);
-        assert(compareEquals == 0);
+        assert (compareEquals == 0);
         int compareGreater = tennisPlayerComparator.compare(this.player1, this.player2);
-        assert(compareGreater > 0);
+        assert (compareGreater > 0);
         int compareLesser = tennisPlayerComparator.compare(this.player2, this.player3);
-        assert(compareLesser < 0);
+        assert (compareLesser < 0);
     }
 
     @Test(timeout = 100)
     public void testCompareDoubleFaults() {
         TennisPlayerComparator tennisPlayerComparator =
-                new TennisPlayerComparator("Double Faults", "2018");
+                new TennisPlayerComparator("double faults", "2018");
         int compareEquals = tennisPlayerComparator.compare(this.player1, this.player2);
-        assert(compareEquals == 0);
-        int compareGreater = tennisPlayerComparator.compare(this.player3, this.player2);
-        assert(compareGreater > 0);
-        int compareLesser = tennisPlayerComparator.compare(this.player1, this.player3);
-        assert(compareLesser < 0);
+        assert (compareEquals == 0);
+        int compareGreater = tennisPlayerComparator.compare(this.player2, this.player3);
+        assert (compareGreater > 0);
+        int compareLesser = tennisPlayerComparator.compare(this.player3, this.player1);
+        assert (compareLesser < 0);
     }
 
     @Test(timeout = 100)
     public void testCompareServePointsWon() {
         TennisPlayerComparator tennisPlayerComparator =
-                new TennisPlayerComparator("Serve Points Won", "2018");
+                new TennisPlayerComparator("serve points won", "2018");
         int compareEquals = tennisPlayerComparator.compare(this.player1, this.player3);
-        assert(compareEquals == 0);
+        assert (compareEquals == 0);
         int compareGreater = tennisPlayerComparator.compare(this.player3, this.player2);
-        assert(compareGreater > 0);
+        assert (compareGreater > 0);
         int compareLesser = tennisPlayerComparator.compare(this.player2, this.player1);
-        assert(compareLesser < 0);
+        assert (compareLesser < 0);
     }
 
     @Test(timeout = 100)
     public void testCompareBreakPointsSaved() {
         TennisPlayerComparator tennisPlayerComparator =
-                new TennisPlayerComparator("Break Points Saved", "2018");
+                new TennisPlayerComparator("break points saved", "2018");
         int compareEquals = tennisPlayerComparator.compare(this.player1, this.player2);
-        assert(compareEquals == 0);
+        assert (compareEquals == 0);
         int compareGreater = tennisPlayerComparator.compare(this.player2, this.player3);
-        assert(compareGreater > 0);
+        assert (compareGreater > 0);
         int compareLesser = tennisPlayerComparator.compare(this.player3, this.player1);
-        assert(compareLesser < 0);
+        assert (compareLesser < 0);
     }
 
     @Test(timeout = 100)
@@ -99,23 +98,23 @@ public class TennisPlayerComparatorTest {
         TennisPlayerComparator tennisPlayerComparator =
                 new TennisPlayerComparator("serve games won", "2018");
         int compareEquals = tennisPlayerComparator.compare(this.player2, this.player3);
-        assert(compareEquals == 0);
+        assert (compareEquals == 0);
         int compareGreater = tennisPlayerComparator.compare(this.player2, this.player1);
-        assert(compareGreater > 0);
+        assert (compareGreater > 0);
         int compareLesser = tennisPlayerComparator.compare(this.player1, this.player2);
-        assert(compareLesser < 0);
+        assert (compareLesser < 0);
     }
 
     @Test(timeout = 100)
     public void testCompareReturnGamesWon() {
         TennisPlayerComparator tennisPlayerComparator =
-                new TennisPlayerComparator("Return games won", "2018");
+                new TennisPlayerComparator("return games won", "2018");
         int compareEquals = tennisPlayerComparator.compare(this.player1, this.player2);
-        assert(compareEquals == 0);
+        assert (compareEquals == 0);
         int compareGreater = tennisPlayerComparator.compare(this.player2, this.player3);
-        assert(compareGreater > 0);
+        assert (compareGreater > 0);
         int compareLesser = tennisPlayerComparator.compare(this.player3, this.player1);
-        assert(compareLesser < 0);
+        assert (compareLesser < 0);
     }
 
     @Test(timeout = 100)
@@ -123,11 +122,11 @@ public class TennisPlayerComparatorTest {
         TennisPlayerComparator tennisPlayerComparator =
                 new TennisPlayerComparator("break points converted", "2018");
         int compareEquals = tennisPlayerComparator.compare(this.player2, this.player3);
-        assert(compareEquals == 0);
+        assert (compareEquals == 0);
         int compareGreater = tennisPlayerComparator.compare(this.player2, this.player1);
-        assert(compareGreater > 0);
+        assert (compareGreater > 0);
         int compareLesser = tennisPlayerComparator.compare(this.player1, this.player3);
-        assert(compareLesser < 0);
+        assert (compareLesser < 0);
     }
 
     @Test(timeout = 100)
@@ -135,11 +134,11 @@ public class TennisPlayerComparatorTest {
         TennisPlayerComparator tennisPlayerComparator =
                 new TennisPlayerComparator("return points won", "2018");
         int compareEquals = tennisPlayerComparator.compare(this.player1, this.player3);
-        assert(compareEquals == 0);
+        assert (compareEquals == 0);
         int compareGreater = tennisPlayerComparator.compare(this.player2, this.player3);
-        assert(compareGreater > 0);
+        assert (compareGreater > 0);
         int compareLesser = tennisPlayerComparator.compare(this.player1, this.player2);
-        assert(compareLesser < 0);
+        assert (compareLesser < 0);
     }
 
     @Test(timeout = 100)
@@ -147,11 +146,11 @@ public class TennisPlayerComparatorTest {
         TennisPlayerComparator tennisPlayerComparator =
                 new TennisPlayerComparator("rank", "2020");
         int compareEquals = tennisPlayerComparator.compare(this.player1, this.player2);
-        assert(compareEquals == 0);
+        assert (compareEquals == 0);
         int compareGreater = tennisPlayerComparator.compare(this.player1, this.player3);
-        assert(compareGreater == 0);
+        assert (compareGreater == 0);
         int compareLesser = tennisPlayerComparator.compare(this.player3, this.player2);
-        assert(compareLesser == 0);
+        assert (compareLesser == 0);
     }
 
 }

@@ -1,11 +1,8 @@
-package FantasyLeague;
+package fantasyLeague;
 
 import commands.Command;
 import constants.Exceptions;
 import driversAdapters.DataContainer;
-import FantasyLeague.LeagueMember;
-import FantasyLeague.LeagueStorage;
-import FantasyLeague.Match;
 
 import java.io.*;
 import java.util.HashMap;
@@ -13,9 +10,9 @@ import java.util.ArrayList;
 
 public class FantasyLeagueManager implements Command {
     // MemberMap stores the League Members of the fantasy league
-    public HashMap<String, LeagueMember> LeagueMemberMap;
+    private HashMap<String, LeagueMember> LeagueMemberMap;
     // GameMap stores the ongoing Games of the fantasy league
-    public HashMap<String, Match> MatchMap;
+    private HashMap<String, Match> MatchMap;
 
     /**
      * Create a new FantasyLeagueManager with no Members and no Games
@@ -27,6 +24,7 @@ public class FantasyLeagueManager implements Command {
 
     /**
      * Execute a command related to the Fantasy League system
+     *
      * @param arguments the arguments for the command
      * @param container DataContainer with player and team data
      * @return the String to return to the user
@@ -55,6 +53,7 @@ public class FantasyLeagueManager implements Command {
 
     /**
      * Load the fantasy league data stored at the given path
+     *
      * @param arguments String Array of form ["load", <filepath>]
      * @return if the league was successfully loaded
      */
@@ -65,8 +64,8 @@ public class FantasyLeagueManager implements Command {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(path));
             LeagueStorage loaded = (LeagueStorage) in.readObject();
 
-            this.LeagueMemberMap = loaded.LeagueMemberMap;
-            this.MatchMap = loaded.MatchMap;
+            this.LeagueMemberMap = loaded.getLeagueMemberMap();
+            this.MatchMap = loaded.getMatchMap();
 
             in.close();
 
@@ -81,6 +80,7 @@ public class FantasyLeagueManager implements Command {
 
     /**
      * Save the fantasy league data to the given filepath
+     *
      * @param arguments String Array of form ["save", "filepath"]
      * @return if the file was successfully saved
      * @throws Exception if the file could not be saved
@@ -99,8 +99,7 @@ public class FantasyLeagueManager implements Command {
             out.close();
 
             return "Successfully saved to " + path;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new Exception("Could not save to " + path);
         }
     }
@@ -108,6 +107,7 @@ public class FantasyLeagueManager implements Command {
 
     /**
      * Add a new League Member to the fantasy league
+     *
      * @param arguments String Array of form ["add_member", <member name>]
      * @return a confirmation if the Member was added
      * @throws Exception if a Member with the same name already exists
@@ -125,8 +125,9 @@ public class FantasyLeagueManager implements Command {
 
     /**
      * Create a new Match for players to bet on
+     *
      * @param arguments String Array of form ["create_match", <match name>,
-     *                <team 1 name>, <team 2 name>]
+     *                  <team 1 name>, <team 2 name>]
      * @return a confirmation if the Match was created
      * @throws Exception if a Match with the same name already exists
      */
@@ -147,11 +148,12 @@ public class FantasyLeagueManager implements Command {
 
     /**
      * Record a League Member's bet on the outcome of a Match
+     *
      * @param arguments String Array of form ["bet", <member name>,
-     *                <match name>, <predicted winning team>]
+     *                  <match name>, <predicted winning team>]
      * @return a confirmation if the bet is recorded
      * @throws Exception if the League Member does not exist, the Match does
-     * not exist, or the team is not competing in the Match
+     *                   not exist, or the team is not competing in the Match
      */
     private String bet(ArrayList<String> arguments) throws Exception {
         checkArgumentLength(arguments, 4);
@@ -166,13 +168,14 @@ public class FantasyLeagueManager implements Command {
         String favoredTeamName = arguments.get(3);
         targetMatch.addBet(bettingLeagueMember, favoredTeamName);
         return leagueMemberName + " has successfully placed a bet that " +
-                favoredTeamName + " will win " + matchName;
+               favoredTeamName + " will win " + matchName;
     }
 
     /**
      * Resolve a Match's outcome and award League Members according to their bets
+     *
      * @param arguments String Array of form ["resolve_match", <match name>,
-     *                <winning team name>]
+     *                  <winning team name>]
      * @return a confirmation if the Match's outcome is resolved
      * @throws Exception if the Match does not exist
      */
@@ -186,11 +189,12 @@ public class FantasyLeagueManager implements Command {
         targetMatch.resolve(winningTeam);
         this.MatchMap.remove(matchName);
         return matchName + " was successfully resolved with " +
-                winningTeam + " as the victors.";
+               winningTeam + " as the victors.";
     }
 
     /**
      * Return information on a given League Member
+     *
      * @param arguments String array for form ["member_info", <member name>]
      * @return a string representation of the member
      * @throws Exception if the League Member does not exist
@@ -205,6 +209,7 @@ public class FantasyLeagueManager implements Command {
 
     /**
      * Verify that the given League Member exists
+     *
      * @param leagueMemberName the possible League Member's name
      * @throws Exception if there is no League Member with the given name
      */
@@ -216,6 +221,7 @@ public class FantasyLeagueManager implements Command {
 
     /**
      * Verify that the given Match exists
+     *
      * @param matchName the possible Match's name
      * @throws Exception if there is no Match with the given name
      */
@@ -227,8 +233,9 @@ public class FantasyLeagueManager implements Command {
 
     /**
      * Check that the provided arguments have the expected length.
+     *
      * @param arguments Parsed User-provided arguments
-     * @param expected Expected number of arguments provided
+     * @param expected  Expected number of arguments provided
      * @throws Exception if the provided arguments has too many or too few arguments
      */
     private void checkArgumentLength(ArrayList<String> arguments, int expected)

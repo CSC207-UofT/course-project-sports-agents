@@ -1,6 +1,6 @@
 package driversAdapters;
 
-import FantasyLeague.FantasyLeagueManager;
+import fantasyLeague.FantasyLeagueManager;
 import commands.*;
 import constants.CommandsInfo;
 import sports.baseball.BaseballPlayerStatManager;
@@ -44,8 +44,6 @@ public class CommandDictBuilder {
         PlayerStatPredictorFacade playerStatPredictorFacade = new PlayerStatPredictorFacade(hockeyPlayerStatPredictor,
                 tennisPlayerStatPredictor, baseballPlayerStatPredictor);
 
-        FantasyLeagueManager leagueMemberManager = new FantasyLeagueManager();
-
         this.commandDict = new HashMap<>();
         this.commandDict.put(CommandsInfo.GetPlayerStatInfo.keyword,
                 playerStatManagerFacade);
@@ -54,7 +52,7 @@ public class CommandDictBuilder {
         this.commandDict.put(CommandsInfo.PredictPlayerStatInfo.keyword,
                 playerStatPredictorFacade);
         for (String keyword : CommandsInfo.manageLeagueKeywords) {
-            this.commandDict.put(keyword, leagueMemberManager);
+            this.commandDict.put(keyword, new FantasyLeagueManager());
         }
 
         this.commandDict.put(CommandsInfo.GetListPlayersInfo.keyword, new GetListPlayers());

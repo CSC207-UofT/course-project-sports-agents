@@ -2,6 +2,7 @@ package sports.hockey;
 
 import commands.PlayerStatManager;
 import driversAdapters.DataContainer;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Arrays;
@@ -17,6 +18,7 @@ public class HockeyPlayerStatManager extends PlayerStatManager {
 
     /**
      * Handle an argument requesting a player's statistics
+     *
      * @param arguments A string array of form
      *                  {"Hockey", "player name", "season", "stat name"}
      * @param container A container containing the data or means to retrieve it

@@ -176,6 +176,7 @@ public class CommandsInfo {
         public static final String usage =
                 "get_available_commands";
     }
+
     public static class GetTeamStatInfo {
         public static final String keyword = "get_team_stat";
         public static final List<String> argNames =

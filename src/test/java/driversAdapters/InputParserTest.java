@@ -2,7 +2,6 @@ package driversAdapters;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Arrays;
 
@@ -19,9 +18,9 @@ public class InputParserTest {
                               "--season 2020-2021 " +
                               "--stat \"games played\"";
         String verboseInputReordered = "get_player_stat --stat \"games played\" " +
-                               "--season 2020-2021 " +
-                               "--player-name \"auston matthews\" " +
-                               "--sport hockey";
+                                       "--season 2020-2021 " +
+                                       "--player-name \"auston matthews\" " +
+                                       "--sport hockey";
         String keyword = "get_player_stat";
         List<String> arguments = Arrays.asList("hockey", "auston matthews",
                 "2020-2021", "games played");
@@ -49,9 +48,9 @@ public class InputParserTest {
                               "--season 2020-2021 " +
                               "--stat \"games played\"";
         String verboseInputReordered = "compare_player_stat --stat \"games played\" " +
-                               "--season 2020-2021 " +
-                               "--player-names \"auston matthews\" \"brad marchand\" " +
-                               "--sport hockey";
+                                       "--season 2020-2021 " +
+                                       "--player-names \"auston matthews\" \"brad marchand\" " +
+                                       "--sport hockey";
         String verboseInputMultiName = "compare_player_stat --sport hockey " +
                                        "--player-names \"auston matthews\" \"brad marchand\" " +
                                        "\"paul gries\"" +
@@ -84,24 +83,15 @@ public class InputParserTest {
     public void testParsePredictPlayerStat() {
         String shortInput = "predict_player_stat hockey " +
                             "\"auston matthews\" " +
-                            "2019-2020 2020-2021 \"games played\"";
+                            "\"games played\"";
         String verboseInput = "predict_player_stat --sport hockey " +
                               "--player-name \"auston matthews\" " +
-                              "--seasons 2019-2020 2020-2021 " +
                               "--stat \"games played\"";
         String verboseInputReordered = "predict_player_stat --stat \"games played\" " +
-                                       "--seasons 2019-2020 2020-2021 " +
                                        "--player-name \"auston matthews\" " +
                                        "--sport hockey";
         String keyword = "predict_player_stat";
-        String verboseInputMultiSeason = "predict_player_stat --sport hockey " +
-                                       "--player-name \"auston matthews\" " +
-                                       "--seasons 2018-2019 2019-2020 2020-2021 " +
-                                       "--stat \"games played\"";
-        List<String> arguments = Arrays.asList("hockey", "auston matthews",
-                "2019-2020", "2020-2021", "games played");
-        List<String> argumentsMultiSeason = Arrays.asList("hockey", "auston matthews",
-                "2018-2019", "2019-2020", "2020-2021", "games played");
+        List<String> arguments = Arrays.asList("hockey", "auston matthews", "games played");
 
 
         InputParser shortParser = new InputParser(shortInput);
@@ -115,10 +105,6 @@ public class InputParserTest {
         InputParser verboseParserReordered = new InputParser(verboseInputReordered);
         assertEquals(keyword, verboseParserReordered.getKeyword());
         assertEquals(arguments, verboseParserReordered.getArguments());
-
-        InputParser verboseParserMultiSeason = new InputParser(verboseInputMultiSeason);
-        assertEquals(keyword, verboseParserMultiSeason.getKeyword());
-        assertEquals(argumentsMultiSeason, verboseParserMultiSeason.getArguments());
     }
 
     @Test
@@ -263,9 +249,9 @@ public class InputParserTest {
     @Test
     public void testParsePoorlyFormattedVerbose() {
         String goodVerboseInput = "get_player_stat --sport \"hockey\"" +
-                                       "--player-name \"auston matthews\" " +
-                                       "--season 2020-2021 " +
-                                       "--stat \"games played\"";
+                                  "--player-name \"auston matthews\" " +
+                                  "--season 2020-2021 " +
+                                  "--stat \"games played\"";
         String noSpaceVerboseInput = "get_player_stat --sport\"hockey\"" +
                                      "--player-name\"auston matthews\"" +
                                      "--season\"2020-2021\"" +

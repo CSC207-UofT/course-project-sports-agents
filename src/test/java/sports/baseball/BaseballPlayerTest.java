@@ -32,7 +32,7 @@ public class BaseballPlayerTest {
 
     @Test(timeout = 100, expected = Exception.class)
     public void testGetStatTeamFails() throws Exception {
-        String fail = this.player.getStatTeam("1990-1991");
+        this.player.getStatTeam("1990-1991");
     }
 
     @Test(timeout = 100)
@@ -45,7 +45,7 @@ public class BaseballPlayerTest {
 
     @Test(timeout = 100, expected = Exception.class)
     public void testGetStatPositionFails() throws Exception {
-        String fail = this.player.getStatPosition("1991-1992");
+        this.player.getStatPosition("1991-1992");
     }
 
     @Test(timeout = 100)
@@ -58,7 +58,7 @@ public class BaseballPlayerTest {
 
     @Test(timeout = 100, expected = Exception.class)
     public void testGetStatGamesPlayedFails() throws Exception {
-        int fail = this.player.getStatGamesPlayed("1992-1993");
+        this.player.getStatGamesPlayed("1992-1993");
     }
 
     @Test(timeout = 100)
@@ -71,7 +71,7 @@ public class BaseballPlayerTest {
 
     @Test(timeout = 100, expected = Exception.class)
     public void testGetStatAtBatsFails() throws Exception {
-        int fail = this.player.getStatAtBats("1993-1994");
+        this.player.getStatAtBats("1993-1994");
     }
 
     @Test(timeout = 100)
@@ -84,7 +84,7 @@ public class BaseballPlayerTest {
 
     @Test(timeout = 100, expected = Exception.class)
     public void testGetStatRunsFails() throws Exception {
-        int fail = this.player.getStatRuns("1994-1995");
+        this.player.getStatRuns("1994-1995");
     }
 
     @Test(timeout = 100)
@@ -97,7 +97,7 @@ public class BaseballPlayerTest {
 
     @Test(timeout = 100, expected = Exception.class)
     public void testGetStatHitsFails() throws Exception {
-        int fail = this.player.getStatHits("1995-1996");
+        this.player.getStatHits("1995-1996");
     }
 
     @Test(timeout = 100)
@@ -110,7 +110,7 @@ public class BaseballPlayerTest {
 
     @Test(timeout = 100, expected = Exception.class)
     public void testGetStatHomeRunsFails() throws Exception {
-        int fail = this.player.getStatHomeRuns("1996-1997");
+        this.player.getStatHomeRuns("1996-1997");
     }
 
     @Test(timeout = 100)
@@ -123,7 +123,7 @@ public class BaseballPlayerTest {
 
     @Test(timeout = 100, expected = Exception.class)
     public void testGetStatRunsBattedInFails() throws Exception {
-        int fail = this.player.getStatRunsBattedIn("1997-1998");
+        this.player.getStatRunsBattedIn("1997-1998");
     }
 
     @Test(timeout = 100)
@@ -136,7 +136,7 @@ public class BaseballPlayerTest {
 
     @Test(timeout = 100, expected = Exception.class)
     public void testGetStatStrikeOutsFails() throws Exception {
-        int fail = this.player.getStatStrikeOuts("1998-1999");
+        this.player.getStatStrikeOuts("1998-1999");
     }
 
     @Test(timeout = 100)
@@ -149,21 +149,21 @@ public class BaseballPlayerTest {
 
     @Test(timeout = 100, expected = Exception.class)
     public void testGetStatAvgFails() throws Exception {
-        double fail = this.player.getStatAvg("1999-2000");
+        this.player.getStatAvg("1999-2000");
     }
 
-    @Test(timeout = 100)
+    @Test(timeout = 200)
     public void testGetSeasonData() throws Exception {
         assertEquals("Team: BOS\n" +
-                "Position: 2B\n" +
-                "Games Played: 35\n" +
-                "At Bats: 87\n" +
-                "Runs: 90\n" +
-                "Hits: 14\n" +
-                "Home Runs: 54\n" +
-                "Runs Batted In: 39\n" +
-                "Strike Outs: 18\n" +
-                "Average Hits per at Bat: 0.894", this.player.getSeasonData("2020-2021"));
+                     "Position: 2B\n" +
+                     "Games Played: 35\n" +
+                     "At Bats: 87\n" +
+                     "Runs: 90\n" +
+                     "Hits: 14\n" +
+                     "Home Runs: 54\n" +
+                     "Runs Batted In: 39\n" +
+                     "Strike Outs: 18\n" +
+                     "Average Hits per at Bat: 0.894", this.player.getSeasonData("2020-2021"));
     }
 
     @Test(timeout = 100)

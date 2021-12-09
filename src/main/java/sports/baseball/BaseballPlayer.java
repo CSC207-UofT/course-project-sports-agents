@@ -19,19 +19,19 @@ public class BaseballPlayer extends Player {
     /**
      * Create a new Baseball Player.
      *
-     * @param name player's name
-     * @param season Player's first season
-     * @param team Player's team in given season
-     * @param position player's position in the team.
-     * @param gamesPlayed The number of games the player has played in the season.
-     * @param atBats trips to the plate that don't result in a walk, hit by patch, sacrifice, or reach on interference.
-     * @param runs number of runs whenever a base runner safely reaches home plate and scores
-     * @param hits number of ball hits.
-     * @param homeRuns number of runs whenever a bat reaches on a hit, touches all bases, and scores a run whithout a
-     * *                putout recorded or the benefit of error.
+     * @param name         player's name
+     * @param season       Player's first season
+     * @param team         Player's team in given season
+     * @param position     player's position in the team.
+     * @param gamesPlayed  The number of games the player has played in the season.
+     * @param atBats       trips to the plate that don't result in a walk, hit by patch, sacrifice, or reach on interference.
+     * @param runs         number of runs whenever a base runner safely reaches home plate and scores
+     * @param hits         number of ball hits.
+     * @param homeRuns     number of runs whenever a bat reaches on a hit, touches all bases, and scores a run whithout a
+     *                     *                putout recorded or the benefit of error.
      * @param runsBattedIn number of runs that are scored because of the batter's safe hit.
-     * @param strikeOuts number when the umpire calls three strikes on the batter.
-     * @param avg the rate of hits per at bat.
+     * @param strikeOuts   number when the umpire calls three strikes on the batter.
+     * @param avg          the rate of hits per at bat.
      * @throws Exception should not throw Exception
      */
     public BaseballPlayer(String name, String season, String team,
@@ -60,17 +60,17 @@ public class BaseballPlayer extends Player {
     /**
      * Add a new season of data for this baseball player.
      *
-     * @param season the new season
-     * @param team the player's team in the new season
-     * @param position the player's position in the new season
-     * @param gamesPlayed the player's number of games played in the new season
-     * @param atBats the player's times at bat in the new season
-     * @param runs the player's total runs in the new season
-     * @param hits the player's total in the new season
-     * @param homeRuns the player's total home runs in the new season
+     * @param season       the new season
+     * @param team         the player's team in the new season
+     * @param position     the player's position in the new season
+     * @param gamesPlayed  the player's number of games played in the new season
+     * @param atBats       the player's times at bat in the new season
+     * @param runs         the player's total runs in the new season
+     * @param hits         the player's total in the new season
+     * @param homeRuns     the player's total home runs in the new season
      * @param runsBattedIn the player's total runs batted in for the new season
-     * @param strikeOuts the player's total strike outs in the new season
-     * @param avg the player's batting average in the new season
+     * @param strikeOuts   the player's total strike outs in the new season
+     * @param avg          the player's batting average in the new season
      * @throws Exception if data for the given season is already recorded
      */
     public void addRecord(String season, String team, String position,
@@ -91,8 +91,19 @@ public class BaseballPlayer extends Player {
     }
 
     /**
+     * Override addSeason: for baseball data, seasons are in reverse order
+     *
+     * @param season new season to record
+     */
+    @Override
+    public void addSeason(String season) {
+        this.seasons.add(0, season);
+    }
+
+    /**
      * Record position data
-     * @param season the season the data is from
+     *
+     * @param season   the season the data is from
      * @param position player's position in the team.
      * @throws Exception if that season already has position data
      */
@@ -105,7 +116,8 @@ public class BaseballPlayer extends Player {
 
     /**
      * Record games played data
-     * @param season the season the data is from
+     *
+     * @param season      the season the data is from
      * @param gamesPlayed The number of games the player has played in the season.
      * @throws Exception if that season already has games played data
      */
@@ -118,6 +130,7 @@ public class BaseballPlayer extends Player {
 
     /**
      * Record at bats data
+     *
      * @param season the season the data is from
      * @param atBats trips to the plate that don't result in a walk,
      *               hit by patch, sacrifice, or reach on interference.
@@ -131,9 +144,10 @@ public class BaseballPlayer extends Player {
 
     /**
      * Record runs data
+     *
      * @param season the season the data is from
-     * @param runs number of runs whenever a base runner safely reaches home
-     *             plate and scores
+     * @param runs   number of runs whenever a base runner safely reaches home
+     *               plate and scores
      * @throws Exception if that season already has runs data
      */
     public void addRuns(String season, int runs)
@@ -144,8 +158,9 @@ public class BaseballPlayer extends Player {
 
     /**
      * Record hits data
+     *
      * @param season the season the data is from
-     * @param hits number of ball hits.
+     * @param hits   number of ball hits.
      * @throws Exception if that season already has hits data
      */
     public void addHits(String season, int hits)
@@ -156,7 +171,8 @@ public class BaseballPlayer extends Player {
 
     /**
      * Record home runs data
-     * @param season the season the data is from
+     *
+     * @param season   the season the data is from
      * @param homeRuns number of runs whenever a bat reaches on a hit,
      *                 touches all bases, and scores a run without
      *                 putout recorded or the benefit of error.
@@ -170,7 +186,8 @@ public class BaseballPlayer extends Player {
 
     /**
      * Record runs batted in data
-     * @param season the season the data is from
+     *
+     * @param season       the season the data is from
      * @param runsBattedIn number of runs that are scored because of the
      *                     batter's safe hit.
      * @throws Exception if that season already has runs batted in data
@@ -183,7 +200,8 @@ public class BaseballPlayer extends Player {
 
     /**
      * Record strike out data
-     * @param season the season the data is from
+     *
+     * @param season     the season the data is from
      * @param strikeOuts number when the umpire calls three strikes on the
      *                   batter.
      * @throws Exception if that season already has strike out data
@@ -196,8 +214,9 @@ public class BaseballPlayer extends Player {
 
     /**
      * Record batting average data
+     *
      * @param season the season the data is from
-     * @param avg the rate of hits per at bat.
+     * @param avg    the rate of hits per at bat.
      * @throws Exception if that season already has batting average data
      */
     public void addAvg(String season, double avg)
@@ -308,11 +327,11 @@ public class BaseballPlayer extends Player {
     @Override
     public String getSeasonData(String season) throws Exception {
         return "Team: " + this.getStatTeam(season) + "\nPosition: " + this.getStatPosition(season) +
-                "\nGames Played: " + this.getStatGamesPlayed(season) + "\nAt Bats: " + this.getStatAtBats(season) +
-                "\nRuns: " + this.getStatRuns(season) + "\nHits: " + this.getStatHits(season) +
-                "\nHome Runs: " + this.getStatHomeRuns(season) + "\nRuns Batted In: " +
-                this.getStatRunsBattedIn(season) + "\nStrike Outs: " + this.getStatStrikeOuts(season) +
-                "\nAverage Hits per at Bat: " + this.getStatAvg(season);
+               "\nGames Played: " + this.getStatGamesPlayed(season) + "\nAt Bats: " + this.getStatAtBats(season) +
+               "\nRuns: " + this.getStatRuns(season) + "\nHits: " + this.getStatHits(season) +
+               "\nHome Runs: " + this.getStatHomeRuns(season) + "\nRuns Batted In: " +
+               this.getStatRunsBattedIn(season) + "\nStrike Outs: " + this.getStatStrikeOuts(season) +
+               "\nAverage Hits per at Bat: " + this.getStatAvg(season);
     }
 
 
@@ -320,9 +339,6 @@ public class BaseballPlayer extends Player {
     public String toString() {
         return "Baseball Player " + super.toString();
     }
-
-
-
 
 
 }

@@ -9,6 +9,7 @@ public class AvailableCommands implements Command {
 
     /**
      * Outputs a table showing all of the available commands when run
+     *
      * @param arguments an ArrayList of Strings containing arguments for the command. If this command was called,
      *                  the list will be empty.
      * @param container data container used in order to retrieve data. Not used by this command.
@@ -128,6 +129,7 @@ public class AvailableCommands implements Command {
 
     /**
      * Add a line to easily distinguish rows in a table
+     *
      * @param builder currently used builder to build the output string
      */
     private void addSeparator(StringBuilder builder) {

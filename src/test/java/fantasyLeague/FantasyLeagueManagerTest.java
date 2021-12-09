@@ -1,21 +1,23 @@
-package FantasyLeague;
+package fantasyLeague;
 
+import constants.Exceptions;
 import driversAdapters.CSVDataContainer;
 import driversAdapters.DataContainer;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
-public class LeagueMemberManagerTest {
-    private FantasyLeagueManager m;
+public class FantasyLeagueManagerTest {
+    private FantasyLeagueManager fantasyLeagueManager;
     private DataContainer container;
 
     @Before
     public void setUp() {
-        m = new FantasyLeagueManager();
+        fantasyLeagueManager = new FantasyLeagueManager();
         container = new CSVDataContainer();
     }
 
@@ -27,11 +29,11 @@ public class LeagueMemberManagerTest {
         addMemberCommand.add("add_member");
         addMemberCommand.add("paul gries");
         assertEquals("New Member paul gries with 0 correct bet(s) and " +
-                        "0 incorrect bet(s) successfully added.",
-                m.execute(addMemberCommand, container));
+                     "0 incorrect bet(s) successfully added.",
+                fantasyLeagueManager.execute(addMemberCommand, container));
 
         try {
-            String failMessage = m.execute(addMemberCommand, container);
+            fantasyLeagueManager.execute(addMemberCommand, container);
             fail();
         } catch (Exception e) {
             assertEquals("Given member already exists", e.getMessage());
@@ -40,7 +42,7 @@ public class LeagueMemberManagerTest {
         memberInfoCommand.add("member_info");
         memberInfoCommand.add("paul gries");
         assertEquals("Member paul gries with 0 correct bet(s) and " +
-                        "0 incorrect bet(s)", m.execute(memberInfoCommand, container));
+                     "0 incorrect bet(s)", fantasyLeagueManager.execute(memberInfoCommand, container));
     }
 
     @Test
@@ -51,10 +53,10 @@ public class LeagueMemberManagerTest {
         createMatchCommand.add("ravens");
         createMatchCommand.add("owls");
         assertEquals("New Match between ravens and owls successfully created.",
-                m.execute(createMatchCommand, container));
+                fantasyLeagueManager.execute(createMatchCommand, container));
 
         try {
-            String failMessage = m.execute(createMatchCommand, container);
+            fantasyLeagueManager.execute(createMatchCommand, container);
             fail();
         } catch (Exception e) {
             assertEquals("Given match already exists",
@@ -73,7 +75,7 @@ public class LeagueMemberManagerTest {
         betCommand.add("super bowl");
         betCommand.add("owls");
         assertEquals("paul gries has successfully placed a bet that " +
-                "owls will win super bowl", m.execute(betCommand, container));
+                     "owls will win super bowl", fantasyLeagueManager.execute(betCommand, container));
 
         try {
             ArrayList<String> betFakeMemberCommand = new ArrayList<>();
@@ -81,7 +83,7 @@ public class LeagueMemberManagerTest {
             betFakeMemberCommand.add("gries paul");
             betFakeMemberCommand.add("super bowl");
             betFakeMemberCommand.add("owls");
-            String failMessage = m.execute(betFakeMemberCommand, container);
+            fantasyLeagueManager.execute(betFakeMemberCommand, container);
             fail();
         } catch (Exception e) {
             assertEquals("Given member does not exist yet", e.getMessage());
@@ -93,7 +95,7 @@ public class LeagueMemberManagerTest {
             betFakeMatchCommand.add("paul gries");
             betFakeMatchCommand.add("superb owl");
             betFakeMatchCommand.add("owls");
-            String failMessage = m.execute(betFakeMatchCommand, container);
+            fantasyLeagueManager.execute(betFakeMatchCommand, container);
             fail();
         } catch (Exception e) {
             assertEquals("Given match does not exist yet", e.getMessage());
@@ -105,7 +107,7 @@ public class LeagueMemberManagerTest {
             betFakeTeamCommand.add("paul gries");
             betFakeTeamCommand.add("super bowl");
             betFakeTeamCommand.add("dogs");
-            String failMessage = m.execute(betFakeTeamCommand, container);
+            fantasyLeagueManager.execute(betFakeTeamCommand, container);
             fail();
         } catch (Exception e) {
             assertEquals(e.getMessage(), "dogs is not a Team in this Match!");
@@ -121,10 +123,10 @@ public class LeagueMemberManagerTest {
         resolveMatchCommand.add("super bowl");
         resolveMatchCommand.add("owls");
         assertEquals("super bowl was successfully resolved with owls " +
-                        "as the victors.", m.execute(resolveMatchCommand, container));
+                     "as the victors.", fantasyLeagueManager.execute(resolveMatchCommand, container));
 
         try {
-            String failMessage = m.execute(resolveMatchCommand, container);
+            fantasyLeagueManager.execute(resolveMatchCommand, container);
             fail();
         } catch (Exception e) {
             assertEquals("Given match does not exist yet", e.getMessage());
@@ -134,6 +136,60 @@ public class LeagueMemberManagerTest {
         memberInfoCommand.add("member_info");
         memberInfoCommand.add("paul gries");
         assertEquals("Member paul gries with 1 correct bet(s) and " +
-                        "0 incorrect bet(s)", m.execute(memberInfoCommand, container));
+                     "0 incorrect bet(s)", fantasyLeagueManager.execute(memberInfoCommand, container));
+    }
+
+    @Test
+    public void testSaveLoad() throws Exception {
+        File saveFile = new File("testFantasyLeagueFile");
+        saveFile.delete();
+
+        testResolveMatch();
+
+        ArrayList<String> saveCommand = new ArrayList<>();
+        saveCommand.add("save");
+        saveCommand.add("testFantasyLeagueFile");
+
+        assertEquals("Successfully saved to testFantasyLeagueFile",
+                fantasyLeagueManager.execute(saveCommand, container));
+
+        fantasyLeagueManager = new FantasyLeagueManager();
+
+        ArrayList<String> loadCommand = new ArrayList<>();
+        loadCommand.add("load");
+        loadCommand.add("testFantasyLeagueFile");
+        assertEquals("Successfully loaded the league. Welcome back!",
+                fantasyLeagueManager.execute(loadCommand, container));
+
+        ArrayList<String> memberInfoCommand = new ArrayList<>();
+        memberInfoCommand.add("member_info");
+        memberInfoCommand.add("paul gries");
+        assertEquals("Member paul gries with 1 correct bet(s) and " +
+                     "0 incorrect bet(s)", fantasyLeagueManager.execute(memberInfoCommand, container));
+
+        saveFile.delete();
+    }
+
+    @Test
+    public void testInvalidArgLength() {
+        ArrayList<String> invalidCommand = new ArrayList<>();
+        invalidCommand.add("add_member");
+        try {
+            fantasyLeagueManager.execute(invalidCommand, container);
+            fail();
+        } catch (Exception e) {
+            assertEquals(Exceptions.WRONG_ARGUMENT_NUMBER,
+                    e.getMessage());
+        }
+
+        invalidCommand.add("Paul");
+        invalidCommand.add("Gries");
+        try {
+            fantasyLeagueManager.execute(invalidCommand, container);
+            fail();
+        } catch (Exception e) {
+            assertEquals(Exceptions.WRONG_ARGUMENT_NUMBER,
+                    e.getMessage());
+        }
     }
 }

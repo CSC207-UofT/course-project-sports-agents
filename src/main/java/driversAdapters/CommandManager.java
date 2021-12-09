@@ -20,7 +20,8 @@ public class CommandManager {
     /**
      * Calls upon the input parser to parse the user input, and calls the right use case and passes the
      * user's arguents
-     * @param input input string of the user
+     *
+     * @param input     input string of the user
      * @param container data container used in this particular instance
      * @return returns the output string obtained from one of the use cases
      * @throws Exception whenever a use case throws an exception

@@ -13,9 +13,9 @@ public class BaseballPlayerStatPredictor extends PlayerStatPredictor {
 
     /**
      * Handle an argument requesting a prediction of a player's
-     * future statistic. Uses only requested seasons and assumes
-     * the seasons were played in the order provided. Uses linear
+     * future statistic. Uses only seasons player participated in. Uses linear
      * regression.
+     *
      * @param arguments A string array of form
      *                  {"Baseball", "player name", "stat name"}
      * @param container A container with the necessary data and the means to get it
@@ -40,9 +40,10 @@ public class BaseballPlayerStatPredictor extends PlayerStatPredictor {
 
     /**
      * Collect the player's past statistics for the given seasons, maintaining order.
-     * @param player the player to get statistics for
+     *
+     * @param player    the player to get statistics for
      * @param statistic the statistic to get
-     * @param seasons the list of seasons to get
+     * @param seasons   the list of seasons to get
      * @return the player's statistics for the given seasons
      * @throws Exception if one statistic is not recorded
      */
@@ -71,7 +72,8 @@ public class BaseballPlayerStatPredictor extends PlayerStatPredictor {
 
     /**
      * Get the at bats statistics for the given player in given seasons
-     * @param player the Player to get at bats statistics for
+     *
+     * @param player  the Player to get at bats statistics for
      * @param seasons the list of seasons to consider
      * @return the at bats statistics, for given seasons
      * @throws Exception if one season lacks recorded At Bats data
@@ -88,7 +90,8 @@ public class BaseballPlayerStatPredictor extends PlayerStatPredictor {
 
     /**
      * Get the runs statistics for the given player in given seasons
-     * @param player the Player to get runs statistics for
+     *
+     * @param player  the Player to get runs statistics for
      * @param seasons the list of seasons to consider
      * @return the runs statistics, for given seasons
      * @throws Exception if one season lacks recorded runs data
@@ -105,7 +108,8 @@ public class BaseballPlayerStatPredictor extends PlayerStatPredictor {
 
     /**
      * Get the Hits statistics for the given player in given seasons
-     * @param player the Player to get Hits statistics for
+     *
+     * @param player  the Player to get Hits statistics for
      * @param seasons the list of seasons to consider
      * @return the Hits statistics, for given seasons
      * @throws Exception if one season lacks recorded Hots data
@@ -122,7 +126,8 @@ public class BaseballPlayerStatPredictor extends PlayerStatPredictor {
 
     /**
      * Get the Home Runs statistics for the given player in given seasons
-     * @param player the Player to get Home Runs statistics for
+     *
+     * @param player  the Player to get Home Runs statistics for
      * @param seasons the list of seasons to consider
      * @return the Home Runs statistics, for given seasons
      * @throws Exception if one season lacks recorded Home Runs data
@@ -139,7 +144,8 @@ public class BaseballPlayerStatPredictor extends PlayerStatPredictor {
 
     /**
      * Get the Runs Batted In statistics for the given player in given seasons
-     * @param player the Player to get Runs Batted In statistics for
+     *
+     * @param player  the Player to get Runs Batted In statistics for
      * @param seasons the list of seasons to consider
      * @return the Runs Batted In statistics, for given seasons
      * @throws Exception if one season lacks recorded Runs Batted In data
@@ -149,14 +155,15 @@ public class BaseballPlayerStatPredictor extends PlayerStatPredictor {
             throws Exception {
         ArrayList<Double> pastRunsBattedIn = new ArrayList<>();
         for (String season : seasons) {
-            pastRunsBattedIn.add((double)player.getStatRunsBattedIn(season));
+            pastRunsBattedIn.add((double) player.getStatRunsBattedIn(season));
         }
         return pastRunsBattedIn;
     }
 
     /**
      * Get the Strike Outs statistics for the given player in given seasons
-     * @param player the Player to get Strike Outs statistics for
+     *
+     * @param player  the Player to get Strike Outs statistics for
      * @param seasons the list of seasons to consider
      * @return the Strike Outs statistics, for given seasons
      * @throws Exception if one season lacks recorded Strike Outs data
@@ -173,7 +180,8 @@ public class BaseballPlayerStatPredictor extends PlayerStatPredictor {
 
     /**
      * Get the Home Runs statistics for the given player in given seasons
-     * @param player the Player to get Home Runs statistics for
+     *
+     * @param player  the Player to get Home Runs statistics for
      * @param seasons the list of seasons to consider
      * @return the Home Runs statistics, for given seasons
      * @throws Exception if one season lacks recorded Home Runs data
