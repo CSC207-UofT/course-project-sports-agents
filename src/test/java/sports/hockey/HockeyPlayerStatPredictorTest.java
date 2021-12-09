@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class HockeyPlayerStatPredictorTest {
     HockeyPlayerStatPredictor hockeyPlayerStatPredictor;
@@ -131,5 +132,11 @@ public class HockeyPlayerStatPredictorTest {
         this.hockeyPlayerStatPredictor.execute(arguments1, container);
     }
 
-
+    @Test(timeout = 100)
+    public void testExecuteWithPlayerInCsvFile() throws Exception {
+        ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("Hockey",
+                "Zdeno Chara", "goals"));
+        String output = hockeyPlayerStatPredictor.execute(arguments1, container);
+        assertTrue(output.contains("0.4"));
+    }
 }

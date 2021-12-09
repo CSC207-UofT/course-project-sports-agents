@@ -401,6 +401,4 @@ public class HockeyPlayerStatManagerTest {
         assertTrue(output2.contains("Corey Perry"));
         assertTrue(output2.contains("R"));
     }
-
-
 }

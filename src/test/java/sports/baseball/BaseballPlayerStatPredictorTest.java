@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class BaseballPlayerStatPredictorTest {
     BaseballPlayerStatPredictor baseballPlayerStatPredictor;
@@ -155,5 +155,12 @@ public class BaseballPlayerStatPredictorTest {
         ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("baseball",
                 "player 1", "aces"));
         this.baseballPlayerStatPredictor.execute(arguments1, container);
+    }
+
+    @Test(timeout = 100)
+    public void testExecuteWithPlayerInCsvFile() throws Exception {
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("baseball", "Trevor Story", "strike outs"));
+        String output = baseballPlayerStatPredictor.execute(arguments, container);
+        assertTrue(output.contains("99.9"));
     }
 }
