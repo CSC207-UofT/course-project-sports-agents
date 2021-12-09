@@ -89,12 +89,12 @@ public class CSVDataContainerTest {
                           "Matches: 2\n" +
                           "Aces: 8\n" +
                           "Double Faults: 4\n" +
-                          "Percentage of Serve Points Won: 0.51\n" +
-                          "Percentage of Break Points Saved: 0.5\n" +
-                          "Percentage of Serve Games Won: 0.52\n" +
-                          "Percentage of Return Games Won: 0.26\n" +
-                          "Percentage of Break Points Converted: 0.43\n" +
-                          "Percentage of Return Points Won: 0.33";
+                          "Percentage of Serve Points Won: 50.6\n" +
+                          "Percentage of Break Points Saved: 50.0\n" +
+                          "Percentage of Serve Games Won: 52.2\n" +
+                          "Percentage of Return Games Won: 26.1\n" +
+                          "Percentage of Break Points Converted: 42.9\n" +
+                          "Percentage of Return Points Won: 33.3";
         assertEquals(data2016, player.getSeasonData("2016"));
 
         String data2017 = "Nationality: TUN\n" +
@@ -102,12 +102,12 @@ public class CSVDataContainerTest {
                           "Matches: 20\n" +
                           "Aces: 75\n" +
                           "Double Faults: 62\n" +
-                          "Percentage of Serve Points Won: 0.569\n" +
-                          "Percentage of Break Points Saved: 0.614\n" +
-                          "Percentage of Serve Games Won: 0.687\n" +
-                          "Percentage of Return Games Won: 0.312\n" +
-                          "Percentage of Break Points Converted: 0.39\n" +
-                          "Percentage of Return Points Won: 0.42";
+                          "Percentage of Serve Points Won: 56.9\n" +
+                          "Percentage of Break Points Saved: 61.4\n" +
+                          "Percentage of Serve Games Won: 68.7\n" +
+                          "Percentage of Return Games Won: 31.2\n" +
+                          "Percentage of Break Points Converted: 39.0\n" +
+                          "Percentage of Return Points Won: 42.0";
         assertEquals(data2017, player.getSeasonData("2017"));
     }
 
@@ -237,8 +237,8 @@ public class CSVDataContainerTest {
                 container.getAllTennisPlayers();
         List<String> firstTennisPlayers = Arrays.asList("Ashleigh Barty: Tennis",
                 "Barbora Krejcikova: Tennis", "Karolina Pliskova: Tennis", "Garbine Mugurza: Tennis");
-        List<String> lastTennisPlayers = Arrays.asList("Petra Krejsova: Tennis",
-                "Alexa Guarachi: Tennis", "Victoria Kamenskaya: Tennis", "Alyssa Mayo: Tennis");
+        List<String> lastTennisPlayers = Arrays.asList("Giuliana Olmos: Tennis", "Alison Bai: Tennis",
+                "Meiling Wang: Tennis", "Greta Arn: Tennis");
         assertEquals(firstTennisPlayers,
                 tennisPlayers.subList(0, firstTennisPlayers.size()));
         assertEquals(lastTennisPlayers,
