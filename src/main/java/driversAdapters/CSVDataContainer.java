@@ -29,7 +29,7 @@ public class CSVDataContainer implements DataContainer {
         if (playerMap.containsKey(name)) {
             return playerMap.get(name);
         }
-        switch (sport) {
+        switch (sport.toLowerCase()) {
             case "hockey":
                 getHockeyPlayer(name);
                 break;
