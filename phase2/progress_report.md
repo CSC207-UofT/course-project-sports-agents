@@ -23,3 +23,9 @@ The old .csv file required users to query players by competition name
 instead of season. It also only contained data for one year.
 The new file contains data for multiple years, and players can now be queried
 by year. [Pull Request](https://github.com/CSC207-UofT/course-project-sports-agents/pull/47)
+
+Jack has worked on refactoring the project's package structure. He broke up the too-large
+`commands` package, created the `sports` package, and gave each sport a
+subpackage within that package. This makes the project much easier to navigate
+and would make the addition of future sports much easier. 
+[Pull Request](https://github.com/CSC207-UofT/course-project-sports-agents/pull/50)
