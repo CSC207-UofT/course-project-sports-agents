@@ -20,12 +20,6 @@ public class MatchTest {
     }
 
     @Test
-    public void testGetTeams() {
-        assertEquals("Red Team", match.getTeamA());
-        assertEquals("Blue Team", match.getTeamB());
-    }
-
-    @Test
     public void testResolve() throws Exception {
         match.resolve("Red Team");
         assertEquals(1, member1.getCorrectBets());

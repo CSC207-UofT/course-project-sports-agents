@@ -33,6 +33,8 @@ public class TeamStatManagerFacade implements Command {
         switch (sport.toLowerCase()) {
             case "hockey":
                 return this.hockeyTeamStatManager.execute(arguments, container);
+            case "baseball":
+                return ("Baseball team features are not supported");
             default:
                 throw new Exception(Exceptions.WRONG_SPORT);
         }
