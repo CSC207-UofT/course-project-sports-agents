@@ -26,7 +26,7 @@ given by `get_available_commands`.
 Find some tennis players from the season 2016 using the command
 `get_players_list --sport tennis --season 2016`.
 
-Available Tennis seasons are: `2016` and `2017`.
+Available Tennis seasons are: `2016`, `2017`, `2018`, and `2019`.
 
 Available Hockey seasons are: `2016-2017`, `2017-2018`, `2018-2019`,
 `2019-2020`, and `2020-2021`.
