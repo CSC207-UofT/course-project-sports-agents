@@ -187,7 +187,7 @@ public class TennisPlayerStatPredictorTest {
 
     @Test(timeout = 100)
     public void testExecuteWithPlayerInCsvFile() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("tennis", "Ashleigh Barty", "aces"));
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("tennis", "ashleigh barty", "aces"));
         String output = this.tennisPlayerStatPredictor.execute(arguments, container);
         assertTrue(output.contains("547.5"));
     }

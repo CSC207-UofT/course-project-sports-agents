@@ -135,7 +135,7 @@ public class HockeyPlayerStatPredictorTest {
     @Test(timeout = 100)
     public void testExecuteWithPlayerInCsvFile() throws Exception {
         ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("Hockey",
-                "Zdeno Chara", "goals"));
+                "zdeno chara", "goals"));
         String output = hockeyPlayerStatPredictor.execute(arguments1, container);
         assertTrue(output.contains("0.4"));
     }

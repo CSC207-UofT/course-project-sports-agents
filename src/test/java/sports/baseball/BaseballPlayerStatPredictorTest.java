@@ -159,7 +159,7 @@ public class BaseballPlayerStatPredictorTest {
 
     @Test(timeout = 100)
     public void testExecuteWithPlayerInCsvFile() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("baseball", "Trevor Story", "strike outs"));
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("baseball", "trevor story", "strike outs"));
         String output = baseballPlayerStatPredictor.execute(arguments, container);
         assertTrue(output.contains("99.9"));
     }

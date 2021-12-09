@@ -134,7 +134,7 @@ public class BaseballPlayerStatManagerTest {
 
     @Test(timeout = 100)
     public void testExecuteWithPlayerInCsvFile() throws Exception {
-        ArrayList<String> command = new ArrayList<>(Arrays.asList("baseball", "Trevor Story", "2020-2021",
+        ArrayList<String> command = new ArrayList<>(Arrays.asList("baseball", "trevor story", "2020-2021",
                 "home runs"));
         String output = this.baseballPlayerStatManager.execute(command, container);
         assertTrue(output.contains("Trevor Story"));

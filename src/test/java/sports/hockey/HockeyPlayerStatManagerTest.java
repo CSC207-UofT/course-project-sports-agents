@@ -390,13 +390,13 @@ public class HockeyPlayerStatManagerTest {
     @Test(timeout = 100)
     public void testExecuteWithPlayersInCsvFile() throws Exception {
         ArrayList<String> arguments1 = new ArrayList<>(Arrays.asList("hockey",
-                "Zdeno Chara", "2020-2021", "games played"));
+                "zdeno chara", "2020-2021", "games played"));
         String output1 = this.hockeyPlayerStatManager.execute(arguments1, container);
         assertTrue(output1.contains("Zdeno Chara"));
         assertTrue(output1.contains("55"));
 
         ArrayList<String> arguments2 = new ArrayList<>(Arrays.asList("hockey",
-                "Corey Perry", "2020-2021", "skater shoots"));
+                "corey perry", "2020-2021", "skater shoots"));
         String output2 = this.hockeyPlayerStatManager.execute(arguments2, container);
         assertTrue(output2.contains("Corey Perry"));
         assertTrue(output2.contains("R"));

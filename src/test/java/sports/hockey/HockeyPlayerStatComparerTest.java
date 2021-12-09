@@ -235,7 +235,7 @@ public class HockeyPlayerStatComparerTest {
 
     @Test(timeout = 100)
     public void testExecuteWithPlayerInCsvFile() throws Exception {
-        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey", "Zdeno Chara", "Joe Thornton",
+        ArrayList<String> arguments = new ArrayList<>(Arrays.asList("hockey", "zdeno chara", "joe thornton",
                 "2020-2021", "games played"));
         String[] output = this.hockeyPlayerStatComparer.execute(arguments, container).split("\n");
 
