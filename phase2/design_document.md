@@ -177,7 +177,7 @@ Most components of our program has been tested. All concrete player classes
 have tests. All concrete children of `PlayerStatManager`, `PlayerStatComparer`, and
 `PlayerStatPredictor` classes have tests. Most use case classes and entity classes
 have tests. However, `PlayerStatManagerFacade`, `PlayerStatComparerFacade`,
-`PlayerStatPredictor`, and `TeamStatManagerFacade` have not been tested. The facade 
+`PlayerStatPredictorFacade`, and `TeamStatManagerFacade` have not been tested. The facade 
 classes accept an argument, and pass that argument to the approriate sport's use
 case class, which have all been tested. 
 
