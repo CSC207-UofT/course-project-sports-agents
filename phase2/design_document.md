@@ -175,10 +175,11 @@ all warnings of importance.
 ## Testing
 Most components of our program has been tested. All concrete player classes
 have tests. All concrete children of `PlayerStatManager`, `PlayerStatComparer`, and
-`PlayerStatPredictor` classes have tests. However, we were not able to write tests
-for some methods in the `GetList` class. For example, the `GetList` class
-can return all players in all sports. We did not write a test for the method
-that does this because the list of players returned is far too long.
+`PlayerStatPredictor` classes have tests. Most use case classes and entity classes
+have tests. However, `PlayerStatManagerFacade`, `PlayerStatComparerFacade`,
+`PlayerStatPredictor`, and `TeamStatManagerFacade` have not been tested. The facade 
+classes accept an argument, and pass that argument to the approriate sport's use
+case class, which have all been tested. 
 
 ## Refactoring
 Following Phase 0, we extensively refactored code to reduce duplicate code.
