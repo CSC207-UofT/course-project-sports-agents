@@ -24,20 +24,6 @@ public class Match implements Serializable {
     }
 
     /**
-     * @return team A, the home team
-     */
-    public String getTeamA() {
-        return this.teamA;
-    }
-
-    /**
-     * @return team B, the visiting team
-     */
-    public String getTeamB() {
-        return this.teamB;
-    }
-
-    /**
      * Record a new bet on the Match's outcome
      *
      * @param m    the League Member who placed the bet

@@ -2,6 +2,11 @@ package constants;
 
 public class Exceptions {
 
+    /**
+     * An exceptions class containing strings that are thrown when a particular exception is called
+     * Make it easier to understand where the user went wrong
+     */
+
     public static final String WRONG_COMMAND = "Given command not found";
     public static final String WRONG_SPORT = "The sport you entered is currently not supported";
     public static final String PLAYER_NOT_FOUND = "Given player(s) not found";

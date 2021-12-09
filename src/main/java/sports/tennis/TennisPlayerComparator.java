@@ -54,50 +54,132 @@ public class TennisPlayerComparator implements Comparator<TennisPlayer> {
         return 0;
     }
 
+
+    /**
+     * Compare two players based on their rank
+     *
+     * @param p1 player 1
+     * @param p2 player 2
+     * @return the different in the ranking of the players
+     * @throws Exception whenever the appropriate data doesn't exist
+     */
     private int compareRank(TennisPlayer p1, TennisPlayer p2) throws Exception {
         return p2.getStatRank(this.season) - p1.getStatRank(this.season);
     }
 
+    /**
+     * Compare two players based on their matches
+     *
+     * @param p1 player 1
+     * @param p2 player 2
+     * @return the difference in the amount of matches played by the players
+     * @throws Exception whenever the appropriate data doesn't exist
+     */
     private int compareMatches(TennisPlayer p1, TennisPlayer p2) throws Exception {
         return p1.getStatMatches(this.season) -
                p2.getStatMatches(this.season);
     }
 
+    /**
+     * Compare two players based on their aces
+     *
+     * @param p1 player 1
+     * @param p2 player 2
+     * @return the difference in the amount of aces by the players
+     * @throws Exception whenever the appropriate data doesn't exist
+     */
     private int compareAces(TennisPlayer p1, TennisPlayer p2) throws Exception {
         return p1.getStatAces(this.season) -
                p2.getStatAces(this.season);
     }
 
+    /**
+     * Compare two players based on their double faults
+     *
+     * @param p1 player 1
+     * @param p2 player 2
+     * @return the difference in the amount of double faults by the players
+     * @throws Exception whenever the appropriate data doesn't exist
+     */
     private int compareDoubleFaults(TennisPlayer p1, TennisPlayer p2) throws Exception {
         return p2.getStatDoubleFaults(this.season) -
                p1.getStatDoubleFaults(this.season);
     }
 
+    /**
+     * Compare two players based on their serve points
+     *
+     * @param p1 player 1
+     * @param p2 player 2
+     * @return the difference in the amount of serve points won by the players
+     * @throws Exception whenever the appropriate data doesn't exist
+     */
     private int compareServePointsWon(TennisPlayer p1, TennisPlayer p2) throws Exception {
         return (int) Math.signum(p1.getStatServePointsWon(this.season) -
                                  p2.getStatServePointsWon(this.season));
     }
 
+    /**
+     * Compare two players based on their break points
+     *
+     * @param p1 player 1
+     * @param p2 player 2
+     * @return the difference in the amount of break points by the players
+     * @throws Exception whenever the appropriate data doesn't exist
+     */
     private int compareBreakPointsSaved(TennisPlayer p1, TennisPlayer p2) throws Exception {
         return (int) Math.signum(p1.getStatBreakPointsSaved(this.season) -
                                  p2.getStatBreakPointsSaved(this.season));
     }
 
+    /**
+     * Compare two players based on their serve games
+     *
+     * @param p1 player 1
+     * @param p2 player 2
+     * @return the difference in the amount of serve games won by the players
+     * @throws Exception whenever the appropriate data doesn't exist
+     */
     private int compareServeGamesWon(TennisPlayer p1, TennisPlayer p2) throws Exception {
         return (int) Math.signum(p1.getStatServeGamesWon(this.season) -
                                  p2.getStatServeGamesWon(this.season));
     }
 
+    /**
+     * Compare two players based on their return games
+     *
+     * @param p1 player 1
+     * @param p2 player 2
+     * @return the difference in the amount of return games won by the players
+     * @throws Exception whenever the appropriate data doesn't exist
+     */
     private int compareReturnGamesWon(TennisPlayer p1, TennisPlayer p2) throws Exception {
         return (int) Math.signum(p1.getStatReturnGamesWon(this.season) -
                                  p2.getStatReturnGamesWon(this.season));
     }
+
+    /**
+     * Compare two players based on their break points
+     *
+     * @param p1 player 1
+     * @param p2 player 2
+     * @return the difference in the amount of break points converted by the players
+     * @throws Exception whenever the appropriate data doesn't exist
+     */
 
     private int compareBreakPointsConverted(TennisPlayer p1, TennisPlayer p2) throws Exception {
         return (int) Math.signum(p1.getStatBreakPointsConverted(this.season) -
                                  p2.getStatBreakPointsConverted(this.season));
     }
 
+    /**
+     * Compare two players based on their return points
+     *
+     * @param p1 player 1
+     * @param p2 player 2
+     * @return the difference in the amount of return points won by the players
+     * @throws Exception whenever the appropriate data doesn't exist
+     */
     private int compareReturnPointsWon(TennisPlayer p1, TennisPlayer p2) throws Exception {
         return (int) Math.signum(p1.getStatReturnPointsWon(this.season) -
                                  p2.getStatReturnPointsWon(this.season));
